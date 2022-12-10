@@ -8,11 +8,15 @@ namespace ClaraMundi
     {
         [SyncObject]
         public readonly SyncList<string> PartyInvites = new();
+
+        
         public event Action<Party> PartyChanges;
         public event Action<SyncList<string>> InviteChanges;
         
         [SyncVar(OnChange = "Client_OnChange")]
         public Party Party;
+        [SyncVar(OnChange = "OnChatMessage")]
+        public ChatMessage lastMessage;
 
         protected override void Awake()
         {
@@ -30,11 +34,20 @@ namespace ClaraMundi
             InviteChanges?.Invoke(PartyInvites);
         }
 
+        public void Server_OnChatMessage(ChatMessage message)
+        {
+            lastMessage = message;
+        }
         public void Server_OnChange(Party party)
         {
                 Party = party;
         }
 
+        private void OnChatMessage(ChatMessage previousMessage, ChatMessage nextMessage, bool asServer)
+        {
+            ChatManager.ReceivedMessage(nextMessage);
+        }
+        
         private void Client_OnChange(Party lastParty, Party nextParty, bool asServer)
         {
             PartyChanges?.Invoke(Party);

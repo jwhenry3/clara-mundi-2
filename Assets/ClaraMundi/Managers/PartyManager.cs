@@ -25,6 +25,11 @@ namespace ClaraMundi
             return PartiesByLeader.Any(kvp => kvp.Value.MemberIds.Contains(playerId));
         }
 
+        Party GetPlayerParty(string playerId)
+        {
+            return PartiesByLeader.FirstOrDefault(kvp => kvp.Value.MemberIds.Contains(playerId)).Value;
+        }
+
         public bool ServerInviteToParty(string leaderPlayerId, string invitePlayerId)
         {
             if (IsPlayerInParty(invitePlayerId)) return false;
@@ -124,6 +129,15 @@ namespace ClaraMundi
             UpdateParty(party);
         }
 
+        public void ServerSendMessage(ChatMessage message)
+        {
+            var party = GetPlayerParty(message.SenderEntityId);
+            if (party == null) return;
+            foreach (string member in party.MemberIds)
+            {
+                PlayerManager.Instance.Players[member].Party.Server_OnChatMessage(message);
+            }
+        }
         void UpdateParty(Party party)
         {
             foreach (string member in party.MemberIds)

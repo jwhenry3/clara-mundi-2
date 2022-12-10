@@ -25,11 +25,11 @@ namespace ClaraMundi
 
         public Player GetByName(string playerName)
         {
-            return PlayersByName.ContainsKey(playerName) ? PlayersByName[playerName] : null;
+            return PlayersByName.ContainsKey(playerName.ToLower()) ? PlayersByName[playerName.ToLower()] : null;
         }
         public Player GetById(string id)
         {
-            return PlayersByName.ContainsKey(id) ? Players[id] : null;
+            return Players.ContainsKey(id) ? Players[id] : null;
         }
     }
 }

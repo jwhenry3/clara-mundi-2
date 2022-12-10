@@ -172,6 +172,10 @@ namespace ClaraMundi
         {
             SetChannel("Shout");
         }
+        public void SetYellChannel()
+        {
+            SetChannel("Yell");
+        }
 
         public void SetTradeChannel()
         {
@@ -181,6 +185,10 @@ namespace ClaraMundi
         public void SetLFGChannel()
         {
             SetChannel("LFG");
+        }
+        public void SetPartyChannel()
+        {
+            SetChannel("Party");
         }
     }
 }

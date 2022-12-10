@@ -1,5 +1,6 @@
 using FishNet;
 using FishNet.Managing;
+using FishNet.Object;
 using FishNet.Transporting;
 using TMPro;
 using UnityEngine;
@@ -11,8 +12,8 @@ namespace ClaraMundi
         [HideInInspector]
         public NetworkManager networkManager;
         public static Server Instance;
-
-        public TextMeshProUGUI hostLabel;
+        
+        public NetworkObject[] Singletons;
 
         private LocalConnectionState _serverState = LocalConnectionState.Stopped;
 
@@ -28,23 +29,21 @@ namespace ClaraMundi
             networkManager.ServerManager.OnServerConnectionState += ServerManager_OnServerConnectionState;
         }
 
-        private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs obj)
+        private void ServerManager_OnServerConnectionState(ServerConnectionStateArgs args)
         {
-            _serverState = obj.ConnectionState;
-            hostLabel.text = GetNextStateText(_serverState);
+            _serverState = args.ConnectionState;
+            if (args.ConnectionState != LocalConnectionState.Started) return;
+            if (!networkManager.IsServer) return;
+            foreach (var singleton in Singletons)
+            {
+                NetworkObject nob = networkManager.GetPooledInstantiated(singleton, true);
+                networkManager.ServerManager.Spawn(nob);
+            }
         }
 
         private void OnDestroy()
         {
             networkManager.ServerManager.OnServerConnectionState -= ServerManager_OnServerConnectionState;
-        }
-
-        public void OnButtonClick()
-        {
-            if (_serverState == LocalConnectionState.Stopped)
-                networkManager.ServerManager.StartConnection();
-            else
-                networkManager.ServerManager.StopConnection(true);
         }
 
         private static string GetNextStateText(LocalConnectionState state)

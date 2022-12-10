@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c165d70b988413397b7759de42b119f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d63c392356439a9cb34ad3803f697d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5398bd39481e477d82e219144e8dd23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   Name: Inventory
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8605dcab52874876bcf4d77c27a617b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -177,6 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378666722372250761}
   - component: {fileID: 378666722372250758}
+  - component: {fileID: 7945795926963440987}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -211,10 +212,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937fdebe23b54f3d9bde3cc9a23b7351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 7
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
+--- !u!114 &7945795926963440987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378666722372250760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 0}
+  PlayerName: 
+  Name: Whisper
+  ChannelScope: 1
+  ChannelType: 0
+  LastPublicMessage:
+    Type: 0
+    ChannelType: 8
+    SenderEntityId: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToEntityId: 
+    Message: 
+  LastPrivateMessage:
+    Type: 0
+    ChannelType: 8
+    SenderEntityId: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToEntityId: 
+    Message: 
 --- !u!1 &378666722592074591
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d929bee233e4b546ab3776ddaba65a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
 --- !u!1 &378666722718353514
@@ -343,7 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554f82b74fd34117aa737ad9a6d5e838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -459,13 +493,13 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
   - {fileID: 378666723463143086}
+  - {fileID: 378666723325325092}
   - {fileID: 378666722211930416}
   - {fileID: 378666722211930419}
+  - {fileID: 378666721684166507}
   - {fileID: 378666721921704500}
   - {fileID: 378666722592074589}
   - {fileID: 378666722372250758}
-  - {fileID: 378666723325325092}
-  - {fileID: 378666721684166507}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -473,7 +507,7 @@ MonoBehaviour:
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: -1
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 2015486455805481206
   _sceneNetworkObjects:

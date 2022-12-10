@@ -21,8 +21,7 @@ namespace ClaraMundi
             // ReSharper disable once Unity.NoNullPropagation
             Callback = OnPlayerChange;
             PlayerManager.Instance.OnPlayerChange += Callback;
-            if (PlayerManager.Instance.LocalPlayer != null)
-                Callback(PlayerManager.Instance.LocalPlayer);
+            Callback(PlayerManager.Instance.LocalPlayer);
 
         }
 

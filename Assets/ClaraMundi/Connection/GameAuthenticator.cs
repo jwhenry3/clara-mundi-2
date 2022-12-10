@@ -54,10 +54,10 @@ namespace ClaraMundi
 
         void OnPlayerName(NetworkConnection conn, PlayerNameBroadcast data)
         {
-            bool authorized = !playerConnections.ContainsKey(data.Name);
+            bool authorized = !playerConnections.ContainsKey(data.Name.ToLower());
             if (authorized)
             {
-                playerConnections[data.Name] = conn;
+                playerConnections[data.Name.ToLower()] = conn;
                 playerNamesByClientId[conn.ClientId] = data.Name;
             }
             SendAuthenticationResponse(conn, authorized);
@@ -88,8 +88,8 @@ namespace ClaraMundi
         {
             if (playerNamesByClientId.ContainsKey(ClientId))
                 playerNamesByClientId.Remove(ClientId);
-            if (playerConnections.ContainsKey(PlayerName))
-                playerConnections.Remove(PlayerName);
+            if (playerConnections.ContainsKey(PlayerName.ToLower()))
+                playerConnections.Remove(PlayerName.ToLower());
         }
 
         void SendPlayerName()

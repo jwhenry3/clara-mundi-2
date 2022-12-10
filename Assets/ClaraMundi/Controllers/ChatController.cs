@@ -16,7 +16,7 @@ namespace ClaraMundi
 
             SendMessageFromClient(channel, message);
         }
-        [ServerRpc(RequireOwnership = false)]
+        [ServerRpc]
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
             if (!IsServer) return;
@@ -26,6 +26,11 @@ namespace ClaraMundi
         public void ServerSendMessage(string channel, ChatMessage message)
         {
             if (!IsServer) return;
+            if (channel == "Party")
+            {
+                PartyManager.Instance.ServerSendMessage(message);
+                return;
+            }
             if (!ChatManager.Instance.Channels.ContainsKey(channel)) return;
             
             if (!string.IsNullOrEmpty(message.SenderEntityId))
