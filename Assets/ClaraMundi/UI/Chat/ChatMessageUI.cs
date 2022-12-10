@@ -56,6 +56,11 @@ namespace ClaraMundi
         public void SetChatMessage(ChatMessage message)
         {
             ChatMessage = message;
+            if (!ChannelFormats.ContainsKey(ChatMessage.ChannelType))
+            {
+                Destroy(gameObject);
+                return;
+            }
             UpdateColor();
             UpdateSenderStyle();
             SaveToText();
@@ -99,11 +104,7 @@ namespace ClaraMundi
                 senderName = Player.GetClickableName(ChatMessage.SenderEntityId);
             if (!string.IsNullOrEmpty(ChatMessage.ToEntityId))
                 receiverName = Player.GetClickableName(ChatMessage.ToEntityId);
-            if (!ChannelFormats.ContainsKey(ChatMessage.ChannelType))
-            {
-                Destroy(gameObject);
-                return;
-            }
+            
             string[] formats = ChannelFormats[ChatMessage.ChannelType].Split(",");
             // use the second format instead of the first if the whisper was outgoing
             if (ChatMessage.ChannelType == ChannelType.Whisper && ChatMessage.SenderEntityId == PlayerManager.Instance.LocalPlayer.entityId)

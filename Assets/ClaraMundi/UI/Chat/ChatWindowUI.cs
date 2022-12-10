@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -23,6 +24,9 @@ namespace ClaraMundi
 
         public TMP_InputField RecipientField;
         public TMP_InputField InputField;
+        public Transform SocialContainer;
+        public Transform CombatContainer;
+        public Transform SystemContainer;
 
         Player ContextualPlayer;
 
@@ -39,14 +43,32 @@ namespace ClaraMundi
             ChatManager.Messages -= OnMessage;
         }
 
-        void OnMessage(ChatMessage message)
+        private void OnMessage(ChatMessage message)
         {
             ClearOutOfBounds();
+            
             var instance = Instantiate(ChatMessagePrefab);
             instance.Tooltip = Tooltip;
             instance.SetChatMessage(message);
             instance.transform.SetParent(ChatMessageContainer);
-
+            if (ChatMessageContainer.childCount > 100)
+                Destroy(ChatMessageContainer.GetChild(0).gameObject));
+            // Add message also to different tabs that take specific types of messages
+            // this allows for filtering out unwanted messages if they are looking for specific 
+            // kinds
+            var container = message.Type switch
+            {
+                ChatMessageType.Combat => CombatContainer,
+                ChatMessageType.System => SystemContainer,
+                _ => SocialContainer
+            };
+            
+            instance = Instantiate(ChatMessagePrefab);
+            instance.Tooltip = Tooltip;
+            instance.SetChatMessage(message);
+            instance.transform.SetParent(container);
+            if (container.childCount > 100)
+                Destroy(container.GetChild(0).gameObject));
         }
 
         void ClearOutOfBounds()
