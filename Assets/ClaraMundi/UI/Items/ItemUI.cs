@@ -1,0 +1,269 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using FishNet.Object.Synchronizing;
+using TMPro;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+
+namespace ClaraMundi
+{
+    public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    {
+        public OwningEntityHolder owner;
+        ItemTooltipUI Tooltip => ItemTooltipUI.Instance;
+        public event Action EntityChange;
+        public event Action<ItemUI> OnDoubleClick;
+        public event Action<ItemUI, PointerEventData> OnContextMenu;
+        string _entityId;
+        public string StorageId = "inventory";
+
+        RectTransform t;
+        public int Position = -1;
+        ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
+        public ItemInstance ItemInstance;
+        public Item Item { get; private set; }
+
+        public Image EquippedStatus;
+        public TextMeshProUGUI ItemName;
+        public TextMeshProUGUI Quantity;
+        public Image Icon;
+
+        public string ItemInstanceId;
+        Image Background;
+        float checkTick;
+        bool hasItem;
+        float doubleClickTimer = 0;
+
+        [HideInInspector]
+        public ItemStorage ItemStorage;
+
+        public bool updateQueued;
+
+        EquipmentItemUI EquipmentItemUI;
+
+        ItemStorage GetItemStorage()
+        {
+            if (_entityId == null) return null;
+            if (!ItemManager.Instance.StorageByEntityAndId.ContainsKey(_entityId))
+                ItemManager.Instance.StorageByEntityAndId[_entityId] = new();
+            if (!ItemManager.Instance.StorageByEntityAndId[_entityId].ContainsKey(StorageId))
+                return null;
+            return ItemManager.Instance.StorageByEntityAndId[_entityId][StorageId];
+        }
+        void Awake()
+        {
+            Background = GetComponent<Image>();
+            t = GetComponent<RectTransform>();
+            EquipmentItemUI = GetComponent<EquipmentItemUI>();
+            ShowNoItem();
+            ItemManager.ItemChange += OnInstanceUpdate;
+            if (_entityId != null)
+                OnEntityChange(_entityId);
+        }
+
+        public void SetOwner(OwningEntityHolder _owner)
+        {
+            owner = _owner;
+            owner.EntityChange += OnOwnerEntityChange;
+        }
+        void OnOwnerEntityChange()
+        {
+            OnEntityChange(owner.entity ? owner.entity.entityId : null);
+        }
+
+        private void OnEntityChange(string entityId)
+        {
+            _entityId = entityId;
+            ItemStorage = GetItemStorage();
+            if (ItemStorage == null) return;
+            EntityChange?.Invoke();
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            if (Position > -1 && !EquipmentItemUI.Active)
+            {
+                var items = ItemStorage.GetVisibleItems().ToList();
+                var lastItem = ItemInstanceId;
+                ItemInstance = items.Count > Position ? items[Position].Value : null;
+                ItemInstanceId = ItemInstance?.ItemInstanceId;
+                if (ItemInstance != null)
+                    Item = ItemRepo.GetItem(ItemInstance.ItemId);
+                if (lastItem != ItemInstanceId)
+                    updateQueued = true;
+            }
+            EquipmentItemUI.Initialize();
+        }
+
+        private void OnInstanceUpdate(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
+        {
+            if (itemInstance != null && ItemInstanceId == itemInstance.ItemInstanceId)
+                updateQueued = true;
+        }
+
+        private void OnDestroy()
+        {
+            ItemManager.ItemChange -= OnInstanceUpdate;
+            if (OnDoubleClick != null)
+            {
+                foreach (Delegate d in OnDoubleClick.GetInvocationList())
+                {
+                    OnDoubleClick -= (Action<ItemUI>)d;
+                }
+            }
+
+            if (OnContextMenu != null)
+            {
+                foreach (Delegate d in OnContextMenu.GetInvocationList())
+                {
+                    OnContextMenu -= (Action<ItemUI, PointerEventData>)d;
+                }
+            }
+
+            if (owner != null)
+                owner.EntityChange -= OnOwnerEntityChange;
+        }
+        float checkTimer;
+
+        private void Update()
+        {
+            if (doubleClickTimer > 0)
+                doubleClickTimer -= Time.deltaTime;
+            if (doubleClickTimer < 0)
+                doubleClickTimer = 0;
+            if (updateQueued)
+            {
+                UpdateItem();
+                updateQueued = false;
+            }
+            if (EquippedStatus != null)
+                EquippedStatus.enabled = ItemInstance is { IsEquipped: true };
+            if (ItemStorage != null) return;
+            checkTimer += Time.deltaTime;
+            if (!(checkTimer > 1)) return;
+            checkTimer = 0;
+            ItemStorage = GetItemStorage();
+            if (ItemStorage == null) return;
+            EntityChange?.Invoke();
+            Initialize();
+        }
+
+        private void UpdateItem()
+        {
+            if (ItemInstanceId == null)
+            {
+                ShowNoItem();
+                return;
+            }
+            if (ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance))
+            {
+                Item = ItemRepo.GetItem(ItemInstance.ItemId);
+                ShowItemInstance();
+            }
+            else
+            {
+                ItemInstance = null;
+                Item = null;
+                ShowNoItem();
+            }
+        }
+
+        private void ShowNoItem()
+        {
+            Icon.sprite = null;
+            Icon.color = new Color(255, 255, 255, 0);
+            hasItem = false;
+            Icon.enabled = false;
+            if (ItemName != null)
+            {
+                ItemName.text = "No Item";
+                ItemName.enabled = false;
+            }
+            if (Quantity != null)
+            {
+                Quantity.text = "";
+                Quantity.enabled = false;
+            }
+            if (EquippedStatus != null)
+                EquippedStatus.enabled = false;
+        }
+
+        private void ShowItemInstance()
+        {
+            Icon.sprite = Item.Icon;
+            Icon.color = new Color(255, 255, 255, 1);
+            hasItem = true;
+            Icon.enabled = true;
+            if (ItemName != null)
+            {
+                ItemName.text = Item.Name;
+                ItemName.enabled = true;
+            }
+            if (Quantity != null)
+            {
+                if (ItemInstance.Quantity > 1)
+                    Quantity.text = ItemInstance.Quantity + "";
+                else
+                    Quantity.text = "";
+                Quantity.enabled = true;
+            }
+        }
+
+        public void LinkToChat()
+        {
+            ChatWindowUI.Instance.AddItemLink(ItemInstance);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (hasItem)
+            {
+                Tooltip.gameObject.SetActive(false);
+            }
+            Background.enabled = false;
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!hasItem) return;
+            Background.enabled = true;
+            Tooltip.SetItemInstance(ItemInstance);
+            var position = transform.position;
+            int horizontal = ScreenUtils.GetHorizontalWithMostSpace(position.x);
+            int vertical = ScreenUtils.GetVerticalWithMostSpace(position.y);
+            RectTransform thisRect = (RectTransform)transform;
+            var transform1 = Tooltip.transform;
+            RectTransform rect = (RectTransform)transform1;
+            var rect1 = thisRect.rect;
+            var rect2 = rect.rect;
+            transform1.position = new Vector3(
+                position.x + (horizontal * (rect1.width / 2 + (rect2.width / 2))),
+                position.y + (vertical * (rect1.height / 2 + (rect2.height / 2))),
+                0
+            );
+            Tooltip.gameObject.SetActive(true);
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            if (!hasItem) return;
+            if (eventData.button == PointerEventData.InputButton.Right)
+            {
+                OnContextMenu?.Invoke(this, eventData);
+            }
+            else
+            {
+                if (doubleClickTimer == 0)
+                    doubleClickTimer = 0.5f;
+                else
+                {
+                    OnDoubleClick?.Invoke(this);
+                }
+            }
+        }
+    }
+}

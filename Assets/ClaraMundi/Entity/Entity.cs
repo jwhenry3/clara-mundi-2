@@ -1,11 +1,14 @@
 ﻿using System;
 using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace ClaraMundi
 {
     public class Entity : NetworkBehaviour
     {
         public event Action OnStarted;
+        public event Action<string> NameChange;
+        [SyncVar(OnChange = "OnNameChange")]
         public string entityName = "";
         public string entityId = Guid.NewGuid().ToString();
 
@@ -20,6 +23,10 @@ namespace ClaraMundi
         {
             base.OnStartServer();
             OnStarted?.Invoke();
+        }
+        void OnNameChange(string oldValue, string newValue, bool asServer)
+        {
+            NameChange?.Invoke(newValue);
         }
     }
 }
