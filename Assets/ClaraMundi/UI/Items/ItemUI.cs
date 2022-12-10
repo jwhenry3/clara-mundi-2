@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object.Synchronizing;
 using TMPro;
@@ -17,7 +15,7 @@ namespace ClaraMundi
         public event Action EntityChange;
         public event Action<ItemUI> OnDoubleClick;
         public event Action<ItemUI, PointerEventData> OnContextMenu;
-        string _entityId;
+        private string _entityId;
         public string StorageId = "inventory";
 
         RectTransform t;
@@ -32,19 +30,19 @@ namespace ClaraMundi
         public Image Icon;
 
         public string ItemInstanceId;
-        Image Background;
-        float checkTick;
-        bool hasItem;
-        float doubleClickTimer = 0;
+        private Image Background;
+        private float checkTick;
+        private bool hasItem;
+        private float doubleClickTimer = 0;
 
         [HideInInspector]
         public ItemStorage ItemStorage;
 
         public bool updateQueued;
 
-        EquipmentItemUI EquipmentItemUI;
+        private EquipmentItemUI EquipmentItemUI;
 
-        ItemStorage GetItemStorage()
+        private ItemStorage GetItemStorage()
         {
             if (_entityId == null) return null;
             if (!ItemManager.Instance.StorageByEntityAndId.ContainsKey(_entityId))
@@ -53,7 +51,8 @@ namespace ClaraMundi
                 return null;
             return ItemManager.Instance.StorageByEntityAndId[_entityId][StorageId];
         }
-        void Awake()
+
+        private void Awake()
         {
             Background = GetComponent<Image>();
             t = GetComponent<RectTransform>();
@@ -68,6 +67,7 @@ namespace ClaraMundi
         {
             owner = _owner;
             owner.EntityChange += OnOwnerEntityChange;
+            OnOwnerEntityChange();
         }
         void OnOwnerEntityChange()
         {
