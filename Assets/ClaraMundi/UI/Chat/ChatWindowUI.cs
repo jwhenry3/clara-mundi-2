@@ -52,7 +52,7 @@ namespace ClaraMundi
             instance.SetChatMessage(message);
             instance.transform.SetParent(ChatMessageContainer);
             if (ChatMessageContainer.childCount > 100)
-                Destroy(ChatMessageContainer.GetChild(0).gameObject));
+                Destroy(ChatMessageContainer.GetChild(0).gameObject);
             // Add message also to different tabs that take specific types of messages
             // this allows for filtering out unwanted messages if they are looking for specific 
             // kinds
@@ -68,7 +68,7 @@ namespace ClaraMundi
             instance.SetChatMessage(message);
             instance.transform.SetParent(container);
             if (container.childCount > 100)
-                Destroy(container.GetChild(0).gameObject));
+                Destroy(container.GetChild(0).gameObject);
         }
 
         void ClearOutOfBounds()
