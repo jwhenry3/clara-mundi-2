@@ -13,8 +13,14 @@ namespace ClaraMundi
         public ItemTooltipUI ItemTooltipUI;
         public GameObject ContextMenu;
         public ItemUI ItemNodePrefab;
+        [HideInInspector]
         public ItemUI ContextualItem;
 
+        public RectTransform EquipmentImage;
+        public RectTransform ConsumablesImage;
+        public RectTransform GeneralImage;
+        public RectTransform QuestItemsImage;
+        
         public Transform Equipment;
         public Transform Consumables;
         public Transform General;
@@ -63,10 +69,13 @@ namespace ClaraMundi
                 var itemInstance = kvp.Value;
                 var item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
                 var instance = Instantiate(ItemNodePrefab);
+                instance.ShowEquippedStatus = true;
+                instance.ItemInstance = itemInstance;
                 instance.SetOwner(owner);
                 instance.Tooltip = ItemTooltipUI;
-                instance.ItemInstance = itemInstance;
                 instance.Initialize();
+                instance.OnDoubleClick += OnUseOrEquipItem;
+                instance.OnContextMenu += OnContextMenu;
                 switch (item.Type)
                 {
                     case ItemType.Armor:
@@ -94,6 +103,7 @@ namespace ClaraMundi
             base.OnPlayerChange(_player);
             if (entity == null) return;
             owner.SetEntity(entity);
+            Reload();
         }
 
         public void OnUseOrEquipItem(ItemUI item)
@@ -113,6 +123,14 @@ namespace ClaraMundi
         }
         public void OnContextMenu(ItemUI item, PointerEventData eventData)
         {
+            if (eventData == null)
+            {
+                if (ContextualItem == item)
+                    CloseContextMenu();
+                if (ItemTooltipUI)
+                ItemTooltipUI.gameObject.SetActive(false);
+                return;
+            }
             ContextualItem = item;
             DropButton.SetActive(item.Item.Droppable);
             UseButton.SetActive(item.Item.Type == ItemType.Consumable);
@@ -158,5 +176,16 @@ namespace ClaraMundi
             ContextualItem.LinkToChat();
             CloseContextMenu();
         }
+
+        public void SetTabActive(string tab)
+        {
+            var active = new Vector3(1.5f, 1.5f, 1);
+            var inactive = new Vector3(1, 1, 1);
+            EquipmentImage.localScale = tab == "Equipment" ? active : inactive;
+            ConsumablesImage.localScale = tab == "Consumables" ? active : inactive;
+            GeneralImage.localScale = tab == "General" ? active : inactive;
+            QuestItems.localScale = tab == "QuestItems" ? active : inactive;
+        }
+        
     }
 }

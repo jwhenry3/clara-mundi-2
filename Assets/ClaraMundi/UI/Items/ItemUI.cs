@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using FishNet.Object.Synchronizing;
 using TMPro;
 using UnityEngine;
@@ -18,11 +17,11 @@ namespace ClaraMundi
         private string _entityId;
         public string StorageId = "inventory";
 
-        RectTransform t;
         ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemInstance ItemInstance;
         public Item Item { get; private set; }
 
+        public bool ShowEquippedStatus = true;
         public Image EquippedStatus;
         public TextMeshProUGUI ItemName;
         public TextMeshProUGUI Quantity;
@@ -39,7 +38,6 @@ namespace ClaraMundi
 
         public bool updateQueued;
 
-        private EquipmentItemUI EquipmentItemUI;
 
         private ItemStorage GetItemStorage()
         {
@@ -54,8 +52,6 @@ namespace ClaraMundi
         private void Awake()
         {
             Background = GetComponent<Image>();
-            t = GetComponent<RectTransform>();
-            EquipmentItemUI = GetComponent<EquipmentItemUI>();
             ShowNoItem();
             ItemManager.ItemChange += OnInstanceUpdate;
             if (_entityId != null)
@@ -84,16 +80,12 @@ namespace ClaraMundi
 
         public void Initialize()
         {
-            if (!EquipmentItemUI.Active)
-            {
-                var lastItem = ItemInstanceId;
-                ItemInstanceId = ItemInstance?.ItemInstanceId;
-                if (ItemInstance != null)
-                    Item = ItemRepo.GetItem(ItemInstance.ItemId);
-                if (lastItem != ItemInstanceId)
-                    updateQueued = true;
-            }
-            EquipmentItemUI.Initialize();
+            var lastItem = ItemInstanceId;
+            ItemInstanceId = ItemInstance?.ItemInstanceId;
+            if (ItemInstance != null)
+                Item = ItemRepo.GetItem(ItemInstance.ItemId);
+            if (lastItem != ItemInstanceId)
+                updateQueued = true;
         }
 
         private void OnInstanceUpdate(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
@@ -104,27 +96,26 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
+            Tooltip.gameObject.SetActive(false);
+            OnContextMenu?.Invoke(this, null);
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
             {
-                foreach (Delegate d in OnDoubleClick.GetInvocationList())
-                {
+                foreach (var d in OnDoubleClick.GetInvocationList())
                     OnDoubleClick -= (Action<ItemUI>)d;
-                }
             }
 
             if (OnContextMenu != null)
             {
-                foreach (Delegate d in OnContextMenu.GetInvocationList())
-                {
+                foreach (var d in OnContextMenu.GetInvocationList())
                     OnContextMenu -= (Action<ItemUI, PointerEventData>)d;
-                }
             }
 
             if (owner != null)
                 owner.EntityChange -= OnOwnerEntityChange;
         }
-        float checkTimer;
+
+        private float checkTimer;
 
         private void Update()
         {
@@ -138,7 +129,8 @@ namespace ClaraMundi
                 updateQueued = false;
             }
             if (EquippedStatus != null)
-                EquippedStatus.enabled = ItemInstance is { IsEquipped: true };
+                EquippedStatus.enabled = ShowEquippedStatus && ItemInstance is { IsEquipped: true };
+                
             if (ItemStorage != null) return;
             checkTimer += Time.deltaTime;
             if (!(checkTimer > 1)) return;
@@ -237,7 +229,6 @@ namespace ClaraMundi
             RectTransform rect = (RectTransform)transform1;
             var rect1 = thisRect.rect;
             var rect2 = rect.rect;
-            Debug.Log(rect1.width + ", " + rect1.height);
             var verticalOffset = rect1.height / 2;
             if (vertical == -1)
             {

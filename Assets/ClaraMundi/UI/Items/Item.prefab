@@ -314,7 +314,6 @@ GameObject:
   - component: {fileID: 33972649893080310}
   - component: {fileID: 33972649893080311}
   - component: {fileID: 33972649893080309}
-  - component: {fileID: -2200003230344306082}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -360,7 +359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 33972649893080201}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -404,6 +403,7 @@ MonoBehaviour:
     ItemId: 
     Quantity: 1
     IsEquipped: 0
+  ShowEquippedStatus: 0
   EquippedStatus: {fileID: 33972648169651646}
   ItemName: {fileID: 0}
   Quantity: {fileID: 33972649740098096}
@@ -411,19 +411,3 @@ MonoBehaviour:
   ItemInstanceId: 
   ItemStorage: {fileID: 0}
   updateQueued: 0
---- !u!114 &-2200003230344306082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33972649893080201}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a94441a4514bb19e88bce4adeb0659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Active: 0
-  IsWeaponSlot: 0
-  IsArmorSlot: 0
-  EquipmentSlot: 

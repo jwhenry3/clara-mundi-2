@@ -58,6 +58,7 @@ namespace ClaraMundi
         public bool ServerUnequip(string itemInstanceId)
         {
             if (!IsServer) return false;
+            if (string.IsNullOrEmpty(itemInstanceId)) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
             if (instance.OwnerId != player.entityId) return false;
