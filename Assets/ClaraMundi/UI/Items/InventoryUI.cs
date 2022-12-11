@@ -128,7 +128,7 @@ namespace ClaraMundi
                 if (ContextualItem == item)
                     CloseContextMenu();
                 if (ItemTooltipUI)
-                ItemTooltipUI.gameObject.SetActive(false);
+                    ItemTooltipUI.gameObject.SetActive(false);
                 return;
             }
             ContextualItem = item;
@@ -184,7 +184,7 @@ namespace ClaraMundi
             EquipmentImage.localScale = tab == "Equipment" ? active : inactive;
             ConsumablesImage.localScale = tab == "Consumables" ? active : inactive;
             GeneralImage.localScale = tab == "General" ? active : inactive;
-            QuestItems.localScale = tab == "QuestItems" ? active : inactive;
+            QuestItemsImage.localScale = tab == "QuestItems" ? active : inactive;
         }
         
     }

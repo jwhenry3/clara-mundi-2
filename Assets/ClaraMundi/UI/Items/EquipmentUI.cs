@@ -30,6 +30,7 @@ namespace ClaraMundi
 
         public void OnEnable()
         {
+            OnPlayerChange(PlayerManager.Instance.LocalPlayer);
             Reload();
         }
 
@@ -162,7 +163,7 @@ namespace ClaraMundi
         }
         public void OnContextMenu(ItemUI item, PointerEventData eventData)
         {
-            if (item == null)
+            if (eventData == null)
             {
                 ItemTooltipUI.gameObject.SetActive(false);
                 CloseContextMenu();
