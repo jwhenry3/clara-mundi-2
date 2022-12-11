@@ -96,6 +96,13 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
+  lastMessage:
+    Type: 0
+    ChannelType: 8
+    SenderEntityId: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToEntityId: 
+    Message: 
 --- !u!1 &378666722211930420
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +155,14 @@ MonoBehaviour:
   OwnerEntity: {fileID: 378666723463143086}
   StorageId: inventory
   Capacity: 80
-  StartingItems: []
+  StartingItems:
+  - OwnerId: 
+    StorageId: 
+    ItemInstanceId: 7aef0230-e3af-4505-b6dd-79b987b4598f
+    ItemId: potion
+    Position: 1
+    Quantity: 1
+    IsEquipped: 0
   isPublicStorage: 0
 --- !u!114 &378666722211930419
 MonoBehaviour:
@@ -228,9 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 378666723463143089}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 378666723463143089}
   PlayerName: 
   Name: Whisper
   ChannelScope: 1
@@ -500,6 +514,7 @@ MonoBehaviour:
   - {fileID: 378666721921704500}
   - {fileID: 378666722592074589}
   - {fileID: 378666722372250758}
+  - {fileID: 7945795926963440987}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1

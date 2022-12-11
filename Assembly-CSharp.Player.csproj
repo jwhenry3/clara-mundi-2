@@ -44,86 +44,103 @@
     <Analyzer Include="D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
-     <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
-     <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
-     <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleResizeHandler.cs" />
-     <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\TextUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\GameManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\RepoManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\EntityManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\QuestManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\CombatManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\UIManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\CraftManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\ItemManager.cs" />
-     <Compile Include="Assets\Backend\Entities\ItemStorageEntity.cs" />
-     <Compile Include="Assets\Backend\Entities\CharacterEntity.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
-     <Compile Include="Assets\Backend\Entities\ItemEntity.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailLoginFacet.cs" />
-     <Compile Include="Assets\Backend\Entities\PlayerEntity.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailAuthUtils.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\PlayerFacet.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\Server.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\Client.cs" />
-     <Compile Include="Assets\ClaraMundi\Auth\RegisterForm.cs" />
-     <Compile Include="Assets\ClaraMundi\Auth\LoginForm.cs" />
-     <Compile Include="Assets\ClaraMundi\Auth\AuthHolder.cs" />
-     <Compile Include="Assets\ClaraMundi\Inventory\ItemInstance.cs" />
-     <Compile Include="Assets\ClaraMundi\Inventory\Item.cs" />
-     <Compile Include="Assets\ClaraMundi\Repos\ItemRepo.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\StatsController.cs" />
-     <Compile Include="Assets\ClaraMundi\Entity\Entity.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\Energies.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\Attribute.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\Stats.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\ComputedStats.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\AttributeValue.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\StatValue.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\PlayerController.cs" />
-     <Compile Include="Assets\ClaraMundi\Attributes\Types.cs" />
-     <Compile Include="Assets\ClaraMundi\Player\Player.cs" />
-     <Compile Include="Assets\ClaraMundi\Communication\Alert.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\AlertController.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\AlertManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Communication\ChatMessage.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\ChatManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Communication\ChatChannel.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\PlayerManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Inventory\ItemStorage.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\InventoryController.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\EquipmentController.cs" />
-     <Compile Include="Assets\ClaraMundi\Controllers\ChatController.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\ClampToScreen.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
-     <Compile Include="Assets\ClaraMundi\Party\Party.cs" />
-     <Compile Include="Assets\ClaraMundi\Managers\PartyManager.cs" />
      <Compile Include="Assets\ClaraMundi\Controllers\PartyController.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Chat\ChatWindowUI.cs" />
+     <Compile Include="Assets\Backend\EmailAuthentication\PlayerFacet.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\GameManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\StatsController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Chat\ChatMessageUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Chat\ChatAttachmentUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Chat\ChatWindowUI.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Items\ItemTooltipUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenus.cs" />
+     <Compile Include="Assets\ClaraMundi\Entity\OwningEntityHolder.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\PartyManager.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Items\EquipmentItemUI.cs" />
+     <Compile Include="Assets\Backend\Entities\PlayerEntity.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\ComputedStats.cs" />
+     <Compile Include="Assets\ClaraMundi\Repos\ItemRepo.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\Client.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\Energies.cs" />
+     <Compile Include="Assets\ClaraMundi\Player\Player.cs" />
+     <Compile Include="Assets\ClaraMundi\Auth\RegisterForm.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\StatValue.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\TextUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Common\PlayerUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\ItemManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Communication\Alert.cs" />
+     <Compile Include="Assets\ClaraMundi\Inventory\ItemStorage.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\RepoManager.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Items\InventoryUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Party\Party.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\CombatManager.cs" />
+     <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\EntityManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Auth\AuthHolder.cs" />
+     <Compile Include="Assets\ClaraMundi\Communication\ChatMessage.cs" />
+     <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuTrigger.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\Stats.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\AlertManager.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\ClampToScreen.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\ChatController.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
+     <Compile Include="Assets\Backend\Entities\CharacterEntity.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenu.cs" />
+     <Compile Include="Assets\Backend\EmailAuthentication\EmailAuthUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\AttributeValue.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\UIManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\PlayerManager.cs" />
+     <Compile Include="Assets\Backend\Entities\ItemEntity.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\EquipmentController.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
+     <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Items\ItemUI.cs" />
+     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Attributes\StatsUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\Types.cs" />
+     <Compile Include="Assets\ClaraMundi\Entity\Entity.cs" />
+     <Compile Include="Assets\ClaraMundi\Communication\ChatChannel.cs" />
+     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\InventoryController.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\ChatManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Inventory\Item.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\CraftManager.cs" />
+     <Compile Include="Assets\Backend\Entities\ItemStorageEntity.cs" />
+     <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleResizeHandler.cs" />
+     <Compile Include="Assets\ClaraMundi\Attributes\Attribute.cs" />
+     <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\Server.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Chat\ChatAttachmentUI.cs" />
+     <Compile Include="Assets\Backend\EmailAuthentication\EmailLoginFacet.cs" />
+     <Compile Include="Assets\ClaraMundi\Managers\QuestManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Auth\LoginForm.cs" />
+     <Compile Include="Assets\ClaraMundi\Inventory\ItemInstance.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Controllers\AlertController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuTrigger.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenus.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenu.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Attributes\StatsUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Common\PlayerUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Items\ItemUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Entity\OwningEntityHolder.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Items\EquipmentItemUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Items\InventoryUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\Dialogue_YesNoCancle.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\Nav.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\ToggleTextStyle.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\ShootOnClick.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\Rotate.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\OpenURLButton.cs" />
+     <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\ShowHideScrollBar.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\ShadowManager.cs" />
+     <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
+     <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH Sprite Icon Outline Color.shader" />
      <None Include="Assets\FishNet\Plugins\CodeAnalysis\README.txt" />
      <None Include="Assets\FishNet\LICENSE.txt" />
      <None Include="Assets\FishNet\Plugins\CodeAnalysis\LICENSE.txt" />
@@ -140,6 +157,7 @@
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\YAFUI\Icons\LICENSE &amp; README for Icons\license.txt" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
@@ -352,32 +370,32 @@
      <Reference Include="Newtonsoft.Json">
      <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="FishNet.CodeAnalysis">
-     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     <Reference Include="Sirenix.OdinInspector.Attributes">
+     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
      <Reference Include="UnisaveFramework">
      <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
      </Reference>
-     <Reference Include="LightJson">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
-     </Reference>
-     <Reference Include="RSG.Promise">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+     </Reference>
+     <Reference Include="LightJson">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll</HintPath>
+     </Reference>
+     <Reference Include="FishNet.CodeAnalysis">
+     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     </Reference>
+     <Reference Include="RSG.Promise">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -747,6 +765,14 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="FishNet.Plugins.ColliderRollback.Generated.Player.csproj">
+      <Project>{63ffe8e8-06b9-8f2f-117a-7b8e6c3ed697}</Project>
+      <Name>FishNet.Plugins.ColliderRollback.Generated.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Example.Player.csproj">
+      <Project>{56440f66-4c82-efff-3d41-65f619ebe49b}</Project>
+      <Name>FishNet.Example.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Player.csproj">
       <Project>{df7e1eaf-acb1-5793-e8d2-99bce54a8c87}</Project>
       <Name>Unity.Timeline.Player</Name>
@@ -759,49 +785,41 @@
       <Project>{15132e8d-15d8-df73-8d52-03e0a25e1fda}</Project>
       <Name>Unity.VisualScripting.Flow.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unisave.Player.csproj">
+      <Project>{9f2ac1bb-6b50-17b6-4db0-760258f8767d}</Project>
+      <Name>Unisave.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{37fc7541-84ca-b68e-bbc7-3a725efbfeb2}</Project>
       <Name>UnityEngine.UI.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Player.csproj">
-      <Project>{e2fba0a8-33ca-19b9-b6da-6425cd522c86}</Project>
-      <Name>Unity.Services.Core.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{de1e1712-a2ac-e169-e8c0-2802949dd181}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Services.Core.Player.csproj">
+      <Project>{e2fba0a8-33ca-19b9-b6da-6425cd522c86}</Project>
+      <Name>Unity.Services.Core.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.Player.csproj">
       <Project>{2011d216-18a6-cd9f-df63-e7408d988b5d}</Project>
       <Name>Unity.Services.Core.Analytics.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Environments.Player.csproj">
-      <Project>{39dfb7a5-77b5-83ea-cda0-1b692339ea53}</Project>
-      <Name>Unity.Services.Core.Environments.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
-      <Project>{1c978afa-d9ec-0b10-c7ad-1daa22a81d4d}</Project>
-      <Name>Unity.VisualScripting.State.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="FishNet.Plugins.ColliderRollback.Generated.Player.csproj">
-      <Project>{63ffe8e8-06b9-8f2f-117a-7b8e6c3ed697}</Project>
-      <Name>FishNet.Plugins.ColliderRollback.Generated.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="FishNet.Example.Player.csproj">
-      <Project>{56440f66-4c82-efff-3d41-65f619ebe49b}</Project>
-      <Name>FishNet.Example.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="FishNet.Generated.Player.csproj">
-      <Project>{7eb964f0-b349-83ab-edfd-4afd472e4a0c}</Project>
-      <Name>FishNet.Generated.Player</Name>
     </ProjectReference>
     <ProjectReference Include="FishNet.Runtime.Player.csproj">
       <Project>{01043ff0-d26f-8eb5-771c-f421c076ca1f}</Project>
       <Name>FishNet.Runtime.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unisave.Player.csproj">
-      <Project>{9f2ac1bb-6b50-17b6-4db0-760258f8767d}</Project>
-      <Name>Unisave.Player</Name>
+    <ProjectReference Include="Unity.Services.Core.Environments.Player.csproj">
+      <Project>{39dfb7a5-77b5-83ea-cda0-1b692339ea53}</Project>
+      <Name>Unity.Services.Core.Environments.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Generated.Player.csproj">
+      <Project>{7eb964f0-b349-83ab-edfd-4afd472e4a0c}</Project>
+      <Name>FishNet.Generated.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
+      <Project>{1c978afa-d9ec-0b10-c7ad-1daa22a81d4d}</Project>
+      <Name>Unity.VisualScripting.State.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

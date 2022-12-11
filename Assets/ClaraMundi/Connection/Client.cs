@@ -22,9 +22,8 @@ namespace ClaraMundi
         private void Awake()
         {
             Instance = this;
-            authenticationScreen.SetActive(false);
-            characterScreen.SetActive(false);
-            DontDestroyOnLoad(gameObject);
+            // authenticationScreen.SetActive(false);
+            // characterScreen.SetActive(false);
             networkManager = InstanceFinder.NetworkManager;
             CheckAuthentication();
         }
@@ -37,24 +36,23 @@ namespace ClaraMundi
                 )
                 .Then((player) =>
                 {
-                    Debug.Log("Received player");
                     AuthHolder.Player = player;
                     AuthHolder.Token = player != null ? player.token : "";
                     if (player != null)
                     {
-                        authenticationScreen.SetActive(false);
-                        characterScreen.SetActive(true);
+                        // authenticationScreen.SetActive(false);
+                        // characterScreen.SetActive(true);
                         // go to character screen
                     }
                     else
                     {
-                        authenticationScreen.SetActive(true);
-                        characterScreen.SetActive(false);
+                        // authenticationScreen.SetActive(true);
+                        // characterScreen.SetActive(false);
                     }
                 }).Catch((e) =>
                 {
-                    authenticationScreen.SetActive(true);
-                    characterScreen.SetActive(false);
+                    // authenticationScreen.SetActive(true);
+                    // characterScreen.SetActive(false);
                 });
 
         }
@@ -68,30 +66,15 @@ namespace ClaraMundi
         void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)
         {
             _clientState = obj.ConnectionState;
-            joinLabel.text = GetNextStateText(_clientState);
+            // joinLabel.text = GetNextStateText(_clientState);
+            if (obj.ConnectionState == LocalConnectionState.Stopped)
+                ChatWindowUI.Instance.ClearMessages();
         }
 
 
         private void OnDestroy()
         {
             networkManager.ClientManager.OnClientConnectionState -= ClientManager_OnClientConnectionState;
-        }
-
-        public void Connect()
-        {
-            networkManager.ClientManager.StartConnection();
-        }
-
-        public void OnButtonClick()
-        {
-            if (_clientState == LocalConnectionState.Stopped)
-            {
-                networkManager.ClientManager.StartConnection();
-            }
-            else
-            {
-                networkManager.ClientManager.StopConnection();
-            }
         }
 
         private static string GetNextStateText(LocalConnectionState state)

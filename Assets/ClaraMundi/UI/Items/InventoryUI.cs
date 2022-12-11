@@ -1,6 +1,8 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace ClaraMundi
 {
@@ -8,34 +10,83 @@ namespace ClaraMundi
     {
         readonly OwningEntityHolder owner = new();
         public ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
+        public ItemTooltipUI ItemTooltipUI;
         public GameObject ContextMenu;
-        public GameObject UseButton;
-        public GameObject EquipButton;
-        public GameObject DropButton;
-        public GameObject SplitButton;
-        public GameObject ItemsContainer;
         public ItemUI ItemNodePrefab;
         public ItemUI ContextualItem;
+
+        public Transform Equipment;
+        public Transform Consumables;
+        public Transform General;
+        public Transform QuestItems;
+
+        public GameObject DropButton;
+        public GameObject UseButton;
+        public GameObject EquipButton;
+        public GameObject SplitButton;
 
 
         private void Awake()
         {
-            var t = ItemsContainer.transform;
-            while (t.childCount > 0)
-            {
-                var child = t.GetChild(0);
-                var node = child.GetComponent<ItemUI>();
-                node.OnDoubleClick -= OnUseOrEquipItem;
-                node.OnContextMenu -= OnContextMenu;
+            Reload();
+        }
+
+        private void OnEnable()
+        {
+            Reload();
+        }
+
+        public void Reload()
+        {
+            CleanUp();
+            Populate();
+        }
+        private void CleanUp()
+        {
+            foreach (Transform child in Equipment.transform)
                 Destroy(child.gameObject);
-            }
-            for (int i = 0; i < 80; i++)
+            foreach (Transform child in Consumables.transform)
+                Destroy(child.gameObject);
+            foreach (Transform child in General.transform)
+                Destroy(child.gameObject);
+            foreach (Transform child in QuestItems.transform)
+                Destroy(child.gameObject);
+        }
+
+        private void Populate()
+        {
+            if (player == null) return;
+            if (player.Inventory == null) return;
+            if (player.Inventory.ItemStorage == null) return;
+            foreach (var kvp in player.Inventory.ItemStorage.PrivateItems)
             {
-                var node = Instantiate(ItemNodePrefab, t, true);
-                node.Position = i;
-                node.SetOwner(owner);
-                node.OnDoubleClick += OnUseOrEquipItem;
-                node.OnContextMenu += OnContextMenu;
+                var itemInstance = kvp.Value;
+                var item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
+                var instance = Instantiate(ItemNodePrefab);
+                instance.SetOwner(owner);
+                instance.Tooltip = ItemTooltipUI;
+                instance.ItemInstance = itemInstance;
+                instance.Initialize();
+                switch (item.Type)
+                {
+                    case ItemType.Armor:
+                    case ItemType.Weapon:
+                        instance.transform.SetParent(Equipment);
+                        break;
+                    case ItemType.Consumable:
+                        instance.transform.SetParent(Consumables);
+                        break;
+                    case ItemType.Ingredient:
+                    case ItemType.Generic:
+                        instance.transform.SetParent(General);
+                        break;
+                    case ItemType.KeyItem:
+                        instance.transform.SetParent(QuestItems);
+                        break;
+                    default:
+                        instance.transform.SetParent(General);
+                        break;
+                }
             }
         }
         protected override void OnPlayerChange(Player _player)
@@ -56,6 +107,8 @@ namespace ClaraMundi
                 case ItemType.Consumable:
                     player.Inventory.UseItem(item.ItemInstance.ItemInstanceId, 1);
                     break;
+                default:
+                    return;
             }
         }
         public void OnContextMenu(ItemUI item, PointerEventData eventData)
@@ -63,13 +116,9 @@ namespace ClaraMundi
             ContextualItem = item;
             DropButton.SetActive(item.Item.Droppable);
             UseButton.SetActive(item.Item.Type == ItemType.Consumable);
-            var equippable = item.Item.Type is ItemType.Armor or ItemType.Weapon;
-
-            if (ContextualItem.ItemInstance.IsEquipped)
-                EquipButton.GetComponentInChildren<TextMeshProUGUI>().text = "Unequip";
-            else
-                EquipButton.GetComponentInChildren<TextMeshProUGUI>().text = "Equip";
-            EquipButton.SetActive(equippable);
+            var isEquipped = ContextualItem.ItemInstance.IsEquipped;
+            EquipButton.GetComponentInChildren<TextMeshProUGUI>().text = isEquipped? "Unequip" : "Equip";
+            EquipButton.SetActive(item.Item.Equippable);
             SplitButton.SetActive(ContextualItem.ItemInstance.Quantity > 1);
             ContextMenu.SetActive(true);
             ContextMenu.transform.position = eventData.position;
@@ -83,7 +132,6 @@ namespace ClaraMundi
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            EventSystem.current.SetSelectedGameObject(ItemsContainer.transform.GetChild(0).gameObject, null);
             if (ContextualItem != null)
             {
                 CloseContextMenu();

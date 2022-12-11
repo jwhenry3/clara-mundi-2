@@ -44,53 +44,53 @@
     <Analyzer Include="D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseSocket.DebugLog.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Foundation\UnisaveDisposalTrigger.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\BroadcastingConnection.cs" />
-     <Compile Include="Assets\Unisave\Scripts\HttpClient\HttpClientComponent.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseDownloadHandler.cs" />
-     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailAuthUtils.cs" />
-     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\EmailRegisterForm.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Sessions\ClientSessionIdRepository.cs" />
-     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\ChatController.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\UnisaveBroadcastingClient.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Foundation\UnisavePreferences.cs" />
-     <Compile Include="Assets\Unisave\Scripts\HttpClient\AssetHttpClient.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseEvent.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\SubscriptionRouter.cs" />
+     <Compile Include="Assets\Unisave\Components\OverrideUnisavePreferences.cs" />
      <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailLoginFacet.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Modules\Matchmaking\MonoBehaviourBasicMatchmakerClient.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facets\DeviceIdRepository.cs" />
      <Compile Include="Assets\Unisave\Scripts\AssetMeta.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\MessageRouterBuilder.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facets\TestingFacetCaller.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\UnisaveBroadcastingClient.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\SubscriptionRouter.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\ClientBroadcastingManager.cs" />
+     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailAuthUtils.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facets\DeviceIdRepository.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facades\ClientFacade.cs" />
+     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
+     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\EmailRegisterForm.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseEvent.cs" />
+     <Compile Include="Assets\Unisave\Scripts\HttpClient\HttpClientComponent.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Utils\ApiUrl.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Sessions\ClientSessionIdRepository.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Logging\LogPrinter.cs" />
      <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\WhoIsFacet.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Logging\ClientSideLog.cs" />
      <Compile Include="Assets\Unisave\Scripts\Broadcasting\BroadcastingTunnel.cs" />
      <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\WhoIsController.cs" />
      <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\PlayerJoinedMessage.cs" />
-     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatRoomChannel.cs" />
-     <Compile Include="Assets\Unisave\Components\TutorialController.cs" />
-     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\RoomSelectionController.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Foundation\ClientApplication.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseSocket.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facets\TestingFacetCaller.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseDownloadHandler.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\MessageRouterBuilder.cs" />
      <Compile Include="Assets\Unisave\Scripts\Broadcasting\MessageRouter.cs" />
      <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
-     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
-     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatMessage.cs" />
-     <Compile Include="Assets\Unisave\Components\OverrideUnisavePreferences.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Broadcasting\ClientBroadcastingManager.cs" />
-     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\EmailLoginForm.cs" />
-     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\PlayerEntity.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facades\OnFacet.cs" />
-     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatFacet.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facets\FacetCaller.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Logging\LogPrinter.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Utils\ApiUrl.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facades\PromiseExtensions.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facets\UnisaveFacetCaller.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseSocket.DebugLog.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Logging\ClientSideLog.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Foundation\UnisaveDisposalTrigger.cs" />
      <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\LogoutController.cs" />
-     <Compile Include="Assets\Unisave\Scripts\Facades\ClientFacade.cs" />
+     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\ChatController.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Foundation\UnisavePreferences.cs" />
+     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatRoomChannel.cs" />
+     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\RoomSelectionController.cs" />
+     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\EmailLoginForm.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facets\FacetCaller.cs" />
+     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatFacet.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facets\UnisaveFacetCaller.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Modules\Matchmaking\MonoBehaviourBasicMatchmakerClient.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Foundation\ClientApplication.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facades\PromiseExtensions.cs" />
+     <Compile Include="Assets\Unisave\Components\TutorialController.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Facades\OnFacet.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\Sse\SseSocket.cs" />
+     <Compile Include="Assets\Unisave\Examples\PlayerAuthentication\Backend\PlayerEntity.cs" />
+     <Compile Include="Assets\Unisave\Scripts\Broadcasting\BroadcastingConnection.cs" />
+     <Compile Include="Assets\Unisave\Scripts\HttpClient\AssetHttpClient.cs" />
+     <Compile Include="Assets\Unisave\Examples\InBeta\Chat\Backend\ChatMessage.cs" />
      <None Include="Assets\Unisave\Templates\EmailAuthentication\EmailRegisterFacet.txt" />
      <None Include="Assets\Unisave\Templates\EmailAuthentication\EmailRegisterForm.txt" />
      <None Include="Assets\Unisave\Templates\Matchmaker\MatchmakerClientTemplate.txt" />
@@ -317,32 +317,32 @@
      <Reference Include="Newtonsoft.Json">
      <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="FishNet.CodeAnalysis">
-     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     <Reference Include="Sirenix.OdinInspector.Attributes">
+     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
      <Reference Include="UnisaveFramework">
      <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
      </Reference>
-     <Reference Include="LightJson">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
-     </Reference>
-     <Reference Include="RSG.Promise">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+     </Reference>
+     <Reference Include="LightJson">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll</HintPath>
+     </Reference>
+     <Reference Include="FishNet.CodeAnalysis">
+     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     </Reference>
+     <Reference Include="RSG.Promise">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>

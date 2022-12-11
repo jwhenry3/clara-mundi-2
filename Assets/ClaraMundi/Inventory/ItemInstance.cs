@@ -11,7 +11,6 @@ namespace ClaraMundi
         public string StorageId;
         public string ItemInstanceId = Guid.NewGuid().ToString();
         public string ItemId;
-        public int Position = 1;
         public int Quantity = 1;
         public bool IsEquipped;
 

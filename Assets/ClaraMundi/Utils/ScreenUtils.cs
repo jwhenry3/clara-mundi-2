@@ -14,11 +14,9 @@ namespace ClaraMundi
         }
         public static int GetVerticalWithMostSpace(float verticalPosition)
         {
-            if (Screen.height - verticalPosition < 64)
+            if (verticalPosition < Screen.height / 2)
                 return -1;
-            if (verticalPosition < 64)
-                return 1;
-            return 0;
+            return 1;
         }
     }
 }

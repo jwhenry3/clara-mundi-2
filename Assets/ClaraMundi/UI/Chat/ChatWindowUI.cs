@@ -43,6 +43,17 @@ namespace ClaraMundi
             ChatManager.Messages -= OnMessage;
         }
 
+        public void ClearMessages()
+        {
+            foreach (Transform child in ChatMessageContainer)
+                Destroy(child.gameObject);
+            foreach (Transform child in SocialContainer)
+                Destroy(child.gameObject);
+            foreach (Transform child in CombatContainer)
+                Destroy(child.gameObject);
+            foreach (Transform child in SystemContainer)
+                Destroy(child.gameObject);
+        }
         private void OnMessage(ChatMessage message)
         {
             ClearOutOfBounds();

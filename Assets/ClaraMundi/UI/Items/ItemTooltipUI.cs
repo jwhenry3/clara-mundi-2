@@ -16,12 +16,6 @@ namespace ClaraMundi
         public Transform Column2;
         public ModificationUI ModificationUIPrefab;
 
-        public static ItemTooltipUI Instance;
-
-        private void Awake()
-        {
-            Instance = this;
-        }
 
         public void SetItemInstance(ItemInstance itemInstance)
         {

@@ -11,7 +11,7 @@ namespace ClaraMundi
     public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
         public OwningEntityHolder owner;
-        ItemTooltipUI Tooltip => ItemTooltipUI.Instance;
+        public ItemTooltipUI Tooltip;
         public event Action EntityChange;
         public event Action<ItemUI> OnDoubleClick;
         public event Action<ItemUI, PointerEventData> OnContextMenu;
@@ -19,7 +19,6 @@ namespace ClaraMundi
         public string StorageId = "inventory";
 
         RectTransform t;
-        public int Position = -1;
         ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemInstance ItemInstance;
         public Item Item { get; private set; }
@@ -83,13 +82,11 @@ namespace ClaraMundi
             Initialize();
         }
 
-        private void Initialize()
+        public void Initialize()
         {
-            if (Position > -1 && !EquipmentItemUI.Active)
+            if (!EquipmentItemUI.Active)
             {
-                var items = ItemStorage.GetVisibleItems().ToList();
                 var lastItem = ItemInstanceId;
-                ItemInstance = items.Count > Position ? items[Position].Value : null;
                 ItemInstanceId = ItemInstance?.ItemInstanceId;
                 if (ItemInstance != null)
                     Item = ItemRepo.GetItem(ItemInstance.ItemId);
@@ -240,9 +237,15 @@ namespace ClaraMundi
             RectTransform rect = (RectTransform)transform1;
             var rect1 = thisRect.rect;
             var rect2 = rect.rect;
+            Debug.Log(rect1.width + ", " + rect1.height);
+            var verticalOffset = rect1.height / 2;
+            if (vertical == -1)
+            {
+                verticalOffset = rect2.height - (rect1.height / 2);
+            }
             transform1.position = new Vector3(
                 position.x + (horizontal * (rect1.width / 2 + (rect2.width / 2))),
-                position.y + (vertical * (rect1.height / 2 + (rect2.height / 2))),
+                position.y  + verticalOffset,
                 0
             );
             Tooltip.gameObject.SetActive(true);

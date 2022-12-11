@@ -45,29 +45,29 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\RigidbodyState.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncTimer.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkTransform\Editor\NetworkTransformEditor.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\TakeOwnership\PredictedOwner.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObject.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Utility\DefaultScene.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkTransform\NetworkTransform.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\Utility\PingDisplay.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Utility\BandwidthDisplay.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkTransform\Editor\NetworkTransformEditor.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkTransform\SynchronizedProperty.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Spawning\PlayerSpawner.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncStopwatch.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObject.Rigidbodies.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkAnimator\NetworkAnimator.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Utility\DefaultScene.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Utility\BandwidthDisplay.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkAnimator\Editor\NetworkAnimatorEditor.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObjectOwnerSmoother.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObject.Rigidbodies.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncStopwatchOperation.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\RigidbodyType.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkTransform\NetworkTransform.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncStopwatch.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\NetworkAnimator\NetworkAnimator.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncTimerOperation.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\TakeOwnership\PredictedOwner.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Spawning\PlayerSpawner.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\OfflineRigidbody.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObject.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\Editor\PredictedObjectEditor.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObjectSpectatorSmoother.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\OfflineRigidbody.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncTimer.cs" />
+     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\PredictedObjectOwnerSmoother.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\RigidbodyPauser.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncStopwatchOperation.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\SyncTypes\SyncTimerOperation.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\ReaderAndWriters\ConnectionReaderWriters.cs" />
-     <Compile Include="Assets\FishNet\Runtime\Generated\Component\Prediction\RigidbodyType.cs" />
      <Compile Include="Assets\FishNet\Runtime\Generated\ReaderAndWriters\ScenedReaderWriters.cs" />
      <None Include="Assets\FishNet\Runtime\Generated\FishNet.Generated.asmdef" />
      <Reference Include="UnityEngine">
@@ -274,32 +274,32 @@
      <Reference Include="Newtonsoft.Json">
      <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-     </Reference>
-     <Reference Include="FishNet.CodeAnalysis">
-     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     <Reference Include="Sirenix.OdinInspector.Attributes">
+     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
      </Reference>
      <Reference Include="UnisaveFramework">
      <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
      </Reference>
-     <Reference Include="LightJson">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
-     </Reference>
-     <Reference Include="RSG.Promise">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+     </Reference>
+     <Reference Include="LightJson">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
+     <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll</HintPath>
+     </Reference>
+     <Reference Include="FishNet.CodeAnalysis">
+     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     </Reference>
+     <Reference Include="RSG.Promise">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
