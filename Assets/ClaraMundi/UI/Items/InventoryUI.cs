@@ -11,7 +11,7 @@ namespace ClaraMundi
         readonly OwningEntityHolder owner = new();
         public ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemTooltipUI ItemTooltipUI;
-        public GameObject ContextMenu;
+        public ContextMenu ContextMenu;
         public ItemUI ItemNodePrefab;
         [HideInInspector]
         public ItemUI ContextualItem;
@@ -25,11 +25,6 @@ namespace ClaraMundi
         public Transform Consumables;
         public Transform General;
         public Transform QuestItems;
-
-        public GameObject DropButton;
-        public GameObject UseButton;
-        public GameObject EquipButton;
-        public GameObject SplitButton;
 
 
         private void Awake()
@@ -132,19 +127,19 @@ namespace ClaraMundi
                 return;
             }
             ContextualItem = item;
-            DropButton.SetActive(item.Item.Droppable);
-            UseButton.SetActive(item.Item.Type == ItemType.Consumable);
+            ContextMenu.SetItemActive("Drop", item.Item.Droppable);
+            ContextMenu.SetItemActive("Use", item.Item.Type == ItemType.Consumable);
             var isEquipped = ContextualItem.ItemInstance.IsEquipped;
-            EquipButton.GetComponentInChildren<TextMeshProUGUI>().text = isEquipped? "Unequip" : "Equip";
-            EquipButton.SetActive(item.Item.Equippable);
-            SplitButton.SetActive(ContextualItem.ItemInstance.Quantity > 1);
-            ContextMenu.SetActive(true);
+            ContextMenu.ChangeLabelOf("Equip", isEquipped? "Unequip" : "Equip");
+            ContextMenu.SetItemActive("Equip", item.Item.Equippable);
+            ContextMenu.SetItemActive("Split", ContextualItem.ItemInstance.Quantity > 1);
+            ContextMenu.gameObject.SetActive(true);
             ContextMenu.transform.position = eventData.position;
         }
         public void CloseContextMenu()
         {
             ContextualItem = null;
-            ContextMenu.SetActive(false);
+            ContextMenu.gameObject.SetActive(false);
             ContextMenu.transform.localPosition = new Vector2(0, 0);
         }
 
