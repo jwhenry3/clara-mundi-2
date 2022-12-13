@@ -45,6 +45,7 @@ namespace ClaraMundi
 
         public void ClearMessages()
         {
+            if (ChatMessageContainer == null) return;
             foreach (Transform child in ChatMessageContainer)
                 Destroy(child.gameObject);
             foreach (Transform child in SocialContainer)
@@ -56,6 +57,7 @@ namespace ClaraMundi
         }
         private void OnMessage(ChatMessage message)
         {
+            if (ChatMessageContainer == null) return;
             ClearOutOfBounds();
             
             var instance = Instantiate(ChatMessagePrefab);
@@ -84,13 +86,12 @@ namespace ClaraMundi
 
         void ClearOutOfBounds()
         {
-            if (ChatMessageContainer.childCount > 99)
-            {
-                // remove the oldest first
-                Destroy(ChatMessageContainer.GetChild(0));
-                // recurse until no longer out of bounds
-                ClearOutOfBounds();
-            }
+            if (ChatMessageContainer == null) return;
+            if (ChatMessageContainer.childCount <= 99) return;
+            // remove the oldest first
+            Destroy(ChatMessageContainer.GetChild(0));
+            // recurse until no longer out of bounds
+            ClearOutOfBounds();
         }
 
         public void AddItemLink(ItemInstance itemInstance)
