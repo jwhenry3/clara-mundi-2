@@ -223,5 +223,12 @@ namespace ClaraMundi
         {
             SetChannel("Party");
         }
+        
+        public void OnTextChange()
+        {
+            if (!InputField.text.EndsWith("\n")) return;
+            InputField.text = InputField.text.Remove(InputField.text.Length - 1);
+            SendChatMessage();
+        }
     }
 }

@@ -2,7 +2,6 @@ using FishNet;
 using FishNet.Managing;
 using FishNet.Transporting;
 using TMPro;
-using Unisave.Facades;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -30,30 +29,6 @@ namespace ClaraMundi
 
         private void CheckAuthentication()
         {
-            OnFacet<PlayerFacet>
-                .Call<PlayerEntity>(
-                    nameof(PlayerFacet.GetPlayer)
-                )
-                .Then((player) =>
-                {
-                    AuthHolder.Player = player;
-                    AuthHolder.Token = player != null ? player.token : "";
-                    if (player != null)
-                    {
-                        // authenticationScreen.SetActive(false);
-                        // characterScreen.SetActive(true);
-                        // go to character screen
-                    }
-                    else
-                    {
-                        // authenticationScreen.SetActive(true);
-                        // characterScreen.SetActive(false);
-                    }
-                }).Catch((e) =>
-                {
-                    // authenticationScreen.SetActive(true);
-                    // characterScreen.SetActive(false);
-                });
 
         }
 
