@@ -142,6 +142,10 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
+     <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyMemberUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\PlayerConnection.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -160,6 +164,7 @@
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\ParrelSync\VERSION.txt" />
      <None Include="Assets\FishNet\DOCUMENTATION.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -1018,6 +1023,10 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="ParrelSync.csproj">
+      <Project>{1136bd8d-c3a1-21ae-2b93-210898883611}</Project>
+      <Name>ParrelSync</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

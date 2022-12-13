@@ -3,6 +3,7 @@ using System;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using System.Collections.Generic;
+using FishNet.Object.Synchronizing.SecretMenu;
 using Sirenix.OdinInspector;
 
 namespace ClaraMundi
@@ -11,6 +12,7 @@ namespace ClaraMundi
     {
         public event Action<ComputedStats> OnStatsChange;
         public event Action OnChange;
+        public event Action OnEnergyChange;
         public Stats Stats = new();
         [SyncVar(OnChange = "OnComputedChange")]
         public ComputedStats ComputedStats = new();
@@ -20,7 +22,7 @@ namespace ClaraMundi
         public int ExpTilNextLevel = 1000;
 
         public Stats BaseStats = new();
-        [SyncVar]
+        [SyncVar(OnChange="EnergyChanged")]
         public Energies Energies = new();
 
         public Attributes Attributes;
@@ -187,6 +189,7 @@ namespace ClaraMundi
                 Energies.Stamina = Energies.MaxStamina;
                 hasLoadedStats = true;
             }
+            Energies.Dirty();
         }
 
         private int GetModifiedStat(StatType type, float initial)
@@ -200,6 +203,11 @@ namespace ClaraMundi
         {
             if (!IsServer) return;
             ComputeStats();
+        }
+
+        private void EnergyChanged(Energies previous, Energies next, bool asServer)
+        {
+            OnEnergyChange?.Invoke();
         }
 
         private void OnComputedChange(ComputedStats oldValue, ComputedStats newValue, bool asServer)
