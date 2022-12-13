@@ -79,6 +79,9 @@ namespace ClaraMundi
         private void LoadItem(Transform container, string itemInstanceId)
         {
             if (container == null) return;
+            // Remove extra ItemUI instances
+            foreach (ItemUI child in container.GetComponentsInChildren<ItemUI>())
+                child.ShowNoItem();
             if (string.IsNullOrEmpty(itemInstanceId)) return;
             var instance = Instantiate(ItemNodePrefab, container, false);
             instance.transform.localPosition = Vector3.zero;
@@ -113,16 +116,9 @@ namespace ClaraMundi
 
         private void OnEquipChange(SyncDictionaryOperation op, string key, string itemInstanceId, bool asServer)
         {
+            if (asServer) return;
             Transform container = GetSlotContainer(key);
             if (container == null) return;
-            foreach (Transform child in container)
-            {
-                var item = child.GetComponent<ItemUI>();
-                if (item == null) continue;
-                if (item.ItemInstanceId == itemInstanceId)
-                    return;
-                Destroy(child.gameObject);
-            }
             LoadItem(container, itemInstanceId);
         }
 
@@ -136,9 +132,7 @@ namespace ClaraMundi
         public void OnPointerDown(PointerEventData eventData)
         {
             if (ContextualItem != null)
-            {
                 CloseContextMenu();
-            }
         }
         public void OnContextMenu(ItemUI item, PointerEventData eventData)
         {
@@ -146,8 +140,6 @@ namespace ClaraMundi
             {
                 if (ContextualItem == item)
                     CloseContextMenu();
-                if (ItemTooltipUI)
-                    ItemTooltipUI.gameObject.SetActive(false);
                 return;
             }
             ContextualItem = item;

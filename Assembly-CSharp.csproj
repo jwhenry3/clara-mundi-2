@@ -117,6 +117,7 @@
      <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
      <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
      <Compile Include="Assets\ClaraMundi\Controllers\InventoryController.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
@@ -141,7 +142,6 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -419,17 +419,50 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>D:\Unity\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-        <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.OdinInspector.Attributes">
         <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
     </Reference>
-    <Reference Include="UnisaveFramework">
-        <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
     </Reference>
     <Reference Include="Sirenix.Serialization.Config">
         <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="ReportGeneratorMerged">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="FishNet.CodeAnalysis">
+        <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="RSG.Promise">
+        <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities.Editor">
+        <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Editor">
+        <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="UnisaveFramework">
+        <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="LightJson">
         <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
@@ -440,41 +473,8 @@
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
         <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="ReportGeneratorMerged">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-    </Reference>
-    <Reference Include="FishNet.CodeAnalysis">
-        <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Sirenix.Serialization">
         <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
-    </Reference>
-    <Reference Include="RSG.Promise">
-        <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-        <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Pdb">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Unsafe">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Mdb">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Cecil.Rocks">
-        <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Cecil">
         <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
@@ -851,14 +851,6 @@
       <Project>{e375ef6c-3b0f-25bd-9b87-f7685e7315b6}</Project>
       <Name>FishNet.Codegen.Cecil</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
-      <Project>{fac763de-b880-7fdb-e94c-ba0e451813f2}</Project>
-      <Name>Unity.VisualScripting.Flow.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="FishNet.Plugins.ColliderRollback.Generated.csproj">
-      <Project>{87b38469-3bdf-8ee3-4123-8b1cd2fc7d44}</Project>
-      <Name>FishNet.Plugins.ColliderRollback.Generated</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{5f75d486-ec5c-b49b-cff1-41db8cad4a63}</Project>
       <Name>Unity.VSCode.Editor</Name>
@@ -867,21 +859,81 @@
       <Project>{560701ab-18d9-42ea-906f-0fd15891eda7}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="FishNet.Example.csproj">
-      <Project>{a1879bbf-3e15-0a40-7ce3-f95be1e444fa}</Project>
-      <Name>FishNet.Example</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Performance.Profile-Analyzer.Editor.csproj">
       <Project>{ef1c503b-7f06-7ab9-d5be-2256a865abe2}</Project>
       <Name>Unity.Performance.Profile-Analyzer.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{350f25a5-1813-4425-dd4c-5c2fc4147c97}</Project>
-      <Name>Unity.VisualStudio.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj">
       <Project>{a270ad82-fb8c-c521-e084-5e716f4181a8}</Project>
       <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
+      <Project>{e1abc7b8-f3df-787e-6da7-9df123fe4ec8}</Project>
+      <Name>Unity.VisualScripting.State.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
+      <Project>{6e84eca5-95bd-1267-4f58-3a4ed63ffc9e}</Project>
+      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj">
+      <Project>{1e06eadc-e23c-5edc-a344-d1924cb80b9b}</Project>
+      <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{6a017c06-df9b-ce7d-2e59-c851bcb7cd88}</Project>
+      <Name>UnityEditor.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Rider.Editor.csproj">
+      <Project>{8985169b-5633-b501-b9f7-335c1615cd9e}</Project>
+      <Name>Unity.Rider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
+      <Project>{a50ef6a0-dc1d-4ac1-3a13-253e411200ee}</Project>
+      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.csproj">
+      <Project>{a72cac03-01af-34fe-84b6-7ce92cf47147}</Project>
+      <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
+      <Project>{78f99a1c-2ac6-ae1e-5ade-70846941a314}</Project>
+      <Name>Unity.EditorCoroutines.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Runtime.csproj">
+      <Project>{a525a3f7-085b-5408-c420-acc1e21dbf52}</Project>
+      <Name>FishNet.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Collections.Editor.csproj">
+      <Project>{3027e963-54ef-eb26-8736-03a962d8fe11}</Project>
+      <Name>Unity.Collections.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
+      <Project>{94deb758-6e1b-b5c3-4f56-0132f6d0c629}</Project>
+      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{2ccc6f54-1c38-8b6d-e6b6-4b7dad5bbd36}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Collections.csproj">
+      <Project>{940cbcb7-89de-99fa-96bb-1ea80f988fa5}</Project>
+      <Name>Unity.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
+      <Project>{fac763de-b880-7fdb-e94c-ba0e451813f2}</Project>
+      <Name>Unity.VisualScripting.Flow.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Plugins.ColliderRollback.Generated.csproj">
+      <Project>{87b38469-3bdf-8ee3-4123-8b1cd2fc7d44}</Project>
+      <Name>FishNet.Plugins.ColliderRollback.Generated</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Example.csproj">
+      <Project>{a1879bbf-3e15-0a40-7ce3-f95be1e444fa}</Project>
+      <Name>FishNet.Example</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
+      <Project>{350f25a5-1813-4425-dd4c-5c2fc4147c97}</Project>
+      <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj">
       <Project>{7a9d45da-5250-9909-6b04-b8f269353979}</Project>
@@ -899,61 +951,45 @@
       <Project>{f2ab7533-b5bc-3fbc-d583-0fe77c66c37c}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
-      <Project>{e1abc7b8-f3df-787e-6da7-9df123fe4ec8}</Project>
-      <Name>Unity.VisualScripting.State.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{6e84eca5-95bd-1267-4f58-3a4ed63ffc9e}</Project>
-      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj">
-      <Project>{1e06eadc-e23c-5edc-a344-d1924cb80b9b}</Project>
-      <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection</Name>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{3a783a4d-d8d5-c827-58db-aced6840c5dc}</Project>
+      <Name>Unity.Burst.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
       <Project>{583450a6-1abc-3efc-de9f-320cb2945529}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{6a017c06-df9b-ce7d-2e59-c851bcb7cd88}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{686a1bd9-51cc-dfee-eecd-a582294ed2e9}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{8985169b-5633-b501-b9f7-335c1615cd9e}</Project>
-      <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unisave.csproj">
       <Project>{2aec700c-5a89-9588-5c20-3df78f1b465b}</Project>
       <Name>Unisave</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{a72cac03-01af-34fe-84b6-7ce92cf47147}</Project>
-      <Name>UnityEngine.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
-      <Project>{78f99a1c-2ac6-ae1e-5ade-70846941a314}</Project>
-      <Name>Unity.EditorCoroutines.Editor</Name>
+    <ProjectReference Include="Unity.Services.Core.csproj">
+      <Project>{9263f165-9c67-535b-9435-f12308680a68}</Project>
+      <Name>Unity.Services.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.csproj">
       <Project>{35e318f7-aa6a-41c9-ffd7-657246beb012}</Project>
       <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{9263f165-9c67-535b-9435-f12308680a68}</Project>
-      <Name>Unity.Services.Core</Name>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{55d9e1f3-ec3a-089b-ae6d-867dca9df752}</Project>
+      <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{9b31df8f-8ab6-228e-c7ea-ec61413f3a65}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
     </ProjectReference>
-    <ProjectReference Include="FishNet.Runtime.csproj">
-      <Project>{a525a3f7-085b-5408-c420-acc1e21dbf52}</Project>
-      <Name>FishNet.Runtime</Name>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{1dbf8b76-13ec-58b2-0c08-0f6608410401}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Jobs.csproj">
+      <Project>{9f46340e-4527-3fb6-7751-4620e43f551c}</Project>
+      <Name>Unity.Jobs</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
       <Project>{dcc4d02c-9196-7064-4892-0f053fcee9a0}</Project>
@@ -962,10 +998,6 @@
     <ProjectReference Include="Unity.Services.Core.Environments.csproj">
       <Project>{018c4f60-a1cd-6589-857c-96f4a6f5499b}</Project>
       <Name>Unity.Services.Core.Environments</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj">
-      <Project>{94deb758-6e1b-b5c3-4f56-0132f6d0c629}</Project>
-      <Name>Unity.Toolchain.Win-x86_64-Linux-x86_64</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
       <Project>{434cc59d-d150-eb95-bb01-5c3160e083a4}</Project>
@@ -986,38 +1018,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.Editor.csproj">
-      <Project>{3027e963-54ef-eb26-8736-03a962d8fe11}</Project>
-      <Name>Unity.Collections.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Collections.csproj">
-      <Project>{940cbcb7-89de-99fa-96bb-1ea80f988fa5}</Project>
-      <Name>Unity.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{55d9e1f3-ec3a-089b-ae6d-867dca9df752}</Project>
-      <Name>Unity.Mathematics</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{1dbf8b76-13ec-58b2-0c08-0f6608410401}</Project>
-      <Name>Unity.Burst</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Jobs.csproj">
-      <Project>{9f46340e-4527-3fb6-7751-4620e43f551c}</Project>
-      <Name>Unity.Jobs</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{2ccc6f54-1c38-8b6d-e6b6-4b7dad5bbd36}</Project>
-      <Name>Unity.Mathematics.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{3a783a4d-d8d5-c827-58db-aced6840c5dc}</Project>
-      <Name>Unity.Burst.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
-      <Project>{a50ef6a0-dc1d-4ac1-3a13-253e411200ee}</Project>
-      <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

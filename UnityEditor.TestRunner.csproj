@@ -103,8 +103,8 @@
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\Api\TestResultAdaptor.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\TestRun\TestJobData.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\TestRunner\Utils\TestListJob.cs" />
-     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\TestLaunchers\PlayerLauncherBuildOptions.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\UnityTestProtocol\TestRunnerApiMapper.cs" />
+     <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\TestLaunchers\PlayerLauncherBuildOptions.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\TestRunner\Callbacks\RerunCallbackInitializer.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\GUI\GuiHelper.cs" />
      <Compile Include="Library\PackageCache\com.unity.test-framework@1.1.31\UnityEditor.TestRunner\GUI\UITestRunnerFilter.cs" />
@@ -469,6 +469,18 @@
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>D:\My project\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks">
+        <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>D:\Unity\2021.3.12f1\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>

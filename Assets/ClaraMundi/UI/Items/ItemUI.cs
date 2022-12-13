@@ -1,6 +1,7 @@
 ﻿using System;
 using FishNet.Object.Synchronizing;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +10,7 @@ namespace ClaraMundi
 {
     public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
     {
+        public string NodeId = Guid.NewGuid().ToString();
         public OwningEntityHolder owner;
         public ItemTooltipUI Tooltip;
         public event Action EntityChange;
@@ -23,7 +25,7 @@ namespace ClaraMundi
         public Item Item { get; private set; }
 
         public bool ShowEquippedStatus = true;
-        public Image EquippedStatus;
+        public GameObject EquippedStatus;
         public TextMeshProUGUI ItemName;
         public TextMeshProUGUI Quantity;
         public Image Icon;
@@ -34,8 +36,7 @@ namespace ClaraMundi
         private bool hasItem;
         private float doubleClickTimer = 0;
 
-        [HideInInspector]
-        public ItemStorage ItemStorage;
+        [HideInInspector] public ItemStorage ItemStorage;
 
         public bool updateQueued;
 
@@ -53,7 +54,6 @@ namespace ClaraMundi
         private void Awake()
         {
             Background = GetComponent<Image>();
-            ShowNoItem();
             ItemManager.ItemChange += OnInstanceUpdate;
             if (_entityId != null)
                 OnEntityChange(_entityId);
@@ -65,6 +65,7 @@ namespace ClaraMundi
             owner.EntityChange += OnOwnerEntityChange;
             OnOwnerEntityChange();
         }
+
         void OnOwnerEntityChange()
         {
             OnEntityChange(owner.entity ? owner.entity.entityId : null);
@@ -97,8 +98,8 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            if (isHovering && Tooltip != null)
-                Tooltip.gameObject.SetActive(false);
+            // if (Tooltip != null && Tooltip.NodeId == NodeId)
+            //     Tooltip.gameObject.SetActive(false);
             OnContextMenu?.Invoke(this, null);
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
@@ -130,9 +131,10 @@ namespace ClaraMundi
                 UpdateItem();
                 updateQueued = false;
             }
+
             if (EquippedStatus != null)
-                EquippedStatus.enabled = ShowEquippedStatus && ItemInstance is { IsEquipped: true };
-                
+                EquippedStatus.SetActive(ShowEquippedStatus && ItemInstance is { IsEquipped: true });
+
             if (ItemStorage != null) return;
             checkTimer += Time.deltaTime;
             if (!(checkTimer > 1)) return;
@@ -150,6 +152,7 @@ namespace ClaraMundi
                 ShowNoItem();
                 return;
             }
+
             if (ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance))
             {
                 Item = ItemRepo.GetItem(ItemInstance.ItemId);
@@ -157,21 +160,23 @@ namespace ClaraMundi
             }
             else
             {
-                ItemInstance = null;
-                Item = null;
                 ShowNoItem();
             }
         }
 
-        private void ShowNoItem()
+        public void ShowNoItem()
         {
-            if (isHovering)
+            if (Tooltip.NodeId == NodeId)
             {
                 Tooltip.gameObject.SetActive(false);
+                if (Tooltip.EquippedTooltip != null)
+                    Tooltip.EquippedTooltip.gameObject.SetActive(false);
                 Background.enabled = false;
                 transform.localScale = Vector3.zero;
             }
 
+            ItemInstance = null;
+            Item = null;
             Icon.sprite = null;
             Icon.color = new Color(255, 255, 255, 0);
             hasItem = false;
@@ -181,17 +186,21 @@ namespace ClaraMundi
                 ItemName.text = "No Item";
                 ItemName.enabled = false;
             }
+
             if (Quantity != null)
             {
                 Quantity.text = "";
                 Quantity.enabled = false;
             }
+
             if (EquippedStatus != null)
-                EquippedStatus.enabled = false;
+                EquippedStatus.SetActive(false);
+            Destroy(gameObject);
         }
 
         private void ShowItemInstance()
         {
+            if (ItemInstance == null) return;
             Icon.sprite = Item.Icon;
             Icon.color = new Color(255, 255, 255, 1);
             hasItem = true;
@@ -201,14 +210,18 @@ namespace ClaraMundi
                 ItemName.text = Item.Name;
                 ItemName.enabled = true;
             }
+
             if (Quantity != null)
             {
-                if (ItemInstance.Quantity > 1)
+                if (Item.Stackable)
                     Quantity.text = ItemInstance.Quantity + "";
                 else
                     Quantity.text = "";
                 Quantity.enabled = true;
             }
+        
+            if (Tooltip != null && Tooltip.ItemInstance != null && Tooltip.ItemInstance.ItemInstanceId == ItemInstance.ItemInstanceId)
+                Tooltip.SetItemInstance(ItemInstance);
         }
 
         public void LinkToChat()
@@ -220,7 +233,12 @@ namespace ClaraMundi
         {
             isHovering = false;
             if (hasItem)
+            {
                 Tooltip.gameObject.SetActive(false);
+                if (Tooltip.EquippedTooltip != null)
+                    Tooltip.EquippedTooltip.gameObject.SetActive(false);
+            }
+
             Background.enabled = false;
         }
 
@@ -229,6 +247,7 @@ namespace ClaraMundi
             if (!hasItem) return;
             isHovering = true;
             Background.enabled = true;
+            Tooltip.NodeId = NodeId;
             Tooltip.SetItemInstance(ItemInstance);
             var position = transform.position;
             int horizontal = ScreenUtils.GetHorizontalWithMostSpace(position.x);
@@ -242,16 +261,27 @@ namespace ClaraMundi
             {
                 verticalOffset = rect2.height - (size.y / 2);
             }
+
             transform1.position = new Vector3(
-                position.x + (horizontal * (size.x / 2 + (rect2.width / 2))),
-                position.y  + verticalOffset,
+                position.x + (horizontal * (size.x / 2 + (rect2.width / 2) + 8)),
+                position.y + verticalOffset,
                 0
             );
+            if (Tooltip.EquippedTooltip != null)
+            {
+                var position1 = transform1.position;
+                Tooltip.EquippedTooltip.transform.position = new Vector3(
+                position1.x + (horizontal * 248),
+                    position1.y ,
+                0
+                );
+            }
+
             Tooltip.gameObject.SetActive(true);
         }
-        
 
-        public Vector2 ActualSize(RectTransform rect )
+
+        public Vector2 ActualSize(RectTransform rect)
         {
             Canvas can = GetComponentInParent<Canvas>();
             var v = new Vector3[4];

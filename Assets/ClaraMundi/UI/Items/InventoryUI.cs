@@ -9,18 +9,12 @@ namespace ClaraMundi
     public class InventoryUI : PlayerUI, IPointerDownHandler
     {
         readonly OwningEntityHolder owner = new();
-        public ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemTooltipUI ItemTooltipUI;
         public ContextMenu ContextMenu;
         public ItemUI ItemNodePrefab;
         [HideInInspector]
         public ItemUI ContextualItem;
 
-        public RectTransform EquipmentImage;
-        public RectTransform ConsumablesImage;
-        public RectTransform GeneralImage;
-        public RectTransform QuestItemsImage;
-        
         public Transform Equipment;
         public Transform Consumables;
         public Transform General;
@@ -122,8 +116,6 @@ namespace ClaraMundi
             {
                 if (ContextualItem == item)
                     CloseContextMenu();
-                if (ItemTooltipUI)
-                    ItemTooltipUI.gameObject.SetActive(false);
                 return;
             }
             ContextualItem = item;
@@ -172,15 +164,5 @@ namespace ClaraMundi
             CloseContextMenu();
         }
 
-        public void SetTabActive(string tab)
-        {
-            var active = new Vector3(1.5f, 1.5f, 1);
-            var inactive = new Vector3(1, 1, 1);
-            EquipmentImage.localScale = tab == "Equipment" ? active : inactive;
-            ConsumablesImage.localScale = tab == "Consumables" ? active : inactive;
-            GeneralImage.localScale = tab == "General" ? active : inactive;
-            QuestItemsImage.localScale = tab == "QuestItems" ? active : inactive;
-        }
-        
     }
 }
