@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using FishNet.Object.Synchronizing;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +12,8 @@ namespace ClaraMundi
         public Transform PartyContainer;
         public PartyMemberUI PartyMemberPrefab;
 
+        private string joiningLeaderId;
+        public GameObject InvitedDialog;
         public GameObject InviteDialog;
         public TMP_InputField InviteField;
         
@@ -18,15 +22,30 @@ namespace ClaraMundi
             if (player != null)
             {
                 player.Party.PartyChanges -= OnPartyChanges;
+                player.Party.InviteChanges -= OnInviteChanges;
             }
             base.OnPlayerChange(_player);
             if (player != null)
             {
                 player.Party.PartyChanges += OnPartyChanges;
+                player.Party.InviteChanges += OnInviteChanges;
                 OnPartyChanges(player.Party.Party);
             }
         }
 
+        private void OnInviteChanges(SyncList<string> leaderIds)
+        {
+            if (leaderIds.Count > 0)
+            {
+                joiningLeaderId = leaderIds.Last();
+                InvitedDialog.SetActive(true);
+            }
+            else
+            {
+                joiningLeaderId = null;
+                InvitedDialog.SetActive(false);
+            }
+        }
         private void OnPartyChanges(Party party)
         {
             Party = party;
@@ -70,6 +89,20 @@ namespace ClaraMundi
             PlayerManager.Instance.LocalPlayer.Party.InviteToParty(pendingMember.entityId);
             InviteDialog.SetActive(false);
             InviteField.text = "";
+        }
+
+        public void JoinParty()
+        {
+            InvitedDialog.SetActive(false);
+            if (string.IsNullOrEmpty(joiningLeaderId)) return;
+            PlayerManager.Instance.LocalPlayer.Party.JoinParty(joiningLeaderId);
+        }
+
+        public void Decline()
+        {
+            InvitedDialog.SetActive(false);
+            if (string.IsNullOrEmpty(joiningLeaderId)) return;
+            PlayerManager.Instance.LocalPlayer.Party.DeclineInvite(joiningLeaderId);
         }
 
         public void LeaveParty()

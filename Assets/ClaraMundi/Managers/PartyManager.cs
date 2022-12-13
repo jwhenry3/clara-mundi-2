@@ -69,10 +69,23 @@ namespace ClaraMundi
             if (party.MemberIds.Count >= PartyMemberLimit) return false;
             if (!party.InvitedIds.Contains(playerId) || party.MemberIds.Contains(playerId)) return false;
             party.MemberIds.Add(playerId);
-            CleanUpPendingPlayer(playerId);
             var player = GetPlayer(playerId);
             player.Party.PartyInvites.Clear();
+            CleanUpPendingPlayer(playerId);
             UpdateParty(party);
+
+            return false;
+        }
+
+        public bool ServerDecline(string playerId, string leaderPlayerId)
+        {
+            if (!PartiesByLeader.TryGetValue(leaderPlayerId, out var party)) return false;
+            if (party.InvitedIds.Contains(playerId))
+            {
+                party.InvitedIds.Remove(playerId);
+                GetPlayer(playerId).Party.PartyInvites.Remove(leaderPlayerId);
+                return true;
+            }
 
             return false;
         }
@@ -87,7 +100,6 @@ namespace ClaraMundi
                 LeaderId = leaderPlayerId,
             };
             party.MemberIds.Add(leaderPlayerId);
-            PartiesByLeader[leaderPlayerId] = party;
             CleanUpPendingPlayer(leaderPlayerId);
             UpdateParty(party);
             return true;
@@ -119,6 +131,8 @@ namespace ClaraMundi
                 party.LeaderId = party.MemberIds[0];
                 PartiesByLeader[party.MemberIds[0]] = party;
             }
+
+            party.MemberIds.Remove(playerId);
             var player = GetPlayer(playerId);
             player.Party.Server_OnChange(null);
 
@@ -136,10 +150,19 @@ namespace ClaraMundi
         }
         void UpdateParty(Party party)
         {
+            var newParty = new Party
+            {
+                established = party.established,
+                MemberIds = party.MemberIds,
+                LeaderId = party.LeaderId,
+                InvitedIds = party.InvitedIds,
+                RequestedjoinerIds = party.RequestedjoinerIds
+            };
+            PartiesByLeader[party.LeaderId] = newParty;
             foreach (string member in party.MemberIds)
             {
                 if (party.established)
-                    PlayerManager.Instance.Players[member].Party.Server_OnChange(party);
+                    PlayerManager.Instance.Players[member].Party.Server_OnChange(newParty);
                 else
                     PlayerManager.Instance.Players[member].Party.Server_OnChange(null);
             }
@@ -158,7 +181,8 @@ namespace ClaraMundi
 
         void CleanUpPendingPlayer(string playerId)
         {
-            foreach (var kvp in PartiesByLeader)
+            var clone = new Dictionary<string, Party>(PartiesByLeader);
+            foreach (var kvp in clone)
             {
                 bool changed = false;
                 if (kvp.Value.InvitedIds.Contains(playerId))

@@ -15,7 +15,7 @@ namespace ClaraMundi
         
         [SyncVar(OnChange = "Client_OnChange")]
         public Party Party;
-        [SyncVar(OnChange = "OnChatMessage")]
+        [SyncVar(OnChange = "OnChatMessage", ReadPermissions = ReadPermission.OwnerOnly)]
         public ChatMessage lastMessage;
 
         protected override void Awake()
@@ -36,7 +36,9 @@ namespace ClaraMundi
 
         public void Server_OnChatMessage(ChatMessage message)
         {
-            lastMessage = message;
+            // filter duplicates
+            if (lastMessage.MessageId == message.MessageId) return;
+                lastMessage = message;
         }
         public void Server_OnChange(Party party)
         {
@@ -45,6 +47,9 @@ namespace ClaraMundi
 
         private void OnChatMessage(ChatMessage previousMessage, ChatMessage nextMessage, bool asServer)
         {
+            if (asServer) return;
+            // filter duplicates
+            if (previousMessage != null && previousMessage.MessageId == nextMessage.MessageId) return;
             ChatManager.ReceivedMessage(nextMessage);
         }
         
@@ -80,6 +85,11 @@ namespace ClaraMundi
         public void JoinParty(string playerId)
         {
             PartyManager.Instance.ServerJoinParty(player.entityId, playerId);
+        }
+        [ServerRpc]
+        public void DeclineInvite(string playerId)
+        {
+            PartyManager.Instance.ServerDecline(player.entityId, playerId);
         }
         [ServerRpc]
         public void LeaveParty()

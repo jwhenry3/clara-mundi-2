@@ -10,7 +10,8 @@ namespace ClaraMundi
         public event Action<string> NameChange;
         [SyncVar(OnChange = "OnNameChange")]
         public string entityName = "";
-        public string entityId = Guid.NewGuid().ToString();
+        [SyncVar]
+        public string entityId;
 
         public override void OnStartClient()
         {
@@ -22,6 +23,7 @@ namespace ClaraMundi
         public override void OnStartServer()
         {
             base.OnStartServer();
+            entityId = Guid.NewGuid().ToString();
             OnStarted?.Invoke();
         }
         void OnNameChange(string oldValue, string newValue, bool asServer)
