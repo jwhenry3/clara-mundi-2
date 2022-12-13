@@ -46,33 +46,33 @@ namespace ClaraMundi
 
         void OnNameChange(string playerName)
         {
-            Name.text = playerName;
+            // Name.text = playerName;
         }
         void OnStatsChange(ComputedStats stats)
         {
             if (player == null) return;
-            Strength.text = DisplayNumber(stats.Strength);
-            Dexterity.text = DisplayNumber(stats.Dexterity);
-            Vitality.text = DisplayNumber(stats.Vitality);
-            Agility.text = DisplayNumber(stats.Agility);
-            Intelligence.text = DisplayNumber(stats.Intelligence);
-            Mind.text = DisplayNumber(stats.Mind);
-
-            var controller = player.Stats;
-
-            PhysicalAttack.text = DisplayNumber(controller.Attributes.PhysicalAttack);
-            PhysicalDefense.text = DisplayNumber(controller.Attributes.PhysicalDefense);
-            PhysicalAccuracy.text = DisplayNumber(controller.Attributes.PhysicalAccuracy);
-            PhysicalEvasion.text = DisplayNumber(controller.Attributes.PhysicalEvasion);
-
-            MagicalAttack.text = DisplayNumber(controller.Attributes.MagicalAttack);
-            Healing.text = DisplayNumber(controller.Attributes.Healing);
-            MagicalDefense.text = DisplayNumber(controller.Attributes.MagicalDefense);
-            MagicalAccuracy.text = DisplayNumber(controller.Attributes.MagicalAccuracy);
-            MagicalEvasion.text = DisplayNumber(controller.Attributes.MagicalEvasion);
-
-            SkillSpeed.text = DisplayPercent(controller.Attributes.PhysicalSpeed);
-            SpellSpeed.text = DisplayPercent(controller.Attributes.MagicalSpeed);
+            // Strength.text = DisplayNumber(stats.Strength);
+            // Dexterity.text = DisplayNumber(stats.Dexterity);
+            // Vitality.text = DisplayNumber(stats.Vitality);
+            // Agility.text = DisplayNumber(stats.Agility);
+            // Intelligence.text = DisplayNumber(stats.Intelligence);
+            // Mind.text = DisplayNumber(stats.Mind);
+            //
+            // var controller = player.Stats;
+            //
+            // PhysicalAttack.text = DisplayNumber(controller.Attributes.PhysicalAttack);
+            // PhysicalDefense.text = DisplayNumber(controller.Attributes.PhysicalDefense);
+            // PhysicalAccuracy.text = DisplayNumber(controller.Attributes.PhysicalAccuracy);
+            // PhysicalEvasion.text = DisplayNumber(controller.Attributes.PhysicalEvasion);
+            //
+            // MagicalAttack.text = DisplayNumber(controller.Attributes.MagicalAttack);
+            // Healing.text = DisplayNumber(controller.Attributes.Healing);
+            // MagicalDefense.text = DisplayNumber(controller.Attributes.MagicalDefense);
+            // MagicalAccuracy.text = DisplayNumber(controller.Attributes.MagicalAccuracy);
+            // MagicalEvasion.text = DisplayNumber(controller.Attributes.MagicalEvasion);
+            //
+            // SkillSpeed.text = DisplayPercent(controller.Attributes.PhysicalSpeed);
+            // SpellSpeed.text = DisplayPercent(controller.Attributes.MagicalSpeed);
         }
 
         string DisplayNumber(float value)

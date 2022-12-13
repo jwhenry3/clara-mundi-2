@@ -14,6 +14,7 @@ namespace ClaraMundi
         [HideInInspector]
         public ItemUI ContextualItem;
 
+        public Transform EquipmentContainer;
         public Transform RightHand;
         public Transform LeftHand;
         public Transform Head;
@@ -30,7 +31,8 @@ namespace ClaraMundi
 
         public void OnEnable()
         {
-            OnPlayerChange(PlayerManager.Instance.LocalPlayer);
+            if (PlayerManager.Instance != null)
+                OnPlayerChange(PlayerManager.Instance.LocalPlayer);
             Reload();
         }
 
@@ -42,32 +44,8 @@ namespace ClaraMundi
 
         public void Clear()
         {
-            foreach (Transform child in RightHand)
-                Destroy(child.gameObject);
-            foreach (Transform child in LeftHand)
-                Destroy(child.gameObject);
-            foreach (Transform child in Head)
-                Destroy(child.gameObject);
-            foreach (Transform child in Body)
-                Destroy(child.gameObject);
-            foreach (Transform child in Hands)
-                Destroy(child.gameObject);
-            foreach (Transform child in Legs)
-                Destroy(child.gameObject);
-            foreach (Transform child in Feet)
-                Destroy(child.gameObject);
-            foreach (Transform child in Back)
-                Destroy(child.gameObject);
-            foreach (Transform child in Ring1)
-                Destroy(child.gameObject);
-            foreach (Transform child in Ring2)
-                Destroy(child.gameObject);
-            foreach (Transform child in Earring1)
-                Destroy(child.gameObject);
-            foreach (Transform child in Earring2)
-                Destroy(child.gameObject);
-            foreach (Transform child in Neck)
-                Destroy(child.gameObject);
+            foreach (ItemUI item  in EquipmentContainer.GetComponentsInChildren<ItemUI>())
+                Destroy(item.gameObject);
         }
 
         private Transform GetSlotContainer(string slotName)
@@ -90,8 +68,10 @@ namespace ClaraMundi
                 _ => null
             };
         }
+        
         public void Populate()
         {
+            if (player == null) return;
             foreach (var kvp in player.Equipment.EquippedItems)
                 LoadItem(GetSlotContainer(kvp.Key), kvp.Value);
         }
@@ -136,17 +116,16 @@ namespace ClaraMundi
             Transform container = GetSlotContainer(key);
             if (container == null) return;
             foreach (Transform child in container)
+            {
+                var item = child.GetComponent<ItemUI>();
+                if (item == null) continue;
+                if (item.ItemInstanceId == itemInstanceId)
+                    return;
                 Destroy(child.gameObject);
-
+            }
             LoadItem(container, itemInstanceId);
         }
 
-        public void SwapToMainWeapon()
-        {
-        }
-        public void SwapToSubWeapon()
-        {
-        }
         public void CloseContextMenu()
         {
             ContextualItem = null;
@@ -165,8 +144,10 @@ namespace ClaraMundi
         {
             if (eventData == null)
             {
-                ItemTooltipUI.gameObject.SetActive(false);
-                CloseContextMenu();
+                if (ContextualItem == item)
+                    CloseContextMenu();
+                if (ItemTooltipUI)
+                    ItemTooltipUI.gameObject.SetActive(false);
                 return;
             }
             ContextualItem = item;

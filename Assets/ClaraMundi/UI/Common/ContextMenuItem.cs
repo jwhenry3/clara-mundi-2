@@ -14,6 +14,7 @@ namespace ClaraMundi
         public void OnPointerClick(PointerEventData eventData)
         {
             Data.OnClick?.Invoke();
+            Background.SetActive(false);
         }
 
         public void OnPointerEnter(PointerEventData eventData)

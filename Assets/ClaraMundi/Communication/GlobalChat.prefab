@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8149067438432484777}
   - component: {fileID: 8149067438432484778}
   - component: {fileID: 8149067438432484779}
+  - component: {fileID: 6950824868453977337}
   m_Layer: 0
   m_Name: GlobalChat
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MonoBehaviour:
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: -1
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 14779688772707503277
   _sceneNetworkObjects:
@@ -151,6 +152,39 @@ MonoBehaviour:
   Name: LFG
   ChannelScope: 3
   ChannelType: 2
+  LastPublicMessage:
+    Type: 0
+    ChannelType: 8
+    SenderEntityId: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToEntityId: 
+    Message: 
+  LastPrivateMessage:
+    Type: 0
+    ChannelType: 8
+    SenderEntityId: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToEntityId: 
+    Message: 
+--- !u!114 &6950824868453977337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149067438432484780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 8149067438432484776}
+  _networkObjectCache: {fileID: 0}
+  PlayerName: 
+  Name: Yell
+  ChannelScope: 3
+  ChannelType: 5
   LastPublicMessage:
     Type: 0
     ChannelType: 8

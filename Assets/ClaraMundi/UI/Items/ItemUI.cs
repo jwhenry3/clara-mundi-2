@@ -16,6 +16,7 @@ namespace ClaraMundi
         public event Action<ItemUI, PointerEventData> OnContextMenu;
         private string _entityId;
         public string StorageId = "inventory";
+        bool isHovering;
 
         ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemInstance ItemInstance;
@@ -96,7 +97,8 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            Tooltip.gameObject.SetActive(false);
+            if (isHovering && Tooltip != null)
+                Tooltip.gameObject.SetActive(false);
             OnContextMenu?.Invoke(this, null);
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
@@ -163,6 +165,13 @@ namespace ClaraMundi
 
         private void ShowNoItem()
         {
+            if (isHovering)
+            {
+                Tooltip.gameObject.SetActive(false);
+                Background.enabled = false;
+                transform.localScale = Vector3.zero;
+            }
+
             Icon.sprite = null;
             Icon.color = new Color(255, 255, 255, 0);
             hasItem = false;
@@ -209,16 +218,16 @@ namespace ClaraMundi
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            isHovering = false;
             if (hasItem)
-            {
                 Tooltip.gameObject.SetActive(false);
-            }
             Background.enabled = false;
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!hasItem) return;
+            isHovering = true;
             Background.enabled = true;
             Tooltip.SetItemInstance(ItemInstance);
             var position = transform.position;

@@ -25,7 +25,6 @@ namespace ClaraMundi
         private void Start()
         {
             if (Options.Count != 0) return;
-            ContextMenuItemPrefab.gameObject.SetActive(false);
             foreach (var item in MenuItems)
             {
                 var instance = Instantiate(ContextMenuItemPrefab, transform, false);

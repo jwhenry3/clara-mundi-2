@@ -14,7 +14,7 @@ namespace ClaraMundi
         public readonly SyncDictionary<string, ItemInstance> PrivateItems = new();
 
         [SyncObject] public readonly SyncDictionary<string, ItemInstance> PublicItems = new();
-        public string Name = "Inventory";
+        
         public Entity OwnerEntity;
         [SyncVar] public string StorageId = "inventory";
         public static ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
