@@ -129,6 +129,7 @@ namespace ClaraMundi
             {
                 if (kept.Contains(kvp.Key)) continue;
                 ChatAttachmentUI instance = Instantiate(AttachmentPrefab, AttachmentsContainer, true);
+                instance.Tooltip = Tooltip;
                 instance.SetValue(kvp.Key, kvp.Value);
             }
         }
