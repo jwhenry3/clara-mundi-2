@@ -19,6 +19,8 @@ namespace ClaraMundi
         public TextMeshProUGUI ChannelText;
 
         public GameObject PlayerContextMenu;
+        public GameObject RequestJoinOption;
+        public GameObject InviteOption;
 
         Dictionary<string, string> MessageAttachments = new();
 
@@ -173,11 +175,45 @@ namespace ClaraMundi
             }
         }
 
+        private bool CanRequestJoin()
+        {
+            return ContextualPlayer.Party.Party != null &&
+                   ContextualPlayer.Party.Party.LeaderId == ContextualPlayer.entityId
+                   && ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
+        }
+
+        private bool CanInvite()
+        {
+            return ContextualPlayer.Party.Party == null &&
+                   ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
+        }
+        
         public void OpenPlayerContextMenu(PointerEventData eventData, string playerEntityId)
         {
             if (!PlayerManager.Instance.Players.TryGetValue(playerEntityId, out ContextualPlayer)) return;
             PlayerContextMenu.transform.position = eventData.position;
+            RequestJoinOption.SetActive(CanRequestJoin());
+            InviteOption.SetActive(CanInvite());
             PlayerContextMenu.SetActive(true);
+        }
+
+        public void RequestJoin()
+        {
+            PlayerManager.Instance.LocalPlayer.Party.RequestJoin(ContextualPlayer.entityId);
+            ClosePlayerContextMenu();
+        }
+
+        public void Invite()
+        {
+            PlayerManager.Instance.LocalPlayer.Party.InviteToParty(ContextualPlayer.entityId);
+            ClosePlayerContextMenu();
+        }
+
+        public void Whisper()
+        {
+            RecipientField.text = ContextualPlayer.Entity.entityName;
+            SetWhisperChannel();
+            ClosePlayerContextMenu();
         }
         public void ClosePlayerContextMenu()
         {

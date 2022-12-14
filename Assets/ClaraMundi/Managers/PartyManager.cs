@@ -54,25 +54,44 @@ namespace ClaraMundi
             if (!PartiesByLeader.TryGetValue(leaderPlayerId, out var party)) return false;
             if (party.MemberIds.Count >= PartyMemberLimit) return false;
             
-            CleanUpPendingPlayer(playerId);
             party.RequestedjoinerIds.Add(playerId);
             var player = GetPlayer(leaderPlayerId);
             player.Party.Server_OnChange(party);
+            UpdateParty(party);
             
             return true;
         }
 
+        public bool AcceptRequest(string leaderPlayerId, string playerId)
+        {
+            if (IsPlayerInParty(playerId)) return false;
+            if (!PartiesByLeader.TryGetValue(leaderPlayerId, out var party)) return false;
+            if (!party.RequestedjoinerIds.Contains(playerId) || party.MemberIds.Contains(playerId)) return false;
+            return Joined(playerId, party);
+        }
         public bool ServerJoinParty(string playerId, string leaderPlayerId)
         {
             if (IsPlayerInParty(playerId)) return false;
             if (!PartiesByLeader.TryGetValue(leaderPlayerId, out var party)) return false;
-            if (party.MemberIds.Count >= PartyMemberLimit) return false;
             if (!party.InvitedIds.Contains(playerId) || party.MemberIds.Contains(playerId)) return false;
+            return Joined(playerId, party);
+        }
+
+        private bool Joined(string playerId, Party party)
+        {
+            if (party.MemberIds.Count >= PartyMemberLimit)
+            {
+                party.InvitedIds.Remove(playerId);
+                UpdateParty(party);
+                return false;
+            }
             party.MemberIds.Add(playerId);
             CleanUpPendingPlayer(playerId);
+            if (party.MemberIds.Count >= PartyMemberLimit)
+                CleanUpPendingParty(party);
             UpdateParty(party);
 
-            return false;
+            return true;
         }
 
         public bool ServerDecline(string playerId, string leaderPlayerId)
@@ -83,8 +102,18 @@ namespace ClaraMundi
                 player.Party.PartyInvites.Remove(leaderPlayerId);
             if (!party.InvitedIds.Contains(playerId)) return false;
             party.InvitedIds.Remove(playerId);
+            UpdateParty(party);
             return true;
 
+        }
+
+        public bool ServerDeclineRequest(string playerId, string joiningPlayerId)
+        {
+            if (!PartiesByLeader.TryGetValue(playerId, out var party)) return false;
+            if (!party.RequestedjoinerIds.Contains(joiningPlayerId)) return false;
+            party.RequestedjoinerIds.Remove(joiningPlayerId);
+            UpdateParty(party);
+            return true;
         }
 
 
@@ -162,11 +191,19 @@ namespace ClaraMundi
             CleanUpParty(party);
         }
 
+        void CleanUpPendingParty(Party party)
+        {
+            foreach (string invitedId in party.InvitedIds)
+                GetPlayer(invitedId).Party.PartyInvites.Remove(party.LeaderId);
+            party.RequestedjoinerIds.Clear();
+            party.InvitedIds.Clear();
+        }
         void CleanUpParty(Party party)
         {
             foreach (string playerId in party.InvitedIds)
                 GetPlayer(playerId).Party.PartyInvites.Remove(party.LeaderId);
             party.RequestedjoinerIds.Clear();
+            party.InvitedIds.Clear();
             PartiesByLeader.Remove(party.LeaderId);
         }
 

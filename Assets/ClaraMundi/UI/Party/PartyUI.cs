@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using FishNet.Object.Synchronizing;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ClaraMundi
 {
@@ -13,48 +12,44 @@ namespace ClaraMundi
         public PartyMemberUI PartyMemberPrefab;
 
         private string joiningLeaderId;
-        public GameObject InvitedDialog;
         public GameObject InviteDialog;
         public TMP_InputField InviteField;
+
+        public Button InviteButton;
         
         protected override void OnPlayerChange(Player _player)
         {
             if (player != null)
             {
                 player.Party.PartyChanges -= OnPartyChanges;
-                player.Party.InviteChanges -= OnInviteChanges;
             }
             base.OnPlayerChange(_player);
             if (player != null)
             {
                 player.Party.PartyChanges += OnPartyChanges;
-                player.Party.InviteChanges += OnInviteChanges;
                 OnPartyChanges(player.Party.Party);
             }
         }
-
-        private void OnInviteChanges(SyncList<string> leaderIds)
+        public override void OnDestroy()
         {
-            if (leaderIds.Count > 0)
+            base.OnDestroy();
+            if (player != null)
             {
-                joiningLeaderId = leaderIds.Last();
-                InvitedDialog.SetActive(true);
-            }
-            else
-            {
-                joiningLeaderId = null;
-                InvitedDialog.SetActive(false);
+                player.Party.PartyChanges -= OnPartyChanges;
             }
         }
+
         private void OnPartyChanges(Party party)
         {
             Party = party;
-            if (party == null)
+            if (party == null || party.established == false)
             {
                 foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
                         member.SetPartyMember(null);
+                InviteButton.gameObject.SetActive(true);
                 return;
             }
+            InviteButton.gameObject.SetActive(party.LeaderId == player.entityId);
             List<string> found = new();
             foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
             {
@@ -62,9 +57,12 @@ namespace ClaraMundi
                 {
                     member.SetPartyMember(member.player.entityId);
                     found.Add(member.player.entityId);
+                    if (member.player.entityId == PlayerManager.Instance.LocalPlayer.entityId)
+                        member.transform.SetAsFirstSibling();
                 }
                 else
                     member.SetPartyMember(null);
+                
             }
 
             foreach (string member in party.MemberIds)
@@ -72,6 +70,8 @@ namespace ClaraMundi
                 if (found.Contains(member)) continue;
                 var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);
                 instance.SetPartyMember(member);
+                if (member == PlayerManager.Instance.LocalPlayer.entityId)
+                    instance.transform.SetAsFirstSibling();
             }
         }
 
@@ -91,19 +91,6 @@ namespace ClaraMundi
             InviteField.text = "";
         }
 
-        public void JoinParty()
-        {
-            InvitedDialog.SetActive(false);
-            if (string.IsNullOrEmpty(joiningLeaderId)) return;
-            PlayerManager.Instance.LocalPlayer.Party.JoinParty(joiningLeaderId);
-        }
-
-        public void Decline()
-        {
-            InvitedDialog.SetActive(false);
-            if (string.IsNullOrEmpty(joiningLeaderId)) return;
-            PlayerManager.Instance.LocalPlayer.Party.DeclineInvite(joiningLeaderId);
-        }
 
         public void LeaveParty()
         {

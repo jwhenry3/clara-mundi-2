@@ -13,9 +13,9 @@ namespace ClaraMundi
         public event Action<Party> PartyChanges;
         public event Action<SyncList<string>> InviteChanges;
         
-        [SyncVar(OnChange = "Client_OnChange")]
+        [SyncVar(OnChange = nameof(Client_OnChange))]
         public Party Party;
-        [SyncVar(OnChange = "OnChatMessage", ReadPermissions = ReadPermission.OwnerOnly)]
+        [SyncVar(OnChange = nameof(OnChatMessage), ReadPermissions = ReadPermission.OwnerOnly)]
         public ChatMessage lastMessage;
 
         protected override void Awake()
@@ -55,7 +55,7 @@ namespace ClaraMundi
         
         private void Client_OnChange(Party lastParty, Party nextParty, bool asServer)
         {
-            PartyChanges?.Invoke(Party);
+            PartyChanges?.Invoke(nextParty);
         }
         
         [ServerRpc]
@@ -80,7 +80,11 @@ namespace ClaraMundi
         {
             PartyManager.Instance.ServerRequestPartyJoin(player.entityId, playerId);
         }
-        
+        [ServerRpc]
+        public void AcceptRequest(string playerId)
+        {
+            PartyManager.Instance.AcceptRequest(player.entityId, playerId);
+        }
         [ServerRpc]
         public void JoinParty(string playerId)
         {
@@ -90,6 +94,12 @@ namespace ClaraMundi
         public void DeclineInvite(string playerId)
         {
             PartyManager.Instance.ServerDecline(player.entityId, playerId);
+        }
+
+        [ServerRpc]
+        public void DeclineRequest(string playerId)
+        {
+            PartyManager.Instance.ServerDeclineRequest(player.entityId, playerId);
         }
         [ServerRpc]
         public void LeaveParty()

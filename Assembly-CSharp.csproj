@@ -52,6 +52,7 @@
      <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\OpenURLButton.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Tabs.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyUI.cs" />
      <Compile Include="Assets\ClaraMundi\Managers\PartyManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Items\EquipmentUI.cs" />
      <Compile Include="Assets\Backend\Entities\PlayerEntity.cs" />
@@ -93,6 +94,7 @@
      <Compile Include="Assets\ClaraMundi\Controllers\ChatController.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\EmptySprite.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\UIAnimator.cs" />
+     <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
      <Compile Include="Assets\Backend\Entities\CharacterEntity.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenu.cs" />
@@ -110,6 +112,7 @@
      <Compile Include="Assets\ClaraMundi\UI\Attributes\StatsUI.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
      <Compile Include="Assets\ClaraMundi\Attributes\Types.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\PlayerConnection.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ShowHideScrollBar.cs" />
      <Compile Include="Assets\ClaraMundi\Entity\Entity.cs" />
      <Compile Include="Assets\ClaraMundi\Communication\ChatChannel.cs" />
@@ -123,6 +126,7 @@
      <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
      <Compile Include="Assets\ClaraMundi\Managers\ChatManager.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyMemberUI.cs" />
      <Compile Include="Assets\ClaraMundi\Inventory\Item.cs" />
      <Compile Include="Assets\ClaraMundi\Managers\CraftManager.cs" />
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
@@ -142,10 +146,9 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Party\PartyUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\Party\PartyMemberUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\PlayerConnection.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyInviteRequestUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyJoinRequestUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\Party\PartyRequestsUI.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -984,6 +987,10 @@
       <Project>{55d9e1f3-ec3a-089b-ae6d-867dca9df752}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
+    <ProjectReference Include="ParrelSync.csproj">
+      <Project>{1136bd8d-c3a1-21ae-2b93-210898883611}</Project>
+      <Name>ParrelSync</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{9b31df8f-8ab6-228e-c7ea-ec61413f3a65}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
@@ -1023,10 +1030,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="ParrelSync.csproj">
-      <Project>{1136bd8d-c3a1-21ae-2b93-210898883611}</Project>
-      <Name>ParrelSync</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
