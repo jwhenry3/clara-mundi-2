@@ -1,4 +1,5 @@
 ﻿using FishNet.Object;
+using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -6,7 +7,7 @@ namespace ClaraMundi
     {
         public void SendMessage(string channel, ChatMessage message)
         {
-            if (!string.IsNullOrEmpty(message.ToEntityId) && message.ChannelType == ChannelType.Whisper)
+            if (!string.IsNullOrEmpty(message.ToEntityId) && message.Channel == "Whisper")
             {
                 // send the chat message to the chat window even though this is outgoing and not incoming
                 // the private channel on the to-entity will not send the message to the sender, so we must

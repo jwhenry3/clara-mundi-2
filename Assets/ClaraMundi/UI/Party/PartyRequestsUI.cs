@@ -105,10 +105,13 @@ namespace ClaraMundi
             foreach (string invitingPlayerId in PlayerManager.Instance.LocalPlayer.Party.PartyInvites)
                 AddInvite(invitingPlayerId);
 
-            if (PlayerManager.Instance.LocalPlayer.Party.Party == null) return;
-            
-            foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.RequestedjoinerIds)
-                AddJoinRequest(joiningPlayerId);
+            if (PlayerManager.Instance.LocalPlayer.Party.Party != null)
+            {
+                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.RequestedjoinerIds)
+                    AddJoinRequest(joiningPlayerId);
+            }
+
+            HandleVisibility();
         }
 
         private void AddInvite(string invitingPlayerId)

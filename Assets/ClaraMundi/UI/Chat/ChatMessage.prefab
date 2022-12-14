@@ -165,8 +165,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tooltip: {fileID: 0}
   ChatMessage:
+    MessageId: 735f5520-0623-484b-ac59-7f500e794e81
     Type: 0
-    ChannelType: 8
+    Channel: Say
     SenderEntityId: 
     SenderPosition: {x: 0, y: 0, z: 0}
     ToEntityId: 
@@ -181,30 +182,30 @@ MonoBehaviour:
   - MessageType: 3
     Color: {r: 0.48434764, g: 0.4575472, b: 1, a: 1}
   ChannelColors:
-  - ChannelType: 0
+  - Channel: Whisper
     Color: {r: 0.6084906, g: 0.6195972, b: 1, a: 1}
     Format: sender <<,receiver >>
-  - ChannelType: 1
+  - Channel: LFG
     Color: {r: 1, g: 0.97192734, b: 0.43867922, a: 1}
-    Format: '<sender>:'
-  - ChannelType: 2
+    Format: '[LFG] sender:'
+  - Channel: Guild
     Color: {r: 0.6084906, g: 1, b: 0.6368495, a: 1}
-    Format: '<sender>:'
-  - ChannelType: 3
+    Format: '[Guild] sender:'
+  - Channel: Yell
     Color: {r: 1, g: 0.52434516, b: 0.3066038, a: 1}
-    Format: 'sender:'
-  - ChannelType: 4
+    Format: '[Yell] sender:'
+  - Channel: Say
     Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
-    Format: 'sender:'
-  - ChannelType: 5
+    Format: '[Say] sender:'
+  - Channel: Shout
     Color: {r: 0.6886792, g: 0.41637814, b: 0.27612138, a: 1}
-    Format: '[sender]:'
-  - ChannelType: 6
+    Format: '[Shout] sender:'
+  - Channel: Trade
     Color: {r: 1, g: 0.94820577, b: 0.3066038, a: 1}
-    Format: '[sender]:'
-  - ChannelType: 7
+    Format: '[Trade] sender:'
+  - Channel: Party
     Color: {r: 0.7423108, g: 0.6933962, b: 1, a: 1}
-    Format: '(sender):'
-  - ChannelType: 8
+    Format: '[Party] sender:'
+  - Channel: System
     Color: {r: 0.5518868, g: 0.5607369, b: 1, a: 1}
-    Format: '[sender]:'
+    Format: '[System]:'

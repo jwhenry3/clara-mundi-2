@@ -18,7 +18,6 @@ namespace ClaraMundi
         public string Name;
 
         public ChannelScope ChannelScope = ChannelScope.Scene;
-        public ChannelType ChannelType = ChannelType.System;
 
 
         [SyncVar(OnChange = "OnMessage")]
@@ -66,7 +65,6 @@ namespace ClaraMundi
         private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
         {
             if (asServer) return;
-            nextMessage.ChannelType = ChannelType;
             if (ChannelScope == ChannelScope.Local)
             {
                 if (PlayerManager.Instance.LocalPlayer == null) return;

@@ -161,11 +161,12 @@ namespace ClaraMundi
                         toEntityId = player.entityId;
                     }
                 }
-                Debug.Log(PlayerManager.Instance.LocalPlayer.entityId);
+                
                 ChatManager.SendChatMessage(channelName, new ChatMessage
                 {
                     SenderEntityId = PlayerManager.Instance.LocalPlayer.entityId,
                     Type = ChatMessageType.Chat,
+                    Channel =  channel,
                     Message = InputField.text + additionalText,
                     ToEntityId = toEntityId,
                 });

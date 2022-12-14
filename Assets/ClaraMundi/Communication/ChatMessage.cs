@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ClaraMundi
 {
@@ -19,26 +20,13 @@ namespace ClaraMundi
         Scene,
         Global,
     }
-    public enum ChannelType
-    {
-        Whisper,
-        Trade,
-        LFG,
-        Shout,
-        Say,
-        Yell,
-        Guild,
-        Party,
-        System,
-
-    }
 
     [Serializable]
     public class ChatMessage
     {
         public string MessageId = Guid.NewGuid().ToString();
         public ChatMessageType Type = ChatMessageType.System;
-        public ChannelType ChannelType = ChannelType.System;
+        public string Channel = "Say";
         public string SenderEntityId;
         public Vector3 SenderPosition;
         // used in private message to show the recipient's name in the chat
