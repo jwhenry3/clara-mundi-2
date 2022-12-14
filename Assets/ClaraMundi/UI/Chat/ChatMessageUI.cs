@@ -103,10 +103,11 @@ namespace ClaraMundi
             
             if (ChatMessage.Channel == "Whisper" &&
                 ChatMessage.SenderEntityId == PlayerManager.Instance.LocalPlayer.entityId)
-                senderName = ">> " + receiverName;
+                sender = "[Whisper To] " + receiverName + ":";
             else if (ChatMessage.Channel == "Whisper")
-                senderName = "<< " + senderName;
-            sender = "[" + ChatMessage.Channel + "] " + senderName + ":";
+                sender = "[Whisper From] " + senderName + ":";
+            else
+                sender = "[" + ChatMessage.Channel + "] " + senderName + ":";
         }
 
         void SaveToText()
@@ -121,10 +122,13 @@ namespace ClaraMundi
             var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
             if (selectedLink.Contains("item:"))
             {
+                if (Tooltip.NodeId == NodeId) return;
                 Tooltip.NodeId = NodeId;
                 ShowTooltip(selectedLink.Substring(5));
                 return;
             }
+
+            Tooltip.NodeId = null;
             Tooltip.gameObject.SetActive(false);
         }
         public void OnPointerDown(PointerEventData eventData)

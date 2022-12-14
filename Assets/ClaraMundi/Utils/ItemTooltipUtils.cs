@@ -21,13 +21,27 @@ namespace ClaraMundi
             int vertical = ScreenUtils.GetVerticalWithMostSpace(position.y);
             var transform1 = Tooltip.transform;
             RectTransform rect = (RectTransform)transform1;
-            var rect1 = rectTransform.rect;
+            var size = ScreenUtils.ActualSize(rectTransform);
             var rect2 = rect.rect;
+            var verticalOffset = size.y / 2;
+            if (vertical == -1)
+                verticalOffset = rect2.height - (size.y / 2);
+
             transform1.position = new Vector3(
-                position.x + (horizontal * (rect1.width / 2 + (rect2.width / 2))),
-                position.y + (vertical * (rect1.height / 2 + (rect2.height / 2))),
+                position.x + (horizontal * (size.x / 2 + (rect2.width / 2) + 8)),
+                position.y + verticalOffset,
                 0
             );
+            if (Tooltip.EquippedTooltip != null)
+            {
+                var position1 = transform1.position;
+                Tooltip.EquippedTooltip.transform.position = new Vector3(
+                    position1.x + (horizontal * 248),
+                    position1.y ,
+                    0
+                );
+            }
+
             Tooltip.gameObject.SetActive(true);
         }
     }

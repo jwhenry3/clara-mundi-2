@@ -247,19 +247,6 @@ namespace ClaraMundi
             ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, ItemInstance.ItemInstanceId);
         }
 
-
-        public Vector2 ActualSize(RectTransform rect)
-        {
-            Canvas can = GetComponentInParent<Canvas>();
-            var v = new Vector3[4];
-            rect.GetWorldCorners(v);
-            //method one
-            //return new Vector2(v[3].x - v[0].x, v[1].y - v[0].y);
-
-            //method two
-            return RectTransformUtility.PixelAdjustRect(rect, can).size;
-        }
-
         public void OnPointerDown(PointerEventData eventData)
         {
             if (!hasItem) return;

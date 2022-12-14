@@ -157,5 +157,10 @@ namespace ClaraMundi
             player.Inventory.UnequipItem(ContextualItem.ItemInstance.ItemInstanceId);
             CloseContextMenu();
         }
+        public void LinkToChat()
+        {
+            ContextualItem.LinkToChat();
+            CloseContextMenu();
+        }
     }
 }
