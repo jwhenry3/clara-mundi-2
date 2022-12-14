@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +22,7 @@ namespace ClaraMundi
     }
     public class ChatMessageUI : MonoBehaviour, IPointerMoveHandler, IPointerDownHandler
     {
+        public string NodeId = Guid.NewGuid().ToString();
         TextMeshProUGUI Text;
         public ItemTooltipUI Tooltip;
         public ChatMessage ChatMessage;
@@ -38,20 +38,20 @@ namespace ClaraMundi
 
         readonly Dictionary<string, Color> ChannelTypeDict = new();
         readonly Dictionary<ChatMessageType, Color> MessageTypeDict = new();
-        readonly Dictionary<string, string> ChannelFormats = new();
 
         private void Awake()
         {
             Text = GetComponent<TextMeshProUGUI>();
             foreach (var c in ChannelColors)
-            {
                 ChannelTypeDict[c.Channel] = c.Color;
-                ChannelFormats[c.Channel] = c.Format;
-            }
             foreach (var c in ChatColors)
-            {
                 MessageTypeDict[c.MessageType] = c.Color;
-            }
+        }
+
+        private void OnDestroy()
+        {
+            if (Tooltip.NodeId == NodeId)
+                Tooltip.gameObject.SetActive(false);
         }
 
         public void SetChatMessage(ChatMessage message)
@@ -118,59 +118,27 @@ namespace ClaraMundi
         }
         public void OnPointerMove(PointerEventData eventData)
         {
-            int linkIndex = TMP_TextUtilities.FindIntersectingLink(Text, eventData.position, eventData.pressEventCamera);
-            if (linkIndex == -1)
+            var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
+            if (selectedLink.Contains("item:"))
             {
-                Tooltip.gameObject.SetActive(false);
+                Tooltip.NodeId = NodeId;
+                ShowTooltip(selectedLink.Substring(5));
                 return;
-            }
-            var linkInfo = Text.textInfo.linkInfo[linkIndex];
-            string selectedLink = linkInfo.GetLinkID();
-            if (selectedLink != "")
-            {
-                if (selectedLink.Contains("item:"))
-                {
-                    ShowTooltip(selectedLink.Substring(5));
-                    return;
-                }
             }
             Tooltip.gameObject.SetActive(false);
         }
         public void OnPointerDown(PointerEventData eventData)
         {
-            int linkIndex = TMP_TextUtilities.FindIntersectingLink(Text, eventData.position, eventData.pressEventCamera);
-            if (linkIndex == -1)
-            {
-                Tooltip.gameObject.SetActive(false);
-                return;
-            }
-            var linkInfo = Text.textInfo.linkInfo[linkIndex];
-            string selectedLink = linkInfo.GetLinkID();
+            var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
             if (selectedLink == "") return;
             if (!selectedLink.Contains("player:")) return;
             if (eventData.button == PointerEventData.InputButton.Right)
                 ChatWindowUI.Instance.OpenPlayerContextMenu(eventData, selectedLink.Substring(7));
         }
 
-        private void ShowTooltip(string itemInstanceId)
+        private void ShowTooltip(string itemOrInstanceId)
         {
-            if (!ItemManager.Instance.ItemsByInstanceId.ContainsKey(itemInstanceId)) return;
-            ItemInstance instance = ItemManager.Instance.ItemsByInstanceId[itemInstanceId];
-            Tooltip.SetItemInstance(instance);
-            var position = transform.position;
-            int horizontal = ScreenUtils.GetHorizontalWithMostSpace(position.x);
-            int vertical = ScreenUtils.GetVerticalWithMostSpace(position.y);
-            RectTransform thisRect = (RectTransform)transform;
-            var transform1 = Tooltip.transform;
-            RectTransform rect = (RectTransform)transform1;
-            var rect1 = thisRect.rect;
-            var rect2 = rect.rect;
-            transform1.position = new Vector3(
-                position.x + (horizontal * (rect1.width / 2 + (rect2.width / 2))),
-                position.y + (vertical * (rect1.height / 2 + (rect2.height / 2))),
-                0
-            );
-            Tooltip.gameObject.SetActive(true);
+            ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, itemOrInstanceId);
         }
     }
 }

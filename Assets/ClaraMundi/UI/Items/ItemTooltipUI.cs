@@ -8,7 +8,7 @@ namespace ClaraMundi
     public class ItemTooltipUI : MonoBehaviour
     {
         public ItemInstance ItemInstance { get; private set; }
-        Item Item;
+        public Item Item;
         public string NodeId;
         public Image ItemImage;
         public TextMeshProUGUI ItemName;
@@ -33,6 +33,18 @@ namespace ClaraMundi
             UpdateModifications();
             UpdateEquipped();
         }
+        public void SetItem(Item item)
+        {
+            ItemInstance = null;
+            Item = item;
+            ItemName.text = Item.Name;
+            ItemDescription.text = Item.Description;
+            ItemImage.sprite = Item.Icon;
+            EquippedStatus.gameObject.SetActive(false);
+            ItemDescription.transform.parent.gameObject.SetActive(ItemDescription.text != "");
+            UpdateModifications();
+            UpdateEquipped();
+        }
 
         public void UpdateEquipped()
         {
@@ -43,7 +55,7 @@ namespace ClaraMundi
             var equipped = equippedSlots.ContainsKey(Item.EquipmentSlot)
                 ? equippedSlots[Item.EquipmentSlot]
                 : "";
-            if (equipped == ItemInstance.ItemInstanceId) return;
+            if (ItemInstance != null && equipped == ItemInstance.ItemInstanceId) return;
             if (!string.IsNullOrEmpty(equipped))
                 ShowEquippedTooltip(equipped);
         }

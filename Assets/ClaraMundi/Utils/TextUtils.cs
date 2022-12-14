@@ -1,4 +1,6 @@
 using System;
+using TMPro;
+using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
@@ -17,6 +19,15 @@ namespace ClaraMundi
                 count++;
             }
             return newValue;
+        }
+
+        public static string GetLinkUnder(TextMeshProUGUI Text, PointerEventData eventData)
+        {
+            int linkIndex =
+                TMP_TextUtilities.FindIntersectingLink(Text, eventData.position, eventData.pressEventCamera);
+            if (linkIndex == -1) return "";
+            var linkInfo = Text.textInfo.linkInfo[linkIndex];
+            return linkInfo.GetLinkID();
         }
     }
 }

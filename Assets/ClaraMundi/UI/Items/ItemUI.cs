@@ -1,7 +1,6 @@
 ﻿using System;
 using FishNet.Object.Synchronizing;
 using TMPro;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -18,7 +17,6 @@ namespace ClaraMundi
         public event Action<ItemUI, PointerEventData> OnContextMenu;
         private string _entityId;
         public string StorageId = "inventory";
-        bool isHovering;
 
         ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
         public ItemInstance ItemInstance;
@@ -98,8 +96,6 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            // if (Tooltip != null && Tooltip.NodeId == NodeId)
-            //     Tooltip.gameObject.SetActive(false);
             OnContextMenu?.Invoke(this, null);
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
@@ -231,9 +227,9 @@ namespace ClaraMundi
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            isHovering = false;
             if (hasItem)
             {
+                // Assume the last item assigned to the tooltip was this item
                 Tooltip.gameObject.SetActive(false);
                 if (Tooltip.EquippedTooltip != null)
                     Tooltip.EquippedTooltip.gameObject.SetActive(false);
@@ -245,39 +241,10 @@ namespace ClaraMundi
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!hasItem) return;
-            isHovering = true;
             Background.enabled = true;
             Tooltip.NodeId = NodeId;
-            Tooltip.SetItemInstance(ItemInstance);
-            var position = transform.position;
-            int horizontal = ScreenUtils.GetHorizontalWithMostSpace(position.x);
-            int vertical = ScreenUtils.GetVerticalWithMostSpace(position.y);
-            var transform1 = Tooltip.transform;
-            RectTransform rect = (RectTransform)transform1;
-            var size = ActualSize((RectTransform)transform);
-            var rect2 = rect.rect;
-            var verticalOffset = size.y / 2;
-            if (vertical == -1)
-            {
-                verticalOffset = rect2.height - (size.y / 2);
-            }
-
-            transform1.position = new Vector3(
-                position.x + (horizontal * (size.x / 2 + (rect2.width / 2) + 8)),
-                position.y + verticalOffset,
-                0
-            );
-            if (Tooltip.EquippedTooltip != null)
-            {
-                var position1 = transform1.position;
-                Tooltip.EquippedTooltip.transform.position = new Vector3(
-                position1.x + (horizontal * 248),
-                    position1.y ,
-                0
-                );
-            }
-
-            Tooltip.gameObject.SetActive(true);
+            
+            ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, ItemInstance.ItemInstanceId);
         }
 
 
