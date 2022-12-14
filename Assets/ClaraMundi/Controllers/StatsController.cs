@@ -14,15 +14,17 @@ namespace ClaraMundi
         public event Action OnChange;
         public event Action OnEnergyChange;
         public Stats Stats = new();
-        [SyncVar(OnChange = "OnComputedChange")]
+        [SyncVar(OnChange = nameof(OnComputedChange))]
         public ComputedStats ComputedStats = new();
-
+        [SyncVar(OnChange = nameof(LevelChange))]
         public int Level = 1;
+        [SyncVar(OnChange = nameof(ExpChange))]
         public int Experience = 0;
+        [SyncVar(OnChange = nameof(ExpTilChange))]
         public int ExpTilNextLevel = 1000;
 
         public Stats BaseStats = new();
-        [SyncVar(OnChange="EnergyChanged")]
+        [SyncVar(OnChange=nameof(EnergyChanged))]
         public Energies Energies = new();
 
         public Attributes Attributes;
@@ -53,6 +55,21 @@ namespace ClaraMundi
         {
             base.OnStartServer();
             ComputeStats();
+        }
+
+        private void LevelChange(int previous, int next, bool asServer)
+        {
+            OnChange?.Invoke();
+        }
+
+        private void ExpChange(int previous, int next, bool asServer)
+        {
+            OnChange?.Invoke();
+        }
+
+        private void ExpTilChange(int previous, int next, bool asServer)
+        {
+            OnChange?.Invoke();
         }
 
         public void UpdateStatModification(StatValue value, bool add)
@@ -208,6 +225,7 @@ namespace ClaraMundi
         private void EnergyChanged(Energies previous, Energies next, bool asServer)
         {
             OnEnergyChange?.Invoke();
+            OnChange?.Invoke();
         }
 
         private void OnComputedChange(ComputedStats oldValue, ComputedStats newValue, bool asServer)

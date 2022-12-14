@@ -69,8 +69,6 @@ namespace ClaraMundi
             if (party.MemberIds.Count >= PartyMemberLimit) return false;
             if (!party.InvitedIds.Contains(playerId) || party.MemberIds.Contains(playerId)) return false;
             party.MemberIds.Add(playerId);
-            var player = GetPlayer(playerId);
-            player.Party.PartyInvites.Clear();
             CleanUpPendingPlayer(playerId);
             UpdateParty(party);
 
@@ -80,14 +78,13 @@ namespace ClaraMundi
         public bool ServerDecline(string playerId, string leaderPlayerId)
         {
             if (!PartiesByLeader.TryGetValue(leaderPlayerId, out var party)) return false;
-            if (party.InvitedIds.Contains(playerId))
-            {
-                party.InvitedIds.Remove(playerId);
-                GetPlayer(playerId).Party.PartyInvites.Remove(leaderPlayerId);
-                return true;
-            }
+            var player = GetPlayer(playerId);
+            if (player.Party.PartyInvites.Contains(leaderPlayerId))
+                player.Party.PartyInvites.Remove(leaderPlayerId);
+            if (!party.InvitedIds.Contains(playerId)) return false;
+            party.InvitedIds.Remove(playerId);
+            return true;
 
-            return false;
         }
 
 
@@ -144,10 +141,9 @@ namespace ClaraMundi
             var party = GetPlayerParty(message.SenderEntityId);
             if (party == null) return;
             foreach (string member in party.MemberIds)
-            {
                 PlayerManager.Instance.Players[member].Party.Server_OnChatMessage(message);
-            }
         }
+        
         void UpdateParty(Party party)
         {
             var newParty = new Party
@@ -160,12 +156,7 @@ namespace ClaraMundi
             };
             PartiesByLeader[party.LeaderId] = newParty;
             foreach (string member in party.MemberIds)
-            {
-                if (party.established)
-                    PlayerManager.Instance.Players[member].Party.Server_OnChange(newParty);
-                else
-                    PlayerManager.Instance.Players[member].Party.Server_OnChange(null);
-            }
+                PlayerManager.Instance.Players[member].Party.Server_OnChange(party.established ? newParty : null);
 
             if (party.established) return;
             CleanUpParty(party);
@@ -182,21 +173,17 @@ namespace ClaraMundi
         void CleanUpPendingPlayer(string playerId)
         {
             var clone = new Dictionary<string, Party>(PartiesByLeader);
+            var player = GetPlayer(playerId);
+            player.Party.PartyInvites.Clear();
             foreach (var kvp in clone)
             {
-                bool changed = false;
+                if (!kvp.Value.InvitedIds.Contains(playerId) && !kvp.Value.RequestedjoinerIds.Contains(playerId))
+                    continue;
                 if (kvp.Value.InvitedIds.Contains(playerId))
-                {
                     kvp.Value.InvitedIds.Remove(playerId);
-                    changed = true;
-                }
                 if (kvp.Value.RequestedjoinerIds.Contains(playerId))
-                {
                     kvp.Value.RequestedjoinerIds.Remove(playerId);
-                    changed = true;
-                }
-                if (changed)
-                    UpdateParty(kvp.Value);
+                UpdateParty(kvp.Value);
             }
         }
     }
