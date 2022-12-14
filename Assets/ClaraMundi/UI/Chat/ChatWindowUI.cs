@@ -177,13 +177,16 @@ namespace ClaraMundi
 
         private bool CanRequestJoin()
         {
+            if (PlayerManager.Instance.LocalPlayer.Party.Party != null) return false;
             return ContextualPlayer.Party.Party != null &&
-                   ContextualPlayer.Party.Party.LeaderId == ContextualPlayer.entityId
-                   && ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
+                   ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
         }
 
         private bool CanInvite()
         {
+            if (PlayerManager.Instance.LocalPlayer.Party.Party != null &&
+                PlayerManager.Instance.LocalPlayer.Party.Party.LeaderId != PlayerManager.Instance.LocalPlayer.entityId)
+                return false;
             return ContextualPlayer.Party.Party == null &&
                    ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
         }
@@ -199,7 +202,11 @@ namespace ClaraMundi
 
         public void RequestJoin()
         {
-            PlayerManager.Instance.LocalPlayer.Party.RequestJoin(ContextualPlayer.entityId);
+            // send the invite to the party leader
+            // this avoids some unnecessary chatter and additional UX
+            // that way the player can use their friend as a means into their party
+            // rather than looking up the leader for the party
+            PlayerManager.Instance.LocalPlayer.Party.RequestJoin(ContextualPlayer.Party.Party.LeaderId);
             ClosePlayerContextMenu();
         }
 
