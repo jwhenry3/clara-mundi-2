@@ -15,7 +15,7 @@ namespace ClaraMundi
         public string Title = "";
         [BoxGroup("Identity")]
         public string ShortDescription = "";
-        [FormerlySerializedAs("QuestStarter")] [BoxGroup("Identity")]
+        [BoxGroup("Identity")]
         public Dialogue Starter;
         [BoxGroup("Identity")]
         [Multiline(10)]

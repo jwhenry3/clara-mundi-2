@@ -13,6 +13,9 @@ namespace ClaraMundi
         [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncDictionary<string, ItemInstance> PrivateItems = new();
 
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
+        public readonly SyncList<string> HeldItemIds = new();
+
         [SyncObject] public readonly SyncDictionary<string, ItemInstance> PublicItems = new();
         
         public Entity OwnerEntity;
@@ -71,12 +74,12 @@ namespace ClaraMundi
             UpdateItemInstance(item);
         }
 
-        public ItemInstance GetItemInstance(string itemInstanceId)
+        public ItemInstance GetItemInstance(string itemInstanceId, bool mustNotBeEquipped = false)
         {
             PublicItems.TryGetValue(itemInstanceId ?? "", out var instance);
             if (instance == null)
                 PrivateItems.TryGetValue(itemInstanceId ?? "", out instance);
-            return instance;
+            return mustNotBeEquipped && instance is { IsEquipped: true } ? null : instance;
         }
 
         public ItemInstance AddItem(string itemId, int quantity, bool forceNewStack = false)
@@ -119,9 +122,9 @@ namespace ClaraMundi
             return PrivateItems.Count < Capacity;
         }
 
-        public ItemInstance GetInstanceByItemId(string itemId)
+        public ItemInstance GetInstanceByItemId(string itemId, bool mustNotBeEquipped = false)
         {
-            return (from kvp in GetVisibleItems() where kvp.Value.ItemId == itemId select kvp.Value).FirstOrDefault();
+            return (from kvp in GetVisibleItems() where kvp.Value.ItemId == itemId &&(!mustNotBeEquipped || !kvp.Value.IsEquipped) select kvp.Value).FirstOrDefault();
         }
 
         public bool CanDrop(string itemId, int quantity)
@@ -129,27 +132,27 @@ namespace ClaraMundi
             var item = ItemRepo.GetItem(itemId);
             if (item == null) return false;
             if (!item.Droppable) return false;
-            return !HasQuantity(itemId, quantity);
+            return !HasQuantity(itemId, quantity, true);
         }
 
         public bool CanTrade(string itemId)
         {
             var item = ItemRepo.GetItem(itemId);
             if (item == null || item.Untradeable) return false;
-            return GetInstanceByItemId(itemId) != null;
+            return GetInstanceByItemId(itemId, true) != null;
         }
 
         public bool CanTradeInstance(string itemInstanceId)
         {
-            var instance = GetItemInstance(itemInstanceId);
+            var instance = GetItemInstance(itemInstanceId, true);
             if (instance == null) return false;
             var item = ItemRepo.GetItem(instance.ItemId);
             return item != null && !item.Untradeable;
         }
 
-        public bool HasQuantity(string itemId, int quantity)
+        public bool HasQuantity(string itemId, int quantity, bool mustNotBeEquipped = false)
         {
-            return quantity <= QuantityOf(itemId);
+            return quantity <= QuantityOf(itemId, mustNotBeEquipped);
         }
 
         public SyncDictionary<string, ItemInstance> GetVisibleItems()
@@ -158,10 +161,11 @@ namespace ClaraMundi
                 return PublicItems;
             return PrivateItems;
         }
-        public int QuantityOf(string itemId)
+        public int QuantityOf(string itemId, bool mustNotBeEquipped = false)
         {
             return GetVisibleItems().Aggregate(0, (acc, element) =>
             {
+                if (element.Value.IsEquipped && mustNotBeEquipped) return acc;
                 if (element.Value.ItemId == itemId) return acc + element.Value.Quantity;
                 return acc;
             });
@@ -170,12 +174,12 @@ namespace ClaraMundi
         public bool RemoveItemInstance(string itemInstanceId, int quantity, bool allowPullingFromOthers = false)
         {
             if (!IsServer) return false;
-            var instance = GetItemInstance(itemInstanceId);
+            var instance = GetItemInstance(itemInstanceId, true);
             if (instance == null)
                 return false;
             if (!allowPullingFromOthers && instance.Quantity < quantity)
                 return false;
-            if (allowPullingFromOthers && !HasQuantity(instance.ItemId, quantity))
+            if (allowPullingFromOthers && !HasQuantity(instance.ItemId, quantity, true))
                 return false;
             if (instance.Quantity <= quantity)
                 return RemoveInstance(instance, quantity);
@@ -187,8 +191,9 @@ namespace ClaraMundi
         public bool RemoveItem(string itemId, int quantity, bool validated = false)
         {
             if (!IsServer) return false;
-            var instance = GetInstanceByItemId(itemId);
-            if (!validated && !HasQuantity(instance.ItemId, quantity)) return false;
+            var instance = GetInstanceByItemId(itemId, true);
+            
+            if (!validated && !HasQuantity(instance.ItemId, quantity, true)) return false;
             if (instance == null) return false;
             if (instance.Quantity <= quantity)
                 return RemoveInstance(instance, quantity);
@@ -225,6 +230,8 @@ namespace ClaraMundi
                 StorageId = StorageId,
                 IsEquipped = instance.IsEquipped
             };
+            if (!HeldItemIds.Contains(instance.ItemId))
+                HeldItemIds.Add(instance.ItemId);
             if (isPublicStorage || instance.IsEquipped || isPublic)
                 PublicItems[instance.ItemInstanceId] = PrivateItems[instance.ItemInstanceId];
             else if (PublicItems.ContainsKey(instance.ItemInstanceId))
@@ -234,6 +241,9 @@ namespace ClaraMundi
             if (PublicItems.ContainsKey(instance.ItemInstanceId))
                 PublicItems.Remove(instance.ItemInstanceId);
             PrivateItems.Remove(instance.ItemInstanceId);
+            
+            if (HeldItemIds.Contains(instance.ItemId))
+                HeldItemIds.Remove(instance.ItemId);
             ItemManager.Instance.ItemsByInstanceId.Remove(instance.ItemInstanceId);
         }
     }
