@@ -10,6 +10,8 @@ namespace ClaraMundi
         public event Action<string> NameChange;
         [SyncVar(OnChange = "OnNameChange")]
         public string entityName = "";
+
+        public EntityType EntityType = new();
         [SyncVar]
         public string entityId;
 

@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e41b4bd8a44a678e454b04ff754a6e, type: 3}
+  m_Name: FirstQuest
+  m_EditorClassIdentifier: 
+  QuestId: b614e6ce-a8c0-41a7-a5b3-2ba162f55f85
+  Title: My First Quest
+  ShortDescription: You need to help Farmer Ted collect undesirables
+  starter: {fileID: 11400000, guid: 14f1d20743277e348aada239cd6dbfb6, type: 2}
+  Lore: There once was a man from nantucket...
+  Requirement:
+    RequiredLevel: 1
+    PrecedingQuests: []
+    RequiredItemsHeld: []
+  Tasks:
+  - QuestTaskId: 6e38cc09-0b4f-4b45-8ffa-40667ca08b05
+    Type: 0
+    GatherItem: {fileID: 11400000, guid: 5020c0ca8d31e554897b8805ac003359, type: 2}
+    ItemQuantity: 3
+    Dialogue: {fileID: 0}
+    DispatchEntityType: {fileID: 0}
+    DispatchQuantity: 1
+  Rewards:
+  - Item: {fileID: 11400000, guid: 902cc9ac15525ba47bf7d994a34cffdc, type: 2}
+    Quantity: 1
+    Chance: 1
+  CurrencyReward: 0
