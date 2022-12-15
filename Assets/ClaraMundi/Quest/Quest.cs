@@ -34,11 +34,52 @@ namespace ClaraMundi
         // Immediate quests that follow this quest
         public List<Quest> NextQuests => RepoManager.Instance.QuestRepo.GetOrCreateNextQuestList(QuestId);
 
+        public readonly Dictionary<string, List<QuestTask>> ItemTasksByItemId = new();
+        public readonly Dictionary<string, List<QuestTask>> ItemTasksByDialogueId = new();
+        public readonly Dictionary<string, List<QuestTask>> DialogueTasksByDialogueId = new();
+        public readonly Dictionary<string, List<QuestTask>> DispatchTasksByEntityTypeId = new();
 
         public void OnEnable()
         {
             if (Starter != null)
                 Starter.AssociatedQuestId = QuestId;
+            UpdateTaskList();
+        }
+        private void UpdateTaskList()
+        {
+            foreach (var task in Tasks)
+            {
+                task.QuestId = QuestId;
+                var list = ItemTasksByItemId;
+                var id = task.GatherItem.ItemId;
+                switch (task.Type)
+                {
+                    case QuestTaskType.Gather:
+                    {
+                        if (!ItemTasksByDialogueId.ContainsKey(task.GiveItemDialogue.DialogueId))
+                            ItemTasksByDialogueId[task.GiveItemDialogue.DialogueId] = new();
+                        ItemTasksByDialogueId[task.GiveItemDialogue.DialogueId].Add(task);
+                        break;
+                    }
+                    case QuestTaskType.Dialogue:
+                    {
+                        list = DialogueTasksByDialogueId;
+                        id = task.Dialogue.DialogueId;
+                        break;
+                    }
+                    case QuestTaskType.Dispatch:
+                    {
+                        list = DispatchTasksByEntityTypeId;
+                        id = task.DispatchEntityType.EntityTypeId;
+                        break;
+                    }
+                    default:
+                        continue;
+                }
+                if (!list.ContainsKey(id))
+                    list[id] = new();
+                list[id].Add(task);
+            }
         }
     }
 }

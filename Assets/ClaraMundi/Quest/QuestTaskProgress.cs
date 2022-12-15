@@ -17,9 +17,11 @@ namespace ClaraMundi
         // as it pertains to the task details
         // IE: items held is in memory, not persistent
         public bool IsVolatile;
-        // for a task that requires 3 kills, track the value here and we can
+        
         // deem the task completed by checking the task requirement
-        public int QuantityComplete = 0;
-
+        public bool DialogueCompleted;
+        public int DispatchCount = 0;
+        public int ItemsHeld = 0;
+        public bool ItemsTurnedIn;
     }
 }
