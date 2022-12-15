@@ -10,6 +10,8 @@ namespace ClaraMundi
         public readonly SyncList<string> AcceptedQuests = new();
         [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnDialogueComplete))]
         public string LastCompletedDialogueId;
+        [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnEntityTypeDispatched))]
+        public string LastEntityTypeDispatched;
         public readonly SyncDictionary<string, CompletedQuest> QuestCompletions = new();
         public readonly SyncDictionary<string, QuestTaskProgress> TaskProgress = new();
 
@@ -65,6 +67,40 @@ namespace ClaraMundi
                 bool dialogueProgressed = CheckDialogueProgress(quest, next);
                 bool turnInProgressed = CheckItemTurnInProgress(quest, next);
                 if (dialogueProgressed || turnInProgressed)
+                    CheckQuestProgress(quest);
+            }
+        }
+
+        private void OnEntityTypeDispatched(string previous, string next, bool asServer)
+        {
+            if (!asServer) return;
+            if (next == null) return;
+            bool updated = false;
+            foreach (var questId in AcceptedQuests)
+            {
+                // do not track task progress for completed quests
+                if (QuestCompletions.ContainsKey(questId)) continue;
+                var quest = repo.Quests[questId];
+                if (!quest.DispatchTasksByEntityTypeId.ContainsKey(next)) continue;
+                foreach (var task in quest.DispatchTasksByEntityTypeId[next])
+                {
+                    var previousProgress =
+                        TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
+                    // set up the current dispatch count
+                    int count = Math.Min(previousProgress != null ? previousProgress.DispatchCount + 1 : 1, task.DispatchQuantity);
+                    var progress = new QuestTaskProgress()
+                    {
+                        QuestId = task.QuestId,
+                        QuestTaskId = task.QuestTaskId,
+                        PlayerName = player.Entity.entityName,
+                        DispatchCount = count,
+                        IsComplete = count == task.DispatchQuantity
+                    };
+                    TaskProgress[task.QuestTaskId] = progress;
+                    if (previousProgress == null || previousProgress.IsComplete != progress.IsComplete)
+                        updated = true;
+                }
+                if (updated)
                     CheckQuestProgress(quest);
             }
         }
