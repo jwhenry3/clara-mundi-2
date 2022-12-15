@@ -44,7 +44,7 @@ namespace ClaraMundi
                         QuestId = task.QuestId,
                         QuestTaskId = task.QuestTaskId,
                         PlayerName = player.Entity.entityName,
-                        QuantityComplete = remaining > task.ItemQuantity ? task.ItemQuantity : remaining,
+                        ItemsHeld = remaining > task.ItemQuantity ? task.ItemQuantity : remaining,
                         IsVolatile = true
                     };
                     remaining = remaining - task.ItemQuantity;
