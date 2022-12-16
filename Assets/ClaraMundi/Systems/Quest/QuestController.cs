@@ -27,7 +27,11 @@ namespace ClaraMundi
         {
             base.OnStartServer();
             foreach (var quest in StartingQuests)
+            {
                 AcceptedQuests.Add(quest.QuestId);
+                UpdateItemProgressFor(quest.QuestId);
+            }
+
             player.Inventory.ItemStorage.PrivateItems.OnChange += OnItemChange;
         }
 
@@ -38,19 +42,32 @@ namespace ClaraMundi
                 player.Inventory.ItemStorage.PrivateItems.OnChange -= OnItemChange;
         }
 
+        private void UpdateItemProgressFor(string questId)
+        {
+            if (!AcceptedQuests.Contains(questId)) return;
+            var quest = repo.Quests[questId];
+            List<Item> items = new();
+            foreach (var task in quest.Tasks)
+            {
+                if (task.Type != QuestTaskType.Gather) continue;
+                if (task.GatherItem != null && !items.Contains(task.GatherItem))
+                    items.Add(task.GatherItem);
+            }
+
+            foreach (var item in items)
+                UpdateItemTasksFor(quest, item);
+        }
+        
         private void OnItemChange(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
         {
             if (!asServer) return;
             if (itemInstance == null) return;
-            Debug.Log("Update Quests!");
             foreach (var questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
                 var quest = repo.Quests[questId];
-                Debug.Log("Quest Found!");
                 if (!quest.ItemTasksByItemId.ContainsKey(itemInstance.ItemId)) continue;
-                Debug.Log("Update Quest: " + quest.Title);
                 if (UpdateItemTasksFor(quest, itemInstance))
                     CheckQuestProgress(quest);
             }
@@ -193,7 +210,6 @@ namespace ClaraMundi
                 var previousProgress =
                     TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
                 if (previousProgress != null && (previousProgress.IsComplete || previousProgress.ItemsTurnedIn)) continue;
-                Debug.Log("Update Progress: " + task.ShortDescription);
                 var progress = new QuestTaskProgress()
                 {
                     QuestId = task.QuestId,
