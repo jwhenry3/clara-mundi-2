@@ -39,37 +39,25 @@
     <Analyzer Include="D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatAttachmentUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatMessageUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyController.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\PlayerFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\GameManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityTypeRepo.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyJoinRequestUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestListItemUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTaskUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatMessageUI.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ShadowManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\LootItem.cs" />
      <Compile Include="Assets\YAFUI\Scripts\Dialogue_YesNoCancle.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\OwningEntityHolder.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\OpenURLButton.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Tabs.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTask.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
      <Compile Include="Assets\Backend\Entities\PlayerEntity.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\Dialogue.cs" />
@@ -81,6 +69,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\Player.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\RegisterForm.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatValue.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuItem.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\RoundModifier.cs" />
@@ -94,8 +83,10 @@
      <Compile Include="Assets\ClaraMundi\Systems\Alert\Alert.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemStorage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\RepoManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
      <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
@@ -113,6 +104,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatController.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\EmptySprite.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\UIAnimator.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyJoinRequestUI.cs" />
      <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
      <Compile Include="Assets\Backend\Entities\CharacterEntity.cs" />
@@ -122,12 +114,15 @@
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\AttributeValue.cs" />
      <Compile Include="Assets\ClaraMundi\UI\UIManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTaskUI.cs" />
      <Compile Include="Assets\Backend\Entities\ItemEntity.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ItemTooltipUtils.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityType.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Types.cs" />
@@ -146,6 +141,7 @@
      <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\Item.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
@@ -156,15 +152,19 @@
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Attribute.cs" />
      <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\Server.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatAttachmentUI.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\EmailLoginFacet.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\CustomPremadeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\LoginForm.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestListItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -1049,10 +1049,6 @@
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Assets\ClaraMundi\Systems\Attributes\UI\Bars\Health.prefab" />
-    <Content Include="Assets\ClaraMundi\Systems\Attributes\UI\Bars\Health.prefab.meta" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
