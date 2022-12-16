@@ -15,16 +15,20 @@ MonoBehaviour:
   QuestId: b614e6ce-a8c0-41a7-a5b3-2ba162f55f85
   Title: My First Quest
   ShortDescription: You need to help Farmer Ted collect undesirables
-  starter: {fileID: 11400000, guid: 14f1d20743277e348aada239cd6dbfb6, type: 2}
+  Starter: {fileID: 0}
   Lore: There once was a man from nantucket...
   Requirement:
     RequiredLevel: 1
     PrecedingQuests: []
     RequiredItemsHeld: []
   Tasks:
-  - QuestTaskId: 6e38cc09-0b4f-4b45-8ffa-40667ca08b05
+  - QuestId: b614e6ce-a8c0-41a7-a5b3-2ba162f55f85
+    QuestTaskId: 6e38cc09-0b4f-4b45-8ffa-40667ca08b05
     Type: 0
+    ShortDescription: Gather 3 <color=#84f><link="item:potion">Potions</link></color>
+    LongDescription: 
     GatherItem: {fileID: 11400000, guid: 5020c0ca8d31e554897b8805ac003359, type: 2}
+    GiveItemDialogue: {fileID: 11400000, guid: 1d2bb13cd10c2ca429f443e2d25b7146, type: 2}
     ItemQuantity: 3
     Dialogue: {fileID: 0}
     DispatchEntityType: {fileID: 0}

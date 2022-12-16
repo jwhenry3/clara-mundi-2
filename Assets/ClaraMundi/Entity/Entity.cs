@@ -11,7 +11,7 @@ namespace ClaraMundi
         [SyncVar(OnChange = "OnNameChange")]
         public string entityName = "";
 
-        public EntityType EntityType = new();
+        public EntityType EntityType;
         [SyncVar]
         public string entityId;
 

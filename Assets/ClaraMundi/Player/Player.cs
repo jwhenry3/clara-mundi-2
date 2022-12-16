@@ -23,6 +23,8 @@ namespace ClaraMundi
         public ChatController Chat { get; protected set;  }
         [HideInInspector]
         public PartyController Party { get; protected set;  }
+        [HideInInspector]
+        public QuestController Quests { get; protected set;  }
 
 
         private NetworkManager networkManager;
@@ -37,6 +39,7 @@ namespace ClaraMundi
             Alerts = GetComponentInChildren<AlertController>();
             Chat = GetComponentInChildren<ChatController>();
             Party = GetComponentInChildren<PartyController>();
+            Quests = GetComponentInChildren<QuestController>();
             Entity.OnStarted += OnNetStarted;
 
         }

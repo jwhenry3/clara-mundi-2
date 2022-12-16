@@ -2,55 +2,55 @@
 using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object.Synchronizing;
+using UnityEngine;
 
 namespace ClaraMundi
 {
     public class QuestController : PlayerController
     {
-        public readonly SyncList<string> AcceptedQuests = new();
         [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnDialogueComplete))]
         public string LastCompletedDialogueId;
         [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnEntityTypeDispatched))]
         public string LastEntityTypeDispatched;
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
+        public readonly SyncList<string> AcceptedQuests = new();
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncDictionary<string, CompletedQuest> QuestCompletions = new();
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncDictionary<string, QuestTaskProgress> TaskProgress = new();
 
         private QuestRepo repo => RepoManager.Instance.QuestRepo;
         private ItemRepo itemRepo => RepoManager.Instance.ItemRepo;
         public List<Quest> StartingQuests = new();
 
-        protected override void Awake()
-        {
-            base.Awake();
-            player.Inventory.ItemStorage.PrivateItems.OnChange += OnItemChange;
-            // Listen for changes to inventory and events in the game that should trigger task progress changes
-        }
-
         public override void OnStartServer()
         {
             base.OnStartServer();
             foreach (var quest in StartingQuests)
-            {
-                AcceptQuest(quest.QuestId);
-            }
+                AcceptedQuests.Add(quest.QuestId);
+            player.Inventory.ItemStorage.PrivateItems.OnChange += OnItemChange;
         }
 
         private void OnDestroy()
         {
             // destroy the listening
-            player.Inventory.ItemStorage.PrivateItems.OnChange -= OnItemChange;
+            if (IsServer)
+                player.Inventory.ItemStorage.PrivateItems.OnChange -= OnItemChange;
         }
 
         private void OnItemChange(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
         {
             if (!asServer) return;
+            if (itemInstance == null) return;
+            Debug.Log("Update Quests!");
             foreach (var questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
                 var quest = repo.Quests[questId];
+                Debug.Log("Quest Found!");
                 if (!quest.ItemTasksByItemId.ContainsKey(itemInstance.ItemId)) continue;
-
+                Debug.Log("Update Quest: " + quest.Title);
                 if (UpdateItemTasksFor(quest, itemInstance))
                     CheckQuestProgress(quest);
             }
@@ -75,34 +75,42 @@ namespace ClaraMundi
         {
             if (!asServer) return;
             if (next == null) return;
-            bool updated = false;
             foreach (var questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
                 var quest = repo.Quests[questId];
-                if (!quest.DispatchTasksByEntityTypeId.ContainsKey(next)) continue;
-                foreach (var task in quest.DispatchTasksByEntityTypeId[next])
-                {
-                    var previousProgress =
-                        TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
-                    // set up the current dispatch count
-                    int count = Math.Min(previousProgress != null ? previousProgress.DispatchCount + 1 : 1, task.DispatchQuantity);
-                    var progress = new QuestTaskProgress()
-                    {
-                        QuestId = task.QuestId,
-                        QuestTaskId = task.QuestTaskId,
-                        PlayerName = player.Entity.entityName,
-                        DispatchCount = count,
-                        IsComplete = count == task.DispatchQuantity
-                    };
-                    TaskProgress[task.QuestTaskId] = progress;
-                    if (previousProgress == null || previousProgress.IsComplete != progress.IsComplete)
-                        updated = true;
-                }
-                if (updated)
+                if (CheckDispatchProgress(quest, next))
                     CheckQuestProgress(quest);
             }
+        }
+
+        private bool CheckDispatchProgress(Quest quest, string entityTypeId)
+        {
+            if (!quest.DispatchTasksByEntityTypeId.ContainsKey(entityTypeId)) return false;
+            bool updated = false;
+            foreach (var task in quest.DispatchTasksByEntityTypeId[entityTypeId])
+            {
+                var previousProgress =
+                    TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
+                // do not process complete tasks
+                if (previousProgress is { IsComplete: true }) return false;
+                // set up the current dispatch count
+                int count = Math.Min(previousProgress != null ? previousProgress.DispatchCount + 1 : 1, task.DispatchQuantity);
+                var progress = new QuestTaskProgress()
+                {
+                    QuestId = task.QuestId,
+                    QuestTaskId = task.QuestTaskId,
+                    PlayerName = player.Entity.entityName,
+                    DispatchCount = count,
+                    IsComplete = count == task.DispatchQuantity
+                };
+                TaskProgress[task.QuestTaskId] = progress;
+                if (previousProgress == null || previousProgress.IsComplete != progress.IsComplete)
+                    updated = true;
+            }
+
+            return updated;
         }
 
         private bool CheckItemTurnInProgress(Quest quest, string dialogueId)
@@ -185,6 +193,7 @@ namespace ClaraMundi
                 var previousProgress =
                     TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
                 if (previousProgress != null && (previousProgress.IsComplete || previousProgress.ItemsTurnedIn)) continue;
+                Debug.Log("Update Progress: " + task.ShortDescription);
                 var progress = new QuestTaskProgress()
                 {
                     QuestId = task.QuestId,

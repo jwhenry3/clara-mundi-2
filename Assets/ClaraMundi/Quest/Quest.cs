@@ -34,12 +34,12 @@ namespace ClaraMundi
         // Immediate quests that follow this quest
         public List<Quest> NextQuests => RepoManager.Instance.QuestRepo.GetOrCreateNextQuestList(QuestId);
 
-        public readonly Dictionary<string, List<QuestTask>> ItemTasksByItemId = new();
-        public readonly Dictionary<string, List<QuestTask>> ItemTasksByDialogueId = new();
-        public readonly Dictionary<string, List<QuestTask>> DialogueTasksByDialogueId = new();
-        public readonly Dictionary<string, List<QuestTask>> DispatchTasksByEntityTypeId = new();
+        public Dictionary<string, List<QuestTask>> ItemTasksByItemId = new();
+        public Dictionary<string, List<QuestTask>> ItemTasksByDialogueId = new();
+        public Dictionary<string, List<QuestTask>> DialogueTasksByDialogueId = new();
+        public Dictionary<string, List<QuestTask>> DispatchTasksByEntityTypeId = new();
 
-        public void OnEnable()
+        public void Initialize()
         {
             if (Starter != null)
                 Starter.AssociatedQuestId = QuestId;
@@ -47,6 +47,7 @@ namespace ClaraMundi
         }
         private void UpdateTaskList()
         {
+            if (Tasks == null) return;
             foreach (var task in Tasks)
             {
                 task.QuestId = QuestId;
@@ -56,6 +57,7 @@ namespace ClaraMundi
                 {
                     case QuestTaskType.Gather:
                     {
+                        if (task.GiveItemDialogue == null) continue;
                         if (!ItemTasksByDialogueId.ContainsKey(task.GiveItemDialogue.DialogueId))
                             ItemTasksByDialogueId[task.GiveItemDialogue.DialogueId] = new();
                         ItemTasksByDialogueId[task.GiveItemDialogue.DialogueId].Add(task);
@@ -63,12 +65,14 @@ namespace ClaraMundi
                     }
                     case QuestTaskType.Dialogue:
                     {
+                        if (task.Dialogue == null) continue;
                         list = DialogueTasksByDialogueId;
                         id = task.Dialogue.DialogueId;
                         break;
                     }
                     case QuestTaskType.Dispatch:
                     {
+                        if (task.DispatchEntityType == null) continue;
                         list = DispatchTasksByEntityTypeId;
                         id = task.DispatchEntityType.EntityTypeId;
                         break;

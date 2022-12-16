@@ -6,6 +6,8 @@ namespace ClaraMundi
     {
         public ItemRepo ItemRepo;
         public QuestRepo QuestRepo;
+        public DialogueRepo DialogueRepo;
+        public EntityTypeRepo EntityTypeRepo;
         public static RepoManager Instance;
 
         private void Awake()

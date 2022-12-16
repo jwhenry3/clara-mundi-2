@@ -97,8 +97,9 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
   lastMessage:
+    MessageId: b8eabf30-9866-40ae-b199-58fb973b649b
     Type: 0
-    ChannelType: 8
+    Channel: Say
     SenderEntityId: 
     SenderPosition: {x: 0, y: 0, z: 0}
     ToEntityId: 
@@ -264,17 +265,18 @@ MonoBehaviour:
   PlayerName: 
   Name: Whisper
   ChannelScope: 1
-  ChannelType: 0
   LastPublicMessage:
+    MessageId: e7be1283-7902-4c70-9772-8139d1ea401d
     Type: 0
-    ChannelType: 8
+    Channel: Say
     SenderEntityId: 
     SenderPosition: {x: 0, y: 0, z: 0}
     ToEntityId: 
     Message: 
   LastPrivateMessage:
+    MessageId: 38b3a354-8258-41de-80c4-669fe89fca91
     Type: 0
-    ChannelType: 8
+    Channel: Say
     SenderEntityId: 
     SenderPosition: {x: 0, y: 0, z: 0}
     ToEntityId: 
@@ -360,6 +362,7 @@ Transform:
   - {fileID: 378666721921704503}
   - {fileID: 378666722592074588}
   - {fileID: 378666722372250761}
+  - {fileID: 474163639039137907}
   m_Father: {fileID: 378666723463143087}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -506,6 +509,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   entityName: Player
+  EntityType: {fileID: 11400000, guid: 5ec5b3c1aa938ee42b704b2ac5de57cb, type: 2}
   entityId: ab31d362-9e36-42d7-a624-866017dc1643
 --- !u!114 &378666723463143089
 MonoBehaviour:
@@ -556,3 +560,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientId: 0
+--- !u!1 &4746264309211576557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 474163639039137907}
+  - component: {fileID: 5954349119136247432}
+  m_Layer: 0
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &474163639039137907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746264309211576557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 378666722718353515}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5954349119136247432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746264309211576557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 929a599dbe904349b6d37d0a319dba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 0}
+  player: {fileID: 0}
+  LastCompletedDialogueId: 
+  LastEntityTypeDispatched: 
+  StartingQuests:
+  - {fileID: 11400000, guid: b22dda6b47614464f95a37c33e67c5d3, type: 2}
