@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace ClaraMundi.Quests
         public Quest Quest
         {
             get => _quest;
-            set => ChangeQuest(value);
+            set => SetQuest(value);
         }
         private Quest _quest;
 
@@ -29,6 +30,8 @@ namespace ClaraMundi.Quests
         [BoxGroup("UI Elements")]
         public GameObject CurrencyRewardContainer;
         [BoxGroup("UI Elements")]
+        public TextMeshProUGUI QuestLevel;
+        [BoxGroup("UI Elements")]
         public TextMeshProUGUI QuestName;
         [BoxGroup("UI Elements")]
         public TextMeshProUGUI ShortDescription;
@@ -36,6 +39,12 @@ namespace ClaraMundi.Quests
         public TextMeshProUGUI CurrencyAmount;
         [BoxGroup("UI Elements")]
         public TextMeshProUGUI Lore;
+
+        public override void Start()
+        {
+            base.Start();
+            gameObject.SetActive(_quest != null);
+        }
 
         protected override void OnPlayerChange(Player _player)
         {
@@ -46,9 +55,10 @@ namespace ClaraMundi.Quests
             base.OnPlayerChange(_player);
             if (player == null) return;
             // register listeners
+            SetQuest(_quest);
         }
 
-        private void ChangeQuest(Quest quest)
+        private void SetQuest(Quest quest)
         {
             foreach (Transform child in RewardsContainer)
             {
@@ -64,9 +74,10 @@ namespace ClaraMundi.Quests
                     Destroy(child.gameObject);
             }
             _quest = quest;
-
+            gameObject.SetActive(_quest != null);
             if (player == null) return;
             if (quest == null) return;
+            QuestLevel.text = "LV " + quest.Requirement.RequiredLevel;
             QuestName.text = quest.Title;
             ShortDescription.text = quest.ShortDescription;
             Lore.text = quest.Lore;
