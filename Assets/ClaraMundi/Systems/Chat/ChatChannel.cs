@@ -65,6 +65,7 @@ namespace ClaraMundi
         private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
         {
             if (asServer) return;
+            if (lastMessage.MessageId == nextMessage.MessageId) return;
             if (ChannelScope == ChannelScope.Local)
             {
                 if (PlayerManager.Instance.LocalPlayer == null) return;
@@ -72,6 +73,8 @@ namespace ClaraMundi
                     ChatManager.ReceivedMessage(nextMessage);
                 return;
             }
+
+            if (Player != null && nextMessage.SenderEntityId == Player.Entity.entityId) return;
             if (ChannelScope == ChannelScope.Private && (bool)Player) {
                 nextMessage.ToEntityId = Player.Entity.entityId;
             }

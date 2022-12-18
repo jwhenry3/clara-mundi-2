@@ -8,7 +8,7 @@ namespace ClaraMundi
     public class EquipmentUI : PlayerUI, IPointerDownHandler
     {
         OwningEntityHolder owner = new();
-        public ItemTooltipUI ItemTooltipUI;
+        public ItemTooltipUI ItemTooltipUI => TooltipHandler.Instance.ItemTooltipUI;
         public GameObject ContextMenu;
         public ItemUI ItemNodePrefab;
         [HideInInspector]
@@ -88,7 +88,6 @@ namespace ClaraMundi
             instance.ShowEquippedStatus = false;
             instance.ItemInstance = ItemManager.Instance.ItemsByInstanceId[itemInstanceId];
             instance.SetOwner(owner);
-            instance.Tooltip = ItemTooltipUI;
             instance.Initialize();
             instance.OnDoubleClick += OnUnequip;
             instance.OnContextMenu += OnContextMenu;

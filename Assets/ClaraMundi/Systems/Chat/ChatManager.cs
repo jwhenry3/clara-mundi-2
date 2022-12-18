@@ -9,6 +9,7 @@ namespace ClaraMundi
         public static event Action<ChatMessage> Messages;
         public readonly Dictionary<string, ChatChannel> Channels = new();
         public static ChatManager Instance;
+        public ChatConfiguration ChatConfiguration;
 
         private void Awake()
         {

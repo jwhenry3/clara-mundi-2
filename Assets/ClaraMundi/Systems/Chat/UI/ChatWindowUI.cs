@@ -6,11 +6,10 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-
     public class ChatWindowUI : MonoBehaviour
     {
         public static ChatWindowUI Instance;
-        public ItemTooltipUI Tooltip;
+        public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public Transform ChatMessageContainer;
         public Transform AttachmentsContainer;
         public ChatAttachmentUI AttachmentPrefab;
@@ -57,13 +56,13 @@ namespace ClaraMundi
             foreach (Transform child in SystemContainer)
                 Destroy(child.gameObject);
         }
+
         private void OnMessage(ChatMessage message)
         {
             if (ChatMessageContainer == null) return;
             ClearOutOfBounds();
-            
+
             var instance = Instantiate(ChatMessagePrefab);
-            instance.Tooltip = Tooltip;
             instance.SetChatMessage(message);
             instance.transform.SetParent(ChatMessageContainer);
             if (ChatMessageContainer.childCount > 100)
@@ -77,9 +76,8 @@ namespace ClaraMundi
                 ChatMessageType.System => SystemContainer,
                 _ => SocialContainer
             };
-            
+
             instance = Instantiate(ChatMessagePrefab);
-            instance.Tooltip = Tooltip;
             instance.SetChatMessage(message);
             instance.transform.SetParent(container);
             if (container.childCount > 100)
@@ -101,10 +99,12 @@ namespace ClaraMundi
             if (MessageAttachments.ContainsKey("item:" + itemInstance.ItemInstanceId))
                 return;
             Item item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
-            string itemLink = $"<nobr><color=#88aaff><link=\"item:{itemInstance.ItemInstanceId}\">{item.Name}</link></color></nobr>";
+            string itemLink =
+                $"<nobr><color=#88aaff><link=\"item:{itemInstance.ItemInstanceId}\">{item.Name}</link></color></nobr>";
             MessageAttachments.Add("item:" + itemInstance.ItemInstanceId, itemLink);
             UpdateAttachmentList();
         }
+
         public void RemoveAttachment(string key)
         {
             if (MessageAttachments.ContainsKey(key))
@@ -125,11 +125,11 @@ namespace ClaraMundi
                 else
                     kept.Add(instance.Key);
             }
+
             foreach (var kvp in MessageAttachments)
             {
                 if (kept.Contains(kvp.Key)) continue;
                 ChatAttachmentUI instance = Instantiate(AttachmentPrefab, AttachmentsContainer, true);
-                instance.Tooltip = Tooltip;
                 instance.SetValue(kvp.Key, kvp.Value);
             }
         }
@@ -150,8 +150,10 @@ namespace ClaraMundi
                         additionalText += kvp.Value;
                         count++;
                     }
+
                     additionalText += "]";
                 }
+
                 string channelName = channel;
                 string toEntityId = "";
                 if (channel == "Whisper")
@@ -162,12 +164,12 @@ namespace ClaraMundi
                         toEntityId = player.entityId;
                     }
                 }
-                
+
                 ChatManager.SendChatMessage(channelName, new ChatMessage
                 {
                     SenderEntityId = PlayerManager.Instance.LocalPlayer.entityId,
                     Type = ChatMessageType.Chat,
-                    Channel =  channel,
+                    Channel = channel,
                     Message = InputField.text + additionalText,
                     ToEntityId = toEntityId,
                 });
@@ -192,7 +194,7 @@ namespace ClaraMundi
             return ContextualPlayer.Party.Party == null &&
                    ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
         }
-        
+
         public void OpenPlayerContextMenu(PointerEventData eventData, string playerEntityId)
         {
             if (!PlayerManager.Instance.Players.TryGetValue(playerEntityId, out ContextualPlayer)) return;
@@ -224,6 +226,7 @@ namespace ClaraMundi
             SetWhisperChannel();
             ClosePlayerContextMenu();
         }
+
         public void ClosePlayerContextMenu()
         {
             ContextualPlayer = null;
@@ -235,7 +238,6 @@ namespace ClaraMundi
             ChannelText.text = channelName;
             channel = channelName;
             RecipientField.gameObject.SetActive(channelName == "Whisper");
-
         }
 
         public void SetSayChannel()
@@ -252,6 +254,7 @@ namespace ClaraMundi
         {
             SetChannel("Shout");
         }
+
         public void SetYellChannel()
         {
             SetChannel("Yell");
@@ -266,11 +269,12 @@ namespace ClaraMundi
         {
             SetChannel("LFG");
         }
+
         public void SetPartyChannel()
         {
             SetChannel("Party");
         }
-        
+
         public void OnTextChange()
         {
             if (!InputField.text.EndsWith("\n")) return;

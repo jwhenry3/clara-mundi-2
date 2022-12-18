@@ -1,51 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-    [Serializable]
-    public class ChatColor
-    {
-        public ChatMessageType MessageType;
-        public Color Color;
-    }
-    [Serializable]
-    public class ChannelColor
-    {
-        public string Channel;
-        public Color Color;
-        public string Format = "[sender]:";
-    }
     public class ChatMessageUI : MonoBehaviour, IPointerMoveHandler, IPointerDownHandler
     {
         public string NodeId = Guid.NewGuid().ToString();
         TextMeshProUGUI Text;
-        public ItemTooltipUI Tooltip;
+        public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public ChatMessage ChatMessage;
-        [ShowInInspector]
-        public ChatColor[] ChatColors;
-        [ShowInInspector]
-        public ChannelColor[] ChannelColors;
 
 
         string sender;
 
         string color;
 
-        readonly Dictionary<string, Color> ChannelTypeDict = new();
-        readonly Dictionary<ChatMessageType, Color> MessageTypeDict = new();
-
         private void Awake()
         {
             Text = GetComponent<TextMeshProUGUI>();
-            foreach (var c in ChannelColors)
-                ChannelTypeDict[c.Channel] = c.Color;
-            foreach (var c in ChatColors)
-                MessageTypeDict[c.MessageType] = c.Color;
         }
 
         private void OnDestroy()
@@ -64,27 +38,7 @@ namespace ClaraMundi
 
         private void UpdateColor()
         {
-            switch (ChatMessage.Type)
-            {
-                case ChatMessageType.Combat:
-                    color = "#" + ColorUtility.ToHtmlStringRGB(MessageTypeDict[ChatMessageType.Combat]);
-                    break;
-                case ChatMessageType.Emote:
-                    color = "#" + ColorUtility.ToHtmlStringRGB(MessageTypeDict[ChatMessageType.Emote]);
-                    break;
-                case ChatMessageType.System:
-                    color = "#" + ColorUtility.ToHtmlStringRGB(MessageTypeDict[ChatMessageType.System]);
-                    break;
-                default:
-                {
-                    if (ChannelTypeDict.ContainsKey(ChatMessage.Channel))
-                        color = "#" + ColorUtility.ToHtmlStringRGB(ChannelTypeDict[ChatMessage.Channel]);
-                    else
-                        color = "#ffffff";
-
-                    break;
-                }
-            }
+            color = ChatManager.Instance.ChatConfiguration.GetColor(ChatMessage.Type, ChatMessage.Channel);
         }
 
         private void UpdateSenderStyle()

@@ -25,7 +25,8 @@ namespace ClaraMundi.Quests
         {
             if (player != null)
             {
-                foreach (var kvp in AddedItems)
+                var addedItems = new Dictionary<string, QuestListItemUI>(AddedItems);
+                foreach (var kvp in addedItems)
                     RemoveQuestById(kvp.Key);
                 player.Quests.AcceptedQuests.OnChange -= OnQuestUpdates;
             }
@@ -74,6 +75,9 @@ namespace ClaraMundi.Quests
         public override void OnDestroy()
         {
             base.OnDestroy();
+            var addedItems = new Dictionary<string, QuestListItemUI>(AddedItems);
+            foreach (var kvp in addedItems)
+                RemoveQuestById(kvp.Key);
         }
     }
 }

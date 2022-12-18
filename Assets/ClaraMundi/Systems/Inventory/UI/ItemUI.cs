@@ -11,7 +11,7 @@ namespace ClaraMundi
     {
         public string NodeId = Guid.NewGuid().ToString();
         public OwningEntityHolder owner;
-        public ItemTooltipUI Tooltip;
+        public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public event Action EntityChange;
         public event Action<ItemUI> OnDoubleClick;
         public event Action<ItemUI, PointerEventData> OnContextMenu;

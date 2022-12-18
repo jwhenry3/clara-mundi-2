@@ -1,18 +1,14 @@
-﻿using System;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 namespace ClaraMundi
 {
     public class InventoryUI : PlayerUI, IPointerDownHandler
     {
         readonly OwningEntityHolder owner = new();
-        public ItemTooltipUI ItemTooltipUI;
         public ContextMenu ContextMenu;
         public ItemUI ItemNodePrefab;
-        [HideInInspector]
+        [HideInInspector] 
         public ItemUI ContextualItem;
 
         public Transform Equipment;
@@ -61,7 +57,6 @@ namespace ClaraMundi
                 instance.ShowEquippedStatus = true;
                 instance.ItemInstance = itemInstance;
                 instance.SetOwner(owner);
-                instance.Tooltip = ItemTooltipUI;
                 instance.Initialize();
                 instance.OnDoubleClick += OnUseOrEquipItem;
                 instance.OnContextMenu += OnContextMenu;

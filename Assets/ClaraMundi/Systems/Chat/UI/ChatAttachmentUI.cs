@@ -10,7 +10,7 @@ namespace ClaraMundi
 
         public string NodeId = Guid.NewGuid().ToString();
         public string Key;
-        public ItemTooltipUI Tooltip;
+        public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public TextMeshProUGUI Text;
 
         public void Remove()
