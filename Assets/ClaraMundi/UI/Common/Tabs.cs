@@ -16,6 +16,7 @@ namespace ClaraMundi
     public class Tabs : MonoBehaviour
     {
         public bool canDeactivate;
+        public bool AllowMultiple;
         public List<TabData> List = new();
         private readonly Dictionary<string, TabData> TabsDict = new();
         
@@ -60,11 +61,15 @@ namespace ClaraMundi
 
         private void Activate(string tabName)
         {
-            foreach (var kvp in TabsDict)
+            if (!AllowMultiple)
             {
-                if (kvp.Key != tabName && kvp.Value.Button.IsActivated())
-                    Deactivate(kvp.Key);
+                foreach (var kvp in TabsDict)
+                {
+                    if (kvp.Key != tabName && kvp.Value.Button.IsActivated())
+                        Deactivate(kvp.Key);
+                }
             }
+
             TabsDict[tabName].Button.Activate();
             TabsDict[tabName].Content.Show();
         }

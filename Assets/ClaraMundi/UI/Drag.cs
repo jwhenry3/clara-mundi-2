@@ -12,6 +12,10 @@ namespace ClaraMundi
         public int GridUnit = 16;
 
         private Vector2 pointerOffset;
+        private bool isDragging;
+        private Transform target;
+        
+        private Vector2 lastMousePosition;
         private void Awake()
         {
             rect = GetComponent<RectTransform>();
@@ -19,16 +23,25 @@ namespace ClaraMundi
         }
         public void OnBeginDrag(PointerEventData eventData)
         {
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, eventData.position, eventData.pressEventCamera, out pointerOffset);
+            lastMousePosition = eventData.position;
+            // RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, eventData.position, eventData.pressEventCamera, out pointerOffset);
         }
         public void OnDrag(PointerEventData eventData)
         {
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, eventData.position, eventData.pressEventCamera, out var localPointerPosition))
-                rect.localPosition = localPointerPosition - pointerOffset;
+
+            Vector2 currentMousePosition = eventData.position;
+            Vector2 diff = currentMousePosition - lastMousePosition;
+
+            var position = rect.position;
+            Vector3 newPosition = position +  new Vector3(diff.x, diff.y, 0);
+            position = newPosition;
+            rect.position = position;
+            lastMousePosition = currentMousePosition;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            isDragging = false;
             var pos = rect.position;
             pos = new Vector3(
                 Mathf.Round(pos.x / GridUnit) * GridUnit,
