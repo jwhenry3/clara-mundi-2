@@ -21,7 +21,7 @@ namespace ClaraMundi.Quests
         
         public QuestTaskUI QuestTaskPrefab;
         public Transform QuestTaskContainer;
-        public bool ShowTasks;
+        public bool IsQuestTackerQuest = false;
         public bool ShowShortDescription;
         private Quest _quest;
 
@@ -32,9 +32,10 @@ namespace ClaraMundi.Quests
             QuestLevel.text = "LV " + value.Requirement.RequiredLevel;
             foreach (Transform child in QuestTaskContainer)
                 Destroy(child.gameObject);
-            QuestDescription.gameObject.SetActive(ShowShortDescription);
+            QuestDescription.gameObject.SetActive(IsQuestTackerQuest || ShowShortDescription);
             QuestDescription.text = value.ShortDescription;
-            if (!ShowTasks) return;
+            QuestTaskContainer.gameObject.SetActive(IsQuestTackerQuest && value.Tasks.Length > 0);
+            if (!IsQuestTackerQuest) return;
             foreach (var task in value.Tasks)
             {
                 var taskUI = Instantiate(QuestTaskPrefab, QuestTaskContainer, false);

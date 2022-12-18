@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace ClaraMundi
         [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncList<string> AcceptedQuests = new();
         [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
+        public readonly SyncList<string> TrackedQuests = new();
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncDictionary<string, CompletedQuest> QuestCompletions = new();
         [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncDictionary<string, QuestTaskProgress> TaskProgress = new();
@@ -22,6 +25,21 @@ namespace ClaraMundi
         private QuestRepo repo => RepoManager.Instance.QuestRepo;
         private ItemRepo itemRepo => RepoManager.Instance.ItemRepo;
         public List<Quest> StartingQuests = new();
+        
+        
+        [ServerRpc]
+        public void AcceptQuest(string questId) => ServerAcceptQuest(questId);
+        [ServerRpc]
+        public void AbandonQuest(string questId) => ServerAbandonQuest(questId);
+        [ServerRpc]
+        public void TrackQuest(string questId) => ServerTrackProgress(questId);
+        [ServerRpc]
+        public void UntrackQuest(string questId) => ServerUntrackQuest(questId);
+        
+        public QuestTaskProgress GetTaskProgress(string taskId) => TaskProgress.ContainsKey(taskId) ? TaskProgress[taskId] : null;
+
+        public CompletedQuest GetCompletion(string questId) =>
+            QuestCompletions.ContainsKey(questId) ? QuestCompletions[questId] : null;
 
         public override void OnStartServer()
         {
@@ -50,12 +68,10 @@ namespace ClaraMundi
             foreach (var task in quest.Tasks)
             {
                 if (task.Type != QuestTaskType.Gather) continue;
-                if (task.GatherItem != null && !items.Contains(task.GatherItem))
-                    items.Add(task.GatherItem);
+                if (task.GatherItem == null || items.Contains(task.GatherItem)) continue;
+                items.Add(task.GatherItem);
+                UpdateItemTasksFor(quest, task.GatherItem);
             }
-
-            foreach (var item in items)
-                UpdateItemTasksFor(quest, item);
         }
         
         private void OnItemChange(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
@@ -108,12 +124,11 @@ namespace ClaraMundi
             bool updated = false;
             foreach (var task in quest.DispatchTasksByEntityTypeId[entityTypeId])
             {
-                var previousProgress =
-                    TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
+                var previousProgress = GetTaskProgress(task.QuestTaskId);
                 // do not process complete tasks
                 if (previousProgress is { IsComplete: true }) return false;
                 // set up the current dispatch count
-                int count = Math.Min(previousProgress != null ? previousProgress.DispatchCount + 1 : 1, task.DispatchQuantity);
+                int count = Math.Min((previousProgress?.DispatchCount ?? 0) + 1, task.DispatchQuantity);
                 var progress = new QuestTaskProgress()
                 {
                     QuestId = task.QuestId,
@@ -194,10 +209,9 @@ namespace ClaraMundi
 
             return updated;
         }
-        private bool UpdateItemTasksFor(Quest quest, ItemInstance itemInstance)
-        {
-            return itemInstance != null && UpdateItemTasksFor(quest, itemRepo.GetItem(itemInstance.ItemId));
-        }
+        private bool UpdateItemTasksFor(Quest quest, ItemInstance itemInstance) => 
+            itemInstance != null && UpdateItemTasksFor(quest, itemRepo.GetItem(itemInstance.ItemId));
+        
 
         private bool UpdateItemTasksFor(Quest quest, Item item)
         {
@@ -207,9 +221,9 @@ namespace ClaraMundi
             bool changed = false;
             foreach (var task in quest.ItemTasksByItemId[item.ItemId])
             {
-                var previousProgress =
-                    TaskProgress.ContainsKey(task.QuestTaskId) ? TaskProgress[task.QuestTaskId] : null;
-                if (previousProgress != null && (previousProgress.IsComplete || previousProgress.ItemsTurnedIn)) continue;
+                var previousProgress = GetTaskProgress(task.QuestTaskId);
+                // task is already complete
+                if (previousProgress is { IsComplete: true }) continue;
                 var progress = new QuestTaskProgress()
                 {
                     QuestId = task.QuestId,
@@ -219,11 +233,12 @@ namespace ClaraMundi
                     IsVolatile = true
                 };
                 
-                remaining -= task.ItemQuantity;
                 TaskProgress[task.QuestTaskId] = progress;
+                changed = true;
+                
+                remaining -= task.ItemQuantity;
                 if (remaining <= 0)
                     remaining = 0;
-                changed = true;
             }
 
             return changed;
@@ -239,12 +254,8 @@ namespace ClaraMundi
             // avoid extra processing when we do not need it
             foreach (var task in quest.Tasks)
             {
-                // there is no progress for this task
-                if (!TaskProgress.ContainsKey(task.QuestTaskId)) return;
-                // the quest is not complete
-                if (!TaskProgress[task.QuestTaskId].IsComplete) return;
-                // the quest is complete
-                completed.Add(task.QuestTaskId);
+                if (GetTaskProgress(task.QuestTaskId) is {IsComplete: true})
+                    completed.Add(task.QuestTaskId);
             }
 
             if (completed.Count != quest.Tasks.Length) return;
@@ -264,24 +275,17 @@ namespace ClaraMundi
             // remove task progress since we no longer track it after a completion
             foreach (string id in completed)
                 TaskProgress.Remove(id);
-
+            ServerUntrackQuest(quest.QuestId);
         }
 
-        public bool HasRequiredItems(Quest quest)
-        {
-            return quest.Requirement.RequiredItemsHeld.All(requiredItem => player.Inventory.ItemStorage.HeldItemIds.Contains(requiredItem.ItemId));
-        }
+        public bool HasRequiredItems(Quest quest) =>
+            quest.Requirement.RequiredItemsHeld.All(requiredItem => player.Inventory.ItemStorage.HeldItemIds.Contains(requiredItem.ItemId));
 
-        public bool HasRequiredCompletions(Quest quest)
-        {
-            return quest.Requirement.PrecedingQuests.All(requiredQuestCompletion =>
-                QuestCompletions.ContainsKey(requiredQuestCompletion.QuestId));
-        }
+        public bool HasRequiredCompletions(Quest quest) =>
+            quest.Requirement.PrecedingQuests.All(requiredQuestCompletion => QuestCompletions.ContainsKey(requiredQuestCompletion.QuestId));
 
-        public bool IsRequiredLevel(Quest quest)
-        {
-            return player.Stats.Level >= quest.Requirement.RequiredLevel;
-        }
+        public bool IsRequiredLevel(Quest quest) => player.Stats.Level >= quest.Requirement.RequiredLevel;
+        
         public bool CanAcceptQuest(string questId)
         {
             if (!repo.Quests.ContainsKey(questId)) return false;
@@ -289,35 +293,41 @@ namespace ClaraMundi
             var quest = repo.Quests[questId];
             return IsRequiredLevel(quest) && HasRequiredCompletions(quest) && HasRequiredItems(quest);
         }
-        public void AcceptQuest(string questId)
+        
+        public void ServerAcceptQuest(string questId)
         {
+            if (!IsServer) return;
             if (!repo.Quests.ContainsKey(questId)) return;
             if (AcceptedQuests.Contains(questId)) return;
-            var quest = repo.Quests[questId];
-            // report the level is not met
-            if (player.Stats.Level < quest.Requirement.RequiredLevel) return;
-            
-            if (quest.Requirement.PrecedingQuests.Any(requiredQuestCompletion => !QuestCompletions.ContainsKey(requiredQuestCompletion.QuestId)))
-                return;
-            if (quest.Requirement.RequiredItemsHeld.Any(requiredItem => player.Inventory.ItemStorage.GetInstanceByItemId(requiredItem.ItemId) == null))
-                return;
+            if (!CanAcceptQuest(questId)) return;
             // requirements are met, accept the quest
             AcceptedQuests.Add(questId);
-            
+            ServerTrackProgress(questId);
         }
 
-        public void AbandonQuest(string questId)
+        public void ServerAbandonQuest(string questId)
         {
             if (!AcceptedQuests.Contains(questId)) return;
             var quest = repo.Quests[questId];
             foreach (var task in quest.Tasks)
-            {
-                if (TaskProgress.ContainsKey(task.QuestTaskId))
                     TaskProgress.Remove(task.QuestTaskId);
-            }
 
             AcceptedQuests.Remove(questId);
+            ServerUntrackQuest(questId);
         }
 
+        public void ServerTrackProgress(string questId)
+        {
+            if (!AcceptedQuests.Contains(questId)) return;
+            if (QuestCompletions.ContainsKey(questId)) return;
+            if (!TrackedQuests.Contains(questId))
+                TrackedQuests.Add(questId);
+        }
+
+        public void ServerUntrackQuest(string questId)
+        {
+            TrackedQuests.Remove(questId);
+        }
+        
     }
 }
