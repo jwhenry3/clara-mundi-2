@@ -38,26 +38,6 @@ namespace ClaraMundi.Quests
         {
             if (asServer) return;
             LoadTrackedQuests();
-            return;
-            switch (op)
-            {
-                case SyncListOperation.Add:
-                    AddTrackedQuest(next);
-                    break;
-                case SyncListOperation.Set when !string.IsNullOrEmpty(previous):
-                    RemoveTrackedQuest(previous);
-                    break;
-                case SyncListOperation.Set when !string.IsNullOrEmpty(next):
-                case SyncListOperation.Insert when !string.IsNullOrEmpty(next):
-                    AddTrackedQuestAtIndex(index, next);
-                    break;
-                case SyncListOperation.RemoveAt:
-                    RemoveTrackedQuest(previous);
-                    break;
-                case SyncListOperation.Clear:
-                    ClearTrackedQuests();
-                    break;
-            }
         }
 
         private void LoadTrackedQuests()

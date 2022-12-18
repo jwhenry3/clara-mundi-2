@@ -34,7 +34,9 @@ namespace ClaraMundi
             instance.IsEquipped = true;
             if (storage != null)
                 storage.UpdateItemInstance(instance);
-
+            player.Stats.UpdateStatModifications(item.StatModifications, true);
+            player.Stats.UpdateAttributeModifications(item.AttributeModifications, true);
+            player.Stats.ComputeStats();
             return true;
         }
 
@@ -52,6 +54,9 @@ namespace ClaraMundi
                 equippedItemStorage.UpdateItemInstance(instance);
             EquippedItems[item.EquipmentSlot] = null;
 
+            player.Stats.UpdateStatModifications(item.StatModifications, false);
+            player.Stats.UpdateAttributeModifications(item.AttributeModifications, false);
+            player.Stats.ComputeStats();
             return true;
         }
 

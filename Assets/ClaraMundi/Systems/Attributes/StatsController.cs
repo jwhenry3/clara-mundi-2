@@ -72,6 +72,22 @@ namespace ClaraMundi
             OnChange?.Invoke();
         }
 
+        public void UpdateStatModifications(StatValue[] values, bool add)
+        {
+            foreach (var mod in values)
+            {
+                if (add) AddStatModification(mod);
+                if (!add) RemoveStatModification(mod);
+            }
+        }
+        public void UpdateAttributeModifications(AttributeValue[] values, bool add)
+        {
+            foreach (var mod in values)
+            {
+                if (add) AddAttributeModification(mod);
+                if (!add) RemoveAttributeModification(mod);
+            }
+        }
         public void UpdateStatModification(StatValue value, bool add)
         {
             if (add) AddStatModification(value);
@@ -119,7 +135,6 @@ namespace ClaraMundi
                 }
             }
             ModifiedStats[type] = newValue;
-            ComputeStats();
         }
 
         public void AddAttributeModification(AttributeValue value)
@@ -130,7 +145,6 @@ namespace ClaraMundi
             if (AttributeModifications[value.Type].Contains(value)) return;
             AttributeModifications[value.Type].Add(value);
             CalculateAttributeModificationsOf(value.Type);
-            ComputeStats();
         }
 
         public void RemoveAttributeModification(AttributeValue value)
@@ -162,7 +176,7 @@ namespace ClaraMundi
             Attributes.Modifications[type] = newValue;
         }
 
-        private void ComputeStats()
+        public void ComputeStats()
         {
             if (!IsServer) return;
             Stats = new Stats
