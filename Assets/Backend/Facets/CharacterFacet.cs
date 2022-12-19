@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using Unisave.Entities;
+﻿using System;
+using System.Collections.Generic;
 using Unisave.Facades;
 using Unisave.Facets;
-using UnityEngine.TextCore.Text;
 
 namespace Backend.App
 {
@@ -15,14 +14,26 @@ namespace Backend.App
             return DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account.TargetId == account.EntityId).Get();
         }
 
-        public CharacterEntity GetAuthorizedCharacter(string serverToken, string accountId, string token, string characterId)
+        public CharacterEntity ServerCharacterJoiningGameServer(string serverToken, string accountId, string token, string characterId)
         {
             var account = DB.Find<AccountEntity>(accountId);
             if (account == null) return null;
             if (account.token != token) return null;
             var character = DB.Find<CharacterEntity>(characterId);
+            if (character == null) return null;
+            // the character is connecting to the server
+            character.LastConnected = DateTime.UtcNow;
+            character.Save();
             // empty mapping indicates nothing was added
             return character;
+        }
+
+        public void ServerCharacterLeavingGameServer(string serverToken,  string characterId)
+        {
+            var character = DB.Find<CharacterEntity>(characterId);
+            if (character == null) return;
+            character.LastDisconnected = DateTime.UtcNow;
+            character.Save();
         }
 
         public bool CreateCharacter(string characterName, string gender, string race)
@@ -48,6 +59,8 @@ namespace Backend.App
             if (account == null) return false;
             var existing = DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name.ToLower() == characterName.ToLower()).First();
             if (existing.Account.TargetId != account.EntityId) return false;
+            // cannot delete the character when he has not disconnected from the game
+            if (existing.LastDisconnected < existing.LastConnected) return false;
             existing.Delete();
             // remove all attached data
             DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == existing.EntityId)).Get().ForEach((i) => i.Delete());
