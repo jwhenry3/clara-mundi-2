@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ClaraMundi
 {
@@ -17,11 +18,13 @@ namespace ClaraMundi
     {
         public bool canDeactivate;
         public bool AllowMultiple;
+        private MoveToFront MoveToFront;
         public List<TabData> List = new();
         private readonly Dictionary<string, TabData> TabsDict = new();
-        
+        private bool inCurrentWindow;
         public void Awake()
         {
+            MoveToFront = GetComponentInParent<MoveToFront>();
             foreach (var data in List)
             {
                 if (TabsDict.ContainsKey(data.Label)) continue;
@@ -43,6 +46,10 @@ namespace ClaraMundi
 
         public void ChangeTab(string tabName)
         {
+            if (MoveToFront != null)
+                MoveToFront.Move();
+            // we are changing UI visibility, so close menus
+            ContextMenuHandler.Instance.CloseAll();
             if (!TabsDict.ContainsKey(tabName)) return;
             if (TabsDict[tabName].Button.IsActivated())
             {
@@ -72,6 +79,9 @@ namespace ClaraMundi
 
             TabsDict[tabName].Button.Activate();
             TabsDict[tabName].Content.Show();
+            var contentMove = TabsDict[tabName].Content.GetComponentInParent<MoveToFront>();
+            if (contentMove != null)
+                contentMove.Move();
         }
 
         public bool IsTabActive(string tabName) => TabsDict[tabName].Button.IsActivated();

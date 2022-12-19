@@ -35,6 +35,32 @@ namespace ClaraMundi
                 instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
                 Options.Add(item.Label, instance);
             }
+            SelectFirstElement();
+        }
+
+        private void OnEnable()
+        {
+            SelectFirstElement();
+        }
+
+        public void SelectFirstElement()
+        {
+            foreach (ContextMenuItem child in GetComponentsInChildren<ContextMenuItem>())
+            {
+                if (!child.gameObject.activeSelf) continue;
+                EventSystem.current.SetSelectedGameObject(child.gameObject);
+                break;
+            }
+        }
+
+        public void OnDisable()
+        {
+            foreach (Transform child in transform)
+            {
+                var autoFocus = child.GetComponent <AutoFocus>();
+                if (autoFocus != null)
+                    autoFocus.enabled = false;
+            }
         }
 
         public void SetItemActive(string itemName, bool value)

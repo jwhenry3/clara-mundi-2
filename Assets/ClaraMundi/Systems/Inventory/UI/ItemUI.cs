@@ -7,14 +7,15 @@ using UnityEngine.UI;
 
 namespace ClaraMundi
 {
-    public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+    [RequireComponent(typeof(InteractableOnlyWhenFocused))]
+    public class ItemUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        public string NodeId = Guid.NewGuid().ToString();
+        public string NodeId;
         public OwningEntityHolder owner;
         public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public event Action EntityChange;
         public event Action<ItemUI> OnDoubleClick;
-        public event Action<ItemUI, PointerEventData> OnContextMenu;
+        public ContextMenu ContextMenu => ContextMenuHandler.Instance.ItemMenu;
         private string _entityId;
         public string StorageId = "inventory";
 
@@ -28,6 +29,8 @@ namespace ClaraMundi
         public TextMeshProUGUI Quantity;
         public Image Icon;
 
+        private Button Button;
+        private MoveToFront MoveToFront;
         public string ItemInstanceId;
         private Image Background;
         private float checkTick;
@@ -38,6 +41,7 @@ namespace ClaraMundi
 
         public bool updateQueued;
 
+        BaseEventData m_BaseEvent;
 
         private ItemStorage GetItemStorage()
         {
@@ -51,6 +55,9 @@ namespace ClaraMundi
 
         private void Awake()
         {
+            NodeId = Guid.NewGuid().ToString();
+            Button = GetComponent<Button>();
+            MoveToFront = GetComponentInParent<MoveToFront>();
             Background = GetComponent<Image>();
             ItemManager.ItemChange += OnInstanceUpdate;
             if (_entityId != null)
@@ -96,18 +103,13 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            OnContextMenu?.Invoke(this, null);
+            if (ContextMenuHandler.Instance.ContextualItem == this)
+                CloseContextMenu();
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
             {
                 foreach (var d in OnDoubleClick.GetInvocationList())
                     OnDoubleClick -= (Action<ItemUI>)d;
-            }
-
-            if (OnContextMenu != null)
-            {
-                foreach (var d in OnContextMenu.GetInvocationList())
-                    OnContextMenu -= (Action<ItemUI, PointerEventData>)d;
             }
 
             if (owner != null)
@@ -127,10 +129,12 @@ namespace ClaraMundi
                 UpdateItem();
                 updateQueued = false;
             }
-
             if (EquippedStatus != null)
                 EquippedStatus.SetActive(ShowEquippedStatus && ItemInstance is { IsEquipped: true });
-
+            if (EventSystem.current.currentSelectedGameObject == gameObject)
+                ShowTooltip();
+            else
+                HideTooltip();
             if (ItemStorage != null) return;
             checkTimer += Time.deltaTime;
             if (!(checkTimer > 1)) return;
@@ -225,44 +229,74 @@ namespace ClaraMundi
             ChatWindowUI.Instance.AddItemLink(ItemInstance);
         }
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            if (hasItem)
-            {
-                // Assume the last item assigned to the tooltip was this item
-                Tooltip.gameObject.SetActive(false);
-                if (Tooltip.EquippedTooltip != null)
-                    Tooltip.EquippedTooltip.gameObject.SetActive(false);
-            }
-
-            Background.enabled = false;
-        }
-
-        public void OnPointerEnter(PointerEventData eventData)
+        public void ShowTooltip()
         {
             if (!hasItem) return;
-            Background.enabled = true;
-            Tooltip.NodeId = NodeId;
-            
+            if (Tooltip.NodeId == NodeId) return;
             ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, ItemInstance.ItemInstanceId);
+            Tooltip.NodeId = NodeId;
+        }
+
+        public void HideTooltip()
+        {
+            if (Tooltip.NodeId != NodeId) return;
+            // Assume the last item assigned to the tooltip was this item
+            Tooltip.gameObject.SetActive(false);
+            Tooltip.NodeId = null;
+            if (Tooltip.EquippedTooltip != null)
+                Tooltip.EquippedTooltip.gameObject.SetActive(false);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (!Button.interactable) return;
             if (!hasItem) return;
             if (eventData.button == PointerEventData.InputButton.Right)
-            {
-                OnContextMenu?.Invoke(this, eventData);
-            }
+                OpenContextMenu();
             else
             {
                 if (doubleClickTimer == 0)
                     doubleClickTimer = 0.5f;
                 else
-                {
                     OnDoubleClick?.Invoke(this);
-                }
             }
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!Button.interactable) return;
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
+                EventSystem.current.SetSelectedGameObject(gameObject);
+        }
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            if (!Button.interactable) return;
+            if (EventSystem.current.currentSelectedGameObject == gameObject)
+                EventSystem.current.SetSelectedGameObject(null);
+        }
+        
+        public void OpenContextMenu()
+        {
+            if (MoveToFront != null)
+                MoveToFront.Move();
+            EventSystem.current.SetSelectedGameObject(null);
+            ContextMenuHandler.Instance.ContextualItem = this;
+            ContextMenu.SetItemActive("Drop", Item.Droppable && ShowEquippedStatus);
+            ContextMenu.SetItemActive("Use", Item.Type == ItemType.Consumable && ShowEquippedStatus);
+            var isEquipped = ItemInstance.IsEquipped;
+            ContextMenu.ChangeLabelOf("Equip", isEquipped? "Unequip" : "Equip");
+            ContextMenu.SetItemActive("Equip", Item.Equippable);
+            ContextMenu.SetItemActive("Split", ItemInstance.Quantity > 1 && ShowEquippedStatus);
+            ContextMenu.gameObject.SetActive(true);
+            ContextMenu.transform.position = transform.position;
+            
+            ContextMenuHandler.Instance.ItemMenu.SelectFirstElement();
+        }
+        public void CloseContextMenu()
+        {
+            ContextMenuHandler.Instance.ContextualItem = null;
+            ContextMenu.gameObject.SetActive(false);
+            ContextMenu.transform.localPosition = new Vector2(0, 0);
         }
     }
 }

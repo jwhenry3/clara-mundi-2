@@ -12,14 +12,14 @@ namespace ClaraMundi
             if (!IsServer) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
-            if (instance.OwnerId != player.entityId) return false;
+            if (instance.CharacterId != player.entityId) return false;
             return ServerEquipInstance(instance);
         }
 
         private bool ServerEquipInstance(ItemInstance instance)
         {
             if (!IsServer) return false;
-            if (instance.OwnerId != player.entityId) return false;
+            if (instance.CharacterId != player.entityId) return false;
             Item item = RepoManager.Instance.ItemRepo.GetItem(instance.ItemId);
             if (item == null || !item.Equippable) return false;
             if (EquippedItems.ContainsKey(item.EquipmentSlot))
@@ -43,7 +43,7 @@ namespace ClaraMundi
         private bool ServerUnequipInstance(ItemInstance instance)
         {
             if (!IsServer) return false;
-            if (instance.OwnerId != player.entityId) return false;
+            if (instance.CharacterId != player.entityId) return false;
             Item item = RepoManager.Instance.ItemRepo.GetItem(instance.ItemId);
             if (item == null || !item.Equippable) return false;
             if (!EquippedItems.ContainsKey(item.EquipmentSlot)) return false;
@@ -66,7 +66,7 @@ namespace ClaraMundi
             if (string.IsNullOrEmpty(itemInstanceId)) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
-            if (instance.OwnerId != player.entityId) return false;
+            if (instance.CharacterId != player.entityId) return false;
             ServerUnequipInstance(instance);
             return true;
         }

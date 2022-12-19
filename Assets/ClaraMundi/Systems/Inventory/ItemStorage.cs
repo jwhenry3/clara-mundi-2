@@ -102,7 +102,7 @@ namespace ClaraMundi
 
             var newInstance = new ItemInstance
             {
-                OwnerId = OwnerEntity.entityId,
+                CharacterId = OwnerEntity.entityId,
                 ItemId = item.ItemId,
                 Quantity = quantity
             };
@@ -223,7 +223,7 @@ namespace ClaraMundi
             if (!IsServer) return;
             PrivateItems[instance.ItemInstanceId] = new ItemInstance
             {
-                OwnerId = OwnerEntity.entityId,
+                CharacterId = OwnerEntity.entityId,
                 ItemId = instance.ItemId,
                 ItemInstanceId = instance.ItemInstanceId,
                 Quantity = instance.Quantity,

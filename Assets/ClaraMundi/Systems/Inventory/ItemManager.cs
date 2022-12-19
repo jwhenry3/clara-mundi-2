@@ -65,9 +65,9 @@ namespace ClaraMundi
 
         public ItemStorage GetStorageForItemInstance(ItemInstance instance)
         {
-            if (!StorageByEntityAndId.ContainsKey(instance.OwnerId)) return null;
-            if (StorageByEntityAndId[instance.OwnerId].ContainsKey(instance.StorageId))
-                return StorageByEntityAndId[instance.OwnerId][instance.StorageId];
+            if (!StorageByEntityAndId.ContainsKey(instance.CharacterId)) return null;
+            if (StorageByEntityAndId[instance.CharacterId].ContainsKey(instance.StorageId))
+                return StorageByEntityAndId[instance.CharacterId][instance.StorageId];
             return null;
         }
         public ItemInstance GetItemByInstanceId(string itemInstanceId)

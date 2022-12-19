@@ -8,11 +8,7 @@ namespace ClaraMundi
     public class EquipmentUI : PlayerUI, IPointerDownHandler
     {
         OwningEntityHolder owner = new();
-        public ItemTooltipUI ItemTooltipUI => TooltipHandler.Instance.ItemTooltipUI;
-        public GameObject ContextMenu;
         public ItemUI ItemNodePrefab;
-        [HideInInspector]
-        public ItemUI ContextualItem;
 
         public Transform EquipmentContainer;
         public Transform RightHand;
@@ -90,7 +86,6 @@ namespace ClaraMundi
             instance.SetOwner(owner);
             instance.Initialize();
             instance.OnDoubleClick += OnUnequip;
-            instance.OnContextMenu += OnContextMenu;
         }
 
         protected override void OnPlayerChange(Player _player)
@@ -123,43 +118,30 @@ namespace ClaraMundi
 
         public void CloseContextMenu()
         {
-            ContextualItem = null;
-            ContextMenu.SetActive(false);
-            ContextMenu.transform.localPosition = new Vector2(0, 0);
+            ContextMenuHandler.Instance.ContextualItem = null;
+            ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (ContextualItem != null)
+            SelectFirstItem();
+            if (ContextMenuHandler.Instance.ContextualItem != null)
                 CloseContextMenu();
-        }
-        public void OnContextMenu(ItemUI item, PointerEventData eventData)
-        {
-            if (eventData == null)
-            {
-                if (ContextualItem == item)
-                    CloseContextMenu();
-                return;
-            }
-            ContextualItem = item;
-            ContextMenu.SetActive(true);
-            ContextMenu.transform.position = eventData.position;
         }
 
         public void OnUnequip(ItemUI item)
         {
             player.Inventory.UnequipItem(item.ItemInstance.ItemInstanceId);
+            SelectFirstItem();
             CloseContextMenu();
         }
-        public void UnequipItem()
+
+        public void SelectFirstItem()
         {
-            player.Inventory.UnequipItem(ContextualItem.ItemInstance.ItemInstanceId);
-            CloseContextMenu();
-        }
-        public void LinkToChat()
-        {
-            ContextualItem.LinkToChat();
-            CloseContextMenu();
+            var item = GetComponentInChildren<ItemUI>();
+            if (item != null)
+                EventSystem.current.SetSelectedGameObject(item.gameObject);
+                
         }
     }
 }

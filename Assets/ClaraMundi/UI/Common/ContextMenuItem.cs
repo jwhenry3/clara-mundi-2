@@ -14,17 +14,25 @@ namespace ClaraMundi
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Data.OnClick?.Invoke();
-            Background.SetActive(false);
+            Activate();
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
+            if (Background == null) return;
             Background.SetActive(true);
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
+            if (Background == null) return;
+            Background.SetActive(false);
+        }
+
+        public void Activate()
+        {
+            Data.OnClick?.Invoke();
+            if (Background == null) return;
             Background.SetActive(false);
         }
     }

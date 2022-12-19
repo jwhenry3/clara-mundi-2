@@ -6,7 +6,6 @@ namespace ClaraMundi
     public class InventoryUI : PlayerUI, IPointerDownHandler
     {
         readonly OwningEntityHolder owner = new();
-        public ContextMenu ContextMenu;
         public ItemUI ItemNodePrefab;
         [HideInInspector] 
         public ItemUI ContextualItem;
@@ -15,7 +14,6 @@ namespace ClaraMundi
         public Transform Consumables;
         public Transform General;
         public Transform QuestItems;
-
 
         private void Awake()
         {
@@ -32,6 +30,7 @@ namespace ClaraMundi
             CleanUp();
             Populate();
         }
+
         private void CleanUp()
         {
             foreach (Transform child in Equipment.transform)
@@ -53,33 +52,31 @@ namespace ClaraMundi
             {
                 var itemInstance = kvp.Value;
                 var item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
-                var instance = Instantiate(ItemNodePrefab);
+                var parent = General;
+                switch (item.Type)
+                {
+                    case ItemType.Armor:
+                    case ItemType.Weapon:
+                        parent = Equipment;
+                        break;
+                    case ItemType.Consumable:
+                        parent = Consumables;
+                        break;
+                    case ItemType.KeyItem:
+                        parent = QuestItems;
+                        break;
+                    case ItemType.Ingredient:
+                    case ItemType.Generic:
+                    default:
+                        parent = General;
+                        break;
+                }
+                var instance = Instantiate(ItemNodePrefab, parent, false);
                 instance.ShowEquippedStatus = true;
                 instance.ItemInstance = itemInstance;
                 instance.SetOwner(owner);
                 instance.Initialize();
                 instance.OnDoubleClick += OnUseOrEquipItem;
-                instance.OnContextMenu += OnContextMenu;
-                switch (item.Type)
-                {
-                    case ItemType.Armor:
-                    case ItemType.Weapon:
-                        instance.transform.SetParent(Equipment);
-                        break;
-                    case ItemType.Consumable:
-                        instance.transform.SetParent(Consumables);
-                        break;
-                    case ItemType.Ingredient:
-                    case ItemType.Generic:
-                        instance.transform.SetParent(General);
-                        break;
-                    case ItemType.KeyItem:
-                        instance.transform.SetParent(QuestItems);
-                        break;
-                    default:
-                        instance.transform.SetParent(General);
-                        break;
-                }
             }
         }
         protected override void OnPlayerChange(Player _player)
@@ -104,58 +101,46 @@ namespace ClaraMundi
                 default:
                     return;
             }
+            EventSystem.current.SetSelectedGameObject(GetComponentInChildren<AutoFocus>().gameObject);
         }
-        public void OnContextMenu(ItemUI item, PointerEventData eventData)
-        {
-            if (eventData == null)
-            {
-                if (ContextualItem == item)
-                    CloseContextMenu();
-                return;
-            }
-            ContextualItem = item;
-            ContextMenu.SetItemActive("Drop", item.Item.Droppable);
-            ContextMenu.SetItemActive("Use", item.Item.Type == ItemType.Consumable);
-            var isEquipped = ContextualItem.ItemInstance.IsEquipped;
-            ContextMenu.ChangeLabelOf("Equip", isEquipped? "Unequip" : "Equip");
-            ContextMenu.SetItemActive("Equip", item.Item.Equippable);
-            ContextMenu.SetItemActive("Split", ContextualItem.ItemInstance.Quantity > 1);
-            ContextMenu.gameObject.SetActive(true);
-            ContextMenu.transform.position = eventData.position;
-        }
+        
         public void CloseContextMenu()
         {
-            ContextualItem = null;
-            ContextMenu.gameObject.SetActive(false);
-            ContextMenu.transform.localPosition = new Vector2(0, 0);
+            ContextMenuHandler.Instance.ContextualItem = null;
+            ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (ContextualItem != null)
+            if (ContextMenuHandler.Instance.ContextualItem != null)
             {
+                EventSystem.current.SetSelectedGameObject(GetComponentInChildren<AutoFocus>().gameObject);
                 CloseContextMenu();
             }
         }
 
         public void DropItem()
         {
-            player.Inventory.DropItem(ContextualItem.ItemInstance.ItemInstanceId, 1);
+            player.Inventory.DropItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, 1);
+            EventSystem.current.SetSelectedGameObject(GetComponentInChildren<AutoFocus>().gameObject);
             CloseContextMenu();
         }
         public void EquipItem()
         {
-            player.Inventory.EquipItem(ContextualItem.ItemInstance.ItemInstanceId, true);
+            player.Inventory.EquipItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, true);
+            EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem.gameObject);
             CloseContextMenu();
         }
         public void UseItem()
         {
-            player.Inventory.UseItem(ContextualItem.ItemInstance.ItemInstanceId, 1);
+            player.Inventory.UseItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, 1);
+            EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem.gameObject);
             CloseContextMenu();
         }
         public void LinkToChat()
         {
-            ContextualItem.LinkToChat();
+            ContextMenuHandler.Instance.ContextualItem.LinkToChat();
+            EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem.gameObject);
             CloseContextMenu();
         }
 
