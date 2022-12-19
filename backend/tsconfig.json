@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@app/inventory": [
+        "libs/inventory/src"
+      ],
+      "@app/inventory/*": [
+        "libs/inventory/src/*"
+      ],
+      "@app/quests": [
+        "libs/quests/src"
+      ],
+      "@app/quests/*": [
+        "libs/quests/src/*"
+      ],
+      "@app/account": [
+        "libs/account/src"
+      ],
+      "@app/account/*": [
+        "libs/account/src/*"
+      ],
+      "@app/auth": [
+        "libs/auth/src"
+      ],
+      "@app/auth/*": [
+        "libs/auth/src/*"
+      ],
+      "@app/character": [
+        "libs/character/src"
+      ],
+      "@app/character/*": [
+        "libs/character/src/*"
+      ]
+    }
+  }
+}
