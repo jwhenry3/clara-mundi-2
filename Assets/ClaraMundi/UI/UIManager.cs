@@ -10,8 +10,7 @@ namespace ClaraMundi
 
         public UIAnimator InventoryAnimator;
         public RectTransform Backdrop;
-        public RectTransform WindowsContainer;
-        public List<MoveToFront> Windows;
+        public MoveToFront ActiveWindow;
 
         private void Awake()
         {
@@ -30,22 +29,12 @@ namespace ClaraMundi
             InventoryAnimator.Hide();
         }
 
-        private float updateTick = 0;
-
-        public void Update()
+        public void LateUpdate()
         {
-            updateTick += Time.deltaTime;
-            if (!(updateTick > 1)) return;
-            updateTick = 0;
             if (EventSystem.current.currentSelectedGameObject != null) return;
-            var last = Windows.Find((w) =>
-            {
-                if (w.Parent == null) return false;
-                return w.Parent.GetSiblingIndex() == WindowsContainer.childCount - 1;
-            });
-            if (last == null) return;
-            if (last.gameObject.activeInHierarchy)
-                last.SelectFirstInteractable();
+            if (ActiveWindow  == null) return;
+            if (ActiveWindow.gameObject.activeInHierarchy)
+                ActiveWindow.SelectFirstInteractable();
         }
     }
 }
