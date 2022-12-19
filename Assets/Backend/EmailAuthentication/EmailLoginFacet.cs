@@ -63,6 +63,9 @@ public class EmailLoginFacet : Facet
     {
         bool wasLoggedIn = Auth.Check();
 
+        AccountEntity account = Auth.GetPlayer<AccountEntity>();
+        account.token = "";
+        account.Save();
         Auth.Logout();
 
         return wasLoggedIn;
