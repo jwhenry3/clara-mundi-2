@@ -37,7 +37,7 @@ namespace ClaraMundi
         {
             base.OnStartServer();
             StorageId = StorageId ?? Guid.NewGuid().ToString();
-
+            
             ItemManager.Instance.RegisterStorage(this);
             for (int index = 0; index < StartingItems.Count; index++)
             {
@@ -221,7 +221,10 @@ namespace ClaraMundi
         public void UpdateItemInstance(ItemInstance instance, bool isPublic = false)
         {
             if (!IsServer) return;
-            PrivateItems[instance.ItemInstanceId] = new ItemInstance
+            var dictionary = PrivateItems;
+            if (isPublicStorage)
+                dictionary = PublicItems;
+            dictionary[instance.ItemInstanceId] = new ItemInstance
             {
                 CharacterId = OwnerEntity.entityId,
                 ItemId = instance.ItemId,
@@ -232,15 +235,9 @@ namespace ClaraMundi
             };
             if (!HeldItemIds.Contains(instance.ItemId))
                 HeldItemIds.Add(instance.ItemId);
-            if (isPublicStorage || instance.IsEquipped || isPublic)
-                PublicItems[instance.ItemInstanceId] = PrivateItems[instance.ItemInstanceId];
-            else if (PublicItems.ContainsKey(instance.ItemInstanceId))
-                PublicItems.Remove(instance.ItemInstanceId);
-            ItemManager.Instance.ItemsByInstanceId[instance.ItemInstanceId] = PrivateItems[instance.ItemInstanceId];
+            ItemManager.Instance.ItemsByInstanceId[instance.ItemInstanceId] = dictionary[instance.ItemInstanceId];
             if (instance.Quantity != 0) return;
-            if (PublicItems.ContainsKey(instance.ItemInstanceId))
-                PublicItems.Remove(instance.ItemInstanceId);
-            PrivateItems.Remove(instance.ItemInstanceId);
+            dictionary.Remove(instance.ItemInstanceId);
             
             if (HeldItemIds.Contains(instance.ItemId))
                 HeldItemIds.Remove(instance.ItemId);

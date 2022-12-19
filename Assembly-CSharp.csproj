@@ -39,12 +39,17 @@
     <Analyzer Include="D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Backend\Facets\AccountFacet.cs" />
+     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
+     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
+     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
+     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyController.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\AccountFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\GameManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityTypeRepo.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatMessageUI.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\FocusFirstChild.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ShadowManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
@@ -129,6 +134,7 @@
      <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\ContextMenuHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityType.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Types.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\PlayerConnection.cs" />
@@ -145,6 +151,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\InventoryController.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
@@ -153,6 +160,7 @@
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\Quest.cs" />
+     <Compile Include="Assets\ClaraMundi\UI\AutoFocus.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleResizeHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Attribute.cs" />
      <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
@@ -175,10 +183,6 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\AutoFocus.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\FocusFirstChild.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\ContextMenuHandler.cs" />
-     <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -921,6 +925,10 @@
       <Project>{6a017c06-df9b-ce7d-2e59-c851bcb7cd88}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.csproj">
+      <Project>{07279067-492e-ac4d-7e08-a40dc440fcd5}</Project>
+      <Name>Unity.InputSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{8985169b-5633-b501-b9f7-335c1615cd9e}</Project>
       <Name>Unity.Rider.Editor</Name>
@@ -1060,10 +1068,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{07279067-492e-ac4d-7e08-a40dc440fcd5}</Project>
-      <Name>Unity.InputSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
