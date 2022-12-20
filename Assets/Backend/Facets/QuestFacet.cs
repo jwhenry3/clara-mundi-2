@@ -12,9 +12,9 @@ namespace Backend.App
         public List<QuestCompletionEntity> GetQuestCompletions(string characterId)
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
-            if (account == null) return new();
+            if (account == null) return new List<QuestCompletionEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
-            if (character == null) return new();
+            if (character == null) return new List<QuestCompletionEntity>();
             if (character.Account.TargetId != account.EntityId) return new();
             return DB.TakeAll<QuestCompletionEntity>().Filter((entity => entity.Character.TargetId == characterId))
                 .Get();
@@ -23,9 +23,9 @@ namespace Backend.App
         public List<QuestTaskProgressEntity> GetTaskProgress(string characterId)
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
-            if (account == null) return new();
+            if (account == null) return new List<QuestTaskProgressEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
-            if (character == null) return new();
+            if (character == null) return new List<QuestTaskProgressEntity>();
             if (character.Account.TargetId != account.EntityId) return new();
             return DB.TakeAll<QuestTaskProgressEntity>().Filter((entity => entity.Character.TargetId == characterId))
                 .Get();

@@ -5,12 +5,12 @@ namespace ClaraMundi
 {
     public class PlayerRequiredUI : PlayerUI
     {
-        
+        public bool PlayerIsRequired;
 
         protected override void OnPlayerChange(Player _player)
         {
             base.OnPlayerChange(_player);
-            if (_player == null)
+            if (_player == null || !PlayerIsRequired)
                 HideAll();
             else
                 ShowAll();

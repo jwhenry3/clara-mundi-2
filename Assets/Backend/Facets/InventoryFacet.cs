@@ -11,7 +11,7 @@ namespace Backend.App
         public List<ItemEntity> GetItems(string characterId)
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
-            if (account == null) return new();
+            if (account == null) return new List<ItemEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
             if (character.Account.TargetId != account.EntityId) return new();
             return DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == characterId)).Get();

@@ -10,7 +10,7 @@ namespace Backend.App
         public List<CharacterEntity> GetCharacters()
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
-            if (account == null) return new();
+            if (account == null) return new List<CharacterEntity>();
             return DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account.TargetId == account.EntityId).Get();
         }
 

@@ -79,6 +79,7 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\PlayerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRequirement.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRecurrence.cs" />
+     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemManager.cs" />
      <Compile Include="Assets\Backend\Models\ItemInstanceModel.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImageModifier.cs" />
@@ -90,6 +91,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
      <Compile Include="Assets\Backend\Entities\QuestTaskProgressEntity.cs" />
+     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
      <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
@@ -102,6 +104,7 @@
      <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
+     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\ClampToScreen.cs" />
@@ -124,6 +127,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
+     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTrackerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ItemTooltipUtils.cs" />
@@ -179,10 +183,6 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
-     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
