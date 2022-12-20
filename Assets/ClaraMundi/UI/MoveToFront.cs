@@ -8,12 +8,14 @@ namespace ClaraMundi
     {
         public Transform MovingObject;
 
-        public Transform Parent;
+        Transform Parent;
+        Transform GrandParent;
         private InteractableOnlyWhenFocused firstInteractable;
 
         public void Awake()
         {
             Parent = transform.parent;
+            GrandParent = Parent.parent;
         }
 
         public void OnPointerDown(PointerEventData eventData) => Move();
@@ -23,7 +25,7 @@ namespace ClaraMundi
             MovingObject.SetAsLastSibling();
             SelectFirstInteractable();
             firstInteractable = GetComponentInChildren<InteractableOnlyWhenFocused>();
-            UIManager.Instance.ActiveWindow = this;
+            GameWindowHandler.Instance.ActiveWindow = this;
         }
 
         public void SelectFirstInteractable()
@@ -36,8 +38,8 @@ namespace ClaraMundi
 
         private void OnDisable()
         {
-            if (UIManager.Instance.ActiveWindow == this)
-                UIManager.Instance.ActiveWindow = null;
+            if (GameWindowHandler.Instance.ActiveWindow == this)
+                GameWindowHandler.Instance.ActiveWindow = null;
             MovingObject.SetAsFirstSibling();
         }
 
@@ -45,9 +47,15 @@ namespace ClaraMundi
         private void Update()
         {
             updateTick += Time.deltaTime;
+            if (GameWindowHandler.Instance.ActiveWindow == null)
+            {
+                if (Parent.GetSiblingIndex() ==GrandParent.childCount - 1)
+                    GameWindowHandler.Instance.ActiveWindow = this;
+            }
             if (!(updateTick > 5)) return;
             updateTick = 0;
             firstInteractable = GetComponentInChildren<InteractableOnlyWhenFocused>();
+            
         }
     }
 }

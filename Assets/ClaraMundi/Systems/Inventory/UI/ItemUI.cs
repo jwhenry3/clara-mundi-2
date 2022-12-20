@@ -101,10 +101,18 @@ namespace ClaraMundi
                 updateQueued = true;
         }
 
+        private void OnDisable()
+        {
+            if (ContextMenuHandler.Instance.ContextualItem == this)
+                CloseContextMenu();
+            HideTooltip();
+        }
+
         private void OnDestroy()
         {
             if (ContextMenuHandler.Instance.ContextualItem == this)
                 CloseContextMenu();
+            HideTooltip();
             ItemManager.ItemChange -= OnInstanceUpdate;
             if (OnDoubleClick != null)
             {

@@ -1,5 +1,5 @@
 {
-    "name": "DefaultInputActions",
+    "name": "PlayerInputActions",
     "maps": [
         {
             "name": "Player",
@@ -333,19 +333,37 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TrackedDevicePosition",
-                    "type": "PassThrough",
-                    "id": "24908448-c609-4bc3-a128-ea258674378a",
-                    "expectedControlType": "Vector3",
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "cba69e61-ddb3-4110-a667-04a65864a25d",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TrackedDeviceOrientation",
-                    "type": "PassThrough",
-                    "id": "9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be",
-                    "expectedControlType": "Quaternion",
+                    "name": "Journal",
+                    "type": "Button",
+                    "id": "3d9afb1f-58e5-4f1b-bc79-a54dc71c3249",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Equipment",
+                    "type": "Button",
+                    "id": "47711727-8d29-45db-9d04-f4f6d14eb74b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Chat",
+                    "type": "Button",
+                    "id": "411d87d5-a4c6-4f0c-aeea-2ae63be30c10",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -619,7 +637,7 @@
                 {
                     "name": "",
                     "id": "9e92bb26-7e3b-4ec4-b06b-3c8f8e498ddc",
-                    "path": "*/{Submit}",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
@@ -750,23 +768,45 @@
                 },
                 {
                     "name": "",
-                    "id": "7236c0d9-6ca3-47cf-a6ee-a97f5b59ea77",
-                    "path": "<XRController>/devicePosition",
+                    "id": "89e2f2e2-8b9f-4f6c-ab83-03887cb16fb6",
+                    "path": "<Keyboard>/i",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR",
-                    "action": "TrackedDevicePosition",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "23e01e3a-f935-4948-8d8b-9bcac77714fb",
-                    "path": "<XRController>/deviceRotation",
+                    "id": "b54e5113-7b88-4de9-9d0e-c8e2f70c4601",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
-                    "groups": "XR",
-                    "action": "TrackedDeviceOrientation",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Journal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2104bc7-e6d7-4c9e-8a3d-4c4e20e891ce",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Equipment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a354065f-3314-4938-8915-70f3f94a2226",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Chat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

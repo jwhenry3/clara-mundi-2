@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace ClaraMundi
 {
@@ -280,6 +281,43 @@ namespace ClaraMundi
             if (!InputField.text.EndsWith("\n")) return;
             InputField.text = InputField.text.Remove(InputField.text.Length - 1);
             SendChatMessage();
+        }
+
+        private void OnEnable()
+        {
+            InputManager.Instance.UI.FindAction("Chat").performed += OnChat;
+            InputManager.Instance.UI.FindAction("Cancel").performed += DeactivateChat;
+        }
+
+        private void OnDisable()
+        {
+            InputManager.Instance.UI.FindAction("Chat").performed -= OnChat;
+            InputManager.Instance.UI.FindAction("Cancel").performed -= DeactivateChat;
+        }
+
+        private void OnChat(InputAction.CallbackContext context)
+        {
+            if (!InputField.isFocused)
+                InputField.ActivateInputField();
+        }
+
+        private void DeactivateChat(InputAction.CallbackContext context)
+        {
+            if (!InputField.isFocused) return;
+            InputField.DeactivateInputField();
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        private void Update()
+        {
+            if (InputField.isFocused && !InputManager.Instance.InputsFocused.Contains("ChatMessage"))
+                InputManager.Instance.InputsFocused.Add("ChatMessage");
+            if (!InputField.isFocused && InputManager.Instance.InputsFocused.Contains("ChatMessage"))
+                InputManager.Instance.InputsFocused.Remove("ChatMessage");
+            if (RecipientField.isFocused && !InputManager.Instance.InputsFocused.Contains("Recipient"))
+                InputManager.Instance.InputsFocused.Add("Recipient");
+            if (!RecipientField.isFocused && InputManager.Instance.InputsFocused.Contains("Recipient"))
+                InputManager.Instance.InputsFocused.Remove("Recipient");
         }
     }
 }
