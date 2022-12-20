@@ -39,12 +39,8 @@
     <Analyzer Include="D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Backend\Facets\AccountFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
-     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyController.cs" />
+     <Compile Include="Assets\Backend\Facets\AccountFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\GameManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityTypeRepo.cs" />
@@ -183,6 +179,10 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
+     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
+     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
+     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
+     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
