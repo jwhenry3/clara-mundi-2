@@ -12,6 +12,7 @@ namespace ClaraMundi
         public LoginUI LoginUI;
         public RegisterUI RegisterUI;
         public CreateCharacterUI CreateCharacterUI;
+        public bool StartAtCharacterList;
 
         public static LobbyUI Instance;
 
@@ -22,7 +23,10 @@ namespace ClaraMundi
 
         private void OnEnable()
         {
-            ToLogin();
+            if (StartAtCharacterList)
+                ToCharacterSelection();
+            else
+                ToLogin();
         }
 
         public void ToLogin()
@@ -49,6 +53,7 @@ namespace ClaraMundi
             LoginRegisterPanel.gameObject.SetActive(false);
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
+            StartAtCharacterList = false;
         }
         public void ToCreateCharacter()
         {

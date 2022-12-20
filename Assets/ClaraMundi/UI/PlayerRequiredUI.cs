@@ -10,7 +10,7 @@ namespace ClaraMundi
         protected override void OnPlayerChange(Player _player)
         {
             base.OnPlayerChange(_player);
-            if (_player == null && PlayerIsRequired)
+            if ((_player == null && PlayerIsRequired) || (_player != null && !PlayerIsRequired))
                 HideAll();
             else
                 ShowAll();
