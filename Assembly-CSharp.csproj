@@ -71,6 +71,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\Player.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\RegisterForm.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatValue.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuItem.cs" />
@@ -97,6 +98,7 @@
      <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\AuthHolder.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\CreateCharacterUI.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTaskProgress.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
@@ -131,6 +133,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTrackerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ItemTooltipUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LoginUI.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
@@ -142,8 +145,9 @@
      <Compile Include="Assets\ClaraMundi\Systems\Entity\Entity.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatChannel.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ToggleTextStyle.cs" />
-     <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\RegisterUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\DialogueRepo.cs" />
+     <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
      <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
      <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
@@ -176,6 +180,7 @@
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestListItemUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\CharactersUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
@@ -184,11 +189,6 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\CreateCharacterUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\RegisterUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LoginUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\CharactersUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyUI.cs" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
