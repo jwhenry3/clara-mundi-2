@@ -15,8 +15,8 @@ namespace Backend.App
             if (account == null) return new List<QuestCompletionEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
             if (character == null) return new List<QuestCompletionEntity>();
-            if (character.Account.TargetId != account.EntityId) return new();
-            return DB.TakeAll<QuestCompletionEntity>().Filter((entity => entity.Character.TargetId == characterId))
+            if (character.Account.TargetId != account.EntityId) return new List<QuestCompletionEntity>();
+            return DB.TakeAll<QuestCompletionEntity>().Filter((entity => entity.Character == character))
                 .Get();
         }
 
@@ -26,8 +26,8 @@ namespace Backend.App
             if (account == null) return new List<QuestTaskProgressEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
             if (character == null) return new List<QuestTaskProgressEntity>();
-            if (character.Account.TargetId != account.EntityId) return new();
-            return DB.TakeAll<QuestTaskProgressEntity>().Filter((entity => entity.Character.TargetId == characterId))
+            if (character.Account.TargetId != account.EntityId) return new List<QuestTaskProgressEntity>();
+            return DB.TakeAll<QuestTaskProgressEntity>().Filter((entity => entity.Character == character))
                 .Get();
         }
 
@@ -36,7 +36,7 @@ namespace Backend.App
             var character = DB.Find<CharacterEntity>(characterId);
             if (character == null) return false;
             var completion = DB.TakeAll<QuestCompletionEntity>()
-                .Filter((entity => entity.Character.TargetId == characterId && entity.QuestId == questId))
+                .Filter((entity => entity.Character == character && entity.QuestId == questId))
                 .FirstOrCreate();
             completion.Character = character;
             completion.QuestId = questId;
@@ -51,7 +51,7 @@ namespace Backend.App
             var character = DB.Find<CharacterEntity>(characterId);
             if (character == null) return false;
             var progress = DB.TakeAll<QuestTaskProgressEntity>().Filter((entity =>
-                entity.Character.TargetId == characterId && entity.QuestId == model.QuestId &&
+                entity.Character == character && entity.QuestId == model.QuestId &&
                 model.QuestTaskId == entity.QuestTaskId)).FirstOrCreate();
             progress.QuestId = model.QuestId;
             progress.QuestTaskId = model.QuestTaskId;

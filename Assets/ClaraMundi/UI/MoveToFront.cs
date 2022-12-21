@@ -40,6 +40,7 @@ namespace ClaraMundi
         {
             if (GameWindowHandler.Instance.ActiveWindow == this)
                 GameWindowHandler.Instance.ActiveWindow = null;
+            if (!gameObject.activeInHierarchy) return;
             MovingObject.SetAsFirstSibling();
         }
 

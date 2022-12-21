@@ -1,6 +1,8 @@
 ﻿using System;
 using TMPro;
+using Unisave.Facades;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ClaraMundi
 {
@@ -9,18 +11,36 @@ namespace ClaraMundi
         public TMP_InputField EmailField;
         public TMP_InputField PasswordField;
 
-        public TextMeshProUGUI ErrorMessage;
+        public TextMeshProUGUI StatusMessage;
 
         public void OnEnable()
         {
             EmailField.text = "";
             PasswordField.text = "";
-            ErrorMessage.text = "";
+            StatusMessage.text = "";
+            StatusMessage.enabled = false;
         }
 
-        public void Submit()
+        public async void Submit()
         {
-            
+            StatusMessage.enabled = true;
+            StatusMessage.text = "Logging in...";
+
+            string response = await OnFacet<EmailLoginFacet>.CallAsync<string>(
+                nameof(EmailLoginFacet.Login),
+                EmailField.text,
+                PasswordField.text
+            );
+
+            if (!string.IsNullOrEmpty(response))
+            {
+                LobbyUI.Instance.CheckAccount();
+                StatusMessage.text = "Login succeeded";
+            }
+            else
+            {
+                StatusMessage.text = "Invalid Email or Password";
+            }
         }
     }
 }

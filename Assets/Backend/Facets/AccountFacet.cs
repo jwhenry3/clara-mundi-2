@@ -31,13 +31,28 @@ public class AccountFacet : Facet
         return account;
     }
 
+    public void Logout()
+    {
+        AccountEntity account = Auth.GetPlayer<AccountEntity>();
+        if (account == null) return;
+        account.token = "";
+        account.Save();
+        foreach (var character in DB.TakeAll<CharacterEntity>()
+                     .Filter((entity) => entity.Account == account && entity.LastConnected > entity.LastDisconnected).Get())
+        {
+            character.LastDisconnected = DateTime.UtcNow;
+            character.Save();
+        }
+        Auth.Logout();
+    }
+
     public void LogAccountOut(string serverToken, string accountId)
     {
         var account = DB.Find<AccountEntity>(accountId);
         account.token = "";
         account.Save();
         foreach (var character in DB.TakeAll<CharacterEntity>()
-                     .Filter((entity) => entity.Account.TargetId == accountId && entity.LastConnected > entity.LastDisconnected).Get())
+                     .Filter((entity) => entity.Account == account && entity.LastConnected > entity.LastDisconnected).Get())
         {
             character.LastDisconnected = DateTime.UtcNow;
             character.Save();

@@ -13,13 +13,15 @@ namespace Backend.App
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
             if (account == null) return new List<ItemEntity>();
             var character = DB.Find<CharacterEntity>(characterId);
-            if (character.Account.TargetId != account.EntityId) return new();
+            if (character.Account != account) return new List<ItemEntity>();
             return DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == characterId)).Get();
         }
 
         public List<ItemEntity> ServerGetItems(string serverToken, string characterId)
         {
-            return DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == characterId)).Get();
+            var character = DB.Find<CharacterEntity>(characterId);
+            if (character == null) return new List<ItemEntity>();
+            return DB.TakeAll<ItemEntity>().Filter((entity => entity.Character == character)).Get();
         } 
 
         public string AddItem(string serverToken,  string characterId, ItemInstanceModel model)
@@ -63,8 +65,8 @@ namespace Backend.App
         {
             var character = DB.Find<CharacterEntity>(characterId);
             // empty mapping indicates nothing was added
-            if (character == null) return new();
-            var items = DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == characterId && storageId == entity.StorageId)).Get();
+            if (character == null) return new Dictionary<string, string>();
+            var items = DB.TakeAll<ItemEntity>().Filter((entity => entity.Character == character && storageId == entity.StorageId)).Get();
             foreach (var item in items)
             {
                 var model = models.Find((m) => item.EntityId == m.ItemInstanceId);

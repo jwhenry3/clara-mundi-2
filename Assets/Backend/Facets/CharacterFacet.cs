@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unisave.Facades;
 using Unisave.Facets;
+using UnityEngine;
 
 namespace Backend.App
 {
@@ -11,7 +12,7 @@ namespace Backend.App
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
             if (account == null) return new List<CharacterEntity>();
-            return DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account.TargetId == account.EntityId).Get();
+            return DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account == account).Get();
         }
 
         public CharacterEntity ServerCharacterJoiningGameServer(string serverToken, string accountId, string token, string characterId)
@@ -40,14 +41,19 @@ namespace Backend.App
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
             if (account == null) return false;
-            var existing = DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name.ToLower() == characterName.ToLower()).First();
+            characterName = characterName.ToLower();
+            var existing = DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name== characterName).First();
             if (existing != null) return false;
             var character = new CharacterEntity()
             {
                 Account = account,
                 Name = characterName.ToLower(),
                 Gender = gender.ToLower(),
-                Race = race.ToLower()
+                Race = race.ToLower(),
+                Area = "Rein",
+                Position = Vector3.zero,
+                Level = 1,
+                TotalExp =  0
             };
             character.Save();
             return true;
@@ -63,9 +69,9 @@ namespace Backend.App
             if (existing.LastDisconnected < existing.LastConnected) return false;
             existing.Delete();
             // remove all attached data
-            DB.TakeAll<ItemEntity>().Filter((entity => entity.Character.TargetId == existing.EntityId)).Get().ForEach((i) => i.Delete());
-            DB.TakeAll<QuestCompletionEntity>().Filter((entity => entity.Character.TargetId == existing.EntityId)).Get().ForEach((i) => i.Delete());
-            DB.TakeAll<QuestTaskProgressEntity>().Filter((entity => entity.Character.TargetId == existing.EntityId)).Get().ForEach((i) => i.Delete());
+            DB.TakeAll<ItemEntity>().Filter((entity => entity.Character == existing)).Get().ForEach((i) => i.Delete());
+            DB.TakeAll<QuestCompletionEntity>().Filter((entity => entity.Character == existing)).Get().ForEach((i) => i.Delete());
+            DB.TakeAll<QuestTaskProgressEntity>().Filter((entity => entity.Character == existing)).Get().ForEach((i) => i.Delete());
             return true;
         }
 

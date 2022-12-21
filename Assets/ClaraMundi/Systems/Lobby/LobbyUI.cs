@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Unisave.Facades;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -8,11 +10,8 @@ namespace ClaraMundi
         public Transform LoginRegisterPanel;
         public Transform CharacterSelectionPanel;
         public Transform CreateCharacterPanel;
-        public CharactersUI CharactersUI;
         public LoginUI LoginUI;
         public RegisterUI RegisterUI;
-        public CreateCharacterUI CreateCharacterUI;
-        public bool StartAtCharacterList;
 
         public static LobbyUI Instance;
 
@@ -23,14 +22,37 @@ namespace ClaraMundi
 
         private void OnEnable()
         {
-            if (StartAtCharacterList)
+            CheckAccount();
+        }
+
+        public async void CheckAccount()
+        {
+            if (await GetAccount())
                 ToCharacterSelection();
             else
                 ToLogin();
         }
 
+        public async Task<bool> GetAccount()
+        {
+            GameManager.Instance.PlayerAccount = await OnFacet<AccountFacet>.CallAsync<AccountEntity>(
+                nameof(AccountFacet.GetAccount)
+            );
+            return GameManager.Instance.PlayerAccount != null;
+        }
+
+        public async void Logout()
+        {
+            GameManager.Instance.PlayerAccount = null;
+            ToLogin();
+            await OnFacet<AccountFacet>.CallAsync(
+                nameof(AccountFacet.Logout)
+            );
+        }
+
         public void ToLogin()
         {
+            
             CharacterSelectionPanel.gameObject.SetActive(false);
             CreateCharacterPanel.gameObject.SetActive(false);
             LoginRegisterPanel.gameObject.SetActive(true);
@@ -53,7 +75,6 @@ namespace ClaraMundi
             LoginRegisterPanel.gameObject.SetActive(false);
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
-            StartAtCharacterList = false;
         }
         public void ToCreateCharacter()
         {

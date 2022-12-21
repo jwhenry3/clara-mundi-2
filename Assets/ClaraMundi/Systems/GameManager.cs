@@ -6,6 +6,8 @@ namespace ClaraMundi
     {
         public static GameManager Instance;
 
+        public AccountEntity PlayerAccount;
+
         private void Awake()
         {
             if (Instance != null)
