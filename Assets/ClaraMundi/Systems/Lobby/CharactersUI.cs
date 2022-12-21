@@ -82,22 +82,18 @@ namespace ClaraMundi
             }
         }
 
+        private void OnDisable()
+        {
+            SelectedCharacter = null;
+        }
+        private void OnDestroy()
+        {
+            SelectedCharacter = null;
+        }
+
         private void AddCharacter(CharacterEntity character)
         {
             Instantiate(CharacterPrefab, CharactersContainer, false).SetCharacter(character);
-        }
-
-        private float updateTick;
-        private void LateUpdate()
-        {
-            updateTick += Time.deltaTime;
-            if (!(updateTick > 1)) return;
-            updateTick = 0;
-            var selectedObject = EventSystem.current.currentSelectedGameObject;
-            if (selectedObject == null)
-                Select(null);
-            else if (selectedObject.GetComponent<CharacterUI>() == null)
-                Select(null);
         }
     }
 }

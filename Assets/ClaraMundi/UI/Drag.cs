@@ -12,7 +12,6 @@ namespace ClaraMundi
         public int GridUnit = 16;
 
         private Vector2 pointerOffset;
-        private bool isDragging;
         private Transform target;
         
         private Vector2 lastMousePosition;
@@ -41,7 +40,6 @@ namespace ClaraMundi
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            isDragging = false;
             var pos = rect.position;
             pos = new Vector3(
                 Mathf.Round(pos.x / GridUnit) * GridUnit,

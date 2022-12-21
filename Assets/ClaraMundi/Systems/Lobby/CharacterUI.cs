@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
@@ -21,6 +23,12 @@ namespace ClaraMundi
             Level.text = "LV " + entity.Level;
             Name.text = entity.Name;
             Area.text = entity.Area;
+        }
+
+        public void Update()
+        {
+            if (CharactersUI.Instance.SelectedCharacter == CharacterEntity && EventSystem.current.currentSelectedGameObject != gameObject)
+                EventSystem.current.SetSelectedGameObject(gameObject);
         }
     }
 }

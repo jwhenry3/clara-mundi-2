@@ -27,6 +27,7 @@ namespace ClaraMundi
 
         public async void CheckAccount()
         {
+            CloseAll();
             if (await GetAccount())
                 ToCharacterSelection();
             else
@@ -80,6 +81,14 @@ namespace ClaraMundi
         {
             CharacterSelectionPanel.gameObject.SetActive(false);
             CreateCharacterPanel.gameObject.SetActive(true);
+            LoginRegisterPanel.gameObject.SetActive(false);
+            LoginUI.gameObject.SetActive(true);
+            RegisterUI.gameObject.SetActive(false);
+        }
+        public void CloseAll()
+        {
+            CharacterSelectionPanel.gameObject.SetActive(false);
+            CreateCharacterPanel.gameObject.SetActive(false);
             LoginRegisterPanel.gameObject.SetActive(false);
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
