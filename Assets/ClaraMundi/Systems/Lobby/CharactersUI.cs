@@ -41,10 +41,20 @@ namespace ClaraMundi
             Debug.Log("Enter Game!");
         }
 
-        public void OnDelete()
+        public async void OnDelete()
         {
             if (SelectedCharacter == null) return;
-            Debug.Log("Delete Character!");
+            string characterName = SelectedCharacter.Name;
+            StatusMessage.enabled = true;
+            StatusMessage.text = "Deleting " + characterName+ "...";
+            var result = await OnFacet<CharacterFacet>.CallAsync<bool>(
+                nameof(CharacterFacet.DeleteCharacter),
+                SelectedCharacter.Name
+            );
+            if (result)
+                OnEnable();
+            else
+                StatusMessage.text = "Could not delete the character";
         }
 
         private async void OnEnable()
@@ -62,22 +72,19 @@ namespace ClaraMundi
             );
             if (!isActiveAndEnabled) return;
             if (Characters.Count == 0)
+                StatusMessage.text = "You have no characters. Please create one.";
+            else
             {
-                LobbyUI.Instance.ToCreateCharacter();
-                return;
+                foreach (var character in Characters)
+                    AddCharacter(character);
+                CharactersContainer.gameObject.SetActive(true);
+                StatusMessage.enabled = false;
             }
-
-
-            foreach (var character in Characters)
-                AddCharacter(character);
-            CharactersContainer.gameObject.SetActive(true);
-            StatusMessage.enabled = false;
         }
 
         private void AddCharacter(CharacterEntity character)
         {
-            var instance = Instantiate(CharacterPrefab, CharactersContainer, false);
-            instance.SetCharacter(character);
+            Instantiate(CharacterPrefab, CharactersContainer, false).SetCharacter(character);
         }
 
         private float updateTick;

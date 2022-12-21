@@ -16,4 +16,6 @@ public class CharacterEntity : Entity
 
     public DateTime LastConnected;
     public DateTime LastDisconnected;
+    
+    public bool HasConnectedBefore;
 }

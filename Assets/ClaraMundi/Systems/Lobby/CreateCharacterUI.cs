@@ -35,9 +35,12 @@ namespace ClaraMundi
             if (string.IsNullOrEmpty(NameField.text) || string.IsNullOrWhiteSpace(NameField.text)) return;
             var result  = await OnFacet<CharacterFacet>.CallAsync<bool>(
                 nameof(CharacterFacet.CreateCharacter),
-                NameField.text,
-                GenderOptions[GenderDropdown.value],
-                RaceOptions[RaceDropdown.value]
+                new CreateCharacterRequest()
+                {
+                    Name = NameField.text,
+                    Gender = GenderOptions[GenderDropdown.value],
+                    Race = RaceOptions[RaceDropdown.value]
+                }
             );
             if (result)
                 LobbyUI.Instance.ToCharacterSelection();
