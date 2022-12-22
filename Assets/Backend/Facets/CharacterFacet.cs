@@ -17,34 +17,35 @@ namespace Backend.App
             return account == null ? new List<CharacterEntity>() : GetByAccount(account);
         }
 
-        public CharacterEntity ServerCharacterJoiningGameServer(string serverToken, string accountId, string token, string characterId)
+        public CharacterEntity ServerCharacterJoiningGameServer(string serverToken, string token, string characterName)
         {
-            var account = DB.Find<AccountEntity>(accountId);
+            var account = AccountFacet.GetByToken(token);
             if (account == null) return null;
-            if (account.token != token) return null;
-            var character = GetById(characterId);
+            var character = GetByNameAndAccount(characterName, account);
             if (character == null) return null;
+            Debug.Log("Character Found");
             // the character is connecting to the server
             character.LastConnected = DateTime.UtcNow;
             character.HasConnectedBefore = true;
             character.Save();
-            // empty mapping indicates nothing was added
+            Debug.Log("Character Logged In");
             return character;
         }
 
-        public void ServerCharacterLeavingGameServer(string serverToken,  string characterId)
+        public bool ServerCharacterLeavingGameServer(string serverToken,  string characterName)
         {
-            var character = DB.Find<CharacterEntity>(characterId);
-            if (character == null) return;
+            var character = GetByName(characterName);
+            if (character == null) return false;
+            if (!character.HasConnectedBefore) return false;
             character.LastDisconnected = DateTime.UtcNow;
             character.Save();
+            return false;
         }
 
         public bool CreateCharacter(CreateCharacterRequest request)
         {
             AccountEntity account = Auth.GetPlayer<AccountEntity>();
             if (account == null) return false;
-            Debug.Log(request.Name + ", " + request.Gender + ", " + request.Race);
             if (!ValuesAreProvided(new string[] { request.Name, request.Gender, request.Race })) return false;
             if (!ValueMatches(RaceOptions, request.Race.ToLower())) return false;
             if (!ValueMatches(GenderOptions, request.Gender.ToLower())) return false;
@@ -92,6 +93,7 @@ namespace Backend.App
         public static CharacterEntity GetByName(string Name) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name== Name).First();
         public static CharacterEntity GetByNameAndAccount(string Name, AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name== Name && entity.Account == account).First();
         public static CharacterEntity GetById(string Id) => DB.Find<CharacterEntity>(Id);
+        public static CharacterEntity GetByIdAndAccount(string Id, AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.EntityId== Id && entity.Account == account).First();
         public static List<CharacterEntity> GetByAccount(AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account == account).Get();
     }
 }

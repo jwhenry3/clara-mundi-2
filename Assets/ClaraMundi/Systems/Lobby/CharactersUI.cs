@@ -19,8 +19,6 @@ namespace ClaraMundi
 
         public static CharactersUI Instance;
 
-        public CharacterEntity SelectedCharacter;
-
         private void Awake()
         {
             Instance = this;
@@ -30,26 +28,27 @@ namespace ClaraMundi
 
         public void Select(CharacterEntity character)
         {
-            if (SelectedCharacter == character) return;
+            if (SessionManager.Instance.PlayerCharacter == character) return;
             CharacterActions.SetActive(character != null);
-            SelectedCharacter = character;
+            SessionManager.Instance.PlayerCharacter = character;
         }
 
         public void OnEnterGame()
         {
-            if (SelectedCharacter == null) return;
-            Debug.Log("Enter Game!");
+            if (SessionManager.Instance.PlayerAccount == null) return;
+            if (SessionManager.Instance.PlayerCharacter == null) return;
+            Client.Instance.Connect();
         }
 
         public async void OnDelete()
         {
-            if (SelectedCharacter == null) return;
-            string characterName = SelectedCharacter.Name;
+            if (SessionManager.Instance.PlayerCharacter == null) return;
+            string characterName = SessionManager.Instance.PlayerCharacter.Name;
             StatusMessage.enabled = true;
             StatusMessage.text = "Deleting " + characterName+ "...";
             var result = await OnFacet<CharacterFacet>.CallAsync<bool>(
                 nameof(CharacterFacet.DeleteCharacter),
-                SelectedCharacter.Name
+                SessionManager.Instance.PlayerCharacter.Name
             );
             if (result)
                 OnEnable();
@@ -84,11 +83,11 @@ namespace ClaraMundi
 
         private void OnDisable()
         {
-            SelectedCharacter = null;
+            SessionManager.Instance.PlayerCharacter = null;
         }
         private void OnDestroy()
         {
-            SelectedCharacter = null;
+            SessionManager.Instance.PlayerCharacter = null;
         }
 
         private void AddCharacter(CharacterEntity character)

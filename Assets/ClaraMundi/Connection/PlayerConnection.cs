@@ -54,6 +54,8 @@ namespace ClaraMundi
         private int _nextSpawn;
         #endregion
 
+        public static PlayerConnection Instance;
+
         private void Start()
         {
             InitializeOnce();
@@ -71,6 +73,7 @@ namespace ClaraMundi
         /// </summary>
         private void InitializeOnce()
         {
+            Instance = this;
             _networkManager = InstanceFinder.NetworkManager;
             if (_networkManager == null)
             {
@@ -81,29 +84,34 @@ namespace ClaraMundi
             _networkManager.SceneManager.OnClientLoadedStartScenes += SceneManager_OnClientLoadedStartScenes;
         }
 
-        /// <summary>
-        /// Called when a client loads initial scenes after connecting.
-        /// </summary>
-        private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
+        public void SpawnPlayer(NetworkConnection conn, bool asServer)
         {
-            if (!asServer)
-                return;
             if (_playerPrefab == null)
             {
                 Debug.LogWarning($"Player prefab is empty and cannot be spawned for connection {conn.ClientId}.");
                 return;
             }
 
-            Vector3 position;
-            Quaternion rotation;
-            SetSpawn(_playerPrefab.transform, out position, out rotation);
+            if (!GameAuthenticator.characterNameByClientId.ContainsKey(conn.ClientId))
+            {
+                Debug.LogWarning($"Trying to spawn player before authentication for connection {conn.ClientId}.");
+                return;
+            }
 
+            var characterName = GameAuthenticator.characterNameByClientId[conn.ClientId];            
+            var character = ConnectedPlayerManager.Instance.characterByName[characterName];
+            
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             var player = nob.GetComponent<Player>();
-            player.Entity.entityName = "Player " + (conn.ClientId + 1);
-            nob.transform.SetPositionAndRotation(position, rotation);
+            player.Character = character;
+            player.Stats.Level = character.Level;
+            player.Stats.Experience = character.TotalExp;
+            player.Entity.entityName = character.Name;
+            var rotation = Quaternion.identity;
+            rotation.y = character.Rotation;
+            nob.transform.SetPositionAndRotation(character.Position, rotation);
             _networkManager.ServerManager.Spawn(nob, conn);
-
+            
             //If there are no global scenes 
             if (_addToDefaultScene)
                 _networkManager.SceneManager.AddOwnerToDefaultScene(nob);
@@ -111,48 +119,13 @@ namespace ClaraMundi
             OnSpawned?.Invoke(nob);
         }
 
-
         /// <summary>
-        /// Sets a spawn position and rotation.
+        /// Called when a client loads initial scenes after connecting.
         /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="rot"></param>
-        private void SetSpawn(Transform prefab, out Vector3 pos, out Quaternion rot)
+        private void SceneManager_OnClientLoadedStartScenes(NetworkConnection conn, bool asServer)
         {
-            //No spawns specified.
-            if (Spawns.Length == 0)
-            {
-                SetSpawnUsingPrefab(prefab, out pos, out rot);
+            if (!asServer)
                 return;
-            }
-
-            Transform result = Spawns[_nextSpawn];
-            if (result == null)
-            {
-                SetSpawnUsingPrefab(prefab, out pos, out rot);
-            }
-            else
-            {
-                pos = result.position;
-                rot = result.rotation;
-            }
-
-            //Increase next spawn and reset if needed.
-            _nextSpawn++;
-            if (_nextSpawn >= Spawns.Length)
-                _nextSpawn = 0;
-        }
-
-        /// <summary>
-        /// Sets spawn using values from prefab.
-        /// </summary>
-        /// <param name="prefab"></param>
-        /// <param name="pos"></param>
-        /// <param name="rot"></param>
-        private void SetSpawnUsingPrefab(Transform prefab, out Vector3 pos, out Quaternion rot)
-        {
-            pos = prefab.position;
-            rot = prefab.rotation;
         }
 
     }

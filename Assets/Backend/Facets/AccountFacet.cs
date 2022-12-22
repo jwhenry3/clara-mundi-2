@@ -58,5 +58,8 @@ public class AccountFacet : Facet
             character.Save();
         }
     }
+
+    public static AccountEntity GetByToken(string token) =>
+        DB.TakeAll<AccountEntity>().Filter((account) => account.token == token).First();
 }
 

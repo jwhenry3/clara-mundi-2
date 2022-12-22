@@ -27,7 +27,7 @@ namespace ClaraMundi
 
         public void Update()
         {
-            if (CharactersUI.Instance.SelectedCharacter == CharacterEntity && EventSystem.current.currentSelectedGameObject != gameObject)
+            if (SessionManager.Instance.PlayerCharacter == CharacterEntity && EventSystem.current.currentSelectedGameObject != gameObject)
                 EventSystem.current.SetSelectedGameObject(gameObject);
         }
     }

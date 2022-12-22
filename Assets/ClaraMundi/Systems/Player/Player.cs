@@ -7,6 +7,7 @@ namespace ClaraMundi
     public class Player : MonoBehaviour
     {
         public int ClientId;
+        [HideInInspector] public CharacterModel Character;
         [HideInInspector]
         public Entity Entity { get; private set; }
         [HideInInspector]

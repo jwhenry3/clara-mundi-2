@@ -11,10 +11,6 @@ namespace ClaraMundi
         [HideInInspector]
         public NetworkManager networkManager;
         public static Client Instance;
-        public TextMeshProUGUI joinLabel;
-
-        public GameObject authenticationScreen;
-        public GameObject characterScreen;
 
         private LocalConnectionState _clientState = LocalConnectionState.Stopped;
 
@@ -36,6 +32,18 @@ namespace ClaraMundi
         {
             Physics.IgnoreLayerCollision(3, 3);
             networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
+        }
+
+        public void Connect()
+        {
+            if (_clientState == LocalConnectionState.Stopped)
+                networkManager.ClientManager.StartConnection();
+        }
+
+        public void Disconnect()
+        {
+            if (_clientState == LocalConnectionState.Started)
+                networkManager.ClientManager.StopConnection();
         }
 
         void ClientManager_OnClientConnectionState(ClientConnectionStateArgs obj)

@@ -1,40 +1,61 @@
 using System;
 using System.Collections.Generic;
+using Backend.App;
 using FishNet.Authenticating;
 using FishNet.Broadcast;
 using FishNet.Connection;
 using FishNet.Managing;
-using UnityEngine;
-using TMPro;
+using FishNet.Object.Synchronizing;
 using FishNet.Transporting;
+using Unisave.Facades;
+using UnityEngine;
 
 namespace ClaraMundi
 {
-    public struct PlayerNameBroadcast : IBroadcast
+    public struct CharacterSelectionBroadcast : IBroadcast
     {
-        public string Name;
+        public string AccountToken;
+        public string CharacterName;
     }
 
-    public struct PlayerNameResultBroadcast : IBroadcast
+    public struct CharacterSelectionResult : IBroadcast
     {
         public bool Passed;
     }
+
     public class GameAuthenticator : Authenticator
     {
-        public static string playerName;
-        public static Dictionary<string, NetworkConnection> playerConnections = new();
-        public static Dictionary<int, string> playerNamesByClientId = new();
+        public static readonly Dictionary<string, NetworkConnection> connectionsByCharacterName = new();
+        public static readonly Dictionary<int, string> characterNameByClientId = new();
         public override event Action<NetworkConnection, bool> OnAuthenticationResult;
 
         public override void InitializeOnce(NetworkManager networkManager)
         {
             base.InitializeOnce(networkManager);
 
-            base.NetworkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
+            NetworkManager.ServerManager.OnRemoteConnectionState += ServerManager_OnRemoteConnectionState;
+            NetworkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
             //Listen for broadcast from client. Be sure to set requireAuthentication to false.
-            base.NetworkManager.ServerManager.RegisterBroadcast<PlayerNameBroadcast>(OnPlayerName, false);
+            NetworkManager.ServerManager.RegisterBroadcast<CharacterSelectionBroadcast>(OnAuthorized, false);
             //Listen to response from server.
-            base.NetworkManager.ClientManager.RegisterBroadcast<PlayerNameResultBroadcast>(OnResult);
+            NetworkManager.ClientManager.RegisterBroadcast<CharacterSelectionResult>(OnResult);
+        }
+
+        private async void ServerManager_OnRemoteConnectionState(NetworkConnection conn, RemoteConnectionStateArgs args)
+        {
+            if (args.ConnectionState != RemoteConnectionState.Stopped) return;
+            if (!characterNameByClientId.ContainsKey(conn.ClientId)) return;
+            var characterName = characterNameByClientId[conn.ClientId];
+            if (!ConnectedPlayerManager.Instance.characterByName.ContainsKey(characterName)) return;
+            var character = ConnectedPlayerManager.Instance.characterByName[characterName];
+            await OnFacet<CharacterFacet>.CallAsync<CharacterEntity>(
+                nameof(CharacterFacet.ServerCharacterLeavingGameServer),
+                "", // server token
+                character.CharacterId
+            );
+            ConnectedPlayerManager.Instance.characterByName.Remove(character.Name);
+            connectionsByCharacterName.Remove(character.Name);
+            characterNameByClientId.Remove(conn.ClientId);
         }
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs args)
         {
@@ -45,25 +66,54 @@ namespace ClaraMundi
             * example the client tries to authenticate soon as they connect. */
             if (args.ConnectionState != LocalConnectionState.Started)
                 return;
-            SendPlayerName();
+            SendSelectedCharacter();
         }
+
         public override void OnRemoteConnection(NetworkConnection connection)
         {
             Debug.Log("Received Connection");
         }
 
-        void OnPlayerName(NetworkConnection conn, PlayerNameBroadcast data)
+        async void OnAuthorized(NetworkConnection conn, CharacterSelectionBroadcast data)
         {
-            bool authorized = !playerConnections.ContainsKey(data.Name.ToLower());
+            data.CharacterName = data.CharacterName.ToLower();
+            var character = await OnFacet<CharacterFacet>.CallAsync<CharacterEntity>(
+                nameof(CharacterFacet.ServerCharacterJoiningGameServer),
+                "", // server token
+                data.AccountToken,
+                data.CharacterName
+            );
+            bool authorized = character != null && !connectionsByCharacterName.ContainsKey(data.CharacterName);
             if (authorized)
             {
-                playerConnections[data.Name.ToLower()] = conn;
-                playerNamesByClientId[conn.ClientId] = data.Name;
+                var model = new CharacterModel()
+                {
+                    CharacterId = character.EntityId,
+                    Name = character.Name,
+                    Gender = character.Gender,
+                    Race = character.Race,
+                    Position = character.Position,
+                    Rotation = character.Rotation,
+                    Level = character.Level,
+                    TotalExp = character.TotalExp
+                };
+                connectionsByCharacterName[data.CharacterName] = conn;
+                characterNameByClientId[conn.ClientId] = character.Name;
+                ConnectedPlayerManager.Instance.characterByName[character.Name] = model;
+                conn.OnLoadedStartScenes += OnLoadedStartScenes;
             }
+
             SendAuthenticationResponse(conn, authorized);
             OnAuthenticationResult?.Invoke(conn, authorized);
         }
-        void OnResult(PlayerNameResultBroadcast data)
+
+        private void OnLoadedStartScenes(NetworkConnection conn, bool asServer)
+        {
+            conn.OnLoadedStartScenes -= OnLoadedStartScenes;
+            PlayerConnection.Instance.SpawnPlayer(conn, asServer);
+        }
+
+        void OnResult(CharacterSelectionResult data)
         {
             Debug.Log("Received Result: " + (data.Passed ? "Authenticated" : "Not Authenticated"));
         }
@@ -73,11 +123,11 @@ namespace ClaraMundi
             /* Tell client if they authenticated or not. This is
             * entirely optional but does demonstrate that you can send
             * broadcasts to client on pass or fail. */
-            PlayerNameResultBroadcast rb = new PlayerNameResultBroadcast()
+            var rb = new CharacterSelectionResult
             {
                 Passed = authenticated
             };
-            base.NetworkManager.ServerManager.Broadcast(conn, rb, false);
+            NetworkManager.ServerManager.Broadcast(conn, rb, false);
             if (!authenticated)
             {
                 conn.Disconnect(true);
@@ -86,21 +136,25 @@ namespace ClaraMundi
 
         public static void RemovePlayerReference(int ClientId, string PlayerName)
         {
-            if (playerNamesByClientId.ContainsKey(ClientId))
-                playerNamesByClientId.Remove(ClientId);
-            if (playerConnections.ContainsKey(PlayerName.ToLower()))
-                playerConnections.Remove(PlayerName.ToLower());
+            if (characterNameByClientId.ContainsKey(ClientId))
+                characterNameByClientId.Remove(ClientId);
+            if (connectionsByCharacterName.ContainsKey(PlayerName.ToLower()))
+                connectionsByCharacterName.Remove(PlayerName.ToLower());
+            if (ConnectedPlayerManager.Instance.characterByName.ContainsKey(PlayerName))
+                ConnectedPlayerManager.Instance.characterByName.Remove(PlayerName);
         }
 
-        void SendPlayerName()
+        private void SendSelectedCharacter()
         {
-
-            PlayerNameBroadcast pb = new PlayerNameBroadcast()
+            if (SessionManager.Instance.PlayerAccount == null) return;
+            if (SessionManager.Instance.PlayerCharacter == null) return;
+            var pb = new CharacterSelectionBroadcast
             {
-                Name = playerName
+                AccountToken = SessionManager.Instance.PlayerAccount.token,
+                CharacterName = SessionManager.Instance.PlayerCharacter.Name
             };
 
-            base.NetworkManager.ClientManager.Broadcast(pb);
+            NetworkManager.ClientManager.Broadcast(pb);
         }
     }
 }

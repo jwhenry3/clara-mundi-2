@@ -10,6 +10,7 @@ public class CharacterEntity : Entity
     public string Race;
     public string Area;
     public Vector3 Position;
+    public float Rotation;
 
     public int Level;
     public int TotalExp;
@@ -18,4 +19,18 @@ public class CharacterEntity : Entity
     public DateTime LastDisconnected;
     
     public bool HasConnectedBefore;
+}
+[Serializable]
+public class CharacterModel
+{
+    public string CharacterId;
+    public string Name;
+    public string Gender;
+    public string Race;
+    public string Area;
+    public Vector3 Position;
+    public float Rotation;
+
+    public int Level;
+    public int TotalExp;
 }
