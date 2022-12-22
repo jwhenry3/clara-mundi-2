@@ -3,6 +3,7 @@ using FishNet.Managing;
 using FishNet.Object;
 using System;
 using FishNet;
+using FishNet.Managing.Scened;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -101,6 +102,10 @@ namespace ClaraMundi
             var characterName = GameAuthenticator.characterNameByClientId[conn.ClientId];            
             var character = ConnectedPlayerManager.Instance.characterByName[characterName];
             
+            if (!RepoManager.Instance.RegionRepo.Zones.ContainsKey(character.Area)) return;
+            var zone = RepoManager.Instance.RegionRepo.Zones[character.Area];
+            var sld = new SceneLookupData(zone.Key);
+            
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             var player = nob.GetComponent<Player>();
             player.Character = character;
@@ -111,6 +116,9 @@ namespace ClaraMundi
             rotation.y = character.Rotation;
             nob.transform.SetPositionAndRotation(character.Position, rotation);
             _networkManager.ServerManager.Spawn(nob, conn);
+            var sceneLoadData = new SceneLoadData(new [] { sld }, new []{ nob });
+            sceneLoadData.ReplaceScenes = ReplaceOption.OnlineOnly;
+            _networkManager.SceneManager.LoadConnectionScenes(conn, sceneLoadData);
             
             //If there are no global scenes 
             if (_addToDefaultScene)

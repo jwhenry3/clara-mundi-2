@@ -25,7 +25,7 @@ namespace ClaraMundi
         public override void OnStartServer()
         {
             base.OnStartServer();
-            entityId = Guid.NewGuid().ToString();
+            entityId = StringUtils.UniqueId();
             OnStarted?.Invoke();
         }
         void OnNameChange(string oldValue, string newValue, bool asServer)

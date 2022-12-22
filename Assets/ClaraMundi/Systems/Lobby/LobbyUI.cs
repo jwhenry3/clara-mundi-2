@@ -7,6 +7,7 @@ namespace ClaraMundi
 {
     public class LobbyUI : MonoBehaviour
     {
+        public GameObject Background;
         public Transform LoginRegisterPanel;
         public Transform CharacterSelectionPanel;
         public Transform CreateCharacterPanel;
@@ -22,6 +23,7 @@ namespace ClaraMundi
 
         private void OnEnable()
         {
+            Background.SetActive(true);
             CloseAll();
             CheckAccount();
         }

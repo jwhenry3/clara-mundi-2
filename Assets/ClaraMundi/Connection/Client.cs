@@ -3,6 +3,7 @@ using FishNet.Managing;
 using FishNet.Transporting;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ClaraMundi
 {
@@ -32,6 +33,8 @@ namespace ClaraMundi
         {
             Physics.IgnoreLayerCollision(3, 3);
             networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
+            SceneManager.LoadScene("LobbyGUI", LoadSceneMode.Additive);
+            SceneManager.LoadScene("PlayerGUI", LoadSceneMode.Additive);
         }
 
         public void Connect()

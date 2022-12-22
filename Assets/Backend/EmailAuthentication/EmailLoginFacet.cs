@@ -31,7 +31,7 @@ public class EmailLoginFacet : Facet
         if (!Hash.Check(password, player.password))
             return "";
 
-        player.token = Guid.NewGuid().ToString();
+        player.token = StringUtils.UniqueId();
         player.Save();
 
         Auth.Login(player);

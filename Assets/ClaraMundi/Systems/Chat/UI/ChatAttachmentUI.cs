@@ -8,7 +8,7 @@ namespace ClaraMundi
     public class ChatAttachmentUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
 
-        public string NodeId = Guid.NewGuid().ToString();
+        public string NodeId = StringUtils.UniqueId();
         public string Key;
         public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public TextMeshProUGUI Text;

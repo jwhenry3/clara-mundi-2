@@ -28,7 +28,7 @@ namespace ClaraMundi
     [Serializable]
     public class EntityType : ScriptableObject
     {
-        public string EntityTypeId = Guid.NewGuid().ToString();
+        public string EntityTypeId = StringUtils.UniqueId();
         public string EntityTypeName = "";
         public EntityGroupClassification Classification = EntityGroupClassification.Player;
         public DetectionType DetectionType = DetectionType.None;

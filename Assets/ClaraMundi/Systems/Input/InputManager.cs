@@ -20,7 +20,6 @@ namespace ClaraMundi
             Instance = this;
             UI =  InputManager.Instance.InputActionAsset.FindActionMap("UI");
             World =  InputManager.Instance.InputActionAsset.FindActionMap("Player");
-            DontDestroyOnLoad(gameObject);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ClaraMundi
     [Serializable]
     public class ChatMessage
     {
-        public string MessageId = Guid.NewGuid().ToString();
+        public string MessageId = StringUtils.UniqueId();
         public ChatMessageType Type = ChatMessageType.System;
         public string Channel = "Say";
         public string SenderEntityId;

@@ -13,7 +13,7 @@ namespace ClaraMundi
     [Serializable]
     public class Dialogue : ScriptableObject
     {
-        public string DialogueId = Guid.NewGuid().ToString();
+        public string DialogueId = StringUtils.UniqueId();
         [HideInInspector]
         public string AssociatedQuestId;
         public Entity Speaker;

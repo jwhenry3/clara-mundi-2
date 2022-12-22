@@ -36,14 +36,14 @@ namespace ClaraMundi
         public override void OnStartServer()
         {
             base.OnStartServer();
-            StorageId = StorageId ?? Guid.NewGuid().ToString();
+            StorageId = StorageId ?? StringUtils.UniqueId();
             
             ItemManager.Instance.RegisterStorage(this);
             for (int index = 0; index < StartingItems.Count; index++)
             {
                 var item = StartingItems[index];
                 // regenerate ID to avoid collision
-                item.ItemInstanceId = Guid.NewGuid().ToString();
+                item.ItemInstanceId = StringUtils.UniqueId();
                 Add(item);
             }
 

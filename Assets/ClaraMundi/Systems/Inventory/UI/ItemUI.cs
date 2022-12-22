@@ -55,7 +55,7 @@ namespace ClaraMundi
 
         private void Awake()
         {
-            NodeId = Guid.NewGuid().ToString();
+            NodeId = StringUtils.UniqueId();
             Button = GetComponent<Button>();
             MoveToFront = GetComponentInParent<MoveToFront>();
             Background = GetComponent<Image>();

@@ -49,7 +49,7 @@ public class EmailRegisterFacet : Facet
         }
 
         var player = CreateNewPlayer(normalizedEmail, password);
-        player.token = Guid.NewGuid().ToString();
+        player.token = StringUtils.UniqueId();
         player.Save();
 
         Auth.Login(player);

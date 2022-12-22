@@ -16,7 +16,7 @@ namespace ClaraMundi
         [HideInInspector]
         public string QuestId;
         [BoxGroup("Identity")]
-        public string QuestTaskId = Guid.NewGuid().ToString();
+        public string QuestTaskId = StringUtils.UniqueId();
         [BoxGroup("Identity")]
         public QuestTaskType Type = QuestTaskType.Dialogue;
         [BoxGroup("Identity")]

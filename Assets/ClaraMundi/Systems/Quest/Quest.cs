@@ -10,7 +10,7 @@ namespace ClaraMundi
     [Serializable]
     public class Quest : ScriptableObject
     {
-        public string QuestId = Guid.NewGuid().ToString();
+        public string QuestId = StringUtils.UniqueId();
         [BoxGroup("Identity")]
         public string Title = "";
         [BoxGroup("Identity")]

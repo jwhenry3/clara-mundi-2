@@ -6,7 +6,7 @@ namespace ClaraMundi
     [Serializable]
     public class AttributeValue
     {
-        public string ValueId = Guid.NewGuid().ToString();
+        public string ValueId = StringUtils.UniqueId();
         public AttributeType Type = AttributeType.PhysicalAttack;
         // Flat amount to apply on top
         public float Amount = 0;

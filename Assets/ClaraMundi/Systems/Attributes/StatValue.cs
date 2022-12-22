@@ -5,7 +5,7 @@ namespace ClaraMundi
     [Serializable]
     public class StatValue
     {
-        public string ValueId = Guid.NewGuid().ToString();
+        public string ValueId = StringUtils.UniqueId();
         public StatType Type = StatType.Strength;
         // Flat amount to apply on top
         public float Amount = 0;

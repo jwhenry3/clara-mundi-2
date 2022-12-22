@@ -48,7 +48,7 @@ namespace ClaraMundi
             var characterName = characterNameByClientId[conn.ClientId];
             if (!ConnectedPlayerManager.Instance.characterByName.ContainsKey(characterName)) return;
             var character = ConnectedPlayerManager.Instance.characterByName[characterName];
-            await OnFacet<CharacterFacet>.CallAsync<CharacterEntity>(
+            await OnFacet<CharacterFacet>.CallAsync<bool>(
                 nameof(CharacterFacet.ServerCharacterLeavingGameServer),
                 "", // server token
                 character.CharacterId
@@ -56,6 +56,8 @@ namespace ClaraMundi
             ConnectedPlayerManager.Instance.characterByName.Remove(character.Name);
             connectionsByCharacterName.Remove(character.Name);
             characterNameByClientId.Remove(conn.ClientId);
+            if (MasterServerManager.Instance == null) return;
+            MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
         }
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs args)
         {
@@ -76,6 +78,12 @@ namespace ClaraMundi
 
         async void OnAuthorized(NetworkConnection conn, CharacterSelectionBroadcast data)
         {
+            if (characterNameByClientId.Count >= Server.Instance.PlayerCapacity)
+            {
+                SendAuthenticationResponse(conn, false);
+                OnAuthenticationResult?.Invoke(conn, false);
+                return;
+            }
             data.CharacterName = data.CharacterName.ToLower();
             var character = await OnFacet<CharacterFacet>.CallAsync<CharacterEntity>(
                 nameof(CharacterFacet.ServerCharacterJoiningGameServer),
@@ -92,6 +100,7 @@ namespace ClaraMundi
                     Name = character.Name,
                     Gender = character.Gender,
                     Race = character.Race,
+                    Area = character.Area,
                     Position = character.Position,
                     Rotation = character.Rotation,
                     Level = character.Level,
@@ -101,6 +110,8 @@ namespace ClaraMundi
                 characterNameByClientId[conn.ClientId] = character.Name;
                 ConnectedPlayerManager.Instance.characterByName[character.Name] = model;
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
+                if (MasterServerManager.Instance == null) return;
+                MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
             }
 
             SendAuthenticationResponse(conn, authorized);
@@ -129,9 +140,7 @@ namespace ClaraMundi
             };
             NetworkManager.ServerManager.Broadcast(conn, rb, false);
             if (!authenticated)
-            {
                 conn.Disconnect(true);
-            }
         }
 
         public static void RemovePlayerReference(int ClientId, string PlayerName)

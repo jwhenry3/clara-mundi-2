@@ -7,7 +7,7 @@ namespace ClaraMundi
 {
     public class ChatMessageUI : MonoBehaviour, IPointerMoveHandler, IPointerDownHandler
     {
-        public string NodeId = Guid.NewGuid().ToString();
+        public string NodeId = StringUtils.UniqueId();
         TextMeshProUGUI Text;
         public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
         public ChatMessage ChatMessage;
