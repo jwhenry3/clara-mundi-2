@@ -48,6 +48,7 @@ MonoBehaviour:
   PlayerCapacity: 100
   AutoStart: 0
   Region: 
+  Port: 7770
   Name: 
   Singletons:
   - {fileID: 8149067438432484776, guid: b7c1f4cb8260efe4db823e693f1d545b, type: 3}
@@ -72,6 +73,7 @@ GameObject:
   - component: {fileID: 1926632896403151581}
   - component: {fileID: 1926632896403151582}
   - component: {fileID: 1926632896403151583}
+  - component: {fileID: 6368421862280163343}
   m_Layer: 0
   m_Name: GameManagement
   m_TagString: Untagged
@@ -236,6 +238,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChatConfiguration: {fileID: 11400000, guid: c0ef1ee134c821249abbb95f2bd2997c, type: 2}
+--- !u!114 &6368421862280163343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926632896403151562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e65ec422eb40ecb7c655411e0992c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1926632896543687178
 GameObject:
   m_ObjectHideFlags: 0

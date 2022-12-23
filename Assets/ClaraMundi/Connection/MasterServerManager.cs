@@ -57,7 +57,8 @@ namespace ClaraMundi
             };
         }
 
-        public async void ServerUpdateStatus(NetworkConnection conn, string serverName, string region, ushort port, int capacity,
+        public async void ServerUpdateStatus(NetworkConnection conn, string serverName, string region, ushort port,
+            int capacity,
             bool status)
         {
             var contains = Servers.ContainsKey(serverName);
@@ -77,6 +78,7 @@ namespace ClaraMundi
                 ServerNamesByClientId.Remove(conn.ClientId);
             await OnFacet<GameServerFacet>.CallAsync<bool>(
                 nameof(GameServerFacet.SaveServer),
+                GameServerAuthenticator.Instance.MasterServerToken,
                 new GameServerModel()
                 {
                     Name = serverName,

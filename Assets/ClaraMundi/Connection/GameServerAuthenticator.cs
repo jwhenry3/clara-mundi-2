@@ -26,7 +26,10 @@ namespace ClaraMundi
     public class GameServerAuthenticator : Authenticator
     {
         public string MasterServerToken;
+        public string MasterServerHost;
+        public ushort MasterServerPort;
         public bool IsClient;
+        public static GameServerAuthenticator Instance;
 
         private bool HasConnectedBefore;
         
@@ -34,12 +37,13 @@ namespace ClaraMundi
 
         private void Awake()
         {
+            Instance = this;
             if (!IsClient) return;
             base.InitializeOnce(GetComponent<NetworkManager>());
             
             NetworkManager.ClientManager.RegisterBroadcast<GameServerResult>(OnResult);
             NetworkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
-            NetworkManager.ClientManager.StartConnection();
+            NetworkManager.ClientManager.StartConnection(MasterServerHost, MasterServerPort);
             HasConnectedBefore = true;
             Debug.Log(InstanceFinder.NetworkManager == NetworkManager);
         }

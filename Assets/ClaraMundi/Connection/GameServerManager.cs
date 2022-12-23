@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Backend.App;
 using FishNet;
 using FishNet.Managing;
-using FishNet.Object;
-using FishNet.Transporting.Tugboat;
 using Unisave.Facades;
 using UnityEngine;
 
@@ -12,10 +9,15 @@ namespace ClaraMundi
 {
     public class GameServerManager : MonoBehaviour
     {
-        public event Action<string> OnConnectToRegion;
-        public event Action<string> OnChangeZone;
 
         private NetworkManager NetworkManager;
+
+        public static GameServerManager Instance;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void Start()
         {
