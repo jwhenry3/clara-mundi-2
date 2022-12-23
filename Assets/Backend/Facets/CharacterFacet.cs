@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unisave.Entities;
 using Unisave.Facades;
 using Unisave.Facets;
 using UnityEngine;
@@ -93,6 +94,9 @@ namespace Backend.App
         public static CharacterEntity GetByName(string Name) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name== Name).First();
         public static CharacterEntity GetByNameAndAccount(string Name, AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Name== Name && entity.Account == account).First();
         public static CharacterEntity GetById(string Id) => DB.Find<CharacterEntity>(Id);
+
+        public static CharacterEntity GetByReference(EntityReference<CharacterEntity> reference) =>
+            DB.TakeAll<CharacterEntity>().Filter((entity) => entity == reference).First();
         public static CharacterEntity GetByIdAndAccount(string Id, AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.EntityId== Id && entity.Account == account).First();
         public static List<CharacterEntity> GetByAccount(AccountEntity account) => DB.TakeAll<CharacterEntity>().Filter((entity) => entity.Account == account).Get();
     }

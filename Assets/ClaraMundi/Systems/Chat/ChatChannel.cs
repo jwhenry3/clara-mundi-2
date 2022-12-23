@@ -17,6 +17,8 @@ namespace ClaraMundi
         [SyncVar]
         public string Name;
 
+        public bool IsGlobal;
+
         public ChannelScope ChannelScope = ChannelScope.Scene;
 
 
