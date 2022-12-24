@@ -7,7 +7,7 @@ namespace ClaraMundi
 {
     public class PartyUI : PlayerUI
     {
-        private Party Party;
+        private PartyModel Party;
         public Transform PartyContainer;
         public PartyMemberUI PartyMemberPrefab;
 
@@ -39,21 +39,21 @@ namespace ClaraMundi
             }
         }
 
-        private void OnPartyChanges(Party party)
+        private void OnPartyChanges(PartyModel party)
         {
             Party = party;
-            if (party == null || party.established == false)
+            if (party == null)
             {
                 foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
                         member.SetPartyMember(null);
                 InviteButton.gameObject.SetActive(true);
                 return;
             }
-            InviteButton.gameObject.SetActive(party.LeaderId == player.entityId);
+            InviteButton.gameObject.SetActive(party.Leader == player.entityId);
             List<string> found = new();
             foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
             {
-                if (party.MemberIds.Contains(member.player.entityId))
+                if (party.Members.Contains(member.player.entityId))
                 {
                     member.SetPartyMember(member.player.entityId);
                     found.Add(member.player.entityId);
@@ -65,7 +65,7 @@ namespace ClaraMundi
                 
             }
 
-            foreach (string member in party.MemberIds)
+            foreach (string member in party.Members)
             {
                 if (found.Contains(member)) continue;
                 var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);

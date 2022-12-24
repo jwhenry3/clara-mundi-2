@@ -18,14 +18,14 @@ namespace ClaraMundi
         {
             if (player != null)
             {
-                player.Party.PartyInvites.OnChange -= OnInviteChanges;
+                player.Party.InviteChanges -= OnInviteChanges;
                 player.Party.PartyChanges -= OnPartyChanges;
             }
             Clear();
             base.OnPlayerChange(_player);
             if (player == null) return;
             Populate();
-            player.Party.PartyInvites.OnChange += OnInviteChanges;
+            player.Party.InviteChanges += OnInviteChanges;
             player.Party.PartyChanges += OnPartyChanges;
         }
 
@@ -34,38 +34,33 @@ namespace ClaraMundi
             base.OnDestroy();
             if (player != null)
             {
-                player.Party.PartyInvites.OnChange -= OnInviteChanges;
+                player.Party.InviteChanges -= OnInviteChanges;
                 player.Party.PartyChanges -= OnPartyChanges;
             }
         }
 
-        private void OnInviteChanges(SyncListOperation op, int index, string previous, string next, bool asServer)
+        private void OnInviteChanges(List<string> invites)
         {
-            switch (op)
+            var clone = new Dictionary<string, PartyInviteRequestUI>(Invites);
+            foreach (var kvp in clone)
             {
-                case SyncListOperation.Add:
-                    AddInvite(next);
-                    break;
-                case SyncListOperation.RemoveAt:
-                    RemoveInvite(previous);
-                    break;
-                case SyncListOperation.Set:
-                    if (!string.IsNullOrEmpty(next))
-                        AddInvite(next);
-                    else if (!string.IsNullOrEmpty(previous))
-                        RemoveInvite(previous);
-                    break;
-                case SyncListOperation.Clear:
-                    Clear();
-                    break;
+                if (!invites.Contains(kvp.Key))
+                    RemoveInvite(kvp.Key);
             }
+
+            foreach (var i in invites)
+            {
+                if (!clone.ContainsKey(i))
+                    AddInvite(i);
+            }
+
             HandleVisibility();
         }
 
-        private void OnPartyChanges(Party party)
+        private void OnPartyChanges(PartyModel party)
         {
             // only party leader can invite and accept requests
-            if (party is { established: true } && party.LeaderId != PlayerManager.Instance.LocalPlayer.entityId)
+            if (party != null && party.Leader != PlayerManager.Instance.LocalPlayer.entityId)
             {
                 // Any requests are cleaned up if the player is not the leader
                 // in case the leadership changes during party existence
@@ -77,15 +72,15 @@ namespace ClaraMundi
             var clone = new Dictionary<string, PartyJoinRequestUI>(JoinRequests);
             foreach (var kvp in clone)
             {
-                if (party is { established: true } && party.RequestedjoinerIds.Contains(kvp.Key)) continue;
+                if (party != null && party.Requests.Contains(kvp.Key)) continue;
                 // remove join request UI no longer in party details
                 Destroy(kvp.Value.gameObject);
                 JoinRequests.Remove(kvp.Key);
             }
 
-            if (party is not { established: true }) return;
+            if (party == null) return;
             // add remaining join requests not currently in UI
-            foreach (string joiningPlayerId in party.RequestedjoinerIds)
+            foreach (string joiningPlayerId in party.Requests)
                 AddJoinRequest(joiningPlayerId);
             HandleVisibility();
         }
@@ -107,7 +102,7 @@ namespace ClaraMundi
 
             if (PlayerManager.Instance.LocalPlayer.Party.Party != null)
             {
-                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.RequestedjoinerIds)
+                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.Requests)
                     AddJoinRequest(joiningPlayerId);
             }
 

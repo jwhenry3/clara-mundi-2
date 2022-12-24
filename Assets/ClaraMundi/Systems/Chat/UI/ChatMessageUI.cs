@@ -50,13 +50,13 @@ namespace ClaraMundi
             }
             var senderName = "System";
             var receiverName = "";
-            if (!string.IsNullOrEmpty(ChatMessage.SenderEntityId))
-                senderName = Player.GetClickableName(ChatMessage.SenderEntityId);
-            if (!string.IsNullOrEmpty(ChatMessage.ToEntityId))
-                receiverName = Player.GetClickableName(ChatMessage.ToEntityId);
+            if (!string.IsNullOrEmpty(ChatMessage.SenderCharacterName))
+                senderName = Player.GetClickableName(ChatMessage.SenderCharacterName);
+            if (!string.IsNullOrEmpty(ChatMessage.ToCharacterName))
+                receiverName = Player.GetClickableName(ChatMessage.ToCharacterName);
             
             if (ChatMessage.Channel == "Whisper" &&
-                ChatMessage.SenderEntityId == PlayerManager.Instance.LocalPlayer.entityId)
+                ChatMessage.SenderCharacterName == PlayerManager.Instance.LocalPlayer.entityId)
                 sender = "[Whisper To] " + receiverName + ":";
             else if (ChatMessage.Channel == "Whisper")
                 sender = "[Whisper From] " + senderName + ":";

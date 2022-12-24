@@ -4,22 +4,23 @@ public enum PartyMessageType
 {
     PlayerJoined,
     PlayerLeft,
-    PlayerRequestedInvite,
-    PlayerInvited,
-    PlayerDeclinedInvite,
-    PlayerCancelledRequest,
+    Private_PlayerRequestedInvite,
+    Private_PlayerInvited,
+    Private_PlayerDeclinedInvite,
+    Private_PlayerCancelledRequest,
     PartyDisbanded,
-    PartyCreated,
+    Private_PartyCreated,
     LeaderChanged,
-    JoinedParty,
-    InvitedToParty,
-    LeftParty,
-    RequestedInvite,
+    Private_JoinedParty,
+    Private_InvitedToParty,
+    Private_LeftParty,
+    Private_RequestedInvite,
+    Private_RequestDenied,
     PartyFull,
 }
 public class PartyMessage : BroadcastingMessage
 {
     public PartyMessageType type;
-    public string characterId;
     public string characterName;
+    public string partyId;
 }

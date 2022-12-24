@@ -5,9 +5,9 @@ namespace ClaraMundi
     public class Party
     {
         public bool established;
-        public string LeaderId;
-        public List<string> MemberIds = new();
-        public List<string> InvitedIds = new();
-        public List<string> RequestedjoinerIds = new();
+        public string Leader;
+        public List<string> Members = new();
+        public List<string> Invitations = new();
+        public List<string> Requests = new();
     }
 }

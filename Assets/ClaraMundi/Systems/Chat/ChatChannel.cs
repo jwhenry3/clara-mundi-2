@@ -76,9 +76,9 @@ namespace ClaraMundi
                 return;
             }
 
-            if (Player != null && nextMessage.SenderEntityId == Player.Entity.entityId) return;
+            if (Player != null && nextMessage.SenderCharacterName == Player.Entity.entityId) return;
             if (ChannelScope == ChannelScope.Private && (bool)Player) {
-                nextMessage.ToEntityId = Player.Entity.entityId;
+                nextMessage.ToCharacterName = Player.Entity.entityId;
             }
             ChatManager.ReceivedMessage(nextMessage);
         }

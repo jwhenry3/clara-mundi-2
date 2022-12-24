@@ -3,8 +3,8 @@
 public class PartyMemberEntity : Entity
 {
     public string PartyId;
-    public EntityReference<CharacterEntity> Character;
-    public EntityReference<CharacterEntity> Leader;
+    public string MemberName;
+    public string LeaderName;
     public bool IsInvited;
     public bool IsRequested;
     public bool HasJoined;

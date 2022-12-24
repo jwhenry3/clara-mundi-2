@@ -7,7 +7,7 @@ namespace ClaraMundi
     {
         public void SendMessage(string channel, ChatMessage message)
         {
-            if (!string.IsNullOrEmpty(message.ToEntityId) && message.Channel == "Whisper")
+            if (!string.IsNullOrEmpty(message.ToCharacterName) && message.Channel == "Whisper")
             {
                 // send the chat message to the chat window even though this is outgoing and not incoming
                 // the private channel on the to-entity will not send the message to the sender, so we must
@@ -21,7 +21,7 @@ namespace ClaraMundi
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            message.SenderEntityId = player.entityId;
+            message.SenderCharacterName = player.entityId;
             ServerSendMessage(channel, message);
         }
         public void ServerSendMessage(string channel, ChatMessage message)
@@ -34,10 +34,10 @@ namespace ClaraMundi
             }
             if (!ChatManager.Instance.Channels.ContainsKey(channel)) return;
             
-            if (!string.IsNullOrEmpty(message.SenderEntityId))
+            if (!string.IsNullOrEmpty(message.SenderCharacterName))
             {
                 // track position for local channels
-                message.SenderPosition = EntityManager.Instance.Entities[message.SenderEntityId].transform.position;
+                message.SenderPosition = EntityManager.Instance.Entities[message.SenderCharacterName].transform.position;
             }
             ChatManager.Instance.Channels[channel].ServerSendMessage(message);
         }
