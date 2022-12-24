@@ -95,7 +95,7 @@ namespace Backend.App
         {
             var character = GetCharacter(characterName);
             if (character == null) return false;
-            var invitedCharacter = CharacterFacet.GetById(invitedCharacterName);
+            var invitedCharacter = CharacterFacet.GetByName(invitedCharacterName);
             if (invitedCharacter == null) return false;
 
             var existing = GetByCharacterAndLeader(characterName, characterName);
