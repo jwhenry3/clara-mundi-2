@@ -14,8 +14,9 @@ namespace ClaraMundi
 
         public void ServerSendMessage(ChatMessage message)
         {
-            var party = PlayerManager.Instance.LocalPlayer.Party.Party;
-            if (party == null) return;
+            var player = PlayerManager.Instance.LocalPlayer;
+            if (player == null) return;
+            player.Party.SendMessage(message);
             // send chat message to the party facet
         }
         

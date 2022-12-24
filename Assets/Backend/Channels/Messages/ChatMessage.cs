@@ -1,10 +1,12 @@
 ﻿using Unisave.Broadcasting;
-using UnityEngine;
 
-public class ChatMessage : BroadcastingMessage
+namespace Backend
 {
-    public string messageId;
-    public string senderName;
-    public string toName;
-    public string message;
+    public class ChatMessage : BroadcastingMessage
+    {
+        public string messageId;
+        public string senderName;
+        public string toName;
+        public string message;
+    }
 }

@@ -56,7 +56,7 @@ namespace ClaraMundi
                 receiverName = Player.GetClickableName(ChatMessage.ToCharacterName);
             
             if (ChatMessage.Channel == "Whisper" &&
-                ChatMessage.SenderCharacterName == PlayerManager.Instance.LocalPlayer.entityId)
+                ChatMessage.SenderCharacterName == null)
                 sender = "[Whisper To] " + receiverName + ":";
             else if (ChatMessage.Channel == "Whisper")
                 sender = "[Whisper From] " + senderName + ":";

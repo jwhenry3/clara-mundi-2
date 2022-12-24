@@ -7,28 +7,23 @@ namespace Backend.App
 {
     public class ChatFacet : Facet
     {
-        private CharacterEntity GetCharacter(string characterId)
-        {
-            var account = Auth.GetPlayer<AccountEntity>();
-            return account != null ? CharacterFacet.GetByIdAndAccount(characterId, account) : null;
-        }
-        private CharacterEntity GetCharacterByName(string characterName)
+        private CharacterEntity GetCharacter(string characterName)
         {
             var account = Auth.GetPlayer<AccountEntity>();
             return account != null ? CharacterFacet.GetByNameAndAccount(characterName, account) : null;
         }
         
         
-        public ChannelSubscription SubscribeToPrivateChannel(string characterId)
+        public ChannelSubscription SubscribeToPrivateChannel(string characterName)
         {
-            var character = GetCharacter(characterId);
+            var character = GetCharacter(characterName);
             if (character == null) return null;
             return CreatePrivateChannelSubscription(character.Name);
         }
 
         public void SendPrivateMessageTo(ChatMessage message)
         {
-            var character = GetCharacterByName(message.senderName);
+            var character = GetCharacter(message.senderName);
             if (character == null) return;
             message.messageId = StringUtils.UniqueId();
             Broadcast.Channel<PrivateMessageChannel>()
@@ -40,12 +35,25 @@ namespace Backend.App
         {
             var channels = new string[] {"yell", "trade", "lfg"};
             if (!channels.Contains(channel)) return;
-            var character = GetCharacterByName(message.senderName);
+            var character = GetCharacter(message.senderName);
             if (character == null) return;
             message.messageId = StringUtils.UniqueId();
             Broadcast.Channel<GlobalChannel>()
                 .WithParameters(channel)
                 .Send(message);
+        }
+
+        public bool SendMessageToParty(ChatMessage message)
+        {
+            var character = GetCharacter(message.senderName);
+            if (character == null) return false;
+            var party = PartyFacet.GetJoinedParty(character.Name);
+            if (party == null) return false;
+            message.messageId = StringUtils.UniqueId();
+            Broadcast.Channel<PartyChannel>()
+                .WithParameters(party.PartyId)
+                .Send(message);
+            return true;
         }
         
         public static ChannelSubscription CreatePartyChannelSubscription(string partyId)

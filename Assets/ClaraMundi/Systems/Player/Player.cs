@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using FishNet.Managing;
 using FishNet;
 
@@ -6,8 +7,9 @@ namespace ClaraMundi
 {
     public class Player : MonoBehaviour
     {
+        public event Action NetStarted;
         public int ClientId;
-        [HideInInspector] public CharacterModel Character;
+        public CharacterModel Character => Entity.Character;
         [HideInInspector]
         public Entity Entity { get; private set; }
         [HideInInspector]
@@ -52,6 +54,7 @@ namespace ClaraMundi
             PlayerManager.Instance.PlayersByName[Entity.entityName.ToLower()] = this;
             if (!Entity.IsOwner) return;
             PlayerManager.Instance.ChangeLocalPlayer(this);
+            NetStarted?.Invoke();
         }
 
         private void OnDestroy()
@@ -70,17 +73,11 @@ namespace ClaraMundi
                 PlayerManager.Instance.ChangeLocalPlayer(null);
         }
 
-        public static string GetClickableName(string entityId)
+        public static string GetClickableName(string characterName)
         {
-            if (!PlayerManager.Instance.Players.ContainsKey(entityId)) return "";
-            var player = PlayerManager.Instance.Players[entityId];
-            return $"<link=\"player:{entityId}\">{player.Entity.entityName}</link>";
-        }
-        public static string GetClickableNameByName(string name)
-        {
-            if (!PlayerManager.Instance.PlayersByName.ContainsKey(name.ToLower())) return "";
-            var player = PlayerManager.Instance.PlayersByName[name.ToLower()];
-            return $"<link=\"player:{player.Entity.entityId}\">{player.Entity.entityName}</link>";
+            if (!PlayerManager.Instance.PlayersByName.ContainsKey(characterName)) return "";
+            var player = PlayerManager.Instance.PlayersByName[characterName];
+            return $"<link=\"player:{characterName}\">{characterName}</link>";
         }
     }
 }

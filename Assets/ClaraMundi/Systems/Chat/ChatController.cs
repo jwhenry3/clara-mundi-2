@@ -5,8 +5,17 @@ namespace ClaraMundi
 {
     public class ChatController : PlayerController
     {
+        public PrivateMessageClient PrivateMessageClient;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            PrivateMessageClient = GetComponent<PrivateMessageClient>();
+        }
+
         public void SendMessage(string channel, ChatMessage message)
         {
+            message.SenderCharacterName = null;
             if (!string.IsNullOrEmpty(message.ToCharacterName) && message.Channel == "Whisper")
             {
                 // send the chat message to the chat window even though this is outgoing and not incoming
@@ -15,30 +24,41 @@ namespace ClaraMundi
                 ChatManager.ReceivedMessage(message);
             }
 
-            SendMessageFromClient(channel, message);
+            message.SenderCharacterName = player.Character.Name;
+            switch (channel)
+            {
+                case "Party":
+                    player.Party.SendMessage(message);
+                    break;
+                case "Whisper":
+                    PrivateMessageClient.SendMessage(message);
+                    break;
+                default:
+                    SendMessageFromClient(channel, message);
+                    break;
+            }
         }
+
         [ServerRpc]
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            message.SenderCharacterName = player.entityId;
+            message.SenderCharacterName = player.Character.Name;
             ServerSendMessage(channel, message);
         }
-        public void ServerSendMessage(string channel, ChatMessage message)
+
+        private void ServerSendMessage(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            if (channel == "Party")
-            {
-                PartyManager.Instance.ServerSendMessage(message);
-                return;
-            }
             if (!ChatManager.Instance.Channels.ContainsKey(channel)) return;
-            
+
             if (!string.IsNullOrEmpty(message.SenderCharacterName))
             {
                 // track position for local channels
-                message.SenderPosition = EntityManager.Instance.Entities[message.SenderCharacterName].transform.position;
+                message.SenderPosition =
+                    EntityManager.Instance.Entities[message.SenderCharacterName].transform.position;
             }
+
             ChatManager.Instance.Channels[channel].ServerSendMessage(message);
         }
     }

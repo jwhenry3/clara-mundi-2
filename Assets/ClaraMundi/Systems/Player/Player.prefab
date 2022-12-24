@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378666721921704503}
   - component: {fileID: 378666721921704500}
+  - component: {fileID: 4056452174490393122}
   m_Layer: 0
   m_Name: Party
   m_TagString: Untagged
@@ -96,14 +97,24 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
-  lastMessage:
-    MessageId: b8eabf30-9866-40ae-b199-58fb973b649b
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
+  Party:
+    PartyId: 
+    Leader: 
+    Members: []
+    Invitations: []
+    Requests: []
+--- !u!114 &4056452174490393122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378666721921704502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8314e0918041febe7d50011fbc8d9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &378666722211930420
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,30 +167,30 @@ MonoBehaviour:
   StorageId: inventory
   Capacity: 80
   StartingItems:
-  - OwnerId: 
-    StorageId: inventory
+  - StorageId: inventory
     ItemInstanceId: 7aef0230-e3af-4505-b6dd-79b987b4598f
     ItemId: potion
     Quantity: 5
     IsEquipped: 0
-  - OwnerId: 
-    StorageId: inventory
+    CharacterId: 
+  - StorageId: inventory
     ItemInstanceId: 2f69a074-7252-4845-9c01-4cc8f131f285
     ItemId: sword
     Quantity: 1
     IsEquipped: 0
-  - OwnerId: 
-    StorageId: inventory
+    CharacterId: 
+  - StorageId: inventory
     ItemInstanceId: fae0b464-23a7-4ee6-97f6-367d1bf85a1b
     ItemId: shield
     Quantity: 1
     IsEquipped: 0
-  - OwnerId: 
-    StorageId: inventory
+    CharacterId: 
+  - StorageId: inventory
     ItemInstanceId: 2ef4b6fe-2a93-4b50-8dab-3f21a17480e1
     ItemId: sword
     Quantity: 1
     IsEquipped: 0
+    CharacterId: 
   isPublicStorage: 0
 --- !u!114 &378666722211930419
 MonoBehaviour:
@@ -208,7 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378666722372250761}
   - component: {fileID: 378666722372250758}
-  - component: {fileID: 7945795926963440987}
+  - component: {fileID: 6895623924732013425}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -247,7 +258,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
---- !u!114 &7945795926963440987
+--- !u!114 &6895623924732013425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -256,31 +267,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 378666722372250760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
+  m_Script: {fileID: 11500000, guid: 216b7aa8ea6d4a5d9762b85811d66b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
-  _addedNetworkObject: {fileID: 378666723463143089}
-  _networkObjectCache: {fileID: 378666723463143089}
-  PlayerName: 
-  Name: Whisper
-  ChannelScope: 1
-  LastPublicMessage:
-    MessageId: e7be1283-7902-4c70-9772-8139d1ea401d
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
-  LastPrivateMessage:
-    MessageId: 38b3a354-8258-41de-80c4-669fe89fca91
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
 --- !u!1 &378666722592074591
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +523,7 @@ MonoBehaviour:
   - {fileID: 378666721921704500}
   - {fileID: 378666722592074589}
   - {fileID: 378666722372250758}
-  - {fileID: 7945795926963440987}
+  - {fileID: 0}
   - {fileID: 5954349119136247432}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -561,6 +550,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientId: 0
+  Character:
+    CharacterId: 
+    Name: 
+    Gender: 
+    Race: 
+    Area: 
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    Level: 0
+    TotalExp: 0
 --- !u!1 &4746264309211576557
 GameObject:
   m_ObjectHideFlags: 0

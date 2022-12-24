@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI.ProceduralImage;
 
@@ -7,6 +8,7 @@ namespace ClaraMundi
     public class PartyMemberUI : MonoBehaviour
     {
         public Player player { get; private set; }
+        public string playerName;
         public TextMeshProUGUI PlayerName;
         public TextMeshProUGUI PlayerLevel;
         public ProceduralImage HealthBar;
@@ -14,31 +16,50 @@ namespace ClaraMundi
         public TextMeshProUGUI HealthText;
         public TextMeshProUGUI ManaText;
         
-        public void SetPartyMember(string playerId)
+        public void SetPartyMember(string characterName)
         {
+            playerName = characterName;
             if (player != null)
             {
                 player.Stats.OnChange -= OnChange;
             } 
             player = null;
-            if (!string.IsNullOrEmpty(playerId) && PlayerManager.Instance.Players.ContainsKey(playerId))
+            if (!string.IsNullOrEmpty(playerName) && PlayerManager.Instance.PlayersByName.ContainsKey(playerName))
             {
-                player = PlayerManager.Instance.Players[playerId];
+                player = PlayerManager.Instance.PlayersByName[playerName];
                 player.Stats.OnChange += OnChange;
             }
 
-            if (player == null)
+            if (string.IsNullOrEmpty(playerName))
             {
                 Destroy(gameObject);
                 return;
             }
 
-            PlayerName.text = player.Entity.entityName;
+            PlayerName.text = playerName;
             OnChange();
+        }
+
+        private void OnDestroy()
+        {
+            if (player != null)
+            {
+                player.Stats.OnChange -= OnChange;
+            } 
         }
 
         private void OnChange()
         {
+            if (player == null)
+            {
+                PlayerLevel.text = "";
+                // convert a value to a float to retain the decimal value
+                HealthBar.fillAmount = 0;
+                ManaBar.fillAmount = 0;
+                HealthText.text = "??";
+                ManaText.text = "??";
+                return;
+            }
             PlayerLevel.text = "LV " + player.Stats.Level;
             // convert a value to a float to retain the decimal value
             HealthBar.fillAmount = (player.Stats.Energies.Health / (player.Stats.Energies.MaxHealth * 1f));

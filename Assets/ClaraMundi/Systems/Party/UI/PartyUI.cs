@@ -42,7 +42,7 @@ namespace ClaraMundi
         private void OnPartyChanges(PartyModel party)
         {
             Party = party;
-            if (party == null)
+            if (!PartyClient.DoesPartyExist(party))
             {
                 foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
                         member.SetPartyMember(null);
@@ -53,11 +53,11 @@ namespace ClaraMundi
             List<string> found = new();
             foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
             {
-                if (party.Members.Contains(member.player.entityId))
+                if (member.player != null && party.Members.Contains(member.player.Character.Name))
                 {
-                    member.SetPartyMember(member.player.entityId);
-                    found.Add(member.player.entityId);
-                    if (member.player.entityId == PlayerManager.Instance.LocalPlayer.entityId)
+                    member.SetPartyMember(member.player.Character.Name);
+                    found.Add(member.player.Character.Name);
+                    if (member.player.Character.Name == PlayerManager.Instance.LocalPlayer.Character.Name)
                         member.transform.SetAsFirstSibling();
                 }
                 else
@@ -70,7 +70,7 @@ namespace ClaraMundi
                 if (found.Contains(member)) continue;
                 var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);
                 instance.SetPartyMember(member);
-                if (member == PlayerManager.Instance.LocalPlayer.entityId)
+                if (member == PlayerManager.Instance.LocalPlayer.Character.Name)
                     instance.transform.SetAsFirstSibling();
             }
         }
@@ -84,9 +84,7 @@ namespace ClaraMundi
 
         public void InviteToParty()
         {
-            if (!PlayerManager.Instance.PlayersByName.ContainsKey(InviteField.text.ToLower())) return;
-            var pendingMember = PlayerManager.Instance.PlayersByName[InviteField.text.ToLower()];
-            PlayerManager.Instance.LocalPlayer.Party.InviteToParty(pendingMember.entityId);
+            PlayerManager.Instance.LocalPlayer.Party.InviteToParty(InviteField.text.ToLower());
             InviteDialog.SetActive(false);
             InviteField.text = "";
         }

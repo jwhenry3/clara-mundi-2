@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -10,7 +9,6 @@ namespace ClaraMundi
     {
         public string Name;
         public string Key;
-        public SceneAsset Scene;
         [HideInInspector]
         public Region Region;
         public Zone[] AdjacentZones;

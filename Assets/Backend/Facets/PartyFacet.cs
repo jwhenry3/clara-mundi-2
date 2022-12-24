@@ -2,6 +2,7 @@
 using Unisave.Broadcasting;
 using Unisave.Facades;
 using Unisave.Facets;
+using UnityEngine;
 
 namespace Backend.App
 {
@@ -33,12 +34,17 @@ namespace Backend.App
             }
         }
 
-        public ChannelSubscription SubscribeToParty(string characterName, string leaderName)
+        public bool IsPlayerInParty(string characterName, string playerName)
+        {
+            if (GetCharacter(characterName) == null) return false;
+            return GetJoinedParty(playerName) != null;
+        }
+        public ChannelSubscription SubscribeToParty(string characterName)
         {
             var character = GetCharacter(characterName);
             if (character == null) return null;
-            var member = GetByCharacterAndLeader(characterName, leaderName);
-            if (member == null || !member.HasJoined) return null;
+            var member = GetJoinedParty(characterName);
+            if (member == null) return null;
             return ChatFacet.CreatePartyChannelSubscription(member.PartyId);
         }
 
@@ -67,7 +73,11 @@ namespace Backend.App
             var character = GetCharacter(characterName);
             if (character == null) return false;
             var existing = GetMemberByCharacter(characterName, true);
-            if (existing != null) return false;
+            if (existing != null)
+            {
+                SendMessageToPlayer(characterName, PartyMessageType.Private_AlreadyInParty);
+                return false;
+            }
             RemovePending(characterName);
             var member = new PartyMemberEntity()
             {
@@ -223,13 +233,14 @@ namespace Backend.App
         public PartyModel GetParty(string characterName)
         {
             var character = GetCharacter(characterName);
-            if (character == null) return new PartyModel();
+            if (character == null) return null;
             var member = GetJoinedParty(characterName);
-            if (member == null) return new PartyModel();
-            var members = GetCurrentAndPendingMembersByPartyId(member.PartyId);
+            if (member == null) return null;
+            var members = GetCurrentAndPendingMembersByLeader(member.LeaderName);
             var party = new PartyModel();
             foreach (var m in members)
             {
+                party.PartyId = m.PartyId;
                 party.Leader = m.LeaderName;
                 if (m.HasJoined)
                     party.Members.Add(m.MemberName);
@@ -247,9 +258,9 @@ namespace Backend.App
             return DB.TakeAll<PartyMemberEntity>().Filter((p) => p.LeaderName == character && p.HasJoined).Get();
         }
 
-        public static List<PartyMemberEntity> GetCurrentAndPendingMembersByPartyId(string partyId)
+        public static List<PartyMemberEntity> GetCurrentAndPendingMembersByLeader(string character)
         {
-            return DB.TakeAll<PartyMemberEntity>().Filter((p) => p.PartyId == partyId).Get();
+            return DB.TakeAll<PartyMemberEntity>().Filter((p) => p.LeaderName == character).Get();
         }
 
         public static PartyMemberEntity GetByCharacterAndLeader(string character, string leader)

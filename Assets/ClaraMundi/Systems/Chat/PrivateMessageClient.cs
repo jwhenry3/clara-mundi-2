@@ -1,7 +1,10 @@
-﻿using Backend.App;
+﻿using System;
+using Backend.App;
 using ClaraMundi;
 using Unisave.Broadcasting;
 using Unisave.Facades;
+using Unisave.Serialization;
+using UnityEngine;
 
 public class PrivateMessageClient : UnisaveBroadcastingClient
 {
@@ -11,25 +14,74 @@ public class PrivateMessageClient : UnisaveBroadcastingClient
     private void Awake()
     {
         player = GetComponentInParent<Player>();
+        player.NetStarted += Subscribe;
+        if (player.Entity.Character != null && !string.IsNullOrEmpty(player.Entity.Character.Name))
+            Subscribe();
     }
 
-    private async void OnEnable()
+    private void OnDestroy()
     {
-        if (player == null || string.IsNullOrEmpty(player.Character?.Name)) return;
-        // do not listen to private messages unless the owning player
+        if (player == null) return;
+        player.NetStarted -= Subscribe;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
         if (!player.Entity.IsOwner) return;
+        player.NetStarted -= Subscribe;
+        ChatManager.ReceivedMessage(new ChatMessage()
+        {
+            Type = ChatMessageType.System,
+            Channel = "System",
+            Message = "Left Private Channel"
+        });
+    }
+
+    private async void Subscribe()
+    {
+        if (Subscription != null)
+        {
+            // let the parent class handle cleanup of the previous party subscription
+            OnDisable();
+        }
+
+        // do not listen to private messages unless the owning player
+        if (player.Entity.Character == null || string.IsNullOrEmpty(player.Entity.Character.Name)) return;
+        if (!player.Entity.IsOwner) return;
+        Debug.Log("SUBSCRIBE!");
         Subscription = await OnFacet<ChatFacet>.CallAsync<ChannelSubscription>(
             nameof(ChatFacet.SubscribeToPrivateChannel),
             player.Character.Name
         );
         FromSubscription(Subscription)
             .Forward<PartyMessage>(PartyMessageReceived)
-            .Forward<ChatMessage>(ChatMessageReceived)
+            .Forward<Backend.ChatMessage>(ChatMessageReceived)
             .ElseLogWarning();
+        ChatManager.ReceivedMessage(new ChatMessage()
+        {
+            Type = ChatMessageType.System,
+            Channel = "System",
+            Message = "Joined your Private Channel"
+        });
+    }
+
+    public void SendMessage(ChatMessage message)
+    {
+        OnFacet<ChatFacet>.CallAsync(
+            nameof(ChatFacet.SendPrivateMessageTo),
+            new Backend.ChatMessage()
+            {
+                senderName = message.SenderCharacterName,
+                toName = message.ToCharacterName,
+                message = message.Message
+            });
     }
 
     void PartyMessageReceived(PartyMessage message)
     {
+        Debug.Log("Received Party Message");
+        Debug.Log(Serializer.ToJson(message));
         // do something
         switch (message.type)
         {
@@ -55,16 +107,19 @@ public class PrivateMessageClient : UnisaveBroadcastingClient
             case PartyMessageType.Private_PlayerInvited:
                 player.Party.PlayerInvited(message);
                 break;
+            case PartyMessageType.Private_AlreadyInParty:
+                player.Party.AlreadyInParty(message);
+                break;
         }
     }
 
-    
-    void ChatMessageReceived(ChatMessage message)
+
+    void ChatMessageReceived(Backend.ChatMessage message)
     {
         ChatManager.ReceivedMessage(new ClaraMundi.ChatMessage()
         {
             Type = ChatMessageType.Chat,
-            Channel = player.Character.Name,
+            Channel = "Whisper",
             Message = message.message,
             MessageId = message.messageId,
             SenderCharacterName = message.senderName,

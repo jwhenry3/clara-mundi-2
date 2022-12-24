@@ -108,7 +108,7 @@ namespace ClaraMundi
             
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             var player = nob.GetComponent<Player>();
-            player.Character = character;
+            player.Entity.Character = character;
             player.Stats.Level = character.Level;
             player.Stats.Experience = character.TotalExp;
             player.Entity.entityName = character.Name;

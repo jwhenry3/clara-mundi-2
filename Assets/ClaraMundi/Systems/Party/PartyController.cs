@@ -19,9 +19,16 @@ namespace ClaraMundi
         [SyncVar(OnChange = nameof(Client_OnChange))]
         public PartyModel Party;
 
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            GetParty();
+        }
+
         private void Client_OnChange(PartyModel lastParty, PartyModel nextParty, bool asServer)
         {
             PartyChanges?.Invoke(nextParty);
+                
         }
 
         public async void CreateParty()
@@ -43,57 +50,57 @@ namespace ClaraMundi
             );
         }
 
-        public async void InviteToParty(string playerId)
+        public async void InviteToParty(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.InviteToParty),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
-        public async void RequestJoin(string playerId)
+        public async void RequestJoin(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.JoinParty),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
-        public async void AcceptRequest(string playerId)
+        public async void AcceptRequest(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.InviteToParty),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
-        public async void JoinParty(string playerId)
+        public async void JoinParty(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.JoinParty),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
-        public async void DeclineInvite(string playerId)
+        public async void DeclineInvite(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.DeclineInvite),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
-        public async void DeclineRequest(string playerId)
+        public async void DeclineRequest(string playerName)
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.DeclineInvite),
                 player.Character.Name,
-                playerId
+                playerName
             );
         }
 
@@ -101,16 +108,40 @@ namespace ClaraMundi
         {
             await OnFacet<PartyFacet>.CallAsync<bool>(
                 nameof(PartyFacet.LeaveParty),
-                player.Character.Name
+                player.Character.Name,
+                false
             );
         }
 
         public async void GetParty()
         {
-            UpdateParty(await OnFacet<PartyFacet>.CallAsync<PartyModel>(
+            Party = await OnFacet<PartyFacet>.CallAsync<PartyModel>(
                 nameof(PartyFacet.GetParty),
                 player.Character.Name
-            ));
+            );
+            UpdateParty(Party);
+        }
+
+        public async void SendMessage(ChatMessage message)
+        {
+            if (!PartyClient.DoesPartyExist(Party)) return;
+            var result = await OnFacet<ChatFacet>.CallAsync<bool>(
+                nameof(ChatFacet.SendMessageToParty),
+                new Backend.ChatMessage()
+                {
+                    message = message.Message,
+                    senderName = message.SenderCharacterName
+                }
+            );
+            if (!result)
+            {
+                ChatManager.ReceivedMessage(new ChatMessage()
+                {
+                    Type = ChatMessageType.System,
+                    Channel = "System",
+                    Message = "Could not send party message"
+                });
+            }
         }
         
         [ServerRpc]
@@ -180,6 +211,22 @@ namespace ClaraMundi
             AlertManager.Instance.AddMessage(new AlertMessage()
             {
                 Message = "Cannot join the party. The party is full."
+            });
+        }
+
+        public void AlreadyInParty(PartyMessage message)
+        {
+            if (string.IsNullOrEmpty(message.characterName))
+            {
+                AlertManager.Instance.AddMessage(new AlertMessage()
+                {
+                    Message = "Already in Party."
+                });
+                return;
+            }
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} is already in a party."
             });
         }
     }

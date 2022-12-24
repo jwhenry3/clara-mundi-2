@@ -6,6 +6,8 @@ namespace ClaraMundi
 {
     public class Entity : NetworkBehaviour
     {
+        [SyncVar]
+        public CharacterModel Character;
         public event Action OnStarted;
         public event Action<string> NameChange;
         [SyncVar(OnChange = "OnNameChange")]

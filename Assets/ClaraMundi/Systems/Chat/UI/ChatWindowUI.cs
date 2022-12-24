@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Backend.App;
 using TMPro;
+using Unisave.Facades;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -30,7 +33,7 @@ namespace ClaraMundi
         public Transform CombatContainer;
         public Transform SystemContainer;
 
-        Player ContextualPlayer;
+        string ContextualCharacterName;
 
         string channel = "Say";
 
@@ -155,24 +158,12 @@ namespace ClaraMundi
                     additionalText += "]";
                 }
 
-                string channelName = channel;
-                string toEntityId = "";
-                if (channel == "Whisper")
+                ChatManager.SendChatMessage(channel, new ChatMessage
                 {
-                    if (PlayerManager.Instance.PlayersByName.TryGetValue(RecipientField.text.ToLower(), out var player))
-                    {
-                        channelName = "player:" + RecipientField.text;
-                        toEntityId = player.entityId;
-                    }
-                }
-
-                ChatManager.SendChatMessage(channelName, new ChatMessage
-                {
-                    SenderCharacterName = PlayerManager.Instance.LocalPlayer.entityId,
                     Type = ChatMessageType.Chat,
                     Channel = channel,
                     Message = InputField.text + additionalText,
-                    ToCharacterName = toEntityId,
+                    ToCharacterName = RecipientField.text ?? null
                 });
                 InputField.text = "";
                 MessageAttachments = new();
@@ -180,28 +171,18 @@ namespace ClaraMundi
             }
         }
 
-        private bool CanRequestJoin()
-        {
-            if (PlayerManager.Instance.LocalPlayer.Party.Party != null) return false;
-            return ContextualPlayer.Party.Party != null &&
-                   ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
-        }
 
-        private bool CanInvite()
+        public async void OpenPlayerContextMenu(PointerEventData eventData, string characterName)
         {
-            if (PlayerManager.Instance.LocalPlayer.Party.Party != null &&
-                PlayerManager.Instance.LocalPlayer.Party.Party.Leader != PlayerManager.Instance.LocalPlayer.entityId)
-                return false;
-            return ContextualPlayer.Party.Party == null &&
-                   ContextualPlayer.entityId != PlayerManager.Instance.LocalPlayer.entityId;
-        }
-
-        public void OpenPlayerContextMenu(PointerEventData eventData, string playerEntityId)
-        {
-            if (!PlayerManager.Instance.Players.TryGetValue(playerEntityId, out ContextualPlayer)) return;
+            ContextualCharacterName = characterName;
+            var myName = PlayerManager.Instance.LocalPlayer.Character.Name;
+            var isNotMe = myName != ContextualCharacterName;
+            var inParty = isNotMe && await OnFacet<PartyFacet>.CallAsync<bool>(
+                nameof(PartyFacet.IsPlayerInParty), characterName,
+                ContextualCharacterName);
             PlayerContextMenu.transform.position = eventData.position;
-            RequestJoinOption.SetActive(CanRequestJoin());
-            InviteOption.SetActive(CanInvite());
+            RequestJoinOption.SetActive(isNotMe && inParty);
+            InviteOption.SetActive(!inParty && isNotMe);
             PlayerContextMenu.SetActive(true);
         }
 
@@ -211,26 +192,26 @@ namespace ClaraMundi
             // this avoids some unnecessary chatter and additional UX
             // that way the player can use their friend as a means into their party
             // rather than looking up the leader for the party
-            PlayerManager.Instance.LocalPlayer.Party.RequestJoin(ContextualPlayer.Party.Party.Leader);
+            PlayerManager.Instance.LocalPlayer.Party.RequestJoin(ContextualCharacterName);
             ClosePlayerContextMenu();
         }
 
         public void Invite()
         {
-            PlayerManager.Instance.LocalPlayer.Party.InviteToParty(ContextualPlayer.entityId);
+            PlayerManager.Instance.LocalPlayer.Party.InviteToParty(ContextualCharacterName);
             ClosePlayerContextMenu();
         }
 
         public void Whisper()
         {
-            RecipientField.text = ContextualPlayer.Entity.entityName;
+            RecipientField.text = ContextualCharacterName;
             SetWhisperChannel();
             ClosePlayerContextMenu();
         }
 
         public void ClosePlayerContextMenu()
         {
-            ContextualPlayer = null;
+            ContextualCharacterName = null;
             PlayerContextMenu.SetActive(false);
         }
 

@@ -16,6 +16,7 @@ public enum PartyMessageType
     Private_LeftParty,
     Private_RequestedInvite,
     Private_RequestDenied,
+    Private_AlreadyInParty,
     PartyFull,
 }
 public class PartyMessage : BroadcastingMessage
