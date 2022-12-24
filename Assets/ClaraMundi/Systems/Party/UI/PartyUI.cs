@@ -49,7 +49,7 @@ namespace ClaraMundi
                 InviteButton.gameObject.SetActive(true);
                 return;
             }
-            InviteButton.gameObject.SetActive(party.Leader == player.entityId);
+            InviteButton.gameObject.SetActive(party.Leader == player.Character.Name);
             List<string> found = new();
             foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
             {
