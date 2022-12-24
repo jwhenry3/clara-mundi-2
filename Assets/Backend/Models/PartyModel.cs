@@ -6,7 +6,7 @@ public class PartyModel
 {
     public string PartyId;
     public string Leader;
-    public List<string> Members = new();
-    public List<string> Invitations = new();
-    public List<string> Requests = new();
+    public List<string> Members = new List<string>();
+    public List<string> Invitations = new List<string>();
+    public List<string> Requests = new List<string>();
 }
