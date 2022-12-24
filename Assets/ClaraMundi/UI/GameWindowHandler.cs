@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,7 +10,7 @@ namespace ClaraMundi
     public class GameWindowHandler : MonoBehaviour
     {
         public static GameWindowHandler Instance;
-        
+
         public Tabs Tabs;
         public MoveToFront ActiveWindow;
 
@@ -21,10 +22,10 @@ namespace ClaraMundi
 
         private void OnEnable()
         {
-           InputManager.Instance.UI.FindAction("Inventory").performed += OnInventory;
-           InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
-           InputManager.Instance.UI.FindAction("Equipment").performed += OnEquipment;
-           InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+            InputManager.Instance.UI.FindAction("Inventory").performed += OnInventory;
+            InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
+            InputManager.Instance.UI.FindAction("Equipment").performed += OnEquipment;
+            InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
         }
 
         private void OnDisable()
@@ -38,27 +39,39 @@ namespace ClaraMundi
         private void Update()
         {
             if (EventSystem.current.currentSelectedGameObject != null) return;
-            if (ActiveWindow  == null) return;
+            if (ActiveWindow == null) return;
             if (ActiveWindow.gameObject.activeInHierarchy)
                 ActiveWindow.SelectFirstInteractable();
         }
 
-        private void OnInventory(InputAction.CallbackContext context)
+        private bool IsFocusedOnInput()
         {
-            if (InputManager.Instance.InputsFocused.Count == 0) Tabs.ChangeTab("Inventory");
+            var obj = EventSystem.current.currentSelectedGameObject;
+            var input = obj.GetComponent<TMP_InputField>();
+            return input != null && input.isFocused;
         }
 
-        private void OnJournal(InputAction.CallbackContext context) 
+        private void OnInventory(InputAction.CallbackContext context)
         {
-            if (InputManager.Instance.InputsFocused.Count == 0) Tabs.ChangeTab("Journal");
+            if (IsFocusedOnInput()) return;
+            Tabs.ChangeTab("Inventory");
         }
-        private void OnEquipment(InputAction.CallbackContext context) 
+
+        private void OnJournal(InputAction.CallbackContext context)
         {
-            if (InputManager.Instance.InputsFocused.Count == 0) Tabs.ChangeTab("Equipment");
+            if (IsFocusedOnInput()) return;
+            Tabs.ChangeTab("Journal");
         }
+
+        private void OnEquipment(InputAction.CallbackContext context)
+        {
+            if (IsFocusedOnInput()) return;
+            Tabs.ChangeTab("Equipment");
+        }
+
         private void OnCancel(InputAction.CallbackContext context)
         {
-            if (InputManager.Instance.InputsFocused.Count != 0) return;
+            if (IsFocusedOnInput()) return;
             if (ActiveWindow == null) return;
             var tab = Tabs.List.Find((t) => t.Content == ActiveWindow.GetComponent<UIAnimator>());
             Tabs.ChangeTab(tab.Label);
