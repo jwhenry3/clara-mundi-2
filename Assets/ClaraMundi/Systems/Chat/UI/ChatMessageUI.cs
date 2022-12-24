@@ -48,18 +48,21 @@ namespace ClaraMundi
                 sender = "";
                 return;
             }
+
             var senderName = "System";
             var receiverName = "";
             if (!string.IsNullOrEmpty(ChatMessage.SenderCharacterName))
                 senderName = Player.GetClickableName(ChatMessage.SenderCharacterName);
             if (!string.IsNullOrEmpty(ChatMessage.ToCharacterName))
                 receiverName = Player.GetClickableName(ChatMessage.ToCharacterName);
-            
+
             if (ChatMessage.Channel == "Whisper" &&
                 ChatMessage.SenderCharacterName == null)
                 sender = "[Whisper To] " + receiverName + ":";
             else if (ChatMessage.Channel == "Whisper")
                 sender = "[Whisper From] " + senderName + ":";
+            else if (ChatMessage.Channel == "Yell" && !string.IsNullOrEmpty(ChatMessage.SenderArea))
+                sender = "[" + ChatMessage.Channel + "][" + ChatMessage.SenderArea + "] " + senderName + ":";
             else
                 sender = "[" + ChatMessage.Channel + "] " + senderName + ":";
         }
@@ -71,6 +74,7 @@ namespace ClaraMundi
             else
                 Text.text = $"<color={color}>{sender} {ChatMessage.Message}</color>";
         }
+
         public void OnPointerMove(PointerEventData eventData)
         {
             var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
@@ -85,6 +89,7 @@ namespace ClaraMundi
             Tooltip.NodeId = null;
             Tooltip.gameObject.SetActive(false);
         }
+
         public void OnPointerDown(PointerEventData eventData)
         {
             var selectedLink = TextUtils.GetLinkUnder(Text, eventData);

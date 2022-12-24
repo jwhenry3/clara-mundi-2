@@ -6,11 +6,13 @@ namespace ClaraMundi
     public class ChatController : PlayerController
     {
         public PrivateMessageClient PrivateMessageClient;
-
+        public GlobalChatClient GlobalChatClient;
+        public ChatChannel ChatChannel;
         protected override void Awake()
         {
             base.Awake();
             PrivateMessageClient = GetComponent<PrivateMessageClient>();
+            GlobalChatClient = GetComponent<GlobalChatClient>();
         }
 
         public void SendMessage(string channel, ChatMessage message)
@@ -31,9 +33,15 @@ namespace ClaraMundi
                     player.Party.SendMessage(message);
                     break;
                 case "Whisper":
-                    PrivateMessageClient.SendMessage(message);
+                    PrivateMessageClient.SendChatMessage(message);
                     break;
-                default:
+                case "Trade":
+                case "LFG":
+                case "Yell":
+                    GlobalChatClient.SendChatMessage(channel, message);
+                    break;
+                case "Say":
+                case "Shout":
                     SendMessageFromClient(channel, message);
                     break;
             }
@@ -43,6 +51,7 @@ namespace ClaraMundi
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
             if (!IsServer) return;
+            if (channel != "Say" && channel != "Shout") return;
             message.SenderCharacterName = player.Character.Name;
             ServerSendMessage(channel, message);
         }
@@ -50,16 +59,12 @@ namespace ClaraMundi
         private void ServerSendMessage(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            if (!ChatManager.Instance.Channels.ContainsKey(channel)) return;
+            if (channel != "Say" && channel != "Shout") return;
+            if (!ChatManager.Instance.Channels.ContainsKey(player.gameObject.scene.name)) return;
 
-            if (!string.IsNullOrEmpty(message.SenderCharacterName))
-            {
-                // track position for local channels
-                message.SenderPosition =
-                    EntityManager.Instance.Entities[message.SenderCharacterName].transform.position;
-            }
+            message.SenderPosition = player.transform.position;
 
-            ChatManager.Instance.Channels[channel].ServerSendMessage(message);
+            ChatManager.Instance.Channels[player.gameObject.scene.name].ServerSendMessage(message);
         }
     }
 }

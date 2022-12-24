@@ -16,19 +16,12 @@ namespace ClaraMundi
         public event Action<PartyModel> PartyChanges;
         public event Action<List<string>> InviteChanges;
 
-        [SyncVar(OnChange = nameof(Client_OnChange))]
         public PartyModel Party;
 
         public override void OnStartClient()
         {
             base.OnStartClient();
             GetParty();
-        }
-
-        private void Client_OnChange(PartyModel lastParty, PartyModel nextParty, bool asServer)
-        {
-            PartyChanges?.Invoke(nextParty);
-                
         }
 
         public async void CreateParty()
@@ -144,10 +137,10 @@ namespace ClaraMundi
             }
         }
         
-        [ServerRpc]
         private void UpdateParty(PartyModel party)
         {
             Party = party;
+            PartyChanges?.Invoke(party);
         }
         
         public void ClearParty()

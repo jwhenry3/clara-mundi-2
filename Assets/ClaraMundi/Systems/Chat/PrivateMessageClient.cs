@@ -66,7 +66,7 @@ public class PrivateMessageClient : UnisaveBroadcastingClient
         });
     }
 
-    public void SendMessage(ChatMessage message)
+    public void SendChatMessage(ChatMessage message)
     {
         OnFacet<ChatFacet>.CallAsync(
             nameof(ChatFacet.SendPrivateMessageTo),

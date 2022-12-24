@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 378666722372250761}
   - component: {fileID: 378666722372250758}
   - component: {fileID: 6895623924732013425}
+  - component: {fileID: 6123473390795845610}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -258,6 +259,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
+  PrivateMessageClient: {fileID: 0}
 --- !u!114 &6895623924732013425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +270,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 216b7aa8ea6d4a5d9762b85811d66b25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6123473390795845610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378666722372250760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3dd9965bf2a43d2a3b83145659a3ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &378666722592074591
@@ -497,6 +511,16 @@ MonoBehaviour:
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
+  Character:
+    CharacterId: 
+    Name: 
+    Gender: 
+    Race: 
+    Area: 
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: 0
+    Level: 0
+    TotalExp: 0
   entityName: Player
   EntityType: {fileID: 11400000, guid: 5ec5b3c1aa938ee42b704b2ac5de57cb, type: 2}
   entityId: ab31d362-9e36-42d7-a624-866017dc1643
@@ -523,7 +547,6 @@ MonoBehaviour:
   - {fileID: 378666721921704500}
   - {fileID: 378666722592074589}
   - {fileID: 378666722372250758}
-  - {fileID: 0}
   - {fileID: 5954349119136247432}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -550,16 +573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ClientId: 0
-  Character:
-    CharacterId: 
-    Name: 
-    Gender: 
-    Race: 
-    Area: 
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: 0
-    Level: 0
-    TotalExp: 0
 --- !u!1 &4746264309211576557
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929a599dbe904349b6d37d0a319dba3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 9
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}

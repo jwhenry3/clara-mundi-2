@@ -14,6 +14,7 @@ namespace ClaraMundi
         private void Awake()
         {
             Instance = this;
+            
         }
     }
 }

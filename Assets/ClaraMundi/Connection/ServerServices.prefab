@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2332036344207808130}
   - component: {fileID: 2332036344207808131}
   m_Layer: 0
-  m_Name: ConnectedPlayerManager
+  m_Name: ServerServices
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
   _addedNetworkObject: {fileID: 2332036344207808131}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 2332036344207808131}
 --- !u!114 &2332036344207808131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
-  _networkBehaviours: []
+  _networkBehaviours:
+  - {fileID: 2332036344207808130}
+  - {fileID: 0}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
@@ -70,9 +72,9 @@ MonoBehaviour:
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
   <PrefabId>k__BackingField: -1
-  _scenePathHash: 584410112
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 11445147817452136681
+  <AssetPathHash>k__BackingField: 18284635517590474453
   _sceneNetworkObjects:
   - {fileID: 2332036344207808131}
   - {fileID: 0}

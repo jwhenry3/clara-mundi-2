@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2934207662511542847}
-  - component: {fileID: 2934207662511542846}
-  - component: {fileID: 2934207662511542845}
-  - component: {fileID: 2934207662511542844}
-  - component: {fileID: 6883154221009557905}
+  - component: {fileID: 6304848794758113539}
+  - component: {fileID: 4845898991974767051}
+  - component: {fileID: 1336102139074516351}
   m_Layer: 0
   m_Name: SceneChat
   m_TagString: Untagged
@@ -35,7 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2934207662511542846
+--- !u!114 &6304848794758113539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934207662511542835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af9b2dfdb51468e90d55ae42660aeb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4845898991974767051
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,62 +59,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 0
-  _addedNetworkObject: {fileID: 2934207662511542844}
-  _networkObjectCache: {fileID: 2934207662511542844}
-  PlayerName: 
-  Name: Say
-  ChannelScope: 2
-  LastPublicMessage:
-    MessageId: 6e6d6353-58a6-4799-8066-98f481db9e58
+  _addedNetworkObject: {fileID: 1336102139074516351}
+  _networkObjectCache: {fileID: 1336102139074516351}
+  LastMessage:
+    MessageId: a01fIS89QEaxMmeGcCJeWA
     Type: 0
     Channel: Say
-    SenderEntityId: 
+    SenderArea: 
+    SenderCharacterName: 
     SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
+    ToCharacterName: 
     Message: 
-  LastPrivateMessage:
-    MessageId: 5cb5e86c-11d1-4263-8c30-c069b287a0b0
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
---- !u!114 &2934207662511542845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2934207662511542835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _componentIndexCache: 1
-  _addedNetworkObject: {fileID: 2934207662511542844}
-  _networkObjectCache: {fileID: 2934207662511542844}
-  PlayerName: 
-  Name: Shout
-  ChannelScope: 2
-  LastPublicMessage:
-    MessageId: f1c9a5e8-581c-477a-abca-6ec104b54ad0
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
-  LastPrivateMessage:
-    MessageId: 46bcfbc8-2ce4-4462-af2d-35f2ad55a9b4
-    Type: 0
-    Channel: Say
-    SenderEntityId: 
-    SenderPosition: {x: 0, y: 0, z: 0}
-    ToEntityId: 
-    Message: 
---- !u!114 &2934207662511542844
+--- !u!114 &1336102139074516351
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,33 +85,15 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
-  - {fileID: 2934207662511542846}
-  - {fileID: 2934207662511542845}
+  - {fileID: 4845898991974767051}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   _isNetworked: 1
   _isGlobal: 0
   _defaultDespawnType: 0
   NetworkObserver: {fileID: 0}
-  <PrefabId>k__BackingField: 3
-  _scenePathHash: 584410112
+  <PrefabId>k__BackingField: -1
+  _scenePathHash: 0
   <SceneId>k__BackingField: 0
   <AssetPathHash>k__BackingField: 14045613240336388384
-  _sceneNetworkObjects:
-  - {fileID: 0}
-  - {fileID: 2934207662511542844}
---- !u!114 &6883154221009557905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2934207662511542835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71fd7f855ec523429999fc4e14a1928, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _overrideType: 2
-  _updateHostVisibility: 1
-  _observerConditions: []
+  _sceneNetworkObjects: []

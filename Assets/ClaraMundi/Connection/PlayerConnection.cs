@@ -119,10 +119,6 @@ namespace ClaraMundi
             var sceneLoadData = new SceneLoadData(new [] { sld }, new []{ nob });
             sceneLoadData.ReplaceScenes = ReplaceOption.OnlineOnly;
             _networkManager.SceneManager.LoadConnectionScenes(conn, sceneLoadData);
-            
-            //If there are no global scenes 
-            if (_addToDefaultScene)
-                _networkManager.SceneManager.AddOwnerToDefaultScene(nob);
 
             OnSpawned?.Invoke(nob);
         }

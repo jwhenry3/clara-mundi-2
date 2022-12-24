@@ -187,6 +187,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606050, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
+      propertyPath: _spawnablePrefabs
+      value: 
+      objectReference: {fileID: 11400000, guid: 9ef3d44ed1caf394182c06bd007a28aa, type: 2}
+    - target: {fileID: 7443408887813606050, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: _dontDestroyOnLoad
       value: 0
       objectReference: {fileID: 0}
@@ -194,11 +198,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterServerNetworkManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7443408887813606051, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7443408887813606060, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b650fca685f2eb41a86538aa883e4c1, type: 3}
 --- !u!1 &173478620 stripped
 GameObject:
@@ -357,6 +366,10 @@ PrefabInstance:
       propertyPath: _persistence
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5825781056992138250, guid: 39e165e8e7ebf4841814337ad119a387, type: 3}
+      propertyPath: _spawnablePrefabs
+      value: 
+      objectReference: {fileID: 11400000, guid: 60e4971c57c93eb4cb4f70ced9aec365, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39e165e8e7ebf4841814337ad119a387, type: 3}
 --- !u!4 &424476159 stripped
@@ -364,3 +377,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1926632896403151580, guid: 39e165e8e7ebf4841814337ad119a387, type: 3}
   m_PrefabInstance: {fileID: 424476158}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &424476160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1926632896403151562, guid: 39e165e8e7ebf4841814337ad119a387, type: 3}
+  m_PrefabInstance: {fileID: 424476158}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &424476161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424476160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1cd4fd263b4918ab3075e4a40e5fad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NetworkManagerObject: {fileID: 173478620}

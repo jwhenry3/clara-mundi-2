@@ -27,6 +27,7 @@ namespace ClaraMundi
         public string MessageId = StringUtils.UniqueId();
         public ChatMessageType Type = ChatMessageType.System;
         public string Channel = "Say";
+        public string SenderArea;
         public string SenderCharacterName;
         public Vector3 SenderPosition;
         // used in private message to show the recipient's name in the chat

@@ -1,5 +1,4 @@
 using UnityEngine;
-using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 
@@ -11,86 +10,63 @@ namespace ClaraMundi
     // There could also be a system channel where all system messages go to reach all players
     public class ChatChannel : NetworkBehaviour
     {
-        Player Player;
-        [SyncVar]
-        public string PlayerName;
-        [SyncVar]
-        public string Name;
+        [SyncVar(OnChange = nameof(OnMessage))]
+        public ChatMessage LastMessage;
 
-        public bool IsGlobal;
-
-        public ChannelScope ChannelScope = ChannelScope.Scene;
-
-
-        [SyncVar(OnChange = "OnMessage")]
-        public ChatMessage LastPublicMessage;
-
-        [SyncVar(OnChange = "OnMessage", ReadPermissions = ReadPermission.OwnerOnly)]
-        public ChatMessage LastPrivateMessage;
-        bool initialized;
         public override void OnStartServer()
         {
             base.OnStartServer();
-            Player = GetComponentInParent<Player>();
-            if (Player)
-                PlayerName = Player.Entity.entityName;
-            if (!string.IsNullOrEmpty(PlayerName))
-                Name = "player:" + PlayerName;
-            ChatManager.Instance.Channels[Name] = this;
+            ChatManager.Instance.Channels[gameObject.scene.name] = this;
         }
-
         public override void OnStartClient()
         {
             base.OnStartClient();
-            Player = GetComponentInParent<Player>();
-            ChatManager.Instance.Channels[Name] = this;
-            if (Name.Contains("player:")) return;
             ChatManager.ReceivedMessage(new ChatMessage
             {
                 Type = ChatMessageType.System,
-                Message = $"Joined the {Name} Channel"
+                Message = $"Joined the Say Channel"
+            });
+            ChatManager.ReceivedMessage(new ChatMessage
+            {
+                Type = ChatMessageType.System,
+                Message = $"Joined the Shout Channel"
             });
         }
 
         private void OnDestroy()
         {
-            if (ChatManager.Instance.Channels.ContainsKey(Name))
-                ChatManager.Instance.Channels.Remove(Name);
-            if (Name.Contains("player:")) return;
+            if (ChatManager.Instance.Channels.ContainsKey(gameObject.scene.name))
+                ChatManager.Instance.Channels[gameObject.scene.name] = null;
             ChatManager.ReceivedMessage(new ChatMessage
             {
                 Type = ChatMessageType.System,
-                Message = $"Left the {Name} Channel"
+                Message = $"Left the Say Channel"
+            });
+            ChatManager.ReceivedMessage(new ChatMessage
+            {
+                Type = ChatMessageType.System,
+                Message = $"Left the Shout Channel"
             });
         }
 
         private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
         {
             if (asServer) return;
+            if (nextMessage.Channel != "Say" && nextMessage.Channel != "Shout") return;
             if (lastMessage.MessageId == nextMessage.MessageId) return;
-            if (ChannelScope == ChannelScope.Local)
+            if (nextMessage.Channel == "Say")
             {
-                if (PlayerManager.Instance.LocalPlayer == null) return;
-                if (Vector3.Distance(PlayerManager.Instance.LocalPlayer.transform.position, nextMessage.SenderPosition) < 50)
-                    ChatManager.ReceivedMessage(nextMessage);
-                return;
+                if (Vector3.Distance(PlayerManager.Instance.LocalPlayer.transform.position,
+                        nextMessage.SenderPosition) > 50) return;
             }
 
-            if (Player != null && nextMessage.SenderCharacterName == Player.Entity.entityId) return;
-            if (ChannelScope == ChannelScope.Private && (bool)Player) {
-                nextMessage.ToCharacterName = Player.Entity.entityId;
-            }
             ChatManager.ReceivedMessage(nextMessage);
         }
 
         public void ServerSendMessage(ChatMessage message)
         {
             if (!IsServer) return;
-            if (ChannelScope == ChannelScope.Private)
-                LastPrivateMessage = message;
-            else
-                LastPublicMessage = message;
+            LastMessage = message;
         }
-
     }
 }

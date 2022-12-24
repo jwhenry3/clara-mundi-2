@@ -21,6 +21,14 @@ namespace Backend.App
             return CreatePrivateChannelSubscription(character.Name);
         }
 
+        public ChannelSubscription SubscribeToGlobalChannel(string characterName, string channel)
+        {
+            var character = GetCharacter(characterName);
+            if (character == null) return null;
+            if (string.IsNullOrEmpty(channel)) return null;
+            return CreateGlobalChannelSubscription(channel);
+        }
+
         public void SendPrivateMessageTo(ChatMessage message)
         {
             var character = GetCharacter(message.senderName);
@@ -33,11 +41,12 @@ namespace Backend.App
 
         public void SendMessageToChannel(string channel, ChatMessage message)
         {
-            var channels = new string[] {"yell", "trade", "lfg"};
+            var channels = new string[] {"Yell", "Trade", "LFG", "System"};
             if (!channels.Contains(channel)) return;
             var character = GetCharacter(message.senderName);
             if (character == null) return;
             message.messageId = StringUtils.UniqueId();
+            message.senderArea = character.Area;
             Broadcast.Channel<GlobalChannel>()
                 .WithParameters(channel)
                 .Send(message);
@@ -67,6 +76,12 @@ namespace Backend.App
         {
             return Broadcast.Channel<PrivateMessageChannel>()
                 .WithParameters(characterName)
+                .CreateSubscription();
+        }
+        public static ChannelSubscription CreateGlobalChannelSubscription(string channelName)
+        {
+            return Broadcast.Channel<GlobalChannel>()
+                .WithParameters(channelName)
                 .CreateSubscription();
         }
     }
