@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ClaraMundi
@@ -20,6 +22,12 @@ namespace ClaraMundi
             Instance = this;
             UI =  InputManager.Instance.InputActionAsset.FindActionMap("UI");
             World =  InputManager.Instance.InputActionAsset.FindActionMap("Player");
+        }
+        public static bool IsFocusedOnInput()
+        {
+            var obj = EventSystem.current.currentSelectedGameObject;
+            var input = obj.GetComponent<TMP_InputField>();
+            return input != null && input.isFocused;
         }
     }
 }

@@ -278,7 +278,7 @@ namespace ClaraMundi
 
         private void OnChat(InputAction.CallbackContext context)
         {
-            if (!InputField.isFocused)
+            if (!InputField.isFocused && !InputManager.IsFocusedOnInput())
                 InputField.ActivateInputField();
         }
 

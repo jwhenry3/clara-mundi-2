@@ -1,9 +1,6 @@
-﻿using System;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static ClaraMundi.InputManager;
 
 namespace ClaraMundi
 {
@@ -44,34 +41,28 @@ namespace ClaraMundi
                 ActiveWindow.SelectFirstInteractable();
         }
 
-        private bool IsFocusedOnInput()
-        {
-            var obj = EventSystem.current.currentSelectedGameObject;
-            var input = obj.GetComponent<TMP_InputField>();
-            return input != null && input.isFocused;
-        }
 
         private void OnInventory(InputAction.CallbackContext context)
         {
-            if (IsFocusedOnInput()) return;
+            if (InputManager.IsFocusedOnInput()) return;
             Tabs.ChangeTab("Inventory");
         }
 
         private void OnJournal(InputAction.CallbackContext context)
         {
-            if (IsFocusedOnInput()) return;
+            if (InputManager.IsFocusedOnInput()) return;
             Tabs.ChangeTab("Journal");
         }
 
         private void OnEquipment(InputAction.CallbackContext context)
         {
-            if (IsFocusedOnInput()) return;
+            if (InputManager.IsFocusedOnInput()) return;
             Tabs.ChangeTab("Equipment");
         }
 
         private void OnCancel(InputAction.CallbackContext context)
         {
-            if (IsFocusedOnInput()) return;
+            if (InputManager.IsFocusedOnInput()) return;
             if (ActiveWindow == null) return;
             var tab = Tabs.List.Find((t) => t.Content == ActiveWindow.GetComponent<UIAnimator>());
             Tabs.ChangeTab(tab.Label);
