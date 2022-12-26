@@ -75,8 +75,6 @@ namespace ClaraMundi
 
         public static string GetClickableName(string characterName)
         {
-            if (!PlayerManager.Instance.PlayersByName.ContainsKey(characterName)) return "";
-            var player = PlayerManager.Instance.PlayersByName[characterName];
             return $"<link=\"player:{characterName}\">{characterName}</link>";
         }
     }

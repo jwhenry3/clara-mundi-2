@@ -70,6 +70,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTask.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\World\Region.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\MasterServerTrigger.cs" />
      <Compile Include="Assets\Backend\Entities\QuestCompletionEntity.cs" />
      <Compile Include="Assets\Backend\Entities\AccountEntity.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
@@ -112,10 +113,12 @@
      <Compile Include="Assets\ClaraMundi\UI\Outline.cs" />
      <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\AuthHolder.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\CreateCharacterUI.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTaskProgress.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatMessage.cs" />
@@ -124,6 +127,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
      <Compile Include="Assets\Backend\Channels\Messages\ChatMessage.cs" />
      <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\ConnectedPlayerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertManager.cs" />
@@ -221,9 +225,9 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\MasterServerTrigger.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerConnection.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -258,6 +262,7 @@
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Potion" />
      <Folder Include="Assets\Backend\Channels" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\xdiff.ko.txt" />
+     <Folder Include="Assets\JsonDotNet\Assemblies\Standalone" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button" />
      <Folder Include="Assets\HONETi\flat_gui_elements\buttons_controls\regular_button" />
      <None Include="Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport\README.txt" />
@@ -293,6 +298,7 @@
      <Folder Include="Assets\YAFUI\Fonts" />
      <Folder Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Tests" />
      <Folder Include="Assets\ProceduralUIImage" />
+     <Folder Include="Assets\ClaraMundi\Systems\WebSocket" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\HONETi\flat_gui_elements\additional_texture_sizes\buttons\other" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_weather" />
@@ -316,6 +322,7 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square2" />
      <Folder Include="Assets\ClaraMundi\UI\Common\Layout" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_common" />
+     <Folder Include="Assets\ClaraMundi\Systems\MasterServer" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle5" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_activity" />
      <Folder Include="Assets\FlexibleUISystems\Generic" />
@@ -357,12 +364,14 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_sport" />
      <None Include="Library\PackageCache\com.unity.modules.terrainphysics@1.0.0\package.json" />
      <None Include="Library\PackageCache\com.unity.mathematics@1.2.6\package.json" />
+     <Folder Include="Assets\ClaraMundi\Systems\Http" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_traffic" />
      <Folder Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM" />
      <Folder Include="Library\PackageCache\com.unity.performance.profile-analyzer@1.1.1" />
      <Folder Include="Assets\ClaraMundi\UI\Common" />
      <None Include="Library\PackageCache\com.unity.sysroot@2.0.4\package.json" />
      <Folder Include="Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT" />
+     <Folder Include="Assets\JsonDotNet\Assemblies\Windows" />
      <None Include="Assets\CleanFlatIcon\readme.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\binmergetool.ko.txt" />
@@ -404,6 +413,7 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle4" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_oval1" />
      <Folder Include="Assets\FishNet\Upgrading" />
+     <Folder Include="Assets\JsonDotNet" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square1" />
      <Folder Include="Assets\ClaraMundi\Systems\Inventory" />
      <Folder Include="Library\PackageCache\com.unity.burst@1.6.6" />
@@ -433,6 +443,7 @@
      <Folder Include="Assets\TextMesh Pro" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\commontypes.en.txt" />
      <Folder Include="Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Tests" />
+     <None Include="Assets\JsonDotNet\link.xml" />
      <Folder Include="Assets\ClaraMundi\Systems\Player" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\configurehelper.ja.txt" />
      <None Include="Library\PackageCache\com.unity.modules.unityanalytics@1.0.0\package.json" />
@@ -440,6 +451,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\mergetool.zh-Hant.txt" />
      <Folder Include="Assets\ClaraMundi\Systems\Quest" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_rectangle3" />
+     <Folder Include="Library\PackageCache\com.endel.nativewebsocket@c5101c0776" />
      <Folder Include="Assets\YAFUI\Demo" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\basecommands.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\plastic-gui.zh-Hant.txt" />
@@ -449,6 +461,7 @@
      <Folder Include="Assets\CleanFlatIcon\unity_demo" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hant.txt" />
      <None Include="Library\PackageCache\com.unity.ide.rider@3.0.17\package.json" />
+     <Folder Include="Assets\JsonDotNet\Documentation" />
      <Folder Include="Assets\YAFUI\Icons\LICENSE &amp; README for Icons" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner1_square3" />
      <Folder Include="Assets\HONETi\flat_gui_elements\buttons_controls\other" />
@@ -478,6 +491,7 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_activity" />
      <None Include="Library\PackageCache\com.unity.performance.profile-analyzer@1.1.1\package.json" />
      <Folder Include="Assets\YAFUI\Animations\ImageToggle" />
+     <Folder Include="Assets\JsonDotNet\Assemblies" />
      <Folder Include="Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@2.0.3\Tests" />
      <Folder Include="Library\PackageCache\com.unity.inputsystem@1.4.4" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square5" />
@@ -496,6 +510,7 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_simpleshape" />
      <Folder Include="Assets\ClaraMundi\Systems\Dialogue\Dialogues" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner5_square2" />
+     <Folder Include="Library\PackageCache\com.endel.nativewebsocket@c5101c0776\WebSocketExample" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_device" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner4_square3" />
      <Folder Include="Assets\ClaraMundi\Systems\Dialogue" />
@@ -569,6 +584,7 @@
      <Folder Include="Assets\ClaraMundi\Systems\Combat" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_controller" />
      <Folder Include="Library\PackageCache\com.unity.modules.androidjni@1.0.0" />
+     <None Include="Library\PackageCache\com.endel.nativewebsocket@c5101c0776\package.json" />
      <Folder Include="Assets\DL_Fantasy_RPG_Effects" />
      <Folder Include="Library\PackageCache\com.unity.performance.profile-analyzer@1.1.1\Tests" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\i3.es.txt" />
@@ -1524,6 +1540,10 @@
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
       <Project>{78f99a1c-2ac6-ae1e-5ade-70846941a314}</Project>
       <Name>Unity.EditorCoroutines.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="endel.nativewebsocket.csproj">
+      <Project>{0c0b69f2-996d-8899-cf67-3e4ec8197f5e}</Project>
+      <Name>endel.nativewebsocket</Name>
     </ProjectReference>
     <ProjectReference Include="FishNet.Runtime.csproj">
       <Project>{a525a3f7-085b-5408-c420-acc1e21dbf52}</Project>

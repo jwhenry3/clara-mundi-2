@@ -105,6 +105,7 @@ namespace ClaraMundi
             if (!RepoManager.Instance.RegionRepo.Zones.ContainsKey(character.Area)) return;
             var zone = RepoManager.Instance.RegionRepo.Zones[character.Area];
             var sld = new SceneLookupData(zone.Key);
+            sld.Handle = 0;
             
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             var player = nob.GetComponent<Player>();

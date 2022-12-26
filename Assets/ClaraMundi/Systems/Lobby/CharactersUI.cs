@@ -56,12 +56,14 @@ namespace ClaraMundi
                 StatusMessage.text = "Could not delete the character";
         }
 
+        private bool loading;
         private async void OnEnable()
         {
+            if (loading) return;
+            loading = true;
             Select(null);
             StatusMessage.enabled = true;
             StatusMessage.text = "Loading Characters...";
-            CharactersContainer.gameObject.SetActive(false);
             CharacterActions.gameObject.SetActive(false);
             foreach (Transform child in CharactersContainer)
                 Destroy(child.gameObject);
@@ -79,14 +81,20 @@ namespace ClaraMundi
                 CharactersContainer.gameObject.SetActive(true);
                 StatusMessage.enabled = false;
             }
+            CharactersContainer.gameObject.SetActive(Characters.Count > 0);
+            loading = false;
         }
 
         private void OnDisable()
         {
+            loading = false;
             SessionManager.Instance.PlayerCharacter = null;
+            foreach (Transform child in CharactersContainer)
+                Destroy(child.gameObject);
         }
         private void OnDestroy()
         {
+            loading = false;
             SessionManager.Instance.PlayerCharacter = null;
         }
 

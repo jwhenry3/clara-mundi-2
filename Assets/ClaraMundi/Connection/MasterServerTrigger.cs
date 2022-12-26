@@ -15,7 +15,7 @@ namespace ClaraMundi
 
         private void OnServerConnectionState(ServerConnectionStateArgs obj)
         {
-            NetworkManagerObject.SetActive(obj.ConnectionState == LocalConnectionState.Started);
+            // NetworkManagerObject.SetActive(obj.ConnectionState == LocalConnectionState.Started);
         }
     }
 }

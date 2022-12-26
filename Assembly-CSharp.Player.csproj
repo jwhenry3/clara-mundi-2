@@ -70,6 +70,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTask.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\World\Region.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Connection\MasterServerTrigger.cs" />
      <Compile Include="Assets\Backend\Entities\QuestCompletionEntity.cs" />
      <Compile Include="Assets\Backend\Entities\AccountEntity.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
@@ -112,10 +113,12 @@
      <Compile Include="Assets\ClaraMundi\UI\Outline.cs" />
      <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\GameAuthenticator.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
      <Compile Include="Assets\ClaraMundi\Auth\AuthHolder.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\CreateCharacterUI.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTaskProgress.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatMessage.cs" />
@@ -124,6 +127,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
      <Compile Include="Assets\Backend\Channels\Messages\ChatMessage.cs" />
      <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
      <Compile Include="Assets\ClaraMundi\Connection\ConnectedPlayerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertManager.cs" />
@@ -221,9 +225,9 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
-     <Compile Include="Assets\ClaraMundi\Connection\MasterServerTrigger.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerConnection.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>
      </Reference>
@@ -848,6 +852,10 @@
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
       <Project>{37fc7541-84ca-b68e-bbc7-3a725efbfeb2}</Project>
       <Name>UnityEngine.UI.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="endel.nativewebsocket.Player.csproj">
+      <Project>{df959369-28d3-d39c-51f3-47b5dae4ee4a}</Project>
+      <Name>endel.nativewebsocket.Player</Name>
     </ProjectReference>
     <ProjectReference Include="FishNet.Runtime.Player.csproj">
       <Project>{01043ff0-d26f-8eb5-771c-f421c076ca1f}</Project>

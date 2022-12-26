@@ -60,11 +60,11 @@ namespace ClaraMundi
         {
             if (!IsServer) return;
             if (channel != "Say" && channel != "Shout") return;
+            if (player == null) return;
             if (!ChatManager.Instance.Channels.ContainsKey(player.gameObject.scene.name)) return;
-
+            var chatChannel = ChatManager.Instance.Channels[player.gameObject.scene.name];
             message.SenderPosition = player.transform.position;
-
-            ChatManager.Instance.Channels[player.gameObject.scene.name].ServerSendMessage(message);
+            chatChannel.ServerSendMessage(message);
         }
     }
 }

@@ -365,11 +365,11 @@
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
-     <Reference Include="UnisaveFramework">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.VisualScripting.TextureAssets">
      <HintPath>D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+     </Reference>
+     <Reference Include="UnisaveFramework">
+     <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
@@ -842,6 +842,10 @@
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj">
       <Project>{78f99a1c-2ac6-ae1e-5ade-70846941a314}</Project>
       <Name>Unity.EditorCoroutines.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="endel.nativewebsocket.csproj">
+      <Project>{0c0b69f2-996d-8899-cf67-3e4ec8197f5e}</Project>
+      <Name>endel.nativewebsocket</Name>
     </ProjectReference>
     <ProjectReference Include="FishNet.Runtime.csproj">
       <Project>{a525a3f7-085b-5408-c420-acc1e21dbf52}</Project>

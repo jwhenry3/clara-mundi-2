@@ -58,7 +58,7 @@ public class PartyClient : UnisaveBroadcastingClient
     {
         Debug.Log("Subscribe to party channel 1");
         if (!player.Entity.IsOwner) return;
-        if (Subscription != null && partyId != party.PartyId)
+        if (Subscription != null && (party == null ||  partyId != party.PartyId))
         {
             // let the parent class handle cleanup of the previous party subscription
             OnDisable();
@@ -96,7 +96,7 @@ public class PartyClient : UnisaveBroadcastingClient
         switch (message.type)
         {
             case PartyMessageType.LeaderChanged:
-                player.Party.GetParty();
+                player.Party.LeaderChange(message);
                 break;
             case PartyMessageType.PartyDisbanded:
                 player.Party.ClearParty();

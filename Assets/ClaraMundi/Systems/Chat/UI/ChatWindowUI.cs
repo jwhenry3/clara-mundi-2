@@ -178,8 +178,9 @@ namespace ClaraMundi
             var myName = PlayerManager.Instance.LocalPlayer.Character.Name;
             var isNotMe = myName != ContextualCharacterName;
             var inParty = isNotMe && await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.IsPlayerInParty), characterName,
+                nameof(PartyFacet.IsPlayerInParty), myName,
                 ContextualCharacterName);
+            Debug.Log(inParty);
             PlayerContextMenu.transform.position = eventData.position;
             RequestJoinOption.SetActive(isNotMe && inParty);
             InviteOption.SetActive(!inParty && isNotMe);

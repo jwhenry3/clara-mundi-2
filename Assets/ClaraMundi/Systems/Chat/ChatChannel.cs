@@ -13,6 +13,7 @@ namespace ClaraMundi
         [SyncVar(OnChange = nameof(OnMessage))]
         public ChatMessage LastMessage;
 
+        private ChatMessage initialMessage;
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -21,6 +22,7 @@ namespace ClaraMundi
         public override void OnStartClient()
         {
             base.OnStartClient();
+            initialMessage = LastMessage;
             ChatManager.ReceivedMessage(new ChatMessage
             {
                 Type = ChatMessageType.System,
@@ -53,7 +55,7 @@ namespace ClaraMundi
         {
             if (asServer) return;
             if (nextMessage.Channel != "Say" && nextMessage.Channel != "Shout") return;
-            if (lastMessage.MessageId == nextMessage.MessageId) return;
+            if (lastMessage.MessageId == nextMessage.MessageId || nextMessage.MessageId == initialMessage?.MessageId) return;
             if (nextMessage.Channel == "Say")
             {
                 if (Vector3.Distance(PlayerManager.Instance.LocalPlayer.transform.position,

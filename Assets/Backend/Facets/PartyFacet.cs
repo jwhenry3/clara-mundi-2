@@ -118,15 +118,15 @@ namespace Backend.App
             }
 
             var requestedJoin = GetByCharacterAndLeader(invitedCharacterName, characterName);
-            if (requestedJoin.IsRequested)
+            if (requestedJoin != null && requestedJoin.IsRequested)
             {
-                RemovePending(invitedCharacterName);
                 requestedJoin.PartyId = existing.PartyId;
                 requestedJoin.HasJoined = true;
                 requestedJoin.IsInvited = false;
                 requestedJoin.IsRequested = false;
                 requestedJoin.Save();
-                SendMessageToPlayer(characterName, PartyMessageType.Private_JoinedParty);
+                RemovePending(invitedCharacterName);
+                SendMessageToPlayer(invitedCharacterName, PartyMessageType.Private_JoinedParty);
                 SendMessageToParty(requestedJoin.PartyId, PartyMessageType.PlayerJoined, characterName);
                 return true;
             }
@@ -163,11 +163,11 @@ namespace Backend.App
             // rather than request, we will just join the party if invited
             if (member != null && member.IsInvited)
             {
-                RemovePending(characterName);
                 member.HasJoined = true;
                 member.IsInvited = false;
                 member.IsRequested = false;
                 member.Save();
+                RemovePending(characterName);
                 SendMessageToPlayer(characterName, PartyMessageType.Private_JoinedParty);
                 SendMessageToParty(member.PartyId, PartyMessageType.PlayerJoined, characterName);
                 return true;
@@ -194,42 +194,55 @@ namespace Backend.App
             var member = GetJoinedParty(characterName);
             if (member == null) return false;
             SendMessageToPlayer(characterName, PartyMessageType.Private_LeftParty);
-            member.Delete();
             SendMessageToParty(member.PartyId, PartyMessageType.PlayerLeft, characterName);
-            if (member.LeaderName != member.MemberName) return true;
+            if (member.LeaderName != member.MemberName)
+            {
+                member.Delete();
+                return true;
+            }
             var party = GetMembersByLeader(characterName);
             if (disband)
             {
+                SendMessageToParty(member.PartyId, PartyMessageType.PartyDisbanded, characterName);
                 foreach (var m in party)
-                {
-                    if (m.MemberName == characterName) continue;
                     m.Delete();
-                    SendMessageToParty(member.PartyId, PartyMessageType.PartyDisbanded, characterName);
-                    break;
-                }
-
                 return true;
             }
+            member.Delete();
 
             PartyMemberEntity firstNonLeader = null;
+            Debug.Log("Find Leader Replacement");
             foreach (var m in party)
             {
-                if (m.MemberName == characterName) continue;
+                if (m.MemberName == m.LeaderName) continue;
+                Debug.Log("Leader Replacement Found");
                 firstNonLeader = m;
                 break;
             }
 
             if (firstNonLeader == null) return true;
+            Debug.Log("Replace LeaderName");
             foreach (var m in party)
             {
                 m.LeaderName = firstNonLeader.MemberName;
                 m.Save();
             }
-
+            Debug.Log("Send Leader Change Event");
             SendMessageToParty(member.PartyId, PartyMessageType.LeaderChanged, firstNonLeader.MemberName);
             return true;
         }
 
+        public List<string> GetInvitations(string characterName)
+        {
+            var list = new List<string>();
+            var character = GetCharacter(characterName);
+            if (character == null) return list;
+            var members = GetInvitesFor(characterName);
+            foreach (var m in members)
+                list.Add(m.LeaderName);
+
+            return list;
+        }
         public PartyModel GetParty(string characterName)
         {
             var character = GetCharacter(characterName);
@@ -283,6 +296,10 @@ namespace Backend.App
         public static List<PartyMemberEntity> GetPendingByCharacter(string character)
         {
             return DB.TakeAll<PartyMemberEntity>().Filter((p) => p.MemberName == character && !p.HasJoined).Get();
+        }
+        public static List<PartyMemberEntity> GetInvitesFor(string character)
+        {
+            return DB.TakeAll<PartyMemberEntity>().Filter((p) => p.MemberName == character && !p.HasJoined && p.IsInvited).Get();
         }
 
         public static void SendMessageToParty(string partyId, PartyMessageType type, string characterName)

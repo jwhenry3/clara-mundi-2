@@ -6,6 +6,7 @@ namespace ClaraMundi
 {
     public class PartyRequestsUI : PlayerUI
     {
+        public Transform Panel;
         public Transform RequestsContainer;
 
         public PartyJoinRequestUI JoinPrefab;
@@ -41,6 +42,7 @@ namespace ClaraMundi
 
         private void OnInviteChanges(List<string> invites)
         {
+            Debug.Log("Update invite list!");
             var clone = new Dictionary<string, PartyInviteRequestUI>(Invites);
             foreach (var kvp in clone)
             {
@@ -60,7 +62,7 @@ namespace ClaraMundi
         private void OnPartyChanges(PartyModel party)
         {
             // only party leader can invite and accept requests
-            if (party != null && party.Leader != PlayerManager.Instance.LocalPlayer.entityId)
+            if (party != null && party.Leader != PlayerManager.Instance.LocalPlayer.Character.Name)
             {
                 // Any requests are cleaned up if the player is not the leader
                 // in case the leadership changes during party existence
@@ -80,8 +82,8 @@ namespace ClaraMundi
 
             if (party == null) return;
             // add remaining join requests not currently in UI
-            foreach (string joiningPlayerId in party.Requests)
-                AddJoinRequest(joiningPlayerId);
+            foreach (string characterName in party.Requests)
+                AddJoinRequest(characterName);
             HandleVisibility();
         }
 
@@ -109,36 +111,34 @@ namespace ClaraMundi
             HandleVisibility();
         }
 
-        private void AddInvite(string invitingPlayerId)
+        private void AddInvite(string characterName)
         {
-            if (Invites.ContainsKey(invitingPlayerId)) return;
-            if (!PlayerManager.Instance.Players.ContainsKey(invitingPlayerId)) return;
+            if (Invites.ContainsKey(characterName)) return;
             var instance = Instantiate(InvitePrefab, RequestsContainer, false);
-            instance.invitingPlayerId = invitingPlayerId;
-            instance.PlayerName.text = PlayerManager.Instance.Players[invitingPlayerId].Entity.entityName;
-            Invites.Add(invitingPlayerId, instance);
+            instance.characterName = characterName;
+            instance.PlayerName.text = characterName;
+            Invites.Add(characterName, instance);
         }
 
-        private void RemoveInvite(string invitingPlayerId)
+        private void RemoveInvite(string characterName)
         {
-            Destroy(Invites[invitingPlayerId]);
-            if (!Invites.ContainsKey(invitingPlayerId)) return;
-            Invites.Remove(invitingPlayerId);
+            Destroy(Invites[characterName]);
+            if (!Invites.ContainsKey(characterName)) return;
+            Invites.Remove(characterName);
         }
 
-        private void AddJoinRequest(string joiningPlayerId)
+        private void AddJoinRequest(string characterName)
         {
-            if (JoinRequests.ContainsKey(joiningPlayerId)) return;
-            if (!PlayerManager.Instance.Players.ContainsKey(joiningPlayerId)) return;
+            if (JoinRequests.ContainsKey(characterName)) return;
             var instance = Instantiate(JoinPrefab, RequestsContainer, false);
-            instance.PlayerName.text = PlayerManager.Instance.Players[joiningPlayerId].Entity.entityName;
-            instance.joiningPlayerId = joiningPlayerId;
-            JoinRequests.Add(joiningPlayerId, instance);
+            instance.PlayerName.text = characterName;
+            instance.characterName = characterName;
+            JoinRequests.Add(characterName, instance);
         }
 
         private void HandleVisibility()
         {
-            gameObject.SetActive(JoinRequests.Count > 0 || Invites.Count > 0);
+            Panel.gameObject.SetActive(JoinRequests.Count > 0 || Invites.Count > 0);
         }
     }
 }

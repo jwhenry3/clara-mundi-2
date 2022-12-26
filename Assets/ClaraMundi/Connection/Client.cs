@@ -36,20 +36,20 @@ namespace ClaraMundi
             SceneManager.LoadScene("LobbyGUI", LoadSceneMode.Additive);
             SceneManager.LoadScene("PlayerGUI", LoadSceneMode.Additive);
         }
-
         public async void Connect()
         {
             if (_clientState != LocalConnectionState.Stopped) return;
             if (SessionManager.Instance.PlayerCharacter == null) return;
             var character = SessionManager.Instance.PlayerCharacter;
             // find a server that the player can connect to for this character
-            var server = await GameServerManager.Instance.GetServerForScene(character.Area);
+            await MasterServerApi.Instance.GetServerList();
+            var server = GameServerManager.Instance.GetServerForScene(character.Area);
             if (server == null)
             {
                 Debug.LogWarning("Cannot find region server for zone: " + character.Area);
                 return;
             }
-            networkManager.ClientManager.StartConnection(server.Host, server.Port);
+            networkManager.ClientManager.StartConnection(server.host, server.port);
         }
 
         public void Disconnect()

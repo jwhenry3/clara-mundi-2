@@ -80,8 +80,6 @@ public class PrivateMessageClient : UnisaveBroadcastingClient
 
     void PartyMessageReceived(PartyMessage message)
     {
-        Debug.Log("Received Party Message");
-        Debug.Log(Serializer.ToJson(message));
         // do something
         switch (message.type)
         {

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Backend.App;
-using FishNet.Object;
-using FishNet.Object.Synchronizing;
 using Unisave.Facades;
+using Unisave.Serialization;
 using UnityEngine;
 
 namespace ClaraMundi
 {
     public class PartyController : PlayerController
     {
-        public readonly List<string> PartyInvites = new();
+        public List<string> PartyInvites = new();
 
 
         public event Action<PartyModel> PartyChanges;
@@ -22,6 +22,7 @@ namespace ClaraMundi
         {
             base.OnStartClient();
             GetParty();
+            GetInvitations();
         }
 
         public async void CreateParty()
@@ -114,6 +115,14 @@ namespace ClaraMundi
             );
             UpdateParty(Party);
         }
+        public async void GetInvitations()
+        {
+            PartyInvites = await OnFacet<PartyFacet>.CallAsync<List<string>>(
+                nameof(PartyFacet.GetInvitations),
+                player.Character.Name
+            );
+            InviteChanges?.Invoke(PartyInvites);
+        }
 
         public async void SendMessage(ChatMessage message)
         {
@@ -145,50 +154,86 @@ namespace ClaraMundi
         
         public void ClearParty()
         {
-            if (Party == null) return;
             UpdateParty(null);
         }
 
         public void MemberJoined(PartyMessage message)
         {
+            if (Party == null) return;
             if (Party.Members.Contains(message.characterName)) return;
             Party.Members.Add(message.characterName);
+            if (Party.Invitations.Contains(message.characterName))
+                Party.Invitations.Remove(message.characterName);
+            if (Party.Requests.Contains(message.characterName))
+                Party.Requests.Remove(message.characterName);
             UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} joined the party."
+            });
         }
 
         public void MemberLeft(PartyMessage message)
         {
-            if (!Party.Members.Contains(message.characterName)) return;
-            Party.Members.Remove(message.characterName);
+            if (Party == null) return;
+            if (Party.Members.Contains(message.characterName))
+                Party.Members.Remove(message.characterName);
             UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} left the party."
+            });
         }
 
         public void PlayerDeclinedInvite(PartyMessage message)
         {
-            if (!Party.Invitations.Contains(message.characterName)) return;
-            Party.Invitations.Remove(message.characterName);
+            if (Party == null) return;
+            if (Party.Invitations.Contains(message.characterName))
+                Party.Invitations.Remove(message.characterName);
+            if (Party.Requests.Contains(message.characterName))
+                Party.Requests.Remove(message.characterName);
             UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} declined the party invite."
+            });
         }
 
         public void PlayerCancelledRequest(PartyMessage message)
         {
-            if (!Party.Requests.Contains(message.characterName)) return;
-            Party.Requests.Remove(message.characterName);
+            if (Party == null) return;
+            if (Party.Invitations.Contains(message.characterName))
+                Party.Invitations.Remove(message.characterName);
+            if (Party.Requests.Contains(message.characterName))
+                Party.Requests.Remove(message.characterName);
             UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} cancelled their join request."
+            });
         }
 
         public void PlayerRequestedInvite(PartyMessage message)
         {
-            if (Party.Requests.Contains(message.characterName)) return;
-            Party.Requests.Add(message.characterName);
+            if (Party == null) return;
+            if (!Party.Requests.Contains(message.characterName))
+                Party.Requests.Add(message.characterName);
             UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} wants to join the party."
+            });
         }
 
         public void InvitedToParty(PartyMessage message)
         {
-            if (PartyInvites.Contains(message.characterName)) return;
-            PartyInvites.Add(message.characterName);
+            if (!PartyInvites.Contains(message.characterName))
+                PartyInvites.Add(message.characterName);
             InviteChanges?.Invoke(PartyInvites);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} invited you to a party!"
+            });
         }
 
         public void PlayerInvited(PartyMessage message)
@@ -220,6 +265,16 @@ namespace ClaraMundi
             AlertManager.Instance.AddMessage(new AlertMessage()
             {
                 Message = $"{message.characterName} is already in a party."
+            });
+        }
+
+        public void LeaderChange(PartyMessage message)
+        {
+            Party.Leader = message.characterName;
+            UpdateParty(Party);
+            AlertManager.Instance.AddMessage(new AlertMessage()
+            {
+                Message = $"{message.characterName} is now the party leader."
             });
         }
     }
