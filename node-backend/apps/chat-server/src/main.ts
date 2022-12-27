@@ -4,7 +4,7 @@ import { WsAdapter } from '@nestjs/platform-ws'
 import { ChatServerModule } from './chat-server.module'
 
 async function bootstrap() {
-  const app = await NestFactory.create(ChatServerModule)
+  const app = await NestFactory.create(ChatServerModule.forRoot())
   app.useWebSocketAdapter(new WsAdapter(app))
   await app.listen(3000)
 }

@@ -1,4 +1,5 @@
 import { AuthModule } from '@app/auth'
+import { DatabaseModule } from '@app/database'
 import { Module } from '@nestjs/common'
 
 import { MasterServerController } from './master-server.controller'
@@ -10,4 +11,11 @@ import { MasterServerService } from './master-server.service'
   controllers: [MasterServerController],
   providers: [MasterServerService, MasterServerGateway],
 })
-export class MasterServerModule {}
+export class MasterServerModule {
+  static forRoot() {
+    return {
+      module: MasterServerModule,
+      imports: [DatabaseModule],
+    }
+  }
+}

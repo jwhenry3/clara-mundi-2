@@ -1,4 +1,5 @@
 import { AuthModule } from '@app/auth'
+import { DatabaseModule } from '@app/database'
 import { Module } from '@nestjs/common'
 
 import { ChatServerController } from './chat-server.controller'
@@ -10,4 +11,11 @@ import { ChatGateway } from './chat.gateway'
   controllers: [ChatServerController],
   providers: [ChatServerService, ChatGateway],
 })
-export class ChatServerModule {}
+export class ChatServerModule {
+  static forRoot() {
+    return {
+      module: ChatServerModule,
+      imports: [DatabaseModule],
+    }
+  }
+}

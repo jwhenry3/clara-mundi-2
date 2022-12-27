@@ -1,3 +1,4 @@
+import { DatabaseModule } from '@app/database'
 import { Module } from '@nestjs/common'
 
 import { ChatServerModule } from '../../chat-server/src/chat-server.module'
@@ -9,6 +10,7 @@ import { AppService } from './app.service'
 
 @Module({
   imports: [
+    DatabaseModule,
     MasterServerModule,
     ChatServerModule,
     QuestServerModule,

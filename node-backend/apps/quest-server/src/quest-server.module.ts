@@ -1,4 +1,5 @@
 import { AuthModule } from '@app/auth'
+import { DatabaseModule } from '@app/database'
 import { Module } from '@nestjs/common'
 
 import { QuestServerController } from './quest-server.controller'
@@ -10,4 +11,11 @@ import { QuestGateway } from './quest.gateway'
   controllers: [QuestServerController],
   providers: [QuestServerService, QuestGateway],
 })
-export class QuestServerModule {}
+export class QuestServerModule {
+  static forRoot() {
+    return {
+      module: QuestServerModule,
+      imports: [DatabaseModule],
+    }
+  }
+}
