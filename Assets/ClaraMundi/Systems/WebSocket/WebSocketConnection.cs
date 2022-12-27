@@ -13,7 +13,7 @@ namespace ClaraMundi
     public class WebSocketMessage
     {
         public string eventName;
-        public Dictionary<string, string> data;
+        public string data;
     }
 
     public enum ConnectionStatus
@@ -27,6 +27,7 @@ namespace ClaraMundi
     {
         public string Label;
         public string serverUrl;
+        public string authToken;
         public ConnectionStatus Status { get; protected set; }
         private WebSocket websocket;
 
@@ -39,13 +40,39 @@ namespace ClaraMundi
 
         private void Awake()
         {
+            CreateSocket();
+        }
+
+        private async void CreateSocket()
+        {
+            if (websocket != null)
+            {
+                websocket.OnOpen -= OnConnected;
+                websocket.OnError -= OnError;
+                websocket.OnClose -= OnDisconnected;
+                websocket.OnMessage -= OnMessage;
+                if (Status == ConnectionStatus.Connected)
+                    await websocket.Close();
+            }
+
             Status = ConnectionStatus.Disconnected;
-            websocket = new WebSocket(serverUrl);
+            if (string.IsNullOrEmpty(authToken))
+                websocket = new WebSocket(serverUrl);
+            else
+                websocket = new WebSocket(serverUrl + "?token=" + authToken);
 
             websocket.OnOpen += OnConnected;
             websocket.OnError += OnError;
             websocket.OnClose += OnDisconnected;
             websocket.OnMessage += OnMessage;
+        }
+
+        private void OnDestroy()
+        {
+            websocket.OnOpen -= OnConnected;
+            websocket.OnError -= OnError;
+            websocket.OnClose -= OnDisconnected;
+            websocket.OnMessage -= OnMessage;
         }
 
         public async void Connect()
@@ -66,7 +93,6 @@ namespace ClaraMundi
 
         public void Send(WebSocketMessage message)
         {
-            
             websocket.SendText(JsonConvert.SerializeObject(message).Replace("\"eventName\"", "\"event\""));
         }
 
@@ -83,7 +109,8 @@ namespace ClaraMundi
 #endif
             try
             {
-                MessageReceived?.Invoke(JsonConvert.DeserializeObject<WebSocketMessage>(dataString.Replace("\"event\"", "\"eventName\"")));
+                MessageReceived?.Invoke(
+                    JsonConvert.DeserializeObject<WebSocketMessage>(dataString.Replace("\"event\"", "\"eventName\"")));
             }
             catch (Exception e)
             {
@@ -94,7 +121,7 @@ namespace ClaraMundi
         private async void OnDisconnected(WebSocketCloseCode closecode)
         {
             Status = ConnectionStatus.Disconnected;
-            if (reconnectOn.Contains(closecode))
+            if (reconnectOn.Contains(closecode) && isActiveAndEnabled)
             {
 #if UNITY_EDITOR
                 Debug.Log($"{Label} Disconnected abnormally, reconnecting...");

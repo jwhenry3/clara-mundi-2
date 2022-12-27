@@ -37,13 +37,8 @@ namespace ClaraMundi
         {
             switch (message.eventName)
             {
-                case "authorize":
-                {
-                    SendAuthorization();
-                    break;
-                }
                 case "authorized":
-                    Debug.Log("Authorized");
+                    UpdateServerList();
                     break;
                 case "server-list":
                     ReceivedServerList(message);
@@ -60,20 +55,26 @@ namespace ClaraMundi
             }
         }
 
-        void SendAuthorization()
+        public void UpdateServerList()
         {
-            var data = new Dictionary<string, string> { { "token", "" } };
+            var entry = new ServerEntry()
+            {
+                label = Server.Instance.Name,
+                region = Server.Instance.Region,
+                port = Server.Instance.Port,
+                playerCapacity = Server.Instance.PlayerCapacity,
+                currentPlayers = PlayerManager.Instance.Players.Count
+            };
             connection.Send(new WebSocketMessage()
             {
-                eventName = "authorize",
-                data = data
+                eventName = "update",
+                data = JsonConvert.SerializeObject(entry)
             });
         }
 
         void ReceivedServerList(WebSocketMessage message)
         {
-            if (!message.data.ContainsKey("list")) return;
-            var list = JsonConvert.DeserializeObject<List<ServerEntry>>(message.data["list"]);
+            var list = JsonConvert.DeserializeObject<List<ServerEntry>>(message.data);
             MasterServerApi.Instance.ReceivedServerList(list);
         }
     }

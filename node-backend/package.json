@@ -28,12 +28,15 @@
     "@nestjs/platform-ws": "^9.2.1",
     "@nestjs/typeorm": "^9.0.1",
     "@nestjs/websockets": "^9.2.1",
+    "@types/guid": "^1.0.0",
     "@types/ws": "^8.5.3",
+    "guid": "^0.0.12",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.11"
+    "typeorm": "^0.3.11",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -79,7 +82,8 @@
       "<rootDir>/libs/"
     ],
     "moduleNameMapper": {
-      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1"
+      "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
+      "^@app/websocket(|/.*)$": "<rootDir>/libs/websocket/src/$1"
     }
   }
 }
