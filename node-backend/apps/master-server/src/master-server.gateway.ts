@@ -37,7 +37,6 @@ export class MasterServerGateway
   constructor(private auth: AuthService) {}
 
   handleDisconnect(client: WebSocketClient) {
-    console.log('client disconnected, clean up')
     const index = this.authorized.indexOf(client)
     if (index > -1) this.authorized.splice(index, 1)
     if (client.id in this.serversByClient) {
@@ -50,11 +49,12 @@ export class MasterServerGateway
 
   handleConnection(client: any, message: any) {
     const parameters = url.parse(message.url, true)
-
     if (!this.auth.validateServer(parameters.query.token as string)) {
       client.close(1008)
       return
     }
+    client.id = create().toString()
+    if (!this.authorized.includes(client)) this.authorized.push(client)
     client.send(JSON.stringify({ event: 'authorized', data: '' }))
   }
 
@@ -62,8 +62,6 @@ export class MasterServerGateway
   handleAuth(@ConnectedSocket() client: any, @MessageBody() body: string) {
     const hostParts = client._socket.remoteAddress.split(':')
     const host = hostParts.pop()
-    client.id = create().toString()
-    this.authorized.push(client)
     const data = JSON.parse(body) as ServerEntry
     const entry: ServerEntry = {
       label: data.label,

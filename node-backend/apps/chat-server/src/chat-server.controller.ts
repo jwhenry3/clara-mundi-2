@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common'
 
 import { ChatServerService } from './chat-server.service'
 
-@Controller('chat')
+@Controller('chat-server')
 export class ChatServerController {
   constructor(private readonly chatServerService: ChatServerService) {}
 

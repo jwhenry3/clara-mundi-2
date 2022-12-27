@@ -268,8 +268,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: MasterServer
-  serverUrl: ws://localhost:3001
   authToken: token
+--- !u!114 &424476164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424476160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad25b3bc49f4ef8afe40ef92e5eadfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MasterServerUrl:
+    host: localhost
+    protocol: http
+    httpPort: 3000
+    wsPort: 3001
+  LoginServerUrl:
+    host: localhost
+    protocol: http
+    httpPort: 3000
+    wsPort: 3000
+  ChatServerUrl:
+    host: localhost
+    protocol: http
+    httpPort: 3000
+    wsPort: 3000
+  QuestServerUrl:
+    host: localhost
+    protocol: http
+    httpPort: 3000
+    wsPort: 3000
 --- !u!114 &711211058
 MonoBehaviour:
   m_ObjectHideFlags: 0

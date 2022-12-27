@@ -25,11 +25,17 @@ namespace ClaraMundi
         private void Awake()
         {
             connection = GetComponent<WebSocketConnection>();
+            connection.MessageReceived += OnMessage;
+        }
+
+        private void OnDestroy()
+        {
+            connection.MessageReceived -= OnMessage;
         }
 
         private void Start()
         {
-            connection.MessageReceived += OnMessage;
+            connection.UpdateServerUrl(UrlManager.Instance.MasterServerUrl.Compose(true));
             connection.Connect();
         }
 
@@ -39,6 +45,7 @@ namespace ClaraMundi
             {
                 case "authorized":
                     UpdateServerList();
+                    Authorization.Login("test", "password");
                     break;
                 case "server-list":
                     ReceivedServerList(message);
@@ -49,13 +56,12 @@ namespace ClaraMundi
         private void Update()
         {
             currentTick += Time.deltaTime;
-            if (currentTick > syncInterval)
-            {
-                currentTick = 0;
-            }
+            if (!(currentTick > syncInterval)) return;
+            currentTick = 0;
+            UpdateServerList();
         }
 
-        public void UpdateServerList()
+        private void UpdateServerList()
         {
             var entry = new ServerEntry()
             {
@@ -72,7 +78,7 @@ namespace ClaraMundi
             });
         }
 
-        void ReceivedServerList(WebSocketMessage message)
+        private static void ReceivedServerList(WebSocketMessage message)
         {
             var list = JsonConvert.DeserializeObject<List<ServerEntry>>(message.data);
             MasterServerApi.Instance.ReceivedServerList(list);

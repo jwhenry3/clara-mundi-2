@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using ClaraMundi.Http;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -26,7 +25,7 @@ namespace ClaraMundi
         {
             try
             {
-                var list = await HttpRequest.Get<List<ServerEntry>>("http://localhost:3000", "/master-server/servers");
+                var list = await HttpRequest.Get<List<ServerEntry>>(UrlManager.Instance.MasterServerUrl.Compose(), "/master-server/servers");
                 ReceivedServerList(list);
             }
             catch (Exception e)

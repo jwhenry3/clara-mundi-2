@@ -26,8 +26,9 @@ namespace ClaraMundi
     public class WebSocketConnection : MonoBehaviour
     {
         public string Label;
-        public string serverUrl;
+        string serverUrl;
         public string authToken;
+        public bool debugLog;
         public ConnectionStatus Status { get; protected set; }
         private WebSocket websocket;
 
@@ -38,9 +39,21 @@ namespace ClaraMundi
 
         public event Action<WebSocketMessage> MessageReceived;
 
-        private void Awake()
+
+        public void UpdateServerUrl(string url)
         {
-            CreateSocket();
+            var parts = url.Split("://");
+            var protocol = parts.Length > 1 ? parts[0] : "http";
+            var hostAndPort = parts.Last().Split(":");
+            var port = hostAndPort.Length > 1 ? hostAndPort.Last() : "";
+            var host = hostAndPort.First();
+            serverUrl = "ws://" + host;
+            if (protocol == "https")
+                serverUrl = "wss://" + host;
+            if (port != "")
+                serverUrl += ":" + port;
+            else
+                serverUrl += ":" + (protocol == "https" ? "443" : "80");
         }
 
         private async void CreateSocket()
@@ -77,11 +90,11 @@ namespace ClaraMundi
 
         public async void Connect()
         {
-#if UNITY_EDITOR
-            Debug.Log($"{Label} connecting...");
-#endif
+            if (websocket == null)
+                CreateSocket();
+            if (debugLog) Debug.Log($"{Label} connecting...");
             Status = ConnectionStatus.Connecting;
-            await websocket.Connect();
+            await websocket?.Connect()!;
         }
 
         void Update()
@@ -104,9 +117,7 @@ namespace ClaraMundi
         private void OnMessage(byte[] data)
         {
             var dataString = Encoding.UTF8.GetString(data);
-#if UNITY_EDITOR
-            Debug.Log($"Message Received from {Label}: " + dataString);
-#endif
+            if (debugLog) Debug.Log($"Message Received from {Label}: " + dataString);
             try
             {
                 MessageReceived?.Invoke(
@@ -123,31 +134,23 @@ namespace ClaraMundi
             Status = ConnectionStatus.Disconnected;
             if (reconnectOn.Contains(closecode) && isActiveAndEnabled)
             {
-#if UNITY_EDITOR
-                Debug.Log($"{Label} Disconnected abnormally, reconnecting...");
-#endif
+                if (debugLog) Debug.Log($"{Label} Disconnected abnormally, reconnecting...");
                 await Task.Delay(1000);
                 await websocket.Connect();
                 return;
             }
-#if UNITY_EDITOR
-            Debug.Log($"{Label} Disconnected");
-#endif
+            if (debugLog) Debug.Log($"{Label} Disconnected");
         }
 
         private void OnError(string errormsg)
         {
-#if UNITY_EDITOR
-            Debug.LogWarning($"{Label} Error: " + errormsg);
-#endif
+            if (debugLog) Debug.LogWarning($"{Label} Error: " + errormsg);
         }
 
         void OnConnected()
         {
             Status = ConnectionStatus.Connected;
-#if UNITY_EDITOR
-            Debug.Log($"{Label} Connected!");
-#endif
+            if (debugLog) Debug.Log($"{Label} Connected!");
         }
     }
 }

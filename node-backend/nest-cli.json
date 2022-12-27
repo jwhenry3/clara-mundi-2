@@ -62,6 +62,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/websocket/tsconfig.lib.json"
       }
+    },
+    "login-server": {
+      "type": "application",
+      "root": "apps/login-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/login-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/login-server/tsconfig.app.json"
+      }
     }
   }
 }
