@@ -9,7 +9,7 @@ import { MasterServerService } from './master-server.service'
 @Module({
   imports: [AuthModule],
   controllers: [MasterServerController],
-  providers: [MasterServerService, MasterServerGateway],
+  providers: [MasterServerService, MasterServerGateway, AuthModule],
 })
 export class MasterServerModule {
   static forRoot() {

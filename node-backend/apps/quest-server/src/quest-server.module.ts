@@ -9,7 +9,7 @@ import { QuestGateway } from './quest.gateway'
 @Module({
   imports: [AuthModule],
   controllers: [QuestServerController],
-  providers: [QuestServerService, QuestGateway],
+  providers: [QuestServerService, QuestGateway, AuthModule],
 })
 export class QuestServerModule {
   static forRoot() {

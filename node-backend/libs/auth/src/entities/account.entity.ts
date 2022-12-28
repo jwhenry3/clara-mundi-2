@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 'typeorm'
 
-@Unique('email', ['email'])
 @Entity('account')
+@Unique('email', ['email'])
 export class AccountEntity {
   @PrimaryGeneratedColumn('uuid')
   accountId: string
@@ -9,7 +9,7 @@ export class AccountEntity {
   email: string
   @Column('varchar')
   password: string
-  @Column('int')
+  @Column('bigint')
   lastLogin: number
   @Column('varchar')
   token: string

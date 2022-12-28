@@ -8,8 +8,10 @@ namespace ClaraMundi
     {
         public static SessionManager Instance;
 
-        public AccountEntity PlayerAccount;
+        public Account PlayerAccount;
         public CharacterEntity PlayerCharacter;
+
+        public string token;
 
         private void Awake()
         {
@@ -18,13 +20,11 @@ namespace ClaraMundi
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        
-        public async Task<bool> GetAccount()
+
+        public void Clear()
         {
-            PlayerAccount = await OnFacet<AccountFacet>.CallAsync<AccountEntity>(
-                nameof(AccountFacet.GetAccount)
-            );
-            return PlayerAccount != null;
+            PlayerAccount = null;
+            PlayerCharacter = null;
         }
     }
 }

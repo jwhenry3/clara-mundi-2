@@ -8,7 +8,7 @@ import { LoginServerService } from './login-server.service'
 @Module({
   imports: [AuthModule],
   controllers: [LoginServerController],
-  providers: [LoginServerService],
+  providers: [LoginServerService, AuthModule],
 })
 export class LoginServerModule {
   static forRoot() {

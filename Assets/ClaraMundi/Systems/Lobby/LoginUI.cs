@@ -26,14 +26,15 @@ namespace ClaraMundi
             StatusMessage.enabled = true;
             StatusMessage.text = "Logging in...";
 
-            string response = await OnFacet<EmailLoginFacet>.CallAsync<string>(
-                nameof(EmailLoginFacet.Login),
+            var response = await Authentication.Login(
                 EmailField.text,
                 PasswordField.text
-            );
+                );
 
-            if (!string.IsNullOrEmpty(response))
+            if (response.status)
             {
+                SessionManager.Instance.PlayerAccount = response.account;
+                
                 LobbyUI.Instance.CheckAccount();
                 StatusMessage.text = "Login succeeded";
             }

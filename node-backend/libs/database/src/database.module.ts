@@ -15,14 +15,14 @@ import { SSL } from './ssl'
       username: process.env.TYPEORM_USERNAME,
       password: process.env.TYPEORM_PASSWORD,
       database: process.env.TYPEORM_DATABASE,
-      entities: [],
       synchronize: true,
+      autoLoadEntities: true,
       ssl: {
         ca: SSL,
       },
     }),
   ],
   providers: [DatabaseService],
-  exports: [DatabaseService],
+  exports: [DatabaseService, TypeOrmModule, ConfigModule],
 })
 export class DatabaseModule {}

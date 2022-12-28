@@ -34,35 +34,25 @@ namespace ClaraMundi
                 return;
             }
         
-            var response = await OnFacet<EmailRegisterFacet>
-                .CallAsync<RegistrationResponse>(
-                    nameof(EmailRegisterFacet.Register),
-                    EmailField.text,
-                    PasswordField.text
-                );
+            var response = await Authentication.Register(
+                EmailField.text,
+                PasswordField.text
+            );
 
-            switch (response.status)
+            switch (response.reason)
             {
-                case EmailRegisterResponse.Ok:
+                case "":
                     StatusMessage.text = "Registration succeeded";
+                    SessionManager.Instance.PlayerAccount = response.account;
                     LobbyUI.Instance.CheckAccount();
                     break;
             
-                case EmailRegisterResponse.EmailTaken:
+                case "conflict":
                     StatusMessage.text = "This email has already been registered";
                     break;
             
-                case EmailRegisterResponse.InvalidEmail:
-                    StatusMessage.text = "This is not a valid email address";
-                    break;
-            
-                case EmailRegisterResponse.WeakPassword:
-                    StatusMessage.text = "Password needs to be at least 8 " +
-                                         "characters long";
-                    break;
-            
                 default:
-                    StatusMessage.text = "Unknown response: " + response;
+                    StatusMessage.text = "Unknown response: " + response.reason;
                     break;
             }
         }

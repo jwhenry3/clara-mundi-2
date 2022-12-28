@@ -17,8 +17,6 @@ namespace ClaraMundi
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await httpClient.GetAsync(url);
-            if (response.StatusCode != HttpStatusCode.OK)
-                throw new Exception(response.StatusCode + "");
             var resourceJson = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(resourceJson);
         }
@@ -29,8 +27,6 @@ namespace ClaraMundi
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await httpClient.PostAsync(url, new StringContent(body, Encoding.UTF8, "application/json"));
-            if (response.StatusCode != HttpStatusCode.OK)
-                throw new Exception(response.StatusCode + "");
             var resourceJson = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(resourceJson);
         }

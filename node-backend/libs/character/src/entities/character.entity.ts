@@ -3,6 +3,8 @@ import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 't
 @Unique('name', ['name'])
 @Entity('character')
 export class CharacterEntity {
+  @Column('varchar')
+  accountId: string
   @PrimaryColumn('varchar')
   name: string
   @Column('varchar')

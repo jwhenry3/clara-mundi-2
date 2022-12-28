@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 1926632896403151583}
   - component: {fileID: 6368421862280163343}
   - component: {fileID: 438755998354489819}
+  - component: {fileID: 4386903958934881301}
   m_Layer: 0
   m_Name: GameManagement
   m_TagString: Untagged
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561db434d4f058b40ac84fdab4ac39fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  token: 
 --- !u!114 &1926632896403151570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,6 +263,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91ddd65cad504495a201ab916058b343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4386903958934881301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926632896403151562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad25b3bc49f4ef8afe40ef92e5eadfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MasterServerUrl:
+    host: localhost
+    secure: 0
+    httpPort: 3000
+    wsPort: 3001
+  LoginServerUrl:
+    host: localhost
+    secure: 0
+    httpPort: 3000
+    wsPort: 3000
+  ChatServerUrl:
+    host: localhost
+    secure: 0
+    httpPort: 3000
+    wsPort: 3000
+  QuestServerUrl:
+    host: localhost
+    secure: 0
+    httpPort: 3000
+    wsPort: 3000
 --- !u!1 &1926632896543687178
 GameObject:
   m_ObjectHideFlags: 0

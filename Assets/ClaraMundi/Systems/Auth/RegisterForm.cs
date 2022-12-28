@@ -1,8 +1,5 @@
 using System;
-using Unisave.Facades;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using TMPro;
 
 namespace ClaraMundi
@@ -60,36 +57,25 @@ namespace ClaraMundi
                 return;
             }
 
-            var response = await OnFacet<EmailRegisterFacet>
-                .CallAsync<RegistrationResponse>(
-                    nameof(EmailRegisterFacet.Register),
-                    emailField.text,
-                    passwordField.text
-                );
+            var response = await Authentication.Register(emailField.text, passwordField.text);
+            AuthHolder.Token = response.account?.token;
 
-            switch (response.status)
+            statusText.text = response.status
+                ? "Success!" 
+                : "Given credentials are not valid";
+
+            switch (response.reason)
             {
-                case EmailRegisterResponse.Ok:
+                case "":
                     // SceneManager.LoadScene(sceneAfterRegistration);
-                    AuthHolder.Token = response.token;
                     statusText.text = "Success!";
                     break;
 
-                case EmailRegisterResponse.EmailTaken:
+                case "conflict":
                     statusText.text = "This email has already been registered";
                     break;
-
-                case EmailRegisterResponse.InvalidEmail:
-                    statusText.text = "This is not a valid email address";
-                    break;
-
-                case EmailRegisterResponse.WeakPassword:
-                    statusText.text = "Password needs to be at least 8 " +
-                                      "characters long";
-                    break;
-
                 default:
-                    statusText.text = "Unknown response: " + response;
+                    statusText.text = "Unknown response: " + response.reason;
                     break;
             }
         }

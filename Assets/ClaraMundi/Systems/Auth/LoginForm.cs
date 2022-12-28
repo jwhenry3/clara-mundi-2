@@ -45,15 +45,10 @@ namespace ClaraMundi
         {
             statusText.enabled = true;
             statusText.text = "Logging in...";
+            var response = await Authentication.Login(emailField.text, passwordField.text);
+            AuthHolder.Token = response.account?.token;
 
-            var response = await OnFacet<EmailLoginFacet>.CallAsync<string>(
-                nameof(EmailLoginFacet.Login),
-                emailField.text,
-                passwordField.text
-            );
-            AuthHolder.Token = response;
-
-            statusText.text = response != "" 
+            statusText.text = response.status
                 ? "Success!" 
                 : "Given credentials are not valid";
         }

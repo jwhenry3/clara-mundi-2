@@ -80,6 +80,33 @@
       "compilerOptions": {
         "tsConfigPath": "libs/database/tsconfig.lib.json"
       }
+    },
+    "character": {
+      "type": "library",
+      "root": "libs/character",
+      "entryFile": "index",
+      "sourceRoot": "libs/character/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/character/tsconfig.lib.json"
+      }
+    },
+    "inventory": {
+      "type": "library",
+      "root": "libs/inventory",
+      "entryFile": "index",
+      "sourceRoot": "libs/inventory/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/inventory/tsconfig.lib.json"
+      }
+    },
+    "chat": {
+      "type": "library",
+      "root": "libs/chat",
+      "entryFile": "index",
+      "sourceRoot": "libs/chat/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/chat/tsconfig.lib.json"
+      }
     }
   }
 }
