@@ -64,8 +64,15 @@ namespace ClaraMundi
                 websocket.OnError -= OnError;
                 websocket.OnClose -= OnDisconnected;
                 websocket.OnMessage -= OnMessage;
-                if (Status == ConnectionStatus.Connected)
-                    await websocket.Close();
+                try
+                {
+                    if (Status == ConnectionStatus.Connected)
+                        await websocket.Close();
+                }
+                catch (Exception e)
+                {
+                    // do nothing
+                }
             }
 
             Status = ConnectionStatus.Disconnected;

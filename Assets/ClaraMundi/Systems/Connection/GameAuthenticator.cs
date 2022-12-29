@@ -53,8 +53,8 @@ namespace ClaraMundi
             
             await LobbyApi.LogoutCharacter(ServerToken, characterName);
             
-            if (MasterServerManager.Instance == null) return;
-            MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
+            if (MasterServerConnection.Instance != null)
+                MasterServerConnection.Instance.UpdateServerList();
         }
 
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs args)
@@ -87,6 +87,7 @@ namespace ClaraMundi
             var result = await LobbyApi.VerifyCharacter(data.AccountToken, data.CharacterName);
             var character = result.character;
             bool authorized = character != null && !connectionsByCharacterName.ContainsKey(data.CharacterName);
+            Debug.Log(authorized);
             if (authorized)
             {
                 var model = new CharacterModel()
@@ -104,8 +105,8 @@ namespace ClaraMundi
                 characterNameByClientId[conn.ClientId] = character.name;
                 ConnectedPlayerManager.Instance.characterByName[character.name] = model;
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
-                if (MasterServerManager.Instance == null) return;
-                MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
+                if (MasterServerConnection.Instance != null)
+                    MasterServerConnection.Instance.UpdateServerList();
             }
 
             SendAuthenticationResponse(conn, authorized);
@@ -115,6 +116,7 @@ namespace ClaraMundi
         private void OnLoadedStartScenes(NetworkConnection conn, bool asServer)
         {
             conn.OnLoadedStartScenes -= OnLoadedStartScenes;
+            Debug.Log("Spawn Player!");
             PlayerConnection.Instance.SpawnPlayer(conn, asServer);
         }
 

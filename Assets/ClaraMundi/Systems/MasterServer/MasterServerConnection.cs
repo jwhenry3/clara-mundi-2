@@ -18,12 +18,14 @@ namespace ClaraMundi
 
     public class MasterServerConnection : MonoBehaviour
     {
+        public static MasterServerConnection Instance;
         private WebSocketConnection connection;
         private float syncInterval = 10f;
         private float currentTick = 0;
 
         private void Awake()
         {
+            Instance = this;
             connection = GetComponent<WebSocketConnection>();
             connection.MessageReceived += OnMessage;
         }
@@ -45,7 +47,6 @@ namespace ClaraMundi
             {
                 case "authorized":
                     UpdateServerList();
-                    LobbyApi.Login("test", "password");
                     break;
                 case "server-list":
                     ReceivedServerList(message);
@@ -58,10 +59,11 @@ namespace ClaraMundi
             currentTick += Time.deltaTime;
             if (!(currentTick > syncInterval)) return;
             currentTick = 0;
+            if (connection == null) return;
             UpdateServerList();
         }
 
-        private void UpdateServerList()
+        public void UpdateServerList()
         {
             var entry = new ServerEntry()
             {
@@ -69,7 +71,7 @@ namespace ClaraMundi
                 region = Server.Instance.Region,
                 port = Server.Instance.Port,
                 playerCapacity = Server.Instance.PlayerCapacity,
-                currentPlayers = PlayerManager.Instance.Players.Count
+                currentPlayers = GameAuthenticator.characterNameByClientId.Count
             };
             connection.Send(new WebSocketMessage()
             {

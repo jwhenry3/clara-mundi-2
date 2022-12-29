@@ -22,8 +22,11 @@ namespace ClaraMundi
 
         public ServerEntry GetServerForScene(string scene)
         {
+            Debug.Log("Get zone");
             if (!RepoManager.Instance.RegionRepo.Zones.ContainsKey(scene)) return null;
             var zone = RepoManager.Instance.RegionRepo.Zones[scene];
+            Debug.Log("get server by region");
+            Debug.Log(MasterServerApi.Instance.serversByRegion.Count);
             if (MasterServerApi.Instance.serversByRegion.ContainsKey(zone.Region.Name))
                 return MasterServerApi.Instance.serversByRegion[zone.Region.Name][0];
             Debug.LogWarning("No server available for region");

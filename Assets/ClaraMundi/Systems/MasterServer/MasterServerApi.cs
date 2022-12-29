@@ -26,6 +26,7 @@ namespace ClaraMundi
             try
             {
                 var list = await HttpRequest.Get<List<ServerEntry>>(UrlManager.Instance.MasterServerUrl.Compose(), "/master-server/servers");
+                Debug.Log(list.Count);
                 ReceivedServerList(list);
             }
             catch (Exception e)

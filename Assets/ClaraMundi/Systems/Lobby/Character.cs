@@ -13,10 +13,10 @@
         public float rotation;
 
         public int level;
-        public int exp;
+        public long exp;
 
-        public int lastConnected;
-        public int lastDisconnected;
+        public long lastConnected;
+        public long lastDisconnected;
 
         public bool hasConnectedBefore;
     }

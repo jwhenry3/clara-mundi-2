@@ -27,10 +27,10 @@ export class CharacterEntity {
   @Column('bigint')
   exp: number = 0
 
-  @Column('int', { nullable: true })
-  lastConnected: number
-  @Column('int', { nullable: true })
-  lastDisconnected: number
+  @Column('bigint')
+  lastConnected: number = 0
+  @Column('bigint')
+  lastDisconnected: number = 0
 
   @Column('tinyint')
   hasConnectedBefore: boolean = false

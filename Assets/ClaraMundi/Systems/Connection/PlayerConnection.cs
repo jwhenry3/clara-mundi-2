@@ -131,6 +131,7 @@ namespace ClaraMundi
         {
             if (!asServer)
                 return;
+            Debug.Log("Spawn Player ");
         }
 
     }

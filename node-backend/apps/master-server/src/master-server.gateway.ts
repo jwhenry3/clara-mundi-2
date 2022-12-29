@@ -60,8 +60,12 @@ export class MasterServerGateway
 
   @SubscribeMessage('update')
   handleAuth(@ConnectedSocket() client: any, @MessageBody() body: string) {
+    let host = ''
+    console.log(client._socket.remoteAddress)
     const hostParts = client._socket.remoteAddress.split(':')
-    const host = hostParts.pop()
+    if (client._socket.remoteAddress === '::1') host = '127.0.0.1'
+    else host = hostParts.pop()
+    console.log(host)
     const data = JSON.parse(body) as ServerEntry
     const entry: ServerEntry = {
       label: data.label,
@@ -74,6 +78,7 @@ export class MasterServerGateway
     }
     this.serversByClient[client.id] = entry
     MasterServerGateway.serverList[data.label] = entry
+    console.log('List Updated!')
     this.broadcastServerList()
   }
 

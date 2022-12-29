@@ -56,7 +56,7 @@ namespace ClaraMundi
             bool isConnecting = false)
         {
             return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/characters/{characterName}/logout?token=" + token + "&isConnecting=" +
+                $"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
                 (isConnecting ? 1 : 0)
             );
         }

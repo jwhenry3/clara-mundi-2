@@ -14,6 +14,7 @@ export class MasterServerController {
 
   @Get('servers')
   getServers() {
-    return MasterServerGateway.serverList
+    console.log(MasterServerGateway.serverList)
+    return Object.values(MasterServerGateway.serverList)
   }
 }

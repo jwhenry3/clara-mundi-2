@@ -20,14 +20,14 @@ export class CharacterService {
     return await this.repo.save(character)
   }
   async createCharacter(accountId: string, options: CreateCharacterOptions) {
-    if (accountId?.length ?? 0 === 0) {
+    if (!accountId) {
       return {
         status: false,
         reason: 'invalid-accountId',
         character: null,
       }
     }
-    if (options.name?.length ?? 0 === 0) {
+    if (!options.name) {
       return {
         status: false,
         reason: 'invalid-name',
@@ -59,7 +59,7 @@ export class CharacterService {
   }
 
   async getCharacters(accountId: string) {
-    if (accountId?.length ?? 0 === 0) {
+    if (!accountId) {
       return {
         status: false,
         reason: 'invalid-accountId',
