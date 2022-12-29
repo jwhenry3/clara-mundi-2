@@ -45,7 +45,7 @@ namespace ClaraMundi
             {
                 case "authorized":
                     UpdateServerList();
-                    Authentication.Login("test", "password");
+                    LobbyApi.Login("test", "password");
                     break;
                 case "server-list":
                     ReceivedServerList(message);

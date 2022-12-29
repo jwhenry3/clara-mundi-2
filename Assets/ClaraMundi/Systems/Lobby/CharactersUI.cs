@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Backend.App;
 using TMPro;
 using Unisave.Facades;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
@@ -13,7 +11,7 @@ namespace ClaraMundi
         public TextMeshProUGUI StatusMessage;
         public Transform CharactersContainer;
         public GameObject CharacterActions;
-        public List<CharacterEntity> Characters;
+        public List<Character> Characters;
 
         public CharacterUI CharacterPrefab;
 
@@ -26,7 +24,7 @@ namespace ClaraMundi
             CharacterActions.gameObject.SetActive(false);
         }
 
-        public void Select(CharacterEntity character)
+        public void Select(Character character)
         {
             if (SessionManager.Instance.PlayerCharacter == character) return;
             CharacterActions.SetActive(character != null);
@@ -43,20 +41,18 @@ namespace ClaraMundi
         public async void OnDelete()
         {
             if (SessionManager.Instance.PlayerCharacter == null) return;
-            string characterName = SessionManager.Instance.PlayerCharacter.Name;
+            string characterName = SessionManager.Instance.PlayerCharacter.name;
             StatusMessage.enabled = true;
-            StatusMessage.text = "Deleting " + characterName+ "...";
-            var result = await OnFacet<CharacterFacet>.CallAsync<bool>(
-                nameof(CharacterFacet.DeleteCharacter),
-                SessionManager.Instance.PlayerCharacter.Name
-            );
-            if (result)
+            StatusMessage.text = "Deleting " + characterName + "...";
+            var result = await LobbyApi.DeleteCharacter(characterName);
+            if (result.status)
                 OnEnable();
             else
                 StatusMessage.text = "Could not delete the character";
         }
 
         private bool loading;
+
         private async void OnEnable()
         {
             if (loading) return;
@@ -67,10 +63,10 @@ namespace ClaraMundi
             CharacterActions.gameObject.SetActive(false);
             foreach (Transform child in CharactersContainer)
                 Destroy(child.gameObject);
-            // get characters from server
-            Characters = await OnFacet<CharacterFacet>.CallAsync<List<CharacterEntity>>(
-                nameof(CharacterFacet.GetCharacters)
-            );
+
+            var response = await LobbyApi.GetCharacters();
+            Characters = response.characters;
+
             if (!isActiveAndEnabled) return;
             if (Characters.Count == 0)
                 StatusMessage.text = "You have no characters. Please create one.";
@@ -81,6 +77,7 @@ namespace ClaraMundi
                 CharactersContainer.gameObject.SetActive(true);
                 StatusMessage.enabled = false;
             }
+
             CharactersContainer.gameObject.SetActive(Characters.Count > 0);
             loading = false;
         }
@@ -92,13 +89,14 @@ namespace ClaraMundi
             foreach (Transform child in CharactersContainer)
                 Destroy(child.gameObject);
         }
+
         private void OnDestroy()
         {
             loading = false;
             SessionManager.Instance.PlayerCharacter = null;
         }
 
-        private void AddCharacter(CharacterEntity character)
+        private void AddCharacter(Character character)
         {
             Instantiate(CharacterPrefab, CharactersContainer, false).SetCharacter(character);
         }

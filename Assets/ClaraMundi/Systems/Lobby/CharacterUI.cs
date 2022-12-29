@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,27 +6,28 @@ namespace ClaraMundi
 {
     public class CharacterUI : MonoBehaviour
     {
-        public CharacterEntity CharacterEntity;
+        public Character Character;
         public TextMeshProUGUI Level;
         public TextMeshProUGUI Name;
         public TextMeshProUGUI Area;
 
         public void OnSelect()
         {
-            CharactersUI.Instance.Select(CharacterEntity);
+            CharactersUI.Instance.Select(Character);
         }
 
-        public void SetCharacter(CharacterEntity entity)
+        public void SetCharacter(Character character)
         {
-            CharacterEntity = entity;
-            Level.text = "LV " + entity.Level;
-            Name.text = entity.Name;
-            Area.text = entity.Area;
+            Character = character;
+            Level.text = "LV " + character.level;
+            Name.text = character.name;
+            Area.text = character.area;
         }
 
         public void Update()
         {
-            if (SessionManager.Instance.PlayerCharacter == CharacterEntity && EventSystem.current.currentSelectedGameObject != gameObject)
+            if (SessionManager.Instance.PlayerCharacter == Character &&
+                EventSystem.current.currentSelectedGameObject != gameObject)
                 EventSystem.current.SetSelectedGameObject(gameObject);
         }
     }

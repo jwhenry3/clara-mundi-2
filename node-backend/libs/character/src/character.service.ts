@@ -1,4 +1,93 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
 
+import { CharacterEntity } from './entities/character.entity'
+
+export class CreateCharacterOptions {
+  name: string
+  gender: string = 'male'
+  race: string = 'human'
+}
 @Injectable()
-export class CharacterService {}
+export class CharacterService {
+  constructor(
+    @InjectRepository(CharacterEntity)
+    private repo: Repository<CharacterEntity>,
+  ) {}
+
+  async createCharacter(accountId: string, options: CreateCharacterOptions) {
+    if (accountId?.length ?? 0 === 0) {
+      return {
+        status: false,
+        reason: 'invalid-accountId',
+        character: null,
+      }
+    }
+    if (options.name?.length ?? 0 === 0) {
+      return {
+        status: false,
+        reason: 'invalid-name',
+        character: null,
+      }
+    }
+    const existing = await this.getCharacterByName(options.name)
+    if (!!existing) {
+      return {
+        status: false,
+        reason: 'conflict',
+        character: null,
+      }
+    }
+    const character = this.repo.create({
+      accountId,
+      name: options.name,
+      race: ['human'].includes(options.race) ? options.race : 'human',
+      gender: ['male', 'female'].includes(options.gender)
+        ? options.gender
+        : 'male',
+    })
+    await this.repo.save(character)
+    return {
+      status: true,
+      reason: '',
+      character,
+    }
+  }
+
+  async getCharacters(accountId: string) {
+    if (accountId?.length ?? 0 === 0) {
+      return {
+        status: false,
+        reason: 'invalid-accountId',
+        characters: [],
+      }
+    }
+    const characters = await this.repo.findBy({ accountId })
+    return {
+      status: true,
+      reason: '',
+      characters,
+    }
+  }
+
+  async deleteCharacter(accountId: string, name: string) {
+    const character = await this.repo.findOneBy({ accountId, name })
+    if (!character) {
+      return {
+        status: false,
+        reason: 'not-found',
+      }
+    }
+    await this.repo.delete(character)
+
+    return {
+      status: true,
+      reason: '',
+    }
+  }
+
+  getCharacterByName(name: string) {
+    return this.repo.findOneBy({ name })
+  }
+}

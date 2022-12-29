@@ -8,7 +8,6 @@ namespace ClaraMundi
 {
     public class CreateCharacterUI : MonoBehaviour
     {
-        
         public TMP_InputField NameField;
         public TMP_Dropdown RaceDropdown;
         public TMP_Dropdown GenderDropdown;
@@ -16,7 +15,7 @@ namespace ClaraMundi
 
         private string[] RaceOptions = new[] { "Human" };
         private string[] GenderOptions = new[] { "Male", "Female" };
-        
+
         public void OnEnable()
         {
             RaceDropdown.value = 0;
@@ -33,17 +32,13 @@ namespace ClaraMundi
             StatusMessage.enabled = true;
             StatusMessage.text = "Creating Character...";
             if (string.IsNullOrEmpty(NameField.text) || string.IsNullOrWhiteSpace(NameField.text)) return;
-            var result  = await OnFacet<CharacterFacet>.CallAsync<bool>(
-                nameof(CharacterFacet.CreateCharacter),
-                new CreateCharacterRequest()
-                {
-                    Name = NameField.text,
-                    Gender = GenderOptions[GenderDropdown.value],
-                    Race = RaceOptions[RaceDropdown.value]
-                }
-            );
-            if (result)
-                LobbyUI.Instance.ToCharacterSelection();
+            var result = await LobbyApi.CreateCharacter(NameField.text, GenderOptions[GenderDropdown.value],
+                RaceOptions[RaceDropdown.value]);
+            if (result.status)
+            {
+                SessionManager.Instance.PlayerCharacter = result.character;
+                Client.Instance.Connect();
+            }
             else
             {
                 StatusMessage.text = "Could not create the character, try a different name.";

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -17,6 +16,16 @@ namespace ClaraMundi
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await httpClient.GetAsync(url);
+            var resourceJson = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(resourceJson);
+        }
+        public static async Task<T> Delete<T>(string baseUrl, string url)
+        {
+            using var httpClient = new HttpClient();
+            httpClient.BaseAddress = new Uri(baseUrl);
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            var response = await httpClient.DeleteAsync(url);
             var resourceJson = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(resourceJson);
         }

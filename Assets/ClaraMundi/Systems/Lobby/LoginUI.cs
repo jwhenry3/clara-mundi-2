@@ -26,7 +26,7 @@ namespace ClaraMundi
             StatusMessage.enabled = true;
             StatusMessage.text = "Logging in...";
 
-            var response = await Authentication.Login(
+            var response = await LobbyApi.Login(
                 EmailField.text,
                 PasswordField.text
                 );

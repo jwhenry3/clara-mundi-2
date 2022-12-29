@@ -16,6 +16,7 @@ export class AuthService {
   constructor(
     @InjectRepository(AccountEntity) private repo: Repository<AccountEntity>,
   ) {}
+
   async loginClient(email: string, password: string): Promise<AuthResponse> {
     const account = await this.repo.findOneBy({ email })
     if (!account)
@@ -42,6 +43,7 @@ export class AuthService {
       reason: '',
     }
   }
+
   async registerClient(email: string, password: string): Promise<AuthResponse> {
     let account = await this.repo.findOneBy({ email })
     if (account)
@@ -66,8 +68,25 @@ export class AuthService {
       reason: '',
     }
   }
-  async validateClient(token: string) {
-    return true
+
+  async getAccount(
+    token: string,
+  ): Promise<{ email: string; accountId: string } | null> {
+    return await new Promise((resolve, reject) => {
+      jwt.verify(token, process.env.JWT_SECRET, {}, (error, decoded) => {
+        if (error) {
+          resolve(null)
+          return
+        }
+        resolve(decoded as { email: string; accountId: string })
+      })
+    })
+  }
+
+  async getAccountId(token: string) {
+    const accountDetails = await this.getAccount(token)
+    if (!accountDetails) return null
+    return accountDetails.accountId
   }
 
   async validateServer(token: string) {

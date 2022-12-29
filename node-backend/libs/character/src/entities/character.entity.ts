@@ -8,30 +8,30 @@ export class CharacterEntity {
   @PrimaryColumn('varchar')
   name: string
   @Column('varchar')
-  gender: string
+  gender: string = 'male'
   @Column('varchar')
-  race: string
+  race: string = 'human'
   @Column('varchar')
-  area: string
+  area: string = 'Rein'
   @Column('decimal')
-  position_x: number
+  position_x: number = 0
   @Column('decimal')
-  position_y: number
+  position_y: number = 0
   @Column('decimal')
-  position_z: number
+  position_z: number = 0
   @Column('decimal')
-  rotation: number
+  rotation: number = 0
 
   @Column('int')
-  level: number
+  level: number = 1
   @Column('longint')
-  exp: number
+  exp: number = 0
 
-  @Column('int')
+  @Column('int', { nullable: true })
   lastConnected: number
-  @Column('int')
+  @Column('int', { nullable: true })
   lastDisconnected: number
 
   @Column('tinyint')
-  hasConnectedBefore: boolean
+  hasConnectedBefore: boolean = false
 }

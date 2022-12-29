@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using Unisave.Facades;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -9,9 +7,7 @@ namespace ClaraMundi
         public static SessionManager Instance;
 
         public Account PlayerAccount;
-        public CharacterEntity PlayerCharacter;
-
-        public string token;
+        public Character PlayerCharacter;
 
         private void Awake()
         {

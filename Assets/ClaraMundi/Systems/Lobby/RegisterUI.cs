@@ -34,7 +34,7 @@ namespace ClaraMundi
                 return;
             }
         
-            var response = await Authentication.Register(
+            var response = await LobbyApi.Register(
                 EmailField.text,
                 PasswordField.text
             );

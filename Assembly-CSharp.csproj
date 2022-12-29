@@ -84,9 +84,8 @@
      <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\Player.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Auth\RegisterForm.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Auth\Authentication.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyApi.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatValue.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuItem.cs" />
@@ -107,7 +106,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Connection\GameServerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Auth\Account.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\Account.cs" />
      <Compile Include="Assets\Backend\Entities\QuestTaskProgressEntity.cs" />
      <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
      <Compile Include="Assets\Backend\Facets\PartyFacet.cs" />
@@ -117,7 +116,6 @@
      <Compile Include="Assets\ClaraMundi\Systems\Connection\GameAuthenticator.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Auth\AuthHolder.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\CreateCharacterUI.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerConnection.cs" />
@@ -216,7 +214,6 @@
      <Compile Include="Assets\ClaraMundi\Systems\Connection\MasterServerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\GameServerAuthenticator.cs" />
      <Compile Include="Assets\Backend\Channels\Messages\PartyMessage.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Auth\LoginForm.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\PrivateMessageClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
@@ -231,6 +228,7 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\Character.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -545,7 +543,6 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\semantic.ko.txt" />
      <None Include="Assets\ParrelSync\VERSION.txt" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_animal" />
-     <Folder Include="Assets\ClaraMundi\Systems\Auth" />
      <Folder Include="Assets\HONETi\flat_gui_elements" />
      <None Include="Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\link.xml" />
      <Folder Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Tests\Editor" />
