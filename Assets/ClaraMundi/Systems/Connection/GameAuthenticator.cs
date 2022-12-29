@@ -1,13 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Backend.App;
 using FishNet.Authenticating;
 using FishNet.Broadcast;
 using FishNet.Connection;
 using FishNet.Managing;
-using FishNet.Object.Synchronizing;
 using FishNet.Transporting;
-using Unisave.Facades;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -29,6 +26,8 @@ namespace ClaraMundi
         public static readonly Dictionary<int, string> characterNameByClientId = new();
         public override event Action<NetworkConnection, bool> OnAuthenticationResult;
 
+        public string ServerToken;
+
         public override void InitializeOnce(NetworkManager networkManager)
         {
             base.InitializeOnce(networkManager);
@@ -46,19 +45,18 @@ namespace ClaraMundi
             if (args.ConnectionState != RemoteConnectionState.Stopped) return;
             if (!characterNameByClientId.ContainsKey(conn.ClientId)) return;
             var characterName = characterNameByClientId[conn.ClientId];
-            if (!ConnectedPlayerManager.Instance.characterByName.ContainsKey(characterName)) return;
-            var character = ConnectedPlayerManager.Instance.characterByName[characterName];
-            await OnFacet<CharacterFacet>.CallAsync<bool>(
-                nameof(CharacterFacet.ServerCharacterLeavingGameServer),
-                "", // server token
-                character.CharacterId
-            );
-            ConnectedPlayerManager.Instance.characterByName.Remove(character.Name);
-            connectionsByCharacterName.Remove(character.Name);
             characterNameByClientId.Remove(conn.ClientId);
+            if (ConnectedPlayerManager.Instance.characterByName.ContainsKey(characterName))
+                ConnectedPlayerManager.Instance.characterByName.Remove(characterName);
+            if (connectionsByCharacterName.ContainsKey(characterName))
+                connectionsByCharacterName.Remove(characterName);
+            
+            await LobbyApi.LogoutCharacter(ServerToken, characterName);
+            
             if (MasterServerManager.Instance == null) return;
             MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
         }
+
         private void ClientManager_OnClientConnectionState(ClientConnectionStateArgs args)
         {
             /* If anything but the started state then exit early.
@@ -84,31 +82,27 @@ namespace ClaraMundi
                 OnAuthenticationResult?.Invoke(conn, false);
                 return;
             }
+
             data.CharacterName = data.CharacterName.ToLower();
-            var character = await OnFacet<CharacterFacet>.CallAsync<CharacterEntity>(
-                nameof(CharacterFacet.ServerCharacterJoiningGameServer),
-                "", // server token
-                data.AccountToken,
-                data.CharacterName
-            );
+            var result = await LobbyApi.VerifyCharacter(data.AccountToken, data.CharacterName);
+            var character = result.character;
             bool authorized = character != null && !connectionsByCharacterName.ContainsKey(data.CharacterName);
             if (authorized)
             {
                 var model = new CharacterModel()
                 {
-                    CharacterId = character.EntityId,
-                    Name = character.Name,
-                    Gender = character.Gender,
-                    Race = character.Race,
-                    Area = character.Area,
-                    Position = character.Position,
-                    Rotation = character.Rotation,
-                    Level = character.Level,
-                    TotalExp = character.TotalExp
+                    Name = character.name,
+                    Gender = character.gender,
+                    Race = character.race,
+                    Area = character.area,
+                    Position = new Vector3(character.position_x, character.position_y, character.position_z),
+                    Rotation = character.rotation,
+                    Level = character.level,
+                    TotalExp = character.exp
                 };
                 connectionsByCharacterName[data.CharacterName] = conn;
-                characterNameByClientId[conn.ClientId] = character.Name;
-                ConnectedPlayerManager.Instance.characterByName[character.Name] = model;
+                characterNameByClientId[conn.ClientId] = character.name;
+                ConnectedPlayerManager.Instance.characterByName[character.name] = model;
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
                 if (MasterServerManager.Instance == null) return;
                 MasterServerManager.Instance.UpdatePlayerCount(Server.Instance.Name, characterNameByClientId.Count);
@@ -160,7 +154,7 @@ namespace ClaraMundi
             var pb = new CharacterSelectionBroadcast
             {
                 AccountToken = SessionManager.Instance.PlayerAccount.token,
-                CharacterName = SessionManager.Instance.PlayerCharacter.Name
+                CharacterName = SessionManager.Instance.PlayerCharacter.name
             };
 
             NetworkManager.ClientManager.Broadcast(pb);

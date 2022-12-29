@@ -68,10 +68,49 @@ export class LoginServerController {
     const accountId = await this.auth.getAccountId(token as string)
     if (!accountId) return this.respond(res, 401, unauthorized)
 
-    const result = await this.character.deleteCharacter(
+    const result = await this.character.deleteCharacter(accountId, name)
+    this.respond(res, this.getStatus(result.reason), result)
+  }
+  @Get('characters/verify/:name')
+  async verifyCharacterSelection(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Param('name') name: string,
+  ) {
+    const { token, isConnecting } = req.query ?? {
+      token: '',
+      isConnecting: '0',
+    }
+    const isConnectingFlag = isConnecting === '1' || isConnecting == 'true'
+    const accountId = await this.auth.getAccountId(token as string)
+    if (!accountId) return this.respond(res, 401, unauthorized)
+
+    const result = await this.character.getCharacterByAccountAndName(
       accountId,
-      (name ?? '') as string,
+      name,
     )
+    if (result.character && isConnectingFlag) {
+      result.character.hasConnectedBefore = true
+      result.character.lastConnected = new Date().valueOf()
+      result.character = await this.character.saveCharacter(result.character)
+    }
+    this.respond(res, this.getStatus(result.reason), result)
+  }
+
+  @Get('characters/logout/:name')
+  async logoutCharacter(
+    @Req() req: Request,
+    @Res() res: Response,
+    @Param('name') name: string,
+  ) {
+    const { token } = req.query ?? { token: '' }
+    if (token !== process.env.SERVER_TOKEN)
+      return this.respond(res, 401, unauthorized)
+    const result = await this.character.getCharacter(name)
+    if (result.character) {
+      result.character.lastDisconnected = new Date().valueOf()
+      await this.character.saveCharacter(result.character)
+    }
     this.respond(res, this.getStatus(result.reason), result)
   }
 

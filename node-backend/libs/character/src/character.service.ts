@@ -16,6 +16,9 @@ export class CharacterService {
     private repo: Repository<CharacterEntity>,
   ) {}
 
+  async saveCharacter(character: CharacterEntity) {
+    return await this.repo.save(character)
+  }
   async createCharacter(accountId: string, options: CreateCharacterOptions) {
     if (accountId?.length ?? 0 === 0) {
       return {
@@ -31,7 +34,7 @@ export class CharacterService {
         character: null,
       }
     }
-    const existing = await this.getCharacterByName(options.name)
+    const existing = await this.findByName(options.name)
     if (!!existing) {
       return {
         status: false,
@@ -72,7 +75,7 @@ export class CharacterService {
   }
 
   async deleteCharacter(accountId: string, name: string) {
-    const character = await this.repo.findOneBy({ accountId, name })
+    const character = await this.findByAccountAndName(accountId, name)
     if (!character) {
       return {
         status: false,
@@ -86,8 +89,41 @@ export class CharacterService {
       reason: '',
     }
   }
+  async getCharacterByAccountAndName(accountId: string, name: string) {
+    const character = await this.findByAccountAndName(accountId, name)
+    if (!character) {
+      return {
+        status: false,
+        reason: 'not-found',
+        character: null,
+      }
+    }
+    return {
+      status: true,
+      reason: '',
+      character,
+    }
+  }
 
-  getCharacterByName(name: string) {
+  async getCharacter(name: string) {
+    const character = await this.findByName(name)
+    if (!character) {
+      return {
+        status: false,
+        reason: 'not-found',
+        character: null,
+      }
+    }
+    return {
+      status: true,
+      reason: '',
+      character,
+    }
+  }
+  private findByAccountAndName(accountId: string, name: string) {
+    return this.repo.findOneBy({ accountId, name })
+  }
+  private findByName(name: string) {
     return this.repo.findOneBy({ name })
   }
 }

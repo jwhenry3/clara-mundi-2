@@ -52,6 +52,19 @@ namespace ClaraMundi
             );
         }
 
+        public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName, bool isConnecting = false)
+        {
+            return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
+                $"/login-server/character/verify/{characterName}?token=" + token + "&isConnecting=" + (isConnecting ? 1 : 0)
+            );
+        }
+        
+        public static async Task<CharacterResponse> LogoutCharacter(string serverToken, string characterName)
+        {
+            return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
+                $"/login-server/character/logout/{characterName}?token=" + serverToken
+            );
+        }
         public static async Task<CharactersResponse> GetCharacters()
         {
             var token = SessionManager.Instance.PlayerAccount.token;

@@ -43,10 +43,10 @@ namespace ClaraMundi
             var character = SessionManager.Instance.PlayerCharacter;
             // find a server that the player can connect to for this character
             await MasterServerApi.Instance.GetServerList();
-            var server = GameServerManager.Instance.GetServerForScene(character.Area);
+            var server = GameServerManager.Instance.GetServerForScene(character.area);
             if (server == null)
             {
-                Debug.LogWarning("Cannot find region server for zone: " + character.Area);
+                Debug.LogWarning("Cannot find region server for zone: " + character.area);
                 return;
             }
             networkManager.ClientManager.StartConnection(server.host, server.port);
