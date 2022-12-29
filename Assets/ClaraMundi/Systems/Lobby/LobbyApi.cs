@@ -52,35 +52,38 @@ namespace ClaraMundi
             );
         }
 
-        public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName, bool isConnecting = false)
+        public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName,
+            bool isConnecting = false)
         {
             return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/character/verify/{characterName}?token=" + token + "&isConnecting=" + (isConnecting ? 1 : 0)
+                $"/login-server/characters/{characterName}/logout?token=" + token + "&isConnecting=" +
+                (isConnecting ? 1 : 0)
             );
         }
-        
+
         public static async Task<CharacterResponse> LogoutCharacter(string serverToken, string characterName)
         {
             return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/character/logout/{characterName}?token=" + serverToken
+                $"/login-server/characters/{characterName}/logout?token=" + serverToken
             );
         }
+
         public static async Task<CharactersResponse> GetCharacters()
         {
             var token = SessionManager.Instance.PlayerAccount.token;
             return await HttpRequest.Get<CharactersResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/characters?token=" + token
+                "/login-server/characters/list?token=" + token
             );
         }
 
-        public static async Task<CharacterResponse> CreateCharacter(string name, string race,
-            string gender)
+        public static async Task<CharacterResponse> CreateCharacter(string name, string gender,
+            string race)
         {
             var token = SessionManager.Instance.PlayerAccount.token;
             var content = new Dictionary<string, string>()
                 { { "token", token }, { "name", name }, { "race", race }, { "gender", gender } };
             return await HttpRequest.Post<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/create-character",
+                "/login-server/characters/create",
                 JsonConvert.SerializeObject(content)
             );
         }
@@ -89,7 +92,7 @@ namespace ClaraMundi
         {
             var token = SessionManager.Instance.PlayerAccount.token;
             return await HttpRequest.Delete<OperationResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/delete-character?token=" + token + "&name=" + name
+                $"/login-server/characters/{name}?token=" + token + "&name=" + name
             );
         }
     }

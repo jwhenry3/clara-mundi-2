@@ -65,7 +65,7 @@ namespace ClaraMundi
                 Destroy(child.gameObject);
 
             var response = await LobbyApi.GetCharacters();
-            Characters = response.characters;
+            Characters = response.characters ?? new List<Character>();
 
             if (!isActiveAndEnabled) return;
             if (Characters.Count == 0)

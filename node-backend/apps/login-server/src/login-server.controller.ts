@@ -1,8 +1,7 @@
+import { AuthService } from '@app/auth'
+import { CharacterService } from '@app/character'
 import { Controller, Delete, Get, Param, Post, Req, Res } from '@nestjs/common'
 import { Request, Response } from 'express'
-
-import { AuthService } from '../../../libs/auth/src/auth.service'
-import { CharacterService } from '../../../libs/character/src/character.service'
 
 const unauthorized = {
   status: false,
@@ -17,14 +16,16 @@ export class LoginServerController {
     const { email, password } = req.body ?? { email: '', password: '' }
 
     const result = await this.auth.loginClient(email, password)
+    console.log('login', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
   @Post('register')
   async register(@Req() req: Request, @Res() res: Response) {
     const { email, password } = req.body ?? { email: '', password: '' }
-
+    console.log(email, password)
     const result = await this.auth.registerClient(email, password)
+    console.log('register', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -36,6 +37,7 @@ export class LoginServerController {
       return this.respond(res, 401, { ...unauthorized, characters: [] })
 
     const result = await this.character.getCharacters(accountId)
+    console.log('characters', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -47,13 +49,13 @@ export class LoginServerController {
       name: '',
       gender: 'male',
     }) as Record<string, string>
-
     const accountId = await this.auth.getAccountId(token as string)
     if (!accountId)
       return this.respond(res, 401, { ...unauthorized, character: null })
 
     const options = { name, race, gender }
     const result = await this.character.createCharacter(accountId, options)
+    console.log('create character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -69,9 +71,10 @@ export class LoginServerController {
     if (!accountId) return this.respond(res, 401, unauthorized)
 
     const result = await this.character.deleteCharacter(accountId, name)
+    console.log('delete character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
-  @Get('characters/verify/:name')
+  @Get('characters/:name/verify')
   async verifyCharacterSelection(
     @Req() req: Request,
     @Res() res: Response,
@@ -94,10 +97,11 @@ export class LoginServerController {
       result.character.lastConnected = new Date().valueOf()
       result.character = await this.character.saveCharacter(result.character)
     }
+    console.log('verify character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
-  @Get('characters/logout/:name')
+  @Get('characters/:name/logout')
   async logoutCharacter(
     @Req() req: Request,
     @Res() res: Response,
@@ -111,6 +115,7 @@ export class LoginServerController {
       result.character.lastDisconnected = new Date().valueOf()
       await this.character.saveCharacter(result.character)
     }
+    console.log('logout character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 

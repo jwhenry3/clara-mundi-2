@@ -24,7 +24,7 @@ export class CharacterEntity {
 
   @Column('int')
   level: number = 1
-  @Column('longint')
+  @Column('bigint')
   exp: number = 0
 
   @Column('int', { nullable: true })

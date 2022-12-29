@@ -34,6 +34,7 @@ namespace ClaraMundi
             if (string.IsNullOrEmpty(NameField.text) || string.IsNullOrWhiteSpace(NameField.text)) return;
             var result = await LobbyApi.CreateCharacter(NameField.text, GenderOptions[GenderDropdown.value],
                 RaceOptions[RaceDropdown.value]);
+            Debug.Log(result.reason);
             if (result.status)
             {
                 SessionManager.Instance.PlayerCharacter = result.character;
