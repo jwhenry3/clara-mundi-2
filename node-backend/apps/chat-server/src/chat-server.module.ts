@@ -1,4 +1,7 @@
 import { AuthModule } from '@app/auth'
+import { CharacterModule } from '@app/character'
+import { ChatModule } from '@app/chat'
+import { CoreUtils } from '@app/core'
 import { DatabaseModule } from '@app/database'
 import { Module } from '@nestjs/common'
 
@@ -7,7 +10,12 @@ import { ChatServerService } from './chat-server.service'
 import { ChatGateway } from './chat.gateway'
 
 @Module({
-  imports: [AuthModule],
+  imports: [
+    AuthModule,
+    ChatModule,
+    CharacterModule,
+    CoreUtils.importClient('CHAT_SERVICE'),
+  ],
   controllers: [ChatServerController],
   providers: [ChatServerService, ChatGateway],
 })

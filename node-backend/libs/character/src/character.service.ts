@@ -120,6 +120,35 @@ export class CharacterService {
       character,
     }
   }
+
+  async updateCharacter(
+    name: string,
+    area: string,
+    position_x: number,
+    position_y: number,
+    position_z: number,
+    rotation: number,
+  ) {
+    return await this.repo
+      .createQueryBuilder('character')
+      .update({
+        area,
+        position_x,
+        position_y,
+        position_z,
+        rotation,
+      })
+      .where({ name })
+      .execute()
+  }
+
+  async searchCharacters(term: string) {
+    return await this.repo
+      .createQueryBuilder('character')
+      .select(['name', 'gender', 'race', 'area', 'level'])
+      .where('character.name like :term', { term: `%${term}%` })
+      .getMany()
+  }
   private findByAccountAndName(accountId: string, name: string) {
     return this.repo.findOneBy({ accountId, name })
   }

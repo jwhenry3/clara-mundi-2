@@ -107,6 +107,51 @@
       "compilerOptions": {
         "tsConfigPath": "libs/chat/tsconfig.lib.json"
       }
+    },
+    "core": {
+      "type": "library",
+      "root": "libs/core",
+      "entryFile": "index",
+      "sourceRoot": "libs/core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/core/tsconfig.lib.json"
+      }
+    },
+    "character-server": {
+      "type": "application",
+      "root": "apps/character-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/character-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/character-server/tsconfig.app.json"
+      }
+    },
+    "party-server": {
+      "type": "application",
+      "root": "apps/party-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/party-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/party-server/tsconfig.app.json"
+      }
+    },
+    "equipment-server": {
+      "type": "application",
+      "root": "apps/equipment-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/equipment-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/equipment-server/tsconfig.app.json"
+      }
+    },
+    "item-server": {
+      "type": "application",
+      "root": "apps/item-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/item-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/item-server/tsconfig.app.json"
+      }
     }
   }
 }

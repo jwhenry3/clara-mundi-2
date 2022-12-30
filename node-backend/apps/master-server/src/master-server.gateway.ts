@@ -1,4 +1,5 @@
 import { AuthService } from '@app/auth'
+import { config } from '@app/core'
 import { WebSocketClient, WebsocketUtils } from '@app/websocket'
 import { ConnectedSocket, WebSocketServer } from '@nestjs/websockets'
 import {
@@ -9,7 +10,7 @@ import {
   WebSocketGateway,
 } from '@nestjs/websockets'
 import { create } from 'guid'
-import { Server, WebSocket } from 'ws'
+import { Server } from 'ws'
 
 const url = require('url')
 export interface ServerEntry {
@@ -21,7 +22,7 @@ export interface ServerEntry {
   playerCapacity: number
   currentPlayers: number
 }
-@WebSocketGateway(3001)
+@WebSocketGateway(config.master.wsPort)
 export class MasterServerGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
@@ -61,11 +62,9 @@ export class MasterServerGateway
   @SubscribeMessage('update')
   handleAuth(@ConnectedSocket() client: any, @MessageBody() body: string) {
     let host = ''
-    console.log(client._socket.remoteAddress)
     const hostParts = client._socket.remoteAddress.split(':')
     if (client._socket.remoteAddress === '::1') host = '127.0.0.1'
     else host = hostParts.pop()
-    console.log(host)
     const data = JSON.parse(body) as ServerEntry
     const entry: ServerEntry = {
       label: data.label,
@@ -78,7 +77,6 @@ export class MasterServerGateway
     }
     this.serversByClient[client.id] = entry
     MasterServerGateway.serverList[data.label] = entry
-    console.log('List Updated!')
     this.broadcastServerList()
   }
 

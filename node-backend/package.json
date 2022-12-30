@@ -24,6 +24,7 @@
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^9.2.1",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/platform-socket.io": "^9.2.1",
     "@nestjs/platform-ws": "^9.2.1",
@@ -35,6 +36,7 @@
     "@types/ws": "^8.5.3",
     "bcrypt": "^5.1.0",
     "guid": "^0.0.12",
+    "ioredis": "^5.2.4",
     "jsonwebtoken": "^9.0.0",
     "mysql2": "^2.3.3",
     "reflect-metadata": "^0.1.13",
@@ -92,7 +94,8 @@
       "^@app/database(|/.*)$": "<rootDir>/libs/database/src/$1",
       "^@app/character(|/.*)$": "<rootDir>/libs/character/src/$1",
       "^@app/inventory(|/.*)$": "<rootDir>/libs/inventory/src/$1",
-      "^@app/chat(|/.*)$": "<rootDir>/libs/chat/src/$1"
+      "^@app/chat(|/.*)$": "<rootDir>/libs/chat/src/$1",
+      "^@app/core(|/.*)$": "<rootDir>/libs/core/src/$1"
     }
   }
 }

@@ -32,5 +32,5 @@ public class CharacterModel
     public float Rotation;
 
     public int Level;
-    public int TotalExp;
+    public long TotalExp;
 }

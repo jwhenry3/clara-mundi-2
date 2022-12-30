@@ -1,13 +1,14 @@
+import { config } from '@app/core'
 import {
-    MessageBody,
-    OnGatewayConnection,
-    OnGatewayDisconnect,
-    SubscribeMessage,
-    WebSocketGateway,
+  MessageBody,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  SubscribeMessage,
+  WebSocketGateway,
 } from '@nestjs/websockets'
 import { WebSocket } from 'ws'
 
-@WebSocketGateway(3003)
+@WebSocketGateway(config.quest.wsPort)
 export class QuestGateway implements OnGatewayConnection, OnGatewayDisconnect {
   handleDisconnect(client: WebSocket) {
     console.log('client disconnected, clean up')

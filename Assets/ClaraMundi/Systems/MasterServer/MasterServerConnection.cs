@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -16,29 +15,38 @@ namespace ClaraMundi
         public int currentPlayers;
     }
 
-    public class MasterServerConnection : MonoBehaviour
+    public class MasterServerConnection : WebSocketConnection
     {
         public static MasterServerConnection Instance;
-        private WebSocketConnection connection;
+        private WebSocketConnection connection => this;
         private float syncInterval = 10f;
         private float currentTick = 0;
 
         private void Awake()
         {
             Instance = this;
-            connection = GetComponent<WebSocketConnection>();
-            connection.MessageReceived += OnMessage;
         }
 
-        private void OnDestroy()
+        private void OnEnable()
         {
-            connection.MessageReceived -= OnMessage;
+            MessageReceived += OnMessage;
+        }
+
+        private void OnDisable()
+        {
+            MessageReceived -= OnMessage;
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            MessageReceived -= OnMessage;
         }
 
         private void Start()
         {
-            connection.UpdateServerUrl(UrlManager.Instance.MasterServerUrl.Compose(true));
-            connection.Connect();
+            UpdateServerUrl(UrlManager.Instance.MasterServerUrl.Compose(true));
+            Connect();
         }
 
         void OnMessage(WebSocketMessage message)
@@ -54,8 +62,9 @@ namespace ClaraMundi
             }
         }
 
-        private void Update()
+        protected override void Update()
         {
+            base.Update();
             currentTick += Time.deltaTime;
             if (!(currentTick > syncInterval)) return;
             currentTick = 0;

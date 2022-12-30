@@ -30,9 +30,9 @@ namespace ClaraMundi
         public string authToken;
         public bool debugLog;
         public ConnectionStatus Status { get; protected set; }
-        private WebSocket websocket;
+        protected WebSocket websocket;
 
-        private readonly WebSocketCloseCode[] reconnectOn = new[]
+        protected readonly WebSocketCloseCode[] reconnectOn = new[]
         {
             WebSocketCloseCode.Abnormal
         };
@@ -56,14 +56,14 @@ namespace ClaraMundi
                 serverUrl += ":" + (protocol == "https" ? "443" : "80");
         }
 
-        private async void CreateSocket()
+        protected virtual async void CreateSocket()
         {
             if (websocket != null)
             {
                 websocket.OnOpen -= OnConnected;
                 websocket.OnError -= OnError;
                 websocket.OnClose -= OnDisconnected;
-                websocket.OnMessage -= OnMessage;
+                websocket.OnMessage -= WS_OnMessage;
                 try
                 {
                     if (Status == ConnectionStatus.Connected)
@@ -84,15 +84,15 @@ namespace ClaraMundi
             websocket.OnOpen += OnConnected;
             websocket.OnError += OnError;
             websocket.OnClose += OnDisconnected;
-            websocket.OnMessage += OnMessage;
+            websocket.OnMessage += WS_OnMessage;
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             websocket.OnOpen -= OnConnected;
             websocket.OnError -= OnError;
             websocket.OnClose -= OnDisconnected;
-            websocket.OnMessage -= OnMessage;
+            websocket.OnMessage -= WS_OnMessage;
         }
 
         public async void Connect()
@@ -104,7 +104,7 @@ namespace ClaraMundi
             await websocket?.Connect()!;
         }
 
-        void Update()
+        protected virtual void Update()
         {
 #if !UNITY_WEBGL || UNITY_EDITOR
             websocket?.DispatchMessageQueue();
@@ -116,12 +116,12 @@ namespace ClaraMundi
             websocket.SendText(JsonConvert.SerializeObject(message).Replace("\"eventName\"", "\"event\""));
         }
 
-        private async void OnApplicationQuit()
+        protected async void OnApplicationQuit()
         {
             await websocket.Close();
         }
 
-        private void OnMessage(byte[] data)
+        private  void WS_OnMessage(byte[] data)
         {
             var dataString = Encoding.UTF8.GetString(data);
             if (debugLog) Debug.Log($"Message Received from {Label}: " + dataString);
@@ -136,7 +136,7 @@ namespace ClaraMundi
             }
         }
 
-        private async void OnDisconnected(WebSocketCloseCode closecode)
+        protected virtual async void OnDisconnected(WebSocketCloseCode closecode)
         {
             Status = ConnectionStatus.Disconnected;
             if (reconnectOn.Contains(closecode) && isActiveAndEnabled)

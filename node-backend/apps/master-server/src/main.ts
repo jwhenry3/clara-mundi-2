@@ -1,11 +1,14 @@
+import { config } from '@app/core'
 import { NestFactory } from '@nestjs/core'
 import { WsAdapter } from '@nestjs/platform-ws'
 
+import { CoreUtils } from '../../../libs/core/src/core.utils'
 import { MasterServerModule } from './master-server.module'
 
 async function bootstrap() {
   const app = await NestFactory.create(MasterServerModule.forRoot())
   app.useWebSocketAdapter(new WsAdapter(app))
-  await app.listen(3000)
+  await CoreUtils.connectRedis(app)
+  await app.listen(config.master.httpPort)
 }
 bootstrap()
