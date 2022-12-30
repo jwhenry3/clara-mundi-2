@@ -19,9 +19,9 @@ namespace ClaraMundi
         [SyncVar(OnChange = nameof(LevelChange))]
         public int Level = 1;
         [SyncVar(OnChange = nameof(ExpChange))]
-        public int Experience = 0;
+        public long Experience = 0;
         [SyncVar(OnChange = nameof(ExpTilChange))]
-        public int ExpTilNextLevel = 1000;
+        public long ExpTilNextLevel = 1000;
 
         public Stats BaseStats = new();
         [SyncVar(OnChange=nameof(EnergyChanged))]
@@ -62,12 +62,12 @@ namespace ClaraMundi
             OnChange?.Invoke();
         }
 
-        private void ExpChange(int previous, int next, bool asServer)
+        private void ExpChange(long previous, long next, bool asServer)
         {
             OnChange?.Invoke();
         }
 
-        private void ExpTilChange(int previous, int next, bool asServer)
+        private void ExpTilChange(long previous, long next, bool asServer)
         {
             OnChange?.Invoke();
         }
