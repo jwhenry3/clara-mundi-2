@@ -5,12 +5,11 @@ import { Module } from '@nestjs/common'
 
 import { QuestServerController } from './quest-server.controller'
 import { QuestServerService } from './quest-server.service'
-import { QuestGateway } from './quest.gateway'
 
 @Module({
   imports: [AuthModule, CoreUtils.importClient('QUEST_SERVICE')],
   controllers: [QuestServerController],
-  providers: [QuestServerService, QuestGateway],
+  providers: [QuestServerService],
 })
 export class QuestServerModule {
   static forRoot() {

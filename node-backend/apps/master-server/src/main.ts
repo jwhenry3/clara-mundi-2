@@ -1,8 +1,8 @@
 import { config } from '@app/core'
+import { CoreUtils } from '@app/core'
 import { NestFactory } from '@nestjs/core'
 import { WsAdapter } from '@nestjs/platform-ws'
 
-import { CoreUtils } from '../../../libs/core/src/core.utils'
 import { MasterServerModule } from './master-server.module'
 
 async function bootstrap() {
