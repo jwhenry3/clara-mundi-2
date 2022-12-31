@@ -3,9 +3,7 @@ export interface EnergyModel {
   mp: number
 }
 
-export interface StatsModel {
-  hp: number
-  mp: number
+export interface StatsModel extends EnergyModel {
   mHp: number
   mMp: number
 

@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
 
 import { CharacterEquipmentEntity } from './character-equipment.entity'
 import { CharacterEntity } from './character.entity'
@@ -14,9 +14,15 @@ export class CharacterClassEntity {
 
   @Column('varchar')
   classId: string
+
+  @Column('int')
+  level: number
+  @Column('bigint')
+  exp: number
+
   @Column('tinyint')
   isCurrent: boolean = false
 
-  @OneToOne(() => CharacterEquipmentEntity, (e) => e.characterClass)
-  equipment: Relation<CharacterEquipmentEntity>
+  @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass)
+  equipment: Relation<CharacterEquipmentEntity>[]
 }

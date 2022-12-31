@@ -1,13 +1,5 @@
-export interface EquipmentModel {
-  mainHand: string
-  offHand: string
+import { EquipmentSlots } from './equipment-slots.enum'
 
-  head: string
-  body: string
-  hands: string
-  legs: string
-  feet: string
-
-  neck: string
-  back: string
+export type EquipmentModel = {
+  [key in EquipmentSlots]?: string
 }

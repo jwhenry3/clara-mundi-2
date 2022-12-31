@@ -1,8 +1,7 @@
+import { CharacterEntity } from '@app/core'
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
-
-import { CharacterEntity } from './entities/character.entity'
 
 export class CreateCharacterOptions {
   name: string

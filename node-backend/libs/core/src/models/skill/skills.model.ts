@@ -1,5 +1,5 @@
 import { SkillType } from './skill-type.enum'
 
-export type ISKillsModel = {
+export type SKillLevelsModel = {
   [key in SkillType]?: number
 }
