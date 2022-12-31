@@ -1,16 +1,11 @@
-import { CharacterModel, CharacterService } from '@app/character'
+import { CharacterService } from '@app/character'
+import { CharacterModel } from '@app/core'
 import { Controller, Get } from '@nestjs/common'
-import { Post } from '@nestjs/common'
 import { Req } from '@nestjs/common'
 import { Res } from '@nestjs/common'
-import { Param } from '@nestjs/common'
 import { Inject } from '@nestjs/common'
-import { DEFAULT_FACTORY_CLASS_METHOD_KEY } from '@nestjs/common/module-utils/constants'
 import { ClientProxy, MessagePattern } from '@nestjs/microservices'
 import { Request, Response } from 'express'
-import { from } from 'rxjs'
-
-import { CharacterServerService } from './character-server.service'
 
 @Controller('character-server')
 export class CharacterServerController {
@@ -33,6 +28,7 @@ export class CharacterServerController {
       })
       return
     }
+    // convert this to a global search in the DB instead
     const found = Object.values(this.characters).filter((character) =>
       character.name.toLowerCase().includes(term.toLowerCase()),
     )

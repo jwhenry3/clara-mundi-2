@@ -1,10 +1,7 @@
+import { CharacterModel } from '@app/core'
+import { WebSocketClient, WebSocketMessage, WebsocketRoomManager } from '@app/websocket'
 import { Injectable } from '@nestjs/common'
 
-import { CharacterModel } from '../../character/src/character.model'
-import { CharacterEntity } from '../../character/src/entities/character.entity'
-import { WebSocketClient } from '../../websocket/src/websocket.client'
-import { WebsocketRoomManager } from '../../websocket/src/websocket.room-manager'
-import { WebSocketMessage } from '../../websocket/src/websocket.utils'
 import { ChatMessage } from './chat.message'
 
 @Injectable()

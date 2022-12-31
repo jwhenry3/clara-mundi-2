@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 'typeorm'
+import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 'typeorm'
+
+import { CharacterClassEntity } from './character-class.entity'
 
 @Unique('name', ['name'])
 @Entity('character')
@@ -22,11 +24,6 @@ export class CharacterEntity {
   @Column('decimal')
   rotation: number = 0
 
-  @Column('int')
-  level: number = 1
-  @Column('bigint')
-  exp: number = 0
-
   @Column('bigint')
   lastConnected: number = 0
   @Column('bigint')
@@ -34,4 +31,7 @@ export class CharacterEntity {
 
   @Column('tinyint')
   hasConnectedBefore: boolean = false
+
+  @OneToMany(() => CharacterClassEntity, (c) => c.character)
+  characterClasses: CharacterClassEntity[]
 }
