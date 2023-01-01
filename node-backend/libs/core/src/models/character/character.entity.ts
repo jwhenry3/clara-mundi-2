@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 'typeorm'
 
 import { CharacterClassEntity } from './character-class.entity'
+import { CharacterItemInstanceEntity } from './character-item-instance.entity'
 
 @Unique('name', ['name'])
 @Entity('character')
@@ -32,6 +33,14 @@ export class CharacterEntity {
   @Column('tinyint')
   hasConnectedBefore: boolean = false
 
-  @OneToMany(() => CharacterClassEntity, (c) => c.character)
+  @OneToMany(() => CharacterClassEntity, (c) => c.character, {
+    cascade: true,
+    eager: true,
+  })
   characterClasses: CharacterClassEntity[]
+  @OneToMany(() => CharacterItemInstanceEntity, (c) => c.character, {
+    cascade: true,
+    eager: true,
+  })
+  characterItems: CharacterItemInstanceEntity[]
 }

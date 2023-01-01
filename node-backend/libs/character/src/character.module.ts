@@ -1,4 +1,4 @@
-import { CharacterClassEntity, CharacterEntity, CharacterEquipmentEntity } from '@app/core'
+import { CharacterClassEntity, CharacterEntity, CharacterEquipmentEntity, CharacterItemInstanceEntity } from '@app/core'
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 
@@ -10,6 +10,7 @@ import { CharacterService } from './character.service'
       CharacterEntity,
       CharacterClassEntity,
       CharacterEquipmentEntity,
+      CharacterItemInstanceEntity,
     ]),
   ],
   providers: [CharacterService],

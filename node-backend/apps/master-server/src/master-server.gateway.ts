@@ -15,7 +15,6 @@ import { Server } from 'ws'
 const url = require('url')
 export interface ServerEntry {
   label: string
-  region: string
   host: string
   port: number
   status: boolean
@@ -26,7 +25,8 @@ export interface ServerEntry {
 export class MasterServerGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
-  static serverList: Record<string, ServerEntry> = {}
+  static instance: MasterServerGateway
+  serverList: Record<string, ServerEntry> = {}
 
   @WebSocketServer()
   server: Server
@@ -35,7 +35,9 @@ export class MasterServerGateway
 
   serversByClient: Record<string, ServerEntry> = {}
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService) {
+    MasterServerGateway.instance = this
+  }
 
   handleDisconnect(client: WebSocketClient) {
     const index = this.authorized.indexOf(client)
@@ -43,7 +45,6 @@ export class MasterServerGateway
     if (client.id in this.serversByClient) {
       const server = this.serversByClient[client.id]
       server.status = false
-      this.broadcastServerList()
       delete this.serversByClient[client.id]
     }
   }
@@ -68,7 +69,6 @@ export class MasterServerGateway
     const data = JSON.parse(body) as ServerEntry
     const entry: ServerEntry = {
       label: data.label,
-      region: data.region,
       host: host,
       port: data.port,
       status: true,
@@ -76,17 +76,6 @@ export class MasterServerGateway
       currentPlayers: data.currentPlayers ?? 0,
     }
     this.serversByClient[client.id] = entry
-    MasterServerGateway.serverList[data.label] = entry
-    this.broadcastServerList()
-  }
-
-  broadcastServerList() {
-    WebsocketUtils.broadcast(
-      this.authorized,
-      JSON.stringify({
-        event: 'server-list',
-        data: JSON.stringify(Object.values(MasterServerGateway.serverList)),
-      }),
-    )
+    MasterServerGateway.instance.serverList[data.label] = entry
   }
 }

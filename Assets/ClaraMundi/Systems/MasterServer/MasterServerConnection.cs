@@ -7,7 +7,6 @@ namespace ClaraMundi
     public class ServerEntry
     {
         public string label;
-        public string region;
         public string host;
         public ushort port;
         public bool status;
@@ -77,7 +76,6 @@ namespace ClaraMundi
             var entry = new ServerEntry()
             {
                 label = Server.Instance.Name,
-                region = Server.Instance.Region,
                 port = Server.Instance.Port,
                 playerCapacity = Server.Instance.PlayerCapacity,
                 currentPlayers = GameAuthenticator.characterNameByClientId.Count

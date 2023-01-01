@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1926632895239314633}
   - component: {fileID: 1926632895239314634}
+  - component: {fileID: 8163258116304960820}
+  - component: {fileID: 7928125360124235461}
   m_Layer: 0
   m_Name: Server
   m_TagString: Untagged
@@ -46,12 +48,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkManager: {fileID: 0}
   PlayerCapacity: 100
-  AutoStart: 0
+  AutoStart: 1
   Region: 
   Port: 7770
-  Name: 
+  Name: ClaraMundi
   Singletons:
   - {fileID: 2332036344207808131, guid: 194abaf2e79e63e4294038a4190ccb53, type: 3}
+--- !u!114 &8163258116304960820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926632895239314632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de40ba5dbedf480584559007bbdb63e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: MasterServer
+  authToken: token
+  debugLog: 0
+--- !u!114 &7928125360124235461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926632895239314632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104fc0676bd64a7b99b54e0788cebc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  authToken: 
+  debugLog: 0
 --- !u!1 &1926632896403151562
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +581,7 @@ MonoBehaviour:
   _updateHostVisibility: 1
   _defaultConditions:
   - {fileID: 11400000, guid: 2033f54fd2794464bae08fa5a55c8996, type: 2}
+  - {fileID: 11400000, guid: 5f33eb0e5b83b5546822cfe42a305657, type: 2}
 --- !u!114 &5825781056992138260
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,3 @@
-import { EquipmentSlots } from '../equipment/equipment-slots.enum'
 import { EquipmentModel } from '../equipment/equipment.model'
 import { CharacterClassEntity } from './character-class.entity'
 import { CharacterEquipmentEntity } from './character-equipment.entity'
@@ -35,7 +34,7 @@ export function toEquipmentModel(
   return equipment.reduce(
     (acc: EquipmentModel, e: CharacterEquipmentEntity) => ({
       ...acc,
-      [EquipmentSlots[e.slotId]]: e.itemId,
+      [e.slot]: e.itemId,
     }),
     {} as EquipmentModel,
   )

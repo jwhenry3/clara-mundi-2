@@ -19,7 +19,6 @@ namespace ClaraMundi
         public int PlayerCapacity = 100;
 
         public bool AutoStart;
-        public string Region;
         public ushort Port = 7770;
         public string Name;
         public NetworkObject[] Singletons;
@@ -51,15 +50,9 @@ namespace ClaraMundi
                 networkManager.ServerManager.Spawn(nob);
             }
 
-            // Perhaps this is not a game server, but a master server
-            if (string.IsNullOrEmpty(Region)) return;
-            if (!RepoManager.Instance.RegionRepo.Regions.ContainsKey(Region)) return;
-            
-            var region = RepoManager.Instance.RegionRepo.Regions[Region];
-            var keys = new List<Zone>(region.Zones).Select(zone => zone.Key);
-            SceneLoadData sld = new SceneLoadData(keys.ToArray());
+            SceneLoadData sld = new SceneLoadData("Overworld");
             // load all zones for the region specified
-            networkManager.SceneManager.LoadConnectionScenes(sld);
+            networkManager.SceneManager.LoadGlobalScenes(sld);
         }
 
         private void OnDestroy()

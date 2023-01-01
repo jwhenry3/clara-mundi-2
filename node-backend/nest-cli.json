@@ -135,15 +135,6 @@
         "tsConfigPath": "apps/party-server/tsconfig.app.json"
       }
     },
-    "equipment-server": {
-      "type": "application",
-      "root": "apps/equipment-server",
-      "entryFile": "main",
-      "sourceRoot": "apps/equipment-server/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/equipment-server/tsconfig.app.json"
-      }
-    },
     "item-server": {
       "type": "application",
       "root": "apps/item-server",
@@ -151,6 +142,15 @@
       "sourceRoot": "apps/item-server/src",
       "compilerOptions": {
         "tsConfigPath": "apps/item-server/tsconfig.app.json"
+      }
+    },
+    "proxy-server": {
+      "type": "application",
+      "root": "apps/proxy-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/proxy-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/proxy-server/tsconfig.app.json"
       }
     }
   }

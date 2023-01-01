@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "commonjs",
+    "moduleResolution": "node",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -18,48 +19,20 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@app/auth": [
-        "libs/auth/src"
-      ],
-      "@app/auth/*": [
-        "libs/auth/src/*"
-      ],
-      "@app/websocket": [
-        "libs/websocket/src"
-      ],
-      "@app/websocket/*": [
-        "libs/websocket/src/*"
-      ],
-      "@app/database": [
-        "libs/database/src"
-      ],
-      "@app/database/*": [
-        "libs/database/src/*"
-      ],
-      "@app/character": [
-        "libs/character/src"
-      ],
-      "@app/character/*": [
-        "libs/character/src/*"
-      ],
-      "@app/inventory": [
-        "libs/inventory/src"
-      ],
-      "@app/inventory/*": [
-        "libs/inventory/src/*"
-      ],
-      "@app/chat": [
-        "libs/chat/src"
-      ],
-      "@app/chat/*": [
-        "libs/chat/src/*"
-      ],
-      "@app/core": [
-        "libs/core/src"
-      ],
-      "@app/core/*": [
-        "libs/core/src/*"
-      ]
+      "@app/auth": ["libs/auth/src"],
+      "@app/auth/*": ["libs/auth/src/*"],
+      "@app/websocket": ["libs/websocket/src"],
+      "@app/websocket/*": ["libs/websocket/src/*"],
+      "@app/database": ["libs/database/src"],
+      "@app/database/*": ["libs/database/src/*"],
+      "@app/character": ["libs/character/src"],
+      "@app/character/*": ["libs/character/src/*"],
+      "@app/inventory": ["libs/inventory/src"],
+      "@app/inventory/*": ["libs/inventory/src/*"],
+      "@app/chat": ["libs/chat/src"],
+      "@app/chat/*": ["libs/chat/src/*"],
+      "@app/core": ["libs/core/src"],
+      "@app/core/*": ["libs/core/src/*"]
     }
   }
 }

@@ -1,8 +1,8 @@
-import e from 'express'
-
 import { EquipmentModel } from '../equipment/equipment.model'
 import { CharacterClassEntity } from './character-class.entity'
 import { CharacterClassModel, CharacterClassSearchModel, toCharacterClassModel } from './character-class.model'
+import { CharacterItemInstanceEntity } from './character-item-instance.entity'
+import { CharacterItemInstanceModel } from './character-item-instance.model'
 import { CharacterEntity } from './character.entity'
 
 export interface CharacterModel extends CharacterLocation, CharacterAppearance {
@@ -64,5 +64,18 @@ export function toCharacterAppearance({
     race,
     gender,
     equipment: characterClass.equipment,
+  }
+}
+export function toItemInstance({
+  storageId,
+  itemId,
+  instanceId,
+  quantity,
+}: CharacterItemInstanceEntity): CharacterItemInstanceModel {
+  return {
+    storageId,
+    itemId,
+    instanceId,
+    quantity,
   }
 }

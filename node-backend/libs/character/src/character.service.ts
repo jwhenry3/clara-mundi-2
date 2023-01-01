@@ -1,4 +1,4 @@
-import { CharacterEntity } from '@app/core'
+import { CharacterClassEntity, CharacterEntity } from '@app/core'
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
@@ -7,16 +7,23 @@ export class CreateCharacterOptions {
   name: string
   gender: string = 'male'
   race: string = 'human'
+  startingClass: string = 'adventurer'
 }
 @Injectable()
 export class CharacterService {
   constructor(
     @InjectRepository(CharacterEntity)
     private repo: Repository<CharacterEntity>,
+    @InjectRepository(CharacterClassEntity)
+    private classRepo: Repository<CharacterClassEntity>,
   ) {}
 
-  async saveCharacter(character: CharacterEntity) {
-    return await this.repo.save(character)
+  async saveCharacter(
+    character: CharacterEntity,
+    allRelations: boolean = false,
+  ) {
+    if (!allRelations) return await this.repo.save(character)
+    await this.repo.save(character)
   }
   async createCharacter(accountId: string, options: CreateCharacterOptions) {
     if (!accountId) {
@@ -41,15 +48,29 @@ export class CharacterService {
         character: null,
       }
     }
-    const character = this.repo.create({
+    if (!['adventurer'].includes(options.startingClass)) {
+      return {
+        status: false,
+        reason: 'invalid-class',
+        character: null,
+      }
+    }
+    let character = this.repo.create({
       accountId,
       name: options.name,
       race: ['human'].includes(options.race) ? options.race : 'human',
       gender: ['male', 'female'].includes(options.gender)
         ? options.gender
         : 'male',
+      characterClasses: [],
     })
-    await this.repo.save(character)
+
+    const characterClass = this.classRepo.create({
+      classId: options.startingClass,
+      character,
+    })
+    character.characterClasses.push(characterClass)
+    character = await this.repo.save(character)
     return {
       status: true,
       reason: '',
@@ -144,8 +165,20 @@ export class CharacterService {
   async searchCharacters(term: string) {
     return await this.repo
       .createQueryBuilder('character')
-      .select(['name', 'gender', 'race', 'area', 'level'])
+      .select([
+        'name',
+        'gender',
+        'race',
+        'area',
+        'class.level',
+        'class.classId',
+      ])
       .where('character.name like :term', { term: `%${term}%` })
+      .innerJoinAndSelect(
+        'character.characterClasses',
+        'class',
+        'isCurrent = TRUE',
+      )
       .getMany()
   }
   private findByAccountAndName(accountId: string, name: string) {

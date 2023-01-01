@@ -102,10 +102,6 @@ namespace ClaraMundi
             var characterName = GameAuthenticator.characterNameByClientId[conn.ClientId];            
             var character = ConnectedPlayerManager.Instance.characterByName[characterName];
             
-            if (!RepoManager.Instance.RegionRepo.Zones.ContainsKey(character.Area)) return;
-            var zone = RepoManager.Instance.RegionRepo.Zones[character.Area];
-            var sld = new SceneLookupData(zone.Key);
-            sld.Handle = 0;
             
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             var player = nob.GetComponent<Player>();
@@ -117,10 +113,9 @@ namespace ClaraMundi
             rotation.y = character.Rotation;
             nob.transform.SetPositionAndRotation(character.Position, rotation);
             _networkManager.ServerManager.Spawn(nob, conn);
-            var sceneLoadData = new SceneLoadData(new [] { sld }, new []{ nob });
-            sceneLoadData.ReplaceScenes = ReplaceOption.OnlineOnly;
-            _networkManager.SceneManager.LoadConnectionScenes(conn, sceneLoadData);
-
+            
+            _networkManager.SceneManager.AddOwnerToDefaultScene(nob);
+            
             OnSpawned?.Invoke(nob);
         }
 

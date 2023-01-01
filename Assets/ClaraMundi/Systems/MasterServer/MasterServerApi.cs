@@ -10,8 +10,6 @@ namespace ClaraMundi
     {
         public static MasterServerApi Instance;
         [ShowInInspector]
-        public readonly Dictionary<string, List<ServerEntry>> serversByRegion = new();
-        [ShowInInspector]
         public readonly Dictionary<string, ServerEntry> serversByLabel = new();
 
         public event Action<List<ServerEntry>> ServerListUpdate;
@@ -26,7 +24,6 @@ namespace ClaraMundi
             try
             {
                 var list = await HttpRequest.Get<List<ServerEntry>>(UrlManager.Instance.MasterServerUrl.Compose(), "/master-server/servers");
-                Debug.Log(list.Count);
                 ReceivedServerList(list);
             }
             catch (Exception e)
@@ -36,13 +33,9 @@ namespace ClaraMundi
         }
         public void ReceivedServerList(List<ServerEntry> servers)
         {
-            serversByRegion.Clear();
             serversByLabel.Clear();
             foreach (var server in servers)
             {
-                if (!serversByRegion.ContainsKey(server.region))
-                    serversByRegion[server.region] = new();
-                serversByRegion[server.region].Add(server);
                 serversByLabel[server.label] = server;
             }
 

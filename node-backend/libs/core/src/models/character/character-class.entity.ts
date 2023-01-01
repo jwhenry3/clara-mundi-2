@@ -23,6 +23,9 @@ export class CharacterClassEntity {
   @Column('tinyint')
   isCurrent: boolean = false
 
-  @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass)
+  @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass, {
+    cascade: true,
+    eager: true,
+  })
   equipment: Relation<CharacterEquipmentEntity>[]
 }

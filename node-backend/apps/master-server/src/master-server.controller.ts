@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common'
+import { MessagePattern } from '@nestjs/microservices'
 
 import { MasterServerGateway } from './master-server.gateway'
 import { MasterServerService } from './master-server.service'
@@ -13,8 +14,8 @@ export class MasterServerController {
   }
 
   @Get('servers')
+  @MessagePattern('servers:get')
   getServers() {
-    console.log(MasterServerGateway.serverList)
-    return Object.values(MasterServerGateway.serverList)
+    return Object.values(MasterServerGateway.instance.serverList)
   }
 }

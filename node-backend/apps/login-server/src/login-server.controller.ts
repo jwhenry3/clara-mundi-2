@@ -16,7 +16,6 @@ export class LoginServerController {
     const { email, password } = req.body ?? { email: '', password: '' }
 
     const result = await this.auth.loginClient(email, password)
-    console.log('login', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -25,7 +24,6 @@ export class LoginServerController {
     const { email, password } = req.body ?? { email: '', password: '' }
     console.log(email, password)
     const result = await this.auth.registerClient(email, password)
-    console.log('register', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -37,25 +35,24 @@ export class LoginServerController {
       return this.respond(res, 401, { ...unauthorized, characters: [] })
 
     const result = await this.character.getCharacters(accountId)
-    console.log('characters', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
   @Post('characters/create')
   async createCharacter(@Req() req: Request, @Res() res: Response) {
-    const { token, name, race, gender } = (req.body ?? {
+    const { token, name, race, gender, startingClass } = (req.body ?? {
       token: '',
       race: 'human',
       name: '',
       gender: 'male',
+      startingClass: 'adventurer',
     }) as Record<string, string>
     const accountId = await this.auth.getAccountId(token as string)
     if (!accountId)
       return this.respond(res, 401, { ...unauthorized, character: null })
 
-    const options = { name, race, gender }
+    const options = { name, race, gender, startingClass }
     const result = await this.character.createCharacter(accountId, options)
-    console.log('create character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
@@ -71,7 +68,6 @@ export class LoginServerController {
     if (!accountId) return this.respond(res, 401, unauthorized)
 
     const result = await this.character.deleteCharacter(accountId, name)
-    console.log('delete character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
   @Get('characters/:name/verify')
@@ -97,7 +93,6 @@ export class LoginServerController {
       result.character.lastConnected = new Date().valueOf()
       result.character = await this.character.saveCharacter(result.character)
     }
-    console.log('verify character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 
