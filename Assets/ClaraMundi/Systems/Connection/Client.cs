@@ -9,8 +9,7 @@ namespace ClaraMundi
 {
     public class Client : MonoBehaviour
     {
-        [HideInInspector]
-        public NetworkManager networkManager;
+        [HideInInspector] public NetworkManager networkManager;
         public static Client Instance;
 
         private LocalConnectionState _clientState = LocalConnectionState.Stopped;
@@ -26,7 +25,6 @@ namespace ClaraMundi
 
         private void CheckAuthentication()
         {
-
         }
 
         private void Start()
@@ -36,21 +34,16 @@ namespace ClaraMundi
             SceneManager.LoadScene("LobbyGUI", LoadSceneMode.Additive);
             SceneManager.LoadScene("PlayerGUI", LoadSceneMode.Additive);
         }
-        public async void Connect()
+
+        public void Connect()
         {
+            Debug.Log("Connect");
             if (_clientState != LocalConnectionState.Stopped) return;
             if (SessionManager.Instance.PlayerCharacter == null) return;
-            var character = SessionManager.Instance.PlayerCharacter;
-            // find a server that the player can connect to for this character
-            // await MasterServerApi.Instance.GetServerList();
-            // var server = MasterServerApi.Instance.serversByLabel
-            // var server = GameServerManager.Instance.GetServerForScene(character.area);
-            // if (server == null)
-            // {
-            //     Debug.LogWarning("Cannot find region server for zone: " + character.area);
-            //     return;
-            // }
-            // networkManager.ClientManager.StartConnection(server.host, server.port);
+            var server = ServerListUI.Instance.SelectedServer;
+            Debug.Log("Server: " + server?.host);
+            if (server == null) return;
+            networkManager.ClientManager.StartConnection(server.host, server.port);
         }
 
         public void Disconnect()

@@ -16,9 +16,9 @@ export class CharacterClassEntity {
   classId: string
 
   @Column('int')
-  level: number
+  level: number = 1
   @Column('bigint')
-  exp: number
+  exp: number = 0
 
   @Column('tinyint')
   isCurrent: boolean = false

@@ -1,5 +1,8 @@
-﻿namespace ClaraMundi
+﻿using System;
+
+namespace ClaraMundi
 {
+    [Serializable]
     public class Character
     {
         public string accountId;

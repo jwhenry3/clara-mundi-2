@@ -26,16 +26,18 @@ namespace ClaraMundi
 
         public void Select(Character character)
         {
-            if (SessionManager.Instance.PlayerCharacter == character) return;
+            if (SessionManager.Instance.PlayerCharacter?.name == character?.name) return;
             CharacterActions.SetActive(character != null);
+            Debug.Log(character?.name);
             SessionManager.Instance.PlayerCharacter = character;
+            
         }
 
-        public void OnEnterGame()
+        public void OnServerSelection()
         {
             if (SessionManager.Instance.PlayerAccount == null) return;
             if (SessionManager.Instance.PlayerCharacter == null) return;
-            Client.Instance.Connect();
+            LobbyUI.Instance.ToServerList();
         }
 
         public async void OnDelete()
@@ -53,7 +55,12 @@ namespace ClaraMundi
 
         private bool loading;
 
-        private async void OnEnable()
+        private void OnEnable()
+        {
+            LoadCharacters();
+        }
+
+        public async void LoadCharacters()
         {
             if (loading) return;
             loading = true;
@@ -85,7 +92,6 @@ namespace ClaraMundi
         private void OnDisable()
         {
             loading = false;
-            SessionManager.Instance.PlayerCharacter = null;
             foreach (Transform child in CharactersContainer)
                 Destroy(child.gameObject);
         }

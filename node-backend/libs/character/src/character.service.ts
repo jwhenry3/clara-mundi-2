@@ -48,7 +48,7 @@ export class CharacterService {
         character: null,
       }
     }
-    if (!['adventurer'].includes(options.startingClass)) {
+    if (!['adventurer'].includes(options.startingClass.toLowerCase())) {
       return {
         status: false,
         reason: 'invalid-class',
@@ -66,7 +66,7 @@ export class CharacterService {
     })
 
     const characterClass = this.classRepo.create({
-      classId: options.startingClass,
+      classId: options.startingClass.toLowerCase(),
       character,
     })
     character.characterClasses.push(characterClass)
@@ -86,7 +86,8 @@ export class CharacterService {
         characters: [],
       }
     }
-    const characters = await this.repo.findBy({ accountId })
+    const characters = await this.getCharactersForList(accountId)
+
     return {
       status: true,
       reason: '',
@@ -161,23 +162,44 @@ export class CharacterService {
       .where({ name })
       .execute()
   }
+  async getCharactersForList(accountId: string) {
+    return await this.repo
+      .createQueryBuilder('character')
+      .select([
+        'character.name as name',
+        'character.gender as gender',
+        'character.race as race',
+        'character.area as area',
+        'class.level as level',
+        'class.exp as exp',
+        'class.classId as classId',
+      ])
+      .where('character.accountId = :accountId', { accountId })
+      .leftJoinAndSelect(
+        'character.characterClasses',
+        'class',
+        'class.isCurrent = 1',
+      )
+      .execute()
+  }
 
   async searchCharacters(term: string) {
     return await this.repo
       .createQueryBuilder('character')
       .select([
-        'name',
-        'gender',
-        'race',
-        'area',
-        'class.level',
-        'class.classId',
+        'character.name as name',
+        'character.gender as gender',
+        'character.race as race',
+        'character.area as area',
+        'class.level as level',
+        'class.exp as exp',
+        'class.classId as classId',
       ])
       .where('character.name like :term', { term: `%${term}%` })
-      .innerJoinAndSelect(
+      .leftJoinAndSelect(
         'character.characterClasses',
         'class',
-        'isCurrent = TRUE',
+        'class.isCurrent = 1',
       )
       .getMany()
   }

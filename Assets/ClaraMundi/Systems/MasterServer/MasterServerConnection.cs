@@ -18,7 +18,7 @@ namespace ClaraMundi
     {
         public static MasterServerConnection Instance;
         private WebSocketConnection connection => this;
-        private float syncInterval = 10f;
+        private float syncInterval = 30f;
         private float currentTick = 0;
 
         private void Awake()
@@ -50,6 +50,7 @@ namespace ClaraMundi
 
         void OnMessage(WebSocketMessage message)
         {
+            Debug.Log(JsonConvert.SerializeObject(message));
             switch (message.eventName)
             {
                 case "authorized":

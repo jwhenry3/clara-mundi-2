@@ -22,7 +22,6 @@ export class LoginServerController {
   @Post('register')
   async register(@Req() req: Request, @Res() res: Response) {
     const { email, password } = req.body ?? { email: '', password: '' }
-    console.log(email, password)
     const result = await this.auth.registerClient(email, password)
     this.respond(res, this.getStatus(result.reason), result)
   }
@@ -110,7 +109,6 @@ export class LoginServerController {
       result.character.lastDisconnected = new Date().valueOf()
       await this.character.saveCharacter(result.character)
     }
-    console.log('logout character', result)
     this.respond(res, this.getStatus(result.reason), result)
   }
 

@@ -21,7 +21,7 @@ namespace ClaraMundi
             LoadServers();
         }
 
-        private async void LoadServers()
+        public async void LoadServers()
         {
             StatusText.text = "Loading servers...";
             foreach (Transform child in ServerListContainer)
@@ -38,6 +38,11 @@ namespace ClaraMundi
             }
 
             StatusText.text = servers.Count > 0 ? "" : "No servers currently online";
+        }
+
+        public void EnterGame()
+        {
+            LobbyUI.Instance.OnEnterGame();
         }
     }
 }

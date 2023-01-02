@@ -76,12 +76,16 @@ namespace ClaraMundi
             );
         }
 
-        public static async Task<CharacterResponse> CreateCharacter(string name, string gender,
-            string race)
+        public static async Task<CharacterResponse> CreateCharacter(
+            string name, 
+            string gender,
+            string race,
+            string className
+            )
         {
             var token = SessionManager.Instance.PlayerAccount.token;
             var content = new Dictionary<string, string>()
-                { { "token", token }, { "name", name }, { "race", race }, { "gender", gender } };
+                { { "token", token }, { "name", name }, { "race", race }, { "gender", gender }, {"startingClass", className} };
             return await HttpRequest.Post<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
                 "/login-server/characters/create",
                 JsonConvert.SerializeObject(content)

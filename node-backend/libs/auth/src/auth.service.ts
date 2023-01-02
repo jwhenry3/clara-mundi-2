@@ -74,7 +74,6 @@ export class AuthService {
   ): Promise<{ email: string; accountId: string } | null> {
     return await new Promise((resolve, reject) => {
       jwt.verify(token, process.env.JWT_SECRET, {}, (error, decoded) => {
-        console.log(error)
         if (error) {
           resolve(null)
           return

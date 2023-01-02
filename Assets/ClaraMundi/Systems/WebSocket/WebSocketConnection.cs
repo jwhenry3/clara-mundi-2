@@ -26,7 +26,7 @@ namespace ClaraMundi
     public class WebSocketConnection : MonoBehaviour
     {
         public string Label;
-        string serverUrl;
+        public string serverUrl;
         public string authToken;
         public bool debugLog;
         public ConnectionStatus Status { get; protected set; }
@@ -121,7 +121,7 @@ namespace ClaraMundi
             await websocket.Close();
         }
 
-        private  void WS_OnMessage(byte[] data)
+        private void WS_OnMessage(byte[] data)
         {
             var dataString = Encoding.UTF8.GetString(data);
             if (debugLog) Debug.Log($"Message Received from {Label}: " + dataString);
@@ -146,6 +146,7 @@ namespace ClaraMundi
                 await websocket.Connect();
                 return;
             }
+
             if (debugLog) Debug.Log($"{Label} Disconnected");
         }
 
