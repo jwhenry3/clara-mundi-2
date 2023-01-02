@@ -52,6 +52,7 @@ MonoBehaviour:
   Name: ClaraMundi
   Singletons:
   - {fileID: 2332036344207808131, guid: 194abaf2e79e63e4294038a4190ccb53, type: 3}
+  - {fileID: 3191418636067013368, guid: f995467572ec9b143a60728c936956f2, type: 3}
 --- !u!114 &7928125360124235461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +89,6 @@ GameObject:
   - component: {fileID: 1926632896403151581}
   - component: {fileID: 1926632896403151582}
   - component: {fileID: 1926632896403151583}
-  - component: {fileID: 6368421862280163343}
   - component: {fileID: 438755998354489819}
   - component: {fileID: 4386903958934881301}
   m_Layer: 0
@@ -127,6 +127,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 561db434d4f058b40ac84fdab4ac39fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAccount:
+    accountId: 
+    email: 
+    token: 
+  PlayerCharacter:
+    accountId: 
+    name: 
+    gender: 
+    race: 
+    area: 
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    rotation: 0
+    level: 0
+    exp: 0
+    lastConnected: 0
+    lastDisconnected: 0
+    hasConnectedBefore: 0
 --- !u!114 &1926632896403151570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,18 +272,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ChatConfiguration: {fileID: 11400000, guid: c0ef1ee134c821249abbb95f2bd2997c, type: 2}
---- !u!114 &6368421862280163343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926632896403151562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e65ec422eb40ecb7c655411e0992c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &438755998354489819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -732,6 +739,10 @@ PrefabInstance:
     - target: {fileID: 4393252310969058995, guid: 0570b6f7f713dc44a90463654bbcd8d0, type: 3}
       propertyPath: m_Name
       value: NetworkHudCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393252310969058995, guid: 0570b6f7f713dc44a90463654bbcd8d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0570b6f7f713dc44a90463654bbcd8d0, type: 3}

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Backend.App;
+﻿using System.Collections.Generic;
 using TMPro;
-using Unisave.Facades;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -175,12 +171,11 @@ namespace ClaraMundi
         public async void OpenPlayerContextMenu(PointerEventData eventData, string characterName)
         {
             ContextualCharacterName = characterName;
-            var myName = PlayerManager.Instance.LocalPlayer.Character.Name;
+            var me = PlayerManager.Instance.LocalPlayer;
+            var myName = PlayerManager.Instance.LocalPlayer.Character.name;
             var isNotMe = myName != ContextualCharacterName;
-            var inParty = isNotMe && await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.IsPlayerInParty), myName,
-                ContextualCharacterName);
-            Debug.Log(inParty);
+            var inParty = isNotMe && await me.Party.IsInParty(characterName);
+            
             PlayerContextMenu.transform.position = eventData.position;
             RequestJoinOption.SetActive(isNotMe && inParty);
             InviteOption.SetActive(!inParty && isNotMe);

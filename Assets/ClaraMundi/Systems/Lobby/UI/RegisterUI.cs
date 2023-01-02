@@ -1,12 +1,10 @@
 ﻿using TMPro;
-using Unisave.Facades;
 using UnityEngine;
 
 namespace ClaraMundi
 {
     public class RegisterUI : MonoBehaviour
     {
-        
         public TMP_InputField EmailField;
         public TMP_InputField PasswordField;
         public TMP_InputField ConfirmPasswordField;
@@ -21,10 +19,9 @@ namespace ClaraMundi
             StatusMessage.text = "";
             StatusMessage.enabled = false;
         }
-        
+
         public async void Submit()
         {
-            
             StatusMessage.enabled = true;
             StatusMessage.text = "Registering...";
 
@@ -33,7 +30,7 @@ namespace ClaraMundi
                 StatusMessage.text = "Password confirmation does not match";
                 return;
             }
-        
+
             var response = await LobbyApi.Register(
                 EmailField.text,
                 PasswordField.text
@@ -46,11 +43,11 @@ namespace ClaraMundi
                     SessionManager.Instance.PlayerAccount = response.account;
                     LobbyUI.Instance.CheckAccount();
                     break;
-            
+
                 case "conflict":
                     StatusMessage.text = "This email has already been registered";
                     break;
-            
+
                 default:
                     StatusMessage.text = "Unknown response: " + response.reason;
                     break;

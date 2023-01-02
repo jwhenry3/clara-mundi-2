@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c165d70b988413397b7759de42b119f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 4
+  _componentIndexCache: 5
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378666721921704503}
   - component: {fileID: 378666721921704500}
-  - component: {fileID: 4056452174490393122}
+  - component: {fileID: 7362122548173307284}
   m_Layer: 0
   m_Name: Party
   m_TagString: Untagged
@@ -93,18 +93,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d63c392356439a9cb34ad3803f697d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 5
+  _componentIndexCache: 6
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
   PartyInvites: []
-  Party:
-    PartyId: 
-    Leader: 
-    Members: []
-    Invitations: []
-    Requests: []
---- !u!114 &4056452174490393122
+--- !u!114 &7362122548173307284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,9 +107,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 378666721921704502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e8314e0918041febe7d50011fbc8d9d, type: 3}
+  m_Script: {fileID: 11500000, guid: 31c136bf4f454c22b91f9225a3e81c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 7
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 378666723463143089}
 --- !u!1 &378666722211930420
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,37 +158,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5398bd39481e477d82e219144e8dd23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 2
+  _componentIndexCache: 3
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   OwnerEntity: {fileID: 378666723463143086}
   StorageId: inventory
   Capacity: 80
   StartingItems:
-  - StorageId: inventory
-    ItemInstanceId: 7aef0230-e3af-4505-b6dd-79b987b4598f
+  - CharacterId: 
     ItemId: potion
+    ItemInstanceId: 7aef0230-e3af-4505-b6dd-79b987b4598f
     Quantity: 5
+    StorageId: inventory
     IsEquipped: 0
-    CharacterId: 
-  - StorageId: inventory
+  - CharacterId: 
+    ItemId: sword
     ItemInstanceId: 2f69a074-7252-4845-9c01-4cc8f131f285
-    ItemId: sword
     Quantity: 1
+    StorageId: inventory
     IsEquipped: 0
-    CharacterId: 
-  - StorageId: inventory
-    ItemInstanceId: fae0b464-23a7-4ee6-97f6-367d1bf85a1b
+  - CharacterId: 
     ItemId: shield
+    ItemInstanceId: fae0b464-23a7-4ee6-97f6-367d1bf85a1b
     Quantity: 1
+    StorageId: inventory
     IsEquipped: 0
-    CharacterId: 
-  - StorageId: inventory
-    ItemInstanceId: 2ef4b6fe-2a93-4b50-8dab-3f21a17480e1
+  - CharacterId: 
     ItemId: sword
+    ItemInstanceId: 2ef4b6fe-2a93-4b50-8dab-3f21a17480e1
     Quantity: 1
+    StorageId: inventory
     IsEquipped: 0
-    CharacterId: 
   isPublicStorage: 0
 --- !u!114 &378666722211930419
 MonoBehaviour:
@@ -205,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8605dcab52874876bcf4d77c27a617b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 3
+  _componentIndexCache: 4
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -220,8 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 378666722372250761}
   - component: {fileID: 378666722372250758}
-  - component: {fileID: 6895623924732013425}
-  - component: {fileID: 6123473390795845610}
+  - component: {fileID: 8345528289073844050}
   m_Layer: 0
   m_Name: Chat
   m_TagString: Untagged
@@ -256,14 +252,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937fdebe23b54f3d9bde3cc9a23b7351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 7
+  _componentIndexCache: 9
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
-  PrivateMessageClient: {fileID: 0}
-  GlobalChatClient: {fileID: 0}
-  ChatChannel: {fileID: 0}
---- !u!114 &6895623924732013425
+--- !u!114 &8345528289073844050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,21 +265,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 378666722372250760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 216b7aa8ea6d4a5d9762b85811d66b25, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ba0a71fce676464e9e23ba87e7ce725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6123473390795845610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378666722372250760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3dd9965bf2a43d2a3b83145659a3ef1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _componentIndexCache: 10
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 378666723463143089}
+  player: {fileID: 378666723463143088}
+  supportedChannels:
+  - Whisper
+  LastMessage:
+    MessageId: az6W3QcVA0eK7VKzijLjfQ
+    Type: 1
+    Channel: Say
+    SenderArea: 
+    SenderCharacterName: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToCharacterName: 
+    Message: 
 --- !u!1 &378666722592074591
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d929bee233e4b546ab3776ddaba65a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 6
+  _componentIndexCache: 8
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
 --- !u!1 &378666722718353514
@@ -416,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554f82b74fd34117aa737ad9a6d5e838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 1
+  _componentIndexCache: 2
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
@@ -515,15 +511,20 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   Character:
-    CharacterId: 
-    Name: 
-    Gender: 
-    Race: 
-    Area: 
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: 0
-    Level: 0
-    TotalExp: 0
+    accountId: 
+    name: 
+    gender: 
+    race: 
+    area: 
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    rotation: 0
+    level: 0
+    exp: 0
+    lastConnected: 0
+    lastDisconnected: 0
+    hasConnectedBefore: 0
   entityName: Player
   EntityType: {fileID: 11400000, guid: 5ec5b3c1aa938ee42b704b2ac5de57cb, type: 2}
   entityId: ab31d362-9e36-42d7-a624-866017dc1643
@@ -543,13 +544,16 @@ MonoBehaviour:
   <ComponentIndex>k__BackingField: 0
   _networkBehaviours:
   - {fileID: 378666723463143086}
+  - {fileID: 378666723463143088}
   - {fileID: 378666723325325092}
   - {fileID: 378666722211930416}
   - {fileID: 378666722211930419}
   - {fileID: 378666721684166507}
   - {fileID: 378666721921704500}
+  - {fileID: 7362122548173307284}
   - {fileID: 378666722592074589}
   - {fileID: 378666722372250758}
+  - {fileID: 8345528289073844050}
   - {fileID: 5954349119136247432}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
@@ -575,6 +579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0c926cb2ca4bf3bf13284890bcf8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _componentIndexCache: 1
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 378666723463143089}
   ClientId: 0
 --- !u!1 &4746264309211576557
 GameObject:
@@ -620,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 929a599dbe904349b6d37d0a319dba3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 8
+  _componentIndexCache: 11
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}

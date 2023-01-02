@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Unisave.Facades;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -40,9 +37,6 @@ namespace ClaraMundi
         public async void Logout()
         {
             ToLogin();
-            await OnFacet<AccountFacet>.CallAsync(
-                nameof(AccountFacet.Logout)
-            );
         }
 
         public void ToLogin()
@@ -68,6 +62,7 @@ namespace ClaraMundi
             LoginUI.gameObject.SetActive(false);
             RegisterUI.gameObject.SetActive(true);
         }
+
         public void ToServerList()
         {
             Client.Instance.Disconnect();
@@ -78,6 +73,7 @@ namespace ClaraMundi
             LoginUI.gameObject.SetActive(false);
             RegisterUI.gameObject.SetActive(true);
         }
+
         public void ToCharacterSelection()
         {
             SessionManager.Instance.PlayerCharacter = null;
@@ -90,6 +86,7 @@ namespace ClaraMundi
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
         }
+
         public void ToCreateCharacter()
         {
             SessionManager.Instance.PlayerCharacter = null;
@@ -101,6 +98,7 @@ namespace ClaraMundi
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
         }
+
         public void CloseAll()
         {
             SessionManager.Instance.Clear();
@@ -112,6 +110,7 @@ namespace ClaraMundi
             LoginUI.gameObject.SetActive(true);
             RegisterUI.gameObject.SetActive(false);
         }
+
         public void OnEnterGame()
         {
             if (SessionManager.Instance.PlayerAccount == null) return;

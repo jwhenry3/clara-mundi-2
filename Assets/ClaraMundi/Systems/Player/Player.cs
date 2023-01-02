@@ -2,14 +2,15 @@
 using UnityEngine;
 using FishNet.Managing;
 using FishNet;
+using FishNet.Object;
 
 namespace ClaraMundi
 {
-    public class Player : MonoBehaviour
+    public class Player : NetworkBehaviour
     {
         public event Action NetStarted;
         public int ClientId;
-        public CharacterModel Character => Entity.Character;
+        public Character Character => Entity.Character;
         [HideInInspector]
         public Entity Entity { get; private set; }
         [HideInInspector]
@@ -51,7 +52,7 @@ namespace ClaraMundi
         {
             ClientId = Entity.Owner.ClientId;
             PlayerManager.Instance.Players[Entity.entityId] = this;
-            PlayerManager.Instance.PlayersByName[Entity.entityName.ToLower()] = this;
+            PlayerManager.Instance.PlayersByName[Character.name.ToLower()] = this;
             if (!Entity.IsOwner) return;
             PlayerManager.Instance.ChangeLocalPlayer(this);
             NetStarted?.Invoke();

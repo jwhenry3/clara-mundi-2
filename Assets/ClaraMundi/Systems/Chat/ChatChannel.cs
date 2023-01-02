@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
@@ -10,52 +11,79 @@ namespace ClaraMundi
     // There could also be a system channel where all system messages go to reach all players
     public class ChatChannel : NetworkBehaviour
     {
+        public Player player;
+        public List<string> supportedChannels = new();
+
         [SyncVar(OnChange = nameof(OnMessage))]
         public ChatMessage LastMessage;
 
         private ChatMessage initialMessage;
+
         public override void OnStartServer()
         {
             base.OnStartServer();
-            ChatManager.Instance.Channels[gameObject.scene.name] = this;
+            if (player == null)
+            {
+                foreach (var channel in supportedChannels)
+                {
+                    if (channel == "Say" || channel == "Shout") continue;
+                    ChatManager.Instance.Channels[channel] = this;
+                }
+            }
+            else
+            {
+                ChatManager.Instance.Channels[player.Character.name] = this;
+            }
         }
+
         public override void OnStartClient()
         {
             base.OnStartClient();
             initialMessage = LastMessage;
-            ChatManager.ReceivedMessage(new ChatMessage
+            if (player != null)
             {
-                Type = ChatMessageType.System,
-                Message = $"Joined the Say Channel"
-            });
-            ChatManager.ReceivedMessage(new ChatMessage
+                ChatManager.ReceivedMessage(new ChatMessage
+                {
+                    Type = ChatMessageType.System,
+                    Message = $"Joined your Private Message Channel"
+                });
+                return;
+            }
+
+            foreach (var channel in supportedChannels)
             {
-                Type = ChatMessageType.System,
-                Message = $"Joined the Shout Channel"
-            });
+                ChatManager.ReceivedMessage(new ChatMessage
+                {
+                    Type = ChatMessageType.System,
+                    Message = $"Joined the {channel} Channel"
+                });
+            }
         }
 
         private void OnDestroy()
         {
-            if (ChatManager.Instance.Channels.ContainsKey(gameObject.scene.name))
-                ChatManager.Instance.Channels[gameObject.scene.name] = null;
-            ChatManager.ReceivedMessage(new ChatMessage
+            if (player != null)
+                ChatManager.Instance.Channels.Remove(player.Character.name);
+
+            foreach (var channel in supportedChannels)
             {
-                Type = ChatMessageType.System,
-                Message = $"Left the Say Channel"
-            });
-            ChatManager.ReceivedMessage(new ChatMessage
-            {
-                Type = ChatMessageType.System,
-                Message = $"Left the Shout Channel"
-            });
+                ChatManager.ReceivedMessage(new ChatMessage
+                {
+                    Type = ChatMessageType.System,
+                    Message = $"Left the {channel} Channel"
+                });
+                if (channel == "Say" || channel == "Shout") continue;
+                if (player != null) continue;
+                ChatManager.Instance.Channels.Remove(channel);
+            }
         }
 
         private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
         {
             if (asServer) return;
-            if (nextMessage.Channel != "Say" && nextMessage.Channel != "Shout") return;
-            if (lastMessage.MessageId == nextMessage.MessageId || nextMessage.MessageId == initialMessage?.MessageId) return;
+            if (lastMessage.MessageId == nextMessage.MessageId ||
+                nextMessage.MessageId == initialMessage?.MessageId) return;
+
             if (nextMessage.Channel == "Say")
             {
                 if (Vector3.Distance(PlayerManager.Instance.LocalPlayer.transform.position,

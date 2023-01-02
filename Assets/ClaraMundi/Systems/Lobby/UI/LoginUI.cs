@@ -1,8 +1,5 @@
-﻿using System;
-using TMPro;
-using Unisave.Facades;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace ClaraMundi
 {
@@ -29,12 +26,12 @@ namespace ClaraMundi
             var response = await LobbyApi.Login(
                 EmailField.text,
                 PasswordField.text
-                );
+            );
 
             if (response.status)
             {
                 SessionManager.Instance.PlayerAccount = response.account;
-                
+
                 LobbyUI.Instance.CheckAccount();
                 StatusMessage.text = "Login succeeded";
             }

@@ -3,7 +3,6 @@ using FishNet.Managing;
 using FishNet.Object;
 using System;
 using FishNet;
-using FishNet.Managing.Scened;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -104,14 +103,16 @@ namespace ClaraMundi
             
             
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
+            character.name = character.name.ToLower();
             var player = nob.GetComponent<Player>();
             player.Entity.Character = character;
-            player.Stats.Level = character.Level;
-            player.Stats.Experience = character.TotalExp;
-            player.Entity.entityName = character.Name;
+            player.Stats.Level = character.level;
+            player.Stats.Experience = character.exp;
+            player.Entity.entityName = character.name.ToLower();
             var rotation = Quaternion.identity;
-            rotation.y = character.Rotation;
-            nob.transform.SetPositionAndRotation(character.Position, rotation);
+            rotation.y = character.rotation;
+            var position = new Vector3(character.position_x, character.position_y, character.position_z);
+            nob.transform.SetPositionAndRotation(position, rotation);
             _networkManager.ServerManager.Spawn(nob, conn);
             
             _networkManager.SceneManager.AddOwnerToDefaultScene(nob);

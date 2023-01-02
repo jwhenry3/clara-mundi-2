@@ -7,10 +7,10 @@ namespace ClaraMundi
     public class Entity : NetworkBehaviour
     {
         [SyncVar]
-        public CharacterModel Character;
+        public Character Character;
         public event Action OnStarted;
         public event Action<string> NameChange;
-        [SyncVar(OnChange = "OnNameChange")]
+        [SyncVar(OnChange = nameof(OnNameChange))]
         public string entityName = "";
 
         public EntityType EntityType;
@@ -27,7 +27,6 @@ namespace ClaraMundi
         public override void OnStartServer()
         {
             base.OnStartServer();
-            entityId = StringUtils.UniqueId();
             OnStarted?.Invoke();
         }
         void OnNameChange(string oldValue, string newValue, bool asServer)

@@ -5,16 +5,6 @@ namespace ClaraMundi
 {
     public class ChatController : PlayerController
     {
-        public PrivateMessageClient PrivateMessageClient;
-        public GlobalChatClient GlobalChatClient;
-        public ChatChannel ChatChannel;
-        protected override void Awake()
-        {
-            base.Awake();
-            PrivateMessageClient = GetComponent<PrivateMessageClient>();
-            GlobalChatClient = GetComponent<GlobalChatClient>();
-        }
-
         public void SendMessage(string channel, ChatMessage message)
         {
             message.SenderCharacterName = null;
@@ -26,22 +16,14 @@ namespace ClaraMundi
                 ChatManager.ReceivedMessage(message);
             }
 
-            message.SenderCharacterName = player.Character.Name;
+            message.SenderCharacterName = player.Character.name;
+            message.SenderPosition = player.transform.position;
             switch (channel)
             {
                 case "Party":
-                    player.Party.SendMessage(message);
+                    player.Party.SendChatMessage(message);
                     break;
-                case "Whisper":
-                    PrivateMessageClient.SendChatMessage(message);
-                    break;
-                case "Trade":
-                case "LFG":
-                case "Yell":
-                    GlobalChatClient.SendChatMessage(channel, message);
-                    break;
-                case "Say":
-                case "Shout":
+                default:
                     SendMessageFromClient(channel, message);
                     break;
             }
@@ -51,20 +33,38 @@ namespace ClaraMundi
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            if (channel != "Say" && channel != "Shout") return;
-            message.SenderCharacterName = player.Character.Name;
+            message.SenderCharacterName = player.Character.name;
+            message.SenderPosition = player.transform.position;
             ServerSendMessage(channel, message);
         }
 
         private void ServerSendMessage(string channel, ChatMessage message)
         {
             if (!IsServer) return;
-            if (channel != "Say" && channel != "Shout") return;
             if (player == null) return;
-            if (!ChatManager.Instance.Channels.ContainsKey(player.gameObject.scene.name)) return;
-            var chatChannel = ChatManager.Instance.Channels[player.gameObject.scene.name];
-            message.SenderPosition = player.transform.position;
-            chatChannel.ServerSendMessage(message);
+            if (channel != "Say" && channel != "Shout")
+            {
+                if (channel == "Whisper")
+                {
+                    if (!ChatManager.Instance.Channels.ContainsKey(message.ToCharacterName)) return;
+                    ChatManager.Instance.Channels[message.ToCharacterName].ServerSendMessage(message);
+                    return;
+                }
+
+                if (!ChatManager.Instance.Channels.ContainsKey(channel)) return;
+                ChatManager.Instance.Channels[channel].ServerSendMessage(message);
+                return;
+            }
+
+            var found = GameObject.FindGameObjectsWithTag("SceneChat");
+            foreach (var obj in found)
+            {
+                if (obj.scene.handle != player.gameObject.scene.handle || obj.scene.name != player.gameObject.scene.name) continue;
+                Debug.Log("Found sceneChat object");
+                var sceneChatChannel = obj.GetComponent<ChatChannel>();
+                if (sceneChatChannel == null) continue;
+                sceneChatChannel.ServerSendMessage(message);
+            }
         }
     }
 }

@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyController.cs" />
-     <Compile Include="Assets\Backend\Facets\AccountFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\SessionManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityTypeRepo.cs" />
@@ -55,30 +54,22 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChannelSpawner.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
-     <Compile Include="Assets\Backend\Entities\PartyMemberEntity.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\LootItem.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CharacterUI.cs" />
      <Compile Include="Assets\YAFUI\Scripts\Dialogue_YesNoCancle.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\OwningEntityHolder.cs" />
-     <Compile Include="Assets\Backend\Utils\StringUtils.cs" />
-     <Compile Include="Assets\Backend\Channels\FriendRequestChannel.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\OpenURLButton.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Tabs.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\PartyManager.cs" />
-     <Compile Include="Assets\Backend\Facets\CharacterRequests.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTask.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\MasterServerTrigger.cs" />
-     <Compile Include="Assets\Backend\Entities\QuestCompletionEntity.cs" />
-     <Compile Include="Assets\Backend\Entities\AccountEntity.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\ShootOnClick.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\ComputedStats.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemRepo.cs" />
-     <Compile Include="Assets\Backend\Facets\GameServerFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\Client.cs" />
      <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
@@ -93,26 +84,19 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\PlayerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRequirement.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRecurrence.cs" />
-     <Compile Include="Assets\Backend\Facets\InventoryFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemManager.cs" />
-     <Compile Include="Assets\Backend\Models\ItemInstanceModel.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImageModifier.cs" />
      <Compile Include="Assets\YAFUI\Scripts\Nav.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Alert\Alert.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemStorage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\RepoManager.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Connection\GameServerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Account.cs" />
-     <Compile Include="Assets\Backend\Entities\QuestTaskProgressEntity.cs" />
-     <Compile Include="Assets\Backend\Facets\CharacterFacet.cs" />
-     <Compile Include="Assets\Backend\Facets\PartyFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Outline.cs" />
      <Compile Include="Assets\FlexibleUISystems\Generic\FlexibleExtensions.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\GameAuthenticator.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\GlobalChatClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CreateCharacterUI.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
@@ -124,8 +108,6 @@
      <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
-     <Compile Include="Assets\Backend\Channels\Messages\ChatMessage.cs" />
-     <Compile Include="Assets\Backend\Models\QuestTaskProgressModel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\ConnectedPlayerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
@@ -139,30 +121,22 @@
      <Compile Include="Assets\ClaraMundi\UI\Form.cs" />
      <Compile Include="Assets\ParrelSync\Examples\CustomArgumentExample.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
-     <Compile Include="Assets\Backend\Entities\CharacterEntity.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenu.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\Rotate.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailAuthUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\AttributeValue.cs" />
      <Compile Include="Assets\ClaraMundi\UI\UIManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTaskUI.cs" />
-     <Compile Include="Assets\Backend\Entities\ItemEntity.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Character.cs" />
-     <Compile Include="Assets\Backend\Facets\ChatFacet.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
-     <Compile Include="Assets\Backend\Entities\GameServerEntity.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Http\UrlManager.cs" />
-     <Compile Include="Assets\Backend\Facets\QuestFacet.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTrackerUI.cs" />
-     <Compile Include="Assets\Backend\Channels\PartyChannel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\ItemTooltipUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\LoginUI.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterResponse.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
      <Compile Include="Assets\ClaraMundi\UI\ContextMenuHandler.cs" />
@@ -176,8 +150,6 @@
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\RegisterUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\DialogueRepo.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
-     <Compile Include="Assets\Backend\Channels\PrivateMessageChannel.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailRegisterFacet.cs" />
      <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
@@ -188,13 +160,11 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
-     <Compile Include="Assets\Backend\Models\PartyModel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\Item.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
-     <Compile Include="Assets\Backend\Channels\GlobalChannel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\Quest.cs" />
      <Compile Include="Assets\ClaraMundi\UI\AutoFocus.cs" />
@@ -203,13 +173,10 @@
      <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\Server.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatAttachmentUI.cs" />
-     <Compile Include="Assets\Backend\EmailAuthentication\EmailLoginFacet.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\CustomPremadeModifier.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
-     <Compile Include="Assets\Backend\Channels\Messages\PartyMessage.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Chat\PrivateMessageClient.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
@@ -225,6 +192,10 @@
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
+     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -237,7 +208,6 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square3" />
      <None Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle1" />
-     <Folder Include="Assets\Backend" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_store" />
      <Folder Include="Library\PackageCache\com.unity.test-framework@1.1.31" />
      <Folder Include="Library\PackageCache\com.unity.sysroot@2.0.4" />
@@ -257,7 +227,6 @@
      <None Include="Library\PackageCache\com.unity.inputsystem@1.4.4\package.json" />
      <None Include="Library\PackageCache\com.unity.modules.ai@1.0.0\package.json" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Potion" />
-     <Folder Include="Assets\Backend\Channels" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\xdiff.ko.txt" />
      <Folder Include="Assets\JsonDotNet\Assemblies\Standalone" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button" />
@@ -287,7 +256,6 @@
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources" />
      <Folder Include="Assets\HONETi\flat_gui_elements\icons_ items\512x512px" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Misc" />
-     <Folder Include="Assets\Backend\Entities" />
      <None Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0\package.json" />
      <Folder Include="Library\PackageCache\com.unity.inputsystem@1.4.4\Tests" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\binmergetool.en.txt" />
@@ -378,7 +346,6 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_square2" />
      <Folder Include="Library\PackageCache\com.unity.modules.screencapture@1.0.0" />
      <None Include="Library\PackageCache\com.unity.visualscripting@1.7.8\package.json" />
-     <Folder Include="Assets\Backend\Channels\Messages" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Monster Part" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_shield" />
      <None Include="Library\PackageCache\com.unity.editorcoroutines@1.0.0\package.json" />
@@ -388,7 +355,6 @@
      <None Include="Assets\FishNet\VERSION.txt" />
      <Folder Include="Assets\ClaraMundi\Systems\Party" />
      <Folder Include="Library\PackageCache\com.unity.timeline@1.6.4" />
-     <Folder Include="Assets\Backend\Models" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\images.zh-Hans.txt" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner1_square2" />
      <Folder Include="Assets\HONETi\flat_gui_elements\panels" />
@@ -399,12 +365,12 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_media" />
      <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\PackageConversionData.json" />
      <None Include="Library\PackageCache\com.unity.modules.unitywebrequestassetbundle@1.0.0\package.json" />
-     <Folder Include="Assets\Backend\EmailAuthentication" />
      <Folder Include="Library\PackageCache\com.unity.feature.development@1.0.1" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\basecommands.es.txt" />
      <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle4" />
+     <Folder Include="Assets\ClaraMundi\Core" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_oval1" />
      <Folder Include="Assets\FishNet\Upgrading" />
      <Folder Include="Assets\JsonDotNet" />
@@ -607,7 +573,6 @@
      <Folder Include="Assets\FlexibleUISystems" />
      <None Include="Assets\YAFUI\Icons\LICENSE &amp; README for Icons\license.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\configurehelper.ko.txt" />
-     <Folder Include="Assets\Backend\Utils" />
      <None Include="Library\PackageCache\com.unity.testtools.codecoverage@1.0.1\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner4_square2" />
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6" />
@@ -628,7 +593,6 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\images.zh-Hant.txt" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\guihelp.en.txt" />
-     <Folder Include="Assets\Backend\Facets" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner5_square3" />
      <None Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle3" />
@@ -1068,9 +1032,6 @@
      <Reference Include="FishNet.CodeAnalysis">
      <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
      </Reference>
-     <Reference Include="RSG.Promise">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\RSG.Promise\RSG.Promise.dll</HintPath>
-     </Reference>
      <Reference Include="Sirenix.Utilities.Editor">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
      </Reference>
@@ -1083,17 +1044,11 @@
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
-     <Reference Include="UnisaveFramework">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\UnisaveFramework\UnisaveFramework.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
-     </Reference>
-     <Reference Include="LightJson">
-     <HintPath>D:\My project\Assets\Unisave\Libraries\LightJson\LightJson.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
@@ -1598,10 +1553,6 @@
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{686a1bd9-51cc-dfee-eecd-a582294ed2e9}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unisave.csproj">
-      <Project>{2aec700c-5a89-9588-5c20-3df78f1b465b}</Project>
-      <Name>Unisave</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.csproj">
       <Project>{9263f165-9c67-535b-9435-f12308680a68}</Project>

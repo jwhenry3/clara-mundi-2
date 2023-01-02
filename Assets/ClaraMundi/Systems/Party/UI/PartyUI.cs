@@ -7,7 +7,7 @@ namespace ClaraMundi
 {
     public class PartyUI : PlayerUI
     {
-        private PartyModel Party;
+        private Party Party;
         public Transform PartyContainer;
         public PartyMemberUI PartyMemberPrefab;
 
@@ -39,25 +39,25 @@ namespace ClaraMundi
             }
         }
 
-        private void OnPartyChanges(PartyModel party)
+        private void OnPartyChanges(Party party)
         {
             Party = party;
-            if (!PartyClient.DoesPartyExist(party))
+            if (party == null)
             {
                 foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
                         member.SetPartyMember(null);
                 InviteButton.gameObject.SetActive(true);
                 return;
             }
-            InviteButton.gameObject.SetActive(party.Leader == player.Character.Name);
+            InviteButton.gameObject.SetActive(party.leader == player.Character.name);
             List<string> found = new();
             foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
             {
-                if (member.player != null && party.Members.Contains(member.player.Character.Name))
+                if (member.player != null && party.members.Contains(member.player.Character.name))
                 {
-                    member.SetPartyMember(member.player.Character.Name);
-                    found.Add(member.player.Character.Name);
-                    if (member.player.Character.Name == PlayerManager.Instance.LocalPlayer.Character.Name)
+                    member.SetPartyMember(member.player.Character.name);
+                    found.Add(member.player.Character.name);
+                    if (member.player.Character.name == PlayerManager.Instance.LocalPlayer.Character.name)
                         member.transform.SetAsFirstSibling();
                 }
                 else
@@ -65,12 +65,12 @@ namespace ClaraMundi
                 
             }
 
-            foreach (string member in party.Members)
+            foreach (string member in party.members)
             {
                 if (found.Contains(member)) continue;
                 var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);
                 instance.SetPartyMember(member);
-                if (member == PlayerManager.Instance.LocalPlayer.Character.Name)
+                if (member == PlayerManager.Instance.LocalPlayer.Character.name)
                     instance.transform.SetAsFirstSibling();
             }
         }

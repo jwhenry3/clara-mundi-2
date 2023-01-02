@@ -1,281 +1,273 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Backend.App;
-using Unisave.Facades;
-using Unisave.Serialization;
-using UnityEngine;
+using System.Threading.Tasks;
+using FishNet.Connection;
+using FishNet.Object;
+using FishNet.Object.Synchronizing;
 
 namespace ClaraMundi
 {
+    using Responder = Func<object, object>;
+
     public class PartyController : PlayerController
     {
         public List<string> PartyInvites = new();
 
-
-        public event Action<PartyModel> PartyChanges;
+        private RequestResponse requestResponse;
+        public event Action<Party> PartyChanges;
         public event Action<List<string>> InviteChanges;
 
-        public PartyModel Party;
+        [SyncVar(OnChange = nameof(OnPartyChange))]
+        public Party Party;
 
-        public override void OnStartClient()
-        {
-            base.OnStartClient();
-            GetParty();
-            GetInvitations();
-        }
+        [SyncVar(OnChange = nameof(OnMessage))]
+        public ChatMessage LastMessage;
 
-        public async void CreateParty()
+        protected override void Awake()
         {
-            var result = await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.CreateParty),
-                player.Character.Name
-            );
-            if (!result)
-                Debug.LogWarning("Could not create a party");
+            base.Awake();
+            requestResponse = GetComponent<RequestResponse>();
         }
 
-        public async void DisbandParty()
+        public override void OnStartServer()
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.LeaveParty),
-                player.Character.Name,
-                true
-            );
+            base.OnStartServer();
+            requestResponse.Responders.Add(nameof(ServerIsInParty), ServerIsInParty);
         }
 
-        public async void InviteToParty(string playerName)
+        [ServerRpc]
+        public void CreateParty()
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.InviteToParty),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.CreateParty(player.Character.name);
         }
 
-        public async void RequestJoin(string playerName)
+        [ServerRpc]
+        public void DisbandParty()
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.JoinParty),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.DisbandParty(player.Character.name);
         }
 
-        public async void AcceptRequest(string playerName)
+        [ServerRpc]
+        public void InviteToParty(string playerName)
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.InviteToParty),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.InviteToParty(player.Character.name, playerName);
         }
 
-        public async void JoinParty(string playerName)
+        [ServerRpc]
+        public void RequestJoin(string playerName)
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.JoinParty),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.JoinParty(player.Character.name, playerName);
         }
 
-        public async void DeclineInvite(string playerName)
+        [ServerRpc]
+        public void AcceptRequest(string playerName)
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.DeclineInvite),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.AcceptRequest(player.Character.name, playerName);
         }
 
-        public async void DeclineRequest(string playerName)
+        [ServerRpc]
+        public void JoinParty(string playerName)
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.DeclineInvite),
-                player.Character.Name,
-                playerName
-            );
+            PartyManager.Instance.JoinParty(player.Character.name, playerName);
         }
 
-        public async void LeaveParty()
+        [ServerRpc]
+        public void DeclineInvite(string playerName)
         {
-            await OnFacet<PartyFacet>.CallAsync<bool>(
-                nameof(PartyFacet.LeaveParty),
-                player.Character.Name,
-                false
-            );
+            PartyManager.Instance.DeclineInvite(player.Character.name, playerName);
         }
 
-        public async void GetParty()
+        [ServerRpc]
+        public void DeclineRequest(string playerName)
         {
-            Party = await OnFacet<PartyFacet>.CallAsync<PartyModel>(
-                nameof(PartyFacet.GetParty),
-                player.Character.Name
-            );
-            UpdateParty(Party);
-        }
-        public async void GetInvitations()
-        {
-            PartyInvites = await OnFacet<PartyFacet>.CallAsync<List<string>>(
-                nameof(PartyFacet.GetInvitations),
-                player.Character.Name
-            );
-            InviteChanges?.Invoke(PartyInvites);
+            PartyManager.Instance.DeclineRequest(player.Character.name, playerName);
         }
 
-        public async void SendMessage(ChatMessage message)
+        [ServerRpc]
+        public void LeaveParty()
         {
-            if (!PartyClient.DoesPartyExist(Party)) return;
-            var result = await OnFacet<ChatFacet>.CallAsync<bool>(
-                nameof(ChatFacet.SendMessageToParty),
-                new Backend.ChatMessage()
-                {
-                    message = message.Message,
-                    senderName = message.SenderCharacterName
-                }
-            );
-            if (!result)
-            {
-                ChatManager.ReceivedMessage(new ChatMessage()
-                {
-                    Type = ChatMessageType.System,
-                    Channel = "System",
-                    Message = "Could not send party message"
-                });
-            }
+            PartyManager.Instance.LeaveParty(player.Character.name);
         }
-        
-        private void UpdateParty(PartyModel party)
+
+        [ServerRpc]
+        public void SendChatMessage(ChatMessage message)
+        {
+            PartyManager.Instance.SendChatMessage(message);
+        }
+
+        private void OnMessage(ChatMessage previous, ChatMessage next, bool asServer)
+        {
+            if (asServer) return;
+            if (previous?.MessageId == next?.MessageId) return;
+            ChatManager.ReceivedMessage(next);
+        }
+
+        public async Task<bool> IsInParty(string playerName)
+        {
+            return (await requestResponse.Request<string, bool>(nameof(ServerIsInParty), playerName));
+        }
+
+        protected object ServerIsInParty(object playerName)
+        {
+            if (playerName is string p)
+                return PartyManager.Instance.Parties.ContainsKey(p);
+            return true;
+        }
+
+        private void UpdateParty(Party party)
         {
             Party = party;
             PartyChanges?.Invoke(party);
         }
-        
+
         public void ClearParty()
         {
             UpdateParty(null);
         }
 
-        public void MemberJoined(PartyMessage message)
+        [TargetRpc]
+        public void CreatedParty(NetworkConnection conn)
         {
-            if (Party == null) return;
-            if (Party.Members.Contains(message.characterName)) return;
-            Party.Members.Add(message.characterName);
-            if (Party.Invitations.Contains(message.characterName))
-                Party.Invitations.Remove(message.characterName);
-            if (Party.Requests.Contains(message.characterName))
-                Party.Requests.Remove(message.characterName);
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} joined the party."
+                Type = ChatMessageType.System,
+                Message = $"Created the party successfully."
+            });
+        }
+        [TargetRpc]
+        public void MemberJoined(NetworkConnection conn, string _player)
+        {
+            ChatManager.ReceivedMessage(new ChatMessage()
+            {
+                Type = ChatMessageType.System,
+                Message = $"{_player} joined the party."
             });
         }
 
-        public void MemberLeft(PartyMessage message)
+        [TargetRpc]
+        public void MemberLeft(NetworkConnection conn, string _player)
         {
-            if (Party == null) return;
-            if (Party.Members.Contains(message.characterName))
-                Party.Members.Remove(message.characterName);
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} left the party."
+                Type = ChatMessageType.System,
+                Message =  $"{_player} left the party."
             });
         }
 
-        public void PlayerDeclinedInvite(PartyMessage message)
+        [TargetRpc]
+        public void YouLeft(NetworkConnection conn)
         {
-            if (Party == null) return;
-            if (Party.Invitations.Contains(message.characterName))
-                Party.Invitations.Remove(message.characterName);
-            if (Party.Requests.Contains(message.characterName))
-                Party.Requests.Remove(message.characterName);
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} declined the party invite."
+                Type = ChatMessageType.System,
+                Message = $"You left the party."
             });
         }
 
-        public void PlayerCancelledRequest(PartyMessage message)
+        [TargetRpc]
+        public void DisbandedParty(NetworkConnection conn)
         {
-            if (Party == null) return;
-            if (Party.Invitations.Contains(message.characterName))
-                Party.Invitations.Remove(message.characterName);
-            if (Party.Requests.Contains(message.characterName))
-                Party.Requests.Remove(message.characterName);
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} cancelled their join request."
+                Type = ChatMessageType.System,
+                Message =  $"The party disbanded."
             });
         }
 
-        public void PlayerRequestedInvite(PartyMessage message)
+        [TargetRpc]
+        public void PlayerDeclinedInvite(NetworkConnection conn, string _player)
         {
-            if (Party == null) return;
-            if (!Party.Requests.Contains(message.characterName))
-                Party.Requests.Add(message.characterName);
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} wants to join the party."
+                Type = ChatMessageType.System,
+                Message =  $"{_player} declined the party invite."
             });
         }
 
-        public void InvitedToParty(PartyMessage message)
+        [TargetRpc]
+        public void PlayerCancelledRequest(NetworkConnection conn, string _player)
         {
-            if (!PartyInvites.Contains(message.characterName))
-                PartyInvites.Add(message.characterName);
-            InviteChanges?.Invoke(PartyInvites);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} invited you to a party!"
+                Type = ChatMessageType.System,
+                Message =  $"{_player} cancelled their join request."
             });
         }
 
-        public void PlayerInvited(PartyMessage message)
+        [TargetRpc]
+        public void PlayerRequestedInvite(NetworkConnection conn, string _player)
         {
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"Invited {message.characterName} Successfully!"
+                Type = ChatMessageType.System,
+                Message =   $"{_player} wants to join the party."
             });
         }
 
-        public void PartyFull()
+        [TargetRpc]
+        public void InvitedToParty(NetworkConnection conn, string _player)
         {
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = "Cannot join the party. The party is full."
+                Type = ChatMessageType.System,
+                Message =   $"{_player} invited you to a party!"
             });
         }
 
-        public void AlreadyInParty(PartyMessage message)
+        [TargetRpc]
+        public void PlayerInvited(NetworkConnection conn, string _player)
         {
-            if (string.IsNullOrEmpty(message.characterName))
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                AlertManager.Instance.AddMessage(new AlertMessage()
+                Type = ChatMessageType.System,
+                Message =   $"Invited {_player} Successfully!"
+            });
+        }
+
+        [TargetRpc]
+        public void PartyFull(NetworkConnection conn)
+        {
+            ChatManager.ReceivedMessage(new ChatMessage()
+            {
+                Type = ChatMessageType.System,
+                Message =   "Cannot join the party. The party is full."
+            });
+        }
+
+        [TargetRpc]
+        public void AlreadyInParty(NetworkConnection conn, string _player)
+        {
+            if (string.IsNullOrEmpty(_player))
+            {
+                ChatManager.ReceivedMessage(new ChatMessage()
                 {
-                    Message = "Already in Party."
+                    Type = ChatMessageType.System,
+                    Message =   "Already in Party."
                 });
                 return;
             }
-            AlertManager.Instance.AddMessage(new AlertMessage()
+
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} is already in a party."
+                Type = ChatMessageType.System,
+                Message =  $"{_player} is already in a party."
             });
         }
 
-        public void LeaderChange(PartyMessage message)
+        [TargetRpc]
+        public void LeaderChange(NetworkConnection conn, string _player)
         {
-            Party.Leader = message.characterName;
-            UpdateParty(Party);
-            AlertManager.Instance.AddMessage(new AlertMessage()
+            ChatManager.ReceivedMessage(new ChatMessage()
             {
-                Message = $"{message.characterName} is now the party leader."
+                Type = ChatMessageType.System,
+                Message =  $"{_player} is now the party leader."
             });
+        }
+
+        private void OnPartyChange(Party previous, Party next, bool asServer)
+        {
+            if (asServer) return;
+            PartyChanges?.Invoke(next);
         }
     }
 }

@@ -87,23 +87,11 @@ namespace ClaraMundi
             var result = await LobbyApi.VerifyCharacter(data.AccountToken, data.CharacterName);
             var character = result.character;
             bool authorized = character != null && !connectionsByCharacterName.ContainsKey(data.CharacterName);
-            Debug.Log(authorized);
             if (authorized)
             {
-                var model = new CharacterModel()
-                {
-                    Name = character.name,
-                    Gender = character.gender,
-                    Race = character.race,
-                    Area = character.area,
-                    Position = new Vector3(character.position_x, character.position_y, character.position_z),
-                    Rotation = character.rotation,
-                    Level = character.level,
-                    TotalExp = character.exp
-                };
                 connectionsByCharacterName[data.CharacterName] = conn;
                 characterNameByClientId[conn.ClientId] = character.name;
-                ConnectedPlayerManager.Instance.characterByName[character.name] = model;
+                ConnectedPlayerManager.Instance.characterByName[character.name] = result.character;
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
                 if (MasterServerConnection.Instance != null)
                     MasterServerConnection.Instance.UpdateServerList();

@@ -1,5 +1,4 @@
-﻿using System;
-using FishNet.Object;
+﻿using FishNet.Object;
 using FishNet.Object.Synchronizing;
 
 namespace ClaraMundi
@@ -7,7 +6,7 @@ namespace ClaraMundi
     public class ConnectedPlayerManager : NetworkBehaviour
     {
         [SyncObject]
-        public readonly SyncDictionary<string, CharacterModel> characterByName = new();
+        public readonly SyncDictionary<string, Character> characterByName = new();
 
         public static ConnectedPlayerManager Instance;
 

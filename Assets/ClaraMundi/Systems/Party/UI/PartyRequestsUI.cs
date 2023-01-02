@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FishNet.Object.Synchronizing;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -59,10 +58,10 @@ namespace ClaraMundi
             HandleVisibility();
         }
 
-        private void OnPartyChanges(PartyModel party)
+        private void OnPartyChanges(Party party)
         {
             // only party leader can invite and accept requests
-            if (party != null && party.Leader != PlayerManager.Instance.LocalPlayer.Character.Name)
+            if (party != null && party.leader != PlayerManager.Instance.LocalPlayer.Character.name)
             {
                 // Any requests are cleaned up if the player is not the leader
                 // in case the leadership changes during party existence
@@ -74,7 +73,7 @@ namespace ClaraMundi
             var clone = new Dictionary<string, PartyJoinRequestUI>(JoinRequests);
             foreach (var kvp in clone)
             {
-                if (party != null && party.Requests.Contains(kvp.Key)) continue;
+                if (party != null && party.requests.Contains(kvp.Key)) continue;
                 // remove join request UI no longer in party details
                 Destroy(kvp.Value.gameObject);
                 JoinRequests.Remove(kvp.Key);
@@ -82,7 +81,7 @@ namespace ClaraMundi
 
             if (party == null) return;
             // add remaining join requests not currently in UI
-            foreach (string characterName in party.Requests)
+            foreach (string characterName in party.requests)
                 AddJoinRequest(characterName);
             HandleVisibility();
         }
@@ -104,7 +103,7 @@ namespace ClaraMundi
 
             if (PlayerManager.Instance.LocalPlayer.Party.Party != null)
             {
-                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.Requests)
+                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.requests)
                     AddJoinRequest(joiningPlayerId);
             }
 
