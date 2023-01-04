@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FishNet.Object.Synchronizing;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -9,7 +10,7 @@ namespace ClaraMundi
     {
         public static ItemManager Instance;
         public static event Action<SyncDictionaryOperation, int, ItemInstance, bool> ItemChange;
-
+        [ShowInInspector]
         public readonly Dictionary<int, ItemInstance> ItemsByInstanceId = new();
         public readonly Dictionary<string, Dictionary<string, ItemStorage>> StorageByEntityAndId = new();
 
@@ -27,8 +28,9 @@ namespace ClaraMundi
 
             if (StorageByEntityAndId[storage.OwnerEntity.entityId].ContainsKey(storage.StorageId)) return;
             StorageByEntityAndId[storage.OwnerEntity.entityId][storage.StorageId] = storage;
-            storage.PublicItems.OnChange += OnChange;
-            storage.PrivateItems.OnChange += OnChange;
+            storage.Items.OnChange += OnChange;
+            foreach (var kvp in storage.Items)
+                ItemsByInstanceId[kvp.Key] = kvp.Value;
         }
 
         public void RemoveStorage(ItemStorage storage)
@@ -37,16 +39,14 @@ namespace ClaraMundi
             StorageByEntityAndId[storage.OwnerEntity.entityId].Remove(storage.StorageId);
             if (StorageByEntityAndId[storage.OwnerEntity.entityId].Count == 0)
                 StorageByEntityAndId.Remove(storage.OwnerEntity.entityId);
-            storage.PublicItems.OnChange -= OnChange;
-            storage.PrivateItems.OnChange -= OnChange;
+            storage.Items.OnChange -= OnChange;
         }
         
         public void OnChange(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
         {
             if (op == SyncDictionaryOperation.Add)
             {
-                if (!ItemsByInstanceId.ContainsKey(key))
-                    ItemsByInstanceId.Add(key, itemInstance);
+                ItemsByInstanceId[key] = itemInstance;
                 ItemChange?.Invoke(op, key, itemInstance, asServer);
             }
             if (op == SyncDictionaryOperation.Remove)

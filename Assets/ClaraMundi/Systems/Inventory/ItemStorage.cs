@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -13,13 +12,9 @@ namespace ClaraMundi
         public static event Action<string, string, ItemStorage> OnInitialize;
 
         [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        [ShowInInspector]
-        public readonly SyncDictionary<int, ItemInstance> PrivateItems = new();
-
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
         public readonly SyncList<string> HeldItemIds = new();
 
-        [SyncObject] public readonly SyncDictionary<int, ItemInstance> PublicItems = new();
+        [SyncObject] public readonly SyncDictionary<int, ItemInstance> Items = new();
 
         public Entity OwnerEntity;
         [SyncVar] public string StorageId = "inventory";
@@ -74,9 +69,7 @@ namespace ClaraMundi
 
         public ItemInstance GetItemInstance(int itemInstanceId, bool mustNotBeEquipped = false)
         {
-            PublicItems.TryGetValue(itemInstanceId, out var instance);
-            if (instance == null)
-                PrivateItems.TryGetValue(itemInstanceId, out instance);
+            Items.TryGetValue(itemInstanceId, out var instance);
             return mustNotBeEquipped && instance is { IsEquipped: true } ? null : instance;
         }
 
@@ -108,14 +101,14 @@ namespace ClaraMundi
 
         public bool CanAdd(string itemId, int quantity, bool forceNewStack = false)
         {
-            if (forceNewStack && PrivateItems.Count >= Capacity) return false;
+            if (forceNewStack && Items.Count >= Capacity) return false;
             var item = ItemRepo.GetItem(itemId);
             var instance = GetInstanceByItemId(itemId);
             if (item.Unique)
                 if (instance != null)
                     return false;
             if (item.Stackable && !forceNewStack && instance != null) return true;
-            return PrivateItems.Count < Capacity;
+            return Items.Count < Capacity;
         }
 
         public ItemInstance GetInstanceByItemId(string itemId, bool mustNotBeEquipped = false)
@@ -155,9 +148,7 @@ namespace ClaraMundi
 
         public SyncDictionary<int, ItemInstance> GetVisibleItems()
         {
-            if (PublicItems.Count > 0 && PrivateItems.Count == 0)
-                return PublicItems;
-            return PrivateItems;
+            return Items;
         }
 
         public int QuantityOf(string itemId, bool mustNotBeEquipped = false)
@@ -222,9 +213,7 @@ namespace ClaraMundi
             if (!IsServer) return;
             // 0 is an invalid ID
             if (instance.ItemInstanceId == 0) return;
-            var dictionary = PrivateItems;
-            if (isPublicStorage)
-                dictionary = PublicItems;
+            var dictionary = Items;
             dictionary[instance.ItemInstanceId] = new ItemInstance
             {
                 CharacterId = OwnerEntity.entityId,

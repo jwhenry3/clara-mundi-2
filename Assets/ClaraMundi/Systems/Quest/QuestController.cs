@@ -50,14 +50,14 @@ namespace ClaraMundi
                 UpdateItemProgressFor(quest.QuestId);
             }
 
-            player.Inventory.ItemStorage.PrivateItems.OnChange += OnItemChange;
+            player.Inventory.ItemStorage.Items.OnChange += OnItemChange;
         }
 
         private void OnDestroy()
         {
             // destroy the listening
             if (IsServer)
-                player.Inventory.ItemStorage.PrivateItems.OnChange -= OnItemChange;
+                player.Inventory.ItemStorage.Items.OnChange -= OnItemChange;
         }
 
         private void UpdateItemProgressFor(string questId)

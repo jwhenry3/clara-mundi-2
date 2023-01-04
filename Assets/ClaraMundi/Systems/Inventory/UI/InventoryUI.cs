@@ -48,7 +48,7 @@ namespace ClaraMundi
             if (player == null) return;
             if (player.Inventory == null) return;
             if (player.Inventory.ItemStorage == null) return;
-            foreach (var kvp in player.Inventory.ItemStorage.PrivateItems)
+            foreach (var kvp in player.Inventory.ItemStorage.Items)
             {
                 var itemInstance = kvp.Value;
                 var item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
