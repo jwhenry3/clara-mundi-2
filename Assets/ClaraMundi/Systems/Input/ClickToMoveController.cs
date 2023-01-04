@@ -1,5 +1,4 @@
-﻿using System;
-using FishNet.Object;
+﻿using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using GameCreator.Runtime.Common;
 using UnityEngine;
@@ -13,6 +12,7 @@ namespace ClaraMundi
         [SyncVar] private Vector3 destination;
 
         private Vector3 lastDestination;
+        public bool debugLog;
 
         public override void OnStartClient()
         {
@@ -21,10 +21,9 @@ namespace ClaraMundi
         }
 
         private float triggeredCooldown;
+
         private void Update()
         {
-            if (!IsServer)
-                HandleClick();
             if (lastDestination != destination)
                 MovePlayerTo(destination);
             lastDestination = destination;
@@ -32,18 +31,9 @@ namespace ClaraMundi
                 triggeredCooldown = Mathf.Max(0, triggeredCooldown - Time.deltaTime);
         }
 
-        private void HandleClick()
+        public void UpdateDestination(Vector3 dest)
         {
-            
-            bool clicked = triggeredCooldown == 0 && Input.GetMouseButton(0);
-
-            if (!clicked) return;
-            triggeredCooldown = 0.5f;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-
-            if (!Physics.Raycast(ray, out RaycastHit hit)) return;
-            if (!hit.transform.CompareTag("Ground")) return;
-            SendDestination(hit.point);
+            SendDestination(dest);
         }
 
         [ServerRpc(RunLocally = true)]
@@ -56,6 +46,7 @@ namespace ClaraMundi
         {
             player.Body.Motion.MoveToLocation(new Location(dest), 0.0f, OnReachedDestination, 1);
             if (IsServer) return;
+            if (!debugLog) return;
             ChatManager.ReceivedMessage(new ChatMessage()
             {
                 Type = ChatMessageType.System,
@@ -71,6 +62,7 @@ namespace ClaraMundi
         private void OnReachedDestination(GCharacter character)
         {
             if (IsServer) return;
+            if (!debugLog) return;
             ChatManager.ReceivedMessage(new ChatMessage()
             {
                 Type = ChatMessageType.System,

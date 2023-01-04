@@ -5,6 +5,13 @@ namespace ClaraMundi
 {
     public class ChatController : PlayerController
     {
+        public ChatChannel Channel;
+        protected override void Awake()
+        {
+            base.Awake();
+            Channel = GetComponent<ChatChannel>();
+        }
+
         public void SendMessage(string channel, ChatMessage message)
         {
             message.SenderCharacterName = null;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FishNet.Object.Synchronizing;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -39,7 +40,7 @@ namespace ClaraMundi
             }
         }
 
-        private void OnInviteChanges(List<string> invites)
+        private void OnInviteChanges(SyncList<string> invites)
         {
             Debug.Log("Update invite list!");
             var clone = new Dictionary<string, PartyInviteRequestUI>(Invites);

@@ -456,6 +456,7 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
+  Channel: {fileID: 0}
 --- !u!114 &8345528289073844050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +478,15 @@ MonoBehaviour:
   LastMessage:
     MessageId: az6W3QcVA0eK7VKzijLjfQ
     Type: 1
+    Channel: Say
+    SenderArea: 
+    SenderCharacterName: 
+    SenderPosition: {x: 0, y: 0, z: 0}
+    ToCharacterName: 
+    Message: 
+  LastPrivateMessage:
+    MessageId: azGVW9JTeU22IKF0kynMww
+    Type: 0
     Channel: Say
     SenderArea: 
     SenderCharacterName: 
@@ -3582,6 +3592,7 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
+  debugLog: 0
 --- !u!1 &7416137206735238382
 GameObject:
   m_ObjectHideFlags: 0

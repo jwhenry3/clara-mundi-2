@@ -109,7 +109,10 @@ namespace ClaraMundi
 
             if (Parties[player].invited.Contains(invited)) return;
             Parties[player].invited.Add(invited);
+            var _invited = GetPlayer(invited);
             var _player = GetPlayer(player);
+            _invited.Party.PartyInvites.Add(player);
+            _invited.Party.InvitedToParty(_invited.Owner, player);
             _player.Party.PlayerInvited(_player.Owner, invited);
             UpdateParty(Parties[player]);
             // event
@@ -171,6 +174,8 @@ namespace ClaraMundi
 
         public void ClearRequests(string requestPlayer)
         {
+            var player = GetPlayer(requestPlayer);
+            player.Party.PartyInvites.Clear();
             foreach (var kvp in PartyByLeader)
             {
                 var changed = false;
@@ -196,6 +201,13 @@ namespace ClaraMundi
 
         private void UpdateParty(Party party)
         {
+            Parties[party.leader] = new Party()
+            {
+                leader = party.leader,
+                members = party.members,
+                invited = party.invited,
+                requests = party.requests,
+            };
             foreach (var member in party.members)
             {
                 if (Parties.ContainsKey(member) && PlayerManager.Instance.PlayersByName.ContainsKey(member))

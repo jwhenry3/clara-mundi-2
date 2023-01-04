@@ -68,6 +68,7 @@ export class CharacterService {
     const characterClass = this.classRepo.create({
       classId: options.startingClass.toLowerCase(),
       character,
+      isCurrent: true,
     })
     character.characterClasses.push(characterClass)
     character = await this.repo.save(character)
@@ -87,7 +88,7 @@ export class CharacterService {
       }
     }
     const characters = await this.getCharactersForList(accountId)
-
+    console.log(characters)
     return {
       status: true,
       reason: '',

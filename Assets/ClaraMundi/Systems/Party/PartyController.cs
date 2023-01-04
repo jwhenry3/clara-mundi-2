@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using FishNet.Object.Synchronizing.SecretMenu;
 
 namespace ClaraMundi
 {
@@ -11,11 +12,12 @@ namespace ClaraMundi
 
     public class PartyController : PlayerController
     {
-        public List<string> PartyInvites = new();
+        [SyncObject(ReadPermissions =  ReadPermission.OwnerOnly)]
+        public readonly SyncList<string> PartyInvites = new();
 
         private RequestResponse requestResponse;
         public event Action<Party> PartyChanges;
-        public event Action<List<string>> InviteChanges;
+        public event Action<SyncList<string>> InviteChanges;
 
         [SyncVar(OnChange = nameof(OnPartyChange))]
         public Party Party;
@@ -33,6 +35,24 @@ namespace ClaraMundi
         {
             base.OnStartServer();
             requestResponse.Responders.Add(nameof(ServerIsInParty), ServerIsInParty);
+        }
+
+        public override void OnStartClient()
+        {
+            base.OnStartClient();
+            if (IsOwner)
+                PartyInvites.OnChange += OnInviteChanges;
+        }
+
+        private void OnDestroy()
+        {
+            if (IsClient && IsOwner)
+                PartyInvites.OnChange -= OnInviteChanges;
+        }
+
+        private void OnInviteChanges(SyncListOperation op, int index, string previous, string next, bool asServer)
+        {
+            InviteChanges?.Invoke(PartyInvites);
         }
 
         [ServerRpc]

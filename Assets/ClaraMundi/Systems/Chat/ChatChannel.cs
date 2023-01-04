@@ -17,6 +17,9 @@ namespace ClaraMundi
         [SyncVar(OnChange = nameof(OnMessage))]
         public ChatMessage LastMessage;
 
+        [SyncVar(OnChange = nameof(OnMessage), ReadPermissions = ReadPermission.OwnerOnly)]
+        public ChatMessage LastPrivateMessage;
+
         private ChatMessage initialMessage;
 
         public override void OnStartServer()
@@ -42,11 +45,15 @@ namespace ClaraMundi
             initialMessage = LastMessage;
             if (player != null)
             {
-                ChatManager.ReceivedMessage(new ChatMessage
+                if (IsOwner)
                 {
-                    Type = ChatMessageType.System,
-                    Message = $"Joined your Private Message Channel"
-                });
+                    ChatManager.ReceivedMessage(new ChatMessage
+                    {
+                        Type = ChatMessageType.System,
+                        Message = $"Joined your Private Message Channel"
+                    });
+                }
+
                 return;
             }
 
@@ -63,7 +70,11 @@ namespace ClaraMundi
         private void OnDestroy()
         {
             if (player != null)
+            {
+                if (!IsServer) return;
                 ChatManager.Instance.Channels.Remove(player.Character.name);
+                return;
+            }
 
             foreach (var channel in supportedChannels)
             {
@@ -73,7 +84,7 @@ namespace ClaraMundi
                     Message = $"Left the {channel} Channel"
                 });
                 if (channel == "Say" || channel == "Shout") continue;
-                if (player != null) continue;
+                if (!IsServer) continue;
                 ChatManager.Instance.Channels.Remove(channel);
             }
         }
@@ -84,19 +95,31 @@ namespace ClaraMundi
             if (lastMessage.MessageId == nextMessage.MessageId ||
                 nextMessage.MessageId == initialMessage?.MessageId) return;
 
-            if (nextMessage.Channel == "Say")
-            {
-                if (Vector3.Distance(PlayerManager.Instance.LocalPlayer.transform.position,
-                        nextMessage.SenderPosition) > 50) return;
-            }
-
             ChatManager.ReceivedMessage(nextMessage);
         }
 
         public void ServerSendMessage(ChatMessage message)
         {
             if (!IsServer) return;
-            LastMessage = message;
+            switch (message.Channel)
+            {
+                case "Say" when player == null:
+                {
+                    // execute on the sender player's channel so we can use the observer
+                    // so visible players can receive the message
+                    if (PlayerManager.Instance.PlayersByName.ContainsKey(message.SenderCharacterName))
+                        PlayerManager.Instance.PlayersByName[message.SenderCharacterName].Chat.Channel
+                            .ServerSendMessage(message);
+                    return;
+                }
+                case "Whisper":
+                    if (player != null && message.ToCharacterName == player.Character.name)
+                        LastPrivateMessage = message;
+                    break;
+                default:
+                    LastMessage = message;
+                    break;
+            }
         }
     }
 }

@@ -14,15 +14,16 @@ namespace ClaraMundi
         public Character Character => Entity.Character;
 
         public GCharacter Body;
-        [HideInInspector] public Entity Entity { get; private set; }
-        [HideInInspector] public string entityId => Entity.entityId;
-        [HideInInspector] public StatsController Stats { get; protected set; }
-        [HideInInspector] public InventoryController Inventory { get; protected set; }
-        [HideInInspector] public EquipmentController Equipment { get; protected set; }
-        [HideInInspector] public AlertController Alerts { get; protected set; }
-        [HideInInspector] public ChatController Chat { get; protected set; }
-        [HideInInspector] public PartyController Party { get; protected set; }
-        [HideInInspector] public QuestController Quests { get; protected set; }
+        public Entity Entity { get; private set; }
+        public string entityId => Entity.entityId;
+        public StatsController Stats { get; protected set; }
+        public InventoryController Inventory { get; protected set; }
+        public EquipmentController Equipment { get; protected set; }
+        public AlertController Alerts { get; protected set; }
+        public ChatController Chat { get; protected set; }
+        public PartyController Party { get; protected set; }
+        public QuestController Quests { get; protected set; }
+        public ClickToMoveController Movement { get; protected set; }
 
 
         private NetworkManager networkManager;
@@ -39,6 +40,7 @@ namespace ClaraMundi
             Chat = GetComponentInChildren<ChatController>();
             Party = GetComponentInChildren<PartyController>();
             Quests = GetComponentInChildren<QuestController>();
+            Movement = GetComponentInChildren<ClickToMoveController>();
             Entity.OnStarted += OnNetStarted;
         }
 

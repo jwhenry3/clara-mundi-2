@@ -17,7 +17,6 @@ namespace ClaraMundi
     public class MasterServerConnection : WebSocketConnection
     {
         public static MasterServerConnection Instance;
-        private WebSocketConnection connection => this;
         private float syncInterval = 30f;
         private float currentTick = 0;
 
@@ -26,29 +25,39 @@ namespace ClaraMundi
             Instance = this;
         }
 
-        private void OnEnable()
-        {
-            MessageReceived += OnMessage;
-        }
-
-        private void OnDisable()
-        {
-            MessageReceived -= OnMessage;
-        }
-
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            MessageReceived -= OnMessage;
-        }
-
         private void Start()
         {
             UpdateServerUrl(UrlManager.Instance.MasterServerUrl.Compose(true));
             Connect();
         }
 
-        void OnMessage(WebSocketMessage message)
+        protected override void Update()
+        {
+            base.Update();
+            currentTick += Time.deltaTime;
+            if (!(currentTick > syncInterval)) return;
+            currentTick = 0;
+            UpdateServerList();
+        }
+
+        public void UpdateServerList()
+        {
+            if (Status != ConnectionStatus.Connected) return;
+            var entry = new ServerEntry()
+            {
+                label = Server.Instance.Name,
+                port = Server.Instance.Port,
+                playerCapacity = Server.Instance.PlayerCapacity,
+                currentPlayers = GameAuthenticator.characterNameByClientId.Count
+            };
+            Send(new WebSocketMessage()
+            {
+                eventName = "update",
+                data = JsonConvert.SerializeObject(entry)
+            });
+        }
+
+        protected override void OnMessage(WebSocketMessage message)
         {
             Debug.Log(JsonConvert.SerializeObject(message));
             switch (message.eventName)
@@ -60,32 +69,6 @@ namespace ClaraMundi
                     ReceivedServerList(message);
                     break;
             }
-        }
-
-        protected override void Update()
-        {
-            base.Update();
-            currentTick += Time.deltaTime;
-            if (!(currentTick > syncInterval)) return;
-            currentTick = 0;
-            if (connection == null) return;
-            UpdateServerList();
-        }
-
-        public void UpdateServerList()
-        {
-            var entry = new ServerEntry()
-            {
-                label = Server.Instance.Name,
-                port = Server.Instance.Port,
-                playerCapacity = Server.Instance.PlayerCapacity,
-                currentPlayers = GameAuthenticator.characterNameByClientId.Count
-            };
-            connection.Send(new WebSocketMessage()
-            {
-                eventName = "update",
-                data = JsonConvert.SerializeObject(entry)
-            });
         }
 
         private static void ReceivedServerList(WebSocketMessage message)

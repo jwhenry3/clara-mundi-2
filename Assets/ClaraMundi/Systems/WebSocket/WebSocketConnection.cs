@@ -37,8 +37,6 @@ namespace ClaraMundi
             WebSocketCloseCode.Abnormal
         };
 
-        public event Action<WebSocketMessage> MessageReceived;
-
 
         public void UpdateServerUrl(string url)
         {
@@ -127,13 +125,17 @@ namespace ClaraMundi
             if (debugLog) Debug.Log($"Message Received from {Label}: " + dataString);
             try
             {
-                MessageReceived?.Invoke(
+                OnMessage(
                     JsonConvert.DeserializeObject<WebSocketMessage>(dataString.Replace("\"event\"", "\"eventName\"")));
             }
             catch (Exception e)
             {
                 Debug.LogWarning("Unable to deserialize the message: " + dataString);
             }
+        }
+
+        protected virtual void OnMessage(WebSocketMessage message)
+        {
         }
 
         protected virtual async void OnDisconnected(WebSocketCloseCode closecode)
@@ -143,7 +145,7 @@ namespace ClaraMundi
             {
                 if (debugLog) Debug.Log($"{Label} Disconnected abnormally, reconnecting...");
                 await Task.Delay(1000);
-                await websocket.Connect();
+                Connect();
                 return;
             }
 
