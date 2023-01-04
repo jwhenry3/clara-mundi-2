@@ -902,6 +902,10 @@
       <Project>{583450a6-1abc-3efc-de9f-320cb2945529}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
+    <ProjectReference Include="GameCreator.Editor.Core.csproj">
+      <Project>{1fe64f13-be80-2a62-268d-ea30e3d459f8}</Project>
+      <Name>GameCreator.Editor.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{686a1bd9-51cc-dfee-eecd-a582294ed2e9}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
@@ -946,6 +950,10 @@
       <Project>{018c4f60-a1cd-6589-857c-96f4a6f5499b}</Project>
       <Name>Unity.Services.Core.Environments</Name>
     </ProjectReference>
+    <ProjectReference Include="GameCreator.Runtime.Core.csproj">
+      <Project>{a726c981-40ba-83c5-3a20-1f7ccd6307b3}</Project>
+      <Name>GameCreator.Runtime.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
       <Project>{434cc59d-d150-eb95-bb01-5c3160e083a4}</Project>
       <Name>Unity.Timeline.Editor</Name>
@@ -965,14 +973,6 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="GameCreator.Editor.Core.csproj">
-      <Project>{1fe64f13-be80-2a62-268d-ea30e3d459f8}</Project>
-      <Name>GameCreator.Editor.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="GameCreator.Runtime.Core.csproj">
-      <Project>{a726c981-40ba-83c5-3a20-1f7ccd6307b3}</Project>
-      <Name>GameCreator.Runtime.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
