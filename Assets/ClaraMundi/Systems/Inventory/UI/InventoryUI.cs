@@ -73,9 +73,8 @@ namespace ClaraMundi
                 }
                 var instance = Instantiate(ItemNodePrefab, parent, false);
                 instance.ShowEquippedStatus = true;
-                instance.ItemInstance = itemInstance;
+                instance.ItemInstanceId = itemInstance.ItemInstanceId;
                 instance.SetOwner(owner);
-                instance.Initialize();
                 instance.OnDoubleClick += OnUseOrEquipItem;
             }
         }

@@ -66,10 +66,12 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\MasterServerTrigger.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\ShootOnClick.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\ComputedStats.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemRepo.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\Client.cs" />
      <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
@@ -91,6 +93,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemStorage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\RepoManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Account.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
@@ -107,6 +110,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatMessage.cs" />
      <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\ConnectedPlayerManager.cs" />
@@ -130,6 +134,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
+     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Character.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Http\UrlManager.cs" />
@@ -151,6 +156,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\DialogueRepo.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
      <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
@@ -177,6 +183,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstanceFactory.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
@@ -190,12 +197,8 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\GC\CameraManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMoveController.cs" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>
      </Reference>
@@ -852,6 +855,10 @@
       <Project>{de1e1712-a2ac-e169-e8c0-2802949dd181}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Player.csproj">
+      <Project>{8ff3a7d1-fbac-49c4-3048-e5a051616564}</Project>
+      <Name>Unity.Animation.Rigging.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Player.csproj">
       <Project>{a12e5f32-3d85-966f-5ac0-ff192031ac89}</Project>
       <Name>Unity.Mathematics.Player</Name>
@@ -879,6 +886,10 @@
     <ProjectReference Include="Unity.VisualScripting.State.Player.csproj">
       <Project>{1c978afa-d9ec-0b10-c7ad-1daa22a81d4d}</Project>
       <Name>Unity.VisualScripting.State.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameCreator.Runtime.Core.Player.csproj">
+      <Project>{16fdafe5-b4f3-54ee-7b53-3d8cc7a6f291}</Project>
+      <Name>GameCreator.Runtime.Core.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

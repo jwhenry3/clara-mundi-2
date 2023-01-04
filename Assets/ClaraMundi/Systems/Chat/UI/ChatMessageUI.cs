@@ -101,7 +101,7 @@ namespace ClaraMundi
 
         private void ShowTooltip(string itemOrInstanceId)
         {
-            ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, itemOrInstanceId);
+                ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, itemOrInstanceId);
         }
     }
 }

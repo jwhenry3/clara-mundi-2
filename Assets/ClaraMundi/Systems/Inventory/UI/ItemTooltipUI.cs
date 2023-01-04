@@ -33,6 +33,7 @@ namespace ClaraMundi
             UpdateModifications();
             UpdateEquipped();
         }
+
         public void SetItem(Item item)
         {
             ItemInstance = null;
@@ -52,14 +53,15 @@ namespace ClaraMundi
             EquippedTooltip.gameObject.SetActive(false);
             if (!Item.Equippable) return;
             var equippedSlots = PlayerManager.Instance.LocalPlayer.Equipment.EquippedItems;
-            var equipped = equippedSlots.ContainsKey(Item.EquipmentSlot)
+            int equipped = equippedSlots.ContainsKey(Item.EquipmentSlot)
                 ? equippedSlots[Item.EquipmentSlot]
-                : "";
+                : 0;
             if (ItemInstance != null && equipped == ItemInstance.ItemInstanceId) return;
-            if (!string.IsNullOrEmpty(equipped))
-                ShowEquippedTooltip(equipped);
+            if (equipped > 0)
+                ShowEquippedTooltip((int)equipped);
         }
-        void ShowEquippedTooltip(string itemInstanceId)
+
+        void ShowEquippedTooltip(int itemInstanceId)
         {
             if (!ItemManager.Instance.ItemsByInstanceId.ContainsKey(itemInstanceId)) return;
             var equippedItemInstance = ItemManager.Instance.ItemsByInstanceId[itemInstanceId];
@@ -80,6 +82,7 @@ namespace ClaraMundi
                 Column1.transform.parent.gameObject.SetActive(hasModifications);
                 return;
             }
+
             ModificationDivider.SetActive(false);
             Column1.transform.parent.gameObject.SetActive(false);
         }
@@ -95,12 +98,14 @@ namespace ClaraMundi
                 var modificationUI = Instantiate(ModificationUIPrefab, count % 2 == 1 ? Column1 : Column2, true);
                 modificationUI.SetValue(stat);
             }
+
             foreach (var attribute in attributes)
             {
                 count++;
                 var modificationUI = Instantiate(ModificationUIPrefab, count % 2 == 1 ? Column1 : Column2, true);
                 modificationUI.SetValue(attribute);
             }
+
             return count;
         }
     }

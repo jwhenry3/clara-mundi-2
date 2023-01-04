@@ -89,7 +89,7 @@ namespace ClaraMundi
             if (ChatMessageContainer == null) return;
             if (ChatMessageContainer.childCount <= 99) return;
             // remove the oldest first
-            Destroy(ChatMessageContainer.GetChild(0));
+            Destroy(ChatMessageContainer.GetChild(0).gameObject);
             // recurse until no longer out of bounds
             ClearOutOfBounds();
         }

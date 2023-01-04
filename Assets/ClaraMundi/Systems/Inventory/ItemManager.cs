@@ -8,9 +8,9 @@ namespace ClaraMundi
     public class ItemManager : MonoBehaviour
     {
         public static ItemManager Instance;
-        public static event Action<SyncDictionaryOperation, string, ItemInstance, bool> ItemChange;
+        public static event Action<SyncDictionaryOperation, int, ItemInstance, bool> ItemChange;
 
-        public readonly Dictionary<string, ItemInstance> ItemsByInstanceId = new();
+        public readonly Dictionary<int, ItemInstance> ItemsByInstanceId = new();
         public readonly Dictionary<string, Dictionary<string, ItemStorage>> StorageByEntityAndId = new();
 
         private void Awake()
@@ -41,7 +41,7 @@ namespace ClaraMundi
             storage.PrivateItems.OnChange -= OnChange;
         }
         
-        public void OnChange(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
+        public void OnChange(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
         {
             if (op == SyncDictionaryOperation.Add)
             {
@@ -70,7 +70,7 @@ namespace ClaraMundi
                 return StorageByEntityAndId[instance.CharacterId][instance.StorageId];
             return null;
         }
-        public ItemInstance GetItemByInstanceId(string itemInstanceId)
+        public ItemInstance GetItemByInstanceId(int itemInstanceId)
         {
             return ItemsByInstanceId.ContainsKey(itemInstanceId) ? ItemsByInstanceId[itemInstanceId] : null;
         }

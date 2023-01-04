@@ -858,6 +858,10 @@
       <Project>{940cbcb7-89de-99fa-96bb-1ea80f988fa5}</Project>
       <Name>Unity.Collections</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Editor.csproj">
+      <Project>{267d1b68-2ac0-199c-1d1c-ff8bb836e7ec}</Project>
+      <Name>Unity.Animation.Rigging.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{fac763de-b880-7fdb-e94c-ba0e451813f2}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
@@ -910,6 +914,10 @@
       <Project>{35e318f7-aa6a-41c9-ffd7-657246beb012}</Project>
       <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.csproj">
+      <Project>{8edc68aa-8276-61f4-f42d-16024c9aea03}</Project>
+      <Name>Unity.Animation.Rigging</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{55d9e1f3-ec3a-089b-ae6d-867dca9df752}</Project>
       <Name>Unity.Mathematics</Name>
@@ -957,6 +965,14 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameCreator.Editor.Core.csproj">
+      <Project>{1fe64f13-be80-2a62-268d-ea30e3d459f8}</Project>
+      <Name>GameCreator.Editor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameCreator.Runtime.Core.csproj">
+      <Project>{a726c981-40ba-83c5-3a20-1f7ccd6307b3}</Project>
+      <Name>GameCreator.Runtime.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

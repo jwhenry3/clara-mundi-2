@@ -74,7 +74,7 @@ namespace ClaraMundi
             }
         }
         
-        private void OnItemChange(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
+        private void OnItemChange(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
         {
             if (!asServer) return;
             if (itemInstance == null) return;

@@ -8,7 +8,7 @@ namespace ClaraMundi
     {
         private void OnEnable()
         {
-            EventSystem.current.SetSelectedGameObject(gameObject);
+            // EventSystem.current.SetSelectedGameObject(gameObject);
         }
     }
 }

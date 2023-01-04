@@ -66,10 +66,12 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\MasterServerTrigger.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
+     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\Dialogue.cs" />
      <Compile Include="Assets\YAFUI\Demo\Scripts\ShootOnClick.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\ComputedStats.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemRepo.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\Client.cs" />
      <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
@@ -91,6 +93,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemStorage.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\RepoManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Account.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
@@ -107,6 +110,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatMessage.cs" />
      <Compile Include="Assets\FishNet\Upgrading\MirrorUpgrade.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Connection\ConnectedPlayerManager.cs" />
@@ -130,6 +134,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
+     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Lobby\Character.cs" />
      <Compile Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts\FlexibleDraggableObject.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Http\UrlManager.cs" />
@@ -151,6 +156,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Dialogue\DialogueRepo.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
      <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
      <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
@@ -177,6 +183,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstanceFactory.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
      <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
@@ -190,12 +197,8 @@
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
-     <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
-     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\GC\CameraManager.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMoveController.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
@@ -209,7 +212,7 @@
      <None Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle1" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_store" />
-     <Folder Include="Library\PackageCache\com.unity.test-framework@1.1.31" />
+     <Folder Include="Library\PackageCache\com.unity.test-framework@1.1.33" />
      <Folder Include="Library\PackageCache\com.unity.sysroot@2.0.4" />
      <None Include="Library\PackageCache\com.unity.modules.screencapture@1.0.0\package.json" />
      <Folder Include="Assets\HONETi\flat_gui_elements\icons_ items" />
@@ -227,6 +230,7 @@
      <None Include="Library\PackageCache\com.unity.inputsystem@1.4.4\package.json" />
      <None Include="Library\PackageCache\com.unity.modules.ai@1.0.0\package.json" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Potion" />
+     <None Include="Library\PackageCache\com.unity.animation.rigging@1.1.1\package.json" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\xdiff.ko.txt" />
      <Folder Include="Assets\JsonDotNet\Assemblies\Standalone" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button" />
@@ -306,6 +310,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\plastic-gui.ko.txt" />
      <None Include="Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@2.0.3\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_arrow" />
+     <Folder Include="Library\PackageCache\com.unity.animation.rigging@1.1.1" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_weather" />
      <Folder Include="Library\PackageCache\com.unity.collections@1.4.0\Unity.Collections.LowLevel.ILSupport" />
      <Folder Include="Assets\ClaraMundi\UI\Animations\Scale" />
@@ -354,6 +359,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\package.json" />
      <None Include="Assets\FishNet\VERSION.txt" />
      <Folder Include="Assets\ClaraMundi\Systems\Party" />
+     <Folder Include="Assets\ClaraMundi\Systems\GC" />
      <Folder Include="Library\PackageCache\com.unity.timeline@1.6.4" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\images.zh-Hans.txt" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner1_square2" />
@@ -430,7 +436,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\mergetool.en.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\semantic.ja.txt" />
      <Folder Include="Assets\CleanFlatIcon\png_128" />
-     <None Include="Library\PackageCache\com.unity.test-framework@1.1.31\package.json" />
+     <None Include="Library\PackageCache\com.unity.test-framework@1.1.33\package.json" />
      <Folder Include="Library\PackageCache\com.unity.modules.unityanalytics@1.0.0" />
      <Folder Include="Assets\HONETi\flat_gui_elements\loading_progress_bars" />
      <Folder Include="Library\PackageCache\com.unity.modules.physics@1.0.0" />
@@ -599,6 +605,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\clientcommon.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\images.es.txt" />
      <Folder Include="Assets\YAFUI\Animations" />
+     <Folder Include="Assets\ClaraMundi\Systems\World\Overworld" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_oval3" />
      <Folder Include="Assets\ProceduralUIImage\Demo\Icons" />
      <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_SDF_SSD.cginc" />
@@ -1510,6 +1517,10 @@
       <Project>{940cbcb7-89de-99fa-96bb-1ea80f988fa5}</Project>
       <Name>Unity.Collections</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Editor.csproj">
+      <Project>{267d1b68-2ac0-199c-1d1c-ff8bb836e7ec}</Project>
+      <Name>Unity.Animation.Rigging.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{fac763de-b880-7fdb-e94c-ba0e451813f2}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
@@ -1562,6 +1573,10 @@
       <Project>{35e318f7-aa6a-41c9-ffd7-657246beb012}</Project>
       <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.csproj">
+      <Project>{8edc68aa-8276-61f4-f42d-16024c9aea03}</Project>
+      <Name>Unity.Animation.Rigging</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
       <Project>{55d9e1f3-ec3a-089b-ae6d-867dca9df752}</Project>
       <Name>Unity.Mathematics</Name>
@@ -1609,6 +1624,14 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameCreator.Editor.Core.csproj">
+      <Project>{1fe64f13-be80-2a62-268d-ea30e3d459f8}</Project>
+      <Name>GameCreator.Editor.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="GameCreator.Runtime.Core.csproj">
+      <Project>{a726c981-40ba-83c5-3a20-1f7ccd6307b3}</Project>
+      <Name>GameCreator.Runtime.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,16 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace ClaraMundi
 {
     public class ItemTooltipUtils
     {
+        public static void ShowTooltip(ItemTooltipUI Tooltip, RectTransform rectTransform, int instanceId)
+        {
+            Tooltip.SetItemInstance(ItemManager.Instance.ItemsByInstanceId[instanceId]);
+            Display(Tooltip, rectTransform);
+        }
         public static void ShowTooltip(ItemTooltipUI Tooltip, RectTransform rectTransform, string itemOrInstanceId)
         {
-            if (!ItemManager.Instance.ItemsByInstanceId.ContainsKey(itemOrInstanceId))
-                Tooltip.SetItem(RepoManager.Instance.ItemRepo.GetItem(itemOrInstanceId));
+            
+            var instanceId = Convert.ToInt32(itemOrInstanceId);
+            if (instanceId > 0)
+                Tooltip.SetItemInstance(ItemManager.Instance.ItemsByInstanceId[instanceId]);
             else
-                Tooltip.SetItemInstance(ItemManager.Instance.ItemsByInstanceId[itemOrInstanceId]);
-            // If we cannot find an item to display, don't display
+                Tooltip.SetItem(RepoManager.Instance.ItemRepo.GetItem(itemOrInstanceId));
+            Display(Tooltip, rectTransform);
+        }
+
+        private static void Display(ItemTooltipUI Tooltip, RectTransform rectTransform)
+        {
             if (Tooltip.Item == null)
             {
                 Tooltip.gameObject.SetActive(false);

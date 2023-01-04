@@ -33,14 +33,6 @@ namespace ClaraMundi
             InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
         }
 
-        private void Update()
-        {
-            if (EventSystem.current.currentSelectedGameObject != null) return;
-            if (ActiveWindow == null) return;
-            if (ActiveWindow.gameObject.activeInHierarchy)
-                ActiveWindow.SelectFirstInteractable();
-        }
-
 
         private void OnInventory(InputAction.CallbackContext context)
         {

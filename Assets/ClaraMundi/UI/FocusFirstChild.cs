@@ -6,7 +6,7 @@ namespace ClaraMundi
 {
     public class FocusFirstChild : MonoBehaviour
     {
-        private void Update()
+        private void OnEnable()
         {
             if (transform.childCount == 0) return;
             if (EventSystem.current.currentSelectedGameObject == gameObject)

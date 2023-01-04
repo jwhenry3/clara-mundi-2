@@ -5,10 +5,10 @@ namespace ClaraMundi
 {
     public class EquipmentController : PlayerController
     {
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)] public readonly SyncDictionary<string, string> EquippedItems = new();
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)] public readonly SyncDictionary<string, int> EquippedItems = new();
         [SyncObject] public readonly SyncDictionary<string, string> EquippedItemIds = new();
 
-        public bool ServerEquip(string itemInstanceId, bool reportErrors = false)
+        public bool ServerEquip(int itemInstanceId, bool reportErrors = false)
         {
             if (!IsServer) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
@@ -54,7 +54,7 @@ namespace ClaraMundi
             instance.IsEquipped = false;
             if (equippedItemStorage != null)
                 equippedItemStorage.UpdateItemInstance(instance);
-            EquippedItems[item.EquipmentSlot] = null;
+            EquippedItems.Remove(item.EquipmentSlot);
             EquippedItemIds[item.EquipmentSlot] = null;
 
             player.Stats.UpdateStatModifications(item.StatModifications, false);
@@ -63,10 +63,9 @@ namespace ClaraMundi
             return true;
         }
 
-        public bool ServerUnequip(string itemInstanceId)
+        public bool ServerUnequip(int itemInstanceId)
         {
             if (!IsServer) return false;
-            if (string.IsNullOrEmpty(itemInstanceId)) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
             if (instance.CharacterId != player.entityId) return false;

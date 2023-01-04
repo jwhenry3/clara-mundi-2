@@ -3,15 +3,17 @@
 namespace ClaraMundi
 {
     [Serializable]
-    public class ItemInstance 
+    public class ItemInstance
     {
-        public string CharacterId;
-        public string ItemId;
-        public string ItemInstanceId;
-        public int Quantity;
+        // runtime id to identify the instance
+        public int ItemInstanceId;
+        
         public string StorageId;
-
+        public string CharacterId;
+        
+        public string ItemId;
+        
+        public int Quantity;
         public bool IsEquipped;
-
     }
 }

@@ -31,7 +31,7 @@ namespace ClaraMundi
 
         private Button Button;
         private MoveToFront MoveToFront;
-        public string ItemInstanceId;
+        public int ItemInstanceId;
         private Image Background;
         private float checkTick;
         private bool hasItem;
@@ -66,6 +66,10 @@ namespace ClaraMundi
 
         public void SetOwner(OwningEntityHolder _owner)
         {
+            if (owner != null)
+            {
+                owner.EntityChange -= OnOwnerEntityChange;
+            }
             owner = _owner;
             owner.EntityChange += OnOwnerEntityChange;
             OnOwnerEntityChange();
@@ -82,22 +86,12 @@ namespace ClaraMundi
             ItemStorage = GetItemStorage();
             if (ItemStorage == null) return;
             EntityChange?.Invoke();
-            Initialize();
+            updateQueued = true;
         }
 
-        public void Initialize()
+        private void OnInstanceUpdate(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
         {
-            var lastItem = ItemInstanceId;
-            ItemInstanceId = ItemInstance?.ItemInstanceId;
-            if (ItemInstance != null)
-                Item = ItemRepo.GetItem(ItemInstance.ItemId);
-            if (lastItem != ItemInstanceId)
-                updateQueued = true;
-        }
-
-        private void OnInstanceUpdate(SyncDictionaryOperation op, string key, ItemInstance itemInstance, bool asServer)
-        {
-            if (itemInstance != null && ItemInstanceId == itemInstance.ItemInstanceId)
+            if (ItemInstanceId == key)
                 updateQueued = true;
         }
 
@@ -137,6 +131,7 @@ namespace ClaraMundi
                 UpdateItem();
                 updateQueued = false;
             }
+
             if (EquippedStatus != null)
                 EquippedStatus.SetActive(ShowEquippedStatus && ItemInstance is { IsEquipped: true });
             if (EventSystem.current.currentSelectedGameObject == gameObject)
@@ -150,26 +145,15 @@ namespace ClaraMundi
             ItemStorage = GetItemStorage();
             if (ItemStorage == null) return;
             EntityChange?.Invoke();
-            Initialize();
         }
 
         private void UpdateItem()
         {
-            if (ItemInstanceId == null)
-            {
-                ShowNoItem();
-                return;
-            }
-
+            Debug.Log(ItemInstanceId);
             if (ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance))
-            {
-                Item = ItemRepo.GetItem(ItemInstance.ItemId);
                 ShowItemInstance();
-            }
             else
-            {
                 ShowNoItem();
-            }
         }
 
         public void ShowNoItem()
@@ -209,6 +193,8 @@ namespace ClaraMundi
         private void ShowItemInstance()
         {
             if (ItemInstance == null) return;
+            Debug.Log(ItemInstance.ItemInstanceId + ", " + ItemInstance.ItemId);
+            Item = ItemRepo.GetItem(ItemInstance.ItemId);
             Icon.sprite = Item.Icon;
             Icon.color = new Color(255, 255, 255, 1);
             hasItem = true;
@@ -227,8 +213,9 @@ namespace ClaraMundi
                     Quantity.text = "";
                 Quantity.enabled = true;
             }
-        
-            if (Tooltip != null && Tooltip.ItemInstance != null && Tooltip.ItemInstance.ItemInstanceId == ItemInstance.ItemInstanceId)
+
+            if (Tooltip != null && Tooltip.ItemInstance != null &&
+                Tooltip.ItemInstance.ItemInstanceId == ItemInstance.ItemInstanceId)
                 Tooltip.SetItemInstance(ItemInstance);
         }
 
@@ -276,13 +263,14 @@ namespace ClaraMundi
             if (EventSystem.current.currentSelectedGameObject != gameObject)
                 EventSystem.current.SetSelectedGameObject(gameObject);
         }
+
         public void OnPointerExit(PointerEventData eventData)
         {
             if (!Button.interactable) return;
             if (EventSystem.current.currentSelectedGameObject == gameObject)
                 EventSystem.current.SetSelectedGameObject(null);
         }
-        
+
         public void OpenContextMenu()
         {
             if (MoveToFront != null)
@@ -292,14 +280,15 @@ namespace ClaraMundi
             ContextMenu.SetItemActive("Drop", Item.Droppable && ShowEquippedStatus);
             ContextMenu.SetItemActive("Use", Item.Type == ItemType.Consumable && ShowEquippedStatus);
             var isEquipped = ItemInstance.IsEquipped;
-            ContextMenu.ChangeLabelOf("Equip", isEquipped? "Unequip" : "Equip");
+            ContextMenu.ChangeLabelOf("Equip", isEquipped ? "Take Off" : "Equip");
             ContextMenu.SetItemActive("Equip", Item.Equippable);
             ContextMenu.SetItemActive("Split", ItemInstance.Quantity > 1 && ShowEquippedStatus);
             ContextMenu.gameObject.SetActive(true);
             ContextMenu.transform.position = transform.position;
-            
+
             ContextMenuHandler.Instance.ItemMenu.SelectFirstElement();
         }
+
         public void CloseContextMenu()
         {
             ContextMenuHandler.Instance.ContextualItem = null;

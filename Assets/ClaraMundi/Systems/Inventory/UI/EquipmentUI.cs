@@ -40,7 +40,7 @@ namespace ClaraMundi
 
         public void Clear()
         {
-            foreach (ItemUI item  in EquipmentContainer.GetComponentsInChildren<ItemUI>())
+            foreach (ItemUI item in EquipmentContainer.GetComponentsInChildren<ItemUI>())
                 Destroy(item.gameObject);
         }
 
@@ -64,7 +64,7 @@ namespace ClaraMundi
                 _ => null
             };
         }
-        
+
         public void Populate()
         {
             if (player == null) return;
@@ -72,19 +72,18 @@ namespace ClaraMundi
                 LoadItem(GetSlotContainer(kvp.Key), kvp.Value);
         }
 
-        private void LoadItem(Transform container, string itemInstanceId)
+        private void LoadItem(Transform container, int itemInstanceId)
         {
             if (container == null) return;
             // Remove extra ItemUI instances
             foreach (ItemUI child in container.GetComponentsInChildren<ItemUI>())
                 child.ShowNoItem();
-            if (string.IsNullOrEmpty(itemInstanceId)) return;
+            if (itemInstanceId == 0) return;
             var instance = Instantiate(ItemNodePrefab, container, false);
             instance.transform.localPosition = Vector3.zero;
             instance.ShowEquippedStatus = false;
-            instance.ItemInstance = ItemManager.Instance.ItemsByInstanceId[itemInstanceId];
+            instance.ItemInstanceId = itemInstanceId;
             instance.SetOwner(owner);
-            instance.Initialize();
             instance.OnDoubleClick += OnUnequip;
         }
 
@@ -94,6 +93,7 @@ namespace ClaraMundi
             {
                 player.Equipment.EquippedItems.OnChange -= OnEquipChange;
             }
+
             base.OnPlayerChange(_player);
             if (entity == null) return;
             owner.SetEntity(_player.Entity);
@@ -108,7 +108,7 @@ namespace ClaraMundi
             base.OnDestroy();
         }
 
-        private void OnEquipChange(SyncDictionaryOperation op, string key, string itemInstanceId, bool asServer)
+        private void OnEquipChange(SyncDictionaryOperation op, string key, int itemInstanceId, bool asServer)
         {
             if (asServer) return;
             Transform container = GetSlotContainer(key);
@@ -141,7 +141,6 @@ namespace ClaraMundi
             var item = GetComponentInChildren<ItemUI>();
             if (item != null)
                 EventSystem.current.SetSelectedGameObject(item.gameObject);
-                
         }
     }
 }
