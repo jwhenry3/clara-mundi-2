@@ -1,27 +1,27 @@
 ﻿using System;
 using GameCreator.Runtime.Cameras;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace ClaraMundi
 {
     public class CameraZoom : MonoBehaviour
     {
-
-        public InputActionAsset InputActionAsset;
         public ShotCamera PlayerCamera;
         public MainCamera MainCamera;
         private Camera Camera;
 
         private InputAction InputAction;
 
-        private float zoomValue;
+        public float zoomValue = 5;
 
         private void Awake()
         {
             Camera = MainCamera.GetComponent<Camera>();
-            InputAction = InputActionAsset.FindActionMap("Player").FindAction("Look");
+            InputAction = InputManager.Instance.World.FindAction("Zoom");
             InputAction.performed += OnPerform;
+            Camera.orthographicSize = zoomValue;
         }
 
         private void OnDestroy()
@@ -31,10 +31,11 @@ namespace ClaraMundi
 
         void OnPerform(InputAction.CallbackContext context)
         {
+            var value = context.ReadValue<Vector2>().normalized.y * 0.25f;
             // alter camera orthographic size if player shot is active
             if (MainCamera.Transition.CurrentShotCamera == PlayerCamera)
             {
-                zoomValue += context.ReadValue<float>() / 4;
+                zoomValue = Mathf.Clamp(zoomValue - value, 0, 7);
                 Camera.orthographicSize = zoomValue;
             }
             else

@@ -54,6 +54,7 @@ namespace ClaraMundi
             NetStarted?.Invoke();
             Body.IsPlayer = true;
             CameraManager.Instance.UsePlayerCamera();
+            InputManager.Instance.World.Enable();
         }
 
         private void OnDestroy()
@@ -65,7 +66,11 @@ namespace ClaraMundi
             }
 
             if (Body.IsPlayer)
+            {
                 CameraManager.Instance.UseLoginCamera();
+                InputManager.Instance.World.Disable();
+            }
+
             Entity.OnStarted -= OnNetStarted;
             if (PlayerManager.Instance.Players.ContainsKey(Entity.entityId))
                 PlayerManager.Instance.Players.Remove(Entity.entityId);

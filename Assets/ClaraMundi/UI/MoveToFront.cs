@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-    public class MoveToFront : MonoBehaviour, IPointerDownHandler
+    public class MoveToFront : HoverDisablesWorldInput, IPointerDownHandler
     {
         public Transform MovingObject;
 
