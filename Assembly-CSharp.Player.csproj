@@ -181,6 +181,7 @@
      <Compile Include="Assets\ClaraMundi\UI\FormElement.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
      <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMove.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\Quest.cs" />
@@ -199,7 +200,7 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatConfiguration.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMove.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Input\CameraZoom.cs" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.dll</HintPath>
      </Reference>
@@ -402,19 +403,7 @@
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\Variations\mono\Managed\UnityEngine.XRModule.dll</HintPath>
      </Reference>
      <Reference Include="Newtonsoft.Json">
-     <HintPath>D:\My project\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\AOT\Newtonsoft.Json.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.OdinInspector.Attributes">
-     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
-     </Reference>
-     <Reference Include="Sirenix.Serialization.Config">
-     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-     </Reference>
-     <Reference Include="FishNet.CodeAnalysis">
-     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+     <HintPath>D:\My project\Assets\JsonDotNet\Assemblies\Standalone\Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Unsafe">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
@@ -422,11 +411,20 @@
      <Reference Include="Unity.Burst.Cecil.Mdb">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
+     <Reference Include="Sirenix.OdinInspector.Attributes">
+     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Burst.Cecil.Pdb">
+     <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.Burst.Cecil">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
      <HintPath>D:\My project\Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Serialization.Config">
+     <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Serialization.dll</HintPath>
@@ -436,6 +434,9 @@
      </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>D:\My project\Assets\Plugins\Sirenix\Assemblies\NoEmitAndNoEditor\Sirenix.Utilities.dll</HintPath>
+     </Reference>
+     <Reference Include="FishNet.CodeAnalysis">
+     <HintPath>D:\My project\Assets\FishNet\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -805,22 +806,6 @@
      </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.InputSystem.Player.csproj">
-      <Project>{1d498d04-3f59-bd23-9eb2-d7c061bbd532}</Project>
-      <Name>Unity.InputSystem.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{37fc7541-84ca-b68e-bbc7-3a725efbfeb2}</Project>
-      <Name>UnityEngine.UI.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="endel.nativewebsocket.Player.csproj">
-      <Project>{df959369-28d3-d39c-51f3-47b5dae4ee4a}</Project>
-      <Name>endel.nativewebsocket.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="FishNet.Runtime.Player.csproj">
-      <Project>{01043ff0-d26f-8eb5-771c-f421c076ca1f}</Project>
-      <Name>FishNet.Runtime.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="FishNet.Plugins.ColliderRollback.Generated.Player.csproj">
       <Project>{63ffe8e8-06b9-8f2f-117a-7b8e6c3ed697}</Project>
       <Name>FishNet.Plugins.ColliderRollback.Generated.Player</Name>
@@ -841,33 +826,37 @@
       <Project>{15132e8d-15d8-df73-8d52-03e0a25e1fda}</Project>
       <Name>Unity.VisualScripting.Flow.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Player.csproj">
-      <Project>{e2fba0a8-33ca-19b9-b6da-6425cd522c86}</Project>
-      <Name>Unity.Services.Core.Player</Name>
+    <ProjectReference Include="Unity.InputSystem.Player.csproj">
+      <Project>{1d498d04-3f59-bd23-9eb2-d7c061bbd532}</Project>
+      <Name>Unity.InputSystem.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.UI.Player.csproj">
+      <Project>{37fc7541-84ca-b68e-bbc7-3a725efbfeb2}</Project>
+      <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
       <Project>{de1e1712-a2ac-e169-e8c0-2802949dd181}</Project>
       <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Animation.Rigging.Player.csproj">
-      <Project>{8ff3a7d1-fbac-49c4-3048-e5a051616564}</Project>
-      <Name>Unity.Animation.Rigging.Player</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Player.csproj">
       <Project>{a12e5f32-3d85-966f-5ac0-ff192031ac89}</Project>
       <Name>Unity.Mathematics.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Analytics.Player.csproj">
-      <Project>{2011d216-18a6-cd9f-df63-e7408d988b5d}</Project>
-      <Name>Unity.Services.Core.Analytics.Player</Name>
+    <ProjectReference Include="endel.nativewebsocket.Player.csproj">
+      <Project>{df959369-28d3-d39c-51f3-47b5dae4ee4a}</Project>
+      <Name>endel.nativewebsocket.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="FishNet.Runtime.Player.csproj">
+      <Project>{01043ff0-d26f-8eb5-771c-f421c076ca1f}</Project>
+      <Name>FishNet.Runtime.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Animation.Rigging.Player.csproj">
+      <Project>{8ff3a7d1-fbac-49c4-3048-e5a051616564}</Project>
+      <Name>Unity.Animation.Rigging.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Burst.Player.csproj">
       <Project>{2ef9614d-053a-8bd3-9ecd-34e21a744026}</Project>
       <Name>Unity.Burst.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.Services.Core.Environments.Player.csproj">
-      <Project>{39dfb7a5-77b5-83ea-cda0-1b692339ea53}</Project>
-      <Name>Unity.Services.Core.Environments.Player</Name>
     </ProjectReference>
     <ProjectReference Include="GameCreator.Runtime.Core.Player.csproj">
       <Project>{16fdafe5-b4f3-54ee-7b53-3d8cc7a6f291}</Project>

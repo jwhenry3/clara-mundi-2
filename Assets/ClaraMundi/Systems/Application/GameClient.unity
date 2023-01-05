@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159970280}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 1, z: -4}
+  m_LocalPosition: {x: 2, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -240,81 +240,41 @@ MonoBehaviour:
     m_UpdateTime: 0
   m_Clipping: 0
   m_ShotType:
-    rid: 3403834102650503278
+    rid: 3403834128594108465
   references:
     version: 2
     RefIds:
-    - rid: 3403834102650503278
-      type: {class: ShotTypeThirdPerson, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
+    - rid: 3403834128594108465
+      type: {class: ShotTypeFollow, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
       data:
         m_ShotSystemLook:
           m_IsActive: 1
           m_LookTarget:
             m_Property:
-              rid: 3403834102650503279
+              rid: 3403834128594108466
           m_LookOffset:
             m_Property:
-              rid: 3403834102650503287
-        m_ShotSystemZoom:
+              rid: 3403834128594108474
+        m_ShotSystemFollow:
           m_IsActive: 1
-          m_TargetZoom: 0.5
-          m_MinDistance: 2
-          m_SmoothTime: 0.1
-          m_InputZoom:
-            m_Input:
-              rid: 3403834102650503281
-        m_ShotSystemOrbit:
-          m_IsActive: 1
-          m_OrbitTarget:
+          m_Follow:
             m_Property:
-              rid: 3403834102650503282
-          m_OrbitOffset:
+              rid: 3403834128594108468
+          m_Distance:
             m_Property:
-              rid: 3403834102650503283
-          m_InputOrbit:
-            m_Input:
-              rid: 3403834119174750212
-          m_InputSensitivityX:
-            m_Property:
-              rid: 3403834102650503285
-          m_InputSensitivityY:
-            m_Property:
-              rid: 3403834102650503286
-          m_MaxPitch: 100
-          m_MaxRadius: 5
-          m_SmoothTime: 0.15
-          m_AlignWithTarget: 0
-          m_AlignDelay: 3
-          m_AlignSmoothTime: 3
-    - rid: 3403834102650503279
+              rid: 3403834128594108469
+    - rid: 3403834128594108466
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834102650503281
-      type: {class: InputValueVector2Scroll, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834102650503282
+    - rid: 3403834128594108468
       type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834102650503283
-      type: {class: GetOffsetLocalTarget, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+    - rid: 3403834128594108469
+      type: {class: GetOffsetVector3, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Offset: {x: 0, y: 0.5, z: 0}
-    - rid: 3403834102650503285
-      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Value: 40
-    - rid: 3403834102650503286
-      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Value: 40
-    - rid: 3403834102650503287
+        m_Offset: {x: -4, y: 4, z: -4}
+    - rid: 3403834128594108474
       type: {class: GetOffsetVector3, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Offset: {x: 0, y: 1, z: 0}
-    - rid: 3403834119174750212
-      type: {class: InputValueVector2InputAction, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Input:
-          m_InputAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-          m_ActionMap: Player
-          m_Action: Look
 --- !u!1 &1748470430
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,10 +385,10 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -100
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:

@@ -10,13 +10,18 @@ namespace ClaraMundi
         private Vector3 currentPosition;
         private float updateTick;
 
+        private PointerEventData lastEvent;
+
         private void Update()
         {
-            updateTick += Time.deltaTime;
-            if (updateTick < 1) return;
-            updateTick = 0;
-            if (isPressing && currentPosition != Vector3.zero)
-                PlayerManager.Instance.LocalPlayer.Movement.UpdateDestination(currentPosition);
+            if (updateTick > 0)
+                updateTick -= Time.deltaTime;
+            if (updateTick <= 0)
+            {
+                updateTick = 0;
+                if (lastEvent != null)
+                    PlayerManager.Instance.LocalPlayer.Movement.UpdateDestination(lastEvent.pointerCurrentRaycast.worldPosition);
+            }
         }
 
 
@@ -24,7 +29,7 @@ namespace ClaraMundi
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
             isPressing = true;
-            PlayerManager.Instance.LocalPlayer.Movement.UpdateDestination(eventData.pointerCurrentRaycast.worldPosition);
+            lastEvent = eventData;
             Cursor.lockState = CursorLockMode.Confined;
         }
 
@@ -32,14 +37,15 @@ namespace ClaraMundi
         {
             if (eventData.button != PointerEventData.InputButton.Left) return;
             isPressing = false;
-            currentPosition = Vector3.zero;
+            lastEvent = null;
             Cursor.lockState = CursorLockMode.None;
         }
 
         public void OnPointerMove(PointerEventData eventData)
         {
-            if (isPressing)
-                currentPosition = eventData.pointerCurrentRaycast.worldPosition;
+            if (!isPressing || updateTick != 0) return;
+            updateTick = 0.5f;
+            lastEvent = eventData;
         }
     }
 }

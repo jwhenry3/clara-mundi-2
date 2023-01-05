@@ -132,8 +132,6 @@ namespace ClaraMundi
                 updateQueued = false;
             }
 
-            if (EquippedStatus != null)
-                EquippedStatus.SetActive(ShowEquippedStatus && ItemInstance is { IsEquipped: true });
             if (EventSystem.current.currentSelectedGameObject == gameObject)
                 ShowTooltip();
             else

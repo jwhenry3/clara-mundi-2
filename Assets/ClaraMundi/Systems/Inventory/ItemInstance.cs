@@ -7,12 +7,12 @@ namespace ClaraMundi
     {
         // runtime id to identify the instance
         public int ItemInstanceId;
-        
+
         public string StorageId;
         public string CharacterId;
-        
+
         public string ItemId;
-        
+
         public int Quantity;
         public bool IsEquipped;
     }
