@@ -105,9 +105,16 @@ namespace ClaraMundi
             NetworkObject nob = _networkManager.GetPooledInstantiated(_playerPrefab, true);
             character.name = character.name.ToLower();
             var player = nob.GetComponent<Player>();
+            foreach (var characterClass in character.characterClasses)
+            {
+                player.Entity.Classes.Add(characterClass.classId, characterClass);
+                if (characterClass.isCurrent)
+                    player.ServerChangeClass(characterClass.classId);
+            }
+            // reset list so it does not get synced to all clients
+            character.characterClasses.Clear();
             player.Entity.Character = character;
-            player.Stats.Level = character.level;
-            player.Stats.Experience = character.exp;
+
             player.Entity.entityName = character.name.ToLower();
             var rotation = Quaternion.identity;
             rotation.y = character.rotation;

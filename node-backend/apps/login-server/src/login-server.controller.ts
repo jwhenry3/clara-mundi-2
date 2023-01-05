@@ -86,6 +86,7 @@ export class LoginServerController {
     const result = await this.character.getCharacterByAccountAndName(
       accountId,
       name,
+      true,
     )
     if (result.character && isConnectingFlag) {
       result.character.hasConnectedBefore = true
@@ -109,6 +110,7 @@ export class LoginServerController {
       result.character.lastDisconnected = new Date().valueOf()
       await this.character.saveCharacter(result.character)
     }
+
     this.respond(res, this.getStatus(result.reason), result)
   }
 

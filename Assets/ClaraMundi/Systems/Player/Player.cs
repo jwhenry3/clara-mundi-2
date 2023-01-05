@@ -84,5 +84,37 @@ namespace ClaraMundi
         {
             return $"<link=\"player:{characterName}\">{characterName}</link>";
         }
+
+        public void ServerChangeClass(string classId)
+        {
+            if (!Entity.IsServer) return;
+            if (!Entity.Classes.ContainsKey(classId)) return;
+            if (Entity.CurrentClass != null)
+            {
+                Entity.CurrentClass.isCurrent = false;
+                Equipment.ServerUnequipAll();
+                UpdateClass(Entity.CurrentClass.classId);
+            }
+
+            Entity.CurrentClass = Entity.Classes[classId];
+            Entity.CurrentClass.isCurrent = true;
+            Stats.Level = Entity.CurrentClass.level;
+            Stats.Experience = Entity.CurrentClass.exp;
+            UpdateClass(Entity.CurrentClass.classId);
+            Equipment.ServerEquipAll(Entity.CurrentClass.equipment);
+        }
+
+        private void UpdateClass(string classId)
+        {
+            var previous = Entity.Classes[classId];
+            Entity.Classes[classId] = new CharacterClass()
+            {
+                classId = classId,
+                level = previous.level,
+                exp = previous.exp,
+                isCurrent = false,
+                equipment = previous.equipment
+            };
+        }
     }
 }

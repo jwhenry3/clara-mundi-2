@@ -68,6 +68,7 @@ export class CharacterService {
     const characterClass = this.classRepo.create({
       classId: options.startingClass.toLowerCase(),
       character,
+      level: 1,
       isCurrent: true,
     })
     character.characterClasses.push(characterClass)
@@ -111,7 +112,11 @@ export class CharacterService {
       reason: '',
     }
   }
-  async getCharacterByAccountAndName(accountId: string, name: string) {
+  async getCharacterByAccountAndName(
+    accountId: string,
+    name: string,
+    includeClasses: boolean = false,
+  ) {
     const character = await this.findByAccountAndName(accountId, name)
     if (!character) {
       return {
@@ -204,7 +209,17 @@ export class CharacterService {
       )
       .getMany()
   }
-  private findByAccountAndName(accountId: string, name: string) {
+  private findByAccountAndName(
+    accountId: string,
+    name: string,
+    includeClasses = false,
+  ) {
+    if (includeClasses) {
+      return this.repo.findOne({
+        where: { accountId, name },
+        relations: ['characterClasses', 'characterClasses.equipment'],
+      })
+    }
     return this.repo.findOneBy({ accountId, name })
   }
   private findByName(name: string) {

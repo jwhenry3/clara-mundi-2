@@ -8,6 +8,10 @@ namespace ClaraMundi
     {
         [SyncVar]
         public Character Character;
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
+        public readonly SyncDictionary<string, CharacterClass> Classes = new();
+        [SyncVar]
+        public CharacterClass CurrentClass;
         public event Action OnStarted;
         public event Action<string> NameChange;
         [SyncVar(OnChange = nameof(OnNameChange))]
@@ -33,5 +37,6 @@ namespace ClaraMundi
         {
             NameChange?.Invoke(newValue);
         }
+
     }
 }

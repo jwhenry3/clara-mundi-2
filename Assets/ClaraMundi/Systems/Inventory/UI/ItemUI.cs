@@ -215,6 +215,8 @@ namespace ClaraMundi
             if (Tooltip != null && Tooltip.ItemInstance != null &&
                 Tooltip.ItemInstance.ItemInstanceId == ItemInstance.ItemInstanceId)
                 Tooltip.SetItemInstance(ItemInstance);
+            if (EquippedStatus != null)
+                EquippedStatus.SetActive(ItemInstance.IsEquipped);
         }
 
         public void LinkToChat()

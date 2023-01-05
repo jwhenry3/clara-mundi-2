@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClaraMundi
 {
@@ -14,7 +15,7 @@ namespace ClaraMundi
         public float position_y;
         public float position_z;
         public float rotation;
-
+        public string classId;
         public int level;
         public long exp;
 
@@ -22,5 +23,7 @@ namespace ClaraMundi
         public long lastDisconnected;
 
         public bool hasConnectedBefore;
+
+        public List<CharacterClass> characterClasses;
     }
 }

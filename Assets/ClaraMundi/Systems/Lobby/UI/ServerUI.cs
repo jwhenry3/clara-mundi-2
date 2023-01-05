@@ -13,6 +13,7 @@ namespace ClaraMundi
         public void OnClick()
         {
             ServerListUI.Instance.SelectedServer = Server;
+            ServerListUI.Instance.EnterGame();
             
         }
     }

@@ -6222,3 +6222,2167 @@ Domain Reload Profiling:
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (57ms)
 Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 6.22 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.7 KB). Loaded Objects now: 7135.
+Memory consumption went from 289.0 MB to 289.0 MB.
+Total: 24.326900 ms (FindLiveObjects: 0.663900 ms CreateObjectMapping: 0.592200 ms MarkObjects: 23.022000 ms  DeleteObjects: 0.047400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.022014 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc60346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc603404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc603356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc60331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc6025163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc6024873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc6017573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62be63b30 (Unity) MonoBehaviour::AwakeFromLoad
+0x00007ff62be6ea35 (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
+0x00007ff62be797c9 (Unity) Scripting::CreateScriptableObjectWithType
+0x00007ff62b1a4410 (Unity) ScriptableObject_CUSTOM_CreateScriptableObjectInstanceFromType
+0x0000020dc6016dcc (Mono JIT Code) (wrapper managed-to-native) UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
+0x0000020dc6016c33 (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance (System.Type)
+0x0000020dc6016acb (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance<T_REF> ()
+0x0000020dc6016753 (Mono JIT Code) UnityEditor.Tools:get_get ()
+0x0000020dc6016553 (Mono JIT Code) UnityEditor.Tools:get_visibleLayers ()
+0x0000020dc6014c93 (Mono JIT Code) [BoneRendererUtils.cs:121] UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () 
+0x0000020dc5f6f7a5 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf19810 (mono-2.0-bdwgc) [object.c:563] mono_runtime_class_init_full 
+0x00007ffefbe86290 (mono-2.0-bdwgc) [icall-def.h:751] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x0000020dc3f48b52 (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x0000020dc3f48a2b (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x0000020dc3f45f53 (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x0000020dc6001ccb (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be76435 (Unity) ScriptingInvocation::Invoke<void>
+0x00007ff62bfb6ec3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007ff62be7067b (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007ff62be6633d (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.531 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3532ms)
+		BeginReloadAssembly (282ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (14ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (71ms)
+		EndReloadAssembly (3060ms)
+			LoadAssemblies (235ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (767ms)
+			ReleaseScriptCaches (4ms)
+			RebuildScriptCaches (109ms)
+			SetupLoadedEditorAssemblies (1834ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (29ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (131ms)
+				ProcessInitializeOnLoadAttributes (861ms)
+				ProcessInitializeOnLoadMethodAttributes (802ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (55ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 7.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (27.7 KB). Loaded Objects now: 7139.
+Memory consumption went from 289.0 MB to 289.0 MB.
+Total: 28.231700 ms (FindLiveObjects: 0.974500 ms CreateObjectMapping: 0.901100 ms MarkObjects: 26.303900 ms  DeleteObjects: 0.050500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.023103 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.12 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dccf49e3a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dccf4979b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dccf48cbe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dccf4895a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3e55163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3e54873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3da7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dccf49e3a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dccf4979b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dccf48cbe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dccf4895a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3e55163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3e54873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3da7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.719 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3722ms)
+		BeginReloadAssembly (352ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (90ms)
+		EndReloadAssembly (3166ms)
+			LoadAssemblies (258ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (542ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (127ms)
+			SetupLoadedEditorAssemblies (2116ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (130ms)
+				ProcessInitializeOnLoadAttributes (1359ms)
+				ProcessInitializeOnLoadMethodAttributes (593ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (77ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 7.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.6 KB). Loaded Objects now: 7143.
+Memory consumption went from 289.1 MB to 289.0 MB.
+Total: 23.411300 ms (FindLiveObjects: 0.774100 ms CreateObjectMapping: 0.712800 ms MarkObjects: 21.876000 ms  DeleteObjects: 0.046900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.018746 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.03 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d3404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d3356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d07573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc610a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62be63b30 (Unity) MonoBehaviour::AwakeFromLoad
+0x00007ff62be6ea35 (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
+0x00007ff62be797c9 (Unity) Scripting::CreateScriptableObjectWithType
+0x00007ff62b1a4410 (Unity) ScriptableObject_CUSTOM_CreateScriptableObjectInstanceFromType
+0x0000020dc3d06dcc (Mono JIT Code) (wrapper managed-to-native) UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
+0x0000020dc3d06c33 (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance (System.Type)
+0x0000020dc3d06acb (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance<T_REF> ()
+0x0000020dc3d06753 (Mono JIT Code) UnityEditor.Tools:get_get ()
+0x0000020dc3d06553 (Mono JIT Code) UnityEditor.Tools:get_visibleLayers ()
+0x0000020dc3d04c93 (Mono JIT Code) [BoneRendererUtils.cs:121] UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () 
+0x0000020dc2ccf7a5 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf19810 (mono-2.0-bdwgc) [object.c:563] mono_runtime_class_init_full 
+0x00007ffefbe86290 (mono-2.0-bdwgc) [icall-def.h:751] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x0000020dc2568b52 (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x0000020dc2568a2b (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x0000020dc2565f53 (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x0000020dc5f71ccb (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be76435 (Unity) ScriptingInvocation::Invoke<void>
+0x00007ff62bfb6ec3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007ff62be7067b (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007ff62be6633d (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d3404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d3356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d07573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc610a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d3404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d3356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d07573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc610a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d3404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d3356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d07573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc610a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d3404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d3356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d07573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc610a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.203 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3205ms)
+		BeginReloadAssembly (321ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (16ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (84ms)
+		EndReloadAssembly (2676ms)
+			LoadAssemblies (236ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (598ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (74ms)
+			SetupLoadedEditorAssemblies (1640ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (23ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (108ms)
+				ProcessInitializeOnLoadAttributes (895ms)
+				ProcessInitializeOnLoadMethodAttributes (602ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (102ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 6.46 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.6 KB). Loaded Objects now: 7147.
+Memory consumption went from 289.1 MB to 289.1 MB.
+Total: 23.471300 ms (FindLiveObjects: 0.745100 ms CreateObjectMapping: 0.629500 ms MarkObjects: 22.008000 ms  DeleteObjects: 0.087100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.019721 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 5.10 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  4.026 seconds
+Domain Reload Profiling:
+	ReloadAssembly (4028ms)
+		BeginReloadAssembly (282ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (78ms)
+		EndReloadAssembly (3539ms)
+			LoadAssemblies (220ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (597ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (114ms)
+			SetupLoadedEditorAssemblies (2412ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (33ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (5ms)
+				BeforeProcessingInitializeOnLoad (160ms)
+				ProcessInitializeOnLoadAttributes (1244ms)
+				ProcessInitializeOnLoadMethodAttributes (960ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (84ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 8.13 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.6 KB). Loaded Objects now: 7151.
+Memory consumption went from 289.1 MB to 289.1 MB.
+Total: 34.780500 ms (FindLiveObjects: 1.108600 ms CreateObjectMapping: 0.956700 ms MarkObjects: 32.570300 ms  DeleteObjects: 0.143100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.021152 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.82 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc62c930a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc62c8c6b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc62c818e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc62c7e2a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc2ca5163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc2ca4873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc2847573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc61ea0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  3.307 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3309ms)
+		BeginReloadAssembly (340ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (15ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (3ms)
+			CreateAndSetChildDomain (76ms)
+		EndReloadAssembly (2695ms)
+			LoadAssemblies (256ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (599ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (83ms)
+			SetupLoadedEditorAssemblies (1673ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (28ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (144ms)
+				ProcessInitializeOnLoadAttributes (872ms)
+				ProcessInitializeOnLoadMethodAttributes (619ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (82ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 7.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.6 KB). Loaded Objects now: 7155.
+Memory consumption went from 289.2 MB to 289.1 MB.
+Total: 22.459000 ms (FindLiveObjects: 0.815200 ms CreateObjectMapping: 0.908100 ms MarkObjects: 20.679700 ms  DeleteObjects: 0.054500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.039779 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 4.65 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d246ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d2404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d2356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d231fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc2cc7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc62fa0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62be63b30 (Unity) MonoBehaviour::AwakeFromLoad
+0x00007ff62be6ea35 (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
+0x00007ff62be797c9 (Unity) Scripting::CreateScriptableObjectWithType
+0x00007ff62b1a4410 (Unity) ScriptableObject_CUSTOM_CreateScriptableObjectInstanceFromType
+0x0000020dc2cc6dcc (Mono JIT Code) (wrapper managed-to-native) UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
+0x0000020dc2cc6c33 (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance (System.Type)
+0x0000020dc2cc6acb (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance<T_REF> ()
+0x0000020dc2cc6753 (Mono JIT Code) UnityEditor.Tools:get_get ()
+0x0000020dc2cc6553 (Mono JIT Code) UnityEditor.Tools:get_visibleLayers ()
+0x0000020dc2cc4c93 (Mono JIT Code) [BoneRendererUtils.cs:121] UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () 
+0x0000020dc2cbf7a5 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf19810 (mono-2.0-bdwgc) [object.c:563] mono_runtime_class_init_full 
+0x00007ffefbe86290 (mono-2.0-bdwgc) [icall-def.h:751] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x0000020dc6388b52 (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x0000020dc6388a2b (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x0000020dc6385f53 (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x0000020dc2ca1ccb (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be76435 (Unity) ScriptingInvocation::Invoke<void>
+0x00007ff62bfb6ec3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007ff62be7067b (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007ff62be6633d (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d246ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d2404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d2356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d231fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc2cc7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc62fa0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d246ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d2404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d2356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d231fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d15163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d14873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc2cc7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc62fa0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  4.128 seconds
+Domain Reload Profiling:
+	ReloadAssembly (4130ms)
+		BeginReloadAssembly (584ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (21ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (145ms)
+		EndReloadAssembly (3283ms)
+			LoadAssemblies (392ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (965ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (88ms)
+			SetupLoadedEditorAssemblies (1859ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (29ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (5ms)
+				BeforeProcessingInitializeOnLoad (165ms)
+				ProcessInitializeOnLoadAttributes (1000ms)
+				ProcessInitializeOnLoadMethodAttributes (654ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (93ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 7.93 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (27.6 KB). Loaded Objects now: 7159.
+Memory consumption went from 289.2 MB to 289.2 MB.
+Total: 21.185900 ms (FindLiveObjects: 1.022500 ms CreateObjectMapping: 1.247500 ms MarkObjects: 18.866400 ms  DeleteObjects: 0.047900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.020446 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 6.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc62a99aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc62a930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc62a882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc62a84ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc50e5163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc50e4873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc50d7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc62a99aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc62a930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc62a882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc62a84ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc50e5163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc50e4873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc50d7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc62a99aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc62a930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc62a882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc62a84ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc50e5163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc50e4873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc50d7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc62a99aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc62a930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc62a882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc62a84ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc50e5163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc50e4873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc50d7573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc254a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  5.043 seconds
+Domain Reload Profiling:
+	ReloadAssembly (5044ms)
+		BeginReloadAssembly (498ms)
+			ExecutionOrderSort (1ms)
+			DisableScriptedObjects (24ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (113ms)
+		EndReloadAssembly (4135ms)
+			LoadAssemblies (365ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (881ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (93ms)
+			SetupLoadedEditorAssemblies (2573ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (45ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (7ms)
+				BeforeProcessingInitializeOnLoad (201ms)
+				ProcessInitializeOnLoadAttributes (1393ms)
+				ProcessInitializeOnLoadMethodAttributes (917ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (2ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (173ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 10.11 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.7 KB). Loaded Objects now: 7163.
+Memory consumption went from 289.3 MB to 289.3 MB.
+Total: 25.679400 ms (FindLiveObjects: 0.741700 ms CreateObjectMapping: 0.847700 ms MarkObjects: 24.023600 ms  DeleteObjects: 0.064800 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.017718 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.966 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3968ms)
+		BeginReloadAssembly (349ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (13ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (87ms)
+		EndReloadAssembly (3344ms)
+			LoadAssemblies (278ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (726ms)
+			ReleaseScriptCaches (13ms)
+			RebuildScriptCaches (263ms)
+			SetupLoadedEditorAssemblies (1906ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (29ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (116ms)
+				ProcessInitializeOnLoadAttributes (1033ms)
+				ProcessInitializeOnLoadMethodAttributes (718ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (66ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 7.92 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (27.6 KB). Loaded Objects now: 7167.
+Memory consumption went from 289.3 MB to 289.3 MB.
+Total: 26.245700 ms (FindLiveObjects: 0.888400 ms CreateObjectMapping: 0.738400 ms MarkObjects: 24.533500 ms  DeleteObjects: 0.084100 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.020257 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 2.94 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dccf499aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dccf4930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dccf4882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dccf484ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3e55163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3e54873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3da7933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc620a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dccf499aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dccf4930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dccf4882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dccf484ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3e55163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3e54873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3da7933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc620a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dccf499aa (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dccf4930b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dccf4882e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dccf484ca (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3e55163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3e54873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3da7933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc620a0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  4.161 seconds
+Domain Reload Profiling:
+	ReloadAssembly (4163ms)
+		BeginReloadAssembly (309ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (17ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (80ms)
+		EndReloadAssembly (3645ms)
+			LoadAssemblies (242ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (669ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (98ms)
+			SetupLoadedEditorAssemblies (2449ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (34ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (3ms)
+				BeforeProcessingInitializeOnLoad (149ms)
+				ProcessInitializeOnLoadAttributes (1347ms)
+				ProcessInitializeOnLoadMethodAttributes (907ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (104ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 15.19 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6357 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.6 KB). Loaded Objects now: 7171.
+Memory consumption went from 289.4 MB to 289.3 MB.
+Total: 43.969000 ms (FindLiveObjects: 1.165600 ms CreateObjectMapping: 4.464700 ms MarkObjects: 38.286100 ms  DeleteObjects: 0.051000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015038 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.76 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.561 seconds
+Domain Reload Profiling:
+	ReloadAssembly (3562ms)
+		BeginReloadAssembly (396ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (19ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (148ms)
+		EndReloadAssembly (2897ms)
+			LoadAssemblies (232ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (462ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (69ms)
+			SetupLoadedEditorAssemblies (2049ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (22ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (104ms)
+				ProcessInitializeOnLoadAttributes (810ms)
+				ProcessInitializeOnLoadMethodAttributes (1102ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (63ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 6.16 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6358 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.7 KB). Loaded Objects now: 7176.
+Memory consumption went from 289.4 MB to 289.4 MB.
+Total: 20.405700 ms (FindLiveObjects: 0.700200 ms CreateObjectMapping: 0.621600 ms MarkObjects: 18.995200 ms  DeleteObjects: 0.087400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.015838 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 3.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error loading file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamReader..ctor (System.String path, System.Text.Encoding encoding, System.Boolean detectEncodingFromByteOrderMarks) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamReader..ctor(string,System.Text.Encoding,bool)
+  at System.IO.File.InternalReadAllText (System.String path, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.File.ReadAllText (System.String path, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].GetState (UnityEngine.Hash128 key, T defaultValue) [0x00041] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d8a0cb (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:GetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d87873 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62be63b30 (Unity) MonoBehaviour::AwakeFromLoad
+0x00007ff62be6ea35 (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
+0x00007ff62be797c9 (Unity) Scripting::CreateScriptableObjectWithType
+0x00007ff62b1a4410 (Unity) ScriptableObject_CUSTOM_CreateScriptableObjectInstanceFromType
+0x0000020dc3d8718c (Mono JIT Code) (wrapper managed-to-native) UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
+0x0000020dc3d86ff3 (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance (System.Type)
+0x0000020dc3d86e8b (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance<T_REF> ()
+0x0000020dc3d86b13 (Mono JIT Code) UnityEditor.Tools:get_get ()
+0x0000020dc3d86913 (Mono JIT Code) UnityEditor.Tools:get_visibleLayers ()
+0x0000020dc3d85053 (Mono JIT Code) [BoneRendererUtils.cs:121] UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () 
+0x0000020dc3d3fb95 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf19810 (mono-2.0-bdwgc) [object.c:563] mono_runtime_class_init_full 
+0x00007ffefbe86290 (mono-2.0-bdwgc) [icall-def.h:751] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x0000020dc2848b52 (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x0000020dc2848a2b (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x0000020dc2845f53 (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x0000020dc5d21ccb (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be76435 (Unity) ScriptingInvocation::Invoke<void>
+0x00007ff62bfb6ec3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007ff62be7067b (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007ff62be6633d (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc3d9a8da (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc3d9a23b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc3d9975e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc3d993ea (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc3d9b8d3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc3d9afe3 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc3d87933 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc60ca0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62bf1035b (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff62be66560 (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  7.479 seconds
+Domain Reload Profiling:
+	ReloadAssembly (7480ms)
+		BeginReloadAssembly (330ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (11ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (88ms)
+		EndReloadAssembly (6890ms)
+			LoadAssemblies (245ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (566ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (111ms)
+			SetupLoadedEditorAssemblies (5221ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (32ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (4ms)
+				BeforeProcessingInitializeOnLoad (176ms)
+				ProcessInitializeOnLoadAttributes (1842ms)
+				ProcessInitializeOnLoadMethodAttributes (3109ms)
+				AfterProcessingInitializeOnLoad (57ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (545ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 10.53 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6358 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (27.6 KB). Loaded Objects now: 7180.
+Memory consumption went from 289.5 MB to 289.5 MB.
+Total: 35.180200 ms (FindLiveObjects: 0.779300 ms CreateObjectMapping: 0.842800 ms MarkObjects: 33.466900 ms  DeleteObjects: 0.089300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.035746 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image D:\My project\Library\PackageCache\com.unity.visualscripting@1.7.8\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Native extension for UWP target not found
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 5.09 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\My project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <c9d3ffd4b98649ee9989e1908eaca019>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <5e26277f966d4f80afa5d51573eba699>:0 
+0x00007ff62bf7758d (Unity) StackWalker::GetCurrentCallstack
+0x00007ff62bf7e269 (Unity) StackWalker::ShowCallstack
+0x00007ff62cee1023 (Unity) GetStacktrace
+0x00007ff62d57ef1d (Unity) DebugStringToFile
+0x00007ff62b184712 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000020dc60346ea (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000020dc603404b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000020dc603356e (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000020dc60331fa (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000020dc6025163 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000020dc6024873 (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000020dc6017573 (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000020dc3cfa0a8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be7b90e (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff62bf109a6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff62be63b30 (Unity) MonoBehaviour::AwakeFromLoad
+0x00007ff62be6ea35 (Unity) ResetAndApplyDefaultReferencesOnNewMonoBehaviour
+0x00007ff62be797c9 (Unity) Scripting::CreateScriptableObjectWithType
+0x00007ff62b1a4410 (Unity) ScriptableObject_CUSTOM_CreateScriptableObjectInstanceFromType
+0x0000020dc6016dcc (Mono JIT Code) (wrapper managed-to-native) UnityEngine.ScriptableObject:CreateScriptableObjectInstanceFromType (System.Type,bool)
+0x0000020dc6016c33 (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance (System.Type)
+0x0000020dc6016acb (Mono JIT Code) UnityEngine.ScriptableObject:CreateInstance<T_REF> ()
+0x0000020dc6016753 (Mono JIT Code) UnityEditor.Tools:get_get ()
+0x0000020dc6016553 (Mono JIT Code) UnityEditor.Tools:get_visibleLayers ()
+0x0000020dc6014c93 (Mono JIT Code) [BoneRendererUtils.cs:121] UnityEditor.Animations.Rigging.BoneRendererUtils:.cctor () 
+0x0000020dc600f7a5 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf19810 (mono-2.0-bdwgc) [object.c:563] mono_runtime_class_init_full 
+0x00007ffefbe86290 (mono-2.0-bdwgc) [icall-def.h:751] ves_icall_System_Runtime_CompilerServices_RuntimeHelpers_RunClassConstructor_raw 
+0x0000020dc5018b52 (Mono JIT Code) (wrapper managed-to-native) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (intptr)
+0x0000020dc5018a2b (Mono JIT Code) System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+0x0000020dc5015f53 (Mono JIT Code) UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+0x0000020dc5ca1ccb (Mono JIT Code) (wrapper runtime-invoke) <Module>:runtime_invoke_void_object (object,intptr,intptr,intptr)
+0x00007ffefbfdfe24 (mono-2.0-bdwgc) [mini-runtime.c:3445] mono_jit_runtime_invoke 
+0x00007ffefbf1e764 (mono-2.0-bdwgc) [object.c:3066] do_runtime_invoke 
+0x00007ffefbf1e8fc (mono-2.0-bdwgc) [object.c:3113] mono_runtime_invoke 
+0x00007ff62be9bf84 (Unity) scripting_method_invoke
+0x00007ff62be7b824 (Unity) ScriptingInvocation::Invoke
+0x00007ff62be76435 (Unity) ScriptingInvocation::Invoke<void>
+0x00007ff62bfb6ec3 (Unity) Scripting::UnityEditor::EditorAssembliesProxy::ProcessInitializeOnLoadAttributes
+0x00007ff62be7067b (Unity) MonoManager::SetupLoadedEditorAssemblies
+0x00007ff62be6633d (Unity) MonoManager::EndReloadAssembly
+0x00007ff62be6dcf8 (Unity) MonoManager::ReloadAssembly
+0x00007ff62cd9c7b2 (Unity) LoadDomainAndUserAssemblies
+0x00007ff62cd9cee4 (Unity) LoadUserAssemblies
+0x00007ff62d28f95f (Unity) <lambda_c444fc7fe2cac43bfb1332f39394b4f2>::operator()
+0x00007ff62d2cf682 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff62d2bb56e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff62d2bd1d4 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff62d2cda6e (Unity) IOService::Run
+0x00007ff62d2a067f (Unity) AssetImportWorkerClient::Run
+0x00007ff62d26a7b3 (Unity) RunAssetImportWorkerClientV2
+0x00007ff62d26a83b (Unity) RunAssetImporterV2
+0x00007ff62ca8c968 (Unity) Application::InitializeProject
+0x00007ff62ceeb768 (Unity) WinMain
+0x00007ff62e28b91e (Unity) __scrt_common_main_seh
+0x00007fffd0487614 (KERNEL32) BaseThreadInitThunk
+0x00007fffd11626a1 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Completed reload, in  9.800 seconds
+Domain Reload Profiling:
+	ReloadAssembly (9802ms)
+		BeginReloadAssembly (588ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (28ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (233ms)
+		EndReloadAssembly (8987ms)
+			LoadAssemblies (310ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (820ms)
+			ReleaseScriptCaches (6ms)
+			RebuildScriptCaches (130ms)
+			SetupLoadedEditorAssemblies (7605ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (41ms)
+				SetLoadedEditorAssemblies (2ms)
+				RefreshPlugins (5ms)
+				BeforeProcessingInitializeOnLoad (241ms)
+				ProcessInitializeOnLoadAttributes (4699ms)
+				ProcessInitializeOnLoadMethodAttributes (2609ms)
+				AfterProcessingInitializeOnLoad (7ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (67ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 9.89 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 6359 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 30 unused Assets / (26.7 KB). Loaded Objects now: 7185.
+Memory consumption went from 289.6 MB to 289.6 MB.
+Total: 33.142500 ms (FindLiveObjects: 1.084700 ms CreateObjectMapping: 0.724100 ms MarkObjects: 31.164400 ms  DeleteObjects: 0.167000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 

@@ -1,11 +1,14 @@
-﻿using FishNet.Object;
+﻿using System.Collections.Generic;
+using FishNet.Object;
 using FishNet.Object.Synchronizing;
 
 namespace ClaraMundi
 {
     public class EquipmentController : PlayerController
     {
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)] public readonly SyncDictionary<string, int> EquippedItems = new();
+        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
+        public readonly SyncDictionary<string, int> EquippedItems = new();
+
         [SyncObject] public readonly SyncDictionary<string, string> EquippedItemIds = new();
 
         public bool ServerEquip(int itemInstanceId, bool reportErrors = false)
@@ -71,6 +74,20 @@ namespace ClaraMundi
             if (instance.CharacterId != player.entityId) return false;
             ServerUnequipInstance(instance);
             return true;
+        }
+
+        public void ServerUnequipAll()
+        {
+            if (!IsServer) return;
+            foreach (var kvp in EquippedItems)
+                ServerUnequipInstance(ItemManager.Instance.GetItemByInstanceId(kvp.Value));
+        }
+
+        public void ServerEquipAll(List<CharacterEquipment> equipment)
+        {
+            if (!IsServer) return;
+            foreach (var eq in equipment)
+                ServerEquipInstance(player.Inventory.ItemStorage.GetInstanceByItemId(eq.itemId));
         }
     }
 }
