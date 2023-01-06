@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using TMPro;
 
 namespace ClaraMundi
@@ -24,19 +27,38 @@ namespace ClaraMundi
         public TextMeshProUGUI MagicalEvasion;
         public TextMeshProUGUI SpellSpeed;
 
+        private readonly Dictionary<AttributeType, TextMeshProUGUI> AttributeFields = new();
+        public AttributeType[] PercentAttributes = { AttributeType.MagicalSpeed, AttributeType.PhysicalSpeed };
+
+        private void Awake()
+        {
+            AttributeFields[AttributeType.Healing] = Healing;
+            AttributeFields[AttributeType.PhysicalDefense] = PhysicalDefense;
+            AttributeFields[AttributeType.PhysicalAttack] = PhysicalAttack;
+            AttributeFields[AttributeType.PhysicalAccuracy] = PhysicalAccuracy;
+            AttributeFields[AttributeType.PhysicalEvasion] = PhysicalEvasion;
+            AttributeFields[AttributeType.PhysicalSpeed] = SkillSpeed;
+            AttributeFields[AttributeType.MagicalAttack] = MagicalAttack;
+            AttributeFields[AttributeType.MagicalAccuracy] = MagicalAccuracy;
+            AttributeFields[AttributeType.MagicalEvasion] = MagicalEvasion;
+            AttributeFields[AttributeType.MagicalDefense] = MagicalDefense;
+            AttributeFields[AttributeType.MagicalSpeed] = SpellSpeed;
+        }
+
         protected override void OnPlayerChange(Player _player)
         {
             if (entity != null)
             {
-                player.Stats.OnStatsChange -= OnStatsChange;
+                player.Stats.OnChange -= OnStatsChange;
                 entity.NameChange -= OnNameChange;
             }
+
             base.OnPlayerChange(_player);
             if (entity == null) return;
             entity.NameChange += OnNameChange;
-            player.Stats.OnStatsChange += OnStatsChange;
+            player.Stats.OnChange += OnStatsChange;
             OnNameChange(entity.entityName);
-            OnStatsChange(player.Stats.ComputedStats);
+            OnStatsChange();
         }
 
         private void OnNameChange(string playerName)
@@ -45,42 +67,28 @@ namespace ClaraMundi
             Name.text = playerName;
         }
 
-        private void OnStatsChange(ComputedStats stats)
+        private void OnStatsChange()
         {
             if (player == null) return;
+            var stats = player.Stats.ComputedStats;
             Strength.text = DisplayNumber(stats.Strength);
             Dexterity.text = DisplayNumber(stats.Dexterity);
             Vitality.text = DisplayNumber(stats.Vitality);
             Agility.text = DisplayNumber(stats.Agility);
             Intelligence.text = DisplayNumber(stats.Intelligence);
             Mind.text = DisplayNumber(stats.Mind);
-            
-            var controller = player.Stats;
-            
-            PhysicalAttack.text = DisplayNumber(controller.Attributes.PhysicalAttack);
-            PhysicalDefense.text = DisplayNumber(controller.Attributes.PhysicalDefense);
-            PhysicalAccuracy.text = DisplayNumber(controller.Attributes.PhysicalAccuracy);
-            PhysicalEvasion.text = DisplayNumber(controller.Attributes.PhysicalEvasion);
-            
-            MagicalAttack.text = DisplayNumber(controller.Attributes.MagicalAttack);
-            Healing.text = DisplayNumber(controller.Attributes.Healing);
-            MagicalDefense.text = DisplayNumber(controller.Attributes.MagicalDefense);
-            MagicalAccuracy.text = DisplayNumber(controller.Attributes.MagicalAccuracy);
-            MagicalEvasion.text = DisplayNumber(controller.Attributes.MagicalEvasion);
-            
-            SkillSpeed.text = DisplayPercent(controller.Attributes.PhysicalSpeed);
-            SpellSpeed.text = DisplayPercent(controller.Attributes.MagicalSpeed);
+
+            foreach (var kvp in player.Stats.Attributes)
+            {
+                if (!AttributeFields.ContainsKey(kvp.Key)) continue;
+                AttributeFields[kvp.Key].text = DisplayNumber(kvp.Value, PercentAttributes.Contains(kvp.Key));
+            }
         }
 
-        private static string DisplayNumber(float value)
+        private static string DisplayNumber(float value, bool percent = false)
         {
+            if (percent) return Mathf.Floor(value * 100) + "%";
             return Mathf.Floor(value) + "";
         }
-
-        static string DisplayPercent(float value)
-        {
-            return Mathf.Floor(value * 100) + "%";
-        }
-
     }
 }

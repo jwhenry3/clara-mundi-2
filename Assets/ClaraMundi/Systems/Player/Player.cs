@@ -34,13 +34,20 @@ namespace ClaraMundi
             Body = GetComponentInChildren<GCharacter>();
             Entity = GetComponent<Entity>();
             Stats = GetComponentInChildren<StatsController>();
+            Stats.player = this;
             Inventory = GetComponentInChildren<InventoryController>();
+            Inventory.player = this;
             Equipment = GetComponentInChildren<EquipmentController>();
+            Equipment.player = this;
             Alerts = GetComponentInChildren<AlertController>();
             Chat = GetComponentInChildren<ChatController>();
+            Chat.player = this;
             Party = GetComponentInChildren<PartyController>();
+            Party.player = this;
             Quests = GetComponentInChildren<QuestController>();
+            Quests.player = this;
             Movement = GetComponentInChildren<ClickToMoveController>();
+            Movement.player = this;
             Entity.OnStarted += OnNetStarted;
         }
 
@@ -96,7 +103,12 @@ namespace ClaraMundi
                 UpdateClass(Entity.CurrentClass.classId);
             }
 
-            Entity.CurrentClass = Entity.Classes[classId];
+            Entity.CurrentClassId = classId;
+            if (Entity.CurrentClass == null)
+            {
+                Debug.LogWarning("Cannot load current class details");
+                return;
+            }
             Entity.CurrentClass.isCurrent = true;
             Stats.Level = Entity.CurrentClass.level;
             Stats.Experience = Entity.CurrentClass.exp;

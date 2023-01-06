@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using FishNet.Object;
 using FishNet.Object.Synchronizing;
 
 namespace ClaraMundi
@@ -31,9 +30,7 @@ namespace ClaraMundi
                 if (EquippedItems[item.EquipmentSlot] == instance.ItemInstanceId) return false;
                 ServerUnequip(EquippedItems[item.EquipmentSlot]);
             }
-
             var storage = ItemManager.Instance.GetStorageForItemInstance(instance);
-
             EquippedItems[item.EquipmentSlot] = instance.ItemInstanceId;
             EquippedItemIds[item.EquipmentSlot] = instance.ItemId;
             instance.IsEquipped = true;

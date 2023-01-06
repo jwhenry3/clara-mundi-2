@@ -4,6 +4,7 @@ namespace ClaraMundi
 {
     public class RepoManager : MonoBehaviour
     {
+        public CharacterClassRepo CharacterClassRepo;
         public ItemRepo ItemRepo;
         public QuestRepo QuestRepo;
         public DialogueRepo DialogueRepo;

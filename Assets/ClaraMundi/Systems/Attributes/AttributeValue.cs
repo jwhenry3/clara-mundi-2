@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -6,6 +7,7 @@ namespace ClaraMundi
     [Serializable]
     public class AttributeValue
     {
+        [HideInInspector]
         public string ValueId = StringUtils.UniqueId();
         public AttributeType Type = AttributeType.PhysicalAttack;
         // Flat amount to apply on top

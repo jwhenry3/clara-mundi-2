@@ -110,7 +110,6 @@
      <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Attributes\Attribute.cs" />
      <Compile Include="Assets\FishNet\Upgrading\UpgradeFromMirrorMenu.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
      <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
@@ -206,6 +205,10 @@
      <Compile Include="Assets\ClaraMundi\Systems\Input\HoverDisablesWorldInput.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\CharacterClass.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Player\CharacterEquipment.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassType.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Attributes\AttributeCalculation.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassRepo.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Attributes\ComputedAttributes.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <Folder Include="Assets\YAFUI\Animations\RadialButton" />
@@ -555,6 +558,7 @@
      <Folder Include="Assets\HONETi\flat_gui_elements\fonts" />
      <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_SDF Internal Editor.shader" />
      <Folder Include="Library\PackageCache\com.unity.modules.umbra@1.0.0" />
+     <Folder Include="Assets\ClaraMundi\Systems\Attributes\Calculations" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Material" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle2" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Equipment" />
@@ -654,6 +658,7 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Folder Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts" />
      <None Include="Library\PackageCache\com.unity.ide.vscode@1.2.5\package.json" />
+     <Folder Include="Assets\ClaraMundi\Systems\Attributes\ClassTypes" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2021.3.12f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

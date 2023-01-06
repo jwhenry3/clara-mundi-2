@@ -1,10 +1,12 @@
 ﻿using System;
+using UnityEngine;
 
 namespace ClaraMundi
 {
     [Serializable]
     public class StatValue
     {
+        [HideInInspector]
         public string ValueId = StringUtils.UniqueId();
         public StatType Type = StatType.Strength;
         // Flat amount to apply on top

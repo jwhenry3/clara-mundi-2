@@ -112,10 +112,12 @@ namespace ClaraMundi
                     player.ServerChangeClass(characterClass.classId);
             }
             // reset list so it does not get synced to all clients
-            character.characterClasses.Clear();
             player.Entity.Character = character;
+            player.Stats.player = player;
 
             player.Entity.entityName = character.name.ToLower();
+            player.Stats.ComputeStats();
+            
             var rotation = Quaternion.identity;
             rotation.y = character.rotation;
             var position = new Vector3(character.position_x, character.position_y, character.position_z);
