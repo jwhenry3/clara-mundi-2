@@ -8,7 +8,7 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi.Quests
 {
-    public class QuestListItemUI : PlayerUI, IPointerClickHandler
+    public class QuestListItemUI : PlayerUI, IPointerDownHandler
     {
         public Quest Quest
         {
@@ -85,7 +85,7 @@ namespace ClaraMundi.Quests
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (_quest == null) return;
             QuestJournalUI.Instance.QuestInfoUI.Quest = _quest;
