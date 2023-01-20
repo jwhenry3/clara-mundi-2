@@ -22,6 +22,7 @@ namespace ClaraMundi
             InputAction = InputManager.Instance.World.FindAction("Zoom");
             InputAction.performed += OnPerform;
             Camera.orthographicSize = zoomValue;
+            Camera.fieldOfView = zoomValue * 12;
         }
 
         private void OnDestroy()
@@ -37,11 +38,13 @@ namespace ClaraMundi
             {
                 zoomValue = Mathf.Clamp(zoomValue - value, 0, 7);
                 Camera.orthographicSize = zoomValue;
+                Camera.fieldOfView = zoomValue * 12;
             }
             else
             {
                 zoomValue = 5;
                 Camera.orthographicSize = zoomValue;
+                Camera.fieldOfView = zoomValue * 12;
             }
         }
     }

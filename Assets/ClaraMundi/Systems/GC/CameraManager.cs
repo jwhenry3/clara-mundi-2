@@ -11,11 +11,13 @@ namespace ClaraMundi
         public MainCamera MainCamera;
         public ShotCamera LoginCamera;
         public ShotCamera PlayerCamera;
+        public Camera Camera;
         
 
         private void Awake()
         {
             Instance = this;
+            Camera = MainCamera.GetComponent<Camera>();
         }
 
         public void UsePlayerCamera()

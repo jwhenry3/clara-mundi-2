@@ -14,6 +14,7 @@ namespace ClaraMundi
 
         private void Update()
         {
+            if (PlayerManager.Instance.LocalPlayer == null) return;
             if (updateTick > 0)
                 updateTick -= Time.deltaTime;
             if (updateTick <= 0)
@@ -27,6 +28,7 @@ namespace ClaraMundi
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            if (PlayerManager.Instance.LocalPlayer == null) return;
             if (eventData.button != PointerEventData.InputButton.Left) return;
             isPressing = true;
             lastEvent = eventData;
