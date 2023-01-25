@@ -111,6 +111,7 @@
      <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
      <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Inventory\Item.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Entity\NPC\NPCMoveController.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
      <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
@@ -119,6 +120,7 @@
      <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
+     <Compile Include="Assets\ClaraMundi\Systems\Entity\EntitySpawner.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
      <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
@@ -211,16 +213,13 @@
      <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatConfiguration.cs" />
      <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
      <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Entity\EntitySpawner.cs" />
-     <Compile Include="Assets\ClaraMundi\Systems\Entity\NPC\NPCMoveController.cs" />
-     <Compile Include="Assets\AA_UniversalCharacter\Scripts\ModulesShaker.cs" />
-     <Compile Include="Assets\AA_UniversalCharacter\Scripts\CustomButton.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
      <Folder Include="Assets\YAFUI\Animations\RadialButton" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_device" />
      <None Include="Library\PackageCache\com.unity.settings-manager@1.0.3\package.json" />
      <None Include="Library\PackageCache\com.unity.modules.subsystems@1.0.0\package.json" />
+     <Folder Include="Assets\Blink" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square3" />
      <None Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0\package.json" />
@@ -233,6 +232,7 @@
      <Folder Include="Assets\FishNet\Plugins\CodeAnalysis" />
      <None Include="Library\PackageCache\com.unity.modules.cloth@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\Demo_FREE_LowPolyCharacter" />
      <Folder Include="Library\PackageCache\com.unity.modules.imgui@1.0.0" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_tool" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_food" />
@@ -245,8 +245,10 @@
      <Folder Include="Assets\JsonDotNet\Assemblies\Standalone" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button" />
      <Folder Include="Assets\HONETi\flat_gui_elements\buttons_controls\regular_button" />
+     <Folder Include="Assets\ClaraMundi\Systems\Entity\Humanoid" />
      <Folder Include="Library\PackageCache\com.unity.modules.animation@1.0.0" />
      <Folder Include="Assets\ClaraMundi\Systems\Lobby" />
+     <Folder Include="Assets\Blink\Art" />
      <None Include="Library\PackageCache\com.unity.inputsystem@1.4.4\ValidationConfig.json" />
      <Folder Include="Library\PackageCache\com.unity.sysroot@2.0.4\Tests" />
      <Folder Include="Assets\YAFUI\Prefabs" />
@@ -267,9 +269,11 @@
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Misc" />
      <None Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0\package.json" />
      <Folder Include="Library\PackageCache\com.unity.inputsystem@1.4.4\Tests" />
+     <Folder Include="Assets\ClaraMundi\Systems\GC2" />
      <Folder Include="Assets\YAFUI\Fonts" />
      <Folder Include="Assets\ProceduralUIImage" />
      <Folder Include="Assets\ClaraMundi\Systems\WebSocket" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\BaseRecipePlaceholderAssets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
      <Folder Include="Assets\HONETi\flat_gui_elements\additional_texture_sizes\buttons\other" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_weather" />
@@ -279,15 +283,13 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_food" />
      <Folder Include="Assets\FishNet\Plugins" />
      <None Include="Library\PackageCache\com.unity.modules.imgui@1.0.0\package.json" />
-     <Folder Include="Assets\AA_UniversalCharacter\Prefabs\Props" />
      <Folder Include="Library\PackageCache\com.unity.visualscripting@1.7.8\Graphics" />
      <Folder Include="Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.3" />
      <Folder Include="Assets\ClaraMundi\Systems" />
-     <Folder Include="Assets\AA_UniversalCharacter\Scripts" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\Demo_FREE_LowPolyCharacter\DEMO_FREE_LowPolyHumans" />
      <Folder Include="Assets\ClaraMundi\Systems\Quest\Quests\WolfHunt" />
      <None Include="Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.3\package.json" />
      <None Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0\package.json" />
-     <Folder Include="Assets\AA_UniversalCharacter\Materials" />
      <Folder Include="Assets\HONETi\flat_gui_elements\additional_texture_sizes\buttons\outlined_buttons" />
      <Folder Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0" />
      <Folder Include="Library\PackageCache\com.unity.burst@1.6.6\Tests" />
@@ -295,6 +297,8 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square2" />
      <Folder Include="Assets\ClaraMundi\UI\Common\Layout" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_common" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly\Meshes_Humans\ArmorMeshes_Humans" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly\Textures_Humans" />
      <Folder Include="Assets\ClaraMundi\Systems\MasterServer" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle5" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_activity" />
@@ -303,14 +307,15 @@
      <Folder Include="Assets\YAFUI\Images" />
      <Folder Include="Assets\ClaraMundi\Application" />
      <None Include="Library\PackageCache\com.unity.timeline@1.6.4\package.json" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly\Prefabs_Humans" />
      <Folder Include="Assets\DL_Fantasy_RPG_Effects\material" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner3_square1" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_rectangle2" />
      <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom" />
      <Folder Include="Assets\ClaraMundi\UI\Common\ContextMenu" />
-     <Folder Include="Assets\AA_UniversalCharacter\Meshes" />
      <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH Sprite Icon Outline Color.shader" />
      <Folder Include="Assets\ProceduralUIImage\Demo" />
+     <Folder Include="Assets\Blink\Art\Animations\Animations_Starter_Pack\Gathering" />
      <None Include="Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@2.0.3\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_arrow" />
      <Folder Include="Library\PackageCache\com.unity.animation.rigging@1.1.1" />
@@ -328,12 +333,12 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <Folder Include="Assets\HONETi\flat_gui_elements\additional_texture_sizes\buttons\regular_button" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_sport" />
+     <Folder Include="Assets\Blink\Art\Animations" />
      <None Include="Library\PackageCache\com.unity.modules.terrainphysics@1.0.0\package.json" />
      <None Include="Library\PackageCache\com.unity.mathematics@1.2.6\package.json" />
      <Folder Include="Assets\ClaraMundi\Systems\Http" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_traffic" />
      <Folder Include="Assets\ClaraMundi\Systems\Lobby\UI" />
-     <Folder Include="Assets\AA_UniversalCharacter\Prefabs" />
      <Folder Include="Library\PackageCache\com.unity.performance.profile-analyzer@1.1.1" />
      <Folder Include="Assets\ClaraMundi\UI\Common" />
      <None Include="Library\PackageCache\com.unity.sysroot@2.0.4\package.json" />
@@ -349,6 +354,7 @@
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Monster Part" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_shield" />
      <None Include="Library\PackageCache\com.unity.editorcoroutines@1.0.0\package.json" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly\Meshes_Humans" />
      <Folder Include="Assets\CleanFlatIcon\psd_128" />
      <None Include="Library\PackageCache\com.unity.timeline@1.6.4\ValidationExceptions.json" />
      <Folder Include="Assets\ClaraMundi\Testing" />
@@ -358,6 +364,7 @@
      <Folder Include="Library\PackageCache\com.unity.timeline@1.6.4" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner1_square2" />
      <Folder Include="Assets\HONETi\flat_gui_elements\panels" />
+     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader\NormalShader.compute" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_square1" />
      <Folder Include="Library\PackageCache\com.unity.modules.cloth@1.0.0" />
      <Folder Include="Assets\ClaraMundi\Systems\Attributes" />
@@ -368,6 +375,7 @@
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG" />
      <Folder Include="Library\PackageCache\com.unity.ext.nunit@1.0.6" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle4" />
+     <Folder Include="Assets\Blink\Art\Animations\Animations_Starter_Pack\Combat" />
      <Folder Include="Assets\ClaraMundi\Core" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_oval1" />
      <Folder Include="Assets\FishNet\Upgrading" />
@@ -385,6 +393,7 @@
      <Folder Include="Assets\ClaraMundi\Systems\Quest\Quests" />
      <Folder Include="Library\PackageCache\com.unity.modules.terrainphysics@1.0.0" />
      <None Include="Library\PackageCache\com.unity.modules.imageconversion@1.0.0\package.json" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly\Materials_Humans" />
      <Folder Include="Assets\YAFUI\Images\old2" />
      <Folder Include="Assets\DL_Fantasy_RPG_Effects\prefab" />
      <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequest@1.0.0" />
@@ -424,6 +433,7 @@
      <Folder Include="Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime" />
      <Folder Include="Assets\HONETi\Scenes" />
      <Folder Include="Assets\HONETi\flat_gui_elements\buttons_controls\slider" />
+     <Folder Include="Assets\Blink\Art\Animations\Animations_Starter_Pack\Movement" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_bottle" />
      <Folder Include="Library\PackageCache\com.unity.modules.vr@1.0.0" />
      <Folder Include="Library\PackageCache\com.unity.sysroot.linux-x86_64@2.0.3\Tests" />
@@ -444,10 +454,10 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_shopping" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Weapon &amp; Tool" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame" />
      <Folder Include="Assets\YAFUI\Images\old" />
      <Folder Include="Library\PackageCache\com.unity.modules.wind@1.0.0" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_circle" />
-     <Folder Include="Assets\AA_UniversalCharacter\Meshes\Props" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_simpleshape" />
      <Folder Include="Assets\ClaraMundi\Systems\Dialogue\Dialogues" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner5_square2" />
@@ -465,6 +475,7 @@
      <Folder Include="Assets\ClaraMundi\Systems\Chat" />
      <None Include="Library\PackageCache\com.unity.visualscripting@1.7.8\ValidationExceptions.json" />
      <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0" />
+     <None Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\PlaceholderAssetsREADME.txt" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <Folder Include="Library\PackageCache\com.unity.modules.particlesystem@1.0.0" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
@@ -483,6 +494,7 @@
      <None Include="Library\PackageCache\com.unity.modules.wind@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <Folder Include="Library\PackageCache\com.unity.ugui@1.0.0\Tests" />
+     <None Include="Assets\UMA\InternalDataStore\AssetVersion.xml" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
      <None Include="Library\PackageCache\com.unity.modules.umbra@1.0.0\package.json" />
      <Folder Include="Assets\YAFUI\Fonts\Noto-Sans" />
@@ -492,6 +504,7 @@
      <Folder Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner5_square1" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner2_square1" />
+     <Folder Include="Assets\UMA" />
      <Folder Include="Library\PackageCache\com.unity.editorcoroutines@1.0.0" />
      <Folder Include="Assets\ClaraMundi\UI\Common\Buttons" />
      <Folder Include="Library\PackageCache\com.unity.modules.ui@1.0.0" />
@@ -500,6 +513,7 @@
      <Folder Include="Assets\YAFUI\Animations\CheckBox" />
      <Folder Include="Assets\YAFUI\Demo\Materials" />
      <Folder Include="Assets\FishNet" />
+     <Folder Include="Assets\Blink\Art\Characters" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner2_square2" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_square4" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_gesture" />
@@ -512,7 +526,6 @@
      <Folder Include="Assets\DL_Fantasy_RPG_Effects" />
      <Folder Include="Library\PackageCache\com.unity.performance.profile-analyzer@1.1.1\Tests" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-     <Folder Include="Assets\AA_UniversalCharacter\DemoScene" />
      <None Include="Library\PackageCache\com.unity.inputsystem@1.4.4\ValidationExceptions.json" />
      <Folder Include="Assets\TextMesh Pro\Shaders" />
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Gizmos" />
@@ -520,8 +533,10 @@
      <Folder Include="Assets\ClaraMundi\Systems\Inventory\Items" />
      <None Include="Library\PackageCache\com.unity.modules.physics@1.0.0\package.json" />
      <Folder Include="Assets\YAFUI\Icons" />
+     <Folder Include="Assets\Blink\Art\Animations\Animations_Starter_Pack" />
      <Folder Include="Library\PackageCache\com.unity.toolchain.win-x86_64-linux-x86_64@2.0.3" />
      <Folder Include="Assets\HONETi\flat_gui_elements\buttons_controls\outlined_button" />
+     <None Include="Assets\UMA\Whats New in UMA.txt" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <Folder Include="Assets\ProceduralUIImage\Resources\Shaders" />
      <Folder Include="Assets\YAFUI\Fonts\RobotoCondensed" />
@@ -551,6 +566,7 @@
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_corner5_square3" />
      <None Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle3" />
+     <Folder Include="Assets\UMA\Getting Started" />
      <Folder Include="Assets\YAFUI\Animations" />
      <Folder Include="Assets\ClaraMundi\Systems\World\Overworld" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line\button_line_oval3" />
@@ -578,8 +594,10 @@
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Material" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_corner_rectangle2" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Equipment" />
+     <Folder Include="Assets\UMA\InternalDataStore" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_aim" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\Materials" />
      <Folder Include="Assets\ClaraMundi\Utils" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_avatar" />
      <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0" />
@@ -588,6 +606,7 @@
      <Folder Include="Library\PackageCache\com.unity.modules.jsonserialize@1.0.0" />
      <None Include="Library\PackageCache\com.unity.visualscripting@1.7.8\ValidationConfig.json" />
      <Folder Include="Assets\ClaraMundi\Systems\Attributes\UI\Bars" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources" />
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders" />
      <Folder Include="Library\PackageCache\com.unity.modules.director@1.0.0" />
      <Folder Include="Assets\YAFUI\Fonts\Noto-Serif" />
@@ -596,13 +615,15 @@
      <Folder Include="Assets\CleanFlatIcon\psd_128\icon_line" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon\icon_architecture" />
      <Folder Include="Library\PackageCache\com.unity.settings-manager@1.0.3\Content" />
-     <Folder Include="Assets\AA_UniversalCharacter\Textures" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button_line" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_oval" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets" />
+     <Folder Include="Assets\UMA\Getting Started\Deprecated" />
      <Folder Include="Assets\ClaraMundi\Systems\Entity" />
      <Folder Include="Assets\ClaraMundi\Systems\Inventory\UI" />
      <None Include="Library\PackageCache\com.unity.modules.terrain@1.0.0\package.json" />
      <Folder Include="Assets\ClaraMundi\UI\Animations" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly\FREE_HumanLowPoly" />
      <Folder Include="Assets\ClaraMundi\Systems\Input" />
      <Folder Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.16" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_avatar" />
@@ -612,6 +633,7 @@
      <None Include="Library\PackageCache\com.unity.modules.androidjni@1.0.0\package.json" />
      <Folder Include="Assets\CleanFlatIcon\png_128\button\button_square" />
      <Folder Include="Assets\ClaraMundi\Systems\World" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\BaseRecipePlaceholderAssets\Textures" />
      <Folder Include="Assets\CleanFlatIcon\psd_128\button_line" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <Folder Include="Assets\CleanFlatIcon\png_128\icon_line\icon_line_sport" />
@@ -621,6 +643,7 @@
      <Folder Include="Library\PackageCache\com.unity.modules.ai@1.0.0" />
      <Folder Include="Assets\CleanFlatIcon\psd_128\button" />
      <Folder Include="Assets\ClaraMundi\UI\Common\Windows" />
+     <Folder Include="Assets\Blink\Art\Characters\LowPoly" />
      <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\PackageConversionData_Assets.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <Folder Include="Assets\ClaraMundi\Systems\Entity\EntityTypes" />
@@ -647,7 +670,6 @@
      <Folder Include="Assets\HONETi\flat_gui_elements\additional_texture_sizes\buttons" />
      <Folder Include="Assets\YAFUI\Animations\Dialogue" />
      <None Include="Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.xml" />
-     <Folder Include="Assets\AA_UniversalCharacter" />
      <Folder Include="Assets\ClaraMundi\Systems\Party\UI" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader" />
      <Folder Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Texture\Food" />
@@ -675,6 +697,7 @@
      <None Include="Library\PackageCache\com.unity.modules.ui@1.0.0\package.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Folder Include="Assets\FlexibleUISystems\FlexibleDraggableObject\Scripts" />
+     <Folder Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader" />
      <None Include="Library\PackageCache\com.unity.ide.vscode@1.2.5\package.json" />
      <Folder Include="Assets\ClaraMundi\Systems\Attributes\ClassTypes" />
      <Reference Include="UnityEngine">
@@ -1503,6 +1526,30 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj">
       <Project>{d13cdbc8-90a6-4ff3-ec27-bdf7923d17d2}</Project>
       <Name>Unity.SysrootPackage.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Addressable_Editor.csproj">
+      <Project>{70092aa6-6579-005f-db56-69248158f4d6}</Project>
+      <Name>Addressable_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Examples_Editor.csproj">
+      <Project>{415fbce7-e0fd-2d08-0a25-121d6bba8d3b}</Project>
+      <Name>UMA_Examples_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Examples.csproj">
+      <Project>{00242e82-40bf-eed2-3bc8-8ed79b7ba91e}</Project>
+      <Name>UMA_Examples</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Content.csproj">
+      <Project>{19a0eff6-4e0a-60e3-39a6-3ff92b307fcd}</Project>
+      <Name>UMA_Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Core.csproj">
+      <Project>{3c31987c-6f5d-801b-8de1-62d2da39a5f2}</Project>
+      <Name>UMA_Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="UMA_Core_Editor.csproj">
+      <Project>{604f51be-16e5-cc93-e32b-352fe6cf61e4}</Project>
+      <Name>UMA_Core_Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
