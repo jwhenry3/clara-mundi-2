@@ -5,14 +5,13 @@ namespace ClaraMundi
 {
     public class EquipmentController : PlayerController
     {
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncDictionary<string, int> EquippedItems = new();
+        public readonly SyncDictionary<string, int> EquippedItems = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
 
-        [SyncObject] public readonly SyncDictionary<string, string> EquippedItemIds = new();
+        public readonly SyncDictionary<string, string> EquippedItemIds = new();
 
         public bool ServerEquip(int itemInstanceId, bool reportErrors = false)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
             if (instance.CharacterId != player.entityId) return false;
@@ -21,7 +20,7 @@ namespace ClaraMundi
 
         private bool ServerEquipInstance(ItemInstance instance)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             if (instance.CharacterId != player.entityId) return false;
             Item item = RepoManager.Instance.ItemRepo.GetItem(instance.ItemId);
             if (item == null || !item.Equippable) return false;
@@ -44,7 +43,7 @@ namespace ClaraMundi
 
         private bool ServerUnequipInstance(ItemInstance instance)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             if (instance.CharacterId != player.entityId) return false;
             Item item = RepoManager.Instance.ItemRepo.GetItem(instance.ItemId);
             if (item == null || !item.Equippable) return false;
@@ -65,7 +64,7 @@ namespace ClaraMundi
 
         public bool ServerUnequip(int itemInstanceId)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             ItemInstance instance = ItemManager.Instance.GetItemByInstanceId(itemInstanceId);
             if (instance == null) return false;
             if (instance.CharacterId != player.entityId) return false;
@@ -75,15 +74,15 @@ namespace ClaraMundi
 
         public void ServerUnequipAll()
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             foreach (var kvp in EquippedItems)
                 ServerUnequipInstance(ItemManager.Instance.GetItemByInstanceId(kvp.Value));
         }
 
         public void ServerEquipAll(List<CharacterEquipment> equipment)
         {
-            if (!IsServer) return;
-            foreach (var eq in equipment)
+            if (!IsServerStarted) return;
+            foreach (CharacterEquipment eq in equipment)
                 ServerEquipInstance(player.Inventory.ItemStorage.GetInstanceByItemId(eq.itemId));
         }
     }

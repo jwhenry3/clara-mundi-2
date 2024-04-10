@@ -11,20 +11,19 @@ namespace ClaraMundi
     {
         public static event Action<string, string, ItemStorage> OnInitialize;
 
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncList<string> HeldItemIds = new();
+        public readonly SyncList<string> HeldItemIds = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
 
-        [SyncObject] public readonly SyncDictionary<int, ItemInstance> Items = new();
+        public readonly SyncDictionary<int, ItemInstance> Items = new();
 
         public Entity OwnerEntity;
-        [SyncVar] public string StorageId = "inventory";
+        public readonly SyncVar<string> StorageId = new("inventory");
         public static ItemRepo ItemRepo => RepoManager.Instance.ItemRepo;
 
         public int Capacity = 30;
 
         public List<ItemInstance> StartingItems = new();
 
-        [SyncVar] public bool isPublicStorage;
+        public readonly SyncVar<bool> isPublicStorage = new(false);
 
         private void Awake()
         {
@@ -34,13 +33,13 @@ namespace ClaraMundi
         public override void OnStartServer()
         {
             base.OnStartServer();
-            StorageId = StorageId ?? StringUtils.UniqueId();
+            StorageId.Value ??= StringUtils.UniqueId();
 
             ItemManager.Instance.RegisterStorage(this);
             foreach (var item in StartingItems)
                 AddItem(item.ItemId, item.Quantity, true);
 
-            OnInitialize?.Invoke(OwnerEntity.entityId, StorageId, this);
+            OnInitialize?.Invoke(OwnerEntity.entityId.Value, StorageId.Value, this);
         }
 
         public override void OnStartClient()
@@ -48,7 +47,7 @@ namespace ClaraMundi
             base.OnStartClient();
             // Keep shortcut reference to these values so we can have easy reference to item storage for entities in range
             ItemManager.Instance.RegisterStorage(this);
-            OnInitialize?.Invoke(OwnerEntity.entityId, StorageId, this);
+            OnInitialize?.Invoke(OwnerEntity.entityId.Value, StorageId.Value, this);
         }
 
         private void OnDestroy()
@@ -75,7 +74,7 @@ namespace ClaraMundi
 
         public ItemInstance AddItem(string itemId, int quantity, bool forceNewStack = false)
         {
-            if (!IsServer) return null;
+            if (!IsServerStarted) return null;
             Item item = ItemRepo.GetItem(itemId);
             if (item == null) return null;
             if (!CanAdd(item.ItemId, quantity, forceNewStack)) return null;
@@ -90,7 +89,7 @@ namespace ClaraMundi
             var newInstance = new ItemInstance()
             {
                 ItemInstanceId = (ItemManager.Instance.ItemsByInstanceId.Count + 1),
-                CharacterId = OwnerEntity.entityId,
+                CharacterId = OwnerEntity.entityId.Value,
                 ItemId = item.ItemId,
                 Quantity = quantity
             };
@@ -163,7 +162,7 @@ namespace ClaraMundi
 
         public bool RemoveItemInstance(int itemInstanceId, int quantity, bool allowPullingFromOthers = false)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             var instance = GetItemInstance(itemInstanceId, true);
             if (instance == null)
                 return false;
@@ -180,7 +179,7 @@ namespace ClaraMundi
 
         public bool RemoveItem(string itemId, int quantity, bool validated = false)
         {
-            if (!IsServer) return false;
+            if (!IsServerStarted) return false;
             var instance = GetInstanceByItemId(itemId, true);
 
             if (!validated && !HasQuantity(instance.ItemId, quantity, true)) return false;
@@ -210,17 +209,17 @@ namespace ClaraMundi
 
         public void UpdateItemInstance(ItemInstance instance, bool isPublic = false)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             // 0 is an invalid ID
             if (instance.ItemInstanceId == 0) return;
             var dictionary = Items;
             dictionary[instance.ItemInstanceId] = new ItemInstance
             {
-                CharacterId = OwnerEntity.entityId,
+                CharacterId = OwnerEntity.entityId.Value,
                 ItemId = instance.ItemId,
                 ItemInstanceId = instance.ItemInstanceId,
                 Quantity = instance.Quantity,
-                StorageId = StorageId,
+                StorageId = StorageId.Value,
                 IsEquipped = instance.IsEquipped
             };
             if (!HeldItemIds.Contains(instance.ItemId))

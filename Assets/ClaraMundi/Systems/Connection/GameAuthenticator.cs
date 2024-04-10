@@ -74,7 +74,7 @@ namespace ClaraMundi
             Debug.Log("Received Connection");
         }
 
-        async void OnAuthorized(NetworkConnection conn, CharacterSelectionBroadcast data)
+        async void OnAuthorized(NetworkConnection conn, CharacterSelectionBroadcast data, Channel channel)
         {
             if (characterNameByClientId.Count >= Server.Instance.PlayerCapacity)
             {
@@ -108,7 +108,7 @@ namespace ClaraMundi
             PlayerConnection.Instance.SpawnPlayer(conn, asServer);
         }
 
-        void OnResult(CharacterSelectionResult data)
+        void OnResult(CharacterSelectionResult data, Channel channel)
         {
             Debug.Log("Received Result: " + (data.Passed ? "Authenticated" : "Not Authenticated"));
         }

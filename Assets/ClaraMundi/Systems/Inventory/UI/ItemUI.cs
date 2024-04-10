@@ -77,7 +77,7 @@ namespace ClaraMundi
 
         void OnOwnerEntityChange()
         {
-            OnEntityChange(owner.entity ? owner.entity.entityId : null);
+            OnEntityChange(owner.entity != null ? owner.entity.entityId.Value : null);
         }
 
         private void OnEntityChange(string entityId)

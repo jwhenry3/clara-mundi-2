@@ -3,24 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
-using UnityEngine;
 
 namespace ClaraMundi
 {
     public class QuestController : PlayerController
     {
-        [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnDialogueComplete))]
-        public string LastCompletedDialogueId;
-        [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = nameof(OnEntityTypeDispatched))]
-        public string LastEntityTypeDispatched;
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncList<string> AcceptedQuests = new();
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncList<string> TrackedQuests = new();
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncDictionary<string, CompletedQuest> QuestCompletions = new();
-        [SyncObject(ReadPermissions = ReadPermission.OwnerOnly)]
-        public readonly SyncDictionary<string, QuestTaskProgress> TaskProgress = new();
+        public readonly SyncVar<string> LastCompletedDialogueId = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
+        public readonly SyncVar<string> LastEntityTypeDispatched = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
+        public readonly SyncList<string> AcceptedQuests = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
+        public readonly SyncList<string> TrackedQuests = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
+        public readonly SyncDictionary<string, CompletedQuest> QuestCompletions = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
+        public readonly SyncDictionary<string, QuestTaskProgress> TaskProgress = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
 
         private QuestRepo repo => RepoManager.Instance.QuestRepo;
         private ItemRepo itemRepo => RepoManager.Instance.ItemRepo;
@@ -41,6 +34,15 @@ namespace ClaraMundi
         public CompletedQuest GetCompletion(string questId) =>
             QuestCompletions.ContainsKey(questId) ? QuestCompletions[questId] : null;
 
+        void OnEnable() {
+          LastCompletedDialogueId.OnChange += OnDialogueComplete;
+          LastEntityTypeDispatched.OnChange += OnEntityTypeDispatched;
+        }
+        void OnDisable() {
+          LastCompletedDialogueId.OnChange -= OnDialogueComplete;
+          LastEntityTypeDispatched.OnChange -= OnEntityTypeDispatched;
+        }
+
         public override void OnStartServer()
         {
             base.OnStartServer();
@@ -56,7 +58,7 @@ namespace ClaraMundi
         private void OnDestroy()
         {
             // destroy the listening
-            if (IsServer)
+            if (IsServerStarted)
                 player.Inventory.ItemStorage.Items.OnChange -= OnItemChange;
         }
 
@@ -78,7 +80,7 @@ namespace ClaraMundi
         {
             if (!asServer) return;
             if (itemInstance == null) return;
-            foreach (var questId in AcceptedQuests)
+            foreach (string questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
@@ -92,7 +94,7 @@ namespace ClaraMundi
         private void OnDialogueComplete(string previous, string next, bool asServer)
         {
             if (!asServer) return;
-            foreach (var questId in AcceptedQuests)
+            foreach (string questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
@@ -108,7 +110,7 @@ namespace ClaraMundi
         {
             if (!asServer) return;
             if (next == null) return;
-            foreach (var questId in AcceptedQuests)
+            foreach (string questId in AcceptedQuests)
             {
                 // do not track task progress for completed quests
                 if (QuestCompletions.ContainsKey(questId)) continue;
@@ -133,7 +135,7 @@ namespace ClaraMundi
                 {
                     QuestId = task.QuestId,
                     QuestTaskId = task.QuestTaskId,
-                    PlayerName = player.Entity.entityName,
+                    PlayerName = player.Entity.entityName.Value,
                     DispatchCount = count,
                     IsComplete = count == task.DispatchQuantity
                 };
@@ -171,7 +173,7 @@ namespace ClaraMundi
                 {
                     QuestId = task.QuestId,
                     QuestTaskId = task.QuestTaskId,
-                    PlayerName = player.Entity.entityName,
+                    PlayerName = player.Entity.entityName.Value,
                     ItemsHeld = previousProgress.ItemsHeld,
                     ItemsTurnedIn =  true,
                     IsComplete =  true,
@@ -197,7 +199,7 @@ namespace ClaraMundi
                 {
                     QuestId = task.QuestId,
                     QuestTaskId = task.QuestTaskId,
-                    PlayerName = player.Entity.entityName,
+                    PlayerName = player.Entity.entityName.Value,
                     IsVolatile = false,
                     DialogueCompleted = true,
                     IsComplete = true
@@ -228,7 +230,7 @@ namespace ClaraMundi
                 {
                     QuestId = task.QuestId,
                     QuestTaskId = task.QuestTaskId,
-                    PlayerName = player.Entity.entityName,
+                    PlayerName = player.Entity.entityName.Value,
                     ItemsHeld = remaining > task.ItemQuantity ? task.ItemQuantity : remaining,
                     IsVolatile = true
                 };
@@ -265,7 +267,7 @@ namespace ClaraMundi
             var completion = new CompletedQuest()
             {
                 QuestId = quest.QuestId,
-                PlayerName = player.Entity.entityName,
+                PlayerName = player.Entity.entityName.Value,
                 LastCompletedTimestamp = secondsSinceEpoch
             };
             QuestCompletions[quest.QuestId] = completion;
@@ -284,7 +286,7 @@ namespace ClaraMundi
         public bool HasRequiredCompletions(Quest quest) =>
             quest.Requirement.PrecedingQuests.All(requiredQuestCompletion => QuestCompletions.ContainsKey(requiredQuestCompletion.QuestId));
 
-        public bool IsRequiredLevel(Quest quest) => player.Stats.Level >= quest.Requirement.RequiredLevel;
+        public bool IsRequiredLevel(Quest quest) => player.Stats.Level.Value >= quest.Requirement.RequiredLevel;
         
         public bool CanAcceptQuest(string questId)
         {
@@ -296,7 +298,7 @@ namespace ClaraMundi
         
         public void ServerAcceptQuest(string questId)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (!repo.Quests.ContainsKey(questId)) return;
             if (AcceptedQuests.Contains(questId)) return;
             if (!CanAcceptQuest(questId)) return;

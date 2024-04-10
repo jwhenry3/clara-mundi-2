@@ -21,8 +21,8 @@ namespace ClaraMundi
         {
             if (cameraTransform == null && CameraManager.Instance != null && CameraManager.Instance.Camera != null)
                 cameraTransform = CameraManager.Instance.Camera.transform;
-            if (entity && Text.text != entity.entityName)
-                Text.text = entity.entityName;
+            if (entity && Text.text != entity.entityName.Value)
+                Text.text = entity.entityName.Value;
             if (cameraTransform == null) return;
             t.rotation = cameraTransform.rotation;
             var scale = CameraManager.Instance.Camera.orthographicSize / 8;

@@ -21,13 +21,13 @@ namespace ClaraMundi
 
         public void RegisterStorage(ItemStorage storage)
         {
-            if (!StorageByEntityAndId.ContainsKey(storage.OwnerEntity.entityId))
+            if (!StorageByEntityAndId.ContainsKey(storage.OwnerEntity.entityId.Value))
             {
-                StorageByEntityAndId[storage.OwnerEntity.entityId] = new();
+                StorageByEntityAndId[storage.OwnerEntity.entityId.Value] = new();
             }
 
-            if (StorageByEntityAndId[storage.OwnerEntity.entityId].ContainsKey(storage.StorageId)) return;
-            StorageByEntityAndId[storage.OwnerEntity.entityId][storage.StorageId] = storage;
+            if (StorageByEntityAndId[storage.OwnerEntity.entityId.Value].ContainsKey(storage.StorageId.Value)) return;
+            StorageByEntityAndId[storage.OwnerEntity.entityId.Value][storage.StorageId.Value] = storage;
             storage.Items.OnChange += OnChange;
             foreach (var kvp in storage.Items)
                 ItemsByInstanceId[kvp.Key] = kvp.Value;
@@ -35,10 +35,10 @@ namespace ClaraMundi
 
         public void RemoveStorage(ItemStorage storage)
         {
-            if (!(bool)storage.OwnerEntity || !StorageByEntityAndId.ContainsKey(storage.OwnerEntity.entityId)) return;
-            StorageByEntityAndId[storage.OwnerEntity.entityId].Remove(storage.StorageId);
-            if (StorageByEntityAndId[storage.OwnerEntity.entityId].Count == 0)
-                StorageByEntityAndId.Remove(storage.OwnerEntity.entityId);
+            if (!(bool)storage.OwnerEntity || !StorageByEntityAndId.ContainsKey(storage.OwnerEntity.entityId.Value)) return;
+            StorageByEntityAndId[storage.OwnerEntity.entityId.Value].Remove(storage.StorageId.Value);
+            if (StorageByEntityAndId[storage.OwnerEntity.entityId.Value].Count == 0)
+                StorageByEntityAndId.Remove(storage.OwnerEntity.entityId.Value);
             storage.Items.OnChange -= OnChange;
         }
         

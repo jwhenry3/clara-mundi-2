@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using FishNet.Connection;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
-using FishNet.Object.Synchronizing.SecretMenu;
 
 namespace ClaraMundi
 {
@@ -12,19 +11,24 @@ namespace ClaraMundi
 
     public class PartyController : PlayerController
     {
-        [SyncObject(ReadPermissions =  ReadPermission.OwnerOnly)]
-        public readonly SyncList<string> PartyInvites = new();
+        public readonly SyncList<string> PartyInvites = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
 
         private RequestResponse requestResponse;
         public event Action<Party> PartyChanges;
         public event Action<SyncList<string>> InviteChanges;
 
-        [SyncVar(OnChange = nameof(OnPartyChange))]
-        public Party Party;
+        public readonly SyncVar<Party> Party = new();
 
-        [SyncVar(OnChange = nameof(OnMessage))]
-        public ChatMessage LastMessage;
+        public readonly SyncVar<ChatMessage> LastMessage = new();
 
+        void OnEnable() {
+          Party.OnChange += OnPartyChange;
+          LastMessage.OnChange += OnMessage;
+        }
+        void OnDisable() {
+          Party.OnChange -= OnPartyChange;
+          LastMessage.OnChange -= OnMessage;
+        }
         protected override void Awake()
         {
             base.Awake();
@@ -46,7 +50,7 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            if (IsClient && IsOwner)
+            if (IsClientStarted && IsOwner)
                 PartyInvites.OnChange -= OnInviteChanges;
         }
 
@@ -136,7 +140,7 @@ namespace ClaraMundi
 
         private void UpdateParty(Party party)
         {
-            Party = party;
+            Party.Value = party;
             PartyChanges?.Invoke(party);
         }
 

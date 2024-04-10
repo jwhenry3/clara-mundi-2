@@ -8,8 +8,8 @@ namespace ClaraMundi
 {
     public class ClickToMoveController : PlayerController
     {
-        private Camera camera;
-        [SyncVar] private Vector3 destination;
+        private Camera Camera;
+        private readonly SyncVar<Vector3> destination = new();
 
         private Vector3 lastDestination;
         public bool debugLog;
@@ -17,16 +17,16 @@ namespace ClaraMundi
         public override void OnStartClient()
         {
             base.OnStartClient();
-            camera = CameraManager.Instance.MainCamera.GetComponent<Camera>();
+            Camera = CameraManager.Instance.MainCamera.GetComponent<Camera>();
         }
 
         private float triggeredCooldown;
 
         private void Update()
         {
-            if (lastDestination != destination)
-                MovePlayerTo(destination);
-            lastDestination = destination;
+            if (lastDestination != destination.Value)
+                MovePlayerTo(destination.Value);
+            lastDestination = destination.Value;
             if (triggeredCooldown > 0)
                 triggeredCooldown = Mathf.Max(0, triggeredCooldown - Time.deltaTime);
         }
@@ -39,13 +39,13 @@ namespace ClaraMundi
         [ServerRpc(RunLocally = true)]
         private void SendDestination(Vector3 dest)
         {
-            destination = dest;
+            destination.Value = dest;
         }
 
         private void MovePlayerTo(Vector3 dest)
         {
             player.Body.Motion.MoveToLocation(new Location(dest), 0.0f, OnReachedDestination, 1);
-            if (IsServer) return;
+            if (IsServerStarted) return;
             if (!debugLog) return;
             ChatManager.ReceivedMessage(new ChatMessage()
             {
@@ -59,9 +59,9 @@ namespace ClaraMundi
             return Mathf.Round(value * 100) / 100;
         }
 
-        private void OnReachedDestination(GCharacter character)
+        private void OnReachedDestination(GCharacter character, bool condition)
         {
-            if (IsServer) return;
+            if (IsServerStarted) return;
             if (!debugLog) return;
             ChatManager.ReceivedMessage(new ChatMessage()
             {

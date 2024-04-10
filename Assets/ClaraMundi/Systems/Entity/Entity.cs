@@ -6,37 +6,29 @@ namespace ClaraMundi
 {
     public class Entity : NetworkBehaviour
     {
-        [SyncVar]
-        public Character Character;
-        [SyncObject]
+      
+        public readonly SyncVar<Character> Character = new();
         public readonly SyncDictionary<string, CharacterClass> Classes = new();
 
-        [SyncVar] public string CurrentClassId = "adventurer";
-        public CharacterClass CurrentClass => Classes.ContainsKey(CurrentClassId) ? Classes[CurrentClassId]: new CharacterClass();
+        public readonly SyncVar<string> CurrentClassId = new("adventurer");
+        public CharacterClass CurrentClass => Classes.ContainsKey(CurrentClassId.Value) ? Classes[CurrentClassId.Value]: new CharacterClass();
         public event Action OnStarted;
-        public event Action<string> NameChange;
-        [SyncVar(OnChange = nameof(OnNameChange))]
-        public string entityName = "";
+        public readonly SyncVar<string> entityName = new();
 
         public EntityType EntityType;
-        [SyncVar]
-        public string entityId;
+        public readonly SyncVar<string> entityId = new();
 
         public override void OnStartClient()
         {
             base.OnStartClient();
             OnStarted?.Invoke();
-            EntityManager.Instance.Entities[entityId] = this;
+            EntityManager.Instance.Entities[entityId.Value] = this;
         }
 
         public override void OnStartServer()
         {
             base.OnStartServer();
             OnStarted?.Invoke();
-        }
-        void OnNameChange(string oldValue, string newValue, bool asServer)
-        {
-            NameChange?.Invoke(newValue);
         }
 
     }

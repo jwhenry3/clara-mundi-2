@@ -164,7 +164,7 @@ namespace ClaraMundi
             {
                 var _player = GetPlayer(member);
                 _player.Party.DisbandedParty(_player.Owner);
-                _player.Party.Party = null;
+                _player.Party.Party.Value = null;
                 Parties.Remove(member);
             }
 
@@ -211,7 +211,7 @@ namespace ClaraMundi
             foreach (var member in party.members)
             {
                 if (Parties.ContainsKey(member) && PlayerManager.Instance.PlayersByName.ContainsKey(member))
-                    GetPlayer(member).Party.Party = party;
+                    GetPlayer(member).Party.Party.Value = party;
             }
         }
 
@@ -227,7 +227,7 @@ namespace ClaraMundi
             foreach (var member in Parties[player].members)
             {
                 var _member = GetPlayer(member);
-                _member.Party.LastMessage = message;
+                _member.Party.LastMessage.Value = message;
             }
         }
     }

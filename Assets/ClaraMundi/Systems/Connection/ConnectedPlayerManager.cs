@@ -5,7 +5,6 @@ namespace ClaraMundi
 {
     public class ConnectedPlayerManager : NetworkBehaviour
     {
-        [SyncObject]
         public readonly SyncDictionary<string, Character> characterByName = new();
 
         public static ConnectedPlayerManager Instance;

@@ -39,7 +39,7 @@ namespace ClaraMundi
         [ServerRpc]
         private void SendMessageFromClient(string channel, ChatMessage message)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             message.SenderCharacterName = player.Character.name;
             message.SenderPosition = player.transform.position;
             ServerSendMessage(channel, message);
@@ -47,7 +47,7 @@ namespace ClaraMundi
 
         private void ServerSendMessage(string channel, ChatMessage message)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (player == null) return;
             if (channel != "Say" && channel != "Shout")
             {

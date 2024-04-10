@@ -50,18 +50,18 @@ namespace ClaraMundi
             if (entity != null)
             {
                 player.Stats.OnChange -= OnStatsChange;
-                entity.NameChange -= OnNameChange;
+                entity.entityName.OnChange -= OnNameChange;
             }
 
             base.OnPlayerChange(_player);
             if (entity == null) return;
-            entity.NameChange += OnNameChange;
+            entity.entityName.OnChange += OnNameChange;
             player.Stats.OnChange += OnStatsChange;
-            OnNameChange(entity.entityName);
+            OnNameChange("", entity.entityName.Value, false);
             OnStatsChange();
         }
 
-        private void OnNameChange(string playerName)
+        private void OnNameChange(string prev, string playerName, bool asServer)
         {
             if (Name == null) return;
             Name.text = playerName;
@@ -70,7 +70,7 @@ namespace ClaraMundi
         private void OnStatsChange()
         {
             if (player == null) return;
-            var stats = player.Stats.ComputedStats;
+            var stats = player.Stats.ComputedStats.Value;
             Strength.text = DisplayNumber(stats.Strength);
             Dexterity.text = DisplayNumber(stats.Dexterity);
             Vitality.text = DisplayNumber(stats.Vitality);

@@ -9,21 +9,11 @@ namespace ClaraMundi
     public class StatsController : PlayerController
     {
         public event Action OnChange;
-
-        [SyncVar(OnChange = nameof(OnComputedChange))]
-        public ComputedStats ComputedStats = new();
-
-        [SyncVar(OnChange = nameof(LevelChange))]
-        public int Level = 1;
-
-        [SyncVar(OnChange = nameof(ExpChange))]
-        public long Experience = 0;
-
-        [SyncVar(OnChange = nameof(ExpTilChange))]
-        public long ExpTilNextLevel = 1000;
-
-        [SyncVar(OnChange = nameof(EnergyChanged))]
-        public Energies Energies = new();
+        public readonly SyncVar<ComputedStats> ComputedStats = new();
+        public readonly SyncVar<int> Level = new(1);
+        public readonly SyncVar<long> Experience = new(0);
+        public readonly SyncVar<long> ExpTilNextLevel = new(1000);
+        public readonly SyncVar<Energies> Energies = new();
 
         [ShowInInspector] Dictionary<StatType, List<StatValue>> StatModifications = new();
         [ShowInInspector] Dictionary<AttributeType, List<AttributeValue>> AttributeModifications = new();
@@ -31,8 +21,23 @@ namespace ClaraMundi
         [ShowInInspector] public readonly Dictionary<StatType, StatValue> ModifiedStats = new();
         [ShowInInspector] public readonly Dictionary<AttributeType, AttributeValue> ModifiedAttributes = new();
 
-        [ShowInInspector] [SyncObject(SendRate = 0.5f)] public readonly SyncDictionary<AttributeType, float> Attributes = new();
+        [ShowInInspector] public readonly SyncDictionary<AttributeType, float> Attributes = new(new SyncTypeSettings(0.5f));
         bool hasLoadedStats;
+
+        void OnEnable() {
+          ComputedStats.OnChange += OnComputedChange;
+          Level.OnChange += LevelChange;
+          Experience.OnChange += ExpChange;
+          ExpTilNextLevel.OnChange += ExpTilChange;
+          Energies.OnChange += EnergyChanged;
+        }
+        void OnDisable() {
+          ComputedStats.OnChange -= OnComputedChange;
+          Level.OnChange -= LevelChange;
+          Experience.OnChange -= ExpChange;
+          ExpTilNextLevel.OnChange -= ExpTilChange;
+          Energies.OnChange -= EnergyChanged;
+        }
 
         protected override void Awake()
         {
@@ -85,7 +90,7 @@ namespace ClaraMundi
 
         public void AddStatModification(StatValue value)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (!StatModifications.ContainsKey(value.Type))
                 StatModifications[value.Type] = new();
             if (StatModifications[value.Type].Contains(value)) return;
@@ -95,7 +100,7 @@ namespace ClaraMundi
 
         public void RemoveStatModification(StatValue value)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (StatModifications.ContainsKey(value.Type))
             {
                 if (StatModifications[value.Type].Contains(value))
@@ -107,7 +112,7 @@ namespace ClaraMundi
 
         private void CalculateStatModificationsOf(StatType type)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             var newValue = new StatValue
             {
                 Type = type
@@ -126,7 +131,7 @@ namespace ClaraMundi
 
         public void AddAttributeModification(AttributeValue value)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (!AttributeModifications.ContainsKey(value.Type))
                 AttributeModifications[value.Type] = new();
             if (AttributeModifications[value.Type].Contains(value)) return;
@@ -136,7 +141,7 @@ namespace ClaraMundi
 
         public void RemoveAttributeModification(AttributeValue value)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             if (AttributeModifications.ContainsKey(value.Type))
             {
                 if (AttributeModifications[value.Type].Contains(value))
@@ -148,7 +153,7 @@ namespace ClaraMundi
 
         private void CalculateAttributeModificationsOf(AttributeType type)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             var newValue = new AttributeValue
             {
                 Type = type
@@ -169,22 +174,22 @@ namespace ClaraMundi
         {
             return new Stats
             {
-                Strength = classType.StartingStats.Strength + classType.StatsPerLevel.Strength * Level,
-                Vitality = classType.StartingStats.Vitality + classType.StatsPerLevel.Vitality * Level,
-                Dexterity = classType.StartingStats.Dexterity + classType.StatsPerLevel.Dexterity * Level,
-                Agility = classType.StartingStats.Agility + classType.StatsPerLevel.Agility * Level,
-                Intelligence = classType.StartingStats.Intelligence + classType.StatsPerLevel.Intelligence * Level,
-                Mind = classType.StartingStats.Mind + classType.StatsPerLevel.Mind * Level,
-                Charisma = classType.StartingStats.Charisma + classType.StatsPerLevel.Charisma * Level,
+                Strength = classType.StartingStats.Strength + classType.StatsPerLevel.Strength * Level.Value,
+                Vitality = classType.StartingStats.Vitality + classType.StatsPerLevel.Vitality * Level.Value,
+                Dexterity = classType.StartingStats.Dexterity + classType.StatsPerLevel.Dexterity * Level.Value,
+                Agility = classType.StartingStats.Agility + classType.StatsPerLevel.Agility * Level.Value,
+                Intelligence = classType.StartingStats.Intelligence + classType.StatsPerLevel.Intelligence * Level.Value,
+                Mind = classType.StartingStats.Mind + classType.StatsPerLevel.Mind * Level.Value,
+                Charisma = classType.StartingStats.Charisma + classType.StatsPerLevel.Charisma * Level.Value,
             };
         }
 
         public void ComputeStats()
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             var classType = RepoManager.Instance.CharacterClassRepo.GetClass(player.Entity.CurrentClass.classId);
             var stats = GetClassStats(classType);
-            ComputedStats = new ComputedStats
+            ComputedStats.Value = new ComputedStats
             {
                 BaseStrength = stats.Strength,
                 BaseVitality = stats.Vitality,
@@ -207,19 +212,20 @@ namespace ClaraMundi
 
         private void ComputeEnergies()
         {
+            var stats = ComputedStats.Value;
             var energies = new Energies
             {
-                DefaultHealth = Energies.DefaultHealth,
-                DefaultMana = Energies.DefaultMana,
-                DefaultStamina = Energies.DefaultStamina,
-                MaxHealth = Math.Min(99999, Energies.DefaultHealth + (int)(2 * ComputedStats.Vitality)),
-                Health = Math.Min(99999, Energies.DefaultMana + (int)(ComputedStats.Intelligence + ComputedStats.Mind)),
+                DefaultHealth = Energies.Value.DefaultHealth,
+                DefaultMana = Energies.Value.DefaultMana,
+                DefaultStamina = Energies.Value.DefaultStamina,
+                MaxHealth = Math.Min(99999, Energies.Value.DefaultHealth + (int)(2 * stats.Vitality)),
+                Health = Math.Min(99999, Energies.Value.DefaultMana + (int)(stats.Intelligence + stats.Mind)),
                 MaxMana = Math.Min(99999,
-                    Energies.DefaultStamina + (int)(ComputedStats.Vitality + ComputedStats.Dexterity +
-                                                    ComputedStats.Agility + ComputedStats.Strength)),
-                Mana = Mathf.Min(Energies.Health, Energies.MaxHealth),
-                MaxStamina = Mathf.Min(Energies.Mana, Energies.MaxMana),
-                Stamina = Mathf.Min(Energies.Stamina, Energies.MaxStamina)
+                    Energies.Value.DefaultStamina + (int)(stats.Vitality + stats.Dexterity +
+                                                    stats.Agility + stats.Strength)),
+                Mana = Mathf.Min(Energies.Value.Health, Energies.Value.MaxHealth),
+                MaxStamina = Mathf.Min(Energies.Value.Mana, Energies.Value.MaxMana),
+                Stamina = Mathf.Min(Energies.Value.Stamina, Energies.Value.MaxStamina)
             };
             if (!hasLoadedStats)
             {
@@ -229,7 +235,7 @@ namespace ClaraMundi
                 hasLoadedStats = true;
             }
 
-            Energies = energies;
+            Energies.Value = energies;
         }
 
         private void ComputeAttributes(CharacterClassType classType)
@@ -240,7 +246,7 @@ namespace ClaraMundi
 
         private float GetModifiedAttribute(AttributeType type, CharacterClassType classType)
         {
-            var initial = classType != null ? classType.GetBaseValueFor(type, ComputedStats) : 1;
+            var initial = classType != null ? classType.GetBaseValueFor(type, ComputedStats.Value) : 1;
             return !ModifiedAttributes.ContainsKey(type) ? initial : ModifiedAttributes[type].GetModifiedValue(initial);
         }
 
@@ -253,7 +259,7 @@ namespace ClaraMundi
 
         private void OnLevelChange()
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             ComputeStats();
         }
 
@@ -270,15 +276,15 @@ namespace ClaraMundi
 
         public void AddExperience(int amount)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
 
-            Experience += amount;
-            ExpTilNextLevel -= amount;
-            if (ExpTilNextLevel > 0) return;
+            Experience.Value += amount;
+            ExpTilNextLevel.Value -= amount;
+            if (ExpTilNextLevel.Value > 0) return;
 
-            Level += 1;
+            Level.Value += 1;
             // read from a list of exp per level
-            ExpTilNextLevel = 1000;
+            ExpTilNextLevel.Value = 1000;
             OnLevelChange();
         }
     }

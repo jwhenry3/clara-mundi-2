@@ -29,9 +29,16 @@ namespace ClaraMundi
         // this will reduce traffic over the net while reporting only to the owner
         // Using SyncVar will allow us to covertly send RPC data to the client and retain
         // the last value sent
-        [SyncVar(ReadPermissions = ReadPermission.OwnerOnly, OnChange = "OnAlertMessage")]
-        public AlertMessage CurrentMessage;
+        public readonly SyncVar<AlertMessage> CurrentMessage = new(new SyncTypeSettings(ReadPermission.OwnerOnly));
         
+        void OnEnable() {
+          CurrentMessage.OnChange += OnAlertMessage;
+        }
+
+        void OnDisable() {
+          CurrentMessage.OnChange -= OnAlertMessage;
+        }
+
         public override void OnStartClient()
         {
             base.OnStartClient();
@@ -46,14 +53,14 @@ namespace ClaraMundi
         }
         public void SendAlert(AlertMessage message)
         {
-            if (!IsServer)
+            if (!IsServerStarted)
             {
                 if (AlertManager.Instance == null) return;
                 // allow client dispatching of alerts to self
                 AlertManager.Instance.AddMessage(message);
                 return;
             }
-            CurrentMessage = message;
+            CurrentMessage.Value = message;
         }
         public void SendAlert(AlertType type, string message, float expiry = 5)
         {

@@ -43,7 +43,7 @@ namespace ClaraMundi
         {
             _serverState = args.ConnectionState;
             if (args.ConnectionState != LocalConnectionState.Started) return;
-            if (!networkManager.IsServer) return;
+            if (!networkManager.IsServerStarted) return;
             foreach (var singleton in Singletons)
             {
                 NetworkObject nob = networkManager.GetPooledInstantiated(singleton, true);

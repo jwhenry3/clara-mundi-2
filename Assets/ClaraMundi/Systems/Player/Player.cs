@@ -11,11 +11,11 @@ namespace ClaraMundi
     {
         public event Action NetStarted;
         public int ClientId;
-        public Character Character => Entity.Character;
+        public Character Character => Entity.Character.Value;
 
         public GCharacter Body;
         public Entity Entity { get; private set; }
-        public string entityId => Entity.entityId;
+        public string entityId => Entity.entityId.Value;
         public StatsController Stats { get; protected set; }
         public InventoryController Inventory { get; protected set; }
         public EquipmentController Equipment { get; protected set; }
@@ -54,7 +54,7 @@ namespace ClaraMundi
         private void OnNetStarted()
         {
             ClientId = Entity.Owner.ClientId;
-            PlayerManager.Instance.Players[Entity.entityId] = this;
+            PlayerManager.Instance.Players[Entity.entityId.Value] = this;
             PlayerManager.Instance.PlayersByName[Character.name.ToLower()] = this;
             if (!Entity.IsOwner) return;
             PlayerManager.Instance.ChangeLocalPlayer(this);
@@ -66,10 +66,10 @@ namespace ClaraMundi
 
         private void OnDestroy()
         {
-            if (networkManager.IsServer)
+            if (networkManager.IsServerStarted)
             {
                 // clean up authenticator references to player names connected
-                GameAuthenticator.RemovePlayerReference(ClientId, Entity.entityName);
+                GameAuthenticator.RemovePlayerReference(ClientId, Entity.entityName.Value);
             }
 
             if (Body.IsPlayer)
@@ -79,10 +79,10 @@ namespace ClaraMundi
             }
 
             Entity.OnStarted -= OnNetStarted;
-            if (PlayerManager.Instance.Players.ContainsKey(Entity.entityId))
-                PlayerManager.Instance.Players.Remove(Entity.entityId);
-            if (PlayerManager.Instance.PlayersByName.ContainsKey(Entity.entityName.ToLower()))
-                PlayerManager.Instance.PlayersByName.Remove(Entity.entityName.ToLower());
+            if (PlayerManager.Instance.Players.ContainsKey(Entity.entityId.Value))
+                PlayerManager.Instance.Players.Remove(Entity.entityId.Value);
+            if (PlayerManager.Instance.PlayersByName.ContainsKey(Entity.entityName.Value.ToLower()))
+                PlayerManager.Instance.PlayersByName.Remove(Entity.entityName.Value.ToLower());
             if (PlayerManager.Instance.LocalPlayer == this)
                 PlayerManager.Instance.ChangeLocalPlayer(null);
         }
@@ -94,7 +94,7 @@ namespace ClaraMundi
 
         public void ServerChangeClass(string classId)
         {
-            if (!Entity.IsServer) return;
+            if (!Entity.IsServerStarted) return;
             if (!Entity.Classes.ContainsKey(classId)) return;
             if (Entity.CurrentClass != null)
             {
@@ -103,15 +103,15 @@ namespace ClaraMundi
                 UpdateClass(Entity.CurrentClass.classId);
             }
 
-            Entity.CurrentClassId = classId;
+            Entity.CurrentClassId.Value = classId;
             if (Entity.CurrentClass == null)
             {
                 Debug.LogWarning("Cannot load current class details");
                 return;
             }
             Entity.CurrentClass.isCurrent = true;
-            Stats.Level = Entity.CurrentClass.level;
-            Stats.Experience = Entity.CurrentClass.exp;
+            Stats.Level.Value = Entity.CurrentClass.level;
+            Stats.Experience.Value = Entity.CurrentClass.exp;
             UpdateClass(Entity.CurrentClass.classId);
             Equipment.ServerEquipAll(Entity.CurrentClass.equipment);
         }

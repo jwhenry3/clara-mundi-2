@@ -41,10 +41,10 @@ namespace ClaraMundi
             // Provides a quick way for an entity to determine if it has quests
             if (quest.Starter != null && quest.Starter.Speaker != null)
             {
-                if (!QuestsByStarterEntityId.ContainsKey(quest.Starter.Speaker.entityId))
-                    QuestsByStarterEntityId[quest.Starter.Speaker.entityId] = new();
-                if (!QuestsByStarterEntityId[quest.Starter.Speaker.entityId].Contains(quest))
-                    QuestsByStarterEntityId[quest.Starter.Speaker.entityId].Add(quest);
+                if (!QuestsByStarterEntityId.ContainsKey(quest.Starter.Speaker.entityId.Value))
+                    QuestsByStarterEntityId[quest.Starter.Speaker.entityId.Value] = new();
+                if (!QuestsByStarterEntityId[quest.Starter.Speaker.entityId.Value].Contains(quest))
+                    QuestsByStarterEntityId[quest.Starter.Speaker.entityId.Value].Add(quest);
             }
 
             // Provides a quick way for an entity to determine what dialogues, tasks, etc
@@ -57,11 +57,11 @@ namespace ClaraMundi
                 {
                     case QuestTaskType.Dialogue:
                         if (quest.Starter != null && quest.Starter.Speaker != null)
-                            AddTaskTo(task.Dialogue.Speaker.entityId, TasksByEntityId, task);
+                            AddTaskTo(task.Dialogue.Speaker.entityId.Value, TasksByEntityId, task);
                         break;
                     case QuestTaskType.Gather:
                         if (task.GiveItemDialogue != null && task.GiveItemDialogue.Speaker!= null)
-                            AddTaskTo(task.GiveItemDialogue.Speaker.entityId, TasksByEntityId, task);
+                            AddTaskTo(task.GiveItemDialogue.Speaker.entityId.Value, TasksByEntityId, task);
                         break;
                     case QuestTaskType.Dispatch:
                         if (task.DispatchEntityType != null)

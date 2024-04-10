@@ -50,7 +50,7 @@ namespace ClaraMundi
                     RemoveInvite(kvp.Key);
             }
 
-            foreach (var i in invites)
+            foreach (string i in invites)
             {
                 if (!clone.ContainsKey(i))
                     AddInvite(i);
@@ -104,7 +104,7 @@ namespace ClaraMundi
 
             if (PlayerManager.Instance.LocalPlayer.Party.Party != null)
             {
-                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.requests)
+                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.Value.requests)
                     AddJoinRequest(joiningPlayerId);
             }
 

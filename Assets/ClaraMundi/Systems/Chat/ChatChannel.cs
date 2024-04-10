@@ -13,13 +13,21 @@ namespace ClaraMundi
         public Player player;
         public List<string> supportedChannels = new();
 
-        [SyncVar(OnChange = nameof(OnMessage))]
-        public ChatMessage LastMessage;
+        public readonly SyncVar<ChatMessage> LastMessage = new();
 
-        [SyncVar(OnChange = nameof(OnMessage), ReadPermissions = ReadPermission.OwnerOnly)]
-        public ChatMessage LastPrivateMessage;
+        public readonly SyncVar<ChatMessage> LastPrivateMessage = new (new SyncTypeSettings(ReadPermission.OwnerOnly));
 
         private ChatMessage initialMessage;
+
+        void OnEnable() {
+          LastMessage.OnChange += OnMessage;
+          LastPrivateMessage.OnChange += OnMessage;
+        } 
+
+        void OnDisable() {
+          LastMessage.OnChange -= OnMessage;
+          LastPrivateMessage.OnChange -= OnMessage;
+        }
 
         public override void OnStartServer()
         {
@@ -41,7 +49,7 @@ namespace ClaraMundi
         public override void OnStartClient()
         {
             base.OnStartClient();
-            initialMessage = LastMessage;
+            initialMessage = LastMessage.Value;
             if (player != null)
             {
                 if (IsOwner)
@@ -70,7 +78,7 @@ namespace ClaraMundi
         {
             if (player != null)
             {
-                if (!IsServer) return;
+                if (!IsServerStarted) return;
                 ChatManager.Instance.Channels.Remove(player.Character.name);
                 return;
             }
@@ -83,7 +91,7 @@ namespace ClaraMundi
                     Message = $"Left the {channel} Channel"
                 });
                 if (channel == "Say" || channel == "Shout") continue;
-                if (!IsServer) continue;
+                if (!IsServerStarted) continue;
                 ChatManager.Instance.Channels.Remove(channel);
             }
         }
@@ -99,7 +107,7 @@ namespace ClaraMundi
 
         public void ServerSendMessage(ChatMessage message)
         {
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
             switch (message.Channel)
             {
                 case "Say" when player == null:
@@ -113,10 +121,10 @@ namespace ClaraMundi
                 }
                 case "Whisper":
                     if (player != null && message.ToCharacterName == player.Character.name)
-                        LastPrivateMessage = message;
+                        LastPrivateMessage.Value = message;
                     break;
                 default:
-                    LastMessage = message;
+                    LastMessage.Value = message;
                     break;
             }
         }

@@ -18,11 +18,11 @@ namespace ClaraMundi
         public SphereCollider area;
         public GCharacter character;
         public float moveInterval = 5f;
-        [SyncVar] public float movementSpeed = 2;
+        public readonly SyncVar<float> movementSpeed = new(2);
 
         public bool spawnIsOrigin = true;
         private Vector3 origin;
-        [SyncVar] private Vector3 destination;
+        private readonly SyncVar<Vector3> destination = new();
         private Vector3 lastDestination;
 
         private Transform t;
@@ -41,12 +41,12 @@ namespace ClaraMundi
 
         public void SetDestination(Vector3 dest)
         {
-            destination = dest;
+            destination.Value = dest;
         }
 
         private void Update()
         {
-            if (IsServer && canMove)
+            if (IsServerStarted && canMove)
             {
                 if (!spawnIsOrigin)
                     origin = t.position;
@@ -54,10 +54,10 @@ namespace ClaraMundi
                     MoveToNewDestination();
             }
 
-            if (destination == Vector3.zero) return;
-            if (lastDestination == destination) return;
-            character.Motion.MoveToLocation(new Location(destination), 0.0f, OnReachedDestination, 1);
-            lastDestination = destination;
+            if (destination.Value == Vector3.zero) return;
+            if (lastDestination == destination.Value) return;
+            character.Motion.MoveToLocation(new Location(destination.Value), 0.0f, OnReachedDestination, 1);
+            lastDestination = destination.Value;
         }
 
         private void MoveToNewDestination()
@@ -67,14 +67,15 @@ namespace ClaraMundi
             readyToMove = false;
             var nextDestination = RandomNavSphere(origin, area.radius, LayerMask.GetMask("Default"));
             if (nextDestination != Vector3.zero)
-                destination = nextDestination;
+                destination.Value = nextDestination;
         }
 
-        private async void OnReachedDestination(GCharacter _character)
+        private async void OnReachedDestination(GCharacter _character, bool hasReached)
         {
             if (!gameObject.activeInHierarchy) return;
             if (!isActiveAndEnabled) return;
-            if (!IsServer) return;
+            if (!IsServerStarted) return;
+            if (!hasReached) return;
             await Task.Delay((int)(moveInterval * 1000));
             readyToMove = true;
         }

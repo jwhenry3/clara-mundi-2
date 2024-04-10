@@ -27,7 +27,7 @@ namespace ClaraMundi
             if (player != null)
             {
                 player.Party.PartyChanges += OnPartyChanges;
-                OnPartyChanges(player.Party.Party);
+                OnPartyChanges(player.Party.Party.Value);
             }
         }
         public override void OnDestroy()

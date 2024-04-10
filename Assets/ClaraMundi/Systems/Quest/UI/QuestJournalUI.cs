@@ -38,7 +38,7 @@ namespace ClaraMundi.Quests
 
         private void LoadQuests()
         {
-            foreach (var questId in player.Quests.AcceptedQuests)
+            foreach (string questId in player.Quests.AcceptedQuests)
                 AddQuest(questId);
         }
 
