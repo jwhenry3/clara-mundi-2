@@ -99,8 +99,8 @@ namespace ClaraMundi
         private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
         {
             if (asServer) return;
-            if (lastMessage.MessageId == nextMessage.MessageId ||
-                nextMessage.MessageId == initialMessage?.MessageId) return;
+            if (lastMessage != null && (lastMessage.MessageId == nextMessage.MessageId ||
+                nextMessage.MessageId == initialMessage?.MessageId)) return;
 
             ChatManager.ReceivedMessage(nextMessage);
         }

@@ -14,6 +14,6 @@ export class CharacterItemInstanceEntity {
   storageId: string
   @Column('varchar')
   itemId: string
-  @Column('int')
+  @Column('int', { default: 0 })
   quantity: number
 }

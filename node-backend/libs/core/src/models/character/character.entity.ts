@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryColumn, PrimaryGeneratedColumn, Unique } from 'typeorm'
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm'
 
 import { CharacterClassEntity } from './character-class.entity'
 import { CharacterItemInstanceEntity } from './character-item-instance.entity'
@@ -16,21 +23,21 @@ export class CharacterEntity {
   race: string = 'human'
   @Column('varchar')
   area: string = 'Rein'
-  @Column('decimal')
+  @Column('decimal', { default: 0 })
   position_x: number = 0
-  @Column('decimal')
+  @Column('decimal', { default: 0 })
   position_y: number = 0
-  @Column('decimal')
+  @Column('decimal', { default: 0 })
   position_z: number = 0
-  @Column('decimal')
+  @Column('decimal', { default: 0 })
   rotation: number = 0
 
-  @Column('bigint')
+  @Column('int', { default: 0 })
   lastConnected: number = 0
-  @Column('bigint')
+  @Column('int', { default: 0 })
   lastDisconnected: number = 0
 
-  @Column('int', {nullable: true})
+  @Column('int', { default: 0 })
   hasConnectedBefore: number = 0
 
   @OneToMany(() => CharacterClassEntity, (c) => c.character, {

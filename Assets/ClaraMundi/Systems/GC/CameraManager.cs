@@ -20,9 +20,10 @@ namespace ClaraMundi
             Camera = MainCamera.GetComponent<Camera>();
         }
 
-        public void UsePlayerCamera()
+        public void UsePlayerCamera(Player player)
         {
             MainCamera.Transition.CurrentShotCamera = PlayerCamera;
+            
         }
 
         public void UseLoginCamera()

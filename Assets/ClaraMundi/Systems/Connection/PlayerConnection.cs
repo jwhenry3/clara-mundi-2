@@ -116,6 +116,7 @@ namespace ClaraMundi
             player.Stats.player = player;
 
             player.Entity.entityName.Value = character.name.ToLower();
+            player.Entity.entityId.Value = character.accountId;
             player.Stats.ComputeStats();
             
             var rotation = Quaternion.identity;

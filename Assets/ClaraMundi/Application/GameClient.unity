@@ -172,25 +172,43 @@ MonoBehaviour:
     m_UpdateTime: 0
   m_Clipping: 0
   m_ShotType:
-    rid: 3403834102650503172
+    rid: 2220649812141015373
   references:
     version: 2
     RefIds:
-    - rid: 3403834102650503172
+    - rid: 2220649812141015373
       type: {class: ShotTypeFixed, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
       data:
+        m_ShotSystemViewport:
+          m_Projection:
+            m_IsEnabled: 0
+            m_Value: 0
+          m_FieldOfView:
+            m_IsEnabled: 0
+            m_Value: 60
+          m_OrthographicSize:
+            m_IsEnabled: 0
+            m_Value: 5
+          m_ClipPlaneNear:
+            m_IsEnabled: 0
+            m_Value: 0.3
+          m_ClipPlaneFar:
+            m_IsEnabled: 0
+            m_Value: 1000
         m_ShotSystemLook:
-          m_IsActive: 0
+          m_IsActive: 1
           m_LookTarget:
             m_Property:
-              rid: 3403834102650503185
+              rid: 2220649812141015374
           m_LookOffset:
             m_Property:
-              rid: 3403834102650503174
-    - rid: 3403834102650503174
-      type: {class: GetOffsetNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834102650503185
-      type: {class: GetGameObjectNone, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+              rid: 2220649812141015375
+    - rid: 2220649812141015374
+      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 2220649812141015375
+      type: {class: GetDirectionVector3Zero, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data: 
 --- !u!1 &159970280
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,41 +258,110 @@ MonoBehaviour:
     m_UpdateTime: 0
   m_Clipping: 0
   m_ShotType:
-    rid: 3403834128594108465
+    rid: 2220649812141015376
   references:
     version: 2
     RefIds:
-    - rid: 3403834128594108465
-      type: {class: ShotTypeFollow, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
+    - rid: 2220649812141015376
+      type: {class: ShotTypeThirdPerson, ns: GameCreator.Runtime.Cameras, asm: GameCreator.Runtime.Core}
       data:
-        m_ShotSystemLook:
-          m_IsActive: 1
-          m_LookTarget:
+        m_ShotSystemViewport:
+          m_Projection:
+            m_IsEnabled: 0
+            m_Value: 0
+          m_FieldOfView:
+            m_IsEnabled: 0
+            m_Value: 60
+          m_OrthographicSize:
+            m_IsEnabled: 0
+            m_Value: 5
+          m_ClipPlaneNear:
+            m_IsEnabled: 0
+            m_Value: 0.3
+          m_ClipPlaneFar:
+            m_IsEnabled: 0
+            m_Value: 1000
+        m_Zoom:
+          m_TargetZoom: 1
+          m_MinDistance: 0.5
+          m_SmoothTime: 0.1
+          m_InputZoom:
+            m_Input:
+              rid: 2220649812141015377
+          m_Sensitivity:
             m_Property:
-              rid: 3403834128594108466
-          m_LookOffset:
+              rid: 2220649812141015378
+        m_ThirdPerson:
+          m_Pivot:
             m_Property:
-              rid: 3403834128594108474
-        m_ShotSystemFollow:
-          m_IsActive: 1
-          m_Follow:
+              rid: 2220649812141015379
+          m_Shoulder:
             m_Property:
-              rid: 3403834128594108468
-          m_Distance:
+              rid: 2220649812141015380
+          m_Lift:
             m_Property:
-              rid: 3403834128594108469
-    - rid: 3403834128594108466
-      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834128594108468
-      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-    - rid: 3403834128594108469
-      type: {class: GetOffsetVector3, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+              rid: 2220649812141015381
+          m_Radius:
+            m_Property:
+              rid: 2220649812141015382
+          m_InputRotate:
+            m_Input:
+              rid: 2220649812141015383
+          m_SensitivityX:
+            m_Property:
+              rid: 2220649812141015384
+          m_SensitivityY:
+            m_Property:
+              rid: 2220649812141015385
+          m_MaxPitch: 60
+          m_MaxYaw:
+            m_IsEnabled: 0
+            m_Value: 120
+          m_SmoothTime:
+            m_Property:
+              rid: 2220649812141015386
+          m_Align:
+            m_AutoAlign: 0
+            m_Delay: 3
+            m_SmoothTime: 3
+    - rid: 2220649812141015377
+      type: {class: InputValueVector2Scroll, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Offset: {x: -4, y: 6, z: -4}
-    - rid: 3403834128594108474
-      type: {class: GetOffsetVector3, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+        m_Direction: 0
+    - rid: 2220649812141015378
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Offset: {x: 0, y: 0, z: 0}
+        m_Value: 0.009999999776482582
+    - rid: 2220649812141015379
+      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 2220649812141015380
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0
+    - rid: 2220649812141015381
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0.5
+    - rid: 2220649812141015382
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 5
+    - rid: 2220649812141015383
+      type: {class: InputValueVector2MotionSecondary, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 2220649812141015384
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 5
+    - rid: 2220649812141015385
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 5
+    - rid: 2220649812141015386
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0.15000000596046448
 --- !u!1001 &752870503
 PrefabInstance:
   m_ObjectHideFlags: 0

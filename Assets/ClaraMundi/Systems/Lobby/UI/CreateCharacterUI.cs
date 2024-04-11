@@ -39,10 +39,9 @@ namespace ClaraMundi
                 RaceOptions[RaceDropdown.value],
                 ClassOptions[ClassDropdown.value]
             );
-            Debug.Log(result.reason);
             if (result.status)
             {
-                SessionManager.Instance.PlayerCharacter = Character.FromData(result.character);
+                SessionManager.Instance.PlayerCharacter = result.character;
                 LobbyUI.Instance.ToServerList();
             }
             else

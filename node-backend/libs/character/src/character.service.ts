@@ -89,7 +89,6 @@ export class CharacterService {
       }
     }
     const characters = await this.getCharactersForList(accountId)
-    console.log(characters)
     return {
       status: true,
       reason: '',

@@ -60,7 +60,7 @@ namespace ClaraMundi
             PlayerManager.Instance.ChangeLocalPlayer(this);
             NetStarted?.Invoke();
             Body.IsPlayer = true;
-            CameraManager.Instance.UsePlayerCamera();
+            CameraManager.Instance.UsePlayerCamera(this);
             InputManager.Instance.World.Enable();
         }
 

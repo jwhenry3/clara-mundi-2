@@ -99,12 +99,13 @@ namespace ClaraMundi
 
         public void Populate()
         {
-            foreach (string invitingPlayerId in PlayerManager.Instance.LocalPlayer.Party.PartyInvites)
+          var PartySystem = PlayerManager.Instance.LocalPlayer.Party;
+            foreach (string invitingPlayerId in PartySystem.PartyInvites)
                 AddInvite(invitingPlayerId);
 
-            if (PlayerManager.Instance.LocalPlayer.Party.Party != null)
+            if (PartySystem.Party.Value != null)
             {
-                foreach (string joiningPlayerId in PlayerManager.Instance.LocalPlayer.Party.Party.Value.requests)
+                foreach (string joiningPlayerId in PartySystem.Party.Value.requests)
                     AddJoinRequest(joiningPlayerId);
             }
 

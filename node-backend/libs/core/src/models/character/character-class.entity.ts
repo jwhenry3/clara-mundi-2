@@ -15,12 +15,12 @@ export class CharacterClassEntity {
   @Column('varchar')
   classId: string
 
-  @Column('int')
+  @Column('int', {default: 1})
   level: number = 1
-  @Column('int', {nullable: true})
+  @Column('int', {default: 0})
   exp: number = 0
 
-  @Column('int', {nullable: true})
+  @Column('int', {default: 0})
   isCurrent: number = 0
 
   @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass, {

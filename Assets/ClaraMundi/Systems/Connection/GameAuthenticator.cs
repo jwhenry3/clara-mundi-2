@@ -93,7 +93,7 @@ namespace ClaraMundi
             {
                 connectionsByCharacterName[data.CharacterName] = conn;
                 characterNameByClientId[conn.ClientId] = character.name;
-                ConnectedPlayerManager.Instance.characterByName[character.name] = Character.FromData(result.character);
+                ConnectedPlayerManager.Instance.characterByName[character.name] = result.character;
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
                 if (MasterServerConnection.Instance != null)
                     MasterServerConnection.Instance.UpdateServerList();
@@ -136,7 +136,7 @@ namespace ClaraMundi
         {
             if (characterNameByClientId.ContainsKey(ClientId))
                 characterNameByClientId.Remove(ClientId);
-            if (connectionsByCharacterName.ContainsKey(PlayerName.ToLower()))
+            if (PlayerName != null && connectionsByCharacterName.ContainsKey(PlayerName.ToLower()))
                 connectionsByCharacterName.Remove(PlayerName.ToLower());
             if (ConnectedPlayerManager.Instance.characterByName.ContainsKey(PlayerName))
                 ConnectedPlayerManager.Instance.characterByName.Remove(PlayerName);

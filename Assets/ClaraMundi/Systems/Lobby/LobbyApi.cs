@@ -35,11 +35,16 @@ namespace ClaraMundi
   {
     public List<CharacterData> characters;
   }
+  [Serializable]
+  public class CharacterDataResponse : OperationResponse
+  {
+    public CharacterData character;
+  }
 
   [Serializable]
   public class CharacterResponse : OperationResponse
   {
-    public CharacterData character;
+    public Character character;
   }
 
   public class LoginRequest {
