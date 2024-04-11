@@ -218,14 +218,19 @@ export class CharacterService {
       return this.repo.findOne({
         where: {
           accountId,
-          name: Raw((alias) => `LOWER(${alias}) == LOWER(:value)`, {
+          name: Raw((alias) => `LOWER(${alias}) = LOWER(:value)`, {
             value: name,
           }),
         },
         relations: ['characterClasses', 'characterClasses.equipment'],
       })
     }
-    return this.repo.findOneBy({ accountId, name })
+    return this.repo.findOneBy({
+      accountId,
+      name: Raw((alias) => `LOWER(${alias}) = LOWER(:value)`, {
+        value: name,
+      }),
+    })
   }
   private findByName(name: string) {
     return this.repo.findOneBy({ name })
