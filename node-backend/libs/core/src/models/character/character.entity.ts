@@ -15,7 +15,9 @@ import { CharacterItemInstanceEntity } from './character-item-instance.entity'
 export class CharacterEntity {
   @Column('varchar')
   accountId: string
-  @PrimaryColumn('varchar')
+  @PrimaryGeneratedColumn('uuid')
+  id: string
+  @Column('varchar')
   name: string
   @Column('varchar')
   gender: string = 'male'
