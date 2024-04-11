@@ -93,6 +93,7 @@ export class LoginServerController {
       result.character.lastConnected = new Date().valueOf()
       result.character = await this.character.saveCharacter(result.character)
     }
+    console.log(result.character)
     this.respond(res, this.getStatus(result.reason), result)
   }
 

@@ -17,7 +17,7 @@ export class CharacterClassEntity {
 
   @Column('int')
   level: number = 1
-  @Column('bigint')
+  @Column('int', {nullable: true})
   exp: number = 0
 
   @Column('int', {nullable: true})

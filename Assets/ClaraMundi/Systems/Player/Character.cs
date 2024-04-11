@@ -35,7 +35,7 @@ namespace ClaraMundi
         race = data.race,
         area = data.area,
         level = data.level ?? 1,
-        exp = int.Parse(data.exp ?? "0"),
+        exp = data.exp ?? 0,
         classId = data.classid ?? ""
       };
     }

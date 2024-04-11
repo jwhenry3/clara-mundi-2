@@ -20,7 +20,7 @@ namespace ClaraMundi
     public string race;
     public string area;
     public int? level;
-    public string exp;
+    public int? exp;
     public string classid;
   }
 
