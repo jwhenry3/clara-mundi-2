@@ -60,7 +60,7 @@ namespace ClaraMundi
                 ManaText.text = "??";
                 return;
             }
-            PlayerLevel.text = "LV " + player.Stats.Level;
+            PlayerLevel.text = "LV " + player.Stats.Level.Value;
             // convert a value to a float to retain the decimal value
             HealthBar.fillAmount = player.Stats.Energies.Value.Health / (player.Stats.Energies.Value.MaxHealth * 1f);
             ManaBar.fillAmount = player.Stats.Energies.Value.Mana / (player.Stats.Energies.Value.MaxMana * 1f);

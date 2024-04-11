@@ -17,7 +17,7 @@ namespace ClaraMundi
         public event Action<Party> PartyChanges;
         public event Action<SyncList<string>> InviteChanges;
 
-        public readonly SyncVar<Party> Party = new();
+        public readonly SyncVar<Party> Party = new(new Party());
 
         public readonly SyncVar<ChatMessage> LastMessage = new();
 

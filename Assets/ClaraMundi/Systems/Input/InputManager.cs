@@ -20,8 +20,8 @@ namespace ClaraMundi
         private void Awake()
         {
             Instance = this;
-            UI =  InputManager.Instance.InputActionAsset.FindActionMap("UI");
-            World =  InputManager.Instance.InputActionAsset.FindActionMap("Player");
+            UI =  Instance.InputActionAsset.FindActionMap("UI");
+            World =  Instance.InputActionAsset.FindActionMap("Player");
             UI.Enable();
             World.Disable();
         }

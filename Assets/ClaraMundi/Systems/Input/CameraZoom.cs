@@ -16,7 +16,7 @@ namespace ClaraMundi
 
         public float zoomValue = 5;
 
-        private void Awake()
+        void OnEnable()
         {
             Camera = MainCamera.GetComponent<Camera>();
             InputAction = InputManager.Instance.World.FindAction("Zoom");
@@ -25,7 +25,7 @@ namespace ClaraMundi
             Camera.fieldOfView = zoomValue * 12;
         }
 
-        private void OnDestroy()
+        void OnDisable()
         {
             InputAction.performed -= OnPerform;
         }

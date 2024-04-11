@@ -9,11 +9,11 @@ namespace ClaraMundi
     public class StatsController : PlayerController
     {
         public event Action OnChange;
-        public readonly SyncVar<ComputedStats> ComputedStats = new();
+        public readonly SyncVar<ComputedStats> ComputedStats = new(new ComputedStats());
         public readonly SyncVar<int> Level = new(1);
         public readonly SyncVar<long> Experience = new(0);
         public readonly SyncVar<long> ExpTilNextLevel = new(1000);
-        public readonly SyncVar<Energies> Energies = new();
+        public readonly SyncVar<Energies> Energies = new(new Energies());
 
         [ShowInInspector] Dictionary<StatType, List<StatValue>> StatModifications = new();
         [ShowInInspector] Dictionary<AttributeType, List<AttributeValue>> AttributeModifications = new();

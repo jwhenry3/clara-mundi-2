@@ -306,7 +306,7 @@ MonoBehaviour:
               rid: 2220649812141015382
           m_InputRotate:
             m_Input:
-              rid: 2220649812141015383
+              rid: 2220649812141015493
           m_SensitivityX:
             m_Property:
               rid: 2220649812141015384
@@ -338,7 +338,7 @@ MonoBehaviour:
     - rid: 2220649812141015380
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
-        m_Value: 0
+        m_Value: 0.07
     - rid: 2220649812141015381
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -347,9 +347,6 @@ MonoBehaviour:
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: 5
-    - rid: 2220649812141015383
-      type: {class: InputValueVector2MotionSecondary, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 2220649812141015384
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -362,6 +359,13 @@ MonoBehaviour:
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
         m_Value: 0.15000000596046448
+    - rid: 2220649812141015493
+      type: {class: InputValueVector2InputAction, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Input:
+          m_InputAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
+          m_ActionMap: Player
+          m_Action: Look
 --- !u!1001 &752870503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -438,6 +442,7 @@ GameObject:
   - component: {fileID: 1748470432}
   - component: {fileID: 1748470436}
   - component: {fileID: 1748470437}
+  - component: {fileID: 1748470438}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -593,6 +598,20 @@ MonoBehaviour:
   PlayerCamera: {fileID: 159970282}
   MainCamera: {fileID: 1748470432}
   zoomValue: 5
+--- !u!114 &1748470438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748470430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 123756eae5315604280de157497555e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerCamera: {fileID: 159970282}
+  MainCamera: {fileID: 1748470432}
 --- !u!1001 &1921066771
 PrefabInstance:
   m_ObjectHideFlags: 0
