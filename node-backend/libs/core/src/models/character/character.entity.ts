@@ -30,8 +30,8 @@ export class CharacterEntity {
   @Column('bigint')
   lastDisconnected: number = 0
 
-  @Column('tinyint')
-  hasConnectedBefore: boolean = false
+  @Column('int', {nullable: true})
+  hasConnectedBefore: number = 0
 
   @OneToMany(() => CharacterClassEntity, (c) => c.character, {
     cascade: true,

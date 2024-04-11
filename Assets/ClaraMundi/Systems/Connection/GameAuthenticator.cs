@@ -80,10 +80,12 @@ namespace ClaraMundi
             {
                 SendAuthenticationResponse(conn, false);
                 OnAuthenticationResult?.Invoke(conn, false);
+                Debug.Log("At Capacity");
                 return;
             }
 
             data.CharacterName = data.CharacterName.ToLower();
+            Debug.Log(data.AccountToken + " - " + data.CharacterName);
             var result = await LobbyApi.VerifyCharacter(data.AccountToken, data.CharacterName);
             var character = result.character;
             bool authorized = character != null && !connectionsByCharacterName.ContainsKey(data.CharacterName);
@@ -91,10 +93,13 @@ namespace ClaraMundi
             {
                 connectionsByCharacterName[data.CharacterName] = conn;
                 characterNameByClientId[conn.ClientId] = character.name;
-                ConnectedPlayerManager.Instance.characterByName[character.name] = result.character;
+                ConnectedPlayerManager.Instance.characterByName[character.name] = Character.FromData(result.character);
                 conn.OnLoadedStartScenes += OnLoadedStartScenes;
                 if (MasterServerConnection.Instance != null)
                     MasterServerConnection.Instance.UpdateServerList();
+                Debug.Log("Character Authorized!");
+            } else {
+              Debug.Log("Character Not Authorized");
             }
 
             SendAuthenticationResponse(conn, authorized);

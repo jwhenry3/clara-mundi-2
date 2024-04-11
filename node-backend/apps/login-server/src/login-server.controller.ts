@@ -89,7 +89,7 @@ export class LoginServerController {
       true,
     )
     if (result.character && isConnectingFlag) {
-      result.character.hasConnectedBefore = true
+      result.character.hasConnectedBefore = 1;
       result.character.lastConnected = new Date().valueOf()
       result.character = await this.character.saveCharacter(result.character)
     }

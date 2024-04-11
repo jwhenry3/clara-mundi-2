@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -70,7 +71,10 @@ namespace ClaraMundi
                 Destroy(child.gameObject);
 
             var response = await LobbyApi.GetCharacters();
-            Characters = response.characters ?? new List<Character>();
+            Characters = new();
+            if (response.characters != null) {
+              Characters = response.characters.Select(c => Character.FromData(c)).ToList();
+            }
 
             if (!isActiveAndEnabled) return;
             if (Characters.Count == 0)

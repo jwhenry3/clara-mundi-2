@@ -10,9 +10,13 @@ using Newtonsoft.Json;
 
 namespace ClaraMundi
 {
+    [Serializable]
     public class WebSocketMessage
     {
+      
+        [JsonProperty(PropertyName = "event")]
         public string eventName;
+        [JsonProperty(PropertyName = "data")]
         public string data;
     }
 
@@ -23,7 +27,7 @@ namespace ClaraMundi
         Disconnected,
     }
 
-    public class WebSocketConnection : MonoBehaviour
+    public abstract class WebSocketConnection : MonoBehaviour
     {
         public string Label;
         public string serverUrl;
@@ -111,7 +115,7 @@ namespace ClaraMundi
 
         public void Send(WebSocketMessage message)
         {
-            websocket.SendText(JsonConvert.SerializeObject(message).Replace("\"eventName\"", "\"event\""));
+            websocket.SendText(JsonConvert.SerializeObject(message));
         }
 
         protected async void OnApplicationQuit()
@@ -125,8 +129,7 @@ namespace ClaraMundi
             if (debugLog) Debug.Log($"Message Received from {Label}: " + dataString);
             try
             {
-                OnMessage(
-                    JsonConvert.DeserializeObject<WebSocketMessage>(dataString.Replace("\"event\"", "\"eventName\"")));
+                OnMessage(JsonConvert.DeserializeObject<WebSocketMessage>(dataString));
             }
             catch (Exception e)
             {
@@ -134,9 +137,7 @@ namespace ClaraMundi
             }
         }
 
-        protected virtual void OnMessage(WebSocketMessage message)
-        {
-        }
+        protected abstract void OnMessage(WebSocketMessage message);
 
         protected virtual async void OnDisconnected(WebSocketCloseCode closecode)
         {

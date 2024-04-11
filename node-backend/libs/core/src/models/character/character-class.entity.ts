@@ -20,8 +20,8 @@ export class CharacterClassEntity {
   @Column('bigint')
   exp: number = 0
 
-  @Column('tinyint')
-  isCurrent: boolean = false
+  @Column('int', {nullable: true})
+  isCurrent: number = 0
 
   @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass, {
     cascade: true,

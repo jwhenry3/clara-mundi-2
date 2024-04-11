@@ -16,6 +16,7 @@ export class MasterServerController {
   @Get('servers')
   @MessagePattern('servers:get')
   getServers() {
+    console.log(MasterServerGateway.instance.serverList);
     return Object.values(MasterServerGateway.instance.serverList)
   }
 }

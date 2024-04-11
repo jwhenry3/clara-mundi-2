@@ -22,7 +22,7 @@ export function toCharacterClassModel(
   return {
     classId: entity.classId,
     level: entity.level,
-    isCurrent: entity.isCurrent,
+    isCurrent: Boolean(entity.isCurrent),
     exp: entity.exp,
     equipment: toEquipmentModel(entity.equipment),
   }

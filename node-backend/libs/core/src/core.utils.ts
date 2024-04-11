@@ -4,13 +4,10 @@ import { ClientsModule, Transport } from '@nestjs/microservices'
 export class CoreUtils {
   static async connectRedis(app: INestApplication) {
     const microservice = app.connectMicroservice({
-      transport: Transport.REDIS,
+      transport: Transport.NATS,
       options: {
-        host: process.env.REDIS_HOST,
-        port: parseInt(process.env.REDIS_PORT),
-        username: process.env.REDIS_USER,
-        password: process.env.REDIS_PASS,
-      },
+        servers: ['nats://localhost:4222'],
+      }
     })
     await app.startAllMicroservices()
   }
@@ -18,10 +15,9 @@ export class CoreUtils {
     return ClientsModule.register([
       {
         name: serviceName,
-        transport: Transport.REDIS,
+        transport: Transport.NATS,
         options: {
-          host: process.env.REDIS_HOST,
-          port: parseInt(process.env.REDIS_PORT),
+          servers: ['nats://localhost:4222'],
         },
       },
     ])

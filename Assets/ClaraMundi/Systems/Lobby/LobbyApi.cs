@@ -6,98 +6,132 @@ using UnityEngine;
 
 namespace ClaraMundi
 {
-    [Serializable]
-    public class OperationResponse
+  [Serializable]
+  public class OperationResponse
+  {
+    public bool status;
+    public string reason;
+  }
+
+  [Serializable]
+  public class CharacterData {
+    public string name;
+    public string gender;
+    public string race;
+    public string area;
+    public int? level;
+    public string exp;
+    public string classid;
+  }
+
+  [Serializable]
+  public class AuthResponse : OperationResponse
+  {
+    public Account account;
+  }
+
+  [Serializable]
+  public class CharactersResponse : OperationResponse
+  {
+    public List<CharacterData> characters;
+  }
+
+  [Serializable]
+  public class CharacterResponse : OperationResponse
+  {
+    public CharacterData character;
+  }
+
+  public class LoginRequest {
+    public string email;
+    public string password;
+  }
+  public class CreateCharacterRequest {
+    public string token;
+    public string name;
+    public string race;
+    public string gender;
+    public string startingClass;
+  }
+
+  public class LobbyApi
+  {
+
+    public static string BaseUrl
     {
-        public bool status;
-        public string reason;
+      get => UrlManager.Instance.LoginServerUrl.Compose();
     }
 
-    [Serializable]
-    public class AuthResponse : OperationResponse
+    public static async Task<AuthResponse> Login(string username, string password)
     {
-        public Account account;
+      var content = new LoginRequest() { email = username , password = password };
+      return await HttpRequest.Post<AuthResponse>(BaseUrl,
+          "/login-server/login",
+          JsonConvert.SerializeObject(content)
+      );
     }
 
-    [Serializable]
-    public class CharactersResponse : OperationResponse
+    public static async Task<AuthResponse> Register(string username, string password)
     {
-        public List<Character> characters;
+      var content = new LoginRequest() { email = username , password = password };
+      return await HttpRequest.Post<AuthResponse>(BaseUrl,
+          "/login-server/register",
+          JsonConvert.SerializeObject(content)
+      );
     }
 
-    [Serializable]
-    public class CharacterResponse : OperationResponse
+    public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName,
+        bool isConnecting = false)
     {
-        public Character character;
+      Debug.Log($"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
+          (isConnecting ? 1 : 0));
+      return await HttpRequest.Get<CharacterResponse>(BaseUrl,
+          $"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
+          (isConnecting ? 1 : 0)
+      );
     }
 
-
-    public class LobbyApi
+    public static async Task<CharacterResponse> LogoutCharacter(string serverToken, string characterName)
     {
-        public static async Task<AuthResponse> Login(string username, string password)
-        {
-            var content = new Dictionary<string, string>() { { "email", username }, { "password", password } };
-            return await HttpRequest.Post<AuthResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/login",
-                JsonConvert.SerializeObject(content)
-            );
-        }
-
-        public static async Task<AuthResponse> Register(string username, string password)
-        {
-            var content = new Dictionary<string, string>() { { "email", username }, { "password", password } };
-            return await HttpRequest.Post<AuthResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/register",
-                JsonConvert.SerializeObject(content)
-            );
-        }
-
-        public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName,
-            bool isConnecting = false)
-        {
-            return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
-                (isConnecting ? 1 : 0)
-            );
-        }
-
-        public static async Task<CharacterResponse> LogoutCharacter(string serverToken, string characterName)
-        {
-            return await HttpRequest.Get<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/characters/{characterName}/logout?token=" + serverToken
-            );
-        }
-
-        public static async Task<CharactersResponse> GetCharacters()
-        {
-            var token = SessionManager.Instance.PlayerAccount.token;
-            return await HttpRequest.Get<CharactersResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/characters/list?token=" + token
-            );
-        }
-
-        public static async Task<CharacterResponse> CreateCharacter(
-            string name, 
-            string gender,
-            string race,
-            string className
-            )
-        {
-            var token = SessionManager.Instance.PlayerAccount.token;
-            var content = new Dictionary<string, string>()
-                { { "token", token }, { "name", name }, { "race", race }, { "gender", gender }, {"startingClass", className} };
-            return await HttpRequest.Post<CharacterResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                "/login-server/characters/create",
-                JsonConvert.SerializeObject(content)
-            );
-        }
-
-        public static async Task<OperationResponse> DeleteCharacter(string name)
-        {
-            var token = SessionManager.Instance.PlayerAccount.token;
-            return await HttpRequest.Delete<OperationResponse>(UrlManager.Instance.LoginServerUrl.Compose(),
-                $"/login-server/characters/{name}?token=" + token + "&name=" + name
-            );
-        }
+      return await HttpRequest.Get<CharacterResponse>(BaseUrl,
+          $"/login-server/characters/{characterName}/logout?token=" + serverToken
+      );
     }
+
+    public static async Task<CharactersResponse> GetCharacters()
+    {
+      var token = SessionManager.Instance.PlayerAccount.token;
+      return await HttpRequest.Get<CharactersResponse>(BaseUrl,
+          "/login-server/characters/list?token=" + token
+      );
+    }
+
+    public static async Task<CharacterResponse> CreateCharacter(
+        string name,
+        string gender,
+        string race,
+        string className
+        )
+    {
+      var content = new CreateCharacterRequest() {
+        token = SessionManager.Instance.PlayerAccount.token,
+        name = name,
+        race = race,
+        gender = gender,
+        startingClass = className
+      };
+      return await HttpRequest.Post<CharacterResponse>(BaseUrl,
+          "/login-server/characters/create",
+          JsonConvert.SerializeObject(content)
+      );
+    }
+
+    public static async Task<OperationResponse> DeleteCharacter(string name)
+    {
+      var token = SessionManager.Instance.PlayerAccount.token;
+      return await HttpRequest.Delete<OperationResponse>(BaseUrl ,
+          $"/login-server/characters/{name}?token=" + token + "&name=" + name
+      );
+    }
+  }
 }

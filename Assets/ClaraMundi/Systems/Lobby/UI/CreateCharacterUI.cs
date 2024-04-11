@@ -42,7 +42,7 @@ namespace ClaraMundi
             Debug.Log(result.reason);
             if (result.status)
             {
-                SessionManager.Instance.PlayerCharacter = result.character;
+                SessionManager.Instance.PlayerCharacter = Character.FromData(result.character);
                 LobbyUI.Instance.ToServerList();
             }
             else

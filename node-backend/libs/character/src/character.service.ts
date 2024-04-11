@@ -1,7 +1,7 @@
 import { CharacterClassEntity, CharacterEntity } from '@app/core'
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { Repository } from 'typeorm'
+import { Raw, Repository } from 'typeorm'
 
 export class CreateCharacterOptions {
   name: string
@@ -69,7 +69,7 @@ export class CharacterService {
       classId: options.startingClass.toLowerCase(),
       character,
       level: 1,
-      isCurrent: true,
+      isCurrent: 1,
     })
     character.characterClasses.push(characterClass)
     character = await this.repo.save(character)
@@ -216,7 +216,12 @@ export class CharacterService {
   ) {
     if (includeClasses) {
       return this.repo.findOne({
-        where: { accountId, name },
+        where: {
+          accountId,
+          name: Raw((alias) => `LOWER(${alias}) == LOWER(:value)`, {
+            value: name,
+          }),
+        },
         relations: ['characterClasses', 'characterClasses.equipment'],
       })
     }

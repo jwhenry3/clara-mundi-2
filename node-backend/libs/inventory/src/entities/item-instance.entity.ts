@@ -6,6 +6,6 @@ export class ItemInstanceEntity {
   itemId: string
   @Column('int')
   quantity: number
-  @Column('tinyint')
-  isEquipped: boolean
+  @Column('int')
+  isEquipped: number = 0
 }

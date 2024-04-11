@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -17,6 +18,7 @@ namespace ClaraMundi
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var response = await httpClient.GetAsync(url);
             var resourceJson = await response.Content.ReadAsStringAsync();
+            Debug.Log(resourceJson);
             return JsonConvert.DeserializeObject<T>(resourceJson);
         }
         public static async Task<T> Delete<T>(string baseUrl, string url)
