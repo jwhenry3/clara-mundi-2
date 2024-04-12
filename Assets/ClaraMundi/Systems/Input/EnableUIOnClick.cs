@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-    public class EnableUIOnClick : MonoBehaviour, IPointerClickHandler
+    public class EnableUIOnClick : MonoBehaviour, IPointerDownHandler
     {
-        public void OnPointerClick(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             Debug.Log("Enable UI");
             InputManager.Instance.World.Disable();

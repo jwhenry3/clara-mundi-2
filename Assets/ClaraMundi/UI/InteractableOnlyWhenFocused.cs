@@ -14,6 +14,10 @@ namespace ClaraMundi
         private CanvasGroup CanvasGroup;
         private bool interactable;
 
+        public bool IsFocused() {
+          return interactable;
+        }
+
         private void Awake()
         {
             MoveToFront = GetComponentInParent<MoveToFront>();

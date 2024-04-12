@@ -287,7 +287,7 @@ MonoBehaviour:
           m_SmoothTime: 0.1
           m_InputZoom:
             m_Input:
-              rid: 2220649812141015377
+              rid: 2220649834589979307
           m_Sensitivity:
             m_Property:
               rid: 2220649812141015378
@@ -324,10 +324,6 @@ MonoBehaviour:
             m_AutoAlign: 0
             m_Delay: 3
             m_SmoothTime: 3
-    - rid: 2220649812141015377
-      type: {class: InputValueVector2Scroll, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Direction: 0
     - rid: 2220649812141015378
       type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
       data:
@@ -366,6 +362,9 @@ MonoBehaviour:
           m_InputAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
           m_ActionMap: Player
           m_Action: Look
+    - rid: 2220649834589979307
+      type: {class: InputValueVector2None, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data: 
 --- !u!1001 &752870503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -583,6 +582,7 @@ MonoBehaviour:
   LoginCamera: {fileID: 83182110}
   PlayerCamera: {fileID: 159970282}
   Camera: {fileID: 0}
+  CameraTransform: {fileID: 0}
 --- !u!114 &1748470437
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ namespace ClaraMundi
         }
         public static bool IsFocusedOnInput()
         {
+            if (Instance.InputsFocused.Count > 0) return true;
             var obj = EventSystem.current.currentSelectedGameObject;
             if (obj == null) return false;
             var input = obj.GetComponent<TMP_InputField>();
