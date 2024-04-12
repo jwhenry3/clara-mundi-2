@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Nova;
+using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -8,6 +9,12 @@ namespace ClaraMundi
         public RectTransform PanelRect;
         private void LateUpdate()
         {
+          if (CanvasRect != null)
+            UpdateCanvas();
+        }
+
+        void UpdateCanvas() {
+
             var sizeDelta = CanvasRect.sizeDelta - PanelRect.sizeDelta;
             var panelPivot = PanelRect.pivot;
             var position = PanelRect.anchoredPosition;

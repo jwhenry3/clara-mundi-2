@@ -18,9 +18,10 @@ namespace ClaraMundi
 
         void OnEnable()
         {
+            if (InputAction != null) {
+              InputAction.performed += OnPerform;
+            }
             Camera = MainCamera.GetComponent<Camera>();
-            InputAction = InputManager.Instance.World.FindAction("Zoom");
-            InputAction.performed += OnPerform;
             Camera.orthographicSize = zoomValue;
             Camera.fieldOfView = zoomValue * 12;
         }
@@ -28,6 +29,13 @@ namespace ClaraMundi
         void OnDisable()
         {
             InputAction.performed -= OnPerform;
+        }
+        void Update() {
+
+          if (InputAction == null && InputManager.Instance.World != null) {
+            InputAction = InputManager.Instance.World.FindAction("Zoom");
+            InputAction.performed += OnPerform;
+          }
         }
 
         void OnPerform(InputAction.CallbackContext context)

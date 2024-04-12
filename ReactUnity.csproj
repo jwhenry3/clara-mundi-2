@@ -16,10 +16,10 @@
     <Configurations>Debug;Release</Configurations>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>ReactUnity</RootNamespace>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>ReactUnity</AssemblyName>
     <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -28,11 +28,11 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>UNITY_2022_3_21;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CROSS_PLATFORM_INPUT;FISHNET;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;FISHNET_V4;FISHNET_DISABLE_V3TOV4_HELPERS;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>UNITY_2022_3_21;UNITY_2022_3;UNITY_2022;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2022_1_OR_NEWER;UNITY_2022_2_OR_NEWER;UNITY_2022_3_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_VIRTUALTEXTURING;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_EDITOR_GAME_SERVICES;ENABLE_UNITY_GAME_SERVICES_ANALYTICS_SUPPORT;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_GENERATE_NATIVE_PLUGINS_FOR_ASSEMBLIES_API;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_MANAGED_UNITYTLS;INCLUDE_DYNAMIC_GI;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;ENABLE_ACCELERATOR_CLIENT_DEBUGGING;ENABLE_NAVIGATION_PACKAGE_DEBUG_VISUALIZATION;ENABLE_NAVIGATION_HEIGHTMESH_RUNTIME_SUPPORT;ENABLE_NAVIGATION_UI_REQUIRES_PACKAGE;PLATFORM_STANDALONE;TEXTCORE_1_0_OR_NEWER;PLATFORM_STANDALONE_WIN;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_NVIDIA;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP;GFXDEVICE_WAITFOREVENT_MESSAGEPUMP;PLATFORM_INITIALIZES_MEMORY_MANAGER_EXPLICITLY;ENABLE_MONO;NET_STANDARD_2_0;NET_STANDARD;NET_STANDARD_2_1;NETSTANDARD;NETSTANDARD2_1;ENABLE_PROFILER;DEBUG;TRACE;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_INPUT_SYSTEM;ENABLE_LEGACY_INPUT_MANAGER;TEXTCORE_FONT_ENGINE_1_5_OR_NEWER;CROSS_PLATFORM_INPUT;FISHNET;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;FISHNET_V4;FISHNET_DISABLE_V3TOV4_HELPERS;REACT_INPUT_SYSTEM;REACT_EDITOR_COROUTINES;REACT_TMP;REACT_TEXTCORE;REACT_UITOOLKIT;REACT_QUICKJS_AVAILABLE;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,7 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoStandardLibraries>true</NoStandardLibraries>
@@ -62,287 +62,222 @@
     <Analyzer Include="C:\Users\jwhen\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="D:\Unity\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\Unity\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
-    <Analyzer Include="D:\clara-mundi-2\Assets\FishNet\Runtime\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\ConnectedPlayerManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Http\UrlManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\Server.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\Highlight.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRecurrence.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Testing\CameraMover.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMove.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Http\HttpRequest.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatValue.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\Item.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\EquipmentUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\MasterServerTrigger.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\Rotate.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemStorage.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\Entity.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\UIAnimator.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTask.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\Character.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\AttributeCalculation.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\Tabs.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\PlayerConnection.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyApi.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\LootItem.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Outline.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\EmptySprite.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\FormElement.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\ManualMoveController.cs" />
-    <Compile Include="Assets\ClaraMundi\Utils\LoggingUtils.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\RepoManager.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\SliderLabel.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\RegisterUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\InventoryController.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Alert\Alert.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\PartyController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChannelSpawner.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\UIManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\CharacterEquipment.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Dialogue\Dialogue.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassRepo.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\Nav.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemRepo.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\CameraZoom.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRequirement.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CreateCharacterUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTaskUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyJoinRequestUI.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\TooltipHandler.cs" />
-    <Compile Include="Assets\ClaraMundi\Utils\ItemTooltipUtils.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\OpenURLButton.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\ServerListUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\Energies.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\AttributeValue.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\HoverDisablesInputs.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTrackerUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertController.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerConnection.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\ShootOnClick.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\LobbyUI.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\Dialogue_YesNoCancle.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTaskProgress.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\AutoFocus.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\FaceCamera.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\TooltipTrigger.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatAttachmentUI.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\UniformModifier.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\GC\CameraManager.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\ShowHideScrollBar.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\PartyManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstanceFactory.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\Quest.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\ClickToMoveController.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\PlayerRequiredUI.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImageModifier.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\OwningEntityHolder.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\CharacterClass.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityType.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\GameWindowHandler.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatMessageUI.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Entity\NameTag.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\FocusFirstChild.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\DisableUIOnClick.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\ClampToScreen.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestListItemUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassType.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuItem.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatConfiguration.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\RoundModifier.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
-    <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstance.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\ShadowManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\SessionManager.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\ModificationUI.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertManager.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatMessage.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\GameAuthenticator.cs" />
-    <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\CustomPremadeModifier.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\LoginUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatController.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\MoveToFront.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\Client.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Player\Player.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CharacterUI.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Form.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Dialogue\DialogueRepo.cs" />
-    <Compile Include="Assets\ClaraMundi\Utils\TextUtils.cs" />
-    <Compile Include="Assets\YAFUI\Demo\Scripts\SwitchScenes.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\InventoryUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\EnableUIOnClick.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityManager.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\WebSocket\WebSocketConnection.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Drag.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CharactersUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
-    <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
-    <Compile Include="Assets\ClaraMundi\Utils\StringUtils.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\ComputedStats.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Lobby\Account.cs" />
-    <Compile Include="Assets\YAFUI\Scripts\ToggleTextStyle.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\PlayerUI.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\ContextMenuHandler.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityTypeRepo.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Combat\CombatManager.cs" />
-    <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenu.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatChannel.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Attributes\Types.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\EntitySpawner.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyInviteRequestUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Input\CameraMove.cs" />
-    <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Connection\MixedClient.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Entity\NPC\NPCMoveController.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\WebSocket.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\ScriptContext.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\TimingFunctions.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Reactive\ReactiveValue.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ShaderHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\EventPriority.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\AudioReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\AnimationTypes.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\YogaHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\Visitors\ReactComponentVisitor.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\MotionShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ReactInterop.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedFontSize.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedCompound.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedStringTemplate.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\LayoutProperties.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\TransitionShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\CurrentLifecycle.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Url.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedRootRelative.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\Callback.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\MaskShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ReactContext.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\FourDirectionalShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StyleState.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\IDispatcher.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\QuickJS\QuickJSEngine.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StyleSheetDomApis.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\SpriteReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Rgba.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\XMLHttpRequest.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedCurrentColor.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\WebSocketProxy.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\VideoReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\IJavaScriptEngine.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\Interpolatable.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\QuickJS\QuickJSConverters.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\YogaValue2.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Html\HtmlComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\Location.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\NodeStyle.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\XYShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\NodeList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\PositionType.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\CssProperties.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\BackgroundShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\ConicGradient.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\RadialGradient.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\ITimer.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\EnumConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\FlexFlowShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\Visitors\UpdateVisitor.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ReactContextBatch.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ReactRendererBase.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\StyleProperties.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\BaseDispatcher.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\CubicBezier.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\Document.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Reactive\ReactiveList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\DisposableHandle.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\SerializableDictionary.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Hsla.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StylingUtils.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedShorthandVariable.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\QuickJS\QuickJSUtils.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Gradient.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\XYListShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Isolation.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedConstant.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\ScrollDirection.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\SVGProperties.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\IScheduler.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedPercentage.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\TextTransform.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedMapper.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\IStateHandler.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\ImageDefinition.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Var.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\EngineCapabilities.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Vector.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\ValueListStyleProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\MediaQueryTree.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Background.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\LinearGradient.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\CursorSet.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\CssFourDirectional.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\NoopComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\CssKeyword.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\HashCode.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Reactive\ReactiveRecord.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\TransformShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ReactUnityBridge.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StyleSheet.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\AllShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\Vector2Converter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\TypescriptUtils\TypescriptAttributes.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\SortingLayerConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\BorderShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\StringHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedCalc.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ReflectionHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Calc.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedInterpolation.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\BorderImage.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\BorderImageShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\StringConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\FontReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\AllShorthands.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\RawConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\CursorAPI.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\ObjectFit.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\FontShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\EditorDispatcher.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Reactive\ReactiveSet.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\WebGLCompat.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\BorderStyle.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\VariableProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\BoolConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\EventTarget.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\ScriptComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ResourcesHelper.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ComponentInterfaces.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\WarningHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\RuntimeDispatcher.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\SourceProxyComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\IStyleKey.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\BaseReactComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedKeyword.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\Jint\JintEngine.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\IComputedValue.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\TextReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Html\HtmlParser.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\UrlConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedVariable.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\CssValueList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StyleContext.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\AudioShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\YogaValueConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ProxyComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\GlobalRecord.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\AllConverters.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\URL.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\PointerEvents.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\AnimationEvent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Html\HtmlContext.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Frameworks\Noop\NoopContext.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\ClearScriptEngine.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\ParserHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\FormData.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\UnscaledTimer.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\JavascriptEngineHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Appearance.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Steps.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\DefaultScheduler.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\RuleTree.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\FlexShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\AnimationShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StyleComponent.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\IntConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\ColorConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\QuickJS\QuickJSApiBridge.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\Cursor.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\StateStyles.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\GraphicsHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedFontProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\FloatConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\MediaQueryList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\LocalStorage.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Generated\ReactAction.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\MediaProvider.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\TransitionProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ReactContextCreate.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\Jint\JintTypeConverter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\RuleHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\TextStrokeShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\FourDirectionalStyleProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\InlineStyles.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ClassList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\StyleConverterBase.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\Events.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Converters\Vector3Converter.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\IRevertCalculator.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Computed\ComputedDynamic.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\CssFunctions.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\EncodingHelpers.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Shorthands\StyleShorthand.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\NoScheduler.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\StyleProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Functions\Url.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Frameworks\Noop\ReactRendererNoop.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\LayoutProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\BoxShadow.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\DomProxies\Console.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\Interpolater.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\IconSet.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\Keyframes.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\UnityTimer.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scripting\ScriptNamespaceReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Rules\RuleTreeNode.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\ImageReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\ReactProfiling.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Scheduling\ControlledTimer.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Animations\TimingFunctionType.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Reactive\IReactive.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\Visitors\TextContentVisitor.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Styling\Properties\IStyleProperty.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Types\AssetReference.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Helpers\SortedList.cs" />
+    <Compile Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\Core\ScriptSource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH UI Icon Outline Color.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaDropShadowUnlit.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaTextBlockStandardSpecularTransparent.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Nova\Shaders\Generated\UIBlock2D.g.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaDropShadowStandardSpecularTransparent.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DBlinnPhongTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaTextBlockBlinnPhongTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock2DStandardSpecularTransparent.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Oswald-Bold - OFL.txt" />
-    <None Include="Assets\Nova\Shaders\DropShadow.cginc" />
-    <None Include="Assets\Cainos\Pixel Art Icon Pack - RPG\Shader\SH Sprite Icon Outline Color.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Anton OFL.txt" />
-    <None Include="Assets\FishNet\LICENSE.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-    <None Include="Assets\CleanFlatIcon\readme.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\Nova\Shaders\NovaPostV2F.cginc" />
-    <None Include="Assets\FishNet\VERSION.txt" />
-    <None Include="Assets\UMA\InternalDataStore\InGame\Resources\Shader\NormalShader.compute" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DStandardTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock2DLambertTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DStandardSpecularOpaque.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaTextBlockUnlit.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaTextBlockStandardTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DLambertOpaque.shader" />
-    <None Include="Assets\Nova\Shaders\NovaDataStructures.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock2DUnlit.shader" />
-    <None Include="Assets\ProceduralUIImage\Resources\Shaders\ProceduralImageRuntime.shader" />
-    <None Include="Assets\Nova\Shaders\Nova.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DUnlit.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
-    <None Include="Assets\UMA\InternalDataStore\InGame\Resources\PlaceholderAssets\PlaceholderAssetsREADME.txt" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock2DBlinnPhongTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\NovaPreV2F.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DBlinnPhongOpaque.shader" />
-    <None Include="Assets\Nova\Shaders\TextBlock.cginc" />
-    <None Include="Assets\FishNet\DOCUMENTATION.txt" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
-    <None Include="Assets\UMA\InternalDataStore\AssetVersion.xml" />
-    <None Include="Assets\Nova\ThirdPartyNotices.txt" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaDropShadowStandardTransparent.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Nova\Shaders\NovaTMPProperties.cginc" />
-    <None Include="Assets\Nova\Shaders\Generated\TextBlock.g.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaDropShadowLambertTransparent.shader" />
-    <None Include="Assets\UMA\Whats New in UMA.txt" />
-    <None Include="Assets\YAFUI\Icons\LICENSE &amp; README for Icons\license.txt" />
-    <None Include="Assets\Nova\Shaders\UIBlock3D.cginc" />
-    <None Include="Assets\Nova\Shaders\UIBlock2D.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DStandardSpecularTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Generated\DropShadow.g.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Nova\Shaders\Generated\NovaDataTypes.g.cginc" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DLambertTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaDropShadowBlinnPhongTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Generated\UIBlock3D.g.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock3DStandardOpaque.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaTextBlockLambertTransparent.shader" />
-    <None Include="Assets\Nova\Shaders\Resources\NovaUIBlock2DStandardTransparent.shader" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Nova\Shaders\NovaMath.cginc" />
-    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\TextMesh Pro\Examples &amp; Extras\Fonts\Bangers - OFL.txt" />
+    <None Include="Library\PackageCache\com.reactunity.core@dd1b55a22e\Runtime\ReactUnity.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -677,56 +612,28 @@
       <HintPath>D:\Unity\2022.3.21f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sirenix.Reflection.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Reflection.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>D:\Unity\2022.3.21f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.Collections.LowLevel.ILSupport">
-      <HintPath>Library\PackageCache\com.unity.collections@2.1.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>D:\Unity\2022.3.21f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="FishNet.CodeAnalysis">
-      <HintPath>Assets\FishNet\Runtime\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>D:\Unity\2022.3.21f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="ReportGeneratorMerged">
-      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.5\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
+    <Reference Include="ExCSS">
+      <HintPath>Library\PackageCache\com.reactunity.core@dd1b55a22e\Plugins\ExCSS\ExCSS.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sirenix.Serialization">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Serialization.Config">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.OdinInspector.Attributes">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.OdinInspector.Attributes.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Utilities">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sirenix.Utilities.Editor">
-      <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
+    <Reference Include="websocket-sharp">
+      <HintPath>Library\PackageCache\com.reactunity.core@dd1b55a22e\Plugins\WebSocketSharp\websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">
@@ -1219,75 +1126,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ReactUnity.UGUI.csproj" />
-    <ProjectReference Include="GameKit.Dependencies.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.csproj" />
-    <ProjectReference Include="Unity.Burst.Editor.csproj" />
-    <ProjectReference Include="Unity.Animation.Rigging.Editor.csproj" />
-    <ProjectReference Include="jsb.editor.hotfix.csproj" />
-    <ProjectReference Include="Unity.Rider.Editor.csproj" />
-    <ProjectReference Include="UMA_Examples.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
-    <ProjectReference Include="Unity.Mathematics.Editor.csproj" />
-    <ProjectReference Include="UMA_Content.csproj" />
-    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj" />
-    <ProjectReference Include="LibYoga.csproj" />
-    <ProjectReference Include="Unity.Performance.Profile-Analyzer.Editor.csproj" />
-    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.csproj" />
-    <ProjectReference Include="Unity.Collections.csproj" />
-    <ProjectReference Include="Nova.UIControls.csproj" />
-    <ProjectReference Include="jsb.core.csproj" />
-    <ProjectReference Include="Unity.Collections.Editor.csproj" />
-    <ProjectReference Include="Nova.csproj" />
-    <ProjectReference Include="FishNet.Codegen.Cecil.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.csproj" />
-    <ProjectReference Include="GameCreator.Runtime.Core.csproj" />
-    <ProjectReference Include="Unity.VSCode.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
-    <ProjectReference Include="ReactUnity.Editor.csproj" />
-    <ProjectReference Include="UMA_Core.csproj" />
-    <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj" />
-    <ProjectReference Include="Unity.Animation.Rigging.csproj" />
-    <ProjectReference Include="Addressable_Editor.csproj" />
-    <ProjectReference Include="FishNet.Demos.csproj" />
-    <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj" />
-    <ProjectReference Include="jsb.editor.unity.csproj" />
-    <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
-    <ProjectReference Include="Unity.Burst.csproj" />
-    <ProjectReference Include="Nova.Editor.csproj" />
-    <ProjectReference Include="ReactUnity.csproj" />
-    <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj" />
-    <ProjectReference Include="Unity.Timeline.Editor.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj" />
-    <ProjectReference Include="jsb.editor.binding.csproj" />
-    <ProjectReference Include="FishNet.Runtime.csproj" />
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
-    <ProjectReference Include="UnityEditor.UI.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Core.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj" />
-    <ProjectReference Include="UnityEngine.UI.csproj" />
-    <ProjectReference Include="ReactUnity.UIToolkit.csproj" />
-    <ProjectReference Include="jsb.native.csproj" />
-    <ProjectReference Include="UMA_Core_Editor.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj" />
-    <ProjectReference Include="Nova.UIControls.Editor.csproj" />
-    <ProjectReference Include="Unity.Timeline.csproj" />
     <ProjectReference Include="Unity.InputSystem.csproj" />
-    <ProjectReference Include="Unity.InputSystem.ForUI.csproj" />
-    <ProjectReference Include="GameCreator.Editor.Core.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
-    <ProjectReference Include="endel.nativewebsocket.csproj" />
-    <ProjectReference Include="Unity.SysrootPackage.Editor.csproj" />
-    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
-    <ProjectReference Include="Unity.Mathematics.csproj" />
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
-    <ProjectReference Include="Unity.VisualScripting.State.csproj" />
-    <ProjectReference Include="UMA_Examples_Editor.csproj" />
-    <ProjectReference Include="Edgegap.csproj" />
+    <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
+    <ProjectReference Include="LibYoga.csproj" />
+    <ProjectReference Include="jsb.core.csproj" />
+    <ProjectReference Include="jsb.native.csproj" />
+    <ProjectReference Include="jsb.editor.binding.csproj" />
     <ProjectReference Include="jsb.shared.csproj" />
+    <ProjectReference Include="UnityEditor.UI.csproj" />
+    <ProjectReference Include="UnityEngine.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
