@@ -29,6 +29,9 @@ namespace ClaraMundi
 
     public void OnPointerExit(PointerEventData eventData)
     {
+      OnDisable();
+    }
+    protected virtual void OnDisable() {
       if (Hovered.Contains(this))
         Hovered.Remove(this);
       if (Hovered.Count > 0) return; // already handled by another hover component
@@ -42,10 +45,6 @@ namespace ClaraMundi
           }
         });
       }
-    }
-    protected virtual void OnDisable() {
-      if (Hovered.Contains(this))
-        Hovered.Remove(this);
     }
   }
 }
