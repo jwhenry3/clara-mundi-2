@@ -15,7 +15,7 @@ export function Auth() {
         <button className="p-2 px-4 bg-slate-700">
           <text>{isRegister ? 'Register' : 'Login'}</text>
         </button>
-        <button className="p-2 px-4">
+        <button className="p-2 px-4" onClick={() => setIsRegister(!isRegister)}>
           <text>{isRegister ? 'Have Account?' : 'No Account?'}</text>
         </button>
       </view>
