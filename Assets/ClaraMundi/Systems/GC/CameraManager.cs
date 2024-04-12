@@ -12,12 +12,14 @@ namespace ClaraMundi
         public ShotCamera LoginCamera;
         public ShotCamera PlayerCamera;
         public Camera Camera;
+        public Transform CameraTransform;
         
 
         private void Awake()
         {
             Instance = this;
             Camera = MainCamera.GetComponent<Camera>();
+            CameraTransform = Camera.transform;
         }
 
         public void UsePlayerCamera(Player player)

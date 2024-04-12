@@ -2307,7 +2307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1331385748}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DirectionTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2880,7 +2880,7 @@ GameObject:
   - component: {fileID: 1721039604}
   - component: {fileID: 1721039601}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: ServerCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2899,7 +2899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  Transform: {fileID: 1331385748}
+  DirectionTransform: {fileID: 1331385748}
 --- !u!20 &1721039604
 Camera:
   m_ObjectHideFlags: 0

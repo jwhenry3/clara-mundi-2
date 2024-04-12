@@ -57,7 +57,8 @@ namespace ClaraMundi
             if (InputManager.IsFocusedOnInput()) return;
             if (ActiveWindow == null) return;
             var tab = Tabs.List.Find((t) => t.Content == ActiveWindow.GetComponent<UIAnimator>());
-            Tabs.ChangeTab(tab.Label);
+            if (tab != null)
+              Tabs.ChangeTab(tab.Label);
         }
     }
 }

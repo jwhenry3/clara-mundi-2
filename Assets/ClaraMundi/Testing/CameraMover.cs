@@ -8,7 +8,7 @@ namespace ClaraMundi.Testing
     public class CameraMover : MonoBehaviour
     {
         public float speed = 5;
-        public Transform Transform;
+        public Transform DirectionTransform;
         private Transform t;
         private Camera c;
         void OnEnable() {
@@ -22,8 +22,8 @@ namespace ClaraMundi.Testing
               c.enabled = true;
             }
             var move = Vector3.zero;
-            var forward = Transform.forward;
-            var right = Transform.right;
+            var forward = DirectionTransform.forward;
+            var right = DirectionTransform.right;
             move.z = Input.GetAxis("Vertical");
             move.x = Input.GetAxis("Horizontal");
             move.Normalize();

@@ -746,6 +746,7 @@ MonoBehaviour:
   - {fileID: 8345528289073844050}
   - {fileID: 5954349119136247432}
   - {fileID: 8030107547521874415}
+  - {fileID: 1614834821579979737}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
@@ -3288,6 +3289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4588709322240192585}
   - component: {fileID: 8030107547521874415}
+  - component: {fileID: 1614834821579979737}
   m_Layer: 6
   m_Name: Movement
   m_TagString: Untagged
@@ -3323,6 +3325,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _componentIndexCache: 12
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 378666723463143089}
+  player: {fileID: 0}
+  debugLog: 0
+--- !u!114 &1614834821579979737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380069651071655450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b022f1d5e8cdc2a43b4e0ff296042165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 13
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}

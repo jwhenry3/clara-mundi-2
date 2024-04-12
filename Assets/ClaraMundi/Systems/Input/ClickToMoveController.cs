@@ -8,27 +8,16 @@ namespace ClaraMundi
 {
   public class ClickToMoveController : PlayerController
   {
-    private Camera Camera;
     private readonly SyncVar<Vector3> destination = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
 
     private Vector3 lastDestination;
     public bool debugLog;
-
-    public override void OnStartClient()
-    {
-      base.OnStartClient();
-      Camera = CameraManager.Instance.MainCamera.GetComponent<Camera>();
-    }
-
-    private float triggeredCooldown;
 
     private void Update()
     {
       if (lastDestination != destination.Value)
         MovePlayerTo(destination.Value);
       lastDestination = destination.Value;
-      if (triggeredCooldown > 0)
-        triggeredCooldown = Mathf.Max(0, triggeredCooldown - Time.deltaTime);
     }
 
     public void UpdateDestination(Vector3 dest)
