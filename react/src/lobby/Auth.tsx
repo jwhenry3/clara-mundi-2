@@ -1,16 +1,11 @@
 import { ReactUnity, UnityEngine, useGlobals } from '@reactunity/renderer'
-import { Ref, RefObject, useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAuth } from 'src/state/auth.state'
-import { debounce, throttle } from 'lodash'
-import { asButton, asInput } from 'src/utils/casts'
 import useKeyFocus from 'src/hooks/useKeyFocus'
 import useAutoFocus from 'src/hooks/useAutoFocus'
 
 declare type Input = ReactUnity.UGUI.InputComponent
 declare type Button = ReactUnity.UGUI.ButtonComponent
-const UInput = Interop.UnityEngine.Input
-const KeyCode = Interop.UnityEngine.KeyCode
-declare type GameObject = UnityEngine.GameObject
 
 export function Auth() {
   const globals = useGlobals()
@@ -19,19 +14,10 @@ export function Auth() {
   const confirmPassword = useRef<Input>()
   const submit = useRef<Button>()
   const changeRegister = useRef<Button>()
-  const tabIndexes = [username, password, confirmPassword, submit]
-  const [tabIndex, setTabIndex] = useState(0)
   const [isRegister, setIsRegister] = useState(false)
   const [error, setError] = useState('')
   const api = globals.UI.Api
-  const { token, setToken } = useAuth()
-
-  useEffect(() => {
-    const field = tabIndexes[tabIndex].current
-    if (field) {
-      field.FireEvent('focus', {})
-    }
-  }, [tabIndex, setTabIndex])
+  const { setToken } = useAuth()
 
   const onSubmit = useCallback(async () => {
     if (!isRegister) {
