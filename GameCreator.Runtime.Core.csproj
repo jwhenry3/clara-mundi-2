@@ -109,10 +109,10 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconDiskSolid.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemHeadLeaning.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Input\TEventValue.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Objects\Components\LocalListVariables.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconTriggerEnter.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Direction\GetDirectionMathNormalize.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Properties\Get\Types\Bool\GetBoolCharacterIsDead.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Objects\Components\LocalListVariables.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Units\Motion\Locomotion\MotionToLocation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Scale\GetScalePlayer.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Enablers\EnablerInt.cs" />
@@ -151,11 +151,11 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Direction\GetDirectionMathSubtract.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\String\GetStringLocalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Save\DataStorage\TDataStorage.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\GameObjects\InstructionGameObjectEnableRenderer.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Platforms\ConditionPlatformIsMobile.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Mobile\InputButtonTouchWhilePressing.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometryDotProduct.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\GameObjects\InstructionGameObjectEnableRenderer.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconNull.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometryDotProduct.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioSpeechStopGameObject.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconLand.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconFootprint.cs" />
@@ -204,9 +204,9 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Decimal\GetDecimalLocalListLength.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Actions\Types\IAction.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Bool\GetBoolGameObjectExists.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Handles\Classes\HandleField.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Number\SetNumberReflectionFieldDouble.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\UI\InstructionUISubmit.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Handles\Classes\HandleField.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconShotThirdPerson.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\String\GetStringGlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Interfaces\ISubunit.cs" />
@@ -229,16 +229,16 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Structures\TSerializableLinkList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Decimal\GetDecimalTimeGameTime.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Skeleton\Utils\SkeletonBuilderFeet.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Color\GetColorGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Rotation\GetRotationEulerGlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Variables\InstructionVariablesSortDistance.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Characters\Properties\ConditionCharacterCompareTerminalVelocity.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconSphereOutline.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Reflection\Fields\ReflectionFieldInteger.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioSourceVolume.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\IK\InstructionCharacterIKLookActive.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\String\GetStringMathSubstring.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\IK\InstructionCharacterIKLookActive.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\GameObjects\InstructionGameObjectPoolPrewarm.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Color\GetColorGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Rotation\GetRotationTowardsPosition.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconNOR.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Debug\InstructionCommonDebugConsoleToggle.cs" />
@@ -277,16 +277,16 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Variables\EventOnVariableLocalListChange.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Time\InstructionCommonTimeWait.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Navigation\TInstructionCharacterNavigation.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconRadioOn.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Interaction\EventCharacterOnInteract.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconRadioOn.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\PropertyTypeSetNumber.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Properties\InstructionCharacterPropertyMannequinScale.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\GameObject\GetGameObjectInstance.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Reflection\Properties\ReflectionPropertyMaterial.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemAnchor.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Combat\InstructionCharacterSetInvincible.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Testing\InstructionTester.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Animim\Assets\Base\StateOverrideAnimator.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Testing\InstructionTester.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\TInstructionShotFollow.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Attributes\Appearance\HideLabelsInEditorAttribute.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconColor.cs" />
@@ -361,9 +361,9 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Runners\RunEvent.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemNoise.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Debug\InstructionCommonDebugConsoleClear.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\EventCharacterOnBecomePlayer.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconMediation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioSpeechPlay.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\EventCharacterOnBecomePlayer.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Actions\Types\ActionGameObject.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\ListPick\Set\TListSetPick.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Navigation\InstructionCharacterNavigationFacing.cs" />
@@ -476,10 +476,10 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Units\Shared\Axonometry\AxonometrySideScrollYZ.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconReaction.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Changers\ChangeQuaternion.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Runners\Runners\Runner.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Interaction\Modes\InteractionModeNearCharacter.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Runners\Locations\RunnerLocationParent.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Texture\SetTextureReflectionPropertyTexture.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Runners\Runners\Runner.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconAlpha.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Location\GetLocationTrackRotationTowards.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconHeartBeat.cs" />
@@ -587,8 +587,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Animim\Shared\TAnimimPlayableBehaviour.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\PropertyTypeSetTransform.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Material\SetMaterialReflectionFieldMaterial.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconWASD.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Base\PropertyTypeGetAnimation.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconWASD.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemHeadBobbing.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\Vector3\SetVector3GlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconNAND.cs" />
@@ -633,12 +633,12 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Mouse\InputValueFloatMouseScrollDown.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Scale\GetScaleReflectionFieldVector3.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Properties\InstructionCharacterPropertyId.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Rotation\GetRotationEulerGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionRandomSphereSurface.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\InputValueVector2InputAction.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Physics\EventCollideExitWith.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\AnimationClip\SetAnimationLocalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Location\Position\IPosition.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Rotation\GetRotationEulerGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\GameObject\GetGameObjectLastTriggerExit.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Characters\Properties\ConditionCharacterPhase.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Variables\InstructionVariablesIteratorPrevious.cs" />
@@ -827,8 +827,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconGamepad.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Attributes\Appearance\IndentAttribute.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Player\InstructionCharacterChangePlayer.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Markers\Classes\MarkerTypeDirection.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Direction\GetDirectionInputAction.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Markers\Classes\MarkerTypeDirection.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Boolean\TInstructionBoolean.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\Bool\SetBoolLocalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconBranch.cs" />
@@ -979,9 +979,9 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\PropertyTypeSetAnimation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\EventCharacterOnChangeModel.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Color\SetColorNone.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Helpers\InstructionResult.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\Texture\SetTextureGlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Animation\Tween\TweenRunner.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Helpers\InstructionResult.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconConsole.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\MaterialSounds\Types\MaterialSoundTexture.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Input\TConditionMouse.cs" />
@@ -1031,8 +1031,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Skeleton\Utils\SkeletonBuilderUpperArms.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\EventCharacterOnRecoverRagdoll.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconBullsEye.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometryReflectPlane.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Direction\GetDirectionReflectionPropertyVector3.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometryReflectPlane.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Shading\InstructionShadingSetColor.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Properties\Get\Types\Float\GetDecimalCharactersJumpForce.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Commands\CommandActivate.cs" />
@@ -1252,12 +1252,12 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Reflection\Properties\ReflectionPropertyDouble.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconBookmarkSolid.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\PropertyTypeSetGameObject.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Common\CopyRunnerInstructionList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\InstructionShotFollowTarget.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Direction\GetDirectionLocalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Settings\General\Classes\GeneralAudio.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\InstructionShotLookOffset.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Attributes\Descriptive\HideInSelectorAttribute.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Common\CopyRunnerInstructionList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\IK\InstructionCharacterIKLeanActive.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Fields\Get\PropertyGetLocation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\UI\UnityUI\Properties\Set\Float\SetNumberUISlider.cs" />
@@ -1266,16 +1266,16 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Enablers\EnablerMaterial.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Variables\InstructionVariablesIteratorNext.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Skeleton\Utils\SkeletonBuilderLowerLegs.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Markers\Marker.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Percentage\TPercentage.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Skeleton\Joints\JointCharacter.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\TInstructionShotAnchor.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Structures\SpatialHash\Structs\Record.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Debug\InstructionCommonDebugComment.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Markers\Marker.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\TPropertyTypeSet.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Audio\Enums\SpatialBlending.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Mobile\TInputValueVector2MobileStick.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Properties\Get\Types\Rotation\GetRotationCharacter.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Mobile\TInputValueVector2MobileStick.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Fields\Set\PropertySetColor.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetInputCursorWorldPosition.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Reflection\Properties\ReflectionPropertyString.cs" />
@@ -1297,10 +1297,10 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Enablers\EnablerBool.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\IdString.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Units\Driver\UnitDriver.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionPhysicsCapsuleCast.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconChevronUp.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Text\InstructionTextSubstring.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Characters\Properties\ConditionCharacterCompareHeight.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionPhysicsCapsuleCast.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Paths\ToolbarPaths.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Storage\ConditionHasSave.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Objects\Asset\GlobalNameVariables.cs" />
@@ -1459,18 +1459,18 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Combat\Shields\Enums\BlockType.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\UI\UnityUI\Components\SliderPropertyFloat.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Mobile\InputButtonTouchRelease.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\TEventCharacterNavLink.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Texture\GetTextureGlobalList.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Characters\TEventCharacterNavLink.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Utils\ExecutionOrderUtils.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Curves\CatmullRom.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Scale\GetScaleSelf.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\TInstructionShotHeadBobbing.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Arithmetic\TInstructionArithmetic.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Decimal\GetDecimalTransformsLastChildIndex.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometrySetVectorX.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\VisualScripting\Instructions\InstructionConsoleToggle.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Combat\Reactions\IReaction.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioVolumeUI.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Decimal\GetDecimalTransformsLastChildIndex.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Ragdoll\TRagdollSystem.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\String\GetStringMathJoin.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionMathSphereInterpolation.cs" />
@@ -1490,8 +1490,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\ListPick\Set\SetPickInsertIndex.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Logic\InstructionLogicHotspotsActive.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Math\Symbols\ISymbol.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Commands\CommandDestroy.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Settings\VariablesRepository.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Commands\CommandDestroy.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\GameObject\SetGameObjectGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionVectorZero.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Utils\CacheUtils.cs" />
@@ -1760,11 +1760,11 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Properties\Get\Types\Direction\GetDirectionCharactersInput.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Units\Shared\Axonometry\IAxonometry.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionTransformInversePoint.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Physics\ConditionPhysicsRaycast3D.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Direction\GetDirectionGameObject.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Math\Geometry\InstructionGeometryProjectPlane.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Structures\SpatialHash\Structs\HashKey.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\InstructionShotFirstPersonBone.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Physics\ConditionPhysicsRaycast3D.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Fields\Get\PropertyGetBool.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\String\SetStringGlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\String\SetStringLocalName.cs" />
@@ -1772,8 +1772,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconCheckmark.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Gamepad\InputValueVector2GamepadRightStick.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\UI\InstructionUIUnfocus.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\ConditionList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Classes\Utilities\Collectors\CollectorListVariable.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\ConditionList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Fields\Get\PropertyGetMaterial.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Keyboard\InputButtonKeyboardRelease.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Audio\AudioConfigs\IAudioConfig.cs" />
@@ -1791,11 +1791,11 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionMathSubtract.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconPointFive.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioVolumeMaster.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Commands\CommandClear.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Sprite\GetSpriteGlobalList.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Cameras\Shots\TInstructionShotAnimation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Variables\InstructionVariablesSwap.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Properties\InstructionCharacterPropertyTerminalVelocity.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Console\Commands\CommandClear.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemTrack.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Number\SetNumberReflectionPropertyInteger.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconDiamondOutline.cs" />
@@ -2014,8 +2014,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Position\GetPositionReflectionPropertyVector3.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Material\GetMaterialReflectionPropertyMaterial.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Reflection\Properties\ReflectionPropertyVector2.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\MaterialSounds\MaterialSoundsData.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Audio\InstructionCommonAudioVolumeSpeech.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\MaterialSounds\MaterialSoundsData.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Variables\EventOnVariableGlobalListChange.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Properties\Get\Types\GameObject\GetGameObjectCharacterModel.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Theme\ColorTheme.cs" />
@@ -2164,8 +2164,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Decimal\GetDecimalVolumeSFX.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Systems\Shots\ShotSystemZoom.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Number\SetNumberNone.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconListFirst.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Shots\ShotTypeTrack.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconListFirst.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Settings\Repositories\TRepository.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconProjection.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Objects\Asset\GlobalListVariables.cs" />
@@ -2586,6 +2586,10 @@
       <HintPath>Library\PackageCache\com.unity.collections@2.1.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.reactunity.quickjs@0.17.1\Runtime\Source\Unity\Hotfix\Editor\Plugins\Unity.Cecil.Mdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="FishNet.CodeAnalysis">
       <HintPath>Assets\FishNet\Runtime\Plugins\CodeAnalysis\FishNet.CodeAnalysis.dll</HintPath>
       <Private>False</Private>
@@ -2622,6 +2626,10 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.reactunity.quickjs@0.17.1\Runtime\Source\Unity\Hotfix\Editor\Plugins\Unity.Cecil.Pdb.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sirenix.Utilities.Editor">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.Editor.dll</HintPath>
       <Private>False</Private>
@@ -2636,14 +2644,6 @@
     </Reference>
     <Reference Include="Mono.Cecil">
       <HintPath>Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Cecil.Mdb">
-      <HintPath>Library\PackageCache\com.reactunity.quickjs@0.17.1\Runtime\Source\Unity\Hotfix\Editor\Plugins\Unity.Cecil.Mdb.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.Cecil.Pdb">
-      <HintPath>Library\PackageCache\com.reactunity.quickjs@0.17.1\Runtime\Source\Unity\Hotfix\Editor\Plugins\Unity.Cecil.Pdb.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Cecil">

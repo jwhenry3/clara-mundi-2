@@ -153,9 +153,11 @@
     <Compile Include="Assets\ProceduralUIImage\Scripts\Attributes\ModifierID.cs" />
     <Compile Include="Assets\YAFUI\Scripts\Dialogue_YesNoCancle.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestTaskProgress.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\ReactContext.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\ClaraMundi\UI\AutoFocus.cs" />
     <Compile Include="Assets\ClaraMundi\UI\FaceCamera.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\UIContainer.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
     <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyMemberUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatConfiguration.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\RoundModifier.cs" />
+    <Compile Include="Assets\ClaraMundi\Core\DontDestroy.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Player\PlayerController.cs" />
     <Compile Include="Assets\ClaraMundi\Utils\ScreenUtils.cs" />
@@ -1219,7 +1222,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="ReactUnity.UGUI.csproj" />
     <ProjectReference Include="GameKit.Dependencies.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.csproj" />
     <ProjectReference Include="Unity.Burst.Editor.csproj" />
@@ -1247,11 +1249,11 @@
     <ProjectReference Include="ReactUnity.Editor.csproj" />
     <ProjectReference Include="UMA_Core.csproj" />
     <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj" />
-    <ProjectReference Include="Unity.Animation.Rigging.csproj" />
+    <ProjectReference Include="jsb.editor.unity.csproj" />
     <ProjectReference Include="Addressable_Editor.csproj" />
     <ProjectReference Include="FishNet.Demos.csproj" />
     <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj" />
-    <ProjectReference Include="jsb.editor.unity.csproj" />
+    <ProjectReference Include="Unity.Animation.Rigging.csproj" />
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
     <ProjectReference Include="Unity.Burst.csproj" />
     <ProjectReference Include="Nova.Editor.csproj" />
@@ -1285,9 +1287,10 @@
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.csproj" />
-    <ProjectReference Include="UMA_Examples_Editor.csproj" />
+    <ProjectReference Include="ReactUnity.UGUI.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
     <ProjectReference Include="jsb.shared.csproj" />
+    <ProjectReference Include="UMA_Examples_Editor.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
   <ItemGroup>
