@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6189974849751676971}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -166,7 +165,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6189974849751676971}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -302,7 +300,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6189974849751676971}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -441,6 +438,7 @@ GameObject:
   - component: {fileID: 6189974849751676969}
   - component: {fileID: 6189974849751676968}
   - component: {fileID: 4209483007159632837}
+  - component: {fileID: 5139423884794999323}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -465,7 +463,6 @@ RectTransform:
   - {fileID: 6189974849474940436}
   - {fileID: 6189974849462190216}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -619,14 +616,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6c7be76ce434fdba160acf5f05fedb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Character:
+    accountId: 
+    name: 
+    gender: 
+    race: 
+    area: 
+    position_x: 0
+    position_y: 0
+    position_z: 0
+    rotation: 0
+    classId: 
+    level: 0
+    exp: 0
+    lastConnected: 0
+    lastDisconnected: 0
+    hasConnectedBefore: 0
+    characterClasses: []
   Level: {fileID: 6189974848335641382}
   Name: {fileID: 6189974849474940458}
   Area: {fileID: 6189974849462190223}
+--- !u!114 &5139423884794999323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189974849751676948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
 --- !u!1001 &904504933058734367
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6189974849751676971}
     m_Modifications:
     - target: {fileID: 5736758401748376152, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
@@ -718,6 +750,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
 --- !u!224 &8832492882322621241 stripped
 RectTransform:

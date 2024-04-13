@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1957635669820461279}
   - component: {fileID: 1957635669820461278}
   - component: {fileID: 1957635669820461285}
+  - component: {fileID: -7201340387359980770}
   m_Layer: 0
   m_Name: Server
   m_TagString: Untagged
@@ -39,7 +40,6 @@ RectTransform:
   - {fileID: 1957635669992892542}
   - {fileID: 1957635670988116945}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -193,9 +193,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e0055446c3425399565e7eedbd205f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Server:
+    label: 
+    host: 
+    port: 0
+    status: 0
+    playerCapacity: 0
+    currentPlayers: 0
   NameText: {fileID: 1957635669980014300}
   StatusText: {fileID: 1957635670988116944}
   CapacityText: {fileID: 1957635669992892537}
+--- !u!114 &-7201340387359980770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957635669820461282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
 --- !u!1 &1957635669980014307
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +252,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1957635669820461277}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -383,7 +406,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1957635669820461277}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -518,7 +540,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1957635669820461277}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -627,6 +648,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1957635669820461277}
     m_Modifications:
     - target: {fileID: 5736758401748376152, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
@@ -718,6 +740,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
 --- !u!224 &3773611230447872975 stripped
 RectTransform:

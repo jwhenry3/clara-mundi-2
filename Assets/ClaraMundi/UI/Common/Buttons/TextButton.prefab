@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2727412806977457138}
   - component: {fileID: 2727412806977457139}
   - component: {fileID: 2727412806977457136}
+  - component: {fileID: 4842033311377311346}
   m_Layer: 0
   m_Name: TextButton
   m_TagString: Untagged
@@ -34,7 +35,6 @@ RectTransform:
   - {fileID: 131964580713839691}
   - {fileID: 2727412807579382860}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -135,6 +135,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4842033311377311346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727412806977457038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
 --- !u!1 &2727412807579382861
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +184,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2727412806977457137}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -290,6 +306,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2727412806977457137}
     m_Modifications:
     - target: {fileID: 5736758401748376152, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
@@ -381,6 +398,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
 --- !u!224 &131964580713839691 stripped
 RectTransform:
