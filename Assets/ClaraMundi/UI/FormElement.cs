@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 namespace ClaraMundi
 {
-  public class FormElement : MonoBehaviour
+  public class FormElement : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
     [HideInInspector]
     public FormElement AutoFocusElement;
@@ -31,9 +31,11 @@ namespace ClaraMundi
       InputField ??= GetComponent<TMP_InputField>();
       if (AutoFocusElement == gameObject)
         Activate();
+
     }
-    private void OnActivated()
+    public void OnSelect(BaseEventData eventData)
     {
+      Debug.Log("On Select!");
       if (InputManager.Instance == null) return;
 
       InputField?.ActivateInputField();
@@ -42,7 +44,7 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
     }
 
-    private void OnDeactivated()
+    public void OnDeselect(BaseEventData eventData)
     {
       if (InputManager.Instance == null) return;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
@@ -50,18 +52,12 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
     }
 
-    private void OnDisable()
-    {
-      if (!lastActivated) return;
-      OnDeactivated();
-    }
 
     private void OnDestroy()
     {
       SubmitAction = null;
-      if (!lastActivated) return;
-      OnDeactivated();
     }
+
     private void OnNext(InputAction.CallbackContext context)
     {
       if (!IsActivated()) return;
@@ -94,11 +90,14 @@ namespace ClaraMundi
     {
       previousPressed = false;
       nextPressed = false;
+      Debug.Log(gameObject.name);
       EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
     public void ActivateNext()
     {
+      nextPressed = false;
+      previousPressed = false;
       if (NextElement == null) return;
       if (NextElement.gameObject.activeInHierarchy)
         NextElement.Activate();
@@ -108,21 +107,17 @@ namespace ClaraMundi
 
     public void ActivatePrevious()
     {
+      previousPressed = false;
+      nextPressed = false;
       if (PreviousElement == null) return;
       if (PreviousElement.gameObject.activeInHierarchy)
+      {
         PreviousElement.Activate();
+      }
       else
-        PreviousElement.ActivateNext();
-    }
-
-    private void Update()
-    {
-      var activated = IsActivated();
-      if (lastActivated && !activated)
-        OnDeactivated();
-      if (!lastActivated && activated)
-        OnActivated();
-      lastActivated = activated;
+      {
+        PreviousElement.ActivatePrevious();
+      }
     }
 
     private void LateUpdate()
@@ -131,10 +126,9 @@ namespace ClaraMundi
         cooldown -= Time.deltaTime;
       else
       {
-        if (!IsActivated()) return;
-        if (previousPressed)
+        if (previousPressed && IsActivated())
           ActivatePrevious();
-        else if (nextPressed)
+        else if (nextPressed && IsActivated())
           ActivateNext();
       }
     }

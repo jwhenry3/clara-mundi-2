@@ -1773,6 +1773,10 @@ PrefabInstance:
       value: Create
       objectReference: {fileID: 0}
     - target: {fileID: 2727412806977457136, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727412806977457136, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
       value: 0.8
       objectReference: {fileID: 0}
@@ -1931,38 +1935,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2727412806977457038, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 650813530}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
 --- !u!224 &650813528 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2727412806977457137, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
   m_PrefabInstance: {fileID: 650813527}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &650813529 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2727412806977457038, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
-  m_PrefabInstance: {fileID: 650813527}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &650813530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 650813529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  CanSubmit: 0
-  InputField: {fileID: 0}
 --- !u!1 &667224439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2884,7 +2863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3125,7 +3104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3677,7 +3656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5108,7 +5087,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -7272,6 +7251,7 @@ MonoBehaviour:
   FirstElement: {fileID: 0}
   LastElement: {fileID: 0}
   IsOnlyUI: 1
+  Elements: []
 --- !u!1001 &2142297064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9314,6 +9294,7 @@ MonoBehaviour:
   FirstElement: {fileID: 0}
   LastElement: {fileID: 0}
   IsOnlyUI: 1
+  Elements: []
 --- !u!224 &6443040443437802378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10911,6 +10892,7 @@ MonoBehaviour:
   FirstElement: {fileID: 0}
   LastElement: {fileID: 0}
   IsOnlyUI: 1
+  Elements: []
 --- !u!224 &6443040443817958320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11879,6 +11861,7 @@ MonoBehaviour:
   FirstElement: {fileID: 0}
   LastElement: {fileID: 0}
   IsOnlyUI: 1
+  Elements: []
 --- !u!1 &6443040444192028978
 GameObject:
   m_ObjectHideFlags: 0
@@ -14220,7 +14203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -14616,6 +14599,7 @@ MonoBehaviour:
   FirstElement: {fileID: 0}
   LastElement: {fileID: 0}
   IsOnlyUI: 1
+  Elements: []
 --- !u!1001 &6443040444637203034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16379,6 +16363,7 @@ GameObject:
   - component: {fileID: 6443040445010094904}
   - component: {fileID: 6443040445010094905}
   - component: {fileID: 6443040445010094902}
+  - component: {fileID: 6443040445010094906}
   m_Layer: 0
   m_Name: Back
   m_TagString: Untagged
@@ -16501,6 +16486,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6443040445010094906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443040445010094900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
 --- !u!1 &6443040445037987680
 GameObject:
   m_ObjectHideFlags: 0
@@ -17119,7 +17121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 3
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -17512,6 +17514,7 @@ GameObject:
   - component: {fileID: 6443040445154723933}
   - component: {fileID: 6443040445154723930}
   - component: {fileID: 6443040445154723931}
+  - component: {fileID: 6443040445154723934}
   m_Layer: 0
   m_Name: Create
   m_TagString: Untagged
@@ -17613,6 +17616,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6443040445154723929}
   m_CullTransparentMesh: 1
+--- !u!114 &6443040445154723934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443040445154723929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
 --- !u!1 &6443040445162818500
 GameObject:
   m_ObjectHideFlags: 0
@@ -19006,6 +19026,10 @@ PrefabInstance:
       value: Select
       objectReference: {fileID: 0}
     - target: {fileID: 2727412806977457136, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727412806977457136, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
       propertyPath: m_Colors.m_NormalColor.a
       value: 0.8
       objectReference: {fileID: 0}
@@ -19172,38 +19196,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2727412806977457038, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8985789954970191843}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
 --- !u!224 &8985789954970191841 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2727412806977457137, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
   m_PrefabInstance: {fileID: 8985789954970191840}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8985789954970191842 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2727412806977457038, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
-  m_PrefabInstance: {fileID: 8985789954970191840}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8985789954970191843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985789954970191842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  CanSubmit: 0
-  InputField: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

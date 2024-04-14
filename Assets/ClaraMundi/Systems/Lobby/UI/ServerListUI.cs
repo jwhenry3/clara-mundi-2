@@ -40,7 +40,7 @@ namespace ClaraMundi
 
       StatusText.text = servers.Count > 0 ? "" : "No servers currently online";
 
-      Form?.InitializeElements();
+      Form?.InitializeElements(servers.Count > 0);
     }
 
     public void EnterGame()

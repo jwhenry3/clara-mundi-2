@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 
 namespace ClaraMundi
 {
-  public class Form : MonoBehaviour, IPointerClickHandler
+  public class Form : MonoBehaviour, IPointerClickHandler, ISelectHandler, IDeselectHandler
   {
     public FormElement AutoFocusElement;
     public UnityEvent Submit;
@@ -45,7 +45,7 @@ namespace ClaraMundi
           InitializeElements(child.gameObject, nestingLevel, currentLevel + 1);
       }
     }
-    public void InitializeElements(int nestingLevel = 4)
+    public void InitializeElements(bool selectFirst = false, int nestingLevel = 4)
     {
       Elements = new();
       InitializeElements(gameObject, nestingLevel);
@@ -70,39 +70,27 @@ namespace ClaraMundi
         current.SubmitAction += () => Submit?.Invoke();
       }
 
-      if (IsOnlyUI)
+      if (IsOnlyUI && selectFirst)
       {
         FirstElement.Activate();
       }
     }
 
 
-    void Update()
+    public void OnSelect(BaseEventData eventData)
     {
-      if (IsOnlyUI) return;
-      if (!isFocused && IsActivated())
-      {
-        isFocused = true;
-        OnFocused();
-      }
-      else if (isFocused && !IsActivated())
-      {
-        isFocused = false;
-        OnBlurred();
-      }
-    }
+      if (!IsOnlyUI) return;
+      if (InputManager.Instance == null) return;
 
-    void OnFocused()
-    {
-      Debug.Log("Focused Form!");
       FirstElement?.Activate();
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
     }
 
-    void OnBlurred()
+    public void OnDeselect(BaseEventData eventData)
     {
-
+      if (!IsOnlyUI) return;
+      if (InputManager.Instance == null) return;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
     }
@@ -110,15 +98,8 @@ namespace ClaraMundi
     {
       if (IsOnlyUI)
       {
-        OnFocused();
-      }
-    }
-
-    void OnDisable()
-    {
-      if (IsOnlyUI)
-      {
-        OnBlurred();
+        Debug.Log("Select This Form");
+        EventSystem.current.SetSelectedGameObject(gameObject);
       }
     }
 
@@ -126,6 +107,7 @@ namespace ClaraMundi
     {
       if (!IsActivated()) return;
       if (cooldown > 0) return;
+      Debug.Log("Triggered");
       nextPressed = true;
     }
     private void OnPrevious(InputAction.CallbackContext context)

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace ClaraMundi
 
     public static CharactersUI Instance;
 
+    public Action<Character> OnChange;
+
     public Form Form;
 
     private void Awake()
@@ -27,6 +30,7 @@ namespace ClaraMundi
 
     public void Select(Character character)
     {
+      OnChange?.Invoke(character);
       if (SessionManager.Instance.PlayerCharacter?.name == character?.name) return;
       CharacterActions.SetActive(character != null);
       SessionManager.Instance.PlayerCharacter = character;
@@ -90,7 +94,7 @@ namespace ClaraMundi
       }
 
       CharactersContainer.gameObject.SetActive(Characters.Count > 0);
-      Form?.InitializeElements();
+      Form?.InitializeElements(Characters.Count > 0);
       loading = false;
     }
 
