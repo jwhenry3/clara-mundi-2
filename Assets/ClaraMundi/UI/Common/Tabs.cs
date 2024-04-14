@@ -64,8 +64,6 @@ namespace ClaraMundi
       Form?.InitializeElements();
       if (Form?.PreviouslySelected != null)
         Form.PreviouslySelected.Activate();
-      else
-        Form?.AutoFocusElement?.Activate();
     }
 
     private void Deactivate(string tabName)

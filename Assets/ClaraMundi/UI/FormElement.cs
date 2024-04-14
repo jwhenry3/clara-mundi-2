@@ -11,8 +11,6 @@ namespace ClaraMundi
   public class FormElement : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
     [HideInInspector]
-    public FormElement AutoFocusElement;
-    [HideInInspector]
     public FormElement PreviousElement;
     [HideInInspector]
     public FormElement NextElement;
@@ -28,18 +26,17 @@ namespace ClaraMundi
     private bool previousPressed;
 
     private float cooldown;
+    private bool listening;
 
     private void OnEnable()
     {
       selfForm = GetComponent<Form>();
       InputField ??= GetComponent<TMP_InputField>();
-      if (AutoFocusElement == gameObject)
-        Activate();
 
     }
     public void OnSelect(BaseEventData eventData)
     {
-      Debug.Log("On Select!");
+      Debug.Log("Select: " + gameObject.name);
       if (InputManager.Instance == null) return;
 
       if (Form != null && Form.FocusedElement != this)
@@ -48,6 +45,7 @@ namespace ClaraMundi
         Form.PropagateFocus(this);
       }
       InputField?.ActivateInputField();
+      listening = true;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
@@ -56,13 +54,27 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
+      Debug.Log("Deselect: " + gameObject.name);
       if (InputManager.Instance == null) return;
+      listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
       if (Form != null && Form.FocusedElement == this)
         Form.PropagateFocus(null);
+    }
+
+    void OnDisable()
+    {
+      if (listening)
+      {
+        listening = false;
+        InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
+        InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
+        InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
+        InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      }
     }
 
     void OnCancel(InputAction.CallbackContext context)
@@ -98,19 +110,16 @@ namespace ClaraMundi
       if (input != null && input.isFocused)
       {
         SubmitAction?.Invoke();
-        AutoFocusElement?.Activate();
       }
       else if (input == null)
       {
         SubmitAction?.Invoke();
-        AutoFocusElement?.Activate();
       }
     }
     public void Activate()
     {
       previousPressed = false;
       nextPressed = false;
-      Debug.Log(gameObject.name);
       EventSystem.current.SetSelectedGameObject(gameObject);
     }
 

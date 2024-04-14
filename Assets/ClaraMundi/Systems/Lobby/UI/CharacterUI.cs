@@ -19,6 +19,17 @@ namespace ClaraMundi
       CharactersUI.Instance.Select(Character);
     }
 
+    public void OnToServerSelection()
+    {
+      CharactersUI.Instance.Select(Character);
+      CharactersUI.Instance.OnServerSelection();
+    }
+    public void Delete()
+    {
+      CharactersUI.Instance.Select(Character);
+      CharactersUI.Instance.OnDelete();
+    }
+
     public void SetCharacter(Character character)
     {
       Character = character;

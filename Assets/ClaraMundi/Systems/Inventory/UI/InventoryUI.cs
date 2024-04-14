@@ -81,10 +81,6 @@ namespace ClaraMundi
         instance.OnDoubleClick += OnUseOrEquipItem;
       }
       Form?.InitializeElements();
-      if (Form?.PreviouslySelected != null)
-        Form.PreviouslySelected.Activate();
-      else
-        Form?.AutoFocusElement?.Activate();
     }
     protected override void OnPlayerChange(Player _player)
     {
@@ -126,8 +122,6 @@ namespace ClaraMundi
       {
         if (Form?.PreviouslySelected != null)
           Form.PreviouslySelected.Activate();
-        else
-          Form?.AutoFocusElement?.Activate();
       }
     }
 

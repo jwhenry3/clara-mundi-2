@@ -742,6 +742,7 @@ GameObject:
   - component: {fileID: 7595089621629605463}
   - component: {fileID: 2798091055989800646}
   - component: {fileID: 6322854649510110318}
+  - component: {fileID: 5388311498613306763}
   m_Layer: 0
   m_Name: QuestListItem
   m_TagString: Untagged
@@ -877,6 +878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2ab432a3644f2582be92f2139665f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoFocus: {fileID: 5388311498613306763}
   QuestTitle: {fileID: 1576438779023487971}
   QuestLevel: {fileID: 1576438779415347185}
   QuestDescription: {fileID: 1576438779646078584}
@@ -913,6 +915,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &5388311498613306763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576438780491924893}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09d19ace4ce44459b92e72aa837b391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1711288107565431354
 GameObject:
   m_ObjectHideFlags: 0

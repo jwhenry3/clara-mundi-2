@@ -58,10 +58,13 @@ namespace ClaraMundi
 
     private void OnCancel(InputAction.CallbackContext context)
     {
-      if (Form.Focused != null) return;
-      if (Tabs.CurrentTab == "") return;
+      if (Tabs.CurrentTab == "")
+      {
+        Menu.SetActive(false);
+        return;
+      }
       Tabs.ChangeTab(Tabs.CurrentTab);
-      Menu.SetActive(false);
+      Tabs.Form.PreviouslySelected?.Activate();
     }
 
     void Update()
