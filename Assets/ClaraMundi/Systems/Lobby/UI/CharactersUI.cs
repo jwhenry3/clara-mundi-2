@@ -34,6 +34,7 @@ namespace ClaraMundi
       if (SessionManager.Instance.PlayerCharacter?.name == character?.name) return;
       CharacterActions.SetActive(character != null);
       SessionManager.Instance.PlayerCharacter = character;
+      GetComponent<Form>().InitializeElements();
 
     }
 

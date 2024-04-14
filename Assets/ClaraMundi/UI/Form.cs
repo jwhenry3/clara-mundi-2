@@ -17,9 +17,10 @@ namespace ClaraMundi
     [HideInInspector]
     public FormElement LastElement;
 
-    public bool IsOnlyUI;
+    public Action CancelPressed;
+    public Form ParentForm;
 
-    private bool isFocused;
+    public bool IsOnlyUI;
 
     public List<FormElement> Elements;
 
@@ -38,6 +39,7 @@ namespace ClaraMundi
       if (currentLevel > nestingLevel) return;
       foreach (RectTransform child in gameObject.transform)
       {
+        if (!child.gameObject.activeInHierarchy) continue;
         var element = child.GetComponent<FormElement>();
         if (element != null)
           Elements.Add(element);
@@ -66,6 +68,7 @@ namespace ClaraMundi
           current.PreviousElement = last;
         if (next != current)
           current.NextElement = next;
+        current.Form = this;
         current.AutoFocusElement = AutoFocusElement;
         current.SubmitAction += () => Submit?.Invoke();
       }
@@ -81,10 +84,11 @@ namespace ClaraMundi
     {
       if (!IsOnlyUI) return;
       if (InputManager.Instance == null) return;
-
-      FirstElement?.Activate();
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+      InputManager.Instance.World.FindAction("Look").Disable();
+      InputManager.Instance.World.FindAction("Move").Disable();
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -93,12 +97,29 @@ namespace ClaraMundi
       if (InputManager.Instance == null) return;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
+      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      if (EventSystem.current.currentSelectedGameObject == null)
+      {
+        InputManager.Instance.World.FindAction("Look").Enable();
+        InputManager.Instance.World.FindAction("Move").Enable();
+      }
     }
+
+    void OnCancel(InputAction.CallbackContext context)
+    {
+      if (ParentForm != null)
+        EventSystem.current.SetSelectedGameObject(ParentForm.gameObject);
+      else
+        EventSystem.current.SetSelectedGameObject(null);
+      CancelPressed?.Invoke();
+    }
+
     void OnEnable()
     {
-      if (IsOnlyUI)
+      if (AutoFocusElement != null)
+        AutoFocusElement.Activate();
+      else if (IsOnlyUI)
       {
-        Debug.Log("Select This Form");
         EventSystem.current.SetSelectedGameObject(gameObject);
       }
     }
@@ -107,7 +128,6 @@ namespace ClaraMundi
     {
       if (!IsActivated()) return;
       if (cooldown > 0) return;
-      Debug.Log("Triggered");
       nextPressed = true;
     }
     private void OnPrevious(InputAction.CallbackContext context)

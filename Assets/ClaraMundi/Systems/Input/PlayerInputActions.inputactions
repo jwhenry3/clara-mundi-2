@@ -438,6 +438,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "OpenChat",
+                    "type": "Button",
+                    "id": "a20d11a7-d857-488b-b9ad-4da4d841a3ca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -946,6 +955,17 @@
                     "action": "PreviousElement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8faaf3ca-7fe0-4c61-af0c-82ede8954e8c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "OpenChat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -16,7 +16,9 @@ namespace ClaraMundi
     public FormElement PreviousElement;
     [HideInInspector]
     public FormElement NextElement;
-    private bool lastActivated;
+
+    [HideInInspector]
+    public Form Form;
     public bool CanSubmit;
     public event Action SubmitAction;
     public TMP_InputField InputField;
@@ -42,6 +44,7 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -50,9 +53,13 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
+      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
     }
 
-
+    void OnCancel(InputAction.CallbackContext context)
+    {
+      EventSystem.current.SetSelectedGameObject(Form.gameObject);
+    }
     private void OnDestroy()
     {
       SubmitAction = null;
