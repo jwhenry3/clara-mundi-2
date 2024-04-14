@@ -19,6 +19,7 @@ namespace ClaraMundi
 
     [HideInInspector]
     public Form Form;
+    private Form selfForm;
     public bool CanSubmit;
     public event Action SubmitAction;
     public TMP_InputField InputField;
@@ -30,6 +31,7 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
+      selfForm = GetComponent<Form>();
       InputField ??= GetComponent<TMP_InputField>();
       if (AutoFocusElement == gameObject)
         Activate();
@@ -40,6 +42,11 @@ namespace ClaraMundi
       Debug.Log("On Select!");
       if (InputManager.Instance == null) return;
 
+      if (Form != null && Form.FocusedElement != this)
+      {
+        Form.PreviouslySelected = this;
+        Form.PropagateFocus(this);
+      }
       InputField?.ActivateInputField();
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
@@ -54,11 +61,17 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      if (Form != null && Form.FocusedElement == this)
+        Form.PropagateFocus(null);
     }
 
     void OnCancel(InputAction.CallbackContext context)
     {
-      EventSystem.current.SetSelectedGameObject(Form.gameObject);
+      if (Form != null)
+      {
+        Form.PreviouslySelected = null;
+        Form.ElementCanceled();
+      }
     }
     private void OnDestroy()
     {
@@ -133,9 +146,10 @@ namespace ClaraMundi
         cooldown -= Time.deltaTime;
       else
       {
-        if (previousPressed && IsActivated())
+        var activated = IsActivated();
+        if (previousPressed && activated)
           ActivatePrevious();
-        else if (nextPressed && IsActivated())
+        else if (nextPressed && activated)
           ActivateNext();
       }
     }

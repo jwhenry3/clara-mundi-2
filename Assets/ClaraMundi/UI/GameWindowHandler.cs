@@ -4,61 +4,77 @@ using UnityEngine.InputSystem;
 
 namespace ClaraMundi
 {
-    public class GameWindowHandler : MonoBehaviour
+  public class GameWindowHandler : MonoBehaviour
+  {
+    public static GameWindowHandler Instance;
+
+    public Tabs Tabs;
+
+    public GameObject Menu;
+
+    private bool menuOpen;
+    private void Awake()
     {
-        public static GameWindowHandler Instance;
-
-        public Tabs Tabs;
-        public MoveToFront ActiveWindow;
-
-        private void Awake()
-        {
-            Instance = this;
-            Tabs = GetComponent<Tabs>();
-        }
-
-        private void OnEnable()
-        {
-            InputManager.Instance.UI.FindAction("Inventory").performed += OnInventory;
-            InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
-            InputManager.Instance.UI.FindAction("Equipment").performed += OnEquipment;
-            InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
-        }
-
-        private void OnDisable()
-        {
-            InputManager.Instance.UI.FindAction("Inventory").performed -= OnInventory;
-            InputManager.Instance.UI.FindAction("Journal").performed -= OnJournal;
-            InputManager.Instance.UI.FindAction("Equipment").performed -= OnEquipment;
-            InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
-        }
-
-
-        private void OnInventory(InputAction.CallbackContext context)
-        {
-            if (InputManager.IsFocusedOnInput()) return;
-            Tabs.ChangeTab("Inventory");
-        }
-
-        private void OnJournal(InputAction.CallbackContext context)
-        {
-            if (InputManager.IsFocusedOnInput()) return;
-            Tabs.ChangeTab("Journal");
-        }
-
-        private void OnEquipment(InputAction.CallbackContext context)
-        {
-            if (InputManager.IsFocusedOnInput()) return;
-            Tabs.ChangeTab("Equipment");
-        }
-
-        private void OnCancel(InputAction.CallbackContext context)
-        {
-            if (InputManager.IsFocusedOnInput()) return;
-            if (ActiveWindow == null) return;
-            var tab = Tabs.List.Find((t) => t.Content == ActiveWindow.GetComponent<UIAnimator>());
-            if (tab != null)
-              Tabs.ChangeTab(tab.Label);
-        }
+      Instance = this;
     }
+
+    private void OnEnable()
+    {
+      InputManager.Instance.UI.FindAction("Inventory").performed += OnInventory;
+      InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
+      InputManager.Instance.UI.FindAction("Equipment").performed += OnEquipment;
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+    }
+
+    private void OnDisable()
+    {
+      InputManager.Instance.UI.FindAction("Inventory").performed -= OnInventory;
+      InputManager.Instance.UI.FindAction("Journal").performed -= OnJournal;
+      InputManager.Instance.UI.FindAction("Equipment").performed -= OnEquipment;
+      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+    }
+
+
+    private void OnInventory(InputAction.CallbackContext context)
+    {
+      if (InputManager.IsFocusedOnInput()) return;
+      Tabs.ChangeTab("Inventory");
+      Menu.SetActive(true);
+    }
+
+    private void OnJournal(InputAction.CallbackContext context)
+    {
+      if (InputManager.IsFocusedOnInput()) return;
+      Tabs.ChangeTab("Journal");
+      Menu.SetActive(true);
+    }
+
+    private void OnEquipment(InputAction.CallbackContext context)
+    {
+      if (InputManager.IsFocusedOnInput()) return;
+      Tabs.ChangeTab("Equipment");
+      Menu.SetActive(true);
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+      if (Form.Focused != null) return;
+      if (Tabs.CurrentTab == "") return;
+      Tabs.ChangeTab(Tabs.CurrentTab);
+      Menu.SetActive(false);
+    }
+
+    void Update()
+    {
+      if (Menu.activeInHierarchy && !menuOpen)
+      {
+        InputManager.Instance.World.Disable();
+      }
+      else if (!Menu.activeInHierarchy && menuOpen)
+      {
+        InputManager.Instance.World.Enable();
+      }
+      menuOpen = Menu.activeInHierarchy;
+    }
+  }
 }

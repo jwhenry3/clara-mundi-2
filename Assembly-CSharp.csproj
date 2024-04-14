@@ -105,6 +105,7 @@
     <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Inventory\UI\ItemTooltipUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
+    <Compile Include="Assets\ClaraMundi\Systems\Input\TriggerByAction.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\EmptySprite.cs" />
     <Compile Include="Assets\ClaraMundi\UI\FormElement.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Input\ManualMoveController.cs" />
@@ -1224,8 +1225,10 @@
     <ProjectReference Include="Unity.AI.Navigation.csproj" />
     <ProjectReference Include="Unity.Burst.Editor.csproj" />
     <ProjectReference Include="Unity.Animation.Rigging.Editor.csproj" />
+    <ProjectReference Include="Flexalon.Samples.Editor.csproj" />
     <ProjectReference Include="jsb.editor.hotfix.csproj" />
     <ProjectReference Include="Unity.Rider.Editor.csproj" />
+    <ProjectReference Include="Flexalon.Editor.csproj" />
     <ProjectReference Include="UMA_Examples.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj" />
     <ProjectReference Include="Unity.Mathematics.Editor.csproj" />
@@ -1280,6 +1283,7 @@
     <ProjectReference Include="Unity.SysrootPackage.Editor.csproj" />
     <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
+    <ProjectReference Include="Flexalon.Samples.csproj" />
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj" />
     <ProjectReference Include="Unity.Mathematics.csproj" />
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
@@ -1287,6 +1291,7 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj" />
     <ProjectReference Include="ReactUnity.UGUI.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
+    <ProjectReference Include="Flexalon.csproj" />
     <ProjectReference Include="jsb.shared.csproj" />
     <ProjectReference Include="UMA_Examples_Editor.csproj" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace ClaraMundi
     [HideInInspector]
     public FormElement LastElement;
 
-    public Action CancelPressed;
+    public UnityEvent CancelPressed;
     public Form ParentForm;
 
     public bool IsOnlyUI;
@@ -29,11 +30,25 @@ namespace ClaraMundi
     private float cooldown;
 
 
+    public FormElement SelfElement;
+
+
+    public FormElement PreviouslySelected;
+
+    public FormElement FocusedElement;
+    public static FormElement Focused;
+
+    public bool selectOnEnable;
+
+
     private void Start()
     {
       Submit ??= new UnityEvent();
       InitializeElements();
+      SelfElement = GetComponent<FormElement>();
     }
+
+
     public void InitializeElements(GameObject gameObject, int nestingLevel = 4, int currentLevel = 0)
     {
       if (currentLevel > nestingLevel) return;
@@ -41,8 +56,10 @@ namespace ClaraMundi
       {
         if (!child.gameObject.activeInHierarchy) continue;
         var element = child.GetComponent<FormElement>();
+        var form = child.GetComponent<Form>();
         if (element != null)
           Elements.Add(element);
+        else if (form != null) continue; // do not eat up child form elements
         else
           InitializeElements(child.gameObject, nestingLevel, currentLevel + 1);
       }
@@ -59,6 +76,7 @@ namespace ClaraMundi
       }
       FirstElement = Elements.First();
       LastElement = Elements.Last();
+      bool previousExists = false;
       for (int i = 0; i < Elements.Count; i++)
       {
         var current = Elements[i];
@@ -71,38 +89,63 @@ namespace ClaraMundi
         current.Form = this;
         current.AutoFocusElement = AutoFocusElement;
         current.SubmitAction += () => Submit?.Invoke();
+        if (current == PreviouslySelected)
+          previousExists = true;
       }
+      if (!previousExists)
+        PreviouslySelected = null;
 
+      if (PreviouslySelected != null)
+      {
+        PreviouslySelected.Activate();
+        return;
+      }
       if (IsOnlyUI && selectFirst)
+      {
+        FirstElement.Activate();
+        return;
+      }
+      if (selectOnEnable)
+      {
+        AutoFocusElement?.Activate();
+      }
+    }
+
+    public void PropagateFocus(FormElement value)
+    {
+      FocusedElement = value;
+      Focused = value;
+      ParentForm?.PropagateFocus(value);
+    }
+    public void OnSelect(BaseEventData eventData)
+    {
+      if (InputManager.Instance == null) return;
+      InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
+      InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+
+      if (PreviouslySelected != null)
+      {
+        PreviouslySelected.Activate();
+        return;
+      }
+      if (AutoFocusElement != null)
+      {
+        AutoFocusElement.Activate();
+        return;
+      }
+      if (FirstElement != null)
       {
         FirstElement.Activate();
       }
     }
 
-
-    public void OnSelect(BaseEventData eventData)
-    {
-      if (!IsOnlyUI) return;
-      if (InputManager.Instance == null) return;
-      InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
-      InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
-      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
-      InputManager.Instance.World.FindAction("Look").Disable();
-      InputManager.Instance.World.FindAction("Move").Disable();
-    }
-
     public void OnDeselect(BaseEventData eventData)
     {
-      if (!IsOnlyUI) return;
       if (InputManager.Instance == null) return;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
-      if (EventSystem.current.currentSelectedGameObject == null)
-      {
-        InputManager.Instance.World.FindAction("Look").Enable();
-        InputManager.Instance.World.FindAction("Move").Enable();
-      }
     }
 
     void OnCancel(InputAction.CallbackContext context)
@@ -111,14 +154,22 @@ namespace ClaraMundi
         EventSystem.current.SetSelectedGameObject(ParentForm.gameObject);
       else
         EventSystem.current.SetSelectedGameObject(null);
-      CancelPressed?.Invoke();
     }
+
+    public void ElementCanceled()
+    {
+      if (CancelPressed.GetPersistentEventCount() > 0)
+        CancelPressed?.Invoke();
+      else
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+
 
     void OnEnable()
     {
       if (AutoFocusElement != null)
         AutoFocusElement.Activate();
-      else if (IsOnlyUI)
+      else if (IsOnlyUI || selectOnEnable)
       {
         EventSystem.current.SetSelectedGameObject(gameObject);
       }

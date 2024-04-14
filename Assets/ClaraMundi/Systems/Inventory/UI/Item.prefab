@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 33972649893080200}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -166,7 +165,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 33972649893080200}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -243,7 +241,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 33972649893080200}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -375,7 +372,7 @@ GameObject:
   - component: {fileID: 33972649893080309}
   - component: {fileID: 2328696991581421158}
   - component: {fileID: 3192381577424106106}
-  - component: {fileID: 6798521504015725330}
+  - component: {fileID: 8094625590011803112}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -399,7 +396,6 @@ RectTransform:
   - {fileID: 33972649740098098}
   - {fileID: 33972648169651647}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -459,9 +455,9 @@ MonoBehaviour:
   NodeId: 3369c3a9-de88-4a88-8874-714bf73f492f
   StorageId: inventory
   ItemInstance:
-    CharacterId: 
+    ItemInstanceId: 6
     StorageId: 
-    ItemInstanceId: 6affce15-5425-4da7-b313-aa3ad7e29af1
+    CharacterId: 
     ItemId: 
     Quantity: 1
     IsEquipped: 0
@@ -470,7 +466,7 @@ MonoBehaviour:
   ItemName: {fileID: 0}
   Quantity: {fileID: 33972649740098096}
   Icon: {fileID: 33972648516919267}
-  ItemInstanceId: 
+  ItemInstanceId: 0
   ItemStorage: {fileID: 0}
   updateQueued: 0
 --- !u!114 &2328696991581421158
@@ -549,7 +545,7 @@ MonoBehaviour:
           m_StringArgument: General
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6798521504015725330
+--- !u!114 &8094625590011803112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -558,6 +554,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 33972649893080201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24b06f3c0f54357b6b8dafead82ca98, type: 3}
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AutoFocusElement: {fileID: 0}
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  Form: {fileID: 0}
+  CanSubmit: 0
+  InputField: {fileID: 0}
