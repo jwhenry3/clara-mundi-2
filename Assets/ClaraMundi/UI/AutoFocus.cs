@@ -12,7 +12,6 @@ namespace ClaraMundi
       if (!focused)
       {
         focused = true;
-        Debug.Log(gameObject.name);
         EventSystem.current.SetSelectedGameObject(gameObject);
       }
     }

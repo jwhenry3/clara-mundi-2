@@ -8,6 +8,7 @@ namespace ClaraMundi
   public class MoveSibling : MonoBehaviour, IPointerDownHandler
   {
     public Transform MovingObject;
+    public CanvasGroup CanvasGroupToToggle;
 
     public Action SentToBack;
     public Action SentToFront;
@@ -33,6 +34,14 @@ namespace ClaraMundi
       if (!IsInBack())
         MovingObject.SetAsFirstSibling();
       SentToBack?.Invoke();
+    }
+
+    void Update()
+    {
+      if (CanvasGroupToToggle != null)
+      {
+        CanvasGroupToToggle.interactable = IsInFront();
+      }
     }
 
     public bool IsInBack() => MovingObject.GetSiblingIndex() == 0;

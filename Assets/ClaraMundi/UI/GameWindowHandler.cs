@@ -8,8 +8,6 @@ namespace ClaraMundi
   {
     public static GameWindowHandler Instance;
 
-    public Form CurrentWindowForm;
-
     public Tabs Tabs;
 
     public GameObject Menu;
