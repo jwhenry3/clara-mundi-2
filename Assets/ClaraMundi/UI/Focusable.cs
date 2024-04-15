@@ -18,16 +18,9 @@ namespace ClaraMundi
     void Start()
     {
       button = GetComponent<Button>();
-    }
-
-    void OnEnable()
-    {
+      if (Image == null)
+        Image = GetComponent<Image>();
       button?.onClick.AddListener(OnActivate);
-    }
-
-    void OnDisable()
-    {
-      button?.onClick.RemoveListener(OnActivate);
     }
 
     public void OnActivate()
@@ -37,6 +30,7 @@ namespace ClaraMundi
 
     void Update()
     {
+      if (Image == null) return;
       if (IsActivated)
         Image.color = ActiveColor;
       else

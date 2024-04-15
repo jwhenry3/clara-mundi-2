@@ -45,22 +45,22 @@ namespace ClaraMundi
     private void OnInventory(InputAction.CallbackContext context)
     {
       ChatWindowUI.Instance.MoveSibling.ToBack();
-      Tabs.ChangeTab("Inventory");
       Menu.SetActive(true);
+      Tabs.ChangeTab("Inventory");
     }
 
     private void OnJournal(InputAction.CallbackContext context)
     {
       ChatWindowUI.Instance.MoveSibling.ToBack();
-      Tabs.ChangeTab("Journal");
       Menu.SetActive(true);
+      Tabs.ChangeTab("Journal");
     }
 
     private void OnEquipment(InputAction.CallbackContext context)
     {
       ChatWindowUI.Instance.MoveSibling.ToBack();
-      Tabs.ChangeTab("Equipment");
       Menu.SetActive(true);
+      Tabs.ChangeTab("Equipment");
     }
 
     private void OnCancel(InputAction.CallbackContext context)

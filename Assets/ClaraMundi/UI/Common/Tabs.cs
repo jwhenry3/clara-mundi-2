@@ -18,21 +18,23 @@ namespace ClaraMundi
   public class Tabs : MonoBehaviour
   {
     public bool canDeactivate;
-    public List<TabData> List = new();
-    private readonly Dictionary<string, TabData> TabsDict = new();
+    public List<TabData> List;
+    private Dictionary<string, TabData> TabsDict = new();
 
     public string CurrentTab;
     public TabData CurrentTabData => TabsDict.ContainsKey(CurrentTab) ? TabsDict[CurrentTab] : null;
 
     public Form Form;
 
-    public void Awake()
+    public void Start()
     {
+      if (List == null) return;
       foreach (var data in List)
       {
+        Debug.Log("Check Dictionary: " + gameObject.name + " - " + data.Label);
         if (TabsDict.ContainsKey(data.Label)) continue;
-        data.OnClick = () => ChangeTab(data.Label);
-        data.Button.OnClick += data.OnClick;
+        Debug.Log("Attach Listener: " + gameObject.name + " - " + data.Label);
+        data.Button.OnClick += () => ChangeTab(data.Label);
         TabsDict[data.Label] = data;
       }
     }
@@ -41,16 +43,22 @@ namespace ClaraMundi
     {
       foreach (var data in List)
       {
-        if (TabsDict.ContainsKey(data.Label))
-          TabsDict.Remove(data.Label);
+        Debug.Log("Dettach Listener: " + gameObject.name + " - " + data.Label);
         data.Button.OnClick -= data.OnClick;
       }
+      TabsDict = new();
     }
 
     public void ChangeTab(string tabName)
     {
+      Debug.Log("Change Tab: " + tabName);
       // we are changing UI visibility, so close menus
       ContextMenuHandler.Instance.CloseAll();
+      if (tabName == "")
+      {
+        Deactivate(CurrentTab);
+        return;
+      }
       if (!TabsDict.ContainsKey(tabName)) return;
       if (TabsDict[tabName].Button.IsActivated)
       {
@@ -62,25 +70,19 @@ namespace ClaraMundi
       Activate(tabName);
 
       CurrentTab = tabName;
-
-      Form?.InitializeElements();
-      if (Form?.PreviouslySelected != null)
-        Form.PreviouslySelected.Activate();
     }
 
     private void Deactivate(string tabName)
     {
+      if (tabName == "") return;
       TabsDict[tabName].Button.IsActivated = false;
       TabsDict[tabName].Content.SetActive(false);
     }
 
     private void Activate(string tabName)
     {
-      foreach (var kvp in TabsDict)
-      {
-        if (kvp.Key != tabName && kvp.Value.Button.IsActivated)
-          Deactivate(kvp.Key);
-      }
+      if (CurrentTab != tabName)
+        Deactivate(CurrentTab);
 
       TabsDict[tabName].Button.IsActivated = true;
       TabsDict[tabName].Content.SetActive(true);

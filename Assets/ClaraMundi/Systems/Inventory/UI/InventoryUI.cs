@@ -10,11 +10,6 @@ namespace ClaraMundi
     [HideInInspector]
     public ItemUI ContextualItem;
 
-    public Focusable EquipmentFocus;
-    public Focusable ConsumablesFocus;
-    public Focusable GeneralFocus;
-    public Focusable KeyItemsFocus;
-
     public Transform Equipment;
     public Transform Consumables;
     public Transform General;
