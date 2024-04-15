@@ -17,10 +17,13 @@ namespace ClaraMundi
       if (Hovered.Count > 1) return; // already handled by another hover component
       if (ShouldDisableWorldInput)
         InputManager.Instance.World.Disable();
-      if (InputsToDisable?.Count > 0) {
-        InputsToDisable.ForEach(input => {
+      if (InputsToDisable?.Count > 0)
+      {
+        InputsToDisable.ForEach(input =>
+        {
           var action = InputManager.Instance.World.FindAction(input);
-          if (action != null) {
+          if (action != null)
+          {
             action.Disable();
           }
         });
@@ -31,16 +34,18 @@ namespace ClaraMundi
     {
       OnDisable();
     }
-    protected virtual void OnDisable() {
+    protected virtual void OnDisable()
+    {
       if (Hovered.Contains(this))
         Hovered.Remove(this);
       if (Hovered.Count > 0) return; // already handled by another hover component
-      if (ShouldDisableWorldInput && InputManager.Instance.InputsFocused.Count == 0)
-        InputManager.Instance.World.Enable();
-      if (InputsToDisable?.Count > 0) {
-        InputsToDisable.ForEach(input => {
+      if (InputsToDisable?.Count > 0)
+      {
+        InputsToDisable.ForEach(input =>
+        {
           var action = InputManager.Instance.World.FindAction(input);
-          if (action != null) {
+          if (action != null)
+          {
             action.Enable();
           }
         });

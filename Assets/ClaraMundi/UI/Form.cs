@@ -107,7 +107,6 @@ namespace ClaraMundi
     }
     public void OnSelect(BaseEventData eventData)
     {
-      Debug.Log("Form Select: " + gameObject.name);
       if (InputManager.Instance == null) return;
       listening = true;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
@@ -127,7 +126,6 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
-      Debug.Log("Form Deselect: " + gameObject.name);
       if (InputManager.Instance == null) return;
       listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;

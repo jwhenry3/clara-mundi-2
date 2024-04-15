@@ -19,6 +19,7 @@ namespace ClaraMundi
     public Form Form;
     private Form selfForm;
     public bool CanSubmit;
+    public bool CanCancel = true;
     public event Action SubmitAction;
     public TMP_InputField InputField;
 
@@ -79,7 +80,7 @@ namespace ClaraMundi
 
     void OnCancel(InputAction.CallbackContext context)
     {
-      if (Form != null)
+      if (Form != null && CanCancel)
       {
         Form.PreviouslySelected = null;
         Form.ElementCanceled();

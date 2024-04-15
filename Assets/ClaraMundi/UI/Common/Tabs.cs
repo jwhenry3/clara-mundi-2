@@ -21,6 +21,7 @@ namespace ClaraMundi
     private readonly Dictionary<string, TabData> TabsDict = new();
 
     public string CurrentTab;
+    public TabData CurrentTabData => TabsDict.ContainsKey(CurrentTab) ? TabsDict[CurrentTab] : null;
 
     public Form Form;
 

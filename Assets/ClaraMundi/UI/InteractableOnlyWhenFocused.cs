@@ -5,48 +5,9 @@ using UnityEngine.UI;
 
 namespace ClaraMundi
 {
-  public class InteractableOnlyWhenFocused : MonoBehaviour, IPointerClickHandler
+  public class InteractableOnlyWhenFocused : MonoBehaviour
   {
 
-    private MoveToFront MoveToFront;
-    private Selectable Selectable;
-    private Button Button;
-    private CanvasGroup CanvasGroup;
-    private bool interactable;
 
-    public bool IsFocused()
-    {
-      return interactable;
-    }
-
-    private void Awake()
-    {
-      MoveToFront = GetComponentInParent<MoveToFront>();
-      CanvasGroup = GetComponent<CanvasGroup>();
-      Selectable = GetComponent<Selectable>();
-      Button = GetComponent<Button>();
-    }
-
-    private void Update()
-    {
-      if (MoveToFront == null) return;
-    }
-
-    private void SetStatus(bool value)
-    {
-      if (CanvasGroup != null)
-        CanvasGroup.interactable = value;
-      if (Selectable != null)
-        Selectable.interactable = value;
-      else if (Button != null)
-        Button.interactable = value;
-      interactable = value;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-      if (!interactable)
-        MoveToFront.Move();
-    }
   }
 }
