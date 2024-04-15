@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,8 +10,8 @@ namespace ClaraMundi
   public class TabData
   {
     public string Label;
-    public UIAnimator Button;
-    public UIAnimator Content;
+    public Focusable Button;
+    public GameObject Content;
 
     public Action OnClick;
   }
@@ -51,7 +52,7 @@ namespace ClaraMundi
       // we are changing UI visibility, so close menus
       ContextMenuHandler.Instance.CloseAll();
       if (!TabsDict.ContainsKey(tabName)) return;
-      if (TabsDict[tabName].Button.IsActivated())
+      if (TabsDict[tabName].Button.IsActivated)
       {
         if (!canDeactivate) return;
         Deactivate(tabName);
@@ -69,22 +70,22 @@ namespace ClaraMundi
 
     private void Deactivate(string tabName)
     {
-      TabsDict[tabName].Button.Deactivate();
-      TabsDict[tabName].Content.Hide();
+      TabsDict[tabName].Button.IsActivated = false;
+      TabsDict[tabName].Content.SetActive(false);
     }
 
     private void Activate(string tabName)
     {
       foreach (var kvp in TabsDict)
       {
-        if (kvp.Key != tabName && kvp.Value.Button.IsActivated())
+        if (kvp.Key != tabName && kvp.Value.Button.IsActivated)
           Deactivate(kvp.Key);
       }
 
-      TabsDict[tabName].Button.Activate();
-      TabsDict[tabName].Content.Show();
+      TabsDict[tabName].Button.IsActivated = true;
+      TabsDict[tabName].Content.SetActive(true);
     }
 
-    public bool IsTabActive(string tabName) => TabsDict[tabName].Button.IsActivated();
+    public bool IsTabActive(string tabName) => TabsDict[tabName].Button.IsActivated;
   }
 }
