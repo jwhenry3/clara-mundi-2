@@ -35,6 +35,7 @@ namespace ClaraMundi
     }
     public void OnSelect(BaseEventData eventData)
     {
+      // Debug.Log(gameObject.name + ": Select");
       if (InputManager.Instance == null) return;
 
       if (Form != null && Form.FocusedElement != this)
@@ -52,6 +53,7 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
+      // Debug.Log(gameObject.name + ": Deselect");
       if (InputManager.Instance == null) return;
       listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;

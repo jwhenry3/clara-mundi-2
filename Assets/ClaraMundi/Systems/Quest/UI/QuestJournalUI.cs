@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object.Synchronizing;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ClaraMundi.Quests
 {
@@ -41,6 +42,7 @@ namespace ClaraMundi.Quests
     {
       foreach (string questId in player.Quests.AcceptedQuests)
         AddQuest(questId);
+      EventSystem.current.SetSelectedGameObject(AddedItems.First().Value.AutoFocus.gameObject);
     }
 
     private void AddQuest(string questId)
@@ -51,7 +53,11 @@ namespace ClaraMundi.Quests
       listItem.Quest = RepoManager.Instance.QuestRepo.Quests[questId];
       AddedItems.Add(questId, listItem);
       if (AddedItems.First().Value == listItem)
+      {
+        listItem.AutoFocus.HasFocused = false;
         listItem.AutoFocus.enabled = true;
+      }
+
     }
 
     private void OnQuestUpdates(SyncListOperation op, int index, string previous, string next, bool asServer)

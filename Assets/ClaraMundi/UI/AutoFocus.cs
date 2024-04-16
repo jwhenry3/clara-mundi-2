@@ -6,19 +6,19 @@ namespace ClaraMundi
 {
   public class AutoFocus : MonoBehaviour
   {
-    private bool focused;
+    public bool HasFocused;
     private void LateUpdate()
     {
-      if (!focused)
+      if (!HasFocused)
       {
-        focused = true;
+        HasFocused = true;
         EventSystem.current.SetSelectedGameObject(gameObject);
       }
     }
 
     private void OnDisable()
     {
-      focused = false;
+      HasFocused = false;
     }
   }
 }

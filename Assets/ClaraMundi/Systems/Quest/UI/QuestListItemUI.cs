@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace ClaraMundi.Quests
 {
@@ -56,7 +57,9 @@ namespace ClaraMundi.Quests
       if (player == null) return;
       player.Quests.TrackedQuests.OnChange += OnTrackedChange;
       if (_quest == null) return;
-      TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
+      bool tracked = player.Quests.TrackedQuests.Contains(_quest.QuestId);
+      if (TrackedStatusToggle.isOn != tracked)
+        TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
     }
 
     private void OnTrackedChange(SyncListOperation op, int index, string previous, string next, bool asServer)
@@ -65,6 +68,8 @@ namespace ClaraMundi.Quests
       if (_quest == null) return;
       if (previous != _quest.QuestId && next != _quest.QuestId) return;
       TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
+      if (gameObject.activeInHierarchy)
+        StartCoroutine(SelectToggle());
     }
 
     private void SetQuest(Quest value)
@@ -112,10 +117,18 @@ namespace ClaraMundi.Quests
 
     public void SetTrackedStatus(bool value)
     {
+      bool tracked = player.Quests.TrackedQuests.Contains(Quest.QuestId);
+      if (value == tracked) return;
       if (value)
         player.Quests.TrackQuest(Quest.QuestId);
       else
         player.Quests.UntrackQuest(Quest.QuestId);
+    }
+
+    private IEnumerator SelectToggle()
+    {
+      yield return new WaitForSeconds(0.1f);
+      EventSystem.current.SetSelectedGameObject(TrackedStatusToggle.gameObject);
     }
   }
 }

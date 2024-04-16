@@ -62,11 +62,14 @@ namespace ClaraMundi
     private void OnCancel(InputAction.CallbackContext context)
     {
       if (ChatWindowUI.Instance.MoveSibling.IsInFront()) return;
+      Debug.Log("Chat not in front");
       if (Tabs.CurrentTab == "")
       {
+        Debug.Log("Close Menu");
         Menu.SetActive(false);
         return;
       }
+      Debug.Log("Close Sub Menu");
       Tabs.ChangeTab("");
       foreach (var data in Tabs.List)
       {

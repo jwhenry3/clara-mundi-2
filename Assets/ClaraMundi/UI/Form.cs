@@ -96,6 +96,7 @@ namespace ClaraMundi
     }
     public void OnSelect(BaseEventData eventData)
     {
+      // Debug.Log(gameObject.name + ": Select");
       PropagateFocus(null);
       if (InputManager.Instance == null) return;
       listening = true;
@@ -105,7 +106,8 @@ namespace ClaraMundi
 
       if (AutoFocusElement != null && !noAutoSelect)
       {
-        StartCoroutine(Select(AutoFocusElement.gameObject));
+        if (gameObject.activeInHierarchy)
+          StartCoroutine(Select(AutoFocusElement.gameObject));
         return;
       }
       noAutoSelect = false;
@@ -119,6 +121,7 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
+      // Debug.Log(gameObject.name + ": Deselect");
       if (InputManager.Instance == null) return;
       listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
@@ -151,14 +154,16 @@ namespace ClaraMundi
           }
           else
           {
-            StartCoroutine(Select(ParentForm?.gameObject));
+            if (gameObject.activeInHierarchy)
+              StartCoroutine(Select(ParentForm?.gameObject));
           }
         }
         return;
       }
       noAutoSelect = true;
       PreviouslySelected = null;
-      StartCoroutine(Select(gameObject));
+      if (gameObject.activeInHierarchy)
+        StartCoroutine(Select(gameObject));
     }
 
     void OnCancel(InputAction.CallbackContext context)
@@ -171,7 +176,8 @@ namespace ClaraMundi
         }
         else
         {
-          StartCoroutine(Select(ParentForm?.gameObject ?? gameObject));
+          if (gameObject.activeInHierarchy)
+            StartCoroutine(Select(ParentForm?.gameObject ?? gameObject));
         }
       }
     }
