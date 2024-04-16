@@ -96,10 +96,7 @@ namespace ClaraMundi.Quests
       }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-      Open();
-    }
+    public void OnPointerDown(PointerEventData eventData) => Open();
 
     public void Open()
     {
@@ -118,11 +115,8 @@ namespace ClaraMundi.Quests
     public void SetTrackedStatus(bool value)
     {
       bool tracked = player.Quests.TrackedQuests.Contains(Quest.QuestId);
-      if (value == tracked) return;
-      if (value)
-        player.Quests.TrackQuest(Quest.QuestId);
-      else
-        player.Quests.UntrackQuest(Quest.QuestId);
+      if (value != tracked)
+        player.Quests.ToggleTrack(Quest.QuestId, value);
     }
 
     private IEnumerator SelectToggle()

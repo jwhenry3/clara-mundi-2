@@ -62,14 +62,14 @@ namespace ClaraMundi
     private void OnCancel(InputAction.CallbackContext context)
     {
       if (ChatWindowUI.Instance.MoveSibling.IsInFront()) return;
-      Debug.Log("Chat not in front");
+      // Debug.Log("Chat not in front");
       if (Tabs.CurrentTab == "")
       {
-        Debug.Log("Close Menu");
+        // Debug.Log("Close Menu");
         Menu.SetActive(false);
         return;
       }
-      Debug.Log("Close Sub Menu");
+      // Debug.Log("Close Sub Menu");
       Tabs.ChangeTab("");
       foreach (var data in Tabs.List)
       {
@@ -97,8 +97,7 @@ namespace ClaraMundi
     void Update()
     {
       bool chatInFront = ChatWindowUI.Instance.MoveSibling.IsInFront();
-      bool questTrackerInFront = QuestTrackerUI.Instance.MoveSibling.IsInFront();
-      bool isMenuOpen = Menu.activeInHierarchy || chatInFront || questTrackerInFront;
+      bool isMenuOpen = Menu.activeInHierarchy || chatInFront;
 
       if (isMenuOpen && !menuOpen)
         InputManager.Instance.World.Disable();
@@ -106,7 +105,7 @@ namespace ClaraMundi
         InputManager.Instance.World.Enable();
       menuOpen = isMenuOpen;
 
-      MenuCanvasGroup.interactable = Menu.activeInHierarchy && !chatInFront && !questTrackerInFront && Tabs.CurrentTab == "";
+      MenuCanvasGroup.interactable = Menu.activeInHierarchy && !chatInFront && Tabs.CurrentTab == "";
     }
 
     public void OnChat(InputAction.CallbackContext context)
