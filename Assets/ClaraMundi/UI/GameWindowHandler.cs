@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Linq;
+using ClaraMundi.Quests;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ namespace ClaraMundi
   public class GameWindowHandler : MonoBehaviour
   {
     public static GameWindowHandler Instance;
+
+    public CanvasGroup MenuCanvasGroup;
 
     public Tabs Tabs;
 
@@ -91,12 +94,16 @@ namespace ClaraMundi
     void Update()
     {
       bool chatInFront = ChatWindowUI.Instance.MoveSibling.IsInFront();
-      bool isMenuOpen = Menu.activeInHierarchy || chatInFront;
+      bool questTrackerInFront = QuestTrackerUI.Instance.MoveSibling.IsInFront();
+      bool isMenuOpen = Menu.activeInHierarchy || chatInFront || questTrackerInFront;
+
       if (isMenuOpen && !menuOpen)
         InputManager.Instance.World.Disable();
       else if (!isMenuOpen && menuOpen)
         InputManager.Instance.World.Enable();
       menuOpen = isMenuOpen;
+
+      MenuCanvasGroup.interactable = Menu.activeInHierarchy && !chatInFront && !questTrackerInFront && Tabs.CurrentTab == "";
     }
 
     public void OnChat(InputAction.CallbackContext context)

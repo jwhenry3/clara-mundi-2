@@ -19,7 +19,6 @@ namespace ClaraMundi.Quests
     public TextMeshProUGUI QuestTitle;
     public TextMeshProUGUI QuestLevel;
     public TextMeshProUGUI QuestDescription;
-    public Image ActiveImage;
     public GameObject TrackedStatusContainer;
     public Toggle TrackedStatusToggle;
 
@@ -27,10 +26,14 @@ namespace ClaraMundi.Quests
     public Transform QuestTaskContainer;
     public bool IsQuestTackerQuest = false;
     public bool ShowShortDescription;
+
+    public Focusable Focusable;
     private Quest _quest;
 
     private void Awake()
     {
+      Focusable = Focusable ?? GetComponent<Focusable>();
+      Focusable.OnClick += Open;
       if (IsQuestTackerQuest) return;
       TrackedStatusToggle.onValueChanged.AddListener(SetTrackedStatus);
     }
@@ -38,6 +41,7 @@ namespace ClaraMundi.Quests
     public override void OnDestroy()
     {
       base.OnDestroy();
+      Focusable.OnClick -= Open;
       if (IsQuestTackerQuest) return;
       TrackedStatusToggle.onValueChanged.RemoveListener(SetTrackedStatus);
     }
@@ -76,8 +80,10 @@ namespace ClaraMundi.Quests
       QuestDescription.gameObject.SetActive(IsQuestTackerQuest || ShowShortDescription);
       QuestDescription.text = value.ShortDescription;
       QuestTaskContainer.gameObject.SetActive(IsQuestTackerQuest && value.Tasks.Length > 0);
+
       if (!IsQuestTackerQuest) return;
-      ActiveImage.gameObject.SetActive(false);
+
+      Focusable.IsActivated = false;
       foreach (var task in value.Tasks)
       {
         var taskUI = Instantiate(QuestTaskPrefab, QuestTaskContainer, false);
@@ -86,6 +92,11 @@ namespace ClaraMundi.Quests
     }
 
     public void OnPointerDown(PointerEventData eventData)
+    {
+      Open();
+    }
+
+    public void Open()
     {
       if (_quest == null) return;
       QuestJournalUI.Instance.QuestInfoUI.Quest = _quest;
@@ -96,10 +107,7 @@ namespace ClaraMundi.Quests
     private void Update()
     {
       if (IsQuestTackerQuest) return;
-      if (!ActiveImage.gameObject.activeInHierarchy && QuestJournalUI.Instance.QuestInfoUI.Quest == _quest)
-        ActiveImage.gameObject.SetActive(true);
-      if (ActiveImage.gameObject.activeInHierarchy && QuestJournalUI.Instance.QuestInfoUI.Quest != _quest)
-        ActiveImage.gameObject.SetActive(false);
+      Focusable.IsActivated = QuestJournalUI.Instance.QuestInfoUI.Quest == _quest;
     }
 
     public void SetTrackedStatus(bool value)

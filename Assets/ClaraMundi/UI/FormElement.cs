@@ -17,7 +17,6 @@ namespace ClaraMundi
 
     [HideInInspector]
     public Form Form;
-    private Form selfForm;
     public bool CanSubmit;
     public bool CanCancel = true;
     public event Action SubmitAction;
@@ -31,7 +30,6 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
-      selfForm = GetComponent<Form>();
       InputField ??= GetComponent<TMP_InputField>();
 
     }
