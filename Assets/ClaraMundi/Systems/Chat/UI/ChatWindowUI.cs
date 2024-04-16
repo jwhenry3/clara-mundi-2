@@ -23,6 +23,8 @@ namespace ClaraMundi
     public ChatAttachmentUI AttachmentPrefab;
     public ChatMessageUI ChatMessagePrefab;
 
+    public GameObject ChannelContextMenu;
+    public FormElement ChannelElement;
     public TextMeshProUGUI ChannelText;
 
     public GameObject PlayerContextMenu;
@@ -37,14 +39,44 @@ namespace ClaraMundi
     public Transform CombatContainer;
     public Transform SystemContainer;
 
+    private Form Form;
+
     string ContextualCharacterName;
 
     string channel = "Say";
 
     private void Awake()
     {
+      Form = GetComponent<Form>();
       Instance = this;
       ChatManager.Messages += OnMessage;
+    }
+
+    private void OnEnable()
+    {
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+    }
+
+    private void OnDisable()
+    {
+      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+      if (MoveSibling.IsInFront())
+      {
+        if (ChannelContextMenu.activeInHierarchy)
+        {
+          ChannelContextMenu.SetActive(false);
+          ChannelElement.Activate();
+          return;
+        }
+        if (Form.FocusedElement == null)
+        {
+          MoveSibling.ToBack();
+        }
+      }
     }
 
     private void OnDestroy()
@@ -90,7 +122,7 @@ namespace ClaraMundi
       instance.transform.SetParent(container);
       if (container.childCount > 100)
         Destroy(container.GetChild(0).gameObject);
-      GetComponent<Form>().InitializeElements(false, 5);
+      Form.InitializeElements();
     }
 
     void ClearOutOfBounds()
@@ -230,36 +262,43 @@ namespace ClaraMundi
     public void SetSayChannel()
     {
       SetChannel("Say");
+      ChannelElement.Activate();
     }
 
     public void SetWhisperChannel()
     {
       SetChannel("Whisper");
+      ChannelElement.Activate();
     }
 
     public void SetShoutChannel()
     {
       SetChannel("Shout");
+      ChannelElement.Activate();
     }
 
     public void SetYellChannel()
     {
       SetChannel("Yell");
+      ChannelElement.Activate();
     }
 
     public void SetTradeChannel()
     {
       SetChannel("Trade");
+      ChannelElement.Activate();
     }
 
     public void SetLFGChannel()
     {
       SetChannel("LFG");
+      ChannelElement.Activate();
     }
 
     public void SetPartyChannel()
     {
       SetChannel("Party");
+      ChannelElement.Activate();
     }
 
     public void OnTextChange()

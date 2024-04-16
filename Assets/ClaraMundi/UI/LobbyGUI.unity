@@ -1499,6 +1499,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1 &414808051
 GameObject:
@@ -1667,6 +1668,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &432062910
 MonoBehaviour:
@@ -3145,6 +3147,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &882840811
 MonoBehaviour:
@@ -3327,6 +3330,7 @@ MonoBehaviour:
   NextElement: {fileID: 1320209042}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &941916138
 MonoBehaviour:
@@ -3769,6 +3773,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1001 &1087437925
 PrefabInstance:
@@ -4384,6 +4389,7 @@ MonoBehaviour:
   NextElement: {fileID: 1320209042}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &1190049347
 MonoBehaviour:
@@ -5584,6 +5590,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &1596011061
 MonoBehaviour:
@@ -5748,6 +5755,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1001 &1620154851
 PrefabInstance:
@@ -5913,6 +5921,7 @@ MonoBehaviour:
   NextElement: {fileID: 1320209042}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &1642876830
 MonoBehaviour:
@@ -7811,14 +7820,24 @@ MonoBehaviour:
   LastElement: {fileID: 0}
   CancelPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6443040443590198015}
+        m_TargetAssemblyTypeName: ClaraMundi.LobbyUI, Assembly-CSharp
+        m_MethodName: ToCharacterSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ParentForm: {fileID: 0}
-  IsOnlyUI: 1
-  Elements: []
-  SelfElement: {fileID: 0}
   PreviouslySelected: {fileID: 0}
   FocusedElement: {fileID: 0}
-  selectOnEnable: 1
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
 --- !u!1001 &2142297064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9434,6 +9453,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!224 &6443040443361277356
 RectTransform:
@@ -9770,14 +9790,24 @@ MonoBehaviour:
   LastElement: {fileID: 0}
   CancelPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6443040443590198015}
+        m_TargetAssemblyTypeName: ClaraMundi.LobbyUI, Assembly-CSharp
+        m_MethodName: ToCharacterSelection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ParentForm: {fileID: 0}
-  IsOnlyUI: 1
-  Elements: []
-  SelfElement: {fileID: 0}
   PreviouslySelected: {fileID: 0}
   FocusedElement: {fileID: 0}
-  selectOnEnable: 1
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
 --- !u!224 &6443040443437802378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11226,14 +11256,24 @@ MonoBehaviour:
   LastElement: {fileID: 0}
   CancelPressed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6443040443590198015}
+        m_TargetAssemblyTypeName: ClaraMundi.LobbyUI, Assembly-CSharp
+        m_MethodName: ToLogin
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   ParentForm: {fileID: 0}
-  IsOnlyUI: 1
-  Elements: []
-  SelfElement: {fileID: 0}
   PreviouslySelected: {fileID: 0}
   FocusedElement: {fileID: 0}
-  selectOnEnable: 1
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
 --- !u!224 &6443040443817958320
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12006,6 +12046,7 @@ GameObject:
   - component: {fileID: 6443040444108943394}
   - component: {fileID: 6443040444108943397}
   - component: {fileID: 6443040444108943398}
+  - component: {fileID: 6443040444108943399}
   m_Layer: 0
   m_Name: Register
   m_TagString: Untagged
@@ -12118,13 +12159,29 @@ MonoBehaviour:
   CancelPressed:
     m_PersistentCalls:
       m_Calls: []
-  ParentForm: {fileID: 0}
-  IsOnlyUI: 1
-  Elements: []
-  SelfElement: {fileID: 0}
+  ParentForm: {fileID: 6443040444447021310}
   PreviouslySelected: {fileID: 0}
   FocusedElement: {fileID: 0}
-  selectOnEnable: 1
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
+--- !u!114 &6443040444108943399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443040444108943392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  Form: {fileID: 0}
+  CanSubmit: 0
+  CanCancel: 1
+  InputField: {fileID: 0}
 --- !u!1 &6443040444192028978
 GameObject:
   m_ObjectHideFlags: 0
@@ -12299,6 +12356,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &6443040444192028987
 MonoBehaviour:
@@ -12504,6 +12562,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 1
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1 &6443040444208908534
 GameObject:
@@ -13432,6 +13491,7 @@ MonoBehaviour:
   NextElement: {fileID: 6443040445162818500}
   Form: {fileID: 0}
   CanSubmit: 1
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &6443040444291507953
 MonoBehaviour:
@@ -13925,6 +13985,7 @@ GameObject:
   - component: {fileID: 6443040444447021301}
   - component: {fileID: 6443040444447021308}
   - component: {fileID: 6443040444447021309}
+  - component: {fileID: 6443040444447021310}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -14054,6 +14115,31 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6443040444447021310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443040444447021299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7a48cf10d84a3a94ddef09de884efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Submit:
+    m_PersistentCalls:
+      m_Calls: []
+  FirstElement: {fileID: 0}
+  LastElement: {fileID: 0}
+  CancelPressed:
+    m_PersistentCalls:
+      m_Calls: []
+  ParentForm: {fileID: 0}
+  PreviouslySelected: {fileID: 0}
+  FocusedElement: {fileID: 0}
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
 --- !u!1001 &6443040444454403336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14508,6 +14594,7 @@ GameObject:
   - component: {fileID: 6443040444618539709}
   - component: {fileID: 6443040444618539708}
   - component: {fileID: 6443040444618539710}
+  - component: {fileID: 6443040444618539711}
   m_Layer: 0
   m_Name: Login
   m_TagString: Untagged
@@ -14588,13 +14675,29 @@ MonoBehaviour:
   CancelPressed:
     m_PersistentCalls:
       m_Calls: []
-  ParentForm: {fileID: 0}
-  IsOnlyUI: 1
-  Elements: []
-  SelfElement: {fileID: 0}
+  ParentForm: {fileID: 6443040444447021310}
   PreviouslySelected: {fileID: 0}
   FocusedElement: {fileID: 0}
-  selectOnEnable: 1
+  AutoFocusElement: {fileID: 0}
+  CanCancel: 1
+--- !u!114 &6443040444618539711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443040444618539707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreviousElement: {fileID: 0}
+  NextElement: {fileID: 0}
+  Form: {fileID: 0}
+  CanSubmit: 0
+  CanCancel: 1
+  InputField: {fileID: 0}
 --- !u!1001 &6443040444637203034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16350,6 +16453,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1 &6443040445037987680
 GameObject:
@@ -17107,6 +17211,7 @@ MonoBehaviour:
   NextElement: {fileID: 1320209042}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!114 &6443040445135952384
 MonoBehaviour:
@@ -17501,6 +17606,7 @@ MonoBehaviour:
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1 &6443040445162818500
 GameObject:
@@ -17694,6 +17800,7 @@ MonoBehaviour:
   NextElement: {fileID: 6443040444207762183}
   Form: {fileID: 0}
   CanSubmit: 1
+  CanCancel: 1
   InputField: {fileID: 0}
 --- !u!1001 &6443040445183680549
 PrefabInstance:

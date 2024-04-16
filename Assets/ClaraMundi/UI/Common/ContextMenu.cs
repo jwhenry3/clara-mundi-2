@@ -22,8 +22,11 @@ namespace ClaraMundi
     readonly Dictionary<string, ContextMenuItem> Options = new();
     private readonly List<string> disabledItems = new();
 
+    public Form Form;
+
     private void Start()
     {
+      Form = Form ?? GetComponent<Form>();
       if (Options.Count != 0) return;
       foreach (var item in MenuItems)
       {
@@ -35,6 +38,7 @@ namespace ClaraMundi
         instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
         Options.Add(item.Label, instance);
       }
+      Form.InitializeElements();
       SelectFirstElement();
     }
 

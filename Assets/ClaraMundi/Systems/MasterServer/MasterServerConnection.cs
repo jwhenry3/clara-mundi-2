@@ -44,7 +44,7 @@ namespace ClaraMundi
 
     public void UpdateServerList()
     {
-      Debug.Log(Status);
+      // Debug.Log(Status);
       if (Status != ConnectionStatus.Connected) return;
       var entry = new ServerEntry()
       {
@@ -62,7 +62,6 @@ namespace ClaraMundi
 
     protected override void OnMessage(WebSocketMessage message)
     {
-      Debug.Log(message.eventName);
       switch (message.eventName)
       {
         case "authorized":

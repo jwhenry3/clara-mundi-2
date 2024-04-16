@@ -95,7 +95,7 @@ namespace ClaraMundi
       }
 
       CharactersContainer.gameObject.SetActive(Characters.Count > 0);
-      Form?.InitializeElements(Characters.Count > 0);
+      Form?.InitializeElements();
       loading = false;
     }
 

@@ -37,7 +37,6 @@ namespace ClaraMundi
     }
     public void OnSelect(BaseEventData eventData)
     {
-      Debug.Log("Select: " + gameObject.name);
       if (InputManager.Instance == null) return;
 
       if (Form != null && Form.FocusedElement != this)
@@ -55,7 +54,6 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
-      Debug.Log("Deselect: " + gameObject.name);
       if (InputManager.Instance == null) return;
       listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
@@ -82,8 +80,7 @@ namespace ClaraMundi
     {
       if (Form != null && CanCancel)
       {
-        Form.PreviouslySelected = null;
-        Form.ElementCanceled();
+        Form.ElementCancel(this);
       }
     }
     private void OnDestroy()

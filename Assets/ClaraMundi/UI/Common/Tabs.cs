@@ -12,6 +12,7 @@ namespace ClaraMundi
     public string Label;
     public Focusable Button;
     public GameObject Content;
+    public Form ContentForm;
 
     public Action OnClick;
   }
@@ -31,9 +32,7 @@ namespace ClaraMundi
       if (List == null) return;
       foreach (var data in List)
       {
-        Debug.Log("Check Dictionary: " + gameObject.name + " - " + data.Label);
         if (TabsDict.ContainsKey(data.Label)) continue;
-        Debug.Log("Attach Listener: " + gameObject.name + " - " + data.Label);
         data.Button.OnClick += () => ChangeTab(data.Label);
         TabsDict[data.Label] = data;
       }
@@ -43,7 +42,6 @@ namespace ClaraMundi
     {
       foreach (var data in List)
       {
-        Debug.Log("Dettach Listener: " + gameObject.name + " - " + data.Label);
         data.Button.OnClick -= data.OnClick;
       }
       TabsDict = new();
@@ -51,12 +49,12 @@ namespace ClaraMundi
 
     public void ChangeTab(string tabName)
     {
-      Debug.Log("Change Tab: " + tabName);
       // we are changing UI visibility, so close menus
       ContextMenuHandler.Instance.CloseAll();
       if (tabName == "")
       {
         Deactivate(CurrentTab);
+        CurrentTab = "";
         return;
       }
       if (!TabsDict.ContainsKey(tabName)) return;

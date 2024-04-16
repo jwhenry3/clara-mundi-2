@@ -26,6 +26,8 @@ namespace ClaraMundi
     {
       if (!IsInFront())
         MovingObject.SetAsLastSibling();
+      if (CanvasGroupToToggle != null)
+        CanvasGroupToToggle.interactable = true;
       SentToFront?.Invoke();
     }
 
@@ -33,15 +35,15 @@ namespace ClaraMundi
     {
       if (!IsInBack())
         MovingObject.SetAsFirstSibling();
+      if (CanvasGroupToToggle != null)
+        CanvasGroupToToggle.interactable = false;
       SentToBack?.Invoke();
     }
 
     void Update()
     {
       if (CanvasGroupToToggle != null)
-      {
         CanvasGroupToToggle.interactable = IsInFront();
-      }
     }
 
     public bool IsInBack() => MovingObject.GetSiblingIndex() == 0;

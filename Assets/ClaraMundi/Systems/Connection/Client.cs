@@ -37,11 +37,11 @@ namespace ClaraMundi
 
     public void Connect()
     {
-      Debug.Log("Connect");
+      // Debug.Log("Connect");
       if (_clientState != LocalConnectionState.Stopped) return;
       if (SessionManager.Instance.PlayerCharacter == null) return;
       var server = ServerListUI.Instance.SelectedServer;
-      Debug.Log("Server: " + server?.host);
+      // Debug.Log("Server: " + server?.host);
       if (server == null) return;
       networkManager.ClientManager.StartConnection(server.host, server.port);
     }

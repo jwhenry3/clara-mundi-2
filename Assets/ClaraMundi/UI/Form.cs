@@ -20,72 +20,56 @@ namespace ClaraMundi
     public UnityEvent CancelPressed;
     public Form ParentForm;
 
-    public bool IsOnlyUI;
-
-    public List<FormElement> Elements;
-
     private bool nextPressed;
     private bool previousPressed;
     private float cooldown;
 
-
-    public FormElement SelfElement;
-
-
     public FormElement PreviouslySelected;
 
     public FormElement FocusedElement;
-    public static FormElement Focused;
 
-    public bool selectOnEnable;
+    public FormElement AutoFocusElement;
 
     private bool listening;
 
-    private CanvasGroup canvasGroup;
+    public bool CanCancel;
+    public bool PropagateCancel;
+
+    private bool noAutoSelect;
 
 
     private void Start()
     {
       Submit ??= new UnityEvent();
       InitializeElements();
-      SelfElement = GetComponent<FormElement>();
-      canvasGroup = GetComponent<CanvasGroup>();
     }
 
 
-    public void InitializeElements(GameObject gameObject, int nestingLevel = 4, int currentLevel = 0)
+    public void InitializeElements()
     {
-      if (currentLevel > nestingLevel) return;
-      foreach (RectTransform child in gameObject.transform)
+      bool previousExists = false;
+      bool autoFocusExists = false;
+      FirstElement = null;
+      LastElement = null;
+      FormElement[] elements = GetComponentsInChildren<FormElement>();
+
+      if (elements.Length == 0)
       {
-        if (!child.gameObject.activeInHierarchy) continue;
-        var element = child.GetComponent<FormElement>();
-        var form = child.GetComponent<Form>();
-        if (element != null)
-          Elements.Add(element);
-        else if (form != null) continue; // do not eat up child form elements
-        else
-          InitializeElements(child.gameObject, nestingLevel, currentLevel + 1);
-      }
-    }
-    public void InitializeElements(bool selectFirst = false, int nestingLevel = 4)
-    {
-      Elements = new();
-      InitializeElements(gameObject, nestingLevel);
-      if (Elements.Count == 0)
-      {
-        FirstElement = null;
-        LastElement = null;
+        PreviouslySelected = null;
+        AutoFocusElement = null;
         return;
       }
-      FirstElement = Elements.First();
-      LastElement = Elements.Last();
-      bool previousExists = false;
-      for (int i = 0; i < Elements.Count; i++)
+
+      for (int i = 0; i < elements.Length; i++)
       {
-        var current = Elements[i];
-        var last = i > 0 ? Elements[i - 1] : Elements[^1];
-        var next = i < Elements.Count - 1 ? Elements[i + 1] : Elements[0];
+        var current = elements[i];
+        if (current.GetComponent<AutoFocus>())
+        {
+          autoFocusExists = true;
+          AutoFocusElement = current;
+        }
+        var last = i > 0 ? elements[i - 1] : elements[^1];
+        var next = i < elements.Length - 1 ? elements[i + 1] : elements[0];
         if (last != current)
           current.PreviousElement = last;
         if (next != current)
@@ -95,33 +79,42 @@ namespace ClaraMundi
         if (current == PreviouslySelected)
           previousExists = true;
       }
+
+      FirstElement = elements[0];
+      LastElement = elements[^1];
+
       if (!previousExists)
         PreviouslySelected = null;
+      if (!autoFocusExists)
+        AutoFocusElement = null;
     }
 
     public void PropagateFocus(FormElement value)
     {
       FocusedElement = value;
-      Focused = value;
       ParentForm?.PropagateFocus(value);
     }
     public void OnSelect(BaseEventData eventData)
     {
+      PropagateFocus(null);
       if (InputManager.Instance == null) return;
       listening = true;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
 
-      if (PreviouslySelected != null)
+      if (AutoFocusElement != null && !noAutoSelect)
       {
-        PreviouslySelected.Activate();
+        StartCoroutine(Select(AutoFocusElement.gameObject));
         return;
       }
-      if (FirstElement != null)
-      {
-        FirstElement.Activate();
-      }
+      noAutoSelect = false;
+    }
+
+    IEnumerator Select(GameObject gameObject)
+    {
+      yield return new WaitForSeconds(0.1f);
+      EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
     public void OnDeselect(BaseEventData eventData)
@@ -133,31 +126,6 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
     }
 
-    void OnCancel(InputAction.CallbackContext context)
-    {
-      if (ParentForm != null)
-        EventSystem.current.SetSelectedGameObject(ParentForm.gameObject);
-      else
-        EventSystem.current.SetSelectedGameObject(null);
-    }
-
-    public void ElementCanceled()
-    {
-      if (CancelPressed.GetPersistentEventCount() > 0)
-        CancelPressed?.Invoke();
-      else
-        EventSystem.current.SetSelectedGameObject(gameObject);
-    }
-
-
-    void OnEnable()
-    {
-      // if (IsOnlyUI || selectOnEnable)
-      // {
-      //   EventSystem.current.SetSelectedGameObject(gameObject);
-      // }
-    }
-
     void OnDisable()
     {
       if (listening)
@@ -166,6 +134,45 @@ namespace ClaraMundi
         InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
         InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
         InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      }
+    }
+
+    public void ElementCancel(FormElement element)
+    {
+      PropagateFocus(null);
+      if (PropagateCancel)
+      {
+        PreviouslySelected = null;
+        if (CanCancel)
+        {
+          if (CancelPressed.GetPersistentEventCount() > 0)
+          {
+            CancelPressed.Invoke();
+          }
+          else
+          {
+            StartCoroutine(Select(ParentForm?.gameObject));
+          }
+        }
+        return;
+      }
+      noAutoSelect = true;
+      PreviouslySelected = null;
+      StartCoroutine(Select(gameObject));
+    }
+
+    void OnCancel(InputAction.CallbackContext context)
+    {
+      if (CanCancel)
+      {
+        if (CancelPressed.GetPersistentEventCount() > 0)
+        {
+          CancelPressed.Invoke();
+        }
+        else
+        {
+          StartCoroutine(Select(ParentForm?.gameObject ?? gameObject));
+        }
       }
     }
 

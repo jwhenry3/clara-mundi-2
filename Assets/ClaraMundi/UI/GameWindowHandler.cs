@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
@@ -20,9 +22,9 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
-      InputManager.Instance.UI.FindAction("Inventory").performed += OnInventory;
+      if (ChatWindowUI.Instance == null) return;
+      InputManager.Instance.UI.FindAction("Character").performed += OnCharacter;
       InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
-      InputManager.Instance.UI.FindAction("Equipment").performed += OnEquipment;
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
       InputManager.Instance.UI.FindAction("OpenChat").performed += OnChat;
       ChatWindowUI.Instance.MoveSibling.SentToBack += OnPreviousMenu;
@@ -30,21 +32,21 @@ namespace ClaraMundi
 
     private void OnDisable()
     {
+      if (ChatWindowUI.Instance == null) return;
       Tabs.ChangeTab(""); // clear active tab so when we open the menu again it does not open the last opened tab
-      InputManager.Instance.UI.FindAction("Inventory").performed -= OnInventory;
+      InputManager.Instance.UI.FindAction("Character").performed -= OnCharacter;
       InputManager.Instance.UI.FindAction("Journal").performed -= OnJournal;
-      InputManager.Instance.UI.FindAction("Equipment").performed -= OnEquipment;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
       InputManager.Instance.UI.FindAction("OpenChat").performed -= OnChat;
       ChatWindowUI.Instance.MoveSibling.SentToBack -= OnPreviousMenu;
     }
 
 
-    private void OnInventory(InputAction.CallbackContext context)
+    private void OnCharacter(InputAction.CallbackContext context)
     {
       ChatWindowUI.Instance.MoveSibling.ToBack();
       Menu.SetActive(true);
-      Tabs.ChangeTab("Inventory");
+      Tabs.ChangeTab("Character");
     }
 
     private void OnJournal(InputAction.CallbackContext context)
@@ -54,35 +56,33 @@ namespace ClaraMundi
       Tabs.ChangeTab("Journal");
     }
 
-    private void OnEquipment(InputAction.CallbackContext context)
-    {
-      ChatWindowUI.Instance.MoveSibling.ToBack();
-      Menu.SetActive(true);
-      Tabs.ChangeTab("Equipment");
-    }
-
     private void OnCancel(InputAction.CallbackContext context)
     {
-      if (ChatWindowUI.Instance.MoveSibling.IsInFront())
-      {
-        ChatWindowUI.Instance.MoveSibling.ToBack();
-        return;
-      }
+      if (ChatWindowUI.Instance.MoveSibling.IsInFront()) return;
       if (Tabs.CurrentTab == "")
       {
         Menu.SetActive(false);
         return;
       }
-      Tabs.ChangeTab(Tabs.CurrentTab);
-      Tabs.Form.PreviouslySelected?.Activate();
+      Tabs.ChangeTab("");
+      foreach (var data in Tabs.List)
+      {
+        if (data.Button.GetComponent<AutoFocus>() != null)
+        {
+          EventSystem.current.SetSelectedGameObject(data.Button.gameObject);
+          return;
+        }
+      }
     }
 
     public void OnPreviousMenu()
     {
       if (Menu.activeInHierarchy)
       {
-        if (Tabs.CurrentTabData != null)
-          Tabs.CurrentTabData.Content.GetComponent<Form>()?.PreviouslySelected?.Activate();
+        if (Tabs.CurrentTabData?.ContentForm != null)
+        {
+          EventSystem.current.SetSelectedGameObject(Tabs.CurrentTabData.ContentForm.gameObject);
+        }
         else
           Menu.SetActive(false);
       }
@@ -90,21 +90,26 @@ namespace ClaraMundi
 
     void Update()
     {
-      if ((Menu.activeInHierarchy && !menuOpen) || ChatWindowUI.Instance.MoveSibling.IsInFront())
-      {
+      bool chatInFront = ChatWindowUI.Instance.MoveSibling.IsInFront();
+      bool isMenuOpen = Menu.activeInHierarchy || chatInFront;
+      if (isMenuOpen && !menuOpen)
         InputManager.Instance.World.Disable();
-      }
-      else if (!Menu.activeInHierarchy && menuOpen)
-      {
+      else if (!isMenuOpen && menuOpen)
         InputManager.Instance.World.Enable();
-      }
-      menuOpen = Menu.activeInHierarchy;
+      menuOpen = isMenuOpen;
     }
 
     public void OnChat(InputAction.CallbackContext context)
     {
-      EventSystem.current.SetSelectedGameObject(ChatWindowUI.Instance.InputField.gameObject);
       ChatWindowUI.Instance.MoveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(ChatWindowUI.Instance.InputField.gameObject);
+      StartCoroutine(FocusChatInput());
+    }
+
+    public IEnumerator FocusChatInput()
+    {
+      yield return new WaitForSeconds(0.5f);
+      ChatWindowUI.Instance.InputField.ActivateInputField();
     }
   }
 }

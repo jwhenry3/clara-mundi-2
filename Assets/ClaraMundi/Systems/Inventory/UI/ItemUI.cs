@@ -141,7 +141,7 @@ namespace ClaraMundi
 
     private void UpdateItem()
     {
-      Debug.Log(ItemInstanceId);
+      // Debug.Log(ItemInstanceId);
       if (ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance))
         ShowItemInstance();
       else
@@ -185,7 +185,7 @@ namespace ClaraMundi
     private void ShowItemInstance()
     {
       if (ItemInstance == null) return;
-      Debug.Log(ItemInstance.ItemInstanceId + ", " + ItemInstance.ItemId);
+      // Debug.Log(ItemInstance.ItemInstanceId + ", " + ItemInstance.ItemId);
       Item = ItemRepo.GetItem(ItemInstance.ItemId);
       Icon.sprite = Item.Icon;
       Icon.color = new Color(255, 255, 255, 1);

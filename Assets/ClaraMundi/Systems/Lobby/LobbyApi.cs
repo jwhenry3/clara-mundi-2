@@ -14,7 +14,8 @@ namespace ClaraMundi
   }
 
   [Serializable]
-  public class CharacterData {
+  public class CharacterData
+  {
     public string name;
     public string gender;
     public string race;
@@ -47,11 +48,13 @@ namespace ClaraMundi
     public Character character;
   }
 
-  public class LoginRequest {
+  public class LoginRequest
+  {
     public string email;
     public string password;
   }
-  public class CreateCharacterRequest {
+  public class CreateCharacterRequest
+  {
     public string token;
     public string name;
     public string race;
@@ -69,7 +72,7 @@ namespace ClaraMundi
 
     public static async Task<AuthResponse> Login(string username, string password)
     {
-      var content = new LoginRequest() { email = username , password = password };
+      var content = new LoginRequest() { email = username, password = password };
       return await HttpRequest.Post<AuthResponse>(BaseUrl,
           "/login-server/login",
           JsonConvert.SerializeObject(content)
@@ -78,7 +81,7 @@ namespace ClaraMundi
 
     public static async Task<AuthResponse> Register(string username, string password)
     {
-      var content = new LoginRequest() { email = username , password = password };
+      var content = new LoginRequest() { email = username, password = password };
       return await HttpRequest.Post<AuthResponse>(BaseUrl,
           "/login-server/register",
           JsonConvert.SerializeObject(content)
@@ -88,8 +91,6 @@ namespace ClaraMundi
     public static async Task<CharacterResponse> VerifyCharacter(string token, string characterName,
         bool isConnecting = false)
     {
-      Debug.Log($"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
-          (isConnecting ? 1 : 0));
       return await HttpRequest.Get<CharacterResponse>(BaseUrl,
           $"/login-server/characters/{characterName}/verify?token=" + token + "&isConnecting=" +
           (isConnecting ? 1 : 0)
@@ -118,7 +119,8 @@ namespace ClaraMundi
         string className
         )
     {
-      var content = new CreateCharacterRequest() {
+      var content = new CreateCharacterRequest()
+      {
         token = SessionManager.Instance.PlayerAccount.token,
         name = name,
         race = race,
@@ -134,7 +136,7 @@ namespace ClaraMundi
     public static async Task<OperationResponse> DeleteCharacter(string name)
     {
       var token = SessionManager.Instance.PlayerAccount.token;
-      return await HttpRequest.Delete<OperationResponse>(BaseUrl ,
+      return await HttpRequest.Delete<OperationResponse>(BaseUrl,
           $"/login-server/characters/{name}?token=" + token + "&name=" + name
       );
     }
