@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2727412806977457136}
   - component: {fileID: 4842033311377311346}
   - component: {fileID: 1637008576198683699}
+  - component: {fileID: 3919992760623887505}
   m_Layer: 0
   m_Name: TextButton
   m_TagString: Untagged
@@ -237,7 +238,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2727412806977457038}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80497446ccf190343bc33f84baaa3c8f, type: 3}
   m_Name: 
@@ -246,6 +247,19 @@ MonoBehaviour:
   ActiveColor: {r: 1, g: 1, b: 1, a: 0.101960786}
   Image: {fileID: 7129277516058308203}
   IsActivated: 0
+--- !u!114 &3919992760623887505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727412806977457038}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09d19ace4ce44459b92e72aa837b391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasFocused: 0
 --- !u!1 &2727412807579382861
 GameObject:
   m_ObjectHideFlags: 0

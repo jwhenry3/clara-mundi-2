@@ -38,7 +38,6 @@ namespace ClaraMundi
         instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
         Options.Add(item.Label, instance);
       }
-      Form.InitializeElements();
       SelectFirstElement();
     }
 

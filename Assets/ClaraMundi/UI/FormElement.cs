@@ -10,6 +10,8 @@ namespace ClaraMundi
 {
   public class FormElement : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
+    public string ID = Guid.NewGuid().ToString();
+
     [HideInInspector]
     public FormElement PreviousElement;
     [HideInInspector]
@@ -40,7 +42,6 @@ namespace ClaraMundi
 
       if (Form != null && Form.FocusedElement != this)
       {
-        Form.PreviouslySelected = this;
         Form.PropagateFocus(this);
       }
       InputField?.ActivateInputField();
@@ -53,6 +54,11 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
+      if (Form != null && gameObject.activeInHierarchy)
+      {
+        Form.PreviouslySelected = this;
+        Debug.Log("Set Previously Selected: " + ID);
+      }
       // Debug.Log(gameObject.name + ": Deselect");
       if (InputManager.Instance == null) return;
       listening = false;

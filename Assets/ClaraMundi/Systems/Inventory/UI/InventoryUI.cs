@@ -5,6 +5,7 @@ namespace ClaraMundi
 {
   public class InventoryUI : PlayerUI, IPointerDownHandler
   {
+    public static InventoryUI Instance;
     readonly OwningEntityHolder owner = new();
     public ItemUI ItemNodePrefab;
     [HideInInspector]
@@ -20,6 +21,7 @@ namespace ClaraMundi
 
     private void Awake()
     {
+      Instance = this;
       Reload();
     }
 
@@ -78,6 +80,7 @@ namespace ClaraMundi
         instance.ShowEquippedStatus = true;
         instance.ItemInstanceId = itemInstance.ItemInstanceId;
         instance.SetOwner(owner);
+        instance.gameObject.name = item.Name;
         instance.OnDoubleClick += OnUseOrEquipItem;
       }
       Form?.InitializeElements();
@@ -107,22 +110,40 @@ namespace ClaraMundi
       Form?.PreviouslySelected?.Activate();
     }
 
+    private void RevertFocus()
+    {
+      if (Form != null)
+      {
+        if (Form.PreviouslySelected != null)
+        {
+          Form.PreviouslySelected.Activate();
+          Debug.Log("Activated Previously Selected: " + Form.PreviouslySelected.ID);
+        }
+        else if (Form.AutoFocusElement != null)
+        {
+          Form.AutoFocusElement.Activate();
+          Debug.Log("Activated AutoFocus: " + Form.AutoFocusElement.ID);
+        }
+        else if (Form.FirstElement != null)
+        {
+          Form.FirstElement.Activate();
+          Debug.Log("Activated FirstElement: " + Form.FirstElement.ID);
+        }
+      }
+    }
+
     public void CloseContextMenu()
     {
       ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
+      RevertFocus();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
       if (ContextMenuHandler.Instance.ContextualItem != null)
-      {
         CloseContextMenu();
-      }
       else
-      {
-        if (Form?.PreviouslySelected != null)
-          Form.PreviouslySelected.Activate();
-      }
+        RevertFocus();
     }
 
     public void DropItem()
@@ -133,6 +154,11 @@ namespace ClaraMundi
     public void EquipItem()
     {
       player.Inventory.EquipItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, true);
+      CloseContextMenu();
+    }
+    public void UnequipItem()
+    {
+      player.Inventory.UnequipItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId);
       CloseContextMenu();
     }
     public void UseItem()

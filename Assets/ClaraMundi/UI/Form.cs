@@ -28,7 +28,19 @@ namespace ClaraMundi
 
     public FormElement FocusedElement;
 
-    public FormElement AutoFocusElement;
+    private FormElement cachedAutoFocus;
+    private float autoFocusCacheTimer;
+
+    public FormElement AutoFocusElement
+    {
+      get
+      {
+        if (autoFocusCacheTimer > 0)
+          return cachedAutoFocus;
+        autoFocusCacheTimer = 0.5f; // cache the autofocus element on initial access of the value
+        return cachedAutoFocus = GetAutoFocus();
+      }
+    }
 
     private bool listening;
 
@@ -44,11 +56,15 @@ namespace ClaraMundi
       InitializeElements();
     }
 
+    public FormElement GetAutoFocus()
+    {
+      AutoFocus elements = GetComponentInChildren<AutoFocus>();
 
+      return elements?.GetComponent<FormElement>();
+    }
     public void InitializeElements()
     {
       bool previousExists = false;
-      bool autoFocusExists = false;
       FirstElement = null;
       LastElement = null;
       FormElement[] elements = GetComponentsInChildren<FormElement>();
@@ -56,18 +72,12 @@ namespace ClaraMundi
       if (elements.Length == 0)
       {
         PreviouslySelected = null;
-        AutoFocusElement = null;
         return;
       }
 
       for (int i = 0; i < elements.Length; i++)
       {
         var current = elements[i];
-        if (current.GetComponent<AutoFocus>())
-        {
-          autoFocusExists = true;
-          AutoFocusElement = current;
-        }
         var last = i > 0 ? elements[i - 1] : elements[^1];
         var next = i < elements.Length - 1 ? elements[i + 1] : elements[0];
         if (last != current)
@@ -85,8 +95,6 @@ namespace ClaraMundi
 
       if (!previousExists)
         PreviouslySelected = null;
-      if (!autoFocusExists)
-        AutoFocusElement = null;
     }
 
     public void PropagateFocus(FormElement value)
@@ -103,7 +111,6 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
-
       if (AutoFocusElement != null && !noAutoSelect)
       {
         if (gameObject.activeInHierarchy)
@@ -197,6 +204,8 @@ namespace ClaraMundi
 
     private void LateUpdate()
     {
+      if (autoFocusCacheTimer > 0)
+        autoFocusCacheTimer -= Time.deltaTime;
       if (cooldown > 0)
         cooldown -= Time.deltaTime;
       else
