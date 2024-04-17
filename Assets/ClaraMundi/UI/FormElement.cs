@@ -10,7 +10,7 @@ namespace ClaraMundi
 {
   public class FormElement : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
-    public string ID = Guid.NewGuid().ToString();
+    public string ID;
 
     [HideInInspector]
     public FormElement PreviousElement;
@@ -24,12 +24,17 @@ namespace ClaraMundi
     public event Action SubmitAction;
     public TMP_InputField InputField;
 
+    public bool QueuedForDestroy;
+
     private bool nextPressed;
     private bool previousPressed;
 
     private float cooldown;
     private bool listening;
-
+    private void Start()
+    {
+      ID = StringUtils.UniqueId();
+    }
     private void OnEnable()
     {
       InputField ??= GetComponent<TMP_InputField>();
@@ -54,6 +59,10 @@ namespace ClaraMundi
 
     public void OnDeselect(BaseEventData eventData)
     {
+      if (QueuedForDestroy)
+      {
+        return;
+      }
       if (Form != null && gameObject.activeInHierarchy)
       {
         Form.PreviouslySelected = this;
@@ -91,6 +100,7 @@ namespace ClaraMundi
     }
     private void OnDestroy()
     {
+      QueuedForDestroy = true;
       SubmitAction = null;
     }
 

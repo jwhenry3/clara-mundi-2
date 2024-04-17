@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace ClaraMundi
@@ -110,24 +111,22 @@ namespace ClaraMundi
       Form?.PreviouslySelected?.Activate();
     }
 
-    private void RevertFocus()
+    private IEnumerator RevertFocus()
     {
+      yield return new WaitForSeconds(0.1f);
       if (Form != null)
       {
         if (Form.PreviouslySelected != null)
         {
           Form.PreviouslySelected.Activate();
-          Debug.Log("Activated Previously Selected: " + Form.PreviouslySelected.ID);
         }
         else if (Form.AutoFocusElement != null)
         {
           Form.AutoFocusElement.Activate();
-          Debug.Log("Activated AutoFocus: " + Form.AutoFocusElement.ID);
         }
         else if (Form.FirstElement != null)
         {
           Form.FirstElement.Activate();
-          Debug.Log("Activated FirstElement: " + Form.FirstElement.ID);
         }
       }
     }
@@ -135,7 +134,7 @@ namespace ClaraMundi
     public void CloseContextMenu()
     {
       ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
-      RevertFocus();
+      StartCoroutine(RevertFocus());
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -143,7 +142,7 @@ namespace ClaraMundi
       if (ContextMenuHandler.Instance.ContextualItem != null)
         CloseContextMenu();
       else
-        RevertFocus();
+        StartCoroutine(RevertFocus());
     }
 
     public void DropItem()

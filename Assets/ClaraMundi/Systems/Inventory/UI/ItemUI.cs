@@ -10,6 +10,7 @@ namespace ClaraMundi
   public class ItemUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
   {
     public string NodeId;
+    public EquipmentUI EquipmentUI;
     public OwningEntityHolder owner;
     public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
     public event Action EntityChange;
@@ -38,6 +39,8 @@ namespace ClaraMundi
 
     public bool updateQueued;
 
+    public string EquipmentSlot;
+
     private ItemStorage GetItemStorage()
     {
       if (_entityId == null) return null;
@@ -53,35 +56,55 @@ namespace ClaraMundi
       NodeId = StringUtils.UniqueId();
       Button = GetComponent<Button>();
       Background = GetComponent<Image>();
+
       ItemManager.ItemChange += OnInstanceUpdate;
       if (_entityId != null)
-        OnEntityChange(_entityId);
+        OnEntityChange("", _entityId);
     }
 
     public void SetOwner(OwningEntityHolder _owner)
     {
       if (owner != null)
       {
-        owner.EntityChange -= OnOwnerEntityChange;
+        owner.EntityChange -= OnEntityChange;
       }
       owner = _owner;
-      owner.EntityChange += OnOwnerEntityChange;
-      OnOwnerEntityChange();
+      owner.EntityChange += OnEntityChange;
+      OnEntityChange("", owner.entity.entityId.Value);
     }
 
-    void OnOwnerEntityChange()
-    {
-      OnEntityChange(owner.entity != null ? owner.entity.entityId.Value : null);
-    }
 
-    private void OnEntityChange(string entityId)
+    private void OnEntityChange(string lastId, string entityId)
     {
       _entityId = entityId;
       ItemStorage = GetItemStorage();
+      if (EquipmentUI != null && EquipmentSlot != null)
+      {
+        ItemInstanceId = 0;
+        if (PlayerManager.Instance.Players.ContainsKey(lastId))
+          PlayerManager.Instance.Players[lastId].Equipment.EquippedItems.OnChange -= OnEquipChange;
+        if (PlayerManager.Instance.Players.ContainsKey(entityId))
+        {
+          Player player = PlayerManager.Instance.Players[entityId];
+          player.Equipment.EquippedItems.OnChange += OnEquipChange;
+          if (player.Equipment.EquippedItems.ContainsKey(EquipmentSlot))
+            ItemInstanceId = player.Equipment.EquippedItems[EquipmentSlot];
+        }
+      }
       if (ItemStorage == null) return;
       EntityChange?.Invoke();
       updateQueued = true;
     }
+
+    private void OnEquipChange(SyncDictionaryOperation op, string key, int value, bool asServer)
+    {
+      if (EquipmentSlot == key)
+      {
+        ItemInstanceId = value;
+        updateQueued = true;
+      }
+    }
+
 
     private void OnInstanceUpdate(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
     {
@@ -109,7 +132,16 @@ namespace ClaraMundi
       }
 
       if (owner != null)
-        owner.EntityChange -= OnOwnerEntityChange;
+        owner.EntityChange -= OnEntityChange;
+      if (owner?.entity != null)
+      {
+        string entityId = owner.entity.entityId.Value;
+        if (PlayerManager.Instance.Players.ContainsKey(entityId))
+        {
+          Player player = PlayerManager.Instance.Players[entityId];
+          player.Equipment.EquippedItems.OnChange -= OnEquipChange;
+        }
+      }
     }
 
     private float checkTimer;
@@ -179,7 +211,7 @@ namespace ClaraMundi
 
       if (EquippedStatus != null)
         EquippedStatus.SetActive(false);
-      Destroy(gameObject);
+      // Destroy(gameObject);
     }
 
     private void ShowItemInstance()
