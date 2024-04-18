@@ -41,7 +41,7 @@ namespace ClaraMundi
 
     private Form Form;
 
-    string ContextualCharacterName;
+    public string ContextualCharacterName;
 
     string channel = "Say";
 

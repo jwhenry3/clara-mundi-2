@@ -108,7 +108,7 @@ namespace ClaraMundi
         default:
           return;
       }
-      Form?.PreviouslySelected?.Activate();
+      Form.PreviouslySelected?.Activate();
     }
 
     private IEnumerator RevertFocus()

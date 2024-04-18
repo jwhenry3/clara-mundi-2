@@ -32,6 +32,8 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
       InputManager.Instance.UI.FindAction("OpenChat").performed += OnChat;
       ChatWindowUI.Instance.MoveSibling.SentToBack += OnPreviousMenu;
+      Tabs.ChangeTab("");
+      Menu.SetActive(false);
     }
 
     private void OnDisable()
@@ -48,6 +50,8 @@ namespace ClaraMundi
 
     private void OnMenu(InputAction.CallbackContext context)
     {
+      Debug.Log(Form.FocusedElement?.InputField);
+      if (Form.FocusedElement?.InputField != null) return;
       ChatWindowUI.Instance.MoveSibling.ToBack();
       Tabs.ChangeTab("");
       Menu.SetActive(!Menu.activeInHierarchy);
@@ -55,6 +59,7 @@ namespace ClaraMundi
 
     private void OnCharacter(InputAction.CallbackContext context)
     {
+      if (Form.FocusedElement?.InputField != null) return;
       ChatWindowUI.Instance.MoveSibling.ToBack();
       Menu.SetActive(true);
       Tabs.ChangeTab("Character");
@@ -62,6 +67,7 @@ namespace ClaraMundi
 
     private void OnJournal(InputAction.CallbackContext context)
     {
+      if (Form.FocusedElement?.InputField != null) return;
       ChatWindowUI.Instance.MoveSibling.ToBack();
       Menu.SetActive(true);
       Tabs.ChangeTab("Journal");
@@ -69,6 +75,7 @@ namespace ClaraMundi
 
     private void OnCancel(InputAction.CallbackContext context)
     {
+      if (Form.FocusedElement?.InputField != null) return;
       if (ChatWindowUI.Instance.MoveSibling.IsInFront()) return;
       // Debug.Log("Chat not in front");
       if (Tabs.CurrentTab == "")
@@ -118,6 +125,7 @@ namespace ClaraMundi
 
     public void OnChat(InputAction.CallbackContext context)
     {
+      if (Form.FocusedElement?.InputField != null) return;
       ChatWindowUI.Instance.MoveSibling.ToFront();
       EventSystem.current.SetSelectedGameObject(ChatWindowUI.Instance.InputField.gameObject);
       StartCoroutine(FocusChatInput());

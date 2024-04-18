@@ -24,9 +24,9 @@ namespace ClaraMundi
     private bool previousPressed;
     private float cooldown;
 
-    public FormElement PreviouslySelected;
+    public static FormElement PreviouslySelected;
 
-    public FormElement FocusedElement;
+    public static FormElement FocusedElement;
 
     private FormElement cachedAutoFocus;
     private float autoFocusCacheTimer;
@@ -64,16 +64,9 @@ namespace ClaraMundi
     }
     public void InitializeElements()
     {
-      bool previousExists = false;
       FirstElement = null;
       LastElement = null;
       FormElement[] elements = GetComponentsInChildren<FormElement>();
-
-      if (elements.Length == 0)
-      {
-        PreviouslySelected = null;
-        return;
-      }
 
       for (int i = 0; i < elements.Length; i++)
       {
@@ -86,26 +79,16 @@ namespace ClaraMundi
           current.NextElement = next;
         current.Form = this;
         current.SubmitAction += () => Submit?.Invoke();
-        if (current == PreviouslySelected)
-          previousExists = true;
       }
 
       FirstElement = elements[0];
       LastElement = elements[^1];
-
-      if (!previousExists)
-        PreviouslySelected = null;
     }
 
-    public void PropagateFocus(FormElement value)
-    {
-      FocusedElement = value;
-      ParentForm?.PropagateFocus(value);
-    }
     public void OnSelect(BaseEventData eventData)
     {
       // Debug.Log(gameObject.name + ": Select");
-      PropagateFocus(null);
+      FocusedElement = null;
       if (InputManager.Instance == null) return;
       listening = true;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
@@ -149,10 +132,9 @@ namespace ClaraMundi
 
     public void ElementCancel(FormElement element)
     {
-      PropagateFocus(null);
+      FocusedElement = null;
       if (PropagateCancel)
       {
-        PreviouslySelected = null;
         if (CanCancel)
         {
           if (CancelPressed.GetPersistentEventCount() > 0)
@@ -168,7 +150,6 @@ namespace ClaraMundi
         return;
       }
       noAutoSelect = true;
-      PreviouslySelected = null;
       if (gameObject.activeInHierarchy)
         StartCoroutine(Select(gameObject));
     }

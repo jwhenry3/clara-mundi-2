@@ -16,6 +16,12 @@ namespace ClaraMundi
     public TextMeshProUGUI HealthText;
     public TextMeshProUGUI ManaText;
 
+    public FormElement FormElement;
+
+    private void Start()
+    {
+      FormElement = GetComponent<FormElement>();
+    }
     public void SetPartyMember(string characterName)
     {
       playerName = characterName;
@@ -75,6 +81,13 @@ namespace ClaraMundi
         HealthText.text = player.Stats.Energies.Value.Health + "";
       if (ManaText != null)
         ManaText.text = player.Stats.Energies.Value.Mana + "";
+    }
+
+    public void OpenContextMenu()
+    {
+      Form.PreviouslySelected = FormElement;
+      ContextMenuHandler.Instance.ContextualFormElement = FormElement;
+      PartyUI.Instance.OpenPlayerContextMenu(transform.position, playerName);
     }
   }
 }

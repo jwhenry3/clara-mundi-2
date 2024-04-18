@@ -45,11 +45,8 @@ namespace ClaraMundi
       // Debug.Log(gameObject.name + ": Select");
       if (InputManager.Instance == null) return;
 
-      if (Form != null && Form.FocusedElement != this)
-      {
-        Form.PropagateFocus(this);
-      }
       InputField?.ActivateInputField();
+      Form.FocusedElement = this;
       listening = true;
       InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
@@ -60,14 +57,7 @@ namespace ClaraMundi
     public void OnDeselect(BaseEventData eventData)
     {
       if (QueuedForDestroy)
-      {
         return;
-      }
-      if (Form != null && gameObject.activeInHierarchy)
-      {
-        Form.PreviouslySelected = this;
-        Debug.Log("Set Previously Selected: " + ID);
-      }
       // Debug.Log(gameObject.name + ": Deselect");
       if (InputManager.Instance == null) return;
       listening = false;
@@ -75,8 +65,8 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
-      if (Form != null && Form.FocusedElement == this)
-        Form.PropagateFocus(null);
+      if (Form.FocusedElement == this)
+        Form.FocusedElement = null;
     }
 
     void OnDisable()

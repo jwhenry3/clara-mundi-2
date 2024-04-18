@@ -41,6 +41,8 @@ namespace ClaraMundi
 
     public string EquipmentSlot;
 
+    public FormElement FormElement;
+
     private ItemStorage GetItemStorage()
     {
       if (_entityId == null) return null;
@@ -56,6 +58,7 @@ namespace ClaraMundi
       NodeId = StringUtils.UniqueId();
       Button = GetComponent<Button>();
       Background = GetComponent<Image>();
+      FormElement = GetComponent<FormElement>();
 
       ItemManager.ItemChange += OnInstanceUpdate;
       if (_entityId != null)
@@ -305,7 +308,7 @@ namespace ClaraMundi
     public void OpenContextMenu()
     {
       if (Item == null || ItemInstance == null) return;
-      ContextMenuHandler.Instance.ContextualItem = this;
+      ContextMenuHandler.Instance.SetState(this, FormElement);
       ContextMenu.SetItemActive("Drop", Item.Droppable && ShowEquippedStatus);
       ContextMenu.SetItemActive("Use", Item.Type == ItemType.Consumable && ShowEquippedStatus);
       var isEquipped = ItemInstance.IsEquipped;

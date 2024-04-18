@@ -58,8 +58,8 @@ namespace ClaraMundi
 
     public void OnDisable()
     {
-      if (ContextMenuHandler.Instance.ContextualItem != null)
-        EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem.gameObject);
+      if (ContextMenuHandler.Instance.ContextualFormElement != null)
+        EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualFormElement.gameObject);
       ContextMenuHandler.Instance.ContextualItem = null;
     }
 

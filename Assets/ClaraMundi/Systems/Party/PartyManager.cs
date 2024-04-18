@@ -133,7 +133,6 @@ namespace ClaraMundi
     {
       if (!PlayerExists(player)) return;
       if (!Parties.ContainsKey(player)) return;
-      var handle = Parties[player];
       var party = Parties[player];
       if (party.members.Count == 1)
       {
@@ -153,18 +152,30 @@ namespace ClaraMundi
       // event
       if (party.leader == player)
       {
-        PartyByLeader.Remove(player);
         var newLeader = party.members.First();
-        party.leader = newLeader;
-        PartyByLeader[newLeader] = handle;
-        foreach (var member in party.members)
-        {
-          var _member = GetPlayer(member);
-          _member.Party.LeaderChange(_member.Owner, party.leader);
-        }
+        Promote(player, newLeader);
       }
       UpdateParty(party);
       // event
+    }
+
+    public void Promote(string leader, string player)
+    {
+      if (!PlayerExists(leader)) return;
+      if (!PlayerExists(player)) return;
+      if (!Parties.ContainsKey(leader)) return;
+      if (!Parties.ContainsKey(player)) return;
+      if (!PartyByLeader.ContainsKey(leader)) return;
+      LeaveParty(player);
+    }
+
+    public void Kick(string leader, string player)
+    {
+      if (!PlayerExists(leader)) return;
+      if (!PlayerExists(player)) return;
+      if (!Parties.ContainsKey(leader)) return;
+      if (!Parties.ContainsKey(player)) return;
+      if (!PartyByLeader.ContainsKey(leader)) return;
     }
 
     public void DisbandParty(string player)

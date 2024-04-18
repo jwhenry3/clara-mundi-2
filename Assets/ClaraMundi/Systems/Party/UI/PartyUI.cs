@@ -15,6 +15,14 @@ namespace ClaraMundi
     public Transform PartyMenuContainer;
     public PartyMemberUI PartyMemberPrefab;
 
+    public GameObject PlayerContextMenu;
+    public string ContextualCharacterName;
+    public GameObject CreateButton;
+    public GameObject WhisperButton;
+    public GameObject PromoteLeaderButton;
+    public GameObject KickButton;
+
+
     public PartyMemberUI PartyMemberMenuItemPrefab;
 
     public GameObject InviteDialog;
@@ -22,6 +30,8 @@ namespace ClaraMundi
 
     public Button InviteButton;
     public Button LeaveButton;
+
+    public Form Form;
 
     public override void Start()
     {
@@ -99,33 +109,84 @@ namespace ClaraMundi
 
     public void CreateParty()
     {
-      ContextMenuHandler.Instance.LastSelectedObject = InviteButton.gameObject;
-      if (Party == null)
-        PlayerManager.Instance.LocalPlayer.Party.CreateParty();
+      Form.PreviouslySelected = InviteButton.GetComponent<FormElement>();
+      PlayerManager.Instance.LocalPlayer.Party.CreateParty();
       InviteDialog.SetActive(true);
+      Refocus();
     }
 
     public void InviteToParty()
     {
       PlayerManager.Instance.LocalPlayer.Party.InviteToParty(InviteField.text.ToLower());
-      InviteDialog.SetActive(false);
-      InviteField.text = "";
-      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.LastSelectedObject);
-      ContextMenuHandler.Instance.LastSelectedObject = null;
+      Refocus();
     }
 
 
     public void LeaveParty()
     {
       PlayerManager.Instance.LocalPlayer.Party.LeaveParty();
+      Refocus();
     }
 
     public void CancelInvite()
     {
       InviteDialog.SetActive(false);
       InviteField.text = "";
-      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.LastSelectedObject);
-      ContextMenuHandler.Instance.LastSelectedObject = null;
+      Refocus();
+    }
+
+
+    public void OpenPlayerContextMenu(Vector3 position, string characterName)
+    {
+      ContextualCharacterName = characterName;
+      var myName = PlayerManager.Instance.LocalPlayer.Character.name;
+      PlayerContextMenu.transform.position = position;
+      CreateButton.SetActive(Party == null);
+      PromoteLeaderButton.SetActive(Party != null && Party.leader == myName && characterName != myName);
+      WhisperButton.SetActive(characterName != myName);
+      KickButton.SetActive(Party != null && Party.leader == myName && characterName != myName);
+      if (Party == null || characterName != myName)
+        PlayerContextMenu.SetActive(true);
+    }
+
+    public void PromoteLeader()
+    {
+      PlayerManager.Instance.LocalPlayer.Party.Promote(ContextualCharacterName);
+      Refocus();
+    }
+
+    public void Kick()
+    {
+      PlayerManager.Instance.LocalPlayer.Party.Kick(ContextualCharacterName);
+      Refocus();
+    }
+
+    public void Whisper()
+    {
+      ChatWindowUI.Instance.ContextualCharacterName = ContextualCharacterName;
+      ChatWindowUI.Instance.Whisper();
+      ContextualCharacterName = null;
+      PlayerContextMenu.SetActive(false);
+      InviteDialog.SetActive(false);
+      InviteField.text = "";
+    }
+
+    public void Refocus()
+    {
+      ContextualCharacterName = null;
+      PlayerContextMenu.SetActive(false);
+      InviteDialog.SetActive(false);
+      InviteField.text = "";
+      if (Form.PreviouslySelected != null)
+      {
+        EventSystem.current.SetSelectedGameObject(Form.PreviouslySelected.gameObject);
+        Form.PreviouslySelected = null;
+        return;
+      }
+      if (Form?.AutoFocusElement != null)
+      {
+        EventSystem.current.SetSelectedGameObject(Form.AutoFocusElement.gameObject);
+      }
     }
   }
 }

@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 38, y: 0}
+  m_AnchoredPosition: {x: 34, y: 0}
   m_SizeDelta: {x: 48, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2534851507569223084
@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 134, y: 0}
+  m_AnchoredPosition: {x: 126, y: 0}
   m_SizeDelta: {x: 132, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2534851508864391373
@@ -560,7 +560,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9072656642904950408}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6191017956547948125}
+        m_TargetAssemblyTypeName: ClaraMundi.PartyMemberUI, Assembly-CSharp
+        m_MethodName: OpenContextMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1946507211556440841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +667,7 @@ MonoBehaviour:
   ManaBar: {fileID: 0}
   HealthText: {fileID: 0}
   ManaText: {fileID: 0}
+  FormElement: {fileID: 0}
 --- !u!114 &7046880426713859283
 MonoBehaviour:
   m_ObjectHideFlags: 0
