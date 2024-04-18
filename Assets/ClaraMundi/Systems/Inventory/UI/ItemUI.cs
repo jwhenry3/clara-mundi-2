@@ -51,7 +51,7 @@ namespace ClaraMundi
       return ItemManager.Instance.StorageByEntityAndId[_entityId][StorageId];
     }
 
-    private void Awake()
+    private void Start()
     {
       NodeId = StringUtils.UniqueId();
       Button = GetComponent<Button>();
@@ -109,7 +109,9 @@ namespace ClaraMundi
     private void OnInstanceUpdate(SyncDictionaryOperation op, int key, ItemInstance itemInstance, bool asServer)
     {
       if (ItemInstanceId == key)
+      {
         updateQueued = true;
+      }
     }
 
     private void OnDisable()
@@ -173,8 +175,11 @@ namespace ClaraMundi
 
     private void UpdateItem()
     {
-      // Debug.Log(ItemInstanceId);
-      if (ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance))
+
+      ItemManager.Instance.ItemsByInstanceId.TryGetValue(ItemInstanceId, out ItemInstance);
+      if (ItemInstance != null)
+        Item = ItemRepo.GetItem(ItemInstance.ItemId);
+      if (ItemInstance != null)
         ShowItemInstance();
       else
         ShowNoItem();
@@ -187,8 +192,6 @@ namespace ClaraMundi
         Tooltip.gameObject.SetActive(false);
         if (Tooltip.EquippedTooltip != null)
           Tooltip.EquippedTooltip.gameObject.SetActive(false);
-        Background.enabled = false;
-        transform.localScale = Vector3.zero;
       }
 
       ItemInstance = null;
@@ -216,13 +219,15 @@ namespace ClaraMundi
 
     private void ShowItemInstance()
     {
-      if (ItemInstance == null) return;
-      // Debug.Log(ItemInstance.ItemInstanceId + ", " + ItemInstance.ItemId);
-      Item = ItemRepo.GetItem(ItemInstance.ItemId);
+      if (ItemInstance == null || Item == null)
+      {
+        ShowNoItem();
+        return;
+      }
       Icon.sprite = Item.Icon;
       Icon.color = new Color(255, 255, 255, 1);
-      hasItem = true;
       Icon.enabled = true;
+      hasItem = true;
       if (ItemName != null)
       {
         ItemName.text = Item.Name;
@@ -241,7 +246,7 @@ namespace ClaraMundi
       if (Tooltip != null && Tooltip.ItemInstance != null &&
           Tooltip.ItemInstance.ItemInstanceId == ItemInstance.ItemInstanceId)
         Tooltip.SetItemInstance(ItemInstance);
-      if (EquippedStatus != null)
+      if (ShowEquippedStatus && EquippedStatus != null)
         EquippedStatus.SetActive(ItemInstance.IsEquipped);
     }
 

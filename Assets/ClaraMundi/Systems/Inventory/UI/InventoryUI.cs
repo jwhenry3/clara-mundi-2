@@ -133,8 +133,9 @@ namespace ClaraMundi
 
     public void CloseContextMenu()
     {
+      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem?.gameObject);
+      ContextMenuHandler.Instance.ContextualItem = null;
       ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
-      StartCoroutine(RevertFocus());
     }
 
     public void OnPointerDown(PointerEventData eventData)

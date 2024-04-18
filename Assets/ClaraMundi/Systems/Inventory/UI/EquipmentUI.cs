@@ -120,6 +120,7 @@ namespace ClaraMundi
 
     public void CloseContextMenu()
     {
+      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem?.gameObject);
       ContextMenuHandler.Instance.ContextualItem = null;
       ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
     }
@@ -133,7 +134,6 @@ namespace ClaraMundi
 
     public void OnUnequip(ItemUI item)
     {
-      Form.InitializeElements();
       player.Inventory.UnequipItem(item.ItemInstance.ItemInstanceId);
       CloseContextMenu();
     }
