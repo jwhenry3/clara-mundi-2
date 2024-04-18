@@ -54,6 +54,8 @@ namespace ClaraMundi
     {
       if (IsClientStarted && IsOwner)
         PartyInvites.OnChange -= OnInviteChanges;
+      PartyManager.Instance.ClearRequests(player.Character.name);
+      PartyManager.Instance.LeaveParty(player.Character.name);
     }
 
     private void OnInviteChanges(SyncListOperation op, int index, string previous, string next, bool asServer)

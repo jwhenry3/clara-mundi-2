@@ -111,8 +111,8 @@ namespace ClaraMundi
     {
       Form.PreviouslySelected = InviteButton.GetComponent<FormElement>();
       PlayerManager.Instance.LocalPlayer.Party.CreateParty();
-      InviteDialog.SetActive(true);
       Refocus();
+      InviteDialog.SetActive(true);
     }
 
     public void InviteToParty()

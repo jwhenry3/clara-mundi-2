@@ -17,8 +17,16 @@ namespace ClaraMundi
 
     public void CreateParty(string leader)
     {
+      Debug.Log("1");
       if (!PlayerExists(leader)) return;
-      if (Parties.ContainsKey(leader)) return;
+      Debug.Log("2");
+      if (Parties.ContainsKey(leader))
+      {
+        UpdateParty(Parties[leader]);
+        Debug.Log("3a");
+        return;
+      }
+      Debug.Log("3b");
       Parties[leader] = new Party()
       {
         leader = leader,
@@ -28,6 +36,7 @@ namespace ClaraMundi
       UpdateParty(Parties[leader]);
       var _player = GetPlayer(leader);
       _player.Party.CreatedParty(_player.Owner);
+      Debug.Log("4");
       // event
     }
 

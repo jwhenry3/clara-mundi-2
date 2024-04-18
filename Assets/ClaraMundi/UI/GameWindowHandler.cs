@@ -76,7 +76,19 @@ namespace ClaraMundi
     private void OnCancel(InputAction.CallbackContext context)
     {
       if (Form.FocusedElement?.InputField != null) return;
-      if (ChatWindowUI.Instance.MoveSibling.IsInFront()) return;
+      if (ChatWindowUI.Instance.MoveSibling.IsInFront())
+      {
+
+        if (ChatWindowUI.Instance.ChannelContextMenu.activeInHierarchy)
+        {
+          ChatWindowUI.Instance.ChannelContextMenu.SetActive(false);
+          ChatWindowUI.Instance.ChannelElement.Activate();
+          return;
+        }
+        ChatWindowUI.Instance.MoveSibling.ToBack();
+
+        return;
+      }
       // Debug.Log("Chat not in front");
       if (Tabs.CurrentTab == "")
       {

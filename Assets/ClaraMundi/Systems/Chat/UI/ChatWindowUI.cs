@@ -64,16 +64,6 @@ namespace ClaraMundi
 
     private void OnCancel(InputAction.CallbackContext context)
     {
-      if (MoveSibling.IsInFront())
-      {
-        if (ChannelContextMenu.activeInHierarchy)
-        {
-          ChannelContextMenu.SetActive(false);
-          ChannelElement.Activate();
-          return;
-        }
-        MoveSibling.ToBack();
-      }
     }
 
     private void OnDestroy()

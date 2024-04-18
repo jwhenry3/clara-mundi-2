@@ -83,7 +83,7 @@ namespace ClaraMundi
       if (player == null) return;
       var stats = player.Stats.ComputedStats.Value;
       Level.text = player.Stats.Level.Value + "";
-      Experience.text = player.Stats.ExpTilNextLevel + "";
+      Experience.text = player.Stats.ExpTilNextLevel.Value + "";
       Strength.text = DisplayNumber(stats.Strength);
       Dexterity.text = DisplayNumber(stats.Dexterity);
       Vitality.text = DisplayNumber(stats.Vitality);
