@@ -7,14 +7,25 @@ namespace ClaraMundi
 {
   public class PartyUI : PlayerUI
   {
+    public static PartyUI Instance;
     private Party Party;
     public Transform PartyContainer;
+    public Transform PartyMenuContainer;
     public PartyMemberUI PartyMemberPrefab;
+
+    public PartyMemberUI PartyMemberMenuItemPrefab;
 
     public GameObject InviteDialog;
     public TMP_InputField InviteField;
 
     public Button InviteButton;
+    public Button LeaveButton;
+
+    public override void Start()
+    {
+      base.Start();
+      Instance = this;
+    }
 
     protected override void OnPlayerChange(Player _player)
     {
@@ -41,41 +52,46 @@ namespace ClaraMundi
     private void OnPartyChanges(Party party)
     {
       Party = party;
+      List<string> foundInHud = new();
+      List<string> foundInMenu = new();
+
+      foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
+      {
+        if (party == null || !party.members.Contains(member.playerName))
+        {
+          Destroy(member.gameObject);
+          continue;
+        }
+        foundInHud.Add(member.playerName);
+      }
+      foreach (PartyMemberUI member in PartyMenuContainer.GetComponentsInChildren<PartyMemberUI>())
+      {
+        if (party == null || !party.members.Contains(member.playerName))
+        {
+          Destroy(member.gameObject);
+          continue;
+        }
+        foundInMenu.Add(member.playerName);
+      }
+
       if (party == null)
       {
         string name = PlayerManager.Instance.LocalPlayer.Entity.entityName.Value;
-        foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
-        {
-          member.SetPartyMember(null);
-        }
-        var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);
-        instance.SetPartyMember(name);
+        Instantiate(PartyMemberPrefab, PartyContainer, false).SetPartyMember(name);
+        Instantiate(PartyMemberMenuItemPrefab, PartyMenuContainer, false).SetPartyMember(name);
         InviteButton.gameObject.SetActive(true);
+        LeaveButton.gameObject.SetActive(false);
         return;
       }
       InviteButton.gameObject.SetActive(party.leader == player.Character.name);
-      List<string> found = new();
-      foreach (PartyMemberUI member in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
-      {
-        if (member.player != null && party.members.Contains(member.player.Character.name))
-        {
-          member.SetPartyMember(member.player.Character.name);
-          found.Add(member.player.Character.name);
-          if (member.player.Character.name == PlayerManager.Instance.LocalPlayer.Character.name)
-            member.transform.SetAsFirstSibling();
-        }
-        else
-          member.SetPartyMember(null);
-
-      }
+      LeaveButton.gameObject.SetActive(true);
 
       foreach (string member in party.members)
       {
-        if (found.Contains(member)) continue;
-        var instance = Instantiate(PartyMemberPrefab, PartyContainer, false);
-        instance.SetPartyMember(member);
-        if (member == PlayerManager.Instance.LocalPlayer.Character.name)
-          instance.transform.SetAsFirstSibling();
+        if (!foundInHud.Contains(member))
+          Instantiate(PartyMemberPrefab, PartyContainer, false).SetPartyMember(member);
+        if (!foundInMenu.Contains(member))
+          Instantiate(PartyMemberMenuItemPrefab, PartyMenuContainer, false).SetPartyMember(member);
       }
     }
 
