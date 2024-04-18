@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using ReactUnity.UGUI.EventHandlers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace ClaraMundi
@@ -97,6 +99,7 @@ namespace ClaraMundi
 
     public void CreateParty()
     {
+      ContextMenuHandler.Instance.LastSelectedObject = InviteButton.gameObject;
       if (Party == null)
         PlayerManager.Instance.LocalPlayer.Party.CreateParty();
       InviteDialog.SetActive(true);
@@ -107,6 +110,8 @@ namespace ClaraMundi
       PlayerManager.Instance.LocalPlayer.Party.InviteToParty(InviteField.text.ToLower());
       InviteDialog.SetActive(false);
       InviteField.text = "";
+      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.LastSelectedObject);
+      ContextMenuHandler.Instance.LastSelectedObject = null;
     }
 
 
@@ -119,6 +124,8 @@ namespace ClaraMundi
     {
       InviteDialog.SetActive(false);
       InviteField.text = "";
+      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.LastSelectedObject);
+      ContextMenuHandler.Instance.LastSelectedObject = null;
     }
   }
 }

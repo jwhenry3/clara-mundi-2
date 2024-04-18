@@ -26,6 +26,7 @@ namespace ClaraMundi
     private void OnEnable()
     {
       if (ChatWindowUI.Instance == null) return;
+      InputManager.Instance.UI.FindAction("Menu").performed += OnMenu;
       InputManager.Instance.UI.FindAction("Character").performed += OnCharacter;
       InputManager.Instance.UI.FindAction("Journal").performed += OnJournal;
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
@@ -37,6 +38,7 @@ namespace ClaraMundi
     {
       if (ChatWindowUI.Instance == null) return;
       Tabs.ChangeTab(""); // clear active tab so when we open the menu again it does not open the last opened tab
+      InputManager.Instance.UI.FindAction("Menu").performed -= OnMenu;
       InputManager.Instance.UI.FindAction("Character").performed -= OnCharacter;
       InputManager.Instance.UI.FindAction("Journal").performed -= OnJournal;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
@@ -44,6 +46,12 @@ namespace ClaraMundi
       ChatWindowUI.Instance.MoveSibling.SentToBack -= OnPreviousMenu;
     }
 
+    private void OnMenu(InputAction.CallbackContext context)
+    {
+      ChatWindowUI.Instance.MoveSibling.ToBack();
+      Tabs.ChangeTab("");
+      Menu.SetActive(!Menu.activeInHierarchy);
+    }
 
     private void OnCharacter(InputAction.CallbackContext context)
     {

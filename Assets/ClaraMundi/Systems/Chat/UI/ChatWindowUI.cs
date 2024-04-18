@@ -72,10 +72,7 @@ namespace ClaraMundi
           ChannelElement.Activate();
           return;
         }
-        if (Form.FocusedElement == null)
-        {
-          MoveSibling.ToBack();
-        }
+        MoveSibling.ToBack();
       }
     }
 

@@ -304,6 +304,7 @@ namespace ClaraMundi
 
     public void OpenContextMenu()
     {
+      if (Item == null || ItemInstance == null) return;
       ContextMenuHandler.Instance.ContextualItem = this;
       ContextMenu.SetItemActive("Drop", Item.Droppable && ShowEquippedStatus);
       ContextMenu.SetItemActive("Use", Item.Type == ItemType.Consumable && ShowEquippedStatus);
