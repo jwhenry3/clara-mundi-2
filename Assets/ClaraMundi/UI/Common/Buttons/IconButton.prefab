@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8008025118470832763}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -110,7 +109,6 @@ RectTransform:
   - {fileID: 2587386311530214986}
   - {fileID: 8008025117911738398}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -164,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8008025118470832760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -211,11 +209,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  upSelectable: {fileID: 0}
+  downSelectable: {fileID: 0}
+  leftSelectable: {fileID: 0}
+  rightSelectable: {fileID: 0}
 --- !u!1001 &6194170426671438956
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8008025118470832763}
     m_Modifications:
     - target: {fileID: 5736758401748376152, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
@@ -307,6 +310,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55115ddca96dfbb419448e84d933f3f1, type: 3}
 --- !u!224 &2587386311530214986 stripped
 RectTransform:

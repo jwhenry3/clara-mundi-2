@@ -79,9 +79,10 @@ namespace ClaraMundi
       if (ChatWindowUI.Instance.MoveSibling.IsInFront())
       {
 
-        if (ChatWindowUI.Instance.ChannelContextMenu.activeInHierarchy)
+        if (ChatWindowUI.Instance.ChannelContextMenu.gameObject.activeInHierarchy)
         {
-          ChatWindowUI.Instance.ChannelContextMenu.SetActive(false);
+          ChatWindowUI.Instance.ChannelContextMenu.gameObject.SetActive(false);
+          ChatWindowUI.Instance.CanvasGroup.interactable = true;
           ChatWindowUI.Instance.ChannelElement.Activate();
           return;
         }

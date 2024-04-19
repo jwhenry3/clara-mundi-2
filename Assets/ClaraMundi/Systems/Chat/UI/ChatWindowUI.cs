@@ -23,11 +23,11 @@ namespace ClaraMundi
     public ChatAttachmentUI AttachmentPrefab;
     public ChatMessageUI ChatMessagePrefab;
 
-    public GameObject ChannelContextMenu;
+    public ContextMenu ChannelContextMenu;
     public FormElement ChannelElement;
     public TextMeshProUGUI ChannelText;
 
-    public GameObject PlayerContextMenu;
+    public ContextMenu PlayerContextMenu;
     public GameObject RequestJoinOption;
     public GameObject InviteOption;
 
@@ -38,6 +38,8 @@ namespace ClaraMundi
     public Transform SocialContainer;
     public Transform CombatContainer;
     public Transform SystemContainer;
+
+    public CanvasGroup CanvasGroup;
 
     private Form Form;
 
@@ -50,16 +52,28 @@ namespace ClaraMundi
       Form = GetComponent<Form>();
       Instance = this;
       ChatManager.Messages += OnMessage;
+      ClearMessages();
+      UpdateAttachmentList();
+
     }
 
     private void OnEnable()
     {
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+      ChannelContextMenu.OnClose += OnContextMenuClose;
+      PlayerContextMenu.OnClose += OnContextMenuClose;
     }
 
     private void OnDisable()
     {
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      ChannelContextMenu.OnClose -= OnContextMenuClose;
+      PlayerContextMenu.OnClose -= OnContextMenuClose;
+    }
+
+    private void OnContextMenuClose()
+    {
+      CanvasGroup.interactable = true;
     }
 
     private void OnCancel(InputAction.CallbackContext context)
@@ -166,6 +180,7 @@ namespace ClaraMundi
 
     public void SendChatMessage()
     {
+      InputField.text = InputField.text.Trim();
       if (!string.IsNullOrEmpty(InputField.text))
       {
         string additionalText = "";
@@ -189,7 +204,7 @@ namespace ClaraMundi
           Type = ChatMessageType.Chat,
           Channel = channel,
           Message = InputField.text + additionalText,
-          ToCharacterName = RecipientField.text ?? null
+          ToCharacterName = RecipientField.text.Trim() ?? null
         });
         InputField.text = "";
         MessageAttachments = new();
@@ -209,7 +224,8 @@ namespace ClaraMundi
       PlayerContextMenu.transform.position = eventData.position;
       RequestJoinOption.SetActive(isNotMe && inParty);
       InviteOption.SetActive(!inParty && isNotMe);
-      PlayerContextMenu.SetActive(true);
+      PlayerContextMenu.gameObject.SetActive(true);
+      CanvasGroup.interactable = false;
     }
 
     public void RequestJoin()
@@ -238,11 +254,12 @@ namespace ClaraMundi
     public void ClosePlayerContextMenu()
     {
       ContextualCharacterName = null;
-      PlayerContextMenu.SetActive(false);
+      PlayerContextMenu.gameObject.SetActive(false);
     }
 
     void SetChannel(string channelName)
     {
+      CanvasGroup.interactable = true;
       ChannelText.text = channelName;
       channel = channelName;
       RecipientField.gameObject.SetActive(channelName == "Whisper");

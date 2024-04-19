@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
@@ -18,6 +19,8 @@ namespace ClaraMundi
     public static CharactersUI Instance;
 
     public Action<Character> OnChange;
+
+    public GameObject ContinueButton;
 
     public Form Form;
 
@@ -35,6 +38,8 @@ namespace ClaraMundi
       CharacterActions.SetActive(character != null);
       SessionManager.Instance.PlayerCharacter = character;
       GetComponent<Form>().InitializeElements();
+
+      EventSystem.current.SetSelectedGameObject(ContinueButton);
 
     }
 

@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine.Events;
+using Unity.Collections;
+using System.Collections;
+using Sirenix.Utilities;
+using System.Text.RegularExpressions;
 
 namespace ClaraMundi
 {
@@ -24,6 +28,10 @@ namespace ClaraMundi
 
     public Form Form;
 
+    public string CurrentValue;
+
+    public Action OnClose;
+
     private void Start()
     {
       Form = Form ?? GetComponent<Form>();
@@ -38,19 +46,23 @@ namespace ClaraMundi
         instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
         Options.Add(item.Label, instance);
       }
-      SelectFirstElement();
     }
 
     private void OnEnable()
     {
+      if (ContextMenuHandler.Instance.GroupsToDisableOnOpen != null)
+        ContextMenuHandler.Instance.GroupsToDisableOnOpen.ForEach(group => group.interactable = false);
       SelectFirstElement();
     }
 
     public void SelectFirstElement()
     {
-      foreach (ContextMenuItem child in GetComponentsInChildren<ContextMenuItem>())
+      foreach (var kvp in Options)
       {
+        var child = kvp.Value;
         if (!child.gameObject.activeSelf) continue;
+        if (CurrentValue?.Length > 0 && kvp.Key != CurrentValue) continue;
+        Debug.Log("Select Element");
         EventSystem.current.SetSelectedGameObject(child.gameObject);
         break;
       }
@@ -58,9 +70,12 @@ namespace ClaraMundi
 
     public void OnDisable()
     {
+      if (ContextMenuHandler.Instance.GroupsToDisableOnOpen != null)
+        ContextMenuHandler.Instance.GroupsToDisableOnOpen.ForEach(group => group.interactable = true);
       if (ContextMenuHandler.Instance.ContextualFormElement != null)
         EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualFormElement.gameObject);
       ContextMenuHandler.Instance.ContextualItem = null;
+      OnClose?.Invoke();
     }
 
     public void SetItemActive(string itemName, bool value)
@@ -83,5 +98,6 @@ namespace ClaraMundi
       Options[itemName].Label.text = label;
 
     }
+
   }
 }

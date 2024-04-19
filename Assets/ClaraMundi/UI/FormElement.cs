@@ -61,7 +61,7 @@ namespace ClaraMundi
     }
     public void OnSelect(BaseEventData eventData)
     {
-      // Debug.Log(gameObject.name + ": Select");
+      Debug.Log(gameObject.name + ": Select");
       if (InputManager.Instance == null) return;
 
       InputField?.ActivateInputField();
@@ -78,13 +78,15 @@ namespace ClaraMundi
     {
       if (QueuedForDestroy)
         return;
-      // Debug.Log(gameObject.name + ": Deselect");
+      Debug.Log(gameObject.name + ": Deselect");
       if (InputManager.Instance == null) return;
       listening = false;
       InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
       InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
       InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
       InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+      if (InputField != null)
+        InputField.text = InputField.text.Trim();
       if (Form.FocusedElement == this)
         Form.FocusedElement = null;
     }

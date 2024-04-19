@@ -15,6 +15,9 @@ namespace ClaraMundi
 
     public static ContextMenuHandler Instance;
 
+
+    public CanvasGroup[] GroupsToDisableOnOpen;
+
     private void Awake()
     {
       Instance = this;
