@@ -263,7 +263,10 @@ namespace ClaraMundi
       ChannelText.text = channelName;
       channel = channelName;
       RecipientField.gameObject.SetActive(channelName == "Whisper");
-      EventSystem.current.SetSelectedGameObject(InputField.gameObject);
+      if (channelName == "Whisper")
+        EventSystem.current.SetSelectedGameObject(RecipientField.gameObject);
+      else
+        EventSystem.current.SetSelectedGameObject(InputField.gameObject);
     }
 
     public void SetSayChannel() => SetChannel("Say");
