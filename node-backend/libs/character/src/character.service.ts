@@ -26,57 +26,72 @@ export class CharacterService {
     await this.repo.save(character)
   }
   async createCharacter(accountId: string, options: CreateCharacterOptions) {
-    if (!accountId) {
-      return {
-        status: false,
-        reason: 'invalid-accountId',
-        character: null,
+    try {
+      console.log(options)
+      if (!accountId) {
+        return {
+          status: false,
+          reason: 'invalid-accountId',
+          character: null,
+        }
       }
-    }
-    if (!options.name) {
-      return {
-        status: false,
-        reason: 'invalid-name',
-        character: null,
+      if (!options.name) {
+        return {
+          status: false,
+          reason: 'invalid-name',
+          character: null,
+        }
       }
-    }
-    const existing = await this.findByName(options.name)
-    if (!!existing) {
-      return {
-        status: false,
-        reason: 'conflict',
-        character: null,
+      const existing = await this.findByName(options.name)
+      if (!!existing) {
+        return {
+          status: false,
+          reason: 'conflict',
+          character: null,
+        }
       }
-    }
-    if (!['adventurer'].includes(options.startingClass.toLowerCase())) {
+      if (!['adventurer'].includes(options.startingClass.toLowerCase())) {
+        return {
+          status: false,
+          reason: 'invalid-class',
+          character: null,
+        }
+      }
+      let character = this.repo.create({
+        accountId,
+        name: options.name,
+        race: ['human'].includes(options.race.toLowerCase())
+          ? options.race.toLowerCase()
+          : 'human',
+        gender: ['male', 'female'].includes(options.gender.toLowerCase())
+          ? options.gender.toLowerCase()
+          : 'male',
+        characterClasses: [],
+      })
+
+      await this.repo.save(character, { reload: true })
+      let characterClass = this.classRepo.create({
+        classId: options.startingClass.toLowerCase(),
+        character,
+        level: 1,
+        isCurrent: 1,
+      })
+      await this.classRepo.save(characterClass, {})
+
+      character.characterClasses.push(characterClass)
+      characterClass.character = undefined
+      return {
+        status: true,
+        reason: '',
+        character,
+      }
+    } catch (e) {
+      console.log(e)
       return {
         status: false,
         reason: 'invalid-class',
         character: null,
       }
-    }
-    let character = this.repo.create({
-      accountId,
-      name: options.name,
-      race: ['human'].includes(options.race) ? options.race : 'human',
-      gender: ['male', 'female'].includes(options.gender)
-        ? options.gender
-        : 'male',
-      characterClasses: [],
-    })
-
-    const characterClass = this.classRepo.create({
-      classId: options.startingClass.toLowerCase(),
-      character,
-      level: 1,
-      isCurrent: 1,
-    })
-    character.characterClasses.push(characterClass)
-    character = await this.repo.save(character)
-    return {
-      status: true,
-      reason: '',
-      character,
     }
   }
 

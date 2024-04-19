@@ -21,7 +21,7 @@ namespace ClaraMundi
 
     public Form Form;
 
-    private void Awake()
+    private void Start()
     {
       Instance = this;
       CharactersContainer.gameObject.SetActive(false);

@@ -1,4 +1,13 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn, Relation } from 'typeorm'
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  Relation,
+} from 'typeorm'
 
 import { CharacterEquipmentEntity } from './character-equipment.entity'
 import { CharacterEntity } from './character.entity'
@@ -8,19 +17,19 @@ export class CharacterClassEntity {
   @PrimaryGeneratedColumn('uuid')
   characterClassId: string
 
-  @ManyToOne(() => CharacterEntity, (c) => c.characterClasses)
-  @JoinColumn()
+  @ManyToOne(() => CharacterEntity, { eager: false })
+  @JoinColumn({ name: 'characterId' })
   character: Relation<CharacterEntity>
 
-  @Column('varchar')
-  classId: string
+  @Column('varchar', { default: 'adventurer' })
+  classId: string = 'adventurer'
 
-  @Column('int', {default: 1})
+  @Column('int', { default: 1 })
   level: number = 1
-  @Column('int', {default: 0})
+  @Column('int', { default: 0 })
   exp: number = 0
 
-  @Column('int', {default: 0})
+  @Column('int', { default: 0 })
   isCurrent: number = 0
 
   @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass, {

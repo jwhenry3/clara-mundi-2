@@ -464,11 +464,11 @@ RectTransform:
   - {fileID: 6189974849462190216}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 32}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &6189974849751676970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,12 +649,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
+  ID: 
   PreviousElement: {fileID: 0}
   NextElement: {fileID: 0}
   Form: {fileID: 0}
   CanSubmit: 0
+  CanCancel: 1
   InputField: {fileID: 0}
+  QueuedForDestroy: 0
 --- !u!1001 &904504933058734367
 PrefabInstance:
   m_ObjectHideFlags: 0

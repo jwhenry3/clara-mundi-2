@@ -131,6 +131,8 @@ namespace ClaraMundi
           $"<nobr><color=#88aaff><link=\"item:{itemInstance.ItemInstanceId}\">{item.Name}</link></color></nobr>";
       MessageAttachments.Add("item:" + itemInstance.ItemInstanceId, itemLink);
       UpdateAttachmentList();
+      EventSystem.current.SetSelectedGameObject(InputField.gameObject);
+
     }
 
     public void RemoveAttachment(string key)
@@ -244,49 +246,22 @@ namespace ClaraMundi
       ChannelText.text = channelName;
       channel = channelName;
       RecipientField.gameObject.SetActive(channelName == "Whisper");
+      EventSystem.current.SetSelectedGameObject(InputField.gameObject);
     }
 
-    public void SetSayChannel()
-    {
-      SetChannel("Say");
-      ChannelElement.Activate();
-    }
+    public void SetSayChannel() => SetChannel("Say");
 
-    public void SetWhisperChannel()
-    {
-      SetChannel("Whisper");
-      ChannelElement.Activate();
-    }
+    public void SetWhisperChannel() => SetChannel("Whisper");
 
-    public void SetShoutChannel()
-    {
-      SetChannel("Shout");
-      ChannelElement.Activate();
-    }
+    public void SetShoutChannel() => SetChannel("Shout");
 
-    public void SetYellChannel()
-    {
-      SetChannel("Yell");
-      ChannelElement.Activate();
-    }
+    public void SetYellChannel() => SetChannel("Yell");
 
-    public void SetTradeChannel()
-    {
-      SetChannel("Trade");
-      ChannelElement.Activate();
-    }
+    public void SetTradeChannel() => SetChannel("Trade");
 
-    public void SetLFGChannel()
-    {
-      SetChannel("LFG");
-      ChannelElement.Activate();
-    }
+    public void SetLFGChannel() => SetChannel("LFG");
 
-    public void SetPartyChannel()
-    {
-      SetChannel("Party");
-      ChannelElement.Activate();
-    }
+    public void SetPartyChannel() => SetChannel("Party");
 
     public void OnTextChange()
     {

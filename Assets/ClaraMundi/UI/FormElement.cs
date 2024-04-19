@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 namespace ClaraMundi
@@ -31,14 +32,32 @@ namespace ClaraMundi
 
     private float cooldown;
     private bool listening;
+
+    private ScrollRect scroller;
     private void Start()
     {
       ID = StringUtils.UniqueId();
+      scroller = GetComponentInParent<ScrollRect>();
     }
     private void OnEnable()
     {
       InputField ??= GetComponent<TMP_InputField>();
 
+    }
+    public void SnapTo(Transform child)
+    {
+      if (scroller == null) return;
+      Canvas.ForceUpdateCanvases();
+      RectTransform rect = child as RectTransform;
+      var contentPos = (Vector2)scroller.transform.InverseTransformPoint(scroller.content.position);
+      var childPos = (Vector2)scroller.transform.InverseTransformPoint(child.position);
+      var endPos = contentPos - childPos;
+      // If no horizontal scroll, then don't change contentPos.x
+      endPos.x = 0;
+      endPos.y -= rect.sizeDelta.y;
+      // If no vertical scroll, then don't change contentPos.y
+      if (!scroller.vertical) endPos.y = contentPos.y;
+      scroller.content.anchoredPosition = endPos;
     }
     public void OnSelect(BaseEventData eventData)
     {
@@ -52,6 +71,7 @@ namespace ClaraMundi
       InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
       InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
       InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+      SnapTo(transform);
     }
 
     public void OnDeselect(BaseEventData eventData)
