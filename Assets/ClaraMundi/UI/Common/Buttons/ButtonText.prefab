@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 2727412806977457137}
   - component: {fileID: 2727412806977457138}
   - component: {fileID: 2727412806977457136}
-  - component: {fileID: 4842033311377311346}
   - component: {fileID: 1637008576198683699}
   - component: {fileID: 3919992760623887505}
   - component: {fileID: 5098440889579596463}
@@ -219,26 +218,6 @@ MonoBehaviour:
   fallbackLeftSelectable: {fileID: 0}
   rightSelectable: {fileID: 0}
   fallbackRightSelectable: {fileID: 0}
---- !u!114 &4842033311377311346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2727412806977457038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  Form: {fileID: 0}
-  CanSubmit: 0
-  CanCancel: 1
-  InputField: {fileID: 0}
-  QueuedForDestroy: 0
 --- !u!114 &1637008576198683699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,9 +263,9 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: -1
+  m_PreferredHeight: 24
   m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
+  m_FlexibleHeight: 0
   m_LayoutPriority: 1
 --- !u!114 &5945960646046073340
 MonoBehaviour:
