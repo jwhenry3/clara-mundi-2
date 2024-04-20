@@ -12,7 +12,6 @@ namespace ClaraMundi
     public string Label;
     public Focusable Button;
     public GameObject Content;
-    public Form ContentForm;
 
     public Action OnClick;
   }
@@ -42,15 +41,14 @@ namespace ClaraMundi
     {
       foreach (var data in List)
       {
-        data.Button.OnClick -= data.OnClick;
+        if (data.Button != null)
+          data.Button.OnClick -= data.OnClick;
       }
       TabsDict = new();
     }
 
     public void ChangeTab(string tabName)
     {
-      // we are changing UI visibility, so close menus
-      ContextMenuHandler.Instance.CloseAll();
       if (tabName == "")
       {
         Deactivate(CurrentTab);

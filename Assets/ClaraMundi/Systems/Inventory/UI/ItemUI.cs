@@ -12,10 +12,10 @@ namespace ClaraMundi
     public string NodeId;
     public EquipmentUI EquipmentUI;
     public OwningEntityHolder owner;
-    public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
+    public ItemTooltipUI Tooltip => TooltipHandler.Instance?.ItemTooltipUI;
     public event Action EntityChange;
     public event Action<ItemUI> OnDoubleClick;
-    public ContextMenu ContextMenu => ContextMenuHandler.Instance.ItemMenu;
+    public ContextMenu ContextMenu => ContextMenuHandler.Instance?.ItemMenu;
     private string _entityId;
     public string StorageId = "inventory";
 
@@ -59,7 +59,7 @@ namespace ClaraMundi
       Button = GetComponent<Button>();
       Background = GetComponent<Image>();
       FormElement = GetComponent<FormElement>();
-
+      if (ItemManager.Instance == null) return;
       ItemManager.ItemChange += OnInstanceUpdate;
       if (_entityId != null)
         OnEntityChange("", _entityId);
@@ -119,6 +119,7 @@ namespace ClaraMundi
 
     private void OnDisable()
     {
+      if (ItemManager.Instance == null) return;
       if (ContextMenuHandler.Instance.ContextualItem == this)
         CloseContextMenu();
       HideTooltip();
@@ -126,6 +127,7 @@ namespace ClaraMundi
 
     private void OnDestroy()
     {
+      if (ItemManager.Instance == null) return;
       if (ContextMenuHandler.Instance.ContextualItem == this)
         CloseContextMenu();
       HideTooltip();
@@ -260,6 +262,7 @@ namespace ClaraMundi
 
     public void ShowTooltip()
     {
+      if (ItemManager.Instance == null) return;
       if (!hasItem) return;
       if (Tooltip.NodeId == NodeId) return;
       ItemTooltipUtils.ShowTooltip(Tooltip, (RectTransform)transform, ItemInstance.ItemInstanceId);
@@ -268,7 +271,8 @@ namespace ClaraMundi
 
     public void HideTooltip()
     {
-      if (Tooltip.NodeId != NodeId) return;
+      if (ItemManager.Instance == null) return;
+      if (Tooltip != null && Tooltip.NodeId != NodeId) return;
       // Assume the last item assigned to the tooltip was this item
       Tooltip.gameObject.SetActive(false);
       Tooltip.NodeId = null;

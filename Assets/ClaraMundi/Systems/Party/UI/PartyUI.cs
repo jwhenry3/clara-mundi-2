@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using ReactUnity.UGUI.EventHandlers;
+using Sirenix.Utilities;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,6 +19,9 @@ namespace ClaraMundi
     public GameObject PlayerContextMenu;
     public string ContextualCharacterName;
     public GameObject CreateButton;
+    public GameObject CreateTopButton;
+    public GameObject LeaveButton;
+    public GameObject LeaveTopButton;
     public GameObject WhisperButton;
     public GameObject PromoteLeaderButton;
     public GameObject KickButton;
@@ -29,7 +33,6 @@ namespace ClaraMundi
     public TMP_InputField InviteField;
 
     public Button InviteButton;
-    public Button LeaveButton;
 
     public Form Form;
 
@@ -86,6 +89,8 @@ namespace ClaraMundi
         foundInMenu.Add(member.playerName);
       }
 
+      CreateTopButton.SetActive(Party == null);
+      LeaveTopButton.SetActive(Party != null);
       if (party == null)
       {
         string name = PlayerManager.Instance.LocalPlayer.Entity.entityName.Value;
@@ -142,6 +147,7 @@ namespace ClaraMundi
       var myName = PlayerManager.Instance.LocalPlayer.Character.name;
       PlayerContextMenu.transform.position = position;
       CreateButton.SetActive(Party == null);
+      LeaveButton.SetActive(Party != null && characterName == myName);
       PromoteLeaderButton.SetActive(Party != null && Party.leader == myName && characterName != myName);
       WhisperButton.SetActive(characterName != myName);
       KickButton.SetActive(Party != null && Party.leader == myName && characterName != myName);

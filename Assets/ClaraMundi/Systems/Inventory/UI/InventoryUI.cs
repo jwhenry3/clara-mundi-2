@@ -23,11 +23,11 @@ namespace ClaraMundi
     private void Awake()
     {
       Instance = this;
-      Reload();
     }
 
     private void OnEnable()
     {
+      if (ItemManager.Instance == null) return;
       Reload();
     }
 

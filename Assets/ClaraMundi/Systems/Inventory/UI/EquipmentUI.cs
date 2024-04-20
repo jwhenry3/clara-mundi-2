@@ -29,6 +29,7 @@ namespace ClaraMundi
 
     public void OnEnable()
     {
+      if (ItemManager.Instance == null) return;
       if (PlayerManager.Instance != null)
         OnPlayerChange(PlayerManager.Instance.LocalPlayer);
       Populate();
@@ -120,6 +121,7 @@ namespace ClaraMundi
 
     public void CloseContextMenu()
     {
+      if (ContextMenuHandler.Instance == null) return;
       EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem?.gameObject);
       ContextMenuHandler.Instance.ContextualItem = null;
       ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
@@ -134,6 +136,7 @@ namespace ClaraMundi
 
     public void OnUnequip(ItemUI item)
     {
+      if (player == null) return;
       player.Inventory.UnequipItem(item.ItemInstance.ItemInstanceId);
       CloseContextMenu();
     }

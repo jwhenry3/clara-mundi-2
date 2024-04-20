@@ -70,6 +70,7 @@ namespace ClaraMundi
 
     public void OnDisable()
     {
+      if (ContextMenuHandler.Instance == null) return;
       if (ContextMenuHandler.Instance.GroupsToDisableOnOpen != null)
         ContextMenuHandler.Instance.GroupsToDisableOnOpen.ForEach(group => group.interactable = true);
       if (ContextMenuHandler.Instance.ContextualFormElement != null)

@@ -111,15 +111,15 @@ namespace ClaraMundi
 
     public void OnPreviousMenu()
     {
-      if (Menu.activeInHierarchy)
-      {
-        if (Tabs.CurrentTabData?.ContentForm != null)
-        {
-          EventSystem.current.SetSelectedGameObject(Tabs.CurrentTabData.ContentForm.gameObject);
-        }
-        else
-          Menu.SetActive(false);
-      }
+      // if (Menu.activeInHierarchy)
+      // {
+      //   if (Tabs.CurrentTabData?.ContentForm != null)
+      //   {
+      //     EventSystem.current.SetSelectedGameObject(Tabs.CurrentTabData.ContentForm.gameObject);
+      //   }
+      //   else
+      //     Menu.SetActive(false);
+      // }
     }
 
     void Update()

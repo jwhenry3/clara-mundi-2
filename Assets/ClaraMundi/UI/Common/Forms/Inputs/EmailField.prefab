@@ -32,7 +32,6 @@ RectTransform:
   - {fileID: 8220201453963524890}
   - {fileID: 8220201453893766964}
   m_Father: {fileID: 8220201453206376529}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -87,7 +86,6 @@ RectTransform:
   m_Children:
   - {fileID: 8220201452770100031}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -141,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8220201453206376534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Script: {fileID: 11500000, guid: c2504b17fe93ac64094fdd8cf969fc6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -242,8 +240,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 
   PreviousElement: {fileID: 0}
   NextElement: {fileID: 0}
+  Form: {fileID: 0}
+  CanSubmit: 0
+  CanCancel: 1
+  InputField: {fileID: 0}
+  QueuedForDestroy: 0
 --- !u!1 &8220201453893766965
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +279,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8220201452770100031}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -411,7 +414,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8220201452770100031}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

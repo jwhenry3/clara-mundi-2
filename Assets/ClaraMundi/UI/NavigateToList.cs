@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -25,29 +27,41 @@ namespace ClaraMundi
   }
   public class NavigateToList : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
+    public InputActionAsset InputActionAsset;
     private InputAction InputAction;
 
     public GameObject List;
+    public bool IsNestedList;
 
     public NavigateToListMap[] Mapping;
-
+    private bool listening;
     void Awake()
     {
-      InputAction = InputManager.Instance.UI.FindAction("Navigate");
+      InputAction = InputActionAsset.FindAction("UI/Navigate");
     }
 
     public void OnSelect(BaseEventData eventData)
     {
       InputAction.performed += OnPerform;
+      listening = true;
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
       InputAction.performed -= OnPerform;
+      listening = false;
+    }
+
+    public void OnDisable()
+    {
+      if (listening)
+        InputAction.performed -= OnPerform;
+      listening = false;
     }
 
     private void OnPerform(InputAction.CallbackContext context)
     {
+      if (!gameObject.activeInHierarchy) return;
       Vector2 value = context.ReadValue<Vector2>();
       foreach (var mapping in Mapping)
       {
@@ -57,25 +71,55 @@ namespace ClaraMundi
           case Direction.Down when value.y < 0:
           case Direction.Left when value.x < 0:
           case Direction.Right when value.x > 0:
-            Select(mapping);
+            StartCoroutine(Select(mapping));
             break;
         }
       }
     }
 
-    GameObject GetChildForMapping(NavigateToListMap mapping)
+    GameObject GetChildForMapping(NavigateToListMap mapping, GameObject list, bool hasNested = false)
     {
-      if (List.transform.childCount == 0) return null;
+      if (list.transform.childCount == 0) return null;
+
+      if (IsNestedList && !hasNested)
+      {
+        foreach (Transform child in list.transform)
+        {
+          if (child.gameObject.activeInHierarchy)
+            return GetChildForMapping(mapping, child.gameObject, true);
+        }
+        return null;
+      }
+      Debug.Log("Find Element");
+      Debug.Log("List " + list);
       if (mapping.Element == ElementOfList.Last)
-        return List.transform.GetChild(List.transform.childCount - 1).gameObject;
-      return List.transform.GetChild(0)?.gameObject;
+      {
+        Transform lastChild = null;
+        foreach (Transform child in list.transform)
+        {
+          if (child.gameObject.activeInHierarchy)
+            lastChild = child;
+        }
+        return lastChild?.gameObject;
+      }
+      foreach (Transform child in list.transform)
+      {
+        if (child.gameObject.activeInHierarchy)
+          return child.gameObject;
+      }
+      Debug.Log("NOT FOUND");
+      return null;
     }
 
-    private void Select(NavigateToListMap mapping)
+    IEnumerator Select(NavigateToListMap mapping)
     {
-      GameObject child = GetChildForMapping(mapping);
+      if (!gameObject.activeInHierarchy) yield return null;
+      yield return new WaitForSeconds(0.1f);
+      GameObject child = GetChildForMapping(mapping, List);
+      Debug.Log(child);
       if (child != null)
         EventSystem.current.SetSelectedGameObject(child);
     }
+
   }
 }

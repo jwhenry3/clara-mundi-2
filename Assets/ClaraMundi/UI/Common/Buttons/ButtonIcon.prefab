@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -219,12 +219,12 @@ GameObject:
   - component: {fileID: 2727412806977457137}
   - component: {fileID: 2727412806977457138}
   - component: {fileID: 2727412806977457136}
-  - component: {fileID: 1637008576198683699}
   - component: {fileID: 3919992760623887505}
   - component: {fileID: 5098440889579596463}
   - component: {fileID: 5945960646046073340}
   - component: {fileID: 862956335043300579}
   - component: {fileID: 5898891853110533933}
+  - component: {fileID: 4916286368924018517}
   m_Layer: 0
   m_Name: ButtonIcon
   m_TagString: Untagged
@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
-    m_HighlightedColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0.101960786}
-    m_PressedColor: {r: 0.6132076, g: 0.6045301, b: 0.6045301, a: 0.101960786}
-    m_SelectedColor: {r: 0.44, g: 0.429, b: 0.429, a: 0.101960786}
-    m_DisabledColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.101960786}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.2}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.29803923}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 0.29803923}
+    m_DisabledColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0.29803923}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -302,22 +302,10 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 6697587821449216819}
+  m_TargetGraphic: {fileID: 5403693205368897847}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ClaraMundi.LobbyUI, Assembly-CSharp
-        m_MethodName: ToCreateCharacter
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   upSelectable: {fileID: 0}
   fallbackUpSelectable: {fileID: 0}
   downSelectable: {fileID: 0}
@@ -326,22 +314,6 @@ MonoBehaviour:
   fallbackLeftSelectable: {fileID: 0}
   rightSelectable: {fileID: 0}
   fallbackRightSelectable: {fileID: 0}
---- !u!114 &1637008576198683699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2727412806977457038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80497446ccf190343bc33f84baaa3c8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InactiveColor: {r: 1, g: 1, b: 1, a: 0}
-  ActiveColor: {r: 1, g: 1, b: 1, a: 0.101960786}
-  Image: {fileID: 0}
-  IsActivated: 0
 --- !u!114 &3919992760623887505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +418,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: {x: 8, y: 8, z: 8, w: 8}
+--- !u!114 &4916286368924018517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2727412806977457038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80497446ccf190343bc33f84baaa3c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InactiveColor: {r: 1, g: 1, b: 1, a: 0}
+  ActiveColor: {r: 1, g: 1, b: 1, a: 0.101960786}
+  Image: {fileID: 6697587821449216819}
+  IsActivated: 0
 --- !u!1 &3076835310561586296
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.08627451, b: 0.34901962, a: 1}
+  m_Color: {r: 0.4669811, g: 0.4669811, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
