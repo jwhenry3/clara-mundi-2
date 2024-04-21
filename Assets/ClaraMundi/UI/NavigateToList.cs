@@ -111,11 +111,20 @@ namespace ClaraMundi
       return null;
     }
 
+    GameObject GetSelectable(GameObject obj, int nestingLevel = 0)
+    {
+      if (nestingLevel > 3 || obj == null)
+        return null;
+      if (obj.GetComponent<ButtonWithHybridNav>() || obj.GetComponent<InputFieldWithHybridNav>())
+        return obj;
+      return GetSelectable(obj.transform.GetChild(0).gameObject);
+    }
+
     IEnumerator Select(NavigateToListMap mapping)
     {
       if (!gameObject.activeInHierarchy) yield return null;
       yield return new WaitForSeconds(0.1f);
-      GameObject child = GetChildForMapping(mapping, List);
+      GameObject child = GetSelectable(GetChildForMapping(mapping, List));
       Debug.Log(child);
       if (child != null)
         EventSystem.current.SetSelectedGameObject(child);

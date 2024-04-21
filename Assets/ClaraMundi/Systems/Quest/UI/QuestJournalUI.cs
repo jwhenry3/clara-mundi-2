@@ -42,7 +42,6 @@ namespace ClaraMundi.Quests
         Destroy(child.gameObject);
       foreach (string questId in player.Quests.AcceptedQuests)
         AddQuest(questId);
-      EventSystem.current.SetSelectedGameObject(AddedItems.First().Value.AutoFocus.gameObject);
     }
 
     private void AddQuest(string questId)
@@ -52,7 +51,7 @@ namespace ClaraMundi.Quests
       var listItem = Instantiate(QuestListItemPrefab, QuestListContainer, false);
       listItem.Quest = RepoManager.Instance.QuestRepo.Quests[questId];
       AddedItems.Add(questId, listItem);
-      if (AddedItems.First().Value == listItem)
+      if (AddedItems.Count == 1)
       {
         listItem.AutoFocus.HasFocused = false;
         listItem.AutoFocus.enabled = true;

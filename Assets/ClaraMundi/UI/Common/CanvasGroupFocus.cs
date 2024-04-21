@@ -11,10 +11,7 @@ namespace ClaraMundi
 {
   public class CanvasGroupFocus : MonoBehaviour
   {
-    public static Dictionary<string, CanvasGroupFocus> Controls = new();
 
-    [Header("Information")]
-    public string ControlName;
     [Header("Buttons")]
     public ButtonWithHybridNav InitialFocus;
     public InputFieldWithHybridNav InitialFocusInput;
@@ -24,20 +21,22 @@ namespace ClaraMundi
     public InputActionAsset InputActionAsset;
     public CanvasGroup CloseOnCancel;
     public CanvasGroup DisableOnCancel;
-    public Tabs TabsToChangeOnCancel;
+    public Tabs TabsToChange;
 
     [Header("General Rules")]
+    public bool DelayTriggersOnEnable = true;
 
     public CanvasGroup[] DisableOnEnable;
     public CanvasGroup[] HideOnEnable;
-    public CanvasGroup[] KeepEnabledWhileEnabled;
-    public CanvasGroup[] KeepVisibleWhileEnabled;
+    public CanvasGroup[] EnableOnEnable;
+    public CanvasGroup[] ShowOnEnable;
     public CanvasGroup[] EnableOnDisable;
     public CanvasGroup[] ShowOnDisable;
     public CanvasGroup[] HideOnDisable;
     public CanvasGroup[] DisableOnDisable;
 
     private InputAction cancelAction;
+
     public CanvasGroup canvasGroup
     {
       get;
@@ -46,11 +45,17 @@ namespace ClaraMundi
 
     private bool lastInteractable;
 
+    public void Initialize()
+    {
+      if (canvasGroup == null)
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     void OnEnable()
     {
-      canvasGroup = GetComponent<CanvasGroup>();
-      Debug.Log("Enabled: " + gameObject.name);
+      Initialize();
+      TabsToChange?.ChangeTab(gameObject.name);
+      // Debug.Log("Enabled: " + gameObject.name);
 
       if (InputActionAsset != null)
       {
@@ -66,11 +71,16 @@ namespace ClaraMundi
 
     void OnDisable()
     {
-      Debug.Log("Disabled: " + gameObject.name);
+      // Debug.Log("Disabled: " + gameObject.name);
+      if (TabsToChange != null)
+      {
+        if (TabsToChange.CurrentTab == gameObject.name)
+          TabsToChange.ChangeTab("");
+      }
+      if (canvasGroup != null)
+        canvasGroup.interactable = false;
       if (cancelAction != null)
         cancelAction.performed -= OnCancel;
-      foreach (var group in KeepEnabledWhileEnabled)
-        group.interactable = false;
       foreach (var group in EnableOnDisable)
         group.interactable = true;
       foreach (var group in DisableOnDisable)
@@ -82,15 +92,17 @@ namespace ClaraMundi
     }
     IEnumerator DelayEnable()
     {
-      yield return new WaitForSeconds(0.1f);
+      yield return new WaitForSeconds(DelayTriggersOnEnable ? 0.1f : 0);
+      if (canvasGroup != null)
+        canvasGroup.interactable = true;
       foreach (var group in DisableOnEnable)
         group.interactable = false;
-      foreach (var group in KeepEnabledWhileEnabled)
+      foreach (var group in EnableOnEnable)
         group.interactable = true;
 
       foreach (var obj in HideOnEnable)
         obj.gameObject.SetActive(false);
-      foreach (var obj in KeepVisibleWhileEnabled)
+      foreach (var obj in ShowOnEnable)
         obj.gameObject.SetActive(true);
     }
 
@@ -101,8 +113,8 @@ namespace ClaraMundi
         CloseOnCancel?.gameObject.SetActive(false);
         if (DisableOnCancel != null)
           DisableOnCancel.interactable = false;
-        if (TabsToChangeOnCancel != null)
-          TabsToChangeOnCancel.ChangeTab("");
+        if (TabsToChange != null)
+          TabsToChange.ChangeTab("");
       }
     }
 
@@ -139,7 +151,27 @@ namespace ClaraMundi
     IEnumerator DelaySelect(GameObject gameObject)
     {
       yield return new WaitForSeconds(0.1f);
-      EventSystem.current.SetSelectedGameObject(gameObject);
+      Debug.Log("Selecting: " + gameObject?.name);
+      if (gameObject != null)
+        EventSystem.current.SetSelectedGameObject(gameObject);
+    }
+
+    public void Show(InputAction.CallbackContext context)
+    {
+      // Debug.Log("Show " + gameObject.name);
+      Show();
+    }
+    public void Hide(InputAction.CallbackContext context)
+    {
+      Hide();
+    }
+    public void Show()
+    {
+      gameObject.SetActive(true);
+    }
+    public void Hide()
+    {
+      gameObject.SetActive(false);
     }
 
   }

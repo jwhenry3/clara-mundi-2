@@ -13,10 +13,14 @@ namespace ClaraMundi
     public Image Image;
 
     public bool IsActivated;
+    private bool lastActivated;
+
+    private CanvasGroup canvasGroup;
 
 
     void Start()
     {
+      canvasGroup = GetComponentInParent<CanvasGroup>();
       button = GetComponent<Button>();
       if (Image == null)
         Image = GetComponent<Image>();
@@ -31,10 +35,14 @@ namespace ClaraMundi
     void Update()
     {
       if (Image == null) return;
-      if (IsActivated)
-        Image.color = ActiveColor;
-      else
-        Image.color = InactiveColor;
+      if (lastActivated != IsActivated)
+      {
+        if (IsActivated)
+          Image.color = ActiveColor;
+        else
+          Image.color = InactiveColor;
+        lastActivated = IsActivated;
+      }
     }
 
 

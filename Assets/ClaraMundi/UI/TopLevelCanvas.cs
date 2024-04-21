@@ -8,6 +8,13 @@ using System;
 namespace ClaraMundi
 {
   [Serializable]
+  public struct Trigger
+  {
+    public string Key;
+    public List<CanvasGroupFocus> Value;
+  }
+
+  [Serializable]
   public class ControlsDictionary : UnitySerializedDictionary<string, CanvasGroupFocus> { }
   public class TopLevelCanvas : MonoBehaviour
   {
@@ -15,19 +22,58 @@ namespace ClaraMundi
     public static TopLevelCanvas Instance;
     public InputActionAsset InputActionAsset;
 
-    public ControlsDictionary Controls;
+    private InputActionMap UI;
+    private InputActionMap World;
 
+    public ControlsDictionary Controls;
+    public List<Trigger> Triggers;
+    public List<InputAction> BoundActions;
+    void Start()
+    {
+      BoundActions = new();
+      Instance = this;
+      UI = InputActionAsset.FindActionMap("UI");
+      World = InputActionAsset.FindActionMap("Player");
+    }
     void OnEnable()
     {
-      Instance = this;
       InputActionAsset.FindAction("UI/Navigate").performed += OnSelect;
       InputActionAsset.FindAction("UI/NextElement").performed += OnSelect;
+      InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
+      InputActionAsset.FindAction("UI/Menu").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Character").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Skills").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Inventory").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Party").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Journal").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Map").performed += Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Character").performed += Controls["Character"].Show;
+      InputActionAsset.FindAction("UI/Skills").performed += Controls["Skills"].Show;
+      InputActionAsset.FindAction("UI/Inventory").performed += Controls["Inventory"].Show;
+      InputActionAsset.FindAction("UI/Party").performed += Controls["Party"].Show;
+      InputActionAsset.FindAction("UI/Journal").performed += Controls["Journal"].Show;
+      InputActionAsset.FindAction("UI/Map").performed += Controls["Map"].Show;
+
     }
 
     void OnDisable()
     {
       InputActionAsset.FindAction("UI/Navigate").performed -= OnSelect;
       InputActionAsset.FindAction("UI/NextElement").performed -= OnSelect;
+      InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
+      InputActionAsset.FindAction("UI/Menu").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Character").performed -= Controls["Character"].Show;
+      InputActionAsset.FindAction("UI/Character").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Skills").performed -= Controls["Skills"].Show;
+      InputActionAsset.FindAction("UI/Skills").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Inventory"].Show;
+      InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Party").performed -= Controls["Party"].Show;
+      InputActionAsset.FindAction("UI/Party").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Journal").performed -= Controls["Journal"].Show;
+      InputActionAsset.FindAction("UI/Journal").performed -= Controls["Menu"].Show;
+      InputActionAsset.FindAction("UI/Map").performed -= Controls["Map"].Show;
+      InputActionAsset.FindAction("UI/Map").performed -= Controls["Menu"].Show;
     }
     public void OnSelect(InputAction.CallbackContext eventData)
     {
@@ -46,6 +92,30 @@ namespace ClaraMundi
             control.Select();
             return;
           }
+        }
+      }
+    }
+    public void Update()
+    {
+      if (World == null) return;
+      bool shouldDisableWorldInput = Controls["Menu"].gameObject.activeInHierarchy;
+      if (World.enabled && shouldDisableWorldInput)
+      {
+        World.Disable();
+      }
+      else if (!World.enabled && !shouldDisableWorldInput)
+      {
+        World.Enable();
+      }
+    }
+
+    void OnCancel(InputAction.CallbackContext context)
+    {
+      if (Controls["Menu"].gameObject.activeInHierarchy)
+      {
+        if (Controls["Menu"].canvasGroup.interactable)
+        {
+          Controls["Menu"].gameObject.SetActive(false);
         }
       }
     }

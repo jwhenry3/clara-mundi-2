@@ -12,6 +12,9 @@ namespace ClaraMundi
     [HideInInspector] public NetworkManager networkManager;
     public static Client Instance;
 
+    public string LobbyUIScene = "LobbyGUI";
+    public string PlayerUIScene = "PlayerUI";
+
     private LocalConnectionState _clientState = LocalConnectionState.Stopped;
 
     private void Awake()
@@ -31,8 +34,8 @@ namespace ClaraMundi
     {
       Physics.IgnoreLayerCollision(3, 3);
       networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
-      SceneManager.LoadScene("LobbyGUI", LoadSceneMode.Additive);
-      SceneManager.LoadScene("PlayerGUI", LoadSceneMode.Additive);
+      SceneManager.LoadScene(LobbyUIScene, LoadSceneMode.Additive);
+      SceneManager.LoadScene(PlayerUIScene, LoadSceneMode.Additive);
     }
 
     public void Connect()

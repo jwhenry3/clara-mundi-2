@@ -34,6 +34,8 @@ namespace ClaraMundi
         if (TabsDict.ContainsKey(data.Label)) continue;
         data.Button.OnClick += () => ChangeTab(data.Label);
         TabsDict[data.Label] = data;
+        if (CurrentTab == data.Label)
+          data.Button.IsActivated = true;
       }
     }
 
