@@ -34,7 +34,8 @@ namespace ClaraMundi.Quests
     private void Awake()
     {
       Focusable = Focusable ?? GetComponent<Focusable>();
-      Focusable.OnClick += Open;
+      if (Focusable != null)
+        Focusable.OnClick += Open;
       if (IsQuestTackerQuest) return;
       TrackedStatusToggle.onValueChanged.AddListener(SetTrackedStatus);
     }
@@ -102,8 +103,11 @@ namespace ClaraMundi.Quests
     {
       if (_quest == null) return;
       QuestJournalUI.Instance.QuestInfoUI.Quest = _quest;
-      if (!GameWindowHandler.Instance.Tabs.IsTabActive("Journal"))
-        GameWindowHandler.Instance.Tabs.ChangeTab("Journal");
+      if (TopLevelCanvas.Instance != null)
+      {
+        TopLevelCanvas.Instance.Controls["Main"].gameObject.SetActive(true);
+        TopLevelCanvas.Instance.Controls["Journal"].gameObject.SetActive(true);
+      }
     }
 
     private void Update()

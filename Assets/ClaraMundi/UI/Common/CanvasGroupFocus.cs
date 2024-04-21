@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using GameKit.Dependencies.Utilities;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,10 @@ namespace ClaraMundi
 {
   public class CanvasGroupFocus : MonoBehaviour
   {
+    public static Dictionary<string, CanvasGroupFocus> Controls = new();
+
+    [Header("Information")]
+    public string ControlName;
     [Header("Buttons")]
     public ButtonWithHybridNav InitialFocus;
     public InputFieldWithHybridNav InitialFocusInput;
@@ -33,7 +38,11 @@ namespace ClaraMundi
     public CanvasGroup[] DisableOnDisable;
 
     private InputAction cancelAction;
-    private CanvasGroup canvasGroup;
+    public CanvasGroup canvasGroup
+    {
+      get;
+      private set;
+    }
 
     private bool lastInteractable;
 
@@ -112,6 +121,11 @@ namespace ClaraMundi
       }
       if (lastInteractable == canvasGroup.interactable) return;
       lastInteractable = canvasGroup.interactable;
+      Select();
+    }
+
+    public void Select()
+    {
       if (LastFocused != null)
         StartCoroutine(DelaySelect(LastFocused.gameObject));
       else if (LastFocusInput != null)

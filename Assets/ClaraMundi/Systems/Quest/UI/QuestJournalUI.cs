@@ -19,8 +19,6 @@ namespace ClaraMundi.Quests
     private void Awake()
     {
       Instance = this;
-      foreach (Transform child in QuestListContainer)
-        Destroy(child.gameObject);
     }
 
     protected override void OnPlayerChange(Player _player)
@@ -40,6 +38,8 @@ namespace ClaraMundi.Quests
 
     private void LoadQuests()
     {
+      foreach (Transform child in QuestListContainer)
+        Destroy(child.gameObject);
       foreach (string questId in player.Quests.AcceptedQuests)
         AddQuest(questId);
       EventSystem.current.SetSelectedGameObject(AddedItems.First().Value.AutoFocus.gameObject);
