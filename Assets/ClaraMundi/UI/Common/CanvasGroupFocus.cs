@@ -138,13 +138,13 @@ namespace ClaraMundi
 
     public void Select()
     {
-      if (LastFocused != null)
+      if (LastFocused != null && LastFocused.gameObject.activeInHierarchy)
         StartCoroutine(DelaySelect(LastFocused.gameObject));
-      else if (LastFocusInput != null)
+      else if (LastFocusInput != null && LastFocusInput.gameObject.activeInHierarchy)
         StartCoroutine(DelaySelect(LastFocusInput.gameObject));
-      else if (InitialFocus != null)
+      else if (InitialFocus != null && InitialFocus.gameObject.activeInHierarchy)
         StartCoroutine(DelaySelect(InitialFocus.gameObject));
-      else if (InitialFocusInput != null)
+      else if (InitialFocusInput != null && InitialFocusInput.gameObject.activeInHierarchy)
         StartCoroutine(DelaySelect(InitialFocusInput.gameObject));
     }
 

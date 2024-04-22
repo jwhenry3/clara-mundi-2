@@ -19,28 +19,39 @@ namespace ClaraMundi
   }
   public class ContextMenu : MonoBehaviour
   {
-    public string Name;
-    public ContextMenuItem ContextMenuItemPrefab;
-    public ContextMenuItemData[] MenuItems;
+    public static ContextMenu OpenedContextMenu;
 
     readonly Dictionary<string, ContextMenuItem> Options = new();
-    private readonly List<string> disabledItems = new();
 
-    public Form Form;
-
-    public string CurrentValue;
 
     public Action OnClose;
 
+    [Header("State")]
+    public string Name;
+    public string CurrentValue;
+
+    [Header("Programmatic Options")]
+    public ContextMenuItem ContextMenuItemPrefab;
+    public ContextMenuItemData[] MenuItems;
+
+    [Header("Context Menu Subjects")]
+    public GameObject ContextualGameObject;
+    public ItemUI ContextualItem;
+    public Player ContextualPlayer;
+    public string ContextualText;
+
     private void Start()
     {
-      Form = Form ?? GetComponent<Form>();
+      if (MenuItems.Length == 0)
+      {
+        foreach (ContextMenuItem item in GetComponentsInChildren<ContextMenuItem>())
+          Options.Add(item.Label.text, item);
+      }
       if (Options.Count != 0) return;
       foreach (var item in MenuItems)
       {
         var instance = Instantiate(ContextMenuItemPrefab, transform, false);
         instance.Label.text = item.Label;
-        instance.gameObject.SetActive(!disabledItems.Contains(item.Label));
         instance.Data = item;
         // close the menu when the menu item has been clicked
         instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
@@ -50,32 +61,30 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
-      if (ContextMenuHandler.Instance.GroupsToDisableOnOpen != null)
-        ContextMenuHandler.Instance.GroupsToDisableOnOpen.ForEach(group => group.interactable = false);
+      if (OpenedContextMenu != null)
+      {
+        OpenedContextMenu.gameObject.SetActive(false);
+        OpenedContextMenu = null;
+      }
+      OpenedContextMenu = this;
       SelectFirstElement();
     }
 
     public void SelectFirstElement()
     {
-      foreach (var kvp in Options)
+
+      foreach (ContextMenuItem item in GetComponentsInChildren<ContextMenuItem>())
       {
-        var child = kvp.Value;
-        if (!child.gameObject.activeSelf) continue;
-        if (CurrentValue?.Length > 0 && kvp.Key != CurrentValue) continue;
-        Debug.Log("Select Element");
-        EventSystem.current.SetSelectedGameObject(child.gameObject);
+        if (CurrentValue != "" && item.Label.text != CurrentValue) continue;
+        EventSystem.current.SetSelectedGameObject(item.gameObject);
         break;
       }
     }
 
     public void OnDisable()
     {
-      if (ContextMenuHandler.Instance == null) return;
-      if (ContextMenuHandler.Instance.GroupsToDisableOnOpen != null)
-        ContextMenuHandler.Instance.GroupsToDisableOnOpen.ForEach(group => group.interactable = true);
-      if (ContextMenuHandler.Instance.ContextualFormElement != null)
-        EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualFormElement.gameObject);
-      ContextMenuHandler.Instance.ContextualItem = null;
+      if (OpenedContextMenu == this)
+        OpenedContextMenu = null;
       OnClose?.Invoke();
     }
 
@@ -83,14 +92,6 @@ namespace ClaraMundi
     {
       if (Options.ContainsKey(itemName))
         Options[itemName].gameObject.SetActive(value);
-      if (value)
-      {
-        if (disabledItems.Contains(itemName))
-          disabledItems.Remove(itemName);
-      }
-      else
-          if (!disabledItems.Contains(itemName))
-        disabledItems.Add(itemName);
     }
 
     public void ChangeLabelOf(string itemName, string label)

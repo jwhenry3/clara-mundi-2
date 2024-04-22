@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 1957635669820461279}
   - component: {fileID: 1957635669820461278}
   - component: {fileID: 1957635669820461285}
-  - component: {fileID: -7201340387359980770}
   m_Layer: 0
   m_Name: Server
   m_TagString: Untagged
@@ -81,7 +80,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957635669820461282}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -128,6 +127,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  upSelectable: {fileID: 0}
+  fallbackUpSelectable: {fileID: 0}
+  downSelectable: {fileID: 0}
+  fallbackDownSelectable: {fileID: 0}
+  leftSelectable: {fileID: 0}
+  fallbackLeftSelectable: {fileID: 0}
+  rightSelectable: {fileID: 0}
+  fallbackRightSelectable: {fileID: 0}
 --- !u!222 &1957635669820461272
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -203,23 +210,6 @@ MonoBehaviour:
   NameText: {fileID: 1957635669980014300}
   StatusText: {fileID: 1957635670988116944}
   CapacityText: {fileID: 1957635669992892537}
---- !u!114 &-7201340387359980770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957635669820461282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  CanSubmit: 0
-  InputField: {fileID: 0}
 --- !u!1 &1957635669980014307
 GameObject:
   m_ObjectHideFlags: 0

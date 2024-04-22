@@ -22,8 +22,6 @@ namespace ClaraMundi
 
     public GameObject ContinueButton;
 
-    public Form Form;
-
     private void Start()
     {
       Instance = this;
@@ -37,7 +35,6 @@ namespace ClaraMundi
       if (SessionManager.Instance.PlayerCharacter?.name == character?.name) return;
       CharacterActions.SetActive(character != null);
       SessionManager.Instance.PlayerCharacter = character;
-      GetComponent<Form>().InitializeElements();
 
       EventSystem.current.SetSelectedGameObject(ContinueButton);
 
@@ -100,7 +97,6 @@ namespace ClaraMundi
       }
 
       CharactersContainer.gameObject.SetActive(Characters.Count > 0);
-      Form?.InitializeElements();
       loading = false;
     }
 

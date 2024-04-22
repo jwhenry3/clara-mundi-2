@@ -24,7 +24,6 @@ namespace ClaraMundi
     public string CurrentTab;
     public TabData CurrentTabData => TabsDict.ContainsKey(CurrentTab) ? TabsDict[CurrentTab] : null;
 
-    public Form Form;
 
     public void Start()
     {

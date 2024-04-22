@@ -9,6 +9,8 @@ namespace ClaraMundi
   {
     OwningEntityHolder owner = new();
 
+    public ContextMenu ItemContextMenu;
+
     public GameObject Grid;
 
 
@@ -46,10 +48,9 @@ namespace ClaraMundi
 
     public void CloseContextMenu()
     {
-      if (ContextMenuHandler.Instance == null) return;
-      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem?.gameObject);
-      ContextMenuHandler.Instance.ContextualItem = null;
-      ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
+      EventSystem.current.SetSelectedGameObject(ItemContextMenu.ContextualItem?.gameObject);
+      ItemContextMenu.ContextualItem = null;
+      ItemContextMenu.gameObject.SetActive(false);
     }
   }
 }

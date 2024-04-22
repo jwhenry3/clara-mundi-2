@@ -5,8 +5,8 @@ namespace ClaraMundi
 {
   public class LoginUI : MonoBehaviour
   {
-    public TMP_InputField EmailField;
-    public TMP_InputField PasswordField;
+    public InputFieldWithHybridNav EmailField;
+    public InputFieldWithHybridNav PasswordField;
 
     public TextMeshProUGUI StatusMessage;
 
@@ -16,13 +16,21 @@ namespace ClaraMundi
       PasswordField.text = "";
       StatusMessage.text = "";
       StatusMessage.enabled = false;
+      EmailField.SubmitAction += Submit;
+      PasswordField.SubmitAction += Submit;
+    }
+
+    public void OnDisable()
+    {
+      EmailField.SubmitAction -= Submit;
+      PasswordField.SubmitAction -= Submit;
     }
 
     public async void Submit()
     {
       StatusMessage.enabled = true;
       StatusMessage.text = "Logging in...";
-
+      Debug.Log(EmailField.text + " - " + PasswordField.text);
       var response = await LobbyApi.Login(
           EmailField.text,
           PasswordField.text

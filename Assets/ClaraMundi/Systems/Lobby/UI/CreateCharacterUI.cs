@@ -5,7 +5,7 @@ namespace ClaraMundi
 {
   public class CreateCharacterUI : MonoBehaviour
   {
-    public TMP_InputField NameField;
+    public InputFieldWithHybridNav NameField;
     public TMP_Dropdown RaceDropdown;
     public TMP_Dropdown GenderDropdown;
     public TMP_Dropdown ClassDropdown;
@@ -23,6 +23,11 @@ namespace ClaraMundi
       NameField.text = "";
       StatusMessage.text = "";
       StatusMessage.enabled = false;
+      NameField.SubmitAction += OnCreate;
+    }
+    public void OnDisable()
+    {
+      NameField.SubmitAction -= OnCreate;
     }
 
     public async void OnCreate()

@@ -12,6 +12,7 @@ namespace ClaraMundi
   {
     public static ChatWindowUI Instance;
 
+    public InputActionAsset InputActionAsset;
     public MoveSibling MoveSibling;
 
     public Action ToLastMenu;
@@ -24,7 +25,6 @@ namespace ClaraMundi
     public ChatMessageUI ChatMessagePrefab;
 
     public ContextMenu ChannelContextMenu;
-    public FormElement ChannelElement;
     public TextMeshProUGUI ChannelText;
 
     public ContextMenu PlayerContextMenu;
@@ -41,15 +41,12 @@ namespace ClaraMundi
 
     public CanvasGroup CanvasGroup;
 
-    private Form Form;
-
     public string ContextualCharacterName;
 
     string channel = "Say";
 
     private void Awake()
     {
-      Form = GetComponent<Form>();
       Instance = this;
       ChatManager.Messages += OnMessage;
       ClearMessages();
@@ -59,25 +56,27 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
-      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
-      ChannelContextMenu.OnClose += OnContextMenuClose;
-      PlayerContextMenu.OnClose += OnContextMenuClose;
+      InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
     }
 
     private void OnDisable()
     {
-      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
-      ChannelContextMenu.OnClose -= OnContextMenuClose;
-      PlayerContextMenu.OnClose -= OnContextMenuClose;
-    }
-
-    private void OnContextMenuClose()
-    {
-      CanvasGroup.interactable = true;
+      InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
     }
 
     private void OnCancel(InputAction.CallbackContext context)
     {
+      if (MoveSibling.IsInFront())
+      {
+        if (ChannelContextMenu.gameObject.activeInHierarchy)
+          ChannelContextMenu.gameObject.SetActive(false);
+        else if (ButtonWithHybridNav.CurrentButton != null || InputFieldWithHybridNav.CurrentInput != null)
+        {
+          EventSystem.current.SetSelectedGameObject(null);
+        }
+        else
+          MoveSibling.ToBack();
+      }
     }
 
     private void OnDestroy()
@@ -123,7 +122,6 @@ namespace ClaraMundi
       instance.transform.SetParent(container);
       if (container.childCount > 100)
         Destroy(container.GetChild(0).gameObject);
-      Form.InitializeElements();
     }
 
     void ClearOutOfBounds()
@@ -259,7 +257,6 @@ namespace ClaraMundi
 
     void SetChannel(string channelName)
     {
-      CanvasGroup.interactable = true;
       ChannelText.text = channelName;
       channel = channelName;
       RecipientField.gameObject.SetActive(channelName == "Whisper");

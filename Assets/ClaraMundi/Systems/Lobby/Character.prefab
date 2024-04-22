@@ -438,7 +438,6 @@ GameObject:
   - component: {fileID: 6189974849751676969}
   - component: {fileID: 6189974849751676968}
   - component: {fileID: 4209483007159632837}
-  - component: {fileID: 5139423884794999323}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -504,7 +503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6189974849751676948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -551,6 +550,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  upSelectable: {fileID: 0}
+  fallbackUpSelectable: {fileID: 0}
+  downSelectable: {fileID: 0}
+  fallbackDownSelectable: {fileID: 0}
+  leftSelectable: {fileID: 0}
+  fallbackLeftSelectable: {fileID: 0}
+  rightSelectable: {fileID: 0}
+  fallbackRightSelectable: {fileID: 0}
 --- !u!222 &6189974849751676974
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -637,26 +644,6 @@ MonoBehaviour:
   Name: {fileID: 6189974849474940458}
   Area: {fileID: 6189974849462190223}
   Outline: {fileID: 4832500040633086791}
---- !u!114 &5139423884794999323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6189974849751676948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  Form: {fileID: 0}
-  CanSubmit: 0
-  CanCancel: 1
-  InputField: {fileID: 0}
-  QueuedForDestroy: 0
 --- !u!1001 &904504933058734367
 PrefabInstance:
   m_ObjectHideFlags: 0

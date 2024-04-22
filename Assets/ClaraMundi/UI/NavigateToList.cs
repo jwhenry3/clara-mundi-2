@@ -27,6 +27,7 @@ namespace ClaraMundi
   }
   public class NavigateToList : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
+    private CanvasGroupFocus focus;
     public InputActionAsset InputActionAsset;
     private InputAction InputAction;
 
@@ -35,9 +36,11 @@ namespace ClaraMundi
 
     public NavigateToListMap[] Mapping;
     private bool listening;
-    void Awake()
+
+    void Start()
     {
-      InputAction = InputActionAsset.FindAction("UI/Navigate");
+      focus = GetComponentInParent<CanvasGroupFocus>();
+      InputAction = focus.InputActionAsset.FindAction("UI/Navigate");
     }
 
     public void OnSelect(BaseEventData eventData)
@@ -117,6 +120,8 @@ namespace ClaraMundi
         return null;
       if (obj.GetComponent<ButtonWithHybridNav>() || obj.GetComponent<InputFieldWithHybridNav>())
         return obj;
+      if (obj.transform.childCount == 0)
+        return null;
       return GetSelectable(obj.transform.GetChild(0).gameObject);
     }
 

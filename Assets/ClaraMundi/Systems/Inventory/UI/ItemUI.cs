@@ -12,10 +12,10 @@ namespace ClaraMundi
     public string NodeId;
     public EquipmentUI EquipmentUI;
     public OwningEntityHolder owner;
-    public ItemTooltipUI Tooltip => TooltipHandler.Instance?.ItemTooltipUI;
+    public ItemTooltipUI Tooltip;
     public event Action EntityChange;
     public event Action<ItemUI> OnDoubleClick;
-    public ContextMenu ContextMenu => ContextMenuHandler.Instance?.ItemMenu;
+    public ContextMenu ContextMenu;
     private string _entityId;
     public string StorageId = "inventory";
 
@@ -41,7 +41,6 @@ namespace ClaraMundi
 
     public string EquipmentSlot;
 
-    public FormElement FormElement;
 
     private ItemStorage GetItemStorage()
     {
@@ -58,7 +57,6 @@ namespace ClaraMundi
       NodeId = StringUtils.UniqueId();
       Button = GetComponent<Button>();
       Background = GetComponent<Image>();
-      FormElement = GetComponent<FormElement>();
       if (ItemManager.Instance == null) return;
       ItemManager.ItemChange += OnInstanceUpdate;
       if (_entityId != null)
@@ -119,16 +117,17 @@ namespace ClaraMundi
 
     private void OnDisable()
     {
+      if (owner?.entity == null) return;
       if (ItemManager.Instance == null) return;
-      if (ContextMenuHandler.Instance.ContextualItem == this)
+      if (ContextMenu.ContextualItem == this)
         CloseContextMenu();
       HideTooltip();
     }
 
     private void OnDestroy()
     {
-      if (ItemManager.Instance == null) return;
-      if (ContextMenuHandler.Instance.ContextualItem == this)
+      if (owner?.entity == null) return;
+      if (ContextMenu.ContextualItem == this)
         CloseContextMenu();
       HideTooltip();
       ItemManager.ItemChange -= OnInstanceUpdate;
@@ -155,6 +154,7 @@ namespace ClaraMundi
 
     private void Update()
     {
+      if (owner?.entity == null) return;
       if (doubleClickTimer > 0)
         doubleClickTimer -= Time.deltaTime;
       if (doubleClickTimer < 0)
@@ -312,7 +312,7 @@ namespace ClaraMundi
     public void OpenContextMenu()
     {
       if (Item == null || ItemInstance == null) return;
-      ContextMenuHandler.Instance.SetState(this, FormElement);
+      ContextMenu.ContextualItem = this;
       ContextMenu.SetItemActive("Drop", Item.Droppable && ShowEquippedStatus);
       ContextMenu.SetItemActive("Use", Item.Type == ItemType.Consumable && ShowEquippedStatus);
       var isEquipped = ItemInstance.IsEquipped;
@@ -321,13 +321,12 @@ namespace ClaraMundi
       ContextMenu.SetItemActive("Split", ItemInstance.Quantity > 1 && ShowEquippedStatus);
       ContextMenu.gameObject.SetActive(true);
       ContextMenu.transform.position = transform.position;
-
-      ContextMenuHandler.Instance.ItemMenu.SelectFirstElement();
+      ContextMenu.SelectFirstElement();
     }
 
     public void CloseContextMenu()
     {
-      ContextMenuHandler.Instance.ContextualItem = null;
+      ContextMenu.ContextualItem = null;
       ContextMenu.gameObject.SetActive(false);
       ContextMenu.transform.localPosition = new Vector2(0, 0);
     }

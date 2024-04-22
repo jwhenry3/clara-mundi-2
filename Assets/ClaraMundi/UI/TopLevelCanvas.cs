@@ -7,12 +7,6 @@ using System;
 
 namespace ClaraMundi
 {
-  [Serializable]
-  public struct Trigger
-  {
-    public string Key;
-    public List<CanvasGroupFocus> Value;
-  }
 
   [Serializable]
   public class ControlsDictionary : UnitySerializedDictionary<string, CanvasGroupFocus> { }
@@ -20,19 +14,16 @@ namespace ClaraMundi
   {
 
     public static TopLevelCanvas Instance;
+    public bool IsDebug;
+    public GameObject Container;
     public InputActionAsset InputActionAsset;
-
-    private InputActionMap UI;
     private InputActionMap World;
 
     public ControlsDictionary Controls;
-    public List<Trigger> Triggers;
-    public List<InputAction> BoundActions;
     void Start()
     {
-      BoundActions = new();
       Instance = this;
-      UI = InputActionAsset.FindActionMap("UI");
+      Container.SetActive(IsDebug);
       World = InputActionAsset.FindActionMap("Player");
     }
     void OnEnable()
@@ -100,13 +91,15 @@ namespace ClaraMundi
       if (World == null) return;
       bool shouldDisableWorldInput = Controls["Menu"].gameObject.activeInHierarchy;
       if (World.enabled && shouldDisableWorldInput)
-      {
         World.Disable();
-      }
       else if (!World.enabled && !shouldDisableWorldInput)
-      {
         World.Enable();
-      }
+
+
+      if (IsDebug) return;
+      bool shouldEnableUI = PlayerManager.Instance?.LocalPlayer != null;
+      if (Container.activeSelf != shouldEnableUI)
+        Container.SetActive(shouldEnableUI);
     }
 
     void OnCancel(InputAction.CallbackContext context)
@@ -114,9 +107,7 @@ namespace ClaraMundi
       if (Controls["Menu"].gameObject.activeInHierarchy)
       {
         if (Controls["Menu"].canvasGroup.interactable)
-        {
           Controls["Menu"].gameObject.SetActive(false);
-        }
       }
     }
   }

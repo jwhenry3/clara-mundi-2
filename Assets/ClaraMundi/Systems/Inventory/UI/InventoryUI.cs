@@ -9,6 +9,10 @@ namespace ClaraMundi
     public static InventoryUI Instance;
     readonly OwningEntityHolder owner = new();
     public ItemUI ItemNodePrefab;
+
+    public CanvasGroupFocus Focus;
+    public ContextMenu ItemContextMenu;
+
     [HideInInspector]
     public ItemUI ContextualItem;
 
@@ -17,12 +21,12 @@ namespace ClaraMundi
     public Transform General;
     public Transform QuestItems;
 
-    public Form Form;
 
 
     private void Awake()
     {
       Instance = this;
+      Focus ??= GetComponent<CanvasGroupFocus>();
     }
 
     private void OnEnable()
@@ -84,7 +88,6 @@ namespace ClaraMundi
         instance.gameObject.name = item.Name;
         instance.OnDoubleClick += OnUseOrEquipItem;
       }
-      Form?.InitializeElements();
     }
     protected override void OnPlayerChange(Player _player)
     {
@@ -108,67 +111,47 @@ namespace ClaraMundi
         default:
           return;
       }
-      Form.PreviouslySelected?.Activate();
-    }
-
-    private IEnumerator RevertFocus()
-    {
-      yield return new WaitForSeconds(0.1f);
-      if (Form != null)
-      {
-        if (Form.PreviouslySelected != null)
-        {
-          Form.PreviouslySelected.Activate();
-        }
-        else if (Form.AutoFocusElement != null)
-        {
-          Form.AutoFocusElement.Activate();
-        }
-        else if (Form.FirstElement != null)
-        {
-          Form.FirstElement.Activate();
-        }
-      }
+      Focus.Select();
     }
 
     public void CloseContextMenu()
     {
-      EventSystem.current.SetSelectedGameObject(ContextMenuHandler.Instance.ContextualItem?.gameObject);
-      ContextMenuHandler.Instance.ContextualItem = null;
-      ContextMenuHandler.Instance.ItemMenu.gameObject.SetActive(false);
+      EventSystem.current.SetSelectedGameObject(ItemContextMenu.ContextualItem?.gameObject);
+      ItemContextMenu.ContextualItem = null;
+      ItemContextMenu.gameObject.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-      if (ContextMenuHandler.Instance.ContextualItem != null)
+      if (ItemContextMenu.ContextualItem != null)
         CloseContextMenu();
       else
-        StartCoroutine(RevertFocus());
+        Focus.Select();
     }
 
     public void DropItem()
     {
-      player.Inventory.DropItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, 1);
+      player.Inventory.DropItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, 1);
       CloseContextMenu();
     }
     public void EquipItem()
     {
-      player.Inventory.EquipItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, true);
+      player.Inventory.EquipItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, true);
       CloseContextMenu();
     }
     public void UnequipItem()
     {
-      player.Inventory.UnequipItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId);
+      player.Inventory.UnequipItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId);
       CloseContextMenu();
     }
     public void UseItem()
     {
-      player.Inventory.UseItem(ContextMenuHandler.Instance.ContextualItem.ItemInstance.ItemInstanceId, 1);
+      player.Inventory.UseItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, 1);
       CloseContextMenu();
     }
     public void LinkToChat()
     {
-      ContextMenuHandler.Instance.ContextualItem.LinkToChat();
+      ItemContextMenu.ContextualItem.LinkToChat();
       CloseContextMenu();
     }
 

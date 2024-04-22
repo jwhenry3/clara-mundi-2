@@ -14,7 +14,6 @@ namespace ClaraMundi
     public ServerUI ServerPrefab;
 
     public ServerEntry SelectedServer;
-    public Form Form;
 
     private void OnEnable()
     {
@@ -39,8 +38,6 @@ namespace ClaraMundi
       }
 
       StatusText.text = servers.Count > 0 ? "" : "No servers currently online";
-
-      Form?.InitializeElements();
     }
 
     public void EnterGame()

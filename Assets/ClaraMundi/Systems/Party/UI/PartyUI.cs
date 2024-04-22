@@ -16,7 +16,7 @@ namespace ClaraMundi
     public Transform PartyMenuContainer;
     public PartyMemberUI PartyMemberPrefab;
 
-    public GameObject PlayerContextMenu;
+    public ContextMenu PlayerContextMenu;
     public string ContextualCharacterName;
     public GameObject CreateButton;
     public GameObject CreateTopButton;
@@ -26,6 +26,8 @@ namespace ClaraMundi
     public GameObject PromoteLeaderButton;
     public GameObject KickButton;
 
+    public CanvasGroupFocus PartyMenuFocus;
+
 
     public PartyMemberUI PartyMemberMenuItemPrefab;
 
@@ -34,11 +36,10 @@ namespace ClaraMundi
 
     public Button InviteButton;
 
-    public Form Form;
-
     public override void Start()
     {
       base.Start();
+      PartyMenuFocus ??= GetComponent<CanvasGroupFocus>();
       Instance = this;
     }
 
@@ -114,7 +115,6 @@ namespace ClaraMundi
 
     public void CreateParty()
     {
-      Form.PreviouslySelected = InviteButton.GetComponent<FormElement>();
       PlayerManager.Instance.LocalPlayer.Party.CreateParty();
       Refocus();
       InviteDialog.SetActive(true);
@@ -143,7 +143,7 @@ namespace ClaraMundi
 
     public void OpenPlayerContextMenu(Vector3 position, string characterName)
     {
-      ContextualCharacterName = characterName;
+      PlayerContextMenu.ContextualText = characterName;
       var myName = PlayerManager.Instance.LocalPlayer.Character.name;
       PlayerContextMenu.transform.position = position;
       CreateButton.SetActive(Party == null);
@@ -152,7 +152,11 @@ namespace ClaraMundi
       WhisperButton.SetActive(characterName != myName);
       KickButton.SetActive(Party != null && Party.leader == myName && characterName != myName);
       if (Party == null || characterName != myName)
-        PlayerContextMenu.SetActive(true);
+      {
+        PlayerContextMenu.gameObject.SetActive(true);
+        PlayerContextMenu.SelectFirstElement();
+      }
+
     }
 
     public void PromoteLeader()
@@ -169,10 +173,10 @@ namespace ClaraMundi
 
     public void Whisper()
     {
-      ChatWindowUI.Instance.ContextualCharacterName = ContextualCharacterName;
+      ChatWindowUI.Instance.ContextualCharacterName = PlayerContextMenu.ContextualText;
       ChatWindowUI.Instance.Whisper();
-      ContextualCharacterName = null;
-      PlayerContextMenu.SetActive(false);
+      PlayerContextMenu.ContextualText = "";
+      PlayerContextMenu.gameObject.SetActive(false);
       InviteDialog.SetActive(false);
       InviteField.text = "";
     }
@@ -180,19 +184,11 @@ namespace ClaraMundi
     public void Refocus()
     {
       ContextualCharacterName = null;
-      PlayerContextMenu.SetActive(false);
+      PartyMenuFocus.Select();
+      PlayerContextMenu.ContextualGameObject = null;
+      PlayerContextMenu.gameObject.SetActive(false);
       InviteDialog.SetActive(false);
       InviteField.text = "";
-      if (Form.PreviouslySelected != null)
-      {
-        EventSystem.current.SetSelectedGameObject(Form.PreviouslySelected.gameObject);
-        Form.PreviouslySelected = null;
-        return;
-      }
-      if (Form?.AutoFocusElement != null)
-      {
-        EventSystem.current.SetSelectedGameObject(Form.AutoFocusElement.gameObject);
-      }
     }
   }
 }
