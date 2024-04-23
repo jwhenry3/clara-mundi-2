@@ -47,7 +47,6 @@ namespace ClaraMundi
         foreach (ContextMenuItem item in GetComponentsInChildren<ContextMenuItem>())
           Options.Add(item.Label.text, item);
       }
-      if (Options.Count != 0) return;
       foreach (var item in MenuItems)
       {
         var instance = Instantiate(ContextMenuItemPrefab, transform, false);
@@ -55,6 +54,7 @@ namespace ClaraMundi
         instance.Data = item;
         // close the menu when the menu item has been clicked
         instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
+        instance.gameObject.SetActive(true);
         Options.Add(item.Label, instance);
       }
     }

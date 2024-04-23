@@ -33,8 +33,8 @@ namespace ClaraMundi
 
     Dictionary<string, string> MessageAttachments = new();
 
-    public TMP_InputField RecipientField;
-    public TMP_InputField InputField;
+    public InputFieldWithHybridNav RecipientField;
+    public InputFieldWithHybridNav InputField;
     public Transform SocialContainer;
     public Transform CombatContainer;
     public Transform SystemContainer;
@@ -57,11 +57,13 @@ namespace ClaraMundi
     private void OnEnable()
     {
       InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
+      InputActionAsset.FindAction("UI/OpenChat").performed += OnChat;
     }
 
     private void OnDisable()
     {
       InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
+      InputActionAsset.FindAction("UI/OpenChat").performed -= OnChat;
     }
 
     private void OnCancel(InputAction.CallbackContext context)
@@ -77,6 +79,13 @@ namespace ClaraMundi
         else
           MoveSibling.ToBack();
       }
+    }
+
+    void OnChat(InputAction.CallbackContext context)
+    {
+      MoveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(InputField.gameObject);
+      InputField.ActivateInputField();
     }
 
     private void OnDestroy()

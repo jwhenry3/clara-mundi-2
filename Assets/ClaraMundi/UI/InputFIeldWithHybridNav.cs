@@ -31,16 +31,33 @@ namespace ClaraMundi
 
     public event Action SubmitAction;
 
-    private bool listening;
+    private TabNavigation tabNav;
 
     protected override void Start()
     {
       base.Start();
       scroller = GetComponentInParent<ScrollRect>();
       focus = GetComponentInParent<CanvasGroupFocus>();
+      tabNav = new()
+      {
+        focus = focus,
+        selectable = this
+      };
       if (focus == null)
         Debug.Log(gameObject.name + " could not find focus object");
+      onValidateInput += delegate (string input, int charIndex, char addedChar) { return DisableTabValidate(addedChar); };
     }
+    private char DisableTabValidate(char charToValidate)
+    {
+      //Checks if a tab sign is entered....
+      if (charToValidate == '\t')
+      {
+        // ... if it is change it to an empty character.
+        charToValidate = '\0';
+      }
+      return charToValidate;
+    }
+
     private Selectable GetActive(Selectable selectable)
     {
       if (selectable != null && selectable.gameObject.activeInHierarchy)
@@ -68,6 +85,10 @@ namespace ClaraMundi
       return GetActive(rightSelectable) ?? GetActive(fallbackRightSelectable) ?? base.FindSelectableOnRight();
     }
 
+    void Update()
+    {
+      tabNav?.Update();
+    }
     public override void OnSelect(BaseEventData eventData)
     {
       base.OnSelect(eventData);
@@ -78,30 +99,12 @@ namespace ClaraMundi
       {
         focus.LastFocused = null;
         focus.LastFocusInput = this;
-        focus.InputActionAsset.FindAction("UI/NextElement").performed += OnNext;
-        focus.InputActionAsset.FindAction("UI/PreviousElement").performed += OnPrevious;
-        focus.InputActionAsset.FindAction("UI/Submit").performed += OnSubmit;
-        listening = true;
+        tabNav?.Listen();
       }
       SnapTo(transform);
       ActivateInputField();
     }
 
-    void OnNext(InputAction.CallbackContext context)
-    {
-      var next = FindSelectableOnRight() ?? FindSelectableOnDown();
-      Debug.Log("Next Element Please");
-      Debug.Log(next);
-      if (next != null)
-        EventSystem.current.SetSelectedGameObject(next.gameObject);
-    }
-
-    void OnPrevious(InputAction.CallbackContext context)
-    {
-      var previous = FindSelectableOnLeft() ?? FindSelectableOnUp();
-      if (previous != null)
-        EventSystem.current.SetSelectedGameObject(previous.gameObject);
-    }
 
     public override void OnDeselect(BaseEventData eventData)
     {
@@ -109,10 +112,7 @@ namespace ClaraMundi
       CurrentInput = null;
       if (focus != null)
       {
-        focus.InputActionAsset.FindAction("UI/NextElement").performed -= OnNext;
-        focus.InputActionAsset.FindAction("UI/PreviousElement").performed -= OnPrevious;
-        focus.InputActionAsset.FindAction("UI/Submit").performed -= OnSubmit;
-        listening = false;
+        tabNav?.StopListening();
       }
     }
 
@@ -138,21 +138,10 @@ namespace ClaraMundi
         LastInput = null;
       if (focus != null)
       {
-        if (listening)
-        {
-          focus.InputActionAsset.FindAction("UI/NextElement").performed -= OnNext;
-          focus.InputActionAsset.FindAction("UI/PreviousElement").performed -= OnPrevious;
-          focus.InputActionAsset.FindAction("UI/Submit").performed -= OnSubmit;
-        }
+        tabNav?.StopListening();
         if (focus.LastFocusInput == this)
           focus.LastFocusInput = null;
       }
-    }
-
-
-    private void OnSubmit(InputAction.CallbackContext context)
-    {
-      SubmitAction?.Invoke();
     }
   }
 }

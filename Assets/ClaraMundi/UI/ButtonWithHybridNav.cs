@@ -31,12 +31,18 @@ namespace ClaraMundi
     public Action onPointerExit;
     public Action onSelect;
     public Action onDeselect;
+    private TabNavigation tabNav;
 
     protected override void Start()
     {
       base.Start();
       scroller = GetComponentInParent<ScrollRect>();
       focus = GetComponentInParent<CanvasGroupFocus>();
+      tabNav = new()
+      {
+        focus = focus,
+        selectable = this
+      };
       if (focus == null)
         Debug.Log(gameObject.name + " could not find focus object");
     }
@@ -77,6 +83,7 @@ namespace ClaraMundi
       {
         focus.LastFocusInput = null;
         focus.LastFocused = this;
+        tabNav.Listen();
       }
       SnapTo(transform);
       onSelect?.Invoke();
@@ -103,11 +110,13 @@ namespace ClaraMundi
       base.OnDeselect(eventData);
       CurrentButton = null;
       onDeselect?.Invoke();
+      tabNav?.StopListening();
     }
     protected override void OnDisable()
     {
       base.OnDisable();
       onDeselect?.Invoke();
+      tabNav?.StopListening();
       if (LastButton == this)
         LastButton = null;
       if (focus != null)
@@ -115,6 +124,11 @@ namespace ClaraMundi
         if (focus.LastFocused == this)
           focus.LastFocused = null;
       }
+    }
+
+    void Update()
+    {
+      tabNav?.Update();
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

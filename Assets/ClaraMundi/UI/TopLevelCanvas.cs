@@ -10,9 +10,9 @@ namespace ClaraMundi
 
   [Serializable]
   public class ControlsDictionary : UnitySerializedDictionary<string, CanvasGroupFocus> { }
-  public class TopLevelCanvas : MonoBehaviour
+  public class TopLevelCanvas : PlayerUI
   {
-
+    public EventSystem EventSystem;
     public static TopLevelCanvas Instance;
     public bool IsDebug;
     public GameObject Container;
@@ -20,14 +20,23 @@ namespace ClaraMundi
     private InputActionMap World;
 
     public ControlsDictionary Controls;
-    void Start()
+    public override void Start()
     {
+      base.Start();
       Instance = this;
+      EventSystem.gameObject.SetActive(IsDebug);
       Container.SetActive(IsDebug);
       World = InputActionAsset.FindActionMap("Player");
     }
+
+    protected override void OnPlayerChange(Player _player)
+    {
+      base.OnPlayerChange(_player);
+      Container.SetActive(IsDebug || _player != null);
+    }
     void OnEnable()
     {
+      CloseAll();
       InputActionAsset.FindAction("UI/Navigate").performed += OnSelect;
       InputActionAsset.FindAction("UI/NextElement").performed += OnSelect;
       InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
@@ -45,6 +54,12 @@ namespace ClaraMundi
       InputActionAsset.FindAction("UI/Journal").performed += Controls["Journal"].Show;
       InputActionAsset.FindAction("UI/Map").performed += Controls["Map"].Show;
 
+    }
+
+    void CloseAll()
+    {
+      foreach (var kvp in Controls)
+        kvp.Value.gameObject.SetActive(false);
     }
 
     void OnDisable()
@@ -101,7 +116,7 @@ namespace ClaraMundi
       if (Controls["Menu"].gameObject.activeInHierarchy)
       {
         if (Controls["Menu"].canvasGroup.interactable)
-          Controls["Menu"].gameObject.SetActive(false);
+          CloseAll();
       }
     }
   }
