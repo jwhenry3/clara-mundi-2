@@ -38,11 +38,9 @@ namespace ClaraMundi
       base.Start();
       scroller = GetComponentInParent<ScrollRect>();
       focus = GetComponentInParent<CanvasGroupFocus>();
-      tabNav = new()
-      {
-        focus = focus,
-        selectable = this
-      };
+      tabNav = GetComponent<TabNavigation>() ?? gameObject.AddComponent<TabNavigation>();
+      tabNav.selectable = this;
+      tabNav.focus = focus;
       if (focus == null)
         Debug.Log(gameObject.name + " could not find focus object");
       onValidateInput += delegate (string input, int charIndex, char addedChar) { return DisableTabValidate(addedChar); };
@@ -89,6 +87,11 @@ namespace ClaraMundi
     {
       tabNav?.Update();
     }
+
+    void OnSubmit(InputAction.CallbackContext context)
+    {
+      SubmitAction?.Invoke();
+    }
     public override void OnSelect(BaseEventData eventData)
     {
       base.OnSelect(eventData);
@@ -99,7 +102,7 @@ namespace ClaraMundi
       {
         focus.LastFocused = null;
         focus.LastFocusInput = this;
-        tabNav?.Listen();
+        tabNav?.Listen(OnSubmit);
       }
       SnapTo(transform);
       ActivateInputField();
@@ -112,7 +115,7 @@ namespace ClaraMundi
       CurrentInput = null;
       if (focus != null)
       {
-        tabNav?.StopListening();
+        tabNav?.StopListening(OnSubmit);
       }
     }
 

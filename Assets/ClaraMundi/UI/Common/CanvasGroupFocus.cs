@@ -67,9 +67,10 @@ namespace ClaraMundi
           cancelAction.performed += OnCancel;
         }
       }
-      foreach (var sibling in MoveToFrontOnEnable)
+      if (MoveToFrontOnEnable != null)
       {
-        sibling.ToFront();
+        foreach (var sibling in MoveToFrontOnEnable)
+          sibling.ToFront();
       }
       lastInteractable = false;
       StartCoroutine(DelayEnable());
@@ -88,7 +89,10 @@ namespace ClaraMundi
       if (cancelAction != null)
         cancelAction.performed -= OnCancel;
       foreach (var group in EnableOnDisable)
-        group.interactable = true;
+      {
+        if (group.gameObject.activeInHierarchy)
+          group.interactable = true;
+      }
       foreach (var group in DisableOnDisable)
         group.interactable = false;
       foreach (var obj in ShowOnDisable)
@@ -157,7 +161,6 @@ namespace ClaraMundi
     IEnumerator DelaySelect(GameObject gameObject)
     {
       yield return new WaitForSeconds(0.1f);
-      Debug.Log("Selecting: " + gameObject?.name);
       if (gameObject != null)
         EventSystem.current.SetSelectedGameObject(gameObject);
     }

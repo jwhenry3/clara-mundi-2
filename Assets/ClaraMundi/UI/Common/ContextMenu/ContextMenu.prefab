@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3097313783233342244}
   - component: {fileID: 3097313783233342247}
   - component: {fileID: 3097313783233342299}
-  - component: {fileID: 1244960828973386887}
   m_Layer: 0
   m_Name: ContextMenu
   m_TagString: Untagged
@@ -133,28 +132,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: 
+  CurrentValue: 
   ContextMenuItemPrefab: {fileID: 0}
   MenuItems: []
---- !u!114 &1244960828973386887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3097313783233342240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7a48cf10d84a3a94ddef09de884efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
-  Submit:
-    m_PersistentCalls:
-      m_Calls: []
-  FirstElement: {fileID: 0}
-  LastElement: {fileID: 0}
-  IsOnlyUI: 0
-  Elements: []
+  ContextualGameObject: {fileID: 0}
+  ContextualItem: {fileID: 0}
+  ContextualPlayer: {fileID: 0}
+  ContextualText: 
 --- !u!1 &3097313783908959529
 GameObject:
   m_ObjectHideFlags: 0

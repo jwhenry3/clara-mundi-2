@@ -50,23 +50,14 @@ namespace ClaraMundi
 
     public void ChangeTab(string tabName)
     {
-      if (tabName == "")
+      foreach (var kvp in TabsDict)
       {
-        Deactivate(CurrentTab);
-        CurrentTab = "";
-        return;
+        if (kvp.Key != tabName)
+          Deactivate(kvp.Key);
       }
-      if (!TabsDict.ContainsKey(tabName)) return;
-      if (TabsDict[tabName].Button.IsActivated)
-      {
-        if (!canDeactivate) return;
-        Deactivate(tabName);
-        CurrentTab = "";
-        return;
-      }
-      Activate(tabName);
-
       CurrentTab = tabName;
+      if (!TabsDict.ContainsKey(tabName)) return;
+      Activate(tabName);
     }
 
     private void Deactivate(string tabName)

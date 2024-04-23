@@ -15,8 +15,6 @@ GameObject:
   - component: {fileID: 8828430612890500031}
   - component: {fileID: 1522418398745494066}
   - component: {fileID: 4639092858992443160}
-  - component: {fileID: 8574063140884318483}
-  - component: {fileID: -3430813201896461708}
   m_Layer: 0
   m_Name: ContextMenuItem
   m_TagString: Untagged
@@ -151,7 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 794472155190224935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -198,35 +196,14 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8574063140884318483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 794472155190224935}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b09d19ace4ce44459b92e72aa837b391, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-3430813201896461708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 794472155190224935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AutoFocusElement: {fileID: 0}
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  CanSubmit: 0
-  InputField: {fileID: 0}
+  upSelectable: {fileID: 0}
+  fallbackUpSelectable: {fileID: 0}
+  downSelectable: {fileID: 0}
+  fallbackDownSelectable: {fileID: 0}
+  leftSelectable: {fileID: 0}
+  fallbackLeftSelectable: {fileID: 0}
+  rightSelectable: {fileID: 0}
+  fallbackRightSelectable: {fileID: 0}
 --- !u!1 &794472156124763793
 GameObject:
   m_ObjectHideFlags: 0

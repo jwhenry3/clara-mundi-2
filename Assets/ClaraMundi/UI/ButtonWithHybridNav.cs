@@ -1,5 +1,6 @@
 using System;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -38,11 +39,9 @@ namespace ClaraMundi
       base.Start();
       scroller = GetComponentInParent<ScrollRect>();
       focus = GetComponentInParent<CanvasGroupFocus>();
-      tabNav = new()
-      {
-        focus = focus,
-        selectable = this
-      };
+      tabNav = GetComponent<TabNavigation>() ?? gameObject.AddComponent<TabNavigation>();
+      tabNav.selectable = this;
+      tabNav.focus = focus;
       if (focus == null)
         Debug.Log(gameObject.name + " could not find focus object");
     }
@@ -124,11 +123,6 @@ namespace ClaraMundi
         if (focus.LastFocused == this)
           focus.LastFocused = null;
       }
-    }
-
-    void Update()
-    {
-      tabNav?.Update();
     }
 
     public override void OnPointerEnter(PointerEventData eventData)

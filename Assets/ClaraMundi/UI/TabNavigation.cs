@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace ClaraMundi
 {
-  public class TabNavigation
+  public class TabNavigation : MonoBehaviour
   {
 
     public CanvasGroupFocus focus;
@@ -33,8 +33,7 @@ namespace ClaraMundi
       if (!listening)
       {
         Listen();
-        if (OnSubmit != null)
-          focus.InputActionAsset.FindAction("UI/Submit").performed += OnSubmit;
+        focus.InputActionAsset.FindAction("UI/Submit").performed += OnSubmit;
         listening = true;
       }
     }
@@ -55,8 +54,7 @@ namespace ClaraMundi
       if (focus != null && listening)
       {
         StopListening();
-        if (OnSubmit != null)
-          focus.InputActionAsset.FindAction("UI/Submit").performed -= OnSubmit;
+        focus.InputActionAsset.FindAction("UI/Submit").performed -= OnSubmit;
         listening = false;
       }
     }
@@ -93,8 +91,6 @@ namespace ClaraMundi
             hasPressedPrevious = false;
             hasPressedNext = false;
             var next = selectable.FindSelectableOnRight() ?? selectable.FindSelectableOnDown();
-            Debug.Log("Next Element Please");
-            Debug.Log(next);
             if (next != null)
               EventSystem.current.SetSelectedGameObject(next.gameObject);
           }

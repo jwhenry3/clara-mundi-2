@@ -31,28 +31,48 @@ namespace ClaraMundi
 
     protected override void OnPlayerChange(Player _player)
     {
+      if (player != null)
+      {
+        InputActionAsset.FindAction("UI/Navigate").performed -= OnSelect;
+        InputActionAsset.FindAction("UI/NextElement").performed -= OnSelect;
+        InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
+        InputActionAsset.FindAction("UI/Menu").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Character").performed -= Controls["Character"].Show;
+        InputActionAsset.FindAction("UI/Character").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed -= Controls["Skills"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Inventory"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Party").performed -= Controls["Party"].Show;
+        InputActionAsset.FindAction("UI/Party").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed -= Controls["Journal"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Map").performed -= Controls["Map"].Show;
+        InputActionAsset.FindAction("UI/Map").performed -= Controls["Menu"].Show;
+      }
+      Debug.Log("Player Changed");
       base.OnPlayerChange(_player);
       Container.SetActive(IsDebug || _player != null);
-    }
-    void OnEnable()
-    {
-      CloseAll();
-      InputActionAsset.FindAction("UI/Navigate").performed += OnSelect;
-      InputActionAsset.FindAction("UI/NextElement").performed += OnSelect;
-      InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
-      InputActionAsset.FindAction("UI/Menu").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Character").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Skills").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Inventory").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Party").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Journal").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Map").performed += Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Character").performed += Controls["Character"].Show;
-      InputActionAsset.FindAction("UI/Skills").performed += Controls["Skills"].Show;
-      InputActionAsset.FindAction("UI/Inventory").performed += Controls["Inventory"].Show;
-      InputActionAsset.FindAction("UI/Party").performed += Controls["Party"].Show;
-      InputActionAsset.FindAction("UI/Journal").performed += Controls["Journal"].Show;
-      InputActionAsset.FindAction("UI/Map").performed += Controls["Map"].Show;
+      if (_player != null)
+      {
+        CloseAll();
+        InputActionAsset.FindAction("UI/Navigate").performed += OnSelect;
+        InputActionAsset.FindAction("UI/NextElement").performed += OnSelect;
+        InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
+        InputActionAsset.FindAction("UI/Menu").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Character").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Party").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Map").performed += Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Character").performed += Controls["Character"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed += Controls["Skills"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed += Controls["Inventory"].Show;
+        InputActionAsset.FindAction("UI/Party").performed += Controls["Party"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed += Controls["Journal"].Show;
+        InputActionAsset.FindAction("UI/Map").performed += Controls["Map"].Show;
+      }
 
     }
 
@@ -64,22 +84,25 @@ namespace ClaraMundi
 
     void OnDisable()
     {
-      InputActionAsset.FindAction("UI/Navigate").performed -= OnSelect;
-      InputActionAsset.FindAction("UI/NextElement").performed -= OnSelect;
-      InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
-      InputActionAsset.FindAction("UI/Menu").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Character").performed -= Controls["Character"].Show;
-      InputActionAsset.FindAction("UI/Character").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Skills").performed -= Controls["Skills"].Show;
-      InputActionAsset.FindAction("UI/Skills").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Inventory"].Show;
-      InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Party").performed -= Controls["Party"].Show;
-      InputActionAsset.FindAction("UI/Party").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Journal").performed -= Controls["Journal"].Show;
-      InputActionAsset.FindAction("UI/Journal").performed -= Controls["Menu"].Show;
-      InputActionAsset.FindAction("UI/Map").performed -= Controls["Map"].Show;
-      InputActionAsset.FindAction("UI/Map").performed -= Controls["Menu"].Show;
+      if (player != null)
+      {
+        InputActionAsset.FindAction("UI/Navigate").performed -= OnSelect;
+        InputActionAsset.FindAction("UI/NextElement").performed -= OnSelect;
+        InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
+        InputActionAsset.FindAction("UI/Menu").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Character").performed -= Controls["Character"].Show;
+        InputActionAsset.FindAction("UI/Character").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed -= Controls["Skills"].Show;
+        InputActionAsset.FindAction("UI/Skills").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Inventory"].Show;
+        InputActionAsset.FindAction("UI/Inventory").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Party").performed -= Controls["Party"].Show;
+        InputActionAsset.FindAction("UI/Party").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed -= Controls["Journal"].Show;
+        InputActionAsset.FindAction("UI/Journal").performed -= Controls["Menu"].Show;
+        InputActionAsset.FindAction("UI/Map").performed -= Controls["Map"].Show;
+        InputActionAsset.FindAction("UI/Map").performed -= Controls["Menu"].Show;
+      }
     }
     public void OnSelect(InputAction.CallbackContext eventData)
     {

@@ -28,7 +28,7 @@ namespace ClaraMundi
 
     public void CheckAccount()
     {
-      if (SessionManager.Instance.PlayerAccount != null)
+      if (SessionManager.Instance != null && SessionManager.Instance.PlayerAccount != null)
         ToCharacterSelection();
       else
         ToLogin();
@@ -41,8 +41,8 @@ namespace ClaraMundi
 
     public void ToLogin()
     {
-      SessionManager.Instance.Clear();
-      Client.Instance.Disconnect();
+      SessionManager.Instance?.Clear();
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(false);
       CharacterSelectionPanel.gameObject.SetActive(false);
       CreateCharacterPanel.gameObject.SetActive(false);
@@ -53,8 +53,8 @@ namespace ClaraMundi
 
     public void ToRegister()
     {
-      SessionManager.Instance.Clear();
-      Client.Instance.Disconnect();
+      SessionManager.Instance?.Clear();
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(false);
       CharacterSelectionPanel.gameObject.SetActive(false);
       CreateCharacterPanel.gameObject.SetActive(false);
@@ -65,7 +65,7 @@ namespace ClaraMundi
 
     public void ToServerList()
     {
-      Client.Instance.Disconnect();
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(true);
       CharacterSelectionPanel.gameObject.SetActive(false);
       CreateCharacterPanel.gameObject.SetActive(false);
@@ -76,10 +76,10 @@ namespace ClaraMundi
 
     public void ToCharacterSelection()
     {
-      SessionManager.Instance.PlayerCharacter = null;
-      Client.Instance.Disconnect();
+      if (SessionManager.Instance != null)
+        SessionManager.Instance.PlayerCharacter = null;
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(false);
-      SessionManager.Instance.PlayerCharacter = null;
       CharacterSelectionPanel.gameObject.SetActive(true);
       CreateCharacterPanel.gameObject.SetActive(false);
       LoginRegisterPanel.gameObject.SetActive(false);
@@ -89,8 +89,9 @@ namespace ClaraMundi
 
     public void ToCreateCharacter()
     {
-      SessionManager.Instance.PlayerCharacter = null;
-      Client.Instance.Disconnect();
+      if (SessionManager.Instance != null)
+        SessionManager.Instance.PlayerCharacter = null;
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(false);
       CharacterSelectionPanel.gameObject.SetActive(false);
       CreateCharacterPanel.gameObject.SetActive(true);
@@ -101,8 +102,8 @@ namespace ClaraMundi
 
     public void CloseAll()
     {
-      SessionManager.Instance.Clear();
-      Client.Instance.Disconnect();
+      SessionManager.Instance?.Clear();
+      Client.Instance?.Disconnect();
       ServerSelectionPanel.gameObject.SetActive(false);
       CharacterSelectionPanel.gameObject.SetActive(false);
       CreateCharacterPanel.gameObject.SetActive(false);
@@ -113,6 +114,7 @@ namespace ClaraMundi
 
     public void OnEnterGame()
     {
+      if (SessionManager.Instance == null && Client.Instance == null) return;
       if (SessionManager.Instance.PlayerAccount == null) return;
       if (SessionManager.Instance.PlayerCharacter == null) return;
       Client.Instance.Connect();

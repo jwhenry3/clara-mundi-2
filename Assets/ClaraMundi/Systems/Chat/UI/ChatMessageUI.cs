@@ -82,7 +82,7 @@ namespace ClaraMundi
       {
         if (ItemTooltip.NodeId == NodeId) return;
         ItemTooltip.NodeId = NodeId;
-        ShowTooltip(selectedLink.Substring(5));
+        ShowTooltip(selectedLink["item:".Length..]);
         return;
       }
 
@@ -96,7 +96,7 @@ namespace ClaraMundi
       if (selectedLink == "") return;
       if (!selectedLink.Contains("player:")) return;
       if (eventData.button == PointerEventData.InputButton.Right)
-        ChatWindowUI.Instance.OpenPlayerContextMenu(eventData, selectedLink.Substring(7));
+        ChatWindowUI.Instance.OpenPlayerContextMenu(eventData, selectedLink["player:".Length..]);
     }
 
     private void ShowTooltip(string itemOrInstanceId)
