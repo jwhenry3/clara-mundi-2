@@ -1,3 +1,4 @@
+using System;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -25,6 +26,11 @@ namespace ClaraMundi
     private CanvasGroupFocus focus;
 
     private ScrollRect scroller;
+
+    public Action onPointerEnter;
+    public Action onPointerExit;
+    public Action onSelect;
+    public Action onDeselect;
 
     protected override void Start()
     {
@@ -73,6 +79,7 @@ namespace ClaraMundi
         focus.LastFocused = this;
       }
       SnapTo(transform);
+      onSelect?.Invoke();
     }
 
     public void SnapTo(Transform child)
@@ -95,10 +102,12 @@ namespace ClaraMundi
     {
       base.OnDeselect(eventData);
       CurrentButton = null;
+      onDeselect?.Invoke();
     }
     protected override void OnDisable()
     {
       base.OnDisable();
+      onDeselect?.Invoke();
       if (LastButton == this)
         LastButton = null;
       if (focus != null)
@@ -106,6 +115,17 @@ namespace ClaraMundi
         if (focus.LastFocused == this)
           focus.LastFocused = null;
       }
+    }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+      base.OnPointerEnter(eventData);
+      onPointerEnter?.Invoke();
+    }
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+      base.OnPointerExit(eventData);
+      onPointerExit?.Invoke();
     }
   }
 }

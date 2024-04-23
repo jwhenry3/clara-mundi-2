@@ -12,6 +12,7 @@ namespace ClaraMundi
 
     public CanvasGroupFocus Focus;
     public ContextMenu ItemContextMenu;
+    public ItemTooltipUI Tooltip;
 
     [HideInInspector]
     public ItemUI ContextualItem;
@@ -27,6 +28,7 @@ namespace ClaraMundi
     {
       Instance = this;
       Focus ??= GetComponent<CanvasGroupFocus>();
+      CleanUp();
     }
 
     private void OnEnable()
@@ -83,6 +85,8 @@ namespace ClaraMundi
         }
         var instance = Instantiate(ItemNodePrefab, parent, false);
         instance.ShowEquippedStatus = true;
+        instance.Tooltip = Tooltip;
+        instance.ContextMenu = ItemContextMenu;
         instance.ItemInstanceId = itemInstance.ItemInstanceId;
         instance.SetOwner(owner);
         instance.gameObject.name = item.Name;

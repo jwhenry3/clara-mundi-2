@@ -11,6 +11,8 @@ namespace ClaraMundi
 
     public ContextMenu ItemContextMenu;
 
+    public ItemTooltipUI Tooltip;
+
     public GameObject Grid;
 
 
@@ -23,6 +25,8 @@ namespace ClaraMundi
           ItemUI item = child.GetComponent<ItemUI>();
           if (item != null)
           {
+            item.Tooltip = Tooltip;
+            item.ContextMenu = ItemContextMenu;
             item.EquipmentSlot = item.gameObject.name.ToLower();
             item.EquipmentUI = this;
             item.ShowEquippedStatus = false;

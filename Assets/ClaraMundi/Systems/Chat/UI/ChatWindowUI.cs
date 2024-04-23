@@ -16,7 +16,7 @@ namespace ClaraMundi
     public MoveSibling MoveSibling;
 
     public Action ToLastMenu;
-    public ItemTooltipUI Tooltip => TooltipHandler.Instance.ItemTooltipUI;
+    public ItemTooltipUI ItemTooltip;
 
     public GameObject Panel;
     public Transform ChatMessageContainer;

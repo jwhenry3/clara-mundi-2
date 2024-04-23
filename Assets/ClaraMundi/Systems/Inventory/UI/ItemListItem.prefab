@@ -306,7 +306,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeId: 3369c3a9-de88-4a88-8874-714bf73f492f
+  InventoryUI: {fileID: 0}
   EquipmentUI: {fileID: 0}
+  Tooltip: {fileID: 0}
+  ContextMenu: {fileID: 0}
   StorageId: inventory
   ItemInstance:
     ItemInstanceId: 6
@@ -320,11 +323,11 @@ MonoBehaviour:
   ItemName: {fileID: 383258789889690151}
   Quantity: {fileID: 33972649740098096}
   Icon: {fileID: 33972648516919267}
+  Button: {fileID: 7167611890462701064}
   ItemInstanceId: 0
   ItemStorage: {fileID: 0}
   updateQueued: 0
   EquipmentSlot: 
-  FormElement: {fileID: 0}
 --- !u!114 &2328696991581421158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -787,6 +790,17 @@ PrefabInstance:
       addedObject: {fileID: 33972649740098098}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
+--- !u!114 &7167611890462701064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2727412806977457136, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
+  m_PrefabInstance: {fileID: 5089576063082380792}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7167611890462701065 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2727412806977457137, guid: 229b7617008714845a66b453db9c4bb2, type: 3}

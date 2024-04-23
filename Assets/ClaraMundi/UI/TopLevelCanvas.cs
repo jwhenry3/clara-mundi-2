@@ -94,12 +94,6 @@ namespace ClaraMundi
         World.Disable();
       else if (!World.enabled && !shouldDisableWorldInput)
         World.Enable();
-
-
-      if (IsDebug) return;
-      bool shouldEnableUI = PlayerManager.Instance?.LocalPlayer != null;
-      if (Container.activeSelf != shouldEnableUI)
-        Container.SetActive(shouldEnableUI);
     }
 
     void OnCancel(InputAction.CallbackContext context)

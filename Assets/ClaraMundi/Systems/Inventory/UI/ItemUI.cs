@@ -7,9 +7,10 @@ using UnityEngine.UI;
 
 namespace ClaraMundi
 {
-  public class ItemUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+  public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
   {
     public string NodeId;
+    public InventoryUI InventoryUI;
     public EquipmentUI EquipmentUI;
     public OwningEntityHolder owner;
     public ItemTooltipUI Tooltip;
@@ -29,9 +30,8 @@ namespace ClaraMundi
     public TextMeshProUGUI Quantity;
     public Image Icon;
 
-    private Button Button;
+    public ButtonWithHybridNav Button;
     public int ItemInstanceId;
-    private Image Background;
     private bool hasItem;
     private float doubleClickTimer = 0;
 
@@ -55,8 +55,6 @@ namespace ClaraMundi
     private void Start()
     {
       NodeId = StringUtils.UniqueId();
-      Button = GetComponent<Button>();
-      Background = GetComponent<Image>();
       if (ItemManager.Instance == null) return;
       ItemManager.ItemChange += OnInstanceUpdate;
       if (_entityId != null)
@@ -165,7 +163,7 @@ namespace ClaraMundi
         updateQueued = false;
       }
 
-      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      if (EventSystem.current.currentSelectedGameObject == Button.gameObject)
         ShowTooltip();
       else
         HideTooltip();
@@ -280,32 +278,17 @@ namespace ClaraMundi
         Tooltip.EquippedTooltip.gameObject.SetActive(false);
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-      if (!Button.interactable) return;
-      if (!hasItem) return;
-      if (eventData.button == PointerEventData.InputButton.Right)
-        OpenContextMenu();
-      else
-      {
-        if (doubleClickTimer == 0)
-          doubleClickTimer = 0.5f;
-        else
-          OnDoubleClick?.Invoke(this);
-      }
-    }
-
     public void OnPointerEnter(PointerEventData eventData)
     {
       if (!Button.interactable) return;
-      if (EventSystem.current.currentSelectedGameObject != gameObject)
-        EventSystem.current.SetSelectedGameObject(gameObject);
+      if (EventSystem.current.currentSelectedGameObject != Button.gameObject)
+        EventSystem.current.SetSelectedGameObject(Button.gameObject);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
       if (!Button.interactable) return;
-      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      if (EventSystem.current.currentSelectedGameObject == Button.gameObject)
         EventSystem.current.SetSelectedGameObject(null);
     }
 

@@ -35,6 +35,8 @@ namespace ClaraMundi
     public CanvasGroup[] HideOnDisable;
     public CanvasGroup[] DisableOnDisable;
 
+    public MoveSibling[] MoveToFrontOnEnable;
+
     private InputAction cancelAction;
 
     public CanvasGroup canvasGroup
@@ -64,6 +66,10 @@ namespace ClaraMundi
           cancelAction = InputActionAsset.FindAction("UI/Cancel");
           cancelAction.performed += OnCancel;
         }
+      }
+      foreach (var sibling in MoveToFrontOnEnable)
+      {
+        sibling.ToFront();
       }
       lastInteractable = false;
       StartCoroutine(DelayEnable());
