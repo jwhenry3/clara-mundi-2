@@ -2,10 +2,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEditor.PackageManager;
 using System;
 
 namespace ClaraMundi
@@ -47,6 +45,7 @@ namespace ClaraMundi
     }
     private char DisableTabValidate(char charToValidate)
     {
+
       //Checks if a tab sign is entered....
       if (charToValidate == '\t')
       {

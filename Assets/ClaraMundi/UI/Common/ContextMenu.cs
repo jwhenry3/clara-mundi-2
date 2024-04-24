@@ -8,6 +8,7 @@ using Unity.Collections;
 using System.Collections;
 using Sirenix.Utilities;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace ClaraMundi
 {
@@ -15,6 +16,7 @@ namespace ClaraMundi
   public class ContextMenuItemData
   {
     public string Label;
+    public bool InitialActive = true;
     public UnityEvent OnClick = new();
   }
   public class ContextMenu : MonoBehaviour
@@ -40,7 +42,15 @@ namespace ClaraMundi
     public Player ContextualPlayer;
     public string ContextualText;
 
+    public event Action<string> OnAction;
+
     private void Start()
+    {
+      if (Options.Count == 0)
+        Populate();
+    }
+
+    void Populate()
     {
       if (MenuItems.Length == 0)
       {
@@ -53,10 +63,15 @@ namespace ClaraMundi
         instance.Label.text = item.Label;
         instance.Data = item;
         // close the menu when the menu item has been clicked
-        instance.Data.OnClick.AddListener(() => gameObject.SetActive(false));
-        instance.gameObject.SetActive(true);
+        instance.Data.OnClick.AddListener(() => OnAction?.Invoke(item.Label));
+        instance.gameObject.SetActive(item.InitialActive);
         Options.Add(item.Label, instance);
       }
+    }
+
+    public void Trigger(string action)
+    {
+      OnAction?.Invoke(action);
     }
 
     private void OnEnable()
@@ -90,12 +105,16 @@ namespace ClaraMundi
 
     public void SetItemActive(string itemName, bool value)
     {
+      if (Options.Count == 0)
+        Populate();
       if (Options.ContainsKey(itemName))
         Options[itemName].gameObject.SetActive(value);
     }
 
     public void ChangeLabelOf(string itemName, string label)
     {
+      if (Options.Count == 0)
+        Populate();
       if (!Options.ContainsKey(itemName)) return;
       Options[itemName].Label.text = label;
 

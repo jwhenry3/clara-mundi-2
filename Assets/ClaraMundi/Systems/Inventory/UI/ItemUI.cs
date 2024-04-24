@@ -42,6 +42,7 @@ namespace ClaraMundi
     public string EquipmentSlot;
 
 
+
     private ItemStorage GetItemStorage()
     {
       if (_entityId == null) return null;
@@ -69,13 +70,15 @@ namespace ClaraMundi
       }
       owner = _owner;
       owner.EntityChange += OnEntityChange;
-      OnEntityChange("", owner.entity.entityId.Value);
+      if (owner.entity != null)
+        OnEntityChange("", owner.entity.entityId.Value);
     }
 
 
     private void OnEntityChange(string lastId, string entityId)
     {
       _entityId = entityId;
+      Debug.Log("Entity Changed: " + entityId);
       ItemStorage = GetItemStorage();
       if (EquipmentUI != null && EquipmentSlot != null)
       {
@@ -85,6 +88,7 @@ namespace ClaraMundi
         if (PlayerManager.Instance.Players.ContainsKey(entityId))
         {
           Player player = PlayerManager.Instance.Players[entityId];
+          Debug.Log("Listen to equipment changes!");
           player.Equipment.EquippedItems.OnChange += OnEquipChange;
           if (player.Equipment.EquippedItems.ContainsKey(EquipmentSlot))
             ItemInstanceId = player.Equipment.EquippedItems[EquipmentSlot];
@@ -97,8 +101,10 @@ namespace ClaraMundi
 
     private void OnEquipChange(SyncDictionaryOperation op, string key, int value, bool asServer)
     {
+      Debug.Log("Equipment Change - " + key + " - " + value);
       if (EquipmentSlot == key)
       {
+        Debug.Log("Change Item " + key + " - " + value);
         ItemInstanceId = value;
         updateQueued = true;
       }
@@ -304,7 +310,42 @@ namespace ClaraMundi
       ContextMenu.SetItemActive("Split", ItemInstance.Quantity > 1 && ShowEquippedStatus);
       ContextMenu.gameObject.SetActive(true);
       ContextMenu.transform.position = transform.position;
+
+      ContextMenu.OnAction += OnAction;
+      ContextMenu.OnClose += OnContextClose;
+      InventoryUI.Focus.canvasGroup.interactable = false;
+
       ContextMenu.SelectFirstElement();
+    }
+    void OnAction(string action)
+    {
+      switch (action)
+      {
+        case "Use":
+          InventoryUI.UseItem(this);
+          break;
+        case "Equip":
+          InventoryUI.EquipItem(this);
+          break;
+        case "Unequip":
+        case "Take Off":
+          InventoryUI.UnequipItem(this);
+          break;
+        case "Link to Chat":
+          InventoryUI.LinkToChat(this);
+          break;
+        case "Drop":
+          InventoryUI.DropItem(this);
+          break;
+      }
+      InventoryUI.Focus.canvasGroup.interactable = true;
+      ContextMenu.gameObject.SetActive(false);
+      InventoryUI.Focus.Select();
+    }
+    void OnContextClose()
+    {
+      ContextMenu.OnAction -= OnAction;
+      ContextMenu.OnClose -= OnContextClose;
     }
 
     public void CloseContextMenu()

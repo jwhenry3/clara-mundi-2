@@ -24,6 +24,7 @@ namespace ClaraMundi
 
 
 
+
     private void Awake()
     {
       Instance = this;
@@ -84,6 +85,7 @@ namespace ClaraMundi
             break;
         }
         var instance = Instantiate(ItemNodePrefab, parent, false);
+        instance.InventoryUI = this;
         instance.ShowEquippedStatus = true;
         instance.Tooltip = Tooltip;
         instance.ContextMenu = ItemContextMenu;
@@ -133,29 +135,29 @@ namespace ClaraMundi
         Focus.Select();
     }
 
-    public void DropItem()
+    public void DropItem(ItemUI item)
     {
-      player.Inventory.DropItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, 1);
+      player.Inventory.DropItem(item.ItemInstance.ItemInstanceId, 1);
       CloseContextMenu();
     }
-    public void EquipItem()
+    public void EquipItem(ItemUI item)
     {
-      player.Inventory.EquipItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, true);
+      player.Inventory.EquipItem(item.ItemInstance.ItemInstanceId, true);
       CloseContextMenu();
     }
-    public void UnequipItem()
+    public void UnequipItem(ItemUI item)
     {
-      player.Inventory.UnequipItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId);
+      player.Inventory.UnequipItem(item.ItemInstance.ItemInstanceId);
       CloseContextMenu();
     }
-    public void UseItem()
+    public void UseItem(ItemUI item)
     {
-      player.Inventory.UseItem(ItemContextMenu.ContextualItem.ItemInstance.ItemInstanceId, 1);
+      player.Inventory.UseItem(item.ItemInstance.ItemInstanceId, 1);
       CloseContextMenu();
     }
-    public void LinkToChat()
+    public void LinkToChat(ItemUI item)
     {
-      ItemContextMenu.ContextualItem.LinkToChat();
+      ChatWindowUI.Instance.AddItemLink(item.ItemInstance);
       CloseContextMenu();
     }
 

@@ -9,6 +9,8 @@ namespace ClaraMundi
   {
     OwningEntityHolder owner = new();
 
+    public InventoryUI InventoryUI;
+
     public ContextMenu ItemContextMenu;
 
     public ItemTooltipUI Tooltip;
@@ -20,17 +22,14 @@ namespace ClaraMundi
     {
       if (Grid != null)
       {
-        foreach (Transform child in Grid.transform)
+        foreach (ItemUI item in Grid.GetComponentsInChildren<ItemUI>())
         {
-          ItemUI item = child.GetComponent<ItemUI>();
-          if (item != null)
-          {
-            item.Tooltip = Tooltip;
-            item.ContextMenu = ItemContextMenu;
-            item.EquipmentSlot = item.gameObject.name.ToLower();
-            item.EquipmentUI = this;
-            item.ShowEquippedStatus = false;
-          }
+          item.Tooltip = Tooltip;
+          item.InventoryUI = InventoryUI;
+          item.ContextMenu = ItemContextMenu;
+          item.EquipmentSlot = item.gameObject.name.ToLower();
+          item.EquipmentUI = this;
+          item.ShowEquippedStatus = false;
         }
       }
       base.Start();
@@ -46,15 +45,10 @@ namespace ClaraMundi
     protected override void OnPlayerChange(Player _player)
     {
       base.OnPlayerChange(_player);
+      foreach (ItemUI item in Grid.GetComponentsInChildren<ItemUI>())
+        item.SetOwner(owner);
       if (entity == null) return;
       owner.SetEntity(_player.Entity);
-    }
-
-    public void CloseContextMenu()
-    {
-      EventSystem.current.SetSelectedGameObject(ItemContextMenu.ContextualItem?.gameObject);
-      ItemContextMenu.ContextualItem = null;
-      ItemContextMenu.gameObject.SetActive(false);
     }
   }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 namespace ClaraMundi
 {
@@ -28,8 +29,6 @@ namespace ClaraMundi
     public TextMeshProUGUI ChannelText;
 
     public ContextMenu PlayerContextMenu;
-    public GameObject RequestJoinOption;
-    public GameObject InviteOption;
 
     Dictionary<string, string> MessageAttachments = new();
 
@@ -44,6 +43,7 @@ namespace ClaraMundi
     public string ContextualCharacterName;
 
     string channel = "Say";
+
 
     private void Awake()
     {
@@ -229,10 +229,29 @@ namespace ClaraMundi
       var inParty = isNotMe && await me.Party.IsInParty(characterName);
 
       PlayerContextMenu.transform.position = eventData.position;
-      RequestJoinOption.SetActive(isNotMe && inParty);
-      InviteOption.SetActive(!inParty && isNotMe);
+      PlayerContextMenu.SetItemActive("Join Party", isNotMe && inParty);
+      PlayerContextMenu.SetItemActive("Invite to Party", isNotMe && !inParty);
+      PlayerContextMenu.OnAction += OnAction;
+      PlayerContextMenu.OnClose += OnContextClose;
+
       PlayerContextMenu.gameObject.SetActive(true);
       CanvasGroup.interactable = false;
+    }
+
+    void OnAction(string action)
+    {
+      switch (action)
+      {
+        case "Join Party":
+          RequestJoin();
+          break;
+        case "Whisper":
+          Whisper();
+          break;
+        case "Invite to Party":
+          Invite();
+          break;
+      }
     }
 
     public void RequestJoin()
@@ -264,6 +283,12 @@ namespace ClaraMundi
       PlayerContextMenu.gameObject.SetActive(false);
     }
 
+    void OnContextClose()
+    {
+      PlayerContextMenu.OnAction -= OnAction;
+      PlayerContextMenu.OnClose -= OnContextClose;
+    }
+
     void SetChannel(string channelName)
     {
       ChannelText.text = channelName;
@@ -288,9 +313,9 @@ namespace ClaraMundi
     public void SetLFGChannel() => SetChannel("LFG");
 
     public void SetPartyChannel() => SetChannel("Party");
-
     public void OnTextChange()
     {
+
       if (!InputField.text.EndsWith("\n")) return;
       InputField.text = InputField.text.Remove(InputField.text.Length - 1);
       SendChatMessage();
