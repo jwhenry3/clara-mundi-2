@@ -15,9 +15,9 @@ MonoBehaviour:
   m_PixelRect:
     serializedVersion: 2
     x: -7
-    y: 6
+    y: 12
     width: 1920
-    height: 1026
+    height: 1020
   m_ShowMode: 0
   m_Title: Game
   m_RootView: {fileID: 4}
@@ -66,7 +66,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1920
-    height: 1026
+    height: 1020
   m_MinSize: {x: 200, y: 221}
   m_MaxSize: {x: 4000, y: 4021}
   m_ActualView: {fileID: 20}
@@ -93,7 +93,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1920
-    height: 1026
+    height: 1020
   m_MinSize: {x: 200, y: 221}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 134
+  controlID: 80
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 67
+  controlID: 81
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -239,11 +239,11 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 1415
-    height: 601
+    height: 616
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 68
+  controlID: 82
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -262,7 +262,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 397
-    height: 601
+    height: 616
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: BuildPlayerWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -288,10 +288,10 @@ MonoBehaviour:
     x: 397
     y: 0
     width: 1018
-    height: 601
-  m_MinSize: {x: 202, y: 221}
+    height: 616
+  m_MinSize: {x: 642, y: 601}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 22}
+  m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 22}
   - {fileID: 23}
@@ -300,7 +300,7 @@ MonoBehaviour:
   - {fileID: 17}
   - {fileID: 16}
   - {fileID: 15}
-  m_Selected: 0
+  m_Selected: 4
   m_LastSelected: 6
 --- !u!114 &13
 MonoBehaviour:
@@ -318,9 +318,9 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 601
+    y: 616
     width: 1415
-    height: 338
+    height: 323
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 25}
@@ -378,7 +378,7 @@ MonoBehaviour:
     x: -3443
     y: 73
     width: 1016
-    height: 580
+    height: 595
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
     x: -3443
     y: 73
     width: 1016
-    height: 581
+    height: 595
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1287,9 +1287,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: -7
-    y: 6
+    y: 12
     width: 1920
-    height: 1005
+    height: 999
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 1920, y: 984}
+  m_TargetSize: {x: 1920, y: 978}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1323,8 +1323,8 @@ MonoBehaviour:
     vZoomLockedByDefault: 0
     m_HBaseRangeMin: -960
     m_HBaseRangeMax: 960
-    m_VBaseRangeMin: -492
-    m_VBaseRangeMax: 492
+    m_VBaseRangeMin: -489
+    m_VBaseRangeMax: 489
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1343,9 +1343,9 @@ MonoBehaviour:
       x: 0
       y: 21
       width: 1920
-      height: 984
+      height: 978
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 960, y: 492}
+    m_Translation: {x: 960, y: 489}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
@@ -1353,12 +1353,12 @@ MonoBehaviour:
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
       x: -960
-      y: -492
+      y: -489
       width: 1920
-      height: 984
+      height: 978
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 1920, y: 1005}
+  m_LastWindowPixelSize: {x: 1920, y: 999}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1387,7 +1387,7 @@ MonoBehaviour:
     x: -3840
     y: 73
     width: 396
-    height: 580
+    height: 595
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1403,7 +1403,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e4faffff
+      m_ExpandedIDs: fc01fdff3c02fdffbc25fdffe625fdff2a2cfdffa83ffdff2e40fdfff840fdff5441fdfff872feffe686feff722fffff7e2fffffe02fffffec2fffff4a5bffff58d0ffff7af6fffffcfaffff821601004417010074170100fc17010030180100141b0100ce1b0100e41f0100f21f0100947d0100567e0100867e01000e7f0100427f010090810100d4810100268201007e820100e08201002a8401002e850100f88601007ad501003cd601006cd60100f4d601000cda01005cda0100c6da0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1450,7 +1450,7 @@ MonoBehaviour:
     x: -3443
     y: 73
     width: 1016
-    height: 580
+    height: 595
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1930,9 +1930,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: -3840
-    y: 674
+    y: 689
     width: 1414
-    height: 317
+    height: 302
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1954,7 +1954,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ClaraMundi/UI
+    - Assets/ClaraMundi/Systems/Inventory/Items
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1962,16 +1962,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/ClaraMundi/UI
+  - Assets/ClaraMundi/Systems/Inventory/Items
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\clara-mundi-2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 63}
-    m_SelectedIDs: 02160100
-    m_LastClickedID: 71170
-    m_ExpandedIDs: 000000008c1501008e15010090150100921501009415010096150100981501009a1501009c1501009e150100a0150100a2150100a4150100a6150100a8150100aa150100ac150100ae150100b0150100
+    scrollPos: {x: 0, y: 246}
+    m_SelectedIDs: dae20100
+    m_LastClickedID: 123610
+    m_ExpandedIDs: 00000000881501008a1501008c1501008e15010090150100921501009415010096150100981501009a1501009c1501009e150100a0150100a2150100a4150100a6150100a8150100aa150100ac15010008160100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1999,7 +1999,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c1501008e15010090150100921501009415010096150100981501009a1501009c1501009e150100a0150100a2150100a4150100a6150100a8150100aa150100ac150100ae150100b0150100
+    m_ExpandedIDs: 00000000881501008a1501008c1501008e15010090150100921501009415010096150100981501009a1501009c1501009e150100a0150100a2150100a4150100a6150100a8150100aa150100ac150100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2024,9 +2024,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 8cf9ffff
-    m_LastClickedInstanceID: -1652
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000962b00004a7b030012730000f205020086850000849b00006c67020000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -2051,7 +2051,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 194}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -2076,9 +2076,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: -3840
-    y: 674
+    y: 689
     width: 1414
-    height: 317
+    height: 302
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

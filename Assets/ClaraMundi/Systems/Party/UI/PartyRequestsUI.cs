@@ -6,7 +6,6 @@ namespace ClaraMundi
 {
   public class PartyRequestsUI : PlayerUI
   {
-    public Transform Panel;
     public Transform RequestsContainer;
 
     public PartyJoinRequestUI JoinPrefab;
@@ -55,8 +54,6 @@ namespace ClaraMundi
         if (!clone.ContainsKey(i))
           AddInvite(i);
       }
-
-      HandleVisibility();
     }
 
     private void OnPartyChanges(Party party)
@@ -67,7 +64,6 @@ namespace ClaraMundi
         // Any requests are cleaned up if the player is not the leader
         // in case the leadership changes during party existence
         Clear();
-        HandleVisibility();
         return;
       }
 
@@ -84,7 +80,6 @@ namespace ClaraMundi
       // add remaining join requests not currently in UI
       foreach (string characterName in party.requests)
         AddJoinRequest(characterName);
-      HandleVisibility();
     }
 
     public void Clear()
@@ -108,8 +103,6 @@ namespace ClaraMundi
         foreach (string joiningPlayerId in PartySystem.Party.Value.requests)
           AddJoinRequest(joiningPlayerId);
       }
-
-      HandleVisibility();
     }
 
     private void AddInvite(string characterName)
@@ -137,9 +130,5 @@ namespace ClaraMundi
       JoinRequests.Add(characterName, instance);
     }
 
-    private void HandleVisibility()
-    {
-      Panel.gameObject.SetActive(JoinRequests.Count > 0 || Invites.Count > 0);
-    }
   }
 }
