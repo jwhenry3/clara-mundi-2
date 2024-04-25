@@ -20,6 +20,8 @@ namespace ClaraMundi
     private InputActionMap World;
 
     public ControlsDictionary Controls;
+
+    public ChatWindowUI Chat;
     public override void Start()
     {
       base.Start();
@@ -127,7 +129,7 @@ namespace ClaraMundi
     public void Update()
     {
       if (World == null) return;
-      bool shouldDisableWorldInput = Controls["Menu"].gameObject.activeInHierarchy;
+      bool shouldDisableWorldInput = Controls["Menu"].gameObject.activeInHierarchy || InputFieldWithHybridNav.CurrentInput != null || ButtonWithHybridNav.CurrentButton != null;
       if (World.enabled && shouldDisableWorldInput)
         World.Disable();
       else if (!World.enabled && !shouldDisableWorldInput)

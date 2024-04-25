@@ -39,6 +39,7 @@ namespace ClaraMundi
     public Transform SystemContainer;
 
     public CanvasGroup CanvasGroup;
+    public CanvasGroupFocus Focus;
 
     public string ContextualCharacterName;
 

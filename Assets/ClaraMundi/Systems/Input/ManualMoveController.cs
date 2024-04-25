@@ -33,6 +33,13 @@ namespace ClaraMundi
         SynchronizePosition();
       if (!lastDirection.Equals(direction.Value) || !direction.Value.Equals(Vector3.zero))
         MovePlayerTo(direction.Value);
+      if (direction.Value.Equals(Vector3.zero) && !direction.Value.Equals(direction.Value))
+      {
+        Quaternion look = Quaternion.LookRotation(lookDirection.Value);
+        UnitDriverNavmesh unit = player.Body.Driver as UnitDriverNavmesh;
+        if (!IsOwner && unit.Transform.rotation != look)
+          unit.Transform.rotation = look;
+      }
       lastDirection = direction.Value;
       if (IsServerStarted)
       {
@@ -77,10 +84,6 @@ namespace ClaraMundi
       if (dir.Equals(Vector3.zero))
       {
         player.Body.Motion.StopToDirection();
-        Quaternion look = Quaternion.Euler(lookDirection.Value);
-        UnitDriverNavmesh unit = player.Body.Driver as UnitDriverNavmesh;
-        if (!IsOwner && unit.Transform.rotation != look)
-          player.Body.Driver.SetRotation(look);
       }
       else
       {
@@ -88,6 +91,7 @@ namespace ClaraMundi
           lookDirection.Value = dir;
         player.Body.Motion.MoveToDirection(dir * player.Body.Motion.LinearSpeed, Space.World);
       }
+
       if (IsServerStarted) return;
       if (!debugLog) return;
       ChatManager.ReceivedMessage(new ChatMessage()
