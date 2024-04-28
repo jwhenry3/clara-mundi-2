@@ -14,6 +14,18 @@ namespace ClaraMundi
     private readonly Dictionary<string, PartyInviteRequestUI> Invites = new();
     private readonly Dictionary<string, PartyJoinRequestUI> JoinRequests = new();
 
+    public override void Start()
+    {
+      base.Start();
+      foreach (PartyJoinRequestUI child in RequestsContainer.GetComponentsInChildren<PartyJoinRequestUI>())
+      {
+        Destroy(child.gameObject);
+      }
+      foreach (PartyInviteRequestUI child in RequestsContainer.GetComponentsInChildren<PartyInviteRequestUI>())
+      {
+        Destroy(child.gameObject);
+      }
+    }
     protected override void OnPlayerChange(Player _player)
     {
       if (player != null)
@@ -41,7 +53,8 @@ namespace ClaraMundi
 
     private void OnInviteChanges(SyncList<string> invites)
     {
-      // Debug.Log("Update invite list!");
+      Debug.Log("Update invite list!");
+      Debug.Log(invites.Count);
       var clone = new Dictionary<string, PartyInviteRequestUI>(Invites);
       foreach (var kvp in clone)
       {

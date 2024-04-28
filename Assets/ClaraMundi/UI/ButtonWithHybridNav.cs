@@ -114,6 +114,8 @@ namespace ClaraMundi
       base.OnDisable();
       onDeselect?.Invoke();
       tabNav?.StopListening();
+      if (CurrentButton == this)
+        CurrentButton = null;
       if (LastButton == this)
         LastButton = null;
       if (focus != null)

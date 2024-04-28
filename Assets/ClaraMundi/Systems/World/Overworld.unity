@@ -4138,6 +4138,8 @@ GameObject:
   - component: {fileID: 3345737367017556647}
   - component: {fileID: 6476549961767890107}
   - component: {fileID: 1288055843153232526}
+  - component: {fileID: 6476549961767890109}
+  - component: {fileID: 6476549961767890108}
   m_Layer: 6
   m_Name: NPC
   m_TagString: Untagged
@@ -4369,6 +4371,43 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6476549961767890108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660708454788013618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4539fb8b1d3a4424b8ce4aba644648e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 255
+  _addedNetworkObject: {fileID: 851973170829277904}
+  _networkObjectCache: {fileID: 0}
+  SubTargetId: 
+--- !u!114 &6476549961767890109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2660708454788013618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34422ae151d23ff43acc1a9494daaead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Entity: {fileID: 570272003907449998}
+  TargetController: {fileID: 6476549961767890108}
+  DistanceFromCamera: 0
+  HorizontalPosition: 0
+  VerticalPosition: 0
+  HorizontalCenterOffset: 0
+  VerticalCenterOffset: 0
+  Score: 0
+  OnScreen: 0
 --- !u!224 &6756777736004258685
 RectTransform:
   m_ObjectHideFlags: 0

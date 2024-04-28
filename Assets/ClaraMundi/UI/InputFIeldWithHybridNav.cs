@@ -136,6 +136,8 @@ namespace ClaraMundi
     protected override void OnDisable()
     {
       base.OnDisable();
+      if (CurrentInput == this)
+        CurrentInput = null;
       if (LastInput == this)
         LastInput = null;
       if (focus != null)

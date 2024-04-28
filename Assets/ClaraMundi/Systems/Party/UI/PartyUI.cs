@@ -41,6 +41,14 @@ namespace ClaraMundi
       base.Start();
       PartyMenuFocus ??= GetComponent<CanvasGroupFocus>();
       Instance = this;
+      foreach (PartyMemberUI child in PartyMenuContainer.GetComponentsInChildren<PartyMemberUI>())
+      {
+        Destroy(child.gameObject);
+      }
+      foreach (PartyMemberUI child in PartyContainer.GetComponentsInChildren<PartyMemberUI>())
+      {
+        Destroy(child.gameObject);
+      }
     }
 
     protected override void OnPlayerChange(Player _player)

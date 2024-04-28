@@ -126,6 +126,7 @@ namespace ClaraMundi
         }
       }
     }
+
     public void Update()
     {
       if (World == null) return;
@@ -134,6 +135,24 @@ namespace ClaraMundi
         World.Disable();
       else if (!World.enabled && !shouldDisableWorldInput)
         World.Enable();
+      if (InputFieldWithHybridNav.CurrentInput != null || ButtonWithHybridNav.CurrentButton != null)
+      {
+        InputActionAsset.FindAction("UI/Character").Disable();
+        InputActionAsset.FindAction("UI/Skills").Disable();
+        InputActionAsset.FindAction("UI/Inventory").Disable();
+        InputActionAsset.FindAction("UI/Party").Disable();
+        InputActionAsset.FindAction("UI/Journal").Disable();
+        InputActionAsset.FindAction("UI/Map").Disable();
+      }
+      else
+      {
+        InputActionAsset.FindAction("UI/Character").Enable();
+        InputActionAsset.FindAction("UI/Skills").Enable();
+        InputActionAsset.FindAction("UI/Inventory").Enable();
+        InputActionAsset.FindAction("UI/Party").Enable();
+        InputActionAsset.FindAction("UI/Journal").Enable();
+        InputActionAsset.FindAction("UI/Map").Enable();
+      }
     }
 
     void OnCancel(InputAction.CallbackContext context)

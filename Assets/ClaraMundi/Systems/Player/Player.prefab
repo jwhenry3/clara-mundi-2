@@ -613,6 +613,7 @@ Transform:
   - {fileID: 378666722372250761}
   - {fileID: 474163639039137907}
   - {fileID: 4588709322240192585}
+  - {fileID: 8637012878278506309}
   m_Father: {fileID: 378666723463143087}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &378666723325325094
@@ -676,6 +677,7 @@ GameObject:
   - component: {fileID: 378666723463143089}
   - component: {fileID: 378666723463143088}
   - component: {fileID: 133722076969466502}
+  - component: {fileID: 2827553535106259288}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -747,6 +749,7 @@ MonoBehaviour:
   - {fileID: 5954349119136247432}
   - {fileID: 8030107547521874415}
   - {fileID: 1614834821579979737}
+  - {fileID: 1606533882590530053}
   <SerializedRootNetworkBehaviour>k__BackingField: {fileID: 0}
   <NestedRootNetworkBehaviours>k__BackingField: []
   SerializedTransformProperties:
@@ -904,6 +907,27 @@ MonoBehaviour:
         m_AutoMeshLink: 1
         m_AgentType:
           m_AgentTypeIndex: 0
+--- !u!114 &2827553535106259288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378666723463143091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34422ae151d23ff43acc1a9494daaead, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Entity: {fileID: 378666723463143086}
+  TargetController: {fileID: 1606533882590530053}
+  DistanceFromCamera: 0
+  HorizontalPosition: 0
+  VerticalPosition: 0
+  HorizontalCenterOffset: 0
+  VerticalCenterOffset: 0
+  Score: 0
+  OnScreen: 0
 --- !u!1 &396827274356436412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,6 +1119,93 @@ Transform:
   - {fileID: 6843929391349379697}
   m_Father: {fileID: 7811378732055795332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &900391762165837187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8637012878278506309}
+  - component: {fileID: 1606533882590530053}
+  - component: {fileID: 1570205295859318095}
+  - component: {fileID: 6605341051667310254}
+  m_Layer: 6
+  m_Name: Targeting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8637012878278506309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900391762165837187}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 378666722718353515}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1606533882590530053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900391762165837187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4539fb8b1d3a4424b8ce4aba644648e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentIndexCache: 14
+  _addedNetworkObject: {fileID: 378666723463143089}
+  _networkObjectCache: {fileID: 378666723463143089}
+  SubTargetId: 
+--- !u!135 &1570205295859318095
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900391762165837187}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 55
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 30
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6605341051667310254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900391762165837187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d093c9dc90e5ac4d984070038565b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  InArea: []
+  PossibleTargets: []
+  updateInterval: 0.5
 --- !u!1 &925523494490518671
 GameObject:
   m_ObjectHideFlags: 0
