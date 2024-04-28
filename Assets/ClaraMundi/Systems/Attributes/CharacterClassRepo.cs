@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ClaraMundi
@@ -15,17 +16,11 @@ namespace ClaraMundi
 
     public CharacterClassType GetClass(string classId)
     {
-      return Classes.ContainsKey(classId.ToLower()) ? Classes[classId.ToLower()] : null;
+      if (!Classes.ContainsKey(classId.ToLower()))
+        Classes[classId.ToLower()] = ClassList.First((c) => c.ClassId.ToLower() == classId.ToLower());
+
+      return Classes[classId.ToLower()];
     }
 
-    public void OnEnable()
-    {
-      Classes = new();
-      if (ClassList == null) return;
-      foreach (var classType in ClassList)
-      {
-        Classes.Add(classType.ClassId.ToLower(), classType);
-      }
-    }
   }
 }
