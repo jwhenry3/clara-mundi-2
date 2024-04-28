@@ -50,7 +50,10 @@ export class CharacterService {
           character: null,
         }
       }
-      if (!['adventurer'].includes(options.startingClass.toLowerCase())) {
+      options.race = options.race.toLowerCase()
+      options.gender = options.gender.toLowerCase()
+      options.startingClass = options.startingClass.toLowerCase()
+      if (!['adventurer'].includes(options.startingClass)) {
         return {
           status: false,
           reason: 'invalid-class',
@@ -60,18 +63,16 @@ export class CharacterService {
       let character = this.repo.create({
         accountId,
         name: options.name,
-        race: ['human'].includes(options.race.toLowerCase())
-          ? options.race.toLowerCase()
-          : 'human',
-        gender: ['male', 'female'].includes(options.gender.toLowerCase())
-          ? options.gender.toLowerCase()
+        race: ['human'].includes(options.race) ? options.race : 'human',
+        gender: ['male', 'female'].includes(options.gender)
+          ? options.gender
           : 'male',
         characterClasses: [],
       })
 
       await this.repo.save(character, { reload: true })
       let characterClass = this.classRepo.create({
-        classId: options.startingClass.toLowerCase(),
+        classId: options.startingClass,
         character,
         level: 1,
         isCurrent: 1,
