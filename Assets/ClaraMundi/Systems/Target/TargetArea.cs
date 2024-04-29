@@ -25,6 +25,7 @@ namespace ClaraMundi
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
       {
+        targetable.UpdateDetails();
         bool inList = PossibleTargets.Contains(targetable);
         if (!inList && targetable.OnScreen)
           PossibleTargets.Add(targetable);
@@ -37,16 +38,6 @@ namespace ClaraMundi
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
         InArea.Remove(targetable);
-    }
-
-    private void LateUpdate()
-    {
-      currentTick += Time.deltaTime;
-      if (currentTick > updateInterval)
-      {
-        currentTick = 0;
-        PossibleTargets.Sort();
-      }
     }
   }
 }

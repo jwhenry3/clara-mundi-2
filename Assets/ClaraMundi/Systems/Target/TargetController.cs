@@ -56,11 +56,13 @@ namespace ClaraMundi
           if (prevPressed)
           {
             SanitizeTargets();
+            TargetArea.PossibleTargets.Sort();
             SetSubTargetAt(GetNextIndex());
           }
           else if (nextPressed)
           {
             SanitizeTargets();
+            TargetArea.PossibleTargets.Sort();
             SetSubTargetAt(GetPreviousIndex());
           }
           prevPressed = false;

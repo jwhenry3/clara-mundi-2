@@ -8,6 +8,7 @@ namespace ClaraMundi
   {
     public Entity Entity;
     public TargetController TargetController;
+    public GameObject SubTargetIndicator;
     public bool DistanceFirst = true;
 
     public float DistanceFromCamera;
@@ -48,20 +49,8 @@ namespace ClaraMundi
       return 0;
     }
 
-    public void LateUpdate()
-    {
-      // server has no need for this information
-      // and we only want to calculate when the local player is present
-      if (PlayerManager.Instance?.LocalPlayer == null) return;
-      currentTick += Time.deltaTime;
-      if (currentTick > updateInterval)
-      {
-        currentTick = 0;
-        UpdateDetails();
-      }
-    }
 
-    private void UpdateDetails()
+    public void UpdateDetails()
     {
       DistanceFromCamera = Vector3.Distance(transform.position, cameraTransform.position);
       Vector3 screenPoint = cam.WorldToScreenPoint(transform.position);
