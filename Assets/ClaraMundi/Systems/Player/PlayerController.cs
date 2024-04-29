@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace ClaraMundi
 {
-    public class PlayerController : NetworkBehaviour
-    {
-        [HideInInspector]
-        public Player player;
+  public class PlayerController : NetworkBehaviour
+  {
+    [HideInInspector]
+    public Player player;
 
-        protected virtual void Awake()
-        {
-            player = GetComponent<Player>() ?? GetComponentInParent<Player>();
-        }
+    protected virtual void Awake()
+    {
+      player = player ?? GetComponent<Player>() ?? GetComponentInParent<Player>();
     }
+  }
 }

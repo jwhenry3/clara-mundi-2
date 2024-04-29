@@ -921,11 +921,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Entity: {fileID: 378666723463143086}
   TargetController: {fileID: 1606533882590530053}
+  DistanceFirst: 1
   DistanceFromCamera: 0
   HorizontalPosition: 0
   VerticalPosition: 0
-  HorizontalCenterOffset: 0
-  VerticalCenterOffset: 0
+  HorizontalPercent: 0
+  VerticalPercent: 0
   Score: 0
   OnScreen: 0
 --- !u!1 &396827274356436412
@@ -1168,6 +1169,9 @@ MonoBehaviour:
   _componentIndexCache: 14
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
+  player: {fileID: 0}
+  InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
+  TargetArea: {fileID: 6605341051667310254}
   SubTargetId: 
 --- !u!135 &1570205295859318095
 SphereCollider:
@@ -1197,12 +1201,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900391762165837187}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d093c9dc90e5ac4d984070038565b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 378666723463143088}
   InArea: []
   PossibleTargets: []
   updateInterval: 0.5

@@ -7,6 +7,8 @@ namespace ClaraMundi
   public class Entity : NetworkBehaviour
   {
 
+    public string ServerEntityId;
+
     public readonly SyncVar<Character> Character = new();
     public readonly SyncDictionary<string, CharacterClass> Classes = new();
 
@@ -43,6 +45,8 @@ namespace ClaraMundi
     public override void OnStartServer()
     {
       base.OnStartServer();
+      if (string.IsNullOrEmpty(entityId.Value))
+        entityId.Value = ServerEntityId;
       OnStarted?.Invoke();
     }
 

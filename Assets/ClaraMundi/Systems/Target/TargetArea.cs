@@ -13,22 +13,15 @@ namespace ClaraMundi
     public float updateInterval = 0.5f;
     private float currentTick = 0;
 
-    private void OnEnable()
-    {
-      if (PlayerManager.Instance?.LocalPlayer != Player)
-        enabled = false;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-      if (PlayerManager.Instance?.LocalPlayer == null) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && !InArea.Contains(targetable))
         InArea.Add(targetable);
     }
     private void OnTriggerStay(Collider other)
     {
-      if (PlayerManager.Instance?.LocalPlayer == null) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
       {
@@ -41,7 +34,6 @@ namespace ClaraMundi
     }
     private void OnTriggerExit(Collider other)
     {
-      if (PlayerManager.Instance?.LocalPlayer == null) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
         InArea.Remove(targetable);
@@ -49,7 +41,6 @@ namespace ClaraMundi
 
     private void LateUpdate()
     {
-      if (PlayerManager.Instance?.LocalPlayer == null) return;
       currentTick += Time.deltaTime;
       if (currentTick > updateInterval)
       {

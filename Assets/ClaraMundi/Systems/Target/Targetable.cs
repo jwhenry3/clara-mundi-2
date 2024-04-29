@@ -8,13 +8,14 @@ namespace ClaraMundi
   {
     public Entity Entity;
     public TargetController TargetController;
+    public bool DistanceFirst = true;
 
     public float DistanceFromCamera;
     public float HorizontalPosition;
     public float VerticalPosition;
 
-    public float HorizontalCenterOffset;
-    public float VerticalCenterOffset;
+    public float HorizontalPercent;
+    public float VerticalPercent;
 
     public float Score;
 
@@ -22,6 +23,7 @@ namespace ClaraMundi
 
     private Camera cam;
     private Transform cameraTransform;
+
 
     private float updateInterval = 0.5f;
     private float currentTick = 0;
@@ -65,9 +67,11 @@ namespace ClaraMundi
       Vector3 screenPoint = cam.WorldToScreenPoint(transform.position);
       HorizontalPosition = screenPoint.x;
       VerticalPosition = screenPoint.y;
-      HorizontalCenterOffset = screenPoint.x - Screen.width / 2;
-      VerticalCenterOffset = screenPoint.y - Screen.height / 2;
-      Score = DistanceFromCamera * 100 + (HorizontalCenterOffset * 2 + VerticalCenterOffset);
+      HorizontalPercent = screenPoint.x / Screen.width;
+      if (DistanceFirst)
+        Score = DistanceFromCamera * 100_000 + (HorizontalPercent * 100);
+      else
+        Score = HorizontalPercent * 100_000 + DistanceFromCamera;
       OnScreen = HorizontalPosition > 0 && HorizontalPosition < Screen.width && VerticalPosition > 0 && VerticalPosition < Screen.height;
     }
   }
