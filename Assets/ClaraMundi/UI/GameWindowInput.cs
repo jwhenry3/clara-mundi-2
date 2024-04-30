@@ -67,7 +67,9 @@ namespace ClaraMundi
       {
         foreach (GameObject obj in optionsDict[action].Hide)
           obj.SetActive(false);
-        if (optionsDict[action].HideIfOpenOrder.Length == 0)
+        // when only one window is closed at a time, we don't close "all" objects
+        // this is intended for a "cancel" action that closes the top-most window at a time
+        if (optionsDict[action].HideIfOpenOrder.Length == 0 && optionsDict[action].MoveToBackIfOpenOrder.Length == 0)
         {
           foreach (GameObject obj in All.Hide)
             obj.SetActive(false);

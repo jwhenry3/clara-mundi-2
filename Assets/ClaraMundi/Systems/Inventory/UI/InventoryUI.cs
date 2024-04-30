@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +14,8 @@ namespace ClaraMundi
 
     public CanvasGroupFocus Focus;
     public ContextMenu ItemContextMenu;
+    public Dialog AmountDialog;
+    public TMP_InputField AmountInput;
     public ItemTooltipUI Tooltip;
 
     [HideInInspector]
@@ -21,6 +25,8 @@ namespace ClaraMundi
     public Transform Consumables;
     public Transform General;
     public Transform QuestItems;
+
+    private ItemInstance DroppingItem;
 
 
 
@@ -37,6 +43,7 @@ namespace ClaraMundi
       if (ItemManager.Instance == null) return;
       Reload();
     }
+
 
     public void Reload()
     {
@@ -122,23 +129,30 @@ namespace ClaraMundi
 
     public void CloseContextMenu()
     {
-      EventSystem.current.SetSelectedGameObject(ItemContextMenu.ContextualItem?.gameObject);
       ItemContextMenu.ContextualItem = null;
       ItemContextMenu.gameObject.SetActive(false);
+      Focus.Select();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-      if (ItemContextMenu.ContextualItem != null)
-        CloseContextMenu();
-      else
-        Focus.Select();
+      CloseContextMenu();
     }
 
     public void DropItem(ItemUI item)
     {
-      player.Inventory.DropItem(item.ItemInstance.ItemInstanceId, 1);
-      CloseContextMenu();
+      if (item.Item.Stackable || item.ItemInstance.Quantity > 1)
+      {
+        DroppingItem = item.ItemInstance;
+        AmountDialog.Context = "Drop Item";
+        AmountInput.text = item.ItemInstance.Quantity + "";
+        AmountDialog.gameObject.SetActive(true);
+      }
+      else
+      {
+        player.Inventory.DropItem(item.ItemInstance.ItemInstanceId, 1);
+        CloseContextMenu();
+      }
     }
     public void EquipItem(ItemUI item)
     {
@@ -159,6 +173,36 @@ namespace ClaraMundi
     {
       ChatWindowUI.Instance.AddItemLink(item.ItemInstance);
       CloseContextMenu();
+    }
+
+    public void OnDialogConfirm(Dialog dialog)
+    {
+      if (dialog.Context == "Drop Item")
+      {
+        CloseContextMenu();
+        if (Int32.TryParse(AmountInput.text, out int amount))
+          player.Inventory.DropItem(DroppingItem.ItemInstanceId, amount);
+      }
+      dialog.gameObject.SetActive(false);
+      dialog.Context = "";
+    }
+    public void OnDialogCancel(Dialog dialog)
+    {
+      if (dialog.Context == "Drop Item")
+      {
+        CloseContextMenu();
+      }
+      dialog.gameObject.SetActive(false);
+      dialog.Context = "";
+    }
+    public void OnDialogClose(Dialog dialog)
+    {
+      if (dialog.Context == "Drop Item")
+      {
+        CloseContextMenu();
+      }
+      dialog.gameObject.SetActive(false);
+      dialog.Context = "";
     }
 
   }

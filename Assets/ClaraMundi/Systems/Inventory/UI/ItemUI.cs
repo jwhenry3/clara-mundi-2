@@ -134,6 +134,8 @@ namespace ClaraMundi
       if (ContextMenu.ContextualItem == this)
         CloseContextMenu();
       HideTooltip();
+      if (EventSystem.current.currentSelectedGameObject == this)
+        InventoryUI.Focus.Select();
       ItemManager.ItemChange -= OnInstanceUpdate;
       if (OnDoubleClick != null)
       {
@@ -307,7 +309,6 @@ namespace ClaraMundi
       var isEquipped = ItemInstance.IsEquipped;
       ContextMenu.ChangeLabelOf("Equip", isEquipped ? "Take Off" : "Equip");
       ContextMenu.SetItemActive("Equip", Item.Equippable);
-      ContextMenu.SetItemActive("Split", ItemInstance.Quantity > 1 && ShowEquippedStatus);
       ContextMenu.gameObject.SetActive(true);
       ContextMenu.transform.position = transform.position;
 

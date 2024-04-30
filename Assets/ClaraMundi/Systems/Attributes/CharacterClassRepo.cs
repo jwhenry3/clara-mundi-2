@@ -10,12 +10,13 @@ namespace ClaraMundi
   public class CharacterClassRepo : ScriptableObject
   {
 
-    public Dictionary<string, CharacterClassType> Classes;
+    public Dictionary<string, CharacterClassType> Classes = new();
 
     public CharacterClassType[] ClassList;
 
     public CharacterClassType GetClass(string classId)
     {
+      if (String.IsNullOrEmpty(classId)) return null;
       if (!Classes.ContainsKey(classId.ToLower()))
         Classes[classId.ToLower()] = ClassList.First((c) => c.ClassId.ToLower() == classId.ToLower());
 
