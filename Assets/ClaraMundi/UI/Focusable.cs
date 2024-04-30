@@ -15,12 +15,10 @@ namespace ClaraMundi
     public bool IsActivated;
     private bool lastActivated;
 
-    private CanvasGroup canvasGroup;
 
 
     void Start()
     {
-      canvasGroup = GetComponentInParent<CanvasGroup>();
       button = GetComponent<Button>();
       if (Image == null)
         Image = GetComponent<Image>();

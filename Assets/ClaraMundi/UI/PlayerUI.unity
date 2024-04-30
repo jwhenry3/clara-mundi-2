@@ -6754,24 +6754,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77c0875c9198474ca1f5a1617c8a99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialFocus: {fileID: 0}
+  InitialFocus: {fileID: 787964303}
   InitialFocusInput: {fileID: 0}
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 257200880}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &264281655
 GameObject:
   m_ObjectHideFlags: 0
@@ -9371,95 +9360,120 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
+  All:
+    Show:
+    - {fileID: 653743332}
+    Hide:
+    - {fileID: 1668063341}
+    - {fileID: 4106090093322323042}
+    - {fileID: 954732994774557694}
+    - {fileID: 1317256629}
+    - {fileID: 4309665240624692454}
   Options:
-  - InputAction: Player/Character
-    Event:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1867244059}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 653743332}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1930727361}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 257200874}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 591913112}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 408913462}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 564449748}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  - InputAction: Character
+    Show:
+    - {fileID: 1867244059}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1930727361}
+    - {fileID: 257200874}
+    - {fileID: 591913112}
+    - {fileID: 408913462}
+    - {fileID: 564449748}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Skills
+    Show:
+    - {fileID: 1930727361}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1867244059}
+    - {fileID: 257200874}
+    - {fileID: 591913112}
+    - {fileID: 408913462}
+    - {fileID: 564449748}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Inventory
+    Show:
+    - {fileID: 257200874}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1867244059}
+    - {fileID: 1930727361}
+    - {fileID: 591913112}
+    - {fileID: 408913462}
+    - {fileID: 564449748}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Party
+    Show:
+    - {fileID: 591913112}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1867244059}
+    - {fileID: 1930727361}
+    - {fileID: 257200874}
+    - {fileID: 408913462}
+    - {fileID: 564449748}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Journal
+    Show:
+    - {fileID: 408913462}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1867244059}
+    - {fileID: 1930727361}
+    - {fileID: 257200874}
+    - {fileID: 591913112}
+    - {fileID: 564449748}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Map
+    Show:
+    - {fileID: 564449748}
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide:
+    - {fileID: 1867244059}
+    - {fileID: 1930727361}
+    - {fileID: 257200874}
+    - {fileID: 591913112}
+    - {fileID: 408913462}
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
+  - InputAction: Cancel
+    Show: []
+    MoveToFront:
+    - {fileID: 1352792287}
+    Hide: []
+    MoveToBackIfOpenOrder:
+    - {fileID: 3597372228310977639}
+    HideIfOpenOrder:
+    - {fileID: 1317256629}
+    - {fileID: 4106090093322323042}
+    - {fileID: 4309665240624692454}
+    - {fileID: 1668063341}
+    - {fileID: 1867244059}
+    - {fileID: 1930727361}
+    - {fileID: 257200874}
+    - {fileID: 591913112}
+    - {fileID: 408913462}
+    - {fileID: 564449748}
+    - {fileID: 653743332}
+  - InputAction: OpenChat
+    Show: []
+    MoveToFront:
+    - {fileID: 3597372228310977639}
+    Hide: []
+    MoveToBackIfOpenOrder: []
+    HideIfOpenOrder: []
 --- !u!1001 &382485606
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10374,19 +10388,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 408913466}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!114 &408913468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12811,19 +12814,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 564449752}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &571712294
 GameObject:
   m_ObjectHideFlags: 0
@@ -13315,21 +13307,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 591913117}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable:
-  - {fileID: 1668063349}
-  - {fileID: 1317256638}
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &606777148
 GameObject:
   m_ObjectHideFlags: 0
@@ -14125,26 +14104,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 653743339}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 0}
   DelayTriggersOnEnable: 0
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable:
-  - {fileID: 1867244064}
-  - {fileID: 257200880}
-  - {fileID: 408913466}
-  - {fileID: 564449752}
-  - {fileID: 591913117}
-  - {fileID: 1930727365}
-  DisableOnDisable: []
-  MoveToFrontOnEnable:
-  - {fileID: 1352792287}
 --- !u!114 &653743341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16026,6 +15987,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766557924}
   m_CullTransparentMesh: 1
+--- !u!114 &787964303 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6156341512856676705, guid: bb069b3572f89b240b03c372a67f44aa, type: 3}
+  m_PrefabInstance: {fileID: 454036935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4f0e4e6fd958164a9dea11c2cd2bc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789633348
 GameObject:
   m_ObjectHideFlags: 0
@@ -27583,21 +27555,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: 0}
-  CloseOnCancel: {fileID: 0}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 0}
   DelayTriggersOnEnable: 1
-  DisableOnEnable:
-  - {fileID: 591913117}
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable:
-  - {fileID: 591913117}
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &1322003020
 GameObject:
   m_ObjectHideFlags: 0
@@ -32429,22 +32388,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 1668063349}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 0}
   DelayTriggersOnEnable: 1
-  DisableOnEnable:
-  - {fileID: 591913117}
-  HideOnEnable:
-  - {fileID: 1317256638}
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable:
-  - {fileID: 591913117}
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &1672682032
 GameObject:
   m_ObjectHideFlags: 0
@@ -35304,19 +35249,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 1867244064}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &1869526415
 GameObject:
   m_ObjectHideFlags: 0
@@ -36169,19 +36103,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 1930727365}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 653743338}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!1 &1951525208
 GameObject:
   m_ObjectHideFlags: 0
@@ -48958,19 +48881,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: 0}
-  CloseOnCancel: {fileID: 0}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 0}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!225 &8018416410522732835
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -49545,19 +49457,8 @@ MonoBehaviour:
   LastFocused: {fileID: 0}
   LastFocusInput: {fileID: 0}
   InputActionAsset: {fileID: -944628639613478452, guid: 0aac54c8978784f4ea21aa50d9a4dbad, type: 3}
-  CloseOnCancel: {fileID: 0}
-  DisableOnCancel: {fileID: 0}
   TabsToChange: {fileID: 0}
   DelayTriggersOnEnable: 1
-  DisableOnEnable: []
-  HideOnEnable: []
-  EnableOnEnable: []
-  ShowOnEnable: []
-  EnableOnDisable: []
-  ShowOnDisable: []
-  HideOnDisable: []
-  DisableOnDisable: []
-  MoveToFrontOnEnable: []
 --- !u!114 &8503170438895260792
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,25 +19,11 @@ namespace ClaraMundi
     public InputFieldWithHybridNav LastFocusInput;
     [Header("Input Rules")]
     public InputActionAsset InputActionAsset;
-    public CanvasGroup CloseOnCancel;
-    public CanvasGroup DisableOnCancel;
     public Tabs TabsToChange;
 
     [Header("General Rules")]
     public bool DelayTriggersOnEnable = true;
 
-    public CanvasGroup[] DisableOnEnable;
-    public CanvasGroup[] HideOnEnable;
-    public CanvasGroup[] EnableOnEnable;
-    public CanvasGroup[] ShowOnEnable;
-    public CanvasGroup[] EnableOnDisable;
-    public CanvasGroup[] ShowOnDisable;
-    public CanvasGroup[] HideOnDisable;
-    public CanvasGroup[] DisableOnDisable;
-
-    public MoveSibling[] MoveToFrontOnEnable;
-
-    private InputAction cancelAction;
 
     public CanvasGroup canvasGroup
     {
@@ -59,19 +45,6 @@ namespace ClaraMundi
       TabsToChange?.ChangeTab(gameObject.name);
       // Debug.Log("Enabled: " + gameObject.name);
 
-      if (InputActionAsset != null)
-      {
-        if (CloseOnCancel != null || DisableOnCancel != null)
-        {
-          cancelAction = InputActionAsset.FindAction("UI/Cancel");
-          cancelAction.performed += OnCancel;
-        }
-      }
-      if (MoveToFrontOnEnable != null)
-      {
-        foreach (var sibling in MoveToFrontOnEnable)
-          sibling.ToFront();
-      }
       lastInteractable = false;
       StartCoroutine(DelayEnable());
     }
@@ -86,48 +59,13 @@ namespace ClaraMundi
       }
       if (canvasGroup != null)
         canvasGroup.interactable = false;
-      if (cancelAction != null)
-        cancelAction.performed -= OnCancel;
-      foreach (var group in EnableOnDisable)
-      {
-        if (group.gameObject.activeInHierarchy)
-          group.interactable = true;
-      }
-      foreach (var group in DisableOnDisable)
-        group.interactable = false;
-      foreach (var obj in ShowOnDisable)
-        obj.gameObject.SetActive(true);
-      foreach (var obj in HideOnDisable)
-        obj.gameObject.SetActive(false);
     }
     IEnumerator DelayEnable()
     {
       yield return new WaitForSeconds(DelayTriggersOnEnable ? 0.1f : 0);
       if (canvasGroup != null)
         canvasGroup.interactable = true;
-      foreach (var group in DisableOnEnable)
-        group.interactable = false;
-      foreach (var group in EnableOnEnable)
-        group.interactable = true;
-
-      foreach (var obj in HideOnEnable)
-        obj.gameObject.SetActive(false);
-      foreach (var obj in ShowOnEnable)
-        obj.gameObject.SetActive(true);
     }
-
-    void OnCancel(InputAction.CallbackContext context)
-    {
-      if (canvasGroup == null || canvasGroup.interactable == true)
-      {
-        CloseOnCancel?.gameObject.SetActive(false);
-        if (DisableOnCancel != null)
-          DisableOnCancel.interactable = false;
-        if (TabsToChange != null)
-          TabsToChange.ChangeTab("");
-      }
-    }
-
     void Update()
     {
       if (canvasGroup == null) return;
@@ -136,14 +74,10 @@ namespace ClaraMundi
 
     void OnInteractableChange()
     {
-      if (!canvasGroup.interactable)
-      {
-        lastInteractable = canvasGroup.interactable;
-        return;
-      }
       if (lastInteractable == canvasGroup.interactable) return;
       lastInteractable = canvasGroup.interactable;
-      Select();
+      if (canvasGroup.interactable)
+        Select();
     }
 
     public void Select()
