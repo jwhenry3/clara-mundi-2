@@ -99,23 +99,5 @@ namespace ClaraMundi
         EventSystem.current.SetSelectedGameObject(gameObject);
     }
 
-    public void Show(InputAction.CallbackContext context)
-    {
-      // Debug.Log("Show " + gameObject.name);
-      Show();
-    }
-    public void Hide(InputAction.CallbackContext context)
-    {
-      Hide();
-    }
-    public void Show()
-    {
-      gameObject.SetActive(true);
-    }
-    public void Hide()
-    {
-      gameObject.SetActive(false);
-    }
-
   }
 }

@@ -29,6 +29,7 @@ namespace ClaraMundi
   }
   public class GameWindowInput : MonoBehaviour
   {
+    public static GameWindowInput Instance;
     public InputActionAsset InputActionAsset;
 
     public AllInputOption All;
@@ -36,6 +37,7 @@ namespace ClaraMundi
     private Dictionary<string, InputOption> optionsDict;
     void Start()
     {
+      Instance = this;
 
       optionsDict = new();
       foreach (var option in Options)
@@ -57,6 +59,10 @@ namespace ClaraMundi
     void OnPerformed(InputAction.CallbackContext context)
     {
       var action = context.action.name;
+      Trigger(action);
+    }
+    public void Trigger(string action)
+    {
       if (optionsDict.ContainsKey(action))
       {
         foreach (GameObject obj in optionsDict[action].Hide)

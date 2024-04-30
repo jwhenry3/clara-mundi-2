@@ -279,12 +279,12 @@ GameObject:
   - component: {fileID: 8893153967988311610}
   - component: {fileID: 3239528217216473471}
   - component: {fileID: 6840557650641238593}
-  - component: {fileID: 4904946773580392390}
   - component: {fileID: 5433197205191158797}
   - component: {fileID: 2932835507214802845}
   - component: {fileID: 2263460692826266213}
   - component: {fileID: 5390196008903188549}
   - component: {fileID: 8662186994046292860}
+  - component: {fileID: 1425075512134194743}
   m_Layer: 0
   m_Name: ChatAttachment
   m_TagString: Untagged
@@ -410,29 +410,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   upSelectable: {fileID: 0}
+  fallbackUpSelectable: {fileID: 0}
   downSelectable: {fileID: 0}
+  fallbackDownSelectable: {fileID: 0}
   leftSelectable: {fileID: 0}
+  fallbackLeftSelectable: {fileID: 0}
   rightSelectable: {fileID: 0}
---- !u!114 &4904946773580392390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3993409226422731463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f344c5d9234f4ab38d5c034dc2d41b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 
-  PreviousElement: {fileID: 0}
-  NextElement: {fileID: 0}
-  Form: {fileID: 0}
-  CanSubmit: 0
-  CanCancel: 1
-  InputField: {fileID: 0}
-  QueuedForDestroy: 0
+  fallbackRightSelectable: {fileID: 0}
 --- !u!114 &5433197205191158797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +501,20 @@ MonoBehaviour:
   NodeId: RS50eDbiEE-_JcIRVUXdew
   Key: 
   Text: {fileID: 7045127678641779073}
+--- !u!114 &1425075512134194743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3993409226422731463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4754dfd856c02ad4391940c3ff75f235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focus: {fileID: 0}
+  selectable: {fileID: 6840557650641238593}
 --- !u!1 &7088491456988381290
 GameObject:
   m_ObjectHideFlags: 0

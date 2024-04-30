@@ -103,11 +103,7 @@ namespace ClaraMundi.Quests
     {
       if (_quest == null) return;
       QuestJournalUI.Instance.QuestInfoUI.Quest = _quest;
-      if (TopLevelCanvas.Instance != null)
-      {
-        TopLevelCanvas.Instance.Controls["Main"].gameObject.SetActive(true);
-        TopLevelCanvas.Instance.Controls["Journal"].gameObject.SetActive(true);
-      }
+      GameWindowInput.Instance?.Trigger("Journal");
     }
 
     private void Update()
