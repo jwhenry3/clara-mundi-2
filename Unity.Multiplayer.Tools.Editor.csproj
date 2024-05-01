@@ -16,10 +16,10 @@
     <Configurations>Debug;Release</Configurations>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>Unity.Multiplayer.Tools.Editor</RootNamespace>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>ParrelSync</AssemblyName>
+    <AssemblyName>Unity.Multiplayer.Tools.Editor</AssemblyName>
     <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -54,7 +54,7 @@
     <UnityProjectGenerator>Package</UnityProjectGenerator>
     <UnityProjectGeneratorVersion>2.0.22</UnityProjectGeneratorVersion>
     <UnityProjectGeneratorStyle>SDK</UnityProjectGeneratorStyle>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.21f1</UnityVersion>
   </PropertyGroup>
@@ -64,22 +64,23 @@
     <Analyzer Include="D:\Unity\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\Project.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\AssetModBlock\EditorQuit.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\Preferences.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\NonCore\OtherMenuItem.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\ParrelSyncProjectSettings.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\FileUtilities.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\AssetModBlock\ParrelSyncAssetModificationProcessor.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\ValidateCopiedFoldersIntegrity.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\UpdateChecker.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\ClonesManager.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\NonCore\AskFeedbackDialog.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\ClonesManagerWindow.cs" />
-    <Compile Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\Editor\ExternalLinks.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\AssemblyInfo.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\BuildSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ToolBuildLogEntry.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ToolSettingsMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\BuildSymbol.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ProjectSettingsMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ProjectSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\NetStatsMonitor\NetStatsMonitorBuildSettings.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\UssClassNames.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ProjectSettingsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ToolList.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\GenerateLinkXml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Library\PackageCache\com.veriorpies.parrelsync@d1ef610e9f\projectCloner.asmdef" />
+    <None Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Unity.Multiplayer.Tools.Editor.asmdef" />
+    <None Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\Settings\ProjectSettingsMenu.uss" />
+    <None Include="Library\PackageCache\com.unity.multiplayer.tools@1.1.1\Editor\link.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1012,6 +1013,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.Multiplayer.Tools.Common.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />

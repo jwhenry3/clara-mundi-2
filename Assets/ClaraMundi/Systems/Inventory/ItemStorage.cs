@@ -121,8 +121,12 @@ namespace ClaraMundi
     {
       var item = ItemRepo.GetItem(itemId);
       if (item == null) return false;
+      // Debug.Log("Item Found");
       if (!item.Droppable) return false;
-      return !HasQuantity(itemId, quantity, true);
+      // Debug.Log("Is Droppable");
+      var hasQuantity = HasQuantity(itemId, quantity, true);
+      // Debug.Log("Quantity: " + (hasQuantity ? "true" : "false"));
+      return hasQuantity;
     }
 
     public bool CanTrade(string itemId)
@@ -142,7 +146,10 @@ namespace ClaraMundi
 
     public bool HasQuantity(string itemId, int quantity, bool mustNotBeEquipped = false)
     {
-      return quantity <= QuantityOf(itemId, mustNotBeEquipped);
+      var held = QuantityOf(itemId, mustNotBeEquipped);
+      // Debug.Log("Quantity To Drop: " + quantity);
+      // Debug.Log("Held: " + held);
+      return quantity <= held;
     }
 
     public SyncDictionary<int, ItemInstance> GetVisibleItems()
@@ -152,7 +159,7 @@ namespace ClaraMundi
 
     public int QuantityOf(string itemId, bool mustNotBeEquipped = false)
     {
-      return GetVisibleItems().Aggregate(0, (acc, element) =>
+      return Items.Aggregate(0, (acc, element) =>
       {
         if (element.Value.IsEquipped && mustNotBeEquipped) return acc;
         if (element.Value.ItemId == itemId) return acc + element.Value.Quantity;

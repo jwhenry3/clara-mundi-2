@@ -232,14 +232,12 @@ namespace ClaraMundi
       PlayerContextMenu.transform.position = eventData.position;
       PlayerContextMenu.SetItemActive("Join Party", isNotMe && inParty);
       PlayerContextMenu.SetItemActive("Invite to Party", isNotMe && !inParty);
-      PlayerContextMenu.OnAction += OnAction;
-      PlayerContextMenu.OnClose += OnContextClose;
 
       PlayerContextMenu.gameObject.SetActive(true);
       CanvasGroup.interactable = false;
     }
 
-    void OnAction(string action)
+    public void OnAction(string action)
     {
       switch (action)
       {
@@ -284,11 +282,6 @@ namespace ClaraMundi
       PlayerContextMenu.gameObject.SetActive(false);
     }
 
-    void OnContextClose()
-    {
-      PlayerContextMenu.OnAction -= OnAction;
-      PlayerContextMenu.OnClose -= OnContextClose;
-    }
 
     void SetChannel(string channelName)
     {

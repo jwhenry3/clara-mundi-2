@@ -28,7 +28,7 @@ namespace ClaraMundi
 
     private ItemInstance DroppingItem;
 
-
+    public string LastAction;
 
 
     private void Awake()
@@ -203,6 +203,32 @@ namespace ClaraMundi
       }
       dialog.gameObject.SetActive(false);
       dialog.Context = "";
+    }
+
+    public void OnAction(string action)
+    {
+      switch (action)
+      {
+        case "Use":
+          UseItem(ItemContextMenu.ContextualItem);
+          break;
+        case "Equip":
+          EquipItem(ItemContextMenu.ContextualItem);
+          break;
+        case "Unequip":
+        case "Take Off":
+          UnequipItem(ItemContextMenu.ContextualItem);
+          break;
+        case "Link to Chat":
+          LinkToChat(ItemContextMenu.ContextualItem);
+          break;
+        case "Drop":
+          DropItem(ItemContextMenu.ContextualItem);
+          break;
+      }
+      Focus.canvasGroup.interactable = true;
+      ItemContextMenu.gameObject.SetActive(false);
+      Focus.Select();
     }
 
   }

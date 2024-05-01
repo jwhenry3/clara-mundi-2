@@ -225,7 +225,11 @@ namespace ClaraMundi
 
       if (EquippedStatus != null)
         EquippedStatus.SetActive(false);
-      // Destroy(gameObject);
+      if (EquipmentUI == null)
+      {
+        Destroy(gameObject);
+        InventoryUI.Focus.Select(); // select previously selected element
+      }
     }
 
     private void ShowItemInstance()
@@ -312,41 +316,9 @@ namespace ClaraMundi
       ContextMenu.gameObject.SetActive(true);
       ContextMenu.transform.position = transform.position;
 
-      ContextMenu.OnAction += OnAction;
-      ContextMenu.OnClose += OnContextClose;
       InventoryUI.Focus.canvasGroup.interactable = false;
 
       ContextMenu.SelectFirstElement();
-    }
-    void OnAction(string action)
-    {
-      switch (action)
-      {
-        case "Use":
-          InventoryUI.UseItem(this);
-          break;
-        case "Equip":
-          InventoryUI.EquipItem(this);
-          break;
-        case "Unequip":
-        case "Take Off":
-          InventoryUI.UnequipItem(this);
-          break;
-        case "Link to Chat":
-          InventoryUI.LinkToChat(this);
-          break;
-        case "Drop":
-          InventoryUI.DropItem(this);
-          break;
-      }
-      InventoryUI.Focus.canvasGroup.interactable = true;
-      ContextMenu.gameObject.SetActive(false);
-      InventoryUI.Focus.Select();
-    }
-    void OnContextClose()
-    {
-      ContextMenu.OnAction -= OnAction;
-      ContextMenu.OnClose -= OnContextClose;
     }
 
     public void CloseContextMenu()

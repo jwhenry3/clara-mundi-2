@@ -63,6 +63,7 @@ namespace ClaraMundi
     }
     public void Trigger(string action)
     {
+      if (PlayerManager.Instance?.LocalPlayer == null) return;
       if (optionsDict.ContainsKey(action))
       {
         foreach (GameObject obj in optionsDict[action].Hide)

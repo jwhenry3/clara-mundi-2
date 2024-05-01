@@ -13,6 +13,8 @@ using System.Linq;
 namespace ClaraMundi
 {
   [Serializable]
+  public class StringEvent : UnityEvent<string> { }
+  [Serializable]
   public class ContextMenuItemData
   {
     public string Label;
@@ -26,7 +28,6 @@ namespace ClaraMundi
     readonly Dictionary<string, ContextMenuItem> Options = new();
 
 
-    public Action OnClose;
 
     [Header("State")]
     public string Name;
@@ -42,7 +43,10 @@ namespace ClaraMundi
     public Player ContextualPlayer;
     public string ContextualText;
 
-    public event Action<string> OnAction;
+    public StringEvent OnAction = new();
+
+    public UnityEvent OnOpen = new();
+    public UnityEvent OnClose = new();
 
     private void Start()
     {
@@ -83,6 +87,7 @@ namespace ClaraMundi
       }
       OpenedContextMenu = this;
       SelectFirstElement();
+      OnOpen?.Invoke();
     }
 
     public void SelectFirstElement()

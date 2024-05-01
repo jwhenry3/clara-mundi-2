@@ -6,9 +6,10 @@ namespace ClaraMundi
   {
 
     public string Context;
-    public UnityEvent<Dialog> OnClose;
-    public UnityEvent<Dialog> OnConfirm;
-    public UnityEvent<Dialog> OnCancel;
+    public UnityEvent<Dialog> OnOpen = new();
+    public UnityEvent<Dialog> OnClose = new();
+    public UnityEvent<Dialog> OnConfirm = new();
+    public UnityEvent<Dialog> OnCancel = new();
 
     public void Confirm()
     {
@@ -23,6 +24,10 @@ namespace ClaraMundi
       OnCancel?.Invoke(this);
     }
 
+    void OnEnable()
+    {
+      OnOpen?.Invoke(this);
+    }
     void OnDisable()
     {
       OnClose?.Invoke(this);

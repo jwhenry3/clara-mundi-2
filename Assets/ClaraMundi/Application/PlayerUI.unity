@@ -7050,6 +7050,7 @@ MonoBehaviour:
   Consumables: {fileID: 1956214315}
   General: {fileID: 1821143619}
   QuestItems: {fileID: 698866139}
+  LastAction: 
 --- !u!225 &257200880
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -14700,7 +14701,7 @@ CanvasGroup:
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 1
+  m_IgnoreParentGroups: 0
 --- !u!114 &653743340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24511,10 +24512,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1352792283}
-  - {fileID: 385501286106728970}
   - {fileID: 526768562}
+  - {fileID: 385501286106728970}
   - {fileID: 909315223}
+  - {fileID: 1352792283}
   - {fileID: 6776768854399089902}
   m_Father: {fileID: 47899870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28722,6 +28723,63 @@ MonoBehaviour:
   ContextualItem: {fileID: 0}
   ContextualPlayer: {fileID: 0}
   ContextualText: 
+  OnAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 591913117}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 591913117}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1317256637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28971,6 +29029,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 602116245261591701, guid: e715179b252f07845a7abbc39dc57106, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 8018416410522732834}
     - target: {fileID: 658241763982744554, guid: e715179b252f07845a7abbc39dc57106, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -29175,6 +29237,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RequestedJoin
       objectReference: {fileID: 0}
+    - target: {fileID: 8097593295496740683, guid: e715179b252f07845a7abbc39dc57106, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 8018416410522732834}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29292,6 +29358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingObject: {fileID: 1352792283}
   CanvasGroupToToggle: {fileID: 1352792286}
+  CanvasGroupsToToggle: []
   MoveObjectToBackOnClick: 0
 --- !u!1 &1361547262
 GameObject:
@@ -33486,6 +33553,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5896258340262818406, guid: 8287bcd66a767ea4398959826b7aa352, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 8018416410522732834}
+    - target: {fileID: 6325925830811112054, guid: 8287bcd66a767ea4398959826b7aa352, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 8018416410522732834}
     - target: {fileID: 8052433866313093116, guid: 8287bcd66a767ea4398959826b7aa352, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -41276,9 +41351,60 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Context: 
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 257200880}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnClose:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 257200880}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnConfirm:
     m_PersistentCalls:
       m_Calls:
@@ -46073,6 +46199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingObject: {fileID: 6776768854399089902}
   CanvasGroupToToggle: {fileID: 8722644401130266595}
+  CanvasGroupsToToggle: []
   MoveObjectToBackOnClick: 1
 --- !u!1 &3604736171959420405
 GameObject:
@@ -46209,6 +46336,75 @@ MonoBehaviour:
   ContextualItem: {fileID: 0}
   ContextualPlayer: {fileID: 0}
   ContextualText: 
+  OnAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 257200879}
+        m_TargetAssemblyTypeName: ClaraMundi.InventoryUI, Assembly-CSharp
+        m_MethodName: OnAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 257200880}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 653743339}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 257200880}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &3652037728453701105
 GameObject:
   m_ObjectHideFlags: 0
@@ -47003,6 +47199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingObject: {fileID: 385501286106728970}
   CanvasGroupToToggle: {fileID: 3923158727783813965}
+  CanvasGroupsToToggle: []
   MoveObjectToBackOnClick: 0
 --- !u!224 &4485695016563714660
 RectTransform:
@@ -47787,6 +47984,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1425075512134194743, guid: 85466855af1b9494388f91d7c7ec7508, type: 3}
+      propertyPath: focus
+      value: 
+      objectReference: {fileID: 8503170438895260791}
     - target: {fileID: 1647125460965931485, guid: 85466855af1b9494388f91d7c7ec7508, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -48815,6 +49016,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingObject: {fileID: 385501286106728970}
   CanvasGroupToToggle: {fileID: 0}
+  CanvasGroupsToToggle: []
   MoveObjectToBackOnClick: 1
 --- !u!114 &5883782504917309929
 MonoBehaviour:
@@ -50515,6 +50717,51 @@ MonoBehaviour:
   ContextualItem: {fileID: 0}
   ContextualPlayer: {fileID: 0}
   ContextualText: 
+  OnAction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 395635536748006665}
+        m_TargetAssemblyTypeName: ClaraMundi.ChatWindowUI, Assembly-CSharp
+        m_MethodName: OnAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6553484978950248656}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6553484978950248656}
+        m_TargetAssemblyTypeName: UnityEngine.CanvasGroup, UnityEngine
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!224 &7589644127649918550
 RectTransform:
   m_ObjectHideFlags: 0
@@ -50693,6 +50940,15 @@ MonoBehaviour:
   ContextualItem: {fileID: 0}
   ContextualPlayer: {fileID: 0}
   ContextualText: 
+  OnAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOpen:
+    m_PersistentCalls:
+      m_Calls: []
+  OnClose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7667627787489988188 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -1061664070512405191, guid: 229b7617008714845a66b453db9c4bb2, type: 3}
@@ -51815,6 +52071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovingObject: {fileID: 6776768854399089902}
   CanvasGroupToToggle: {fileID: 8722644401130266595}
+  CanvasGroupsToToggle: []
   MoveObjectToBackOnClick: 0
 --- !u!114 &8503170438895260791
 MonoBehaviour:

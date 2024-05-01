@@ -9,6 +9,7 @@ namespace ClaraMundi
   {
     public Transform MovingObject;
     public CanvasGroup CanvasGroupToToggle;
+    public CanvasGroup[] CanvasGroupsToToggle;
 
     public Action SentToBack;
     public Action SentToFront;
@@ -42,8 +43,12 @@ namespace ClaraMundi
 
     void Update()
     {
+      bool inFront = IsInFront();
       if (CanvasGroupToToggle != null)
-        CanvasGroupToToggle.interactable = IsInFront();
+        CanvasGroupToToggle.interactable = inFront;
+      foreach (var group in CanvasGroupsToToggle)
+        group.interactable = inFront;
+
     }
 
     public bool IsInBack() => MovingObject.GetSiblingIndex() == 0;
