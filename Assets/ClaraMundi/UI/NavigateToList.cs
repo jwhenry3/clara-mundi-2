@@ -40,7 +40,8 @@ namespace ClaraMundi
     void Start()
     {
       focus = GetComponentInParent<CanvasGroupFocus>();
-      InputAction = focus.InputActionAsset.FindAction("UI/Navigate");
+
+      InputAction = InputManager.Instance.UI.FindAction("Navigate");
     }
 
     public void OnSelect(BaseEventData eventData)

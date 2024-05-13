@@ -17,8 +17,6 @@ namespace ClaraMundi
     public InputFieldWithHybridNav InitialFocusInput;
     public ButtonWithHybridNav LastFocused;
     public InputFieldWithHybridNav LastFocusInput;
-    [Header("Input Rules")]
-    public InputActionAsset InputActionAsset;
     public Tabs TabsToChange;
 
     [Header("General Rules")]

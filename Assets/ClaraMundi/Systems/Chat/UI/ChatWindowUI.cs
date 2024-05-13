@@ -57,30 +57,14 @@ namespace ClaraMundi
 
     private void OnEnable()
     {
-      InputActionAsset.FindAction("UI/Cancel").performed += OnCancel;
       InputActionAsset.FindAction("UI/OpenChat").performed += OnChat;
     }
 
     private void OnDisable()
     {
-      InputActionAsset.FindAction("UI/Cancel").performed -= OnCancel;
       InputActionAsset.FindAction("UI/OpenChat").performed -= OnChat;
     }
 
-    private void OnCancel(InputAction.CallbackContext context)
-    {
-      if (MoveSibling.IsInFront())
-      {
-        if (ChannelContextMenu.gameObject.activeInHierarchy)
-          ChannelContextMenu.gameObject.SetActive(false);
-        else if (ButtonWithHybridNav.CurrentButton != null || InputFieldWithHybridNav.CurrentInput != null)
-        {
-          EventSystem.current.SetSelectedGameObject(null);
-        }
-        else
-          MoveSibling.ToBack();
-      }
-    }
 
     void OnChat(InputAction.CallbackContext context)
     {

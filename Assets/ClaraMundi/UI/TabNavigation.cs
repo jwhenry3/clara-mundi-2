@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 namespace ClaraMundi
@@ -22,9 +23,8 @@ namespace ClaraMundi
     {
       if (!listening)
       {
-
-        focus.InputActionAsset.FindAction("UI/NextElement").performed += OnNext;
-        focus.InputActionAsset.FindAction("UI/PreviousElement").performed += OnPrevious;
+        InputManager.Instance.UI.FindAction("NextElement").performed += OnNext;
+        InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPrevious;
         listening = true;
       }
     }
@@ -33,7 +33,7 @@ namespace ClaraMundi
       if (!listening)
       {
         Listen();
-        focus.InputActionAsset.FindAction("UI/Submit").performed += OnSubmit;
+        InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
         listening = true;
       }
     }
@@ -42,8 +42,8 @@ namespace ClaraMundi
 
       if (focus != null && listening)
       {
-        focus.InputActionAsset.FindAction("UI/NextElement").performed -= OnNext;
-        focus.InputActionAsset.FindAction("UI/PreviousElement").performed -= OnPrevious;
+        InputManager.Instance.UI.FindAction("NextElement").performed -= OnNext;
+        InputManager.Instance.UI.FindAction("PreviousElement").performed -= OnPrevious;
         listening = false;
       }
     }
@@ -54,7 +54,7 @@ namespace ClaraMundi
       if (focus != null && listening)
       {
         StopListening();
-        focus.InputActionAsset.FindAction("UI/Submit").performed -= OnSubmit;
+        InputManager.Instance.UI.FindAction("Submit").performed -= OnSubmit;
         listening = false;
       }
     }

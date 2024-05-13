@@ -37,7 +37,12 @@ namespace ClaraMundi
     {
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
+      {
         InArea.Remove(targetable);
+        targetable.UpdateDetails();
+        if (targetable.TargetController != null && targetable.TargetController.SubTargetId == targetable.Entity.entityId.Value)
+          targetable.TargetController.SubTargetId = null;
+      }
     }
   }
 }

@@ -8,6 +8,7 @@ namespace ClaraMundi
   {
 
     public string ServerEntityId;
+    public string ServerEntityName;
 
     public readonly SyncVar<Character> Character = new();
     public readonly SyncDictionary<string, CharacterClass> Classes = new();
@@ -47,6 +48,8 @@ namespace ClaraMundi
       base.OnStartServer();
       if (string.IsNullOrEmpty(entityId.Value))
         entityId.Value = ServerEntityId;
+      if (string.IsNullOrEmpty(entityName.Value))
+        entityName.Value = ServerEntityName;
       OnStarted?.Invoke();
     }
 

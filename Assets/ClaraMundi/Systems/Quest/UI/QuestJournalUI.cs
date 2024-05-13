@@ -55,6 +55,7 @@ namespace ClaraMundi.Quests
       {
         listItem.AutoFocus.HasFocused = false;
         listItem.AutoFocus.enabled = true;
+        QuestInfoUI.Quest = listItem.Quest;
       }
 
     }

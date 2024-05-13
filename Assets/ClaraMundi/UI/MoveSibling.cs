@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
@@ -15,12 +16,28 @@ namespace ClaraMundi
     public Action SentToFront;
 
     public bool MoveObjectToBackOnClick;
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
       if (MoveObjectToBackOnClick)
         ToBack();
       else
         ToFront();
+    }
+
+    protected virtual void OnEnable()
+    {
+      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
+    }
+    protected virtual void OnDisable()
+    {
+      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+    }
+
+
+    protected virtual void OnCancel(InputAction.CallbackContext context)
+    {
+      if (IsInFront())
+        ToBack();
     }
 
     public void ToFront()
@@ -41,7 +58,7 @@ namespace ClaraMundi
       SentToBack?.Invoke();
     }
 
-    void Update()
+    protected virtual void Update()
     {
       bool inFront = IsInFront();
       if (CanvasGroupToToggle != null)

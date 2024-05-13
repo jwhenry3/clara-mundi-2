@@ -42,6 +42,7 @@ namespace ClaraMundi
       if (PlayerManager.Instance?.LocalPlayer != player)
         return;
       listening = true;
+      InputActionAsset.FindAction("Player/Cancel").performed += OnCancelTarget;
       InputActionAsset.FindAction("Player/TargetNext").performed += OnNextTarget;
       InputActionAsset.FindAction("Player/TargetPrevious").performed += OnPreviousTarget;
     }
@@ -74,8 +75,13 @@ namespace ClaraMundi
     public void OnDestroy()
     {
       if (!listening) return;
+      InputActionAsset.FindAction("Player/Cancel").performed -= OnCancelTarget;
       InputActionAsset.FindAction("Player/TargetNext").performed -= OnNextTarget;
       InputActionAsset.FindAction("Player/TargetPrevious").performed -= OnPreviousTarget;
+    }
+    void OnCancelTarget(InputAction.CallbackContext context)
+    {
+      SubTargetId = null;
     }
 
     void OnNextTarget(InputAction.CallbackContext context)
@@ -127,7 +133,10 @@ namespace ClaraMundi
     void SetSubTargetAt(int index)
     {
       if (index > 0 && TargetArea.PossibleTargets.Count > index)
+      {
+        TargetArea.PossibleTargets[index].TargetController = this;
         SubTargetId = TargetArea.PossibleTargets[index].Entity.entityId.Value;
+      }
       else
         SubTargetId = null;
     }

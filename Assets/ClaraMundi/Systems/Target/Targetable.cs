@@ -62,6 +62,14 @@ namespace ClaraMundi
       else
         Score = HorizontalPercent * 100_000 + DistanceFromCamera;
       OnScreen = HorizontalPosition > 0 && HorizontalPosition < Screen.width && VerticalPosition > 0 && VerticalPosition < Screen.height;
+      if (TargetController != null)
+      {
+        SubTargetIndicator?.SetActive(TargetController.SubTargetId == Entity.entityId.Value);
+      }
+      else
+      {
+        SubTargetIndicator?.SetActive(false);
+      }
     }
   }
 }
