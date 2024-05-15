@@ -11,6 +11,7 @@ namespace ClaraMundi
     public Transform MovingObject;
     public CanvasGroup CanvasGroupToToggle;
     public CanvasGroup[] CanvasGroupsToToggle;
+    public GameObject[] GameObjectsToToggle;
 
     public Action SentToBack;
     public Action SentToFront;
@@ -24,21 +25,7 @@ namespace ClaraMundi
         ToFront();
     }
 
-    protected virtual void OnEnable()
-    {
-      InputManager.Instance.UI.FindAction("Cancel").performed += OnCancel;
-    }
-    protected virtual void OnDisable()
-    {
-      InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
-    }
 
-
-    protected virtual void OnCancel(InputAction.CallbackContext context)
-    {
-      if (IsInFront())
-        ToBack();
-    }
 
     public void ToFront()
     {
@@ -65,6 +52,8 @@ namespace ClaraMundi
         CanvasGroupToToggle.interactable = inFront;
       foreach (var group in CanvasGroupsToToggle)
         group.interactable = inFront;
+      foreach (var obj in GameObjectsToToggle)
+        obj.SetActive(inFront);
 
     }
 

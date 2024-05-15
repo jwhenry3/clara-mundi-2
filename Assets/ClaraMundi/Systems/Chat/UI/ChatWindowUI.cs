@@ -172,6 +172,14 @@ namespace ClaraMundi
 
     public void SendChatMessage()
     {
+      if (!InputField.gameObject.activeInHierarchy)
+      {
+        if (EventSystem.current.currentSelectedGameObject == InputField.gameObject)
+        {
+          EventSystem.current.SetSelectedGameObject(null);
+        }
+        return;
+      }
       InputField.text = InputField.text.Trim();
       if (!string.IsNullOrEmpty(InputField.text))
       {

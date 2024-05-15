@@ -22,6 +22,7 @@ namespace ClaraMundi
     [Header("General Rules")]
     public bool DelayTriggersOnEnable = true;
 
+    public MoveSibling MoveSibling;
 
     public CanvasGroup canvasGroup
     {
@@ -35,6 +36,13 @@ namespace ClaraMundi
     {
       if (canvasGroup == null)
         canvasGroup = GetComponent<CanvasGroup>();
+      if (MoveSibling == null)
+        MoveSibling = GetComponent<MoveSibling>();
+    }
+    public void ClearMemory()
+    {
+      LastFocused = null;
+      LastFocusInput = null;
     }
 
     void OnEnable()
@@ -80,21 +88,33 @@ namespace ClaraMundi
 
     public void Select()
     {
+      if (MoveSibling != null)
+        MoveSibling.ToFront();
+      Debug.Log("SELECT TRIGGERED");
       if (LastFocused != null && LastFocused.gameObject.activeInHierarchy)
-        StartCoroutine(DelaySelect(LastFocused.gameObject));
+        StartCoroutine(DelaySelect(LastFocused.gameObject, null));
       else if (LastFocusInput != null && LastFocusInput.gameObject.activeInHierarchy)
-        StartCoroutine(DelaySelect(LastFocusInput.gameObject));
+        StartCoroutine(DelaySelect(LastFocusInput.gameObject, LastFocusInput));
       else if (InitialFocus != null && InitialFocus.gameObject.activeInHierarchy)
-        StartCoroutine(DelaySelect(InitialFocus.gameObject));
+        StartCoroutine(DelaySelect(InitialFocus.gameObject, null));
       else if (InitialFocusInput != null && InitialFocusInput.gameObject.activeInHierarchy)
-        StartCoroutine(DelaySelect(InitialFocusInput.gameObject));
+        StartCoroutine(DelaySelect(InitialFocusInput.gameObject, InitialFocusInput));
     }
 
-    IEnumerator DelaySelect(GameObject gameObject)
+    IEnumerator DelaySelect(GameObject gameObject, InputFieldWithHybridNav input)
     {
       yield return new WaitForSeconds(0.1f);
+      Debug.Log(gameObject);
       if (gameObject != null)
+      {
+        if (input != null)
+        {
+          yield return new WaitForSeconds(0.1f);
+          input.ActivateInputField();
+          EventSystem.current.SetSelectedGameObject(gameObject);
+        }
         EventSystem.current.SetSelectedGameObject(gameObject);
+      }
     }
 
   }

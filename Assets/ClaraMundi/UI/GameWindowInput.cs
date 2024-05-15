@@ -64,6 +64,8 @@ namespace ClaraMundi
     public void Trigger(string action)
     {
       if (PlayerManager.Instance?.LocalPlayer == null) return;
+      if (action != "Cancel")
+        if (InputFieldWithHybridNav.CurrentInput != null) return; // do not receive input if typing
       if (optionsDict.ContainsKey(action))
       {
         foreach (GameObject obj in optionsDict[action].Hide)
@@ -101,6 +103,26 @@ namespace ClaraMundi
             break;
           }
         }
+      }
+    }
+    public void Update()
+    {
+      if (InputManager.Instance != null)
+      {
+        if (InputFieldWithHybridNav.CurrentInput != null || ButtonWithHybridNav.CurrentButton != null)
+        {
+          if (InputManager.Instance.World.enabled)
+          {
+            Debug.Log("DISABLE");
+            InputManager.Instance.World.Disable();
+          }
+          return;
+        }
+      }
+      if (!InputManager.Instance.World.enabled)
+      {
+        Debug.Log("ENABLE");
+        InputManager.Instance.World.Enable();
       }
     }
   }

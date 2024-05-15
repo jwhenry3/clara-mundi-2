@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.Events;
 
 namespace ClaraMundi
 {
@@ -28,6 +29,8 @@ namespace ClaraMundi
     private ScrollRect scroller;
 
     public event Action SubmitAction;
+
+    public UnityEvent Submit;
 
     private TabNavigation tabNav;
 
@@ -85,26 +88,33 @@ namespace ClaraMundi
     void Update()
     {
       tabNav?.Update();
+      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      {
+        if (CurrentInput != this)
+        {
+          LastInput = this;
+          CurrentInput = this;
+          ButtonWithHybridNav.LastButton = null;
+          if (focus != null)
+          {
+            focus.LastFocused = null;
+            focus.LastFocusInput = this;
+            tabNav?.Listen(OnSubmit);
+          }
+          SnapTo(transform);
+          ActivateInputField();
+        }
+      }
     }
 
     void OnSubmit(InputAction.CallbackContext context)
     {
       SubmitAction?.Invoke();
+      Submit?.Invoke();
     }
     public override void OnSelect(BaseEventData eventData)
     {
       base.OnSelect(eventData);
-      LastInput = this;
-      CurrentInput = this;
-      ButtonWithHybridNav.LastButton = null;
-      if (focus != null)
-      {
-        focus.LastFocused = null;
-        focus.LastFocusInput = this;
-        tabNav?.Listen(OnSubmit);
-      }
-      SnapTo(transform);
-      ActivateInputField();
     }
 
 

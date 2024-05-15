@@ -53,6 +53,7 @@ namespace ClaraMundi.EditorUtilities
     SerializedProperty m_VerticalScrollbar;
     SerializedProperty m_ScrollbarScrollSensitivity;
     SerializedProperty m_OnValueChanged;
+    SerializedProperty m_OnSubmit;
     SerializedProperty m_OnEndEdit;
     SerializedProperty m_OnSelect;
     SerializedProperty m_OnDeselect;
@@ -103,6 +104,7 @@ namespace ClaraMundi.EditorUtilities
       m_OnEndEdit = serializedObject.FindProperty("m_OnEndEdit");
       m_OnSelect = serializedObject.FindProperty("m_OnSelect");
       m_OnDeselect = serializedObject.FindProperty("m_OnDeselect");
+      m_OnSubmit = serializedObject.FindProperty("Submit");
       m_ReadOnly = serializedObject.FindProperty("m_ReadOnly");
       m_RichText = serializedObject.FindProperty("m_RichText");
       m_RichTextEditingAllowed = serializedObject.FindProperty("m_isRichTextEditingAllowed");
@@ -291,9 +293,11 @@ namespace ClaraMundi.EditorUtilities
 
       EditorGUILayout.Space();
 
+      EditorGUILayout.PropertyField(m_OnSubmit);
       EditorGUILayout.PropertyField(m_OnValueChanged);
       EditorGUILayout.PropertyField(m_OnEndEdit);
       EditorGUILayout.PropertyField(m_OnSelect);
+      EditorGUILayout.PropertyField(m_OnDeselect);
       EditorGUILayout.PropertyField(m_OnDeselect);
 
       EditorGUI.EndDisabledGroup();
