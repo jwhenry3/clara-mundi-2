@@ -32,7 +32,10 @@ namespace ClaraMundi
       if (!IsInFront())
         MovingObject.SetAsLastSibling();
       if (CanvasGroupToToggle != null)
+      {
         CanvasGroupToToggle.interactable = true;
+        CanvasGroupToToggle.blocksRaycasts = true;
+      }
       SentToFront?.Invoke();
     }
 
@@ -41,7 +44,10 @@ namespace ClaraMundi
       if (!IsInBack())
         MovingObject.SetAsFirstSibling();
       if (CanvasGroupToToggle != null)
+      {
         CanvasGroupToToggle.interactable = false;
+        CanvasGroupToToggle.blocksRaycasts = false;
+      }
       SentToBack?.Invoke();
     }
 
@@ -49,9 +55,15 @@ namespace ClaraMundi
     {
       bool inFront = IsInFront();
       if (CanvasGroupToToggle != null)
+      {
         CanvasGroupToToggle.interactable = inFront;
+        CanvasGroupToToggle.blocksRaycasts = inFront;
+      }
       foreach (var group in CanvasGroupsToToggle)
+      {
         group.interactable = inFront;
+        group.blocksRaycasts = inFront;
+      }
       foreach (var obj in GameObjectsToToggle)
         obj.SetActive(inFront);
 

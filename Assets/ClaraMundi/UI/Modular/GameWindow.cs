@@ -1,27 +1,27 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UI.ProceduralImage;
 
 namespace ClaraMundi
 {
-  public enum LayoutType
-  {
-    Vertical,
-    Horizontal
-  }
-
   [ExecuteInEditMode]
 
   public class GameWindow : MonoBehaviour
   {
+    public static List<GameWindow> windows = new();
+    [Header("Visual Options")]
+    public Vector4 BorderRadius = new Vector4(8, 8, 8, 8);
+    public Color background = Color.black;
+    [HideInInspector]
+    public Color lastBackground;
+    [Header("Utilities")]
     public GameWindow parent;
-    public LayoutType LayoutType;
-    protected CanvasGroup canvasGroup;
-    protected VerticalLayoutGroup verticalLayoutGroup;
-    protected HorizontalLayoutGroup horizontalLayoutGroup;
-    protected ContentSizeFitter contentSizeFitter;
-    protected MoveSibling moveSibling;
-
-    protected Panel panel;
+    public CanvasGroup canvasGroup;
+    public MoveSibling moveSibling;
+    public Layout layout;
+    public ProceduralImage proceduralImage;
+    public FreeModifier freeModifier;
 
 
     public void OnEnable()
@@ -30,7 +30,6 @@ namespace ClaraMundi
         parent = GetComponentInParent<GameWindow>();
       if (parent == this)
         parent = null;
-      SetUp();
     }
 
     void LateUpdate()
@@ -38,61 +37,41 @@ namespace ClaraMundi
       SetUp();
     }
 
+    void OnDestroy()
+    {
+      windows.Remove(this);
+    }
+
     void SetUp()
     {
       if (!Application.isPlaying)
       {
-        if (panel == null)
-          panel = gameObject.GetComponent<Panel>() ?? gameObject.AddComponent<Panel>();
+        if (!windows.Contains(this))
+          windows.Add(this);
+        transform.localScale = Vector3.one;
+        if (lastBackground != background)
+        {
+          windows.ForEach((w) =>
+          {
+            w.background = background;
+            w.lastBackground = background;
+          });
+          lastBackground = background;
+        }
+        if (proceduralImage == null)
+          proceduralImage = gameObject.GetComponent<ProceduralImage>() ?? gameObject.AddComponent<ProceduralImage>();
+        proceduralImage.ModifierType = typeof(FreeModifier);
+        if (freeModifier == null)
+          freeModifier = gameObject.GetComponent<FreeModifier>() ?? gameObject.AddComponent<FreeModifier>();
+        proceduralImage.color = background;
+        if (layout == null)
+          layout = gameObject.GetComponent<Layout>() ?? gameObject.AddComponent<Layout>();
         if (canvasGroup == null)
-          canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        if (contentSizeFitter == null)
-          contentSizeFitter = gameObject.AddComponent<ContentSizeFitter>();
+          canvasGroup = gameObject.GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
         if (moveSibling == null)
-          moveSibling = gameObject.AddComponent<MoveSibling>();
+          moveSibling = gameObject.GetComponent<MoveSibling>() ?? gameObject.AddComponent<MoveSibling>();
         moveSibling.MovingObject = transform;
-        if (LayoutType == LayoutType.Vertical && horizontalLayoutGroup != null)
-        {
-          DestroyImmediate(horizontalLayoutGroup);
-          horizontalLayoutGroup = null;
-        }
-        if (LayoutType == LayoutType.Horizontal && verticalLayoutGroup != null)
-        {
-          DestroyImmediate(verticalLayoutGroup);
-          verticalLayoutGroup = null;
-        }
-        if (LayoutType == LayoutType.Vertical && verticalLayoutGroup == null)
-          verticalLayoutGroup = gameObject.GetComponent<VerticalLayoutGroup>() ?? gameObject.AddComponent<VerticalLayoutGroup>();
-        if (LayoutType == LayoutType.Horizontal && horizontalLayoutGroup == null)
-          horizontalLayoutGroup = gameObject.GetComponent<HorizontalLayoutGroup>() ?? gameObject.AddComponent<HorizontalLayoutGroup>();
-        if (verticalLayoutGroup != null)
-          PrepLayout(verticalLayoutGroup);
-        if (horizontalLayoutGroup != null)
-          PrepLayout(horizontalLayoutGroup);
       }
-    }
-
-    void PrepLayout(HorizontalOrVerticalLayoutGroup layout)
-    {
-      layout.padding.left = 8;
-      layout.padding.right = 8;
-      layout.padding.top = 8;
-      layout.padding.bottom = 8;
-      layout.spacing = 8;
-      layout.childControlWidth = true;
-      layout.childControlHeight = true;
-      if (layout is VerticalLayoutGroup)
-      {
-        layout.childForceExpandWidth = true;
-        layout.childForceExpandHeight = false;
-      }
-      else
-      {
-        layout.childForceExpandWidth = false;
-        layout.childForceExpandHeight = true;
-      }
-      contentSizeFitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
-      contentSizeFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
     }
 
   }
