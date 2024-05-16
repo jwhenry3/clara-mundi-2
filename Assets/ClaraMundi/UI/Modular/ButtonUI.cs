@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UI.ProceduralImage;
 namespace ClaraMundi
@@ -10,23 +11,30 @@ namespace ClaraMundi
   [ExecuteInEditMode]
   public class ButtonUI : MonoBehaviour
   {
+    public WindowUI window;
+    public WindowUI targetWindow;
     public static List<ButtonUI> buttons = new();
     public static Color globalColor;
     [Header("Options")]
     public bool HasText = true;
     public bool HasIcon = true;
+    public bool HasInitialFocus = false;
+
+
     [Header("Text Options")]
     public bool StretchText = true;
     public TextAlignmentOptions TextAlignment = TextAlignmentOptions.Center;
     [Header("Visual Options")]
     [SerializeField]
     public Color background = Color.black;
+    public bool showIconOnSelect;
     [HideInInspector]
     public Color lastBackground;
     public Vector4 BorderRadius = new Vector4(8, 8, 8, 8);
     public Sprite iconSprite;
     [Header("Utilities")]
     public Button button;
+    public CanvasGroup canvasGroup;
     public TextMeshProUGUI text;
     public LayoutElement textElement;
     public ContentSizeFitter textFitter;
@@ -37,9 +45,35 @@ namespace ClaraMundi
     public ProceduralImage proceduralImage;
     public FreeModifier freeModifier;
 
-    void LateUpdate()
+    private float tick;
+    private float interval = 0.2f;
+
+    void OnEnable()
     {
       SetUp();
+      if (Application.isPlaying)
+        if (button != null && targetWindow != null)
+        {
+          button.onClick.AddListener(targetWindow.moveSibling.ToFront);
+        }
+    }
+
+    void OnDisable()
+    {
+      if (Application.isPlaying)
+        if (button != null && targetWindow != null)
+        {
+          button.onClick.RemoveListener(targetWindow.moveSibling.ToFront);
+        }
+    }
+    void LateUpdate()
+    {
+      tick += Time.deltaTime;
+      if (tick > interval)
+      {
+        tick = 0;
+        SetUp();
+      }
     }
     void OnDestroy()
     {
@@ -49,6 +83,10 @@ namespace ClaraMundi
     {
       if (!Application.isPlaying)
       {
+        if (window == null)
+          window = GetComponentInParent<WindowUI>();
+        if (window != null && window.CurrentButton == null && HasInitialFocus)
+          window.CurrentButton = this;
         if (!buttons.Contains(this))
           buttons.Add(this);
         transform.localScale = Vector3.one;
@@ -61,19 +99,21 @@ namespace ClaraMundi
           });
           lastBackground = background;
         }
+        if (canvasGroup == null)
+          canvasGroup = GetComponentInParent<CanvasGroup>();
         if (proceduralImage == null)
-          proceduralImage = gameObject.GetComponent<ProceduralImage>() ?? gameObject.AddComponent<ProceduralImage>();
+          proceduralImage = GetComponent<ProceduralImage>() ?? gameObject.AddComponent<ProceduralImage>();
         proceduralImage.ModifierType = typeof(FreeModifier);
         if (freeModifier == null)
-          freeModifier = gameObject.GetComponent<FreeModifier>() ?? gameObject.AddComponent<FreeModifier>();
+          freeModifier = GetComponent<FreeModifier>() ?? gameObject.AddComponent<FreeModifier>();
         proceduralImage.color = background;
         if (layout == null)
-          layout = gameObject.GetComponent<Layout>() ?? gameObject.AddComponent<Layout>();
+          layout = GetComponent<Layout>() ?? gameObject.AddComponent<Layout>();
         if (button == null)
-          button = gameObject.GetComponent<Button>() ?? gameObject.AddComponent<Button>();
+          button = GetComponent<Button>() ?? gameObject.AddComponent<Button>();
         if (text == null && HasText)
         {
-          text = gameObject.GetComponentsInChildren<TextMeshProUGUI>().Skip(1).FirstOrDefault();
+          text = GetComponentsInChildren<TextMeshProUGUI>().Skip(1).FirstOrDefault();
           if (text == GetComponent<TextMeshProUGUI>())
             text = null;
           if (text == null)
@@ -83,11 +123,12 @@ namespace ClaraMundi
             obj.transform.parent = transform;
             textElement = obj.AddComponent<LayoutElement>();
             text = obj.AddComponent<TextMeshProUGUI>();
+            text.text = "Text";
           }
         }
         if (icon == null && HasIcon)
         {
-          icon = gameObject.GetComponentsInChildren<Image>().Skip(1).FirstOrDefault();
+          icon = GetComponentsInChildren<Image>().Skip(1).FirstOrDefault();
           if (icon == GetComponent<Image>())
             icon = null;
           if (icon == null)
@@ -129,6 +170,7 @@ namespace ClaraMundi
         if (icon != null)
         {
           icon.sprite = iconSprite;
+          icon.enabled = !showIconOnSelect;
         }
         if (textFitter != null)
         {
@@ -143,11 +185,21 @@ namespace ClaraMundi
         {
           text.fontSize = 20;
           text.alignment = TextAlignment;
+          text.text = gameObject.name;
         }
         if (!freeModifier.Radius.Equals(BorderRadius))
           freeModifier.Radius = BorderRadius + Vector4.zero;
         if (layout.align != TextAnchor.MiddleLeft)
           layout.align = TextAnchor.MiddleLeft;
+      }
+      else
+      {
+        if (showIconOnSelect && icon != null)
+          icon.enabled = EventSystem.current.currentSelectedGameObject == gameObject;
+        if (window.CurrentButton != this && EventSystem.current.currentSelectedGameObject == gameObject)
+        {
+          window.CurrentButton = this;
+        }
       }
     }
   }
