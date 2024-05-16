@@ -31,7 +31,11 @@ namespace ClaraMundi
           {
             try
             {
-              InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) => window.moveSibling.ToFront();
+              InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
+              {
+                if (IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+                  window.moveSibling.ToFront();
+              };
             }
             catch (NullReferenceException e)
             {
@@ -42,11 +46,25 @@ namespace ClaraMundi
       }
     }
 
+    void LateUpdate()
+    {
+      if (InputManager.Instance != null)
+      {
+        if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+          InputManager.Instance.World.Enable();
+        else
+          InputManager.Instance.World.Disable();
+      }
+    }
+
     void OnQuit(WindowUI window)
     {
-      if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+      if (IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
       {
-        window.moveSibling.ToFront();
+        if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+        {
+          window.moveSibling.ToFront();
+        }
       }
     }
   }

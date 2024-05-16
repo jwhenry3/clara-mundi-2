@@ -72,6 +72,9 @@ namespace ClaraMundi
         if (listening && InputManager.Instance != null)
         {
           InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+          listening = false;
+          if (parent != null && parent.CurrentWindow == this)
+            parent.CurrentWindow = null;
         }
       }
     }
@@ -99,6 +102,8 @@ namespace ClaraMundi
       if (listening && InputManager.Instance != null)
       {
         InputManager.Instance.UI.FindAction("Cancel").performed -= OnCancel;
+        if (parent != null && parent.CurrentWindow == this)
+          parent.CurrentWindow = null;
         listening = false;
       }
     }
