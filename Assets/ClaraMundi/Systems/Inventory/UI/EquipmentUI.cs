@@ -9,7 +9,7 @@ namespace ClaraMundi
   {
     OwningEntityHolder owner = new();
 
-    public InventoryUI InventoryUI;
+    public InventoryUIBackup InventoryUI;
 
     public ContextMenu ItemContextMenu;
 

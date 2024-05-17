@@ -10,7 +10,7 @@ namespace ClaraMundi
   public class ItemUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
   {
     public string NodeId;
-    public InventoryUI InventoryUI;
+    public InventoryUIBackup InventoryUI;
     public EquipmentUI EquipmentUI;
     public OwningEntityHolder owner;
     public ItemTooltipUI Tooltip;

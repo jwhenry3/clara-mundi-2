@@ -6,9 +6,9 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-  public class InventoryUI : PlayerUI, IPointerDownHandler
+  public class InventoryUIBackup : PlayerUI, IPointerDownHandler
   {
-    public static InventoryUI Instance;
+    public static InventoryUIBackup Instance;
     readonly OwningEntityHolder owner = new();
     public ItemUI ItemNodePrefab;
 
@@ -25,6 +25,8 @@ namespace ClaraMundi
     public Transform Consumables;
     public Transform General;
     public Transform QuestItems;
+
+    public Transform All;
 
     private ItemInstance DroppingItem;
 
@@ -53,14 +55,21 @@ namespace ClaraMundi
 
     private void CleanUp()
     {
-      foreach (Transform child in Equipment.transform)
-        Destroy(child.gameObject);
-      foreach (Transform child in Consumables.transform)
-        Destroy(child.gameObject);
-      foreach (Transform child in General.transform)
-        Destroy(child.gameObject);
-      foreach (Transform child in QuestItems.transform)
-        Destroy(child.gameObject);
+      if (Equipment != null)
+        foreach (Transform child in Equipment.transform)
+          Destroy(child.gameObject);
+      if (Consumables != null)
+        foreach (Transform child in Consumables.transform)
+          Destroy(child.gameObject);
+      if (General != null)
+        foreach (Transform child in General.transform)
+          Destroy(child.gameObject);
+      if (QuestItems != null)
+        foreach (Transform child in QuestItems.transform)
+          Destroy(child.gameObject);
+      if (All != null)
+        foreach (Transform child in All.transform)
+          Destroy(child.gameObject);
     }
 
     private void Populate()
@@ -68,29 +77,41 @@ namespace ClaraMundi
       if (player == null) return;
       if (player.Inventory == null) return;
       if (player.Inventory.ItemStorage == null) return;
+      if (Equipment == null && Consumables == null && QuestItems == null && General == null && All == null) return;
       foreach (var kvp in player.Inventory.ItemStorage.Items)
       {
         var itemInstance = kvp.Value;
         var item = RepoManager.Instance.ItemRepo.GetItem(itemInstance.ItemId);
-        var parent = General;
+        Transform parent = null;
         switch (item.Type)
         {
           case ItemType.Armor:
           case ItemType.Weapon:
-            parent = Equipment;
+            if (Equipment != null)
+              parent = Equipment;
+            if (All != null)
+              parent = All;
             break;
           case ItemType.Consumable:
-            parent = Consumables;
+            if (Consumables != null)
+              parent = Consumables;
+            if (All != null)
+              parent = All;
             break;
           case ItemType.KeyItem:
-            parent = QuestItems;
+            if (QuestItems != null)
+              parent = QuestItems;
             break;
           case ItemType.Ingredient:
           case ItemType.Generic:
           default:
-            parent = General;
+            if (General != null)
+              parent = General;
+            if (All != null)
+              parent = All;
             break;
         }
+        if (parent == null) continue;
         var instance = Instantiate(ItemNodePrefab, parent, false);
         instance.InventoryUI = this;
         instance.ShowEquippedStatus = true;
