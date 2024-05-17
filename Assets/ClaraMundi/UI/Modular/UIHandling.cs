@@ -1,23 +1,22 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace ClaraMundi
 {
   public class UIHandling : MonoBehaviour
   {
-    public bool IsDebug;
+    public PlayerRequiredUI PlayerRequiredUI;
     public GameObject MainUI;
+
+    public Transform DebugContainer;
 
     public GameObject Placeholder;
 
-    void OnEnable()
+
+
+    void Start()
     {
-      foreach (Transform child in transform)
-      {
-        child.gameObject.SetActive(IsDebug);
-      }
-      MainUI.SetActive(true);
-      if (InputManager.Instance == null) return;
       foreach (WindowUI window in MainUI.GetComponentsInChildren<WindowUI>(true))
       {
         window.SetUp();
@@ -33,7 +32,7 @@ namespace ClaraMundi
             {
               InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
               {
-                if (IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+                if (PlayerRequiredUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
                   window.moveSibling.ToFront();
               };
             }
@@ -44,6 +43,14 @@ namespace ClaraMundi
           }
         }
       }
+    }
+    void OnEnable()
+    {
+      foreach (Transform child in DebugContainer)
+      {
+        child.gameObject.SetActive(PlayerRequiredUI.IsDebug);
+      }
+      MainUI.SetActive(PlayerRequiredUI.IsDebug || PlayerManager.Instance?.LocalPlayer != null);
     }
 
     void LateUpdate()
@@ -59,7 +66,7 @@ namespace ClaraMundi
 
     void OnQuit(WindowUI window)
     {
-      if (IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+      if (PlayerRequiredUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
       {
         if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
         {

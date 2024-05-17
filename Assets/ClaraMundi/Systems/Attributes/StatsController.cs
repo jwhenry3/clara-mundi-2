@@ -15,24 +15,32 @@ namespace ClaraMundi
     public readonly SyncVar<long> ExpTilNextLevel = new(1000);
     public readonly SyncVar<Energies> Energies = new(new Energies());
 
-    [ShowInInspector] Dictionary<StatType, List<StatValue>> StatModifications = new();
-    [ShowInInspector] Dictionary<AttributeType, List<AttributeValue>> AttributeModifications = new();
+    [ShowInInspector] private Dictionary<StatType, List<StatValue>> StatModifications = new();
+    [ShowInInspector] private Dictionary<AttributeType, List<AttributeValue>> AttributeModifications = new();
 
     [ShowInInspector] public readonly Dictionary<StatType, StatValue> ModifiedStats = new();
     [ShowInInspector] public readonly Dictionary<AttributeType, AttributeValue> ModifiedAttributes = new();
 
-    [ShowInInspector] public readonly SyncDictionary<AttributeType, float> Attributes = new(new SyncTypeSettings(0.5f));
-    bool hasLoadedStats;
+    [ShowInInspector] public readonly SyncDictionary<AttributeType, float> Attributes = new();
+    private bool hasLoadedStats;
 
-    void OnEnable()
+    private void OnEnable()
     {
       ComputedStats.OnChange += OnComputedChange;
       Level.OnChange += LevelChange;
       Experience.OnChange += ExpChange;
       ExpTilNextLevel.OnChange += ExpTilChange;
       Energies.OnChange += EnergyChanged;
+      OnChange?.Invoke();
     }
-    void OnDisable()
+
+    public override void OnStartServer()
+    {
+      base.OnStartServer();
+      ComputeStats();
+    }
+
+    private void OnDisable()
     {
       ComputedStats.OnChange -= OnComputedChange;
       Level.OnChange -= LevelChange;
@@ -55,6 +63,7 @@ namespace ClaraMundi
     private void OnAttributeChange(SyncDictionaryOperation op, AttributeType key, float value, bool asServer)
     {
       OnChange?.Invoke();
+      Debug.Log("Attributes Change");
     }
 
     private void LevelChange(int previous, int next, bool asServer)
@@ -248,7 +257,9 @@ namespace ClaraMundi
     private void ComputeAttributes(CharacterClassType classType)
     {
       foreach (var kvp in classType.CalculationDict)
+      {
         Attributes[kvp.Key] = GetModifiedAttribute(kvp.Key, classType);
+      }
     }
 
     private float GetModifiedAttribute(AttributeType type, CharacterClassType classType)

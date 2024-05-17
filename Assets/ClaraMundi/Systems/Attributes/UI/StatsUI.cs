@@ -34,20 +34,6 @@ namespace ClaraMundi
     private readonly Dictionary<AttributeType, TextMeshProUGUI> AttributeFields = new();
     public AttributeType[] PercentAttributes = { AttributeType.MagicalSpeed, AttributeType.PhysicalSpeed };
 
-    private void Awake()
-    {
-      AttributeFields[AttributeType.Healing] = Healing;
-      AttributeFields[AttributeType.PhysicalDefense] = PhysicalDefense;
-      AttributeFields[AttributeType.PhysicalAttack] = PhysicalAttack;
-      AttributeFields[AttributeType.PhysicalAccuracy] = PhysicalAccuracy;
-      AttributeFields[AttributeType.PhysicalEvasion] = PhysicalEvasion;
-      AttributeFields[AttributeType.PhysicalSpeed] = SkillSpeed;
-      AttributeFields[AttributeType.MagicalAttack] = MagicalAttack;
-      AttributeFields[AttributeType.MagicalAccuracy] = MagicalAccuracy;
-      AttributeFields[AttributeType.MagicalEvasion] = MagicalEvasion;
-      AttributeFields[AttributeType.MagicalDefense] = MagicalDefense;
-      AttributeFields[AttributeType.MagicalSpeed] = SpellSpeed;
-    }
 
     protected override void OnPlayerChange(Player _player)
     {
@@ -64,6 +50,7 @@ namespace ClaraMundi
       player.Stats.Energies.OnChange += OnEnergyChange;
       OnNameChange("", entity.entityName.Value, false);
       OnStatsChange();
+      OnEnergyChange(default, player.Stats.Energies.Value, false);
     }
 
     private void OnEnergyChange(Energies prev, Energies next, bool asServer)
@@ -90,6 +77,21 @@ namespace ClaraMundi
       Agility.text = DisplayNumber(stats.Agility);
       Intelligence.text = DisplayNumber(stats.Intelligence);
       Mind.text = DisplayNumber(stats.Mind);
+
+      if (AttributeFields.Count == 0)
+      {
+        AttributeFields[AttributeType.Healing] = Healing;
+        AttributeFields[AttributeType.PhysicalDefense] = PhysicalDefense;
+        AttributeFields[AttributeType.PhysicalAttack] = PhysicalAttack;
+        AttributeFields[AttributeType.PhysicalAccuracy] = PhysicalAccuracy;
+        AttributeFields[AttributeType.PhysicalEvasion] = PhysicalEvasion;
+        AttributeFields[AttributeType.PhysicalSpeed] = SkillSpeed;
+        AttributeFields[AttributeType.MagicalAttack] = MagicalAttack;
+        AttributeFields[AttributeType.MagicalAccuracy] = MagicalAccuracy;
+        AttributeFields[AttributeType.MagicalEvasion] = MagicalEvasion;
+        AttributeFields[AttributeType.MagicalDefense] = MagicalDefense;
+        AttributeFields[AttributeType.MagicalSpeed] = SpellSpeed;
+      }
 
       foreach (var kvp in player.Stats.Attributes)
       {
