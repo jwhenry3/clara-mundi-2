@@ -1,11 +1,13 @@
 using System;
-using System.Collections.Generic;
+using GameKit.Dependencies.Utilities;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 namespace ClaraMundi
 {
   public class UIHandling : MonoBehaviour
   {
+    public Transform FocusIndicator;
     public PlayerRequiredUI PlayerRequiredUI;
     public GameObject MainUI;
 
@@ -62,6 +64,7 @@ namespace ClaraMundi
         else
           InputManager.Instance.World.Disable();
       }
+      MoveIndicator();
     }
 
     void OnQuit(WindowUI window)
@@ -84,6 +87,31 @@ namespace ClaraMundi
 #else
         Application.Quit();
 #endif
+    }
+
+    void MoveIndicator()
+    {
+      if (FocusIndicator == null) return;
+      if (EventSystem.current != null)
+      {
+        if (EventSystem.current.currentSelectedGameObject != null)
+        {
+          var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
+          var corners = new Vector3[4];
+          t.GetWorldCorners(corners);
+
+          var height = Mathf.Abs(corners[2].y - corners[0].y);
+          FocusIndicator.position = new Vector3(
+            corners[0].x,
+            corners[2].y - height / 2,
+            0
+          );
+          FocusIndicator.gameObject.SetActive(true);
+          return;
+        }
+      }
+      FocusIndicator.gameObject.SetActive(false);
+      FocusIndicator.position = Vector3.one * -100000;
     }
   }
 }

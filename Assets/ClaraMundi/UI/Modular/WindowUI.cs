@@ -58,7 +58,10 @@ namespace ClaraMundi
       if (moveSibling.IsInFront())
       {
         if (parent != null && parent.CurrentWindow == this)
+        {
           parent.CurrentWindow = null;
+          parent.moveSibling.ToFront();
+        }
         moveSibling.ToBack();
       }
     }
@@ -81,7 +84,7 @@ namespace ClaraMundi
 
     void OnSentToFront()
     {
-      if (CurrentButton != null)
+      if (CurrentButton != null && CurrentWindow == null)
       {
         EventSystem.current.SetSelectedGameObject(CurrentButton.gameObject);
       }
@@ -108,7 +111,7 @@ namespace ClaraMundi
       }
     }
 
-    void LateUpdate()
+    void Update()
     {
       tick += Time.deltaTime;
       if (tick > interval)
