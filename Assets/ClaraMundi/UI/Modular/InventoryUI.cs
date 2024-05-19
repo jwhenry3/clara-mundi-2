@@ -73,6 +73,23 @@ namespace ClaraMundi
         if (items.ContainsKey(key))
         {
           items[key].OnChosen -= OnChosen;
+          if (EventSystem.current.currentSelectedGameObject == items[key].gameObject)
+          {
+            var obj = EventSystem.current.currentSelectedGameObject;
+            var container = obj.transform.parent;
+            if (container.childCount > 1)
+            {
+              var index = obj.transform.GetSiblingIndex();
+              if (index > 0)
+              {
+                EventSystem.current.SetSelectedGameObject(container.GetChild(index - 1).gameObject);
+              }
+              else
+              {
+                EventSystem.current.SetSelectedGameObject(container.GetChild(index + 1).gameObject);
+              }
+            }
+          }
           Destroy(items[key].gameObject);
           items.Remove(key);
         }
@@ -121,13 +138,23 @@ namespace ClaraMundi
     }
     void OnChosen(InventoryItemUI itemUI)
     {
-      ItemMenu.moveSibling.ToFront();
       chosenItem = itemUI;
       ItemMenu.CurrentButton = null;
       UseMenuItem?.SetActive(chosenItem.item.Usable);
       EquipMenuItem?.SetActive(chosenItem.item.Equippable && !chosenItem.instance.IsEquipped);
       UnequipMenuItem?.SetActive(chosenItem.item.Equippable && chosenItem.instance.IsEquipped);
       DropMenuItem?.SetActive(chosenItem.item.Droppable);
+      if (chosenItem.item.Usable)
+        ItemMenu.CurrentButton = UseMenuItem.GetComponent<ButtonUI>();
+      else if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
+        ItemMenu.CurrentButton = EquipMenuItem.GetComponent<ButtonUI>();
+      else
+      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
+        ItemMenu.CurrentButton = UnequipMenuItem.GetComponent<ButtonUI>();
+      else
+      if (chosenItem.item.Droppable)
+        ItemMenu.CurrentButton = DropMenuItem.GetComponent<ButtonUI>();
+      ItemMenu.moveSibling.ToFront();
     }
 
     void Update()

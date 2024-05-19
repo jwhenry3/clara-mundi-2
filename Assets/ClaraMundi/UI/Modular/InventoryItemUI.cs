@@ -11,6 +11,9 @@ namespace ClaraMundi
   [ExecuteInEditMode]
   public class InventoryItemUI : MonoBehaviour
   {
+    public Color EquippedColor;
+    public Color EquippableColor;
+    public Color UsableColor;
     public ButtonUI button;
     public ItemInstance instance;
     public Item item;
@@ -101,6 +104,10 @@ namespace ClaraMundi
               quantity.text = instance.Quantity > 1 ? instance.Quantity + "" : "";
             else
               quantity.text = "99";
+          if (item != null && item.Equippable)
+            button.text.color = instance.IsEquipped ? EquippedColor : EquippableColor;
+          if (item != null && item.Usable)
+            button.text.color = UsableColor;
         }
         else
         {
