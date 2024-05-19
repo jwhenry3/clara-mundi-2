@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace ClaraMundi
@@ -15,6 +17,10 @@ namespace ClaraMundi
     public TextMeshProUGUI quantity;
     public LayoutElement quantityElement;
     public ContentSizeFitter quantityFitter;
+
+    private UnityEvent buttonClick;
+
+    public event Action<InventoryItemUI> OnChosen;
 
     private float tick;
     private float interval = 0.2f;
@@ -33,6 +39,23 @@ namespace ClaraMundi
       if (item != null && button != null)
       {
         gameObject.name = item.Name;
+      }
+      if (Application.isPlaying)
+      {
+        if (button != null && button.button != null)
+          (buttonClick = button.button.onClick).AddListener(OnClick);
+      }
+    }
+    void OnDisable()
+    {
+      if (buttonClick != null)
+        buttonClick.RemoveListener(OnClick);
+    }
+    void OnClick()
+    {
+      if (item != null && instance != null)
+      {
+        OnChosen?.Invoke(this);
       }
     }
 

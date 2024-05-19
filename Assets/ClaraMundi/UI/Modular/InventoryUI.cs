@@ -14,19 +14,27 @@ namespace ClaraMundi
     public WindowUI window;
     public InventoryItemUI ItemPrefab;
     public Transform ItemsContainer;
+    public WindowUI ItemMenu;
+
+    public GameObject UseMenuItem;
+    public GameObject EquipMenuItem;
+    public GameObject UnequipMenuItem;
+    public GameObject DropMenuItem;
     public bool forLocalPlayer = true;
     public string playerName;
 
     private InventoryController inventory;
+
+    private InventoryItemUI chosenItem;
+
+    private Player player;
 
     private Dictionary<int, InventoryItemUI> items = new();
     void OnEnable()
     {
       inventory = null;
       if (PlayerManager.Instance == null) return;
-      var player = PlayerManager.Instance.LocalPlayer;
-      if (window == null)
-        window = GetComponentInParent<WindowUI>();
+      player = PlayerManager.Instance.LocalPlayer;
       if (!forLocalPlayer)
       {
         if (!PlayerManager.Instance.PlayersByName.ContainsKey(playerName))
@@ -64,8 +72,9 @@ namespace ClaraMundi
       {
         if (items.ContainsKey(key))
         {
-          items.Remove(key);
+          items[key].OnChosen -= OnChosen;
           Destroy(items[key].gameObject);
+          items.Remove(key);
         }
       }
       if (op == SyncDictionaryOperation.Set)
@@ -102,12 +111,69 @@ namespace ClaraMundi
         itemUI.item = item;
         itemUI.SetUp();
         items[kvp.Key] = itemUI;
+        itemUI.OnChosen += OnChosen;
         if (index == 0)
         {
           EventSystem.current.SetSelectedGameObject(itemUI.gameObject);
         }
         index++;
       }
+    }
+    void OnChosen(InventoryItemUI itemUI)
+    {
+      ItemMenu.moveSibling.ToFront();
+      chosenItem = itemUI;
+      ItemMenu.CurrentButton = null;
+      UseMenuItem?.SetActive(chosenItem.item.Usable);
+      EquipMenuItem?.SetActive(chosenItem.item.Equippable && !chosenItem.instance.IsEquipped);
+      UnequipMenuItem?.SetActive(chosenItem.item.Equippable && chosenItem.instance.IsEquipped);
+      DropMenuItem?.SetActive(chosenItem.item.Droppable);
+    }
+
+    void Update()
+    {
+      if (!ItemMenu.moveSibling.IsInFront())
+        chosenItem = null;
+    }
+
+    public void Use()
+    {
+      window.moveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
+      if (chosenItem == null) return;
+      if (!chosenItem.item.Usable) return;
+      player.Inventory.UseItem(chosenItem.instance.ItemInstanceId, 1);
+    }
+    public void Equip()
+    {
+      window.moveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
+      if (chosenItem == null) return;
+      if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
+      {
+        player.Inventory.EquipItem(chosenItem.instance.ItemInstanceId);
+      }
+
+    }
+    public void Unequip()
+    {
+      window.moveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
+      if (chosenItem == null) return;
+      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
+      {
+        player.Inventory.UnequipItem(chosenItem.instance.ItemInstanceId);
+      }
+
+    }
+
+    public void Drop()
+    {
+      window.moveSibling.ToFront();
+      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
+      if (chosenItem == null) return;
+      if (!chosenItem.item.Droppable) return;
+      player.Inventory.DropItem(chosenItem.instance.ItemInstanceId, 1);
     }
   }
 }

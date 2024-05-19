@@ -32,19 +32,19 @@ namespace ClaraMundi
     }
 
     [ServerRpc]
-    public void UseItem(int itemInstanceId, int quantity)
+    public void UseItem(int itemInstanceId, int quantity = 1)
     {
       ServerUseItem(itemInstanceId, quantity);
     }
 
     [ServerRpc]
-    public void DropItem(int itemInstanceId, int quantity)
+    public void DropItem(int itemInstanceId, int quantity = 1)
     {
       ServerDropItem(itemInstanceId, quantity);
     }
 
     [ServerRpc]
-    public void SplitStack(int itemInstanceId, int quantity)
+    public void SplitStack(int itemInstanceId, int quantity = 1)
     {
       ServerSplitStack(itemInstanceId, quantity);
     }

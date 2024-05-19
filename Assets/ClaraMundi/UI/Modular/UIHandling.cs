@@ -10,6 +10,8 @@ namespace ClaraMundi
     public Transform FocusIndicator;
     public PlayerRequiredUI PlayerRequiredUI;
     public GameObject MainUI;
+    public GameObject PeersContainer;
+    public GameObject PlaceholderPeer;
 
     public Transform DebugContainer;
 
@@ -96,22 +98,38 @@ namespace ClaraMundi
       {
         if (EventSystem.current.currentSelectedGameObject != null)
         {
-          var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
-          var corners = new Vector3[4];
-          t.GetWorldCorners(corners);
+          if (!EventSystem.current.currentSelectedGameObject.activeInHierarchy)
+          {
+            EventSystem.current.SetSelectedGameObject(null);
+          }
+          else
+          {
+            var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
+            var corners = new Vector3[4];
+            t.GetWorldCorners(corners);
 
-          var height = Mathf.Abs(corners[2].y - corners[0].y);
-          FocusIndicator.position = new Vector3(
-            corners[0].x,
-            corners[2].y - height / 2,
-            0
-          );
-          FocusIndicator.gameObject.SetActive(true);
-          return;
+            var height = Mathf.Abs(corners[2].y - corners[0].y);
+            FocusIndicator.position = new Vector3(
+              corners[0].x,
+              corners[2].y - height / 2,
+              0
+            );
+            FocusIndicator.gameObject.SetActive(true);
+            return;
+          }
         }
       }
       FocusIndicator.gameObject.SetActive(false);
       FocusIndicator.position = Vector3.one * -100000;
     }
+
+    public void MoveLastSiblingBack()
+    {
+      if (PeersContainer != null)
+      {
+        PeersContainer.transform.GetChild(PeersContainer.transform.childCount - 1).SetAsFirstSibling();
+      }
+    }
   }
+
 }

@@ -57,6 +57,8 @@ namespace ClaraMundi
         {
           button.onClick.AddListener(targetWindow.moveSibling.ToFront);
         }
+      if (window != null && window.CurrentButton == null && HasInitialFocus)
+        window.CurrentButton = this;
     }
 
     void OnDisable()

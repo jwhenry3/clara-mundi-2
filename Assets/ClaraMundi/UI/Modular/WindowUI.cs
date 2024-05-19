@@ -24,7 +24,6 @@ namespace ClaraMundi
     public Color lastBackground;
     [Header("Utilities")]
     public WindowUI parent;
-    public CanvasGroup canvasGroup;
     public MoveSibling moveSibling;
     public Layout layout;
     public ProceduralImage proceduralImage;
@@ -153,11 +152,11 @@ namespace ClaraMundi
         proceduralImage.color = background;
         if (layout == null)
           layout = GetComponent<Layout>() ?? gameObject.AddComponent<Layout>();
-        if (canvasGroup == null)
-          canvasGroup = GetComponent<CanvasGroup>() ?? gameObject.AddComponent<CanvasGroup>();
         if (moveSibling == null)
           moveSibling = GetComponent<MoveSibling>() ?? gameObject.AddComponent<MoveSibling>();
         moveSibling.MovingObject = transform;
+        if (freeModifier != null)
+          freeModifier.Radius = BorderRadius;
       }
     }
 
