@@ -7,23 +7,33 @@ namespace ClaraMundi
   {
     public bool PlayerIsRequired;
     public bool IsDebug;
+    public bool IsManual;
 
     protected override void OnPlayerChange(Player _player)
     {
       base.OnPlayerChange(_player);
+      if (!IsManual)
+      {
+        UpdateVisibility();
+      }
+    }
+
+    public void UpdateVisibility()
+    {
       if (IsDebug)
       {
         ShowAll();
         return;
       }
-      if ((_player == null && PlayerIsRequired) || (_player != null && !PlayerIsRequired))
+      if ((player == null && PlayerIsRequired) || (player != null && !PlayerIsRequired))
         HideAll();
       else
         ShowAll();
     }
     private void OnEnable()
     {
-      OnPlayerChange(player);
+      if (!IsManual)
+        OnPlayerChange(player);
     }
     private void OnDisable()
     {

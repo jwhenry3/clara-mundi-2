@@ -207,7 +207,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 24, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8717375291023771165
 MonoBehaviour:
@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!222 &8030631336369600251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -528,12 +528,15 @@ MonoBehaviour:
   HasText: 1
   UseNameAsText: 0
   HasIcon: 1
+  iconWidth: 24
+  iconHeight: 24
   HasInitialFocus: 1
   StretchText: 1
+  StretchTextHorizontal: 0
   TextAlignment: 513
-  background: {r: 0, g: 0, b: 0, a: 1}
+  background: {r: 0.08235294, g: 0.20784314, b: 0.30980393, a: 1}
   showIconOnSelect: 0
-  lastBackground: {r: 0, g: 0, b: 0, a: 1}
+  lastBackground: {r: 0.08235294, g: 0.20784314, b: 0.30980393, a: 1}
   BorderRadius: {x: 8, y: 8, z: 8, w: 8}
   iconSprite: {fileID: 0}
   button: {fileID: 7048545028044722138}
@@ -566,7 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.08235294, g: 0.20784314, b: 0.30980393, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

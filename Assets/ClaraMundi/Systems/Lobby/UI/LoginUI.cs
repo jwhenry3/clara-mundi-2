@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ClaraMundi
 {
-  public class LoginUI : MonoBehaviour
+  public class LoginUIBackup : MonoBehaviour
   {
     public InputFieldWithHybridNav EmailField;
     public InputFieldWithHybridNav PasswordField;

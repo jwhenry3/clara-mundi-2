@@ -11,7 +11,7 @@ namespace ClaraMundi
   {
     public string NodeId;
     public InventoryUIBackup InventoryUI;
-    public EquipmentUI EquipmentUI;
+    public EquipmentUIBackup EquipmentUI;
     public OwningEntityHolder owner;
     public ItemTooltipUI Tooltip;
     public event Action EntityChange;

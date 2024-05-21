@@ -10,7 +10,7 @@ using UnityEngine.UI.ProceduralImage;
 namespace ClaraMundi
 {
   [ExecuteInEditMode]
-  public class ButtonUI : MonoBehaviour
+  public class ButtonUI : MonoBehaviour, ISelectHandler
   {
     public WindowUI window;
     public WindowUI targetWindow;
@@ -20,19 +20,20 @@ namespace ClaraMundi
     public bool HasText = true;
     public bool UseNameAsText = true;
     public bool HasIcon = true;
-    public bool HasInitialFocus = false;
+    public float iconWidth = 24;
+    public float iconHeight = 24;
+    public bool AutoFocus = false;
 
 
     [Header("Text Options")]
     public bool StretchText = true;
+    public bool StretchTextHorizontal = false;
     public TextAlignmentOptions TextAlignment = TextAlignmentOptions.Center;
     [Header("Visual Options")]
     [SerializeField]
-    public Color background = Color.black;
+    private Color background = new Color(0, 0, 0, 0.20f);
     public bool showIconOnSelect;
-    [HideInInspector]
-    public Color lastBackground;
-    public Vector4 BorderRadius = new Vector4(8, 8, 8, 8);
+    private Vector4 BorderRadius = new Vector4(4, 4, 4, 4);
     public Sprite iconSprite;
     [Header("Utilities")]
     public Button button;
@@ -50,17 +51,45 @@ namespace ClaraMundi
     private float tick;
     private float interval = 0.2f;
 
+
+    private ScrollRect scroller;
+    private GameObject lastSelected;
+
     void OnEnable()
     {
+      scroller = scroller ?? GetComponentInParent<ScrollRect>();
       if (Application.isPlaying)
         if (button != null && targetWindow != null)
         {
           button.onClick.AddListener(targetWindow.moveSibling.ToFront);
         }
-      if (window != null && window.CurrentButton == null && HasInitialFocus)
+      if (window != null && window.CurrentButton == null && window.CurrentInput == null && AutoFocus)
         window.CurrentButton = this;
     }
 
+    public void SnapTo(RectTransform child)
+    {
+      if (scroller == null) return;
+      float padding = 16;
+      var scrollRect = scroller;
+      float viewportHeight = scrollRect.viewport.rect.height;
+      Vector2 scrollPosition = scrollRect.content.anchoredPosition;
+
+      float elementTop = child.anchoredPosition.y;
+      float elementBottom = elementTop - child.rect.height;
+
+
+      float visibleContentTop = -scrollPosition.y - padding;
+      float visibleContentBottom = -scrollPosition.y - viewportHeight + padding;
+
+      float scrollDelta =
+          elementTop > visibleContentTop ? visibleContentTop - elementTop :
+          elementBottom < visibleContentBottom ? visibleContentBottom - elementBottom :
+          0f;
+
+      scrollPosition.y += scrollDelta;
+      scrollRect.content.anchoredPosition = scrollPosition;
+    }
     void OnDisable()
     {
       if (Application.isPlaying)
@@ -78,6 +107,13 @@ namespace ClaraMundi
         SetUp();
       }
     }
+
+    void LateUpdate()
+    {
+      if (lastSelected != gameObject && EventSystem.current.currentSelectedGameObject == gameObject)
+        SnapTo(transform as RectTransform);
+      lastSelected = EventSystem.current.currentSelectedGameObject;
+    }
     void OnDestroy()
     {
       buttons.Remove(this);
@@ -86,7 +122,7 @@ namespace ClaraMundi
     {
       if (window == null)
         window = GetComponentInParent<WindowUI>();
-      if (window != null && window.CurrentButton == null && HasInitialFocus)
+      if (window != null && window.CurrentButton == null && AutoFocus)
         window.CurrentButton = this;
       if (!Application.isPlaying)
       {
@@ -108,16 +144,24 @@ namespace ClaraMundi
       {
         if (showIconOnSelect && icon != null)
           icon.enabled = EventSystem.current.currentSelectedGameObject == gameObject;
-        if (window != null && window.CurrentButton != this && EventSystem.current.currentSelectedGameObject == gameObject)
-        {
-          window.CurrentButton = this;
-        }
+      }
+
+      if (text != null && text.gameObject.activeInHierarchy != HasText)
+      {
+        text.gameObject.SetActive(HasText);
+        if (UseNameAsText)
+          text.text = gameObject.name;
+      }
+      if (icon != null && icon.gameObject.activeInHierarchy != HasIcon)
+      {
+        icon.gameObject.SetActive(HasIcon);
+        icon.sprite = iconSprite;
       }
     }
     IEnumerator PrepareText()
     {
       yield return new WaitForSeconds(0.01f);
-      if (text == null && HasText)
+      if (text == null)
       {
         text = GetComponentsInChildren<TextMeshProUGUI>().Skip(1).FirstOrDefault();
         if (text == GetComponent<TextMeshProUGUI>())
@@ -132,12 +176,6 @@ namespace ClaraMundi
           text.text = "Text";
         }
       }
-      if (text != null && !HasText && text != GetComponent<TextMeshProUGUI>())
-      {
-        DestroyImmediate(text.gameObject);
-        text = null;
-        textElement = null;
-      }
       if (text != null && textElement == null)
         textElement = text.GetComponent<LayoutElement>() ?? text.gameObject.AddComponent<LayoutElement>();
       if (text != null && textFitter == null)
@@ -145,8 +183,8 @@ namespace ClaraMundi
 
       if (textFitter != null)
       {
-        textFitter.horizontalFit = StretchText ? ContentSizeFitter.FitMode.Unconstrained : ContentSizeFitter.FitMode.PreferredSize;
-        textFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+        textFitter.horizontalFit = StretchTextHorizontal ? ContentSizeFitter.FitMode.Unconstrained : ContentSizeFitter.FitMode.PreferredSize;
+        textFitter.verticalFit = StretchText ? ContentSizeFitter.FitMode.Unconstrained : ContentSizeFitter.FitMode.PreferredSize;
       }
       if (textElement != null)
       {
@@ -163,15 +201,6 @@ namespace ClaraMundi
     }
     IEnumerator PrepareGraphics()
     {
-      if (lastBackground != background)
-      {
-        buttons.ForEach((b) =>
-        {
-          b.background = background;
-          b.lastBackground = background;
-        });
-        lastBackground = background;
-      }
       yield return new WaitForSeconds(0.01f);
       if (proceduralImage == null)
         proceduralImage = GetComponent<ProceduralImage>() ?? gameObject.AddComponent<ProceduralImage>();
@@ -179,7 +208,7 @@ namespace ClaraMundi
       if (freeModifier == null)
         freeModifier = GetComponent<FreeModifier>();
       proceduralImage.color = background;
-      if (icon == null && HasIcon)
+      if (icon == null)
       {
         icon = GetComponentsInChildren<Image>().Skip(1).FirstOrDefault();
         if (icon == GetComponent<Image>())
@@ -195,18 +224,12 @@ namespace ClaraMundi
           icon = obj.AddComponent<Image>();
         }
       }
-      if (icon != null && !HasIcon && icon != GetComponent<Image>())
-      {
-        DestroyImmediate(icon.gameObject);
-        icon = null;
-        iconElement = null;
-      }
       if (icon != null && iconElement == null)
         iconElement = icon.GetComponent<LayoutElement>() ?? icon.gameObject.AddComponent<LayoutElement>();
       if (iconElement != null)
       {
-        iconElement.preferredWidth = 24;
-        iconElement.preferredHeight = 24;
+        iconElement.preferredWidth = iconWidth;
+        iconElement.preferredHeight = iconHeight;
         iconElement.flexibleWidth = 0;
         iconElement.flexibleHeight = 0;
       }
@@ -218,8 +241,15 @@ namespace ClaraMundi
       }
       if (freeModifier != null && !freeModifier.Radius.Equals(BorderRadius))
         freeModifier.Radius = BorderRadius + Vector4.zero;
-      if (layout.align != TextAnchor.MiddleLeft)
-        layout.align = TextAnchor.MiddleLeft;
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+      if (Application.isPlaying && window != null)
+      {
+        window.CurrentInput = null;
+        window.CurrentButton = this;
+      }
     }
   }
 }

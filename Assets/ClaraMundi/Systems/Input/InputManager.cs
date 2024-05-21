@@ -15,13 +15,19 @@ namespace ClaraMundi
     public InputActionMap UI;
     [HideInInspector]
     public InputActionMap World;
-    private void Awake()
+
+    public void Init()
     {
       Instance = this;
       UI = Instance.InputActionAsset.FindActionMap("UI");
       World = Instance.InputActionAsset.FindActionMap("Player");
       UI.Enable();
       World.Disable();
+    }
+    private void Awake()
+    {
+      if (Instance == null)
+        Init();
     }
     public static bool IsFocusedOnInput()
     {

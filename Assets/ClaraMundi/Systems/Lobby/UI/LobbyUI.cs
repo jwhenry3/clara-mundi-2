@@ -9,7 +9,7 @@ namespace ClaraMundi
     public Transform CharacterSelectionPanel;
     public Transform CreateCharacterPanel;
     public Transform ServerSelectionPanel;
-    public LoginUI LoginUI;
+    public LoginUIBackup LoginUI;
     public RegisterUI RegisterUI;
 
     public static LobbyUI Instance;

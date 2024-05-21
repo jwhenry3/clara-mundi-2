@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using GameKit.Dependencies.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,20 +9,20 @@ namespace ClaraMundi
   public class UIHandling : MonoBehaviour
   {
     public Transform FocusIndicator;
-    public PlayerRequiredUI PlayerRequiredUI;
-    public GameObject MainUI;
+    public PlayerRequiredUI PlayerUI;
+    public PlayerRequiredUI NoPlayerUI;
     public GameObject PeersContainer;
-    public GameObject PlaceholderPeer;
 
     public Transform DebugContainer;
 
     public GameObject Placeholder;
 
-
+    private float tick;
+    private float interval = 0.1f;
 
     void Start()
     {
-      foreach (WindowUI window in MainUI.GetComponentsInChildren<WindowUI>(true))
+      foreach (WindowUI window in PlayerUI.GetComponentsInChildren<WindowUI>(true))
       {
         window.SetUp();
         if (!string.IsNullOrEmpty(window.TriggerAction))
@@ -36,7 +37,7 @@ namespace ClaraMundi
             {
               InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
               {
-                if (PlayerRequiredUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+                if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
                   window.moveSibling.ToFront();
               };
             }
@@ -52,9 +53,14 @@ namespace ClaraMundi
     {
       foreach (Transform child in DebugContainer)
       {
-        child.gameObject.SetActive(PlayerRequiredUI.IsDebug);
+        child.gameObject.SetActive(PlayerUI.IsDebug || NoPlayerUI.IsDebug);
       }
-      MainUI.SetActive(PlayerRequiredUI.IsDebug || PlayerManager.Instance?.LocalPlayer != null);
+      PlayerUI.gameObject.SetActive(true);
+      NoPlayerUI.gameObject.SetActive(true);
+    }
+    void Update()
+    {
+      MoveIndicator();
     }
 
     void LateUpdate()
@@ -66,12 +72,11 @@ namespace ClaraMundi
         else
           InputManager.Instance.World.Disable();
       }
-      MoveIndicator();
     }
 
     void OnQuit(WindowUI window)
     {
-      if (PlayerRequiredUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+      if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
       {
         if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
         {
@@ -93,34 +98,45 @@ namespace ClaraMundi
 
     void MoveIndicator()
     {
-      if (FocusIndicator == null) return;
-      if (EventSystem.current != null)
+      if (FocusIndicator != null)
       {
-        if (EventSystem.current.currentSelectedGameObject != null)
+        if (EventSystem.current != null)
         {
-          if (!EventSystem.current.currentSelectedGameObject.activeInHierarchy)
+          if (EventSystem.current.currentSelectedGameObject != null)
           {
-            EventSystem.current.SetSelectedGameObject(null);
+            if (!EventSystem.current.currentSelectedGameObject.activeInHierarchy)
+            {
+              EventSystem.current.SetSelectedGameObject(null);
+              FocusIndicator.gameObject.SetActive(false);
+              FocusIndicator.position = Vector3.one * -100000;
+            }
+            else
+            {
+              var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
+              var corners = new Vector3[4];
+              t.GetWorldCorners(corners);
+
+              var height = Mathf.Abs(corners[2].y - corners[0].y);
+              FocusIndicator.position = Vector3.Slerp(FocusIndicator.position, new Vector3(
+                corners[0].x,
+                corners[2].y - height / 2,
+                0
+              ), Time.deltaTime * 20);
+              FocusIndicator.gameObject.SetActive(true);
+            }
           }
           else
           {
-            var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
-            var corners = new Vector3[4];
-            t.GetWorldCorners(corners);
-
-            var height = Mathf.Abs(corners[2].y - corners[0].y);
-            FocusIndicator.position = new Vector3(
-              corners[0].x,
-              corners[2].y - height / 2,
-              0
-            );
-            FocusIndicator.gameObject.SetActive(true);
-            return;
+            FocusIndicator.gameObject.SetActive(false);
+            FocusIndicator.position = Vector3.one * -100000;
           }
         }
+        else
+        {
+          FocusIndicator.gameObject.SetActive(false);
+          FocusIndicator.position = Vector3.one * -100000;
+        }
       }
-      FocusIndicator.gameObject.SetActive(false);
-      FocusIndicator.position = Vector3.one * -100000;
     }
 
     public void MoveLastSiblingBack()

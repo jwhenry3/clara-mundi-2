@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using JoshH.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -18,7 +20,7 @@ namespace ClaraMundi
     public string TriggerAction;
 
     [Header("Visual Options")]
-    public Vector4 BorderRadius = new Vector4(8, 8, 8, 8);
+    private Vector4 BorderRadius = new Vector4(4, 4, 4, 4);
     public Color background = Color.black;
     [HideInInspector]
     public Color lastBackground;
@@ -30,14 +32,21 @@ namespace ClaraMundi
     public FreeModifier freeModifier;
 
     public ButtonUI CurrentButton;
+    public InputUI CurrentInput;
     public WindowUI CurrentWindow;
+
+    private UIGradient gradient;
 
     private float tick;
     private float interval = 0.2f;
     private bool listening;
 
+    public bool blockCancel;
+    public event Action CancelPressed;
+
     public void OnEnable()
     {
+      lastBackground = background;
       if (parent == null)
         parent = GetComponentInParent<WindowUI>();
       if (parent == this)
@@ -56,6 +65,8 @@ namespace ClaraMundi
     {
       if (moveSibling.IsInFront())
       {
+        CancelPressed?.Invoke();
+        if (blockCancel) return;
         if (parent != null && parent.CurrentWindow == this)
         {
           parent.CurrentWindow = null;
@@ -117,9 +128,9 @@ namespace ClaraMundi
       {
         tick = 0;
         SetUp();
-        if (Application.isPlaying && hideWhenNotInFront)
-          gameObject.SetActive(CurrentWindow != null || moveSibling.IsInFront());
       }
+      if (Application.isPlaying && hideWhenNotInFront && CurrentWindow == null && !moveSibling.IsInFront())
+        gameObject.SetActive(false);
     }
 
     void OnDestroy()
@@ -134,16 +145,9 @@ namespace ClaraMundi
         if (!windows.ContainsKey(gameObject.name))
           windows.Add(gameObject.name, this);
         transform.localScale = Vector3.one;
-        if (lastBackground != background)
-        {
-          foreach (var kvp in windows)
-          {
-            var w = kvp.Value;
-            w.background = background;
-            w.lastBackground = background;
-          }
-          lastBackground = background;
-        }
+        gradient = gradient ?? GetComponent<UIGradient>() ?? gameObject.AddComponent<UIGradient>();
+        gradient.LinearColor1 = new Color(0, 0.4f, 0.8f, 1);
+        gradient.LinearColor2 = new Color(0, 0.2f, 0.4f, 1);
         if (proceduralImage == null)
           proceduralImage = GetComponent<ProceduralImage>() ?? gameObject.AddComponent<ProceduralImage>();
         proceduralImage.ModifierType = typeof(FreeModifier);

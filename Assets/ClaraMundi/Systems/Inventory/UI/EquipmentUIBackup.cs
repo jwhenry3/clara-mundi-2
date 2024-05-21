@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace ClaraMundi
 {
-  public class EquipmentUI : PlayerUI
+  public class EquipmentUIBackup : PlayerUI
   {
     OwningEntityHolder owner = new();
 

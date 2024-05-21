@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using FishNet.Object.Synchronizing;
 using Unity.Collections;
 using Unity.VisualScripting;
@@ -9,29 +10,31 @@ using UnityEngine.UI.ProceduralImage;
 
 namespace ClaraMundi
 {
-  public class InventoryUI : MonoBehaviour
+  public class EquipmentUI : MonoBehaviour
   {
     public WindowUI window;
     public InventoryItemUI ItemPrefab;
     public Transform ItemsContainer;
-    public WindowUI ItemMenu;
+    public CanvasGroup gridGroup;
+    public CanvasGroup itemsGroup;
 
-    public GameObject UseMenuItem;
-    public GameObject EquipMenuItem;
-    public GameObject UnequipMenuItem;
-    public GameObject DropMenuItem;
+    public string slotFilter;
     public bool forLocalPlayer = true;
     public string playerName;
 
-    private InventoryController inventory;
+    public EquipmentItemUI CurrentSlot;
 
-    private InventoryItemUI chosenItem;
+    private InventoryController inventory;
+    private string chosenSlot;
+
 
     private Player player;
 
     private Dictionary<int, InventoryItemUI> items = new();
+
     void OnEnable()
     {
+      slotFilter = "main";
       inventory = null;
       if (PlayerManager.Instance == null) return;
       player = PlayerManager.Instance.LocalPlayer;
@@ -45,23 +48,37 @@ namespace ClaraMundi
       }
       if (player == null) return;
 
+      gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+      itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
       inventory = player.Inventory;
       inventory.ItemStorage.Items.OnChange += OnChange;
       LoadItems();
+      window.CancelPressed += OnCancel;
+    }
+
+    void OnCancel()
+    {
+      chosenSlot = null;
+      gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+      itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
     }
     void OnDisable()
     {
+      chosenSlot = null;
+      gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+      itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
       if (inventory != null)
-      {
         inventory.ItemStorage.Items.OnChange -= OnChange;
-      }
     }
 
     private void OnChange(SyncDictionaryOperation op, int key, ItemInstance value, bool asServer)
     {
-      if (op == SyncDictionaryOperation.Add)
+      var item = value != null ? inventory.ItemRepo.GetItem(value.ItemId) : null;
+      if (!string.IsNullOrEmpty(chosenSlot) && (item == null || item.EquipmentSlot != chosenSlot))
+        RemoveItem(key);
+      if (value != null && op == SyncDictionaryOperation.Add)
         AddItem(key, value);
-      if (op == SyncDictionaryOperation.Set)
+      if (value != null && op == SyncDictionaryOperation.Set)
         UpdateItem(key, value);
       if (op == SyncDictionaryOperation.Remove)
         RemoveItem(key);
@@ -70,6 +87,8 @@ namespace ClaraMundi
     {
       if (items.ContainsKey(itemInstanceId)) return;
       var item = inventory.ItemRepo.GetItem(instance.ItemId);
+      if (!item.Equippable) return;
+      if (!string.IsNullOrEmpty(chosenSlot) && item.EquipmentSlot != chosenSlot) return;
       var itemUI = Instantiate(ItemPrefab, ItemsContainer);
       itemUI.instance = instance;
       itemUI.item = item;
@@ -79,6 +98,7 @@ namespace ClaraMundi
     void UpdateItem(int itemInstanceId, ItemInstance instance)
     {
       var item = inventory.ItemRepo.GetItem(instance.ItemId);
+      if (!item.Equippable) return;
       if (!items.ContainsKey(itemInstanceId))
         items[itemInstanceId] = Instantiate(ItemPrefab, ItemsContainer);
       items[itemInstanceId].instance = instance;
@@ -89,7 +109,7 @@ namespace ClaraMundi
     {
       if (items.ContainsKey(itemInstanceId))
       {
-        items[itemInstanceId].OnChosen -= OnChosen;
+        items[itemInstanceId].OnChosen -= EquipOrUnequip;
         if (EventSystem.current.currentSelectedGameObject == items[itemInstanceId].gameObject)
         {
           var obj = EventSystem.current.currentSelectedGameObject;
@@ -106,7 +126,7 @@ namespace ClaraMundi
       }
     }
 
-    void LoadItems()
+    public void LoadItems()
     {
       window.CurrentButton = null;
       items = new();
@@ -116,84 +136,66 @@ namespace ClaraMundi
       foreach (var kvp in inventory.ItemStorage.Items)
       {
         var item = inventory.ItemRepo.GetItem(kvp.Value.ItemId);
+        if (!item.Equippable) continue;
+        if (!string.IsNullOrEmpty(slotFilter) && item.EquipmentSlot != slotFilter) continue;
+
         var itemUI = Instantiate(ItemPrefab, ItemsContainer);
         itemUI.instance = kvp.Value;
         itemUI.item = item;
         itemUI.SetUp();
         items[kvp.Key] = itemUI;
-        itemUI.OnChosen += OnChosen;
-        if (index == 0)
-        {
-          EventSystem.current.SetSelectedGameObject(itemUI.gameObject);
-        }
+        itemUI.OnChosen += EquipOrUnequip;
         index++;
       }
     }
-    void OnChosen(InventoryItemUI itemUI)
+    public void OnChosenSlot()
     {
-      chosenItem = itemUI;
-      ItemMenu.CurrentButton = null;
-      UseMenuItem?.SetActive(chosenItem.item.Usable);
-      EquipMenuItem?.SetActive(chosenItem.item.Equippable && !chosenItem.instance.IsEquipped);
-      UnequipMenuItem?.SetActive(chosenItem.item.Equippable && chosenItem.instance.IsEquipped);
-      DropMenuItem?.SetActive(chosenItem.item.Droppable);
-      if (chosenItem.item.Usable)
-        ItemMenu.CurrentButton = UseMenuItem.GetComponent<ButtonUI>();
-      else if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
-        ItemMenu.CurrentButton = EquipMenuItem.GetComponent<ButtonUI>();
-      else
-      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
-        ItemMenu.CurrentButton = UnequipMenuItem.GetComponent<ButtonUI>();
-      else
-      if (chosenItem.item.Droppable)
-        ItemMenu.CurrentButton = DropMenuItem.GetComponent<ButtonUI>();
-      ItemMenu.moveSibling.ToFront();
+      chosenSlot = null;
+      gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+      itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
+      if (CurrentSlot != null)
+        EventSystem.current.SetSelectedGameObject(CurrentSlot.gameObject);
+      CurrentSlot = null;
+    }
+    public void OnChosenSlot(EquipmentItemUI equipmentItemUI)
+    {
+      if (slotFilter != equipmentItemUI.equipmentSlot)
+      {
+        slotFilter = equipmentItemUI.equipmentSlot;
+        LoadItems();
+      }
+      if (items.Count > 0)
+      {
+        var slot = equipmentItemUI.equipmentSlot;
+        CurrentSlot = equipmentItemUI;
+        chosenSlot = slot;
+        gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+        itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
+        EventSystem.current.SetSelectedGameObject(items.First().Value.gameObject);
+      }
     }
 
     void Update()
     {
-      if (!ItemMenu.moveSibling.IsInFront())
-        chosenItem = null;
+      window.blockCancel = !string.IsNullOrEmpty(chosenSlot);
+      var lastGridEnabled = gridGroup.interactable;
+      gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);
+      itemsGroup.interactable = !string.IsNullOrEmpty(chosenSlot);
+      if (!lastGridEnabled && gridGroup.interactable && CurrentSlot != null)
+      {
+        EventSystem.current.SetSelectedGameObject(CurrentSlot.gameObject);
+      }
     }
 
-    public void Use()
+    void EquipOrUnequip(InventoryItemUI chosenItem)
     {
-      window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
+      OnChosenSlot();
       if (chosenItem == null) return;
-      if (!chosenItem.item.Usable) return;
-      player.Inventory.UseItem(chosenItem.instance.ItemInstanceId, 1);
-    }
-    public void Equip()
-    {
-      window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
-      if (chosenItem == null) return;
-      if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
-      {
+      if (!chosenItem.item.Equippable) return;
+      if (!chosenItem.instance.IsEquipped)
         player.Inventory.EquipItem(chosenItem.instance.ItemInstanceId);
-      }
-
-    }
-    public void Unequip()
-    {
-      window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
-      if (chosenItem == null) return;
-      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
-      {
+      if (chosenItem.instance.IsEquipped)
         player.Inventory.UnequipItem(chosenItem.instance.ItemInstanceId);
-      }
-
-    }
-
-    public void Drop()
-    {
-      window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
-      if (chosenItem == null) return;
-      if (!chosenItem.item.Droppable) return;
-      player.Inventory.DropItem(chosenItem.instance.ItemInstanceId, 1);
     }
   }
 }

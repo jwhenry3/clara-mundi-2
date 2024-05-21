@@ -55,8 +55,10 @@ namespace ClaraMundi
 
     private void OnEnergyChange(Energies prev, Energies next, bool asServer)
     {
-      Health.text = next.Health + " / " + next.MaxHealth;
-      Mana.text = next.Mana + " / " + next.MaxMana;
+      if (Health != null)
+        Health.text = next.Health + " / " + next.MaxHealth;
+      if (Mana != null)
+        Mana.text = next.Mana + " / " + next.MaxMana;
     }
 
     private void OnNameChange(string prev, string playerName, bool asServer)
@@ -69,14 +71,22 @@ namespace ClaraMundi
     {
       if (player == null) return;
       var stats = player.Stats.ComputedStats.Value;
-      Level.text = player.Stats.Level.Value + "";
-      Experience.text = player.Stats.ExpTilNextLevel.Value + "";
-      Strength.text = DisplayNumber(stats.Strength);
-      Dexterity.text = DisplayNumber(stats.Dexterity);
-      Vitality.text = DisplayNumber(stats.Vitality);
-      Agility.text = DisplayNumber(stats.Agility);
-      Intelligence.text = DisplayNumber(stats.Intelligence);
-      Mind.text = DisplayNumber(stats.Mind);
+      if (Level != null)
+        Level.text = player.Stats.Level.Value + "";
+      if (Experience != null)
+        Experience.text = player.Stats.ExpTilNextLevel.Value + "";
+      if (Strength != null)
+        Strength.text = DisplayNumber(stats.Strength);
+      if (Dexterity != null)
+        Dexterity.text = DisplayNumber(stats.Dexterity);
+      if (Vitality != null)
+        Vitality.text = DisplayNumber(stats.Vitality);
+      if (Agility != null)
+        Agility.text = DisplayNumber(stats.Agility);
+      if (Intelligence != null)
+        Intelligence.text = DisplayNumber(stats.Intelligence);
+      if (Mind != null)
+        Mind.text = DisplayNumber(stats.Mind);
 
       if (AttributeFields.Count == 0)
       {
@@ -96,6 +106,7 @@ namespace ClaraMundi
       foreach (var kvp in player.Stats.Attributes)
       {
         if (!AttributeFields.ContainsKey(kvp.Key)) continue;
+        if (AttributeFields[kvp.Key] == null) continue;
         AttributeFields[kvp.Key].text = DisplayNumber(kvp.Value, PercentAttributes.Contains(kvp.Key));
       }
     }

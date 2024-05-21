@@ -34,7 +34,7 @@ namespace ClaraMundi
         button = GetComponent<ButtonUI>();
       if (button != null)
       {
-        button.HasInitialFocus = true;
+        button.AutoFocus = true;
         button.HasIcon = true;
         button.HasText = true;
         button.UseNameAsText = false;
@@ -52,7 +52,10 @@ namespace ClaraMundi
     void OnDisable()
     {
       if (buttonClick != null)
+      {
         buttonClick.RemoveListener(OnClick);
+        buttonClick = null;
+      }
     }
     void OnClick()
     {
