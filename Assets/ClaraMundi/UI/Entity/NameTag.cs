@@ -26,7 +26,8 @@ namespace ClaraMundi
         Text.text = entity.entityName.Value;
       if (cameraTransform == null) return;
       t.rotation = cameraTransform.rotation;
-      var scale = CameraManager.Instance.Camera.orthographicSize / 8;
+      var distance = Mathf.Clamp(Vector3.Distance(cameraTransform.position, t.position), 0.1f, 100) / 4;
+      var scale = (CameraManager.Instance.Camera.orthographicSize / 8) * distance;
       Scaler.transform.localScale = new Vector3(scale, scale, scale);
     }
   }

@@ -60,6 +60,11 @@ namespace ClaraMundi
     void LateUpdate()
     {
       MoveIndicator();
+      var lastChild = PeersContainer.transform.GetChild(PeersContainer.transform.childCount - 1);
+      if (!lastChild.gameObject.activeInHierarchy)
+      {
+        lastChild.gameObject.SetActive(true);
+      }
       if (InputManager.Instance != null)
       {
         if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)

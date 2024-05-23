@@ -166,14 +166,14 @@ namespace ClaraMundi
 
     public void Use()
     {
-      window.moveSibling.ToFront();
+      ItemMenu.moveSibling.ToBack();
       if (chosenItem == null) return;
       if (!chosenItem.item.Usable) return;
       player.Inventory.UseItem(chosenItem.instance.ItemInstanceId, 1);
     }
     public void Equip()
     {
-      window.moveSibling.ToFront();
+      ItemMenu.moveSibling.ToBack();
       if (chosenItem == null) return;
       if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
       {
@@ -183,7 +183,7 @@ namespace ClaraMundi
     }
     public void Unequip()
     {
-      window.moveSibling.ToFront();
+      ItemMenu.moveSibling.ToBack();
       if (chosenItem == null) return;
       if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
       {
@@ -194,7 +194,7 @@ namespace ClaraMundi
 
     public void Drop()
     {
-      window.moveSibling.ToFront();
+      ItemMenu.moveSibling.ToBack();
       if (chosenItem == null) return;
       if (!chosenItem.item.Droppable) return;
       player.Inventory.DropItem(chosenItem.instance.ItemInstanceId, 1);
