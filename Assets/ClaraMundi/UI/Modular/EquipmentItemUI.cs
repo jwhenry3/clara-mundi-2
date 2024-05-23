@@ -9,6 +9,9 @@ namespace ClaraMundi
     EquipmentUI equipmentUI;
     ButtonUI button;
     public string equipmentSlot;
+    [HideInInspector]
+    public Item item;
+    public ItemInstance instance;
     private UnityEvent buttonClick;
     void OnEnable()
     {
@@ -44,16 +47,24 @@ namespace ClaraMundi
         var player = PlayerManager.Instance.LocalPlayer;
         if (player == null) return;
         var equipment = player.Equipment.EquippedItemIds;
+        var items = player.Equipment.EquippedItems;
         equipmentSlot = gameObject.name.ToLower();
+        var instanceId = items.ContainsKey(equipmentSlot) ? items[equipmentSlot] : -1;
         var itemId = equipment.ContainsKey(equipmentSlot) ? equipment[equipmentSlot] : null;
         if (string.IsNullOrEmpty(itemId))
         {
           button.HasIcon = false;
           button.HasText = true;
+          item = null;
+          instance = null;
         }
         else
         {
-          var item = player.Inventory.ItemRepo.GetItem(itemId);
+          item = player.Inventory.ItemRepo.GetItem(itemId);
+          if (instanceId > -1)
+          {
+            instance = ItemManager.Instance.ItemsByInstanceId[instanceId];
+          }
           if (item == null)
           {
             button.HasIcon = false;

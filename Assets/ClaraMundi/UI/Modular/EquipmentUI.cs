@@ -21,6 +21,10 @@ namespace ClaraMundi
     public CanvasGroup itemsGroup;
     public CanvasGroupWatcher itemsWatcher;
 
+
+    public ItemTooltipUI tooltip;
+
+
     public string slotFilter;
     public bool forLocalPlayer = true;
     public string playerName;
@@ -185,6 +189,22 @@ namespace ClaraMundi
 
     void Update()
     {
+      InventoryItemUI selectedItem = EventSystem.current.currentSelectedGameObject?.GetComponent<InventoryItemUI>();
+      EquipmentItemUI selectedEquipment = EventSystem.current.currentSelectedGameObject?.GetComponent<EquipmentItemUI>();
+      bool displayTooltip = false;
+      if (selectedItem != null)
+      {
+        tooltip.SetItemInstance(selectedItem.instance);
+        displayTooltip = true;
+      }
+      if (selectedEquipment != null)
+      {
+        tooltip.SetItemInstance(selectedEquipment.instance);
+        displayTooltip = selectedEquipment.instance != null;
+      }
+      if (tooltip.gameObject.activeInHierarchy != displayTooltip)
+        tooltip.gameObject.SetActive(displayTooltip);
+
       window.blockCancel = !string.IsNullOrEmpty(chosenSlot);
       var lastGridEnabled = gridGroup.interactable;
       gridGroup.interactable = string.IsNullOrEmpty(chosenSlot);

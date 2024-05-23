@@ -19,6 +19,8 @@ namespace ClaraMundi
     public WindowUI ItemMenu;
     public CanvasGroupWatcher ItemMenuWatcher;
 
+    public ItemTooltipUI tooltip;
+
     public GameObject UseMenuItem;
     public GameObject EquipMenuItem;
     public GameObject UnequipMenuItem;
@@ -162,6 +164,13 @@ namespace ClaraMundi
     {
       if (!ItemMenu.moveSibling.IsInFront())
         chosenItem = null;
+      InventoryItemUI selectedItem = EventSystem.current.currentSelectedGameObject?.GetComponent<InventoryItemUI>();
+      if (selectedItem != null)
+      {
+        tooltip.SetItemInstance(selectedItem.instance);
+      }
+      if (tooltip.gameObject.activeInHierarchy != (selectedItem != null))
+        tooltip.gameObject.SetActive(selectedItem != null);
     }
 
     public void Use()
