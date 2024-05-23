@@ -8,19 +8,21 @@ namespace ClaraMundi.Quests
   public class QuestTrackerUI : PlayerUI
   {
     public static QuestTrackerUI Instance;
-
+    public QuestJournalUI journal;
     public MoveSibling MoveSibling;
     public Transform QuestListContainer;
     public QuestListItemUI QuestListItemPrefab;
     readonly Dictionary<string, QuestListItemUI> TrackedQuestListItems = new();
 
     public CanvasGroup CanvasGroup;
+    public CanvasGroupWatcher canvasGroupWatcher;
 
     public override void Start()
     {
       base.Start();
       MoveSibling = GetComponent<MoveSibling>();
       Instance = this;
+      ClearTrackedQuests();
     }
     protected override void OnPlayerChange(Player _player)
     {
@@ -41,8 +43,7 @@ namespace ClaraMundi.Quests
       base.OnDestroy();
       if (player == null) return;
       player.Quests.TrackedQuests.OnChange -= OnTrackedChange;
-      foreach (string questId in player.Quests.TrackedQuests)
-        AddTrackedQuest(questId);
+      ClearTrackedQuests();
     }
 
     private void OnTrackedChange(SyncListOperation op, int index, string previous, string next, bool asServer)
@@ -65,7 +66,7 @@ namespace ClaraMundi.Quests
     {
       if (TrackedQuestListItems.ContainsKey(questId)) return;
       var instance = Instantiate(QuestListItemPrefab, QuestListContainer, false);
-      instance.IsQuestTackerQuest = true;
+      instance.journal = journal;
       instance.Quest = RepoManager.Instance.QuestRepo.Quests[questId];
       TrackedQuestListItems.Add(questId, instance);
     }
@@ -88,8 +89,10 @@ namespace ClaraMundi.Quests
 
     private void ClearTrackedQuests()
     {
-      foreach (var kvp in TrackedQuestListItems)
-        Destroy(kvp.Value.gameObject);
+      canvasGroupWatcher.AutoFocusButton = null;
+      canvasGroupWatcher.CurrentButton = null;
+      foreach (Transform child in QuestListContainer)
+        Destroy(child.gameObject);
       TrackedQuestListItems.Clear();
     }
   }

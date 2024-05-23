@@ -16,7 +16,8 @@ namespace ClaraMundi.Quests
       get => _quest;
       set => SetQuest(value);
     }
-    public AutoFocus AutoFocus;
+    public QuestJournalUI journal;
+    public ButtonUI button;
     public TextMeshProUGUI QuestTitle;
     public TextMeshProUGUI QuestLevel;
     public TextMeshProUGUI QuestDescription;
@@ -25,27 +26,30 @@ namespace ClaraMundi.Quests
 
     public QuestTaskUI QuestTaskPrefab;
     public Transform QuestTaskContainer;
-    public bool IsQuestTackerQuest = false;
-    public bool ShowShortDescription;
 
-    public Focusable Focusable;
     private Quest _quest;
 
     private void Awake()
     {
-      Focusable = Focusable ?? GetComponent<Focusable>();
-      if (Focusable != null)
-        Focusable.OnClick += Open;
-      if (IsQuestTackerQuest) return;
-      TrackedStatusToggle.onValueChanged.AddListener(SetTrackedStatus);
+      button = button ?? GetComponent<ButtonUI>();
+      if (button != null)
+      {
+        button.canvasGroupWatcher = button.canvasGroupWatcher ?? button.GetComponentInParent<CanvasGroupWatcher>();
+        if (button.canvasGroupWatcher.AutoFocusButton == null)
+          button.AutoFocus = true;
+        button.button.onClick.AddListener(Open);
+      }
+      if (TrackedStatusToggle != null)
+        TrackedStatusToggle.onValueChanged.AddListener(SetTrackedStatus);
     }
 
     public override void OnDestroy()
     {
       base.OnDestroy();
-      Focusable.OnClick -= Open;
-      if (IsQuestTackerQuest) return;
-      TrackedStatusToggle.onValueChanged.RemoveListener(SetTrackedStatus);
+      if (button != null)
+        button.button.onClick.RemoveListener(Open);
+      if (TrackedStatusToggle != null)
+        TrackedStatusToggle.onValueChanged.RemoveListener(SetTrackedStatus);
     }
 
     protected override void OnPlayerChange(Player _player)
@@ -76,24 +80,28 @@ namespace ClaraMundi.Quests
     private void SetQuest(Quest value)
     {
       _quest = value;
-      TrackedStatusContainer.SetActive(!IsQuestTackerQuest);
-      if (!IsQuestTackerQuest && player != null)
-        TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
+      if (_quest == null) return;
       QuestTitle.text = value.Title;
       QuestLevel.text = "LV " + value.Requirement.RequiredLevel;
-      foreach (Transform child in QuestTaskContainer)
-        Destroy(child.gameObject);
-      QuestDescription.gameObject.SetActive(IsQuestTackerQuest || ShowShortDescription);
-      QuestDescription.text = value.ShortDescription;
-      QuestTaskContainer.gameObject.SetActive(IsQuestTackerQuest && value.Tasks.Length > 0);
-
-      if (!IsQuestTackerQuest) return;
-
-      Focusable.IsActivated = false;
-      foreach (var task in value.Tasks)
+      if (player != null && TrackedStatusToggle != null)
+        TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
+      if (QuestTaskContainer != null)
+        foreach (Transform child in QuestTaskContainer)
+          Destroy(child.gameObject);
+      if (QuestDescription != null)
       {
-        var taskUI = Instantiate(QuestTaskPrefab, QuestTaskContainer, false);
-        taskUI.Task = task;
+        QuestDescription.text = value.ShortDescription;
+        QuestDescription.gameObject.SetActive(true);
+      }
+      if (QuestTaskContainer != null)
+      {
+        QuestTaskContainer.gameObject.SetActive(value.Tasks.Length > 0);
+
+        foreach (var task in value.Tasks)
+        {
+          var taskUI = Instantiate(QuestTaskPrefab, QuestTaskContainer, false);
+          taskUI.Task = task;
+        }
       }
     }
 
@@ -102,15 +110,10 @@ namespace ClaraMundi.Quests
     public void Open()
     {
       if (_quest == null) return;
-      QuestJournalUI.Instance.QuestInfoUI.Quest = _quest;
-      GameWindowInput.Instance?.Trigger("Journal");
+      journal.window.moveSibling.ToFront();
+      journal.QuestInfoUI.Quest = _quest;
     }
 
-    private void Update()
-    {
-      if (IsQuestTackerQuest) return;
-      Focusable.IsActivated = QuestJournalUI.Instance.QuestInfoUI.Quest == _quest;
-    }
 
     public void SetTrackedStatus(bool value)
     {

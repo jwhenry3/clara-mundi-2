@@ -70,6 +70,7 @@
     <Compile Include="Assets\ClaraMundi\Systems\Http\UrlManager.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Connection\Server.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestListItemUI.cs" />
     <Compile Include="Assets\ClaraMundi\Utils\GameObjectUtils.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRecurrence.cs" />
     <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
@@ -102,12 +103,14 @@
     <Compile Include="Assets\UIGradient\Scripts\UIGradient.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\Panel.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Connection\PlayerConnection.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestRewardUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Lobby\LobbyApi.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Inventory\LootItem.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Target\Targetable.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\Layout.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Outline.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestJournalUI.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Input\TriggerByAction.cs" />
@@ -138,7 +141,6 @@
     <Compile Include="Assets\ClaraMundi\Systems\Input\CameraZoom.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRequirement.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CreateCharacterUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTaskUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyHandle.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Party\Party.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\OnlyOneEdgeModifier.cs" />
@@ -154,7 +156,6 @@
     <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemManager.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatWindowUI.cs" />
     <Compile Include="Assets\ClaraMundi\UI\InputFIeldWithHybridNav.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestTrackerUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Alert\AlertController.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerConnection.cs" />
@@ -171,8 +172,8 @@
     <Compile Include="Assets\ProceduralUIImage\Scripts\ProceduralImage.cs" />
     <Compile Include="Assets\ClaraMundi\UI\InteractableOnlyWhenFocused.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\LobbyHandling.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestJournalUI.cs" />
     <Compile Include="Assets\ClaraMundi\Core\UnitySerializedDictionary.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestTrackerUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\SceneChat.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\StatsController.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatAttachmentUI.cs" />
@@ -181,6 +182,7 @@
     <Compile Include="Assets\YAFUI\Scripts\ShowHideScrollBar.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Party\PartyManager.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Inventory\EquipmentController.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestTaskUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Inventory\ItemInstanceFactory.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\Quest.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Party\UI\PartyRequestsUI.cs" />
@@ -207,11 +209,9 @@
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
     <Compile Include="Assets\ClaraMundi\UI\ClampToScreen.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestListItemUI.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Focusable.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassType.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Common\CanvasGroupFocus.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestRewardUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Common\ContextMenuItem.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
@@ -242,6 +242,7 @@
     <Compile Include="Assets\YAFUI\Demo\Scripts\AlwaysFace.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\LoginUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatController.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\QuestInfoUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\CompletedQuest.cs" />
     <Compile Include="Assets\YAFUI\Scripts\DialogueButton.cs" />
@@ -265,7 +266,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Lobby\UI\CharactersUI.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\RegisterFormUI.cs" />
-    <Compile Include="Assets\ClaraMundi\Systems\Quest\UI\QuestInfoUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRepo.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\ClaraMundi\Core\RequestResponse.cs" />
