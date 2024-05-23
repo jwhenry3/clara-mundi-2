@@ -12,9 +12,12 @@ namespace ClaraMundi
   public class InventoryUI : MonoBehaviour
   {
     public WindowUI window;
+    public CanvasGroupWatcher watcher;
     public InventoryItemUI ItemPrefab;
+    public GameObject NoItemPrefab;
     public Transform ItemsContainer;
     public WindowUI ItemMenu;
+    public CanvasGroupWatcher ItemMenuWatcher;
 
     public GameObject UseMenuItem;
     public GameObject EquipMenuItem;
@@ -108,7 +111,8 @@ namespace ClaraMundi
 
     void LoadItems()
     {
-      window.CurrentButton = null;
+      watcher.CurrentButton = null;
+      watcher.AutoFocusButton = null;
       items = new();
       foreach (Transform child in ItemsContainer)
         Destroy(child.gameObject);
@@ -128,25 +132,29 @@ namespace ClaraMundi
         }
         index++;
       }
+      if (index == 0)
+      {
+        Instantiate(NoItemPrefab, ItemsContainer);
+      }
     }
     void OnChosen(InventoryItemUI itemUI)
     {
       chosenItem = itemUI;
-      ItemMenu.CurrentButton = null;
+      ItemMenuWatcher.CurrentButton = null;
+      if (chosenItem.item.Usable)
+        UseMenuItem.GetComponent<ButtonUI>().AutoFocus = true;
+      else if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
+        EquipMenuItem.GetComponent<ButtonUI>().AutoFocus = true;
+      else
+      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
+        UnequipMenuItem.GetComponent<ButtonUI>().AutoFocus = true;
+      else
+      if (chosenItem.item.Droppable)
+        DropMenuItem.GetComponent<ButtonUI>().AutoFocus = true;
       UseMenuItem?.SetActive(chosenItem.item.Usable);
       EquipMenuItem?.SetActive(chosenItem.item.Equippable && !chosenItem.instance.IsEquipped);
       UnequipMenuItem?.SetActive(chosenItem.item.Equippable && chosenItem.instance.IsEquipped);
       DropMenuItem?.SetActive(chosenItem.item.Droppable);
-      if (chosenItem.item.Usable)
-        ItemMenu.CurrentButton = UseMenuItem.GetComponent<ButtonUI>();
-      else if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
-        ItemMenu.CurrentButton = EquipMenuItem.GetComponent<ButtonUI>();
-      else
-      if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
-        ItemMenu.CurrentButton = UnequipMenuItem.GetComponent<ButtonUI>();
-      else
-      if (chosenItem.item.Droppable)
-        ItemMenu.CurrentButton = DropMenuItem.GetComponent<ButtonUI>();
       ItemMenu.moveSibling.ToFront();
     }
 
@@ -159,7 +167,6 @@ namespace ClaraMundi
     public void Use()
     {
       window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
       if (chosenItem == null) return;
       if (!chosenItem.item.Usable) return;
       player.Inventory.UseItem(chosenItem.instance.ItemInstanceId, 1);
@@ -167,7 +174,6 @@ namespace ClaraMundi
     public void Equip()
     {
       window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
       if (chosenItem == null) return;
       if (chosenItem.item.Equippable && !chosenItem.instance.IsEquipped)
       {
@@ -178,7 +184,6 @@ namespace ClaraMundi
     public void Unequip()
     {
       window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
       if (chosenItem == null) return;
       if (chosenItem.item.Equippable && chosenItem.instance.IsEquipped)
       {
@@ -190,7 +195,6 @@ namespace ClaraMundi
     public void Drop()
     {
       window.moveSibling.ToFront();
-      EventSystem.current.SetSelectedGameObject(window.CurrentButton.gameObject);
       if (chosenItem == null) return;
       if (!chosenItem.item.Droppable) return;
       player.Inventory.DropItem(chosenItem.instance.ItemInstanceId, 1);

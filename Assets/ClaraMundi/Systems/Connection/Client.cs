@@ -12,8 +12,9 @@ namespace ClaraMundi
     [HideInInspector] public NetworkManager networkManager;
     public static Client Instance;
 
-    public string LobbyUIScene = "LobbyGUI";
-    public string PlayerUIScene = "PlayerUI";
+    public string UIScene = "WorldUI";
+
+    public ServerEntry SelectedServer;
 
     private LocalConnectionState _clientState = LocalConnectionState.Stopped;
 
@@ -34,8 +35,7 @@ namespace ClaraMundi
     {
       Physics.IgnoreLayerCollision(3, 3);
       networkManager.ClientManager.OnClientConnectionState += ClientManager_OnClientConnectionState;
-      SceneManager.LoadScene(LobbyUIScene, LoadSceneMode.Additive);
-      SceneManager.LoadScene(PlayerUIScene, LoadSceneMode.Additive);
+      SceneManager.LoadScene(UIScene, LoadSceneMode.Additive);
     }
 
     public void Connect()
@@ -43,7 +43,7 @@ namespace ClaraMundi
       // Debug.Log("Connect");
       if (_clientState != LocalConnectionState.Stopped) return;
       if (SessionManager.Instance.PlayerCharacter == null) return;
-      var server = ServerListUI.Instance.SelectedServer;
+      var server = SelectedServer;
       // Debug.Log("Server: " + server?.host);
       if (server == null) return;
       networkManager.ClientManager.StartConnection(server.host, server.port);

@@ -30,9 +30,6 @@ namespace ClaraMundi
     public Layout layout;
     public ProceduralImage proceduralImage;
     public FreeModifier freeModifier;
-
-    public ButtonUI CurrentButton;
-    public InputUI CurrentInput;
     public WindowUI CurrentWindow;
 
     private UIGradient gradient;
@@ -94,10 +91,6 @@ namespace ClaraMundi
 
     void OnSentToFront()
     {
-      if (CurrentButton != null && CurrentWindow == null)
-      {
-        EventSystem.current.SetSelectedGameObject(CurrentButton.gameObject);
-      }
       if (parent != null && parent.CurrentWindow != this)
       {
         parent.CurrentWindow = this;

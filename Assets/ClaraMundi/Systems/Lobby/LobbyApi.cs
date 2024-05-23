@@ -106,6 +106,11 @@ namespace ClaraMundi
 
     public static async Task<CharactersResponse> GetCharacters()
     {
+      if (SessionManager.Instance.PlayerAccount == null)
+        return new CharactersResponse()
+        {
+          characters = new()
+        };
       var token = SessionManager.Instance.PlayerAccount.token;
       return await HttpRequest.Get<CharactersResponse>(BaseUrl,
           "/login-server/characters/list?token=" + token

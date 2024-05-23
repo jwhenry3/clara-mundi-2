@@ -14,9 +14,12 @@ namespace ClaraMundi
   {
     public WindowUI window;
     public InventoryItemUI ItemPrefab;
+    public GameObject NoItemPrefab;
     public Transform ItemsContainer;
     public CanvasGroup gridGroup;
+    public CanvasGroupWatcher gridWatcher;
     public CanvasGroup itemsGroup;
+    public CanvasGroupWatcher itemsWatcher;
 
     public string slotFilter;
     public bool forLocalPlayer = true;
@@ -128,7 +131,8 @@ namespace ClaraMundi
 
     public void LoadItems()
     {
-      window.CurrentButton = null;
+      itemsWatcher.CurrentButton = null;
+      itemsWatcher.AutoFocusButton = null;
       items = new();
       foreach (Transform child in ItemsContainer)
         Destroy(child.gameObject);
@@ -146,6 +150,10 @@ namespace ClaraMundi
         items[kvp.Key] = itemUI;
         itemUI.OnChosen += EquipOrUnequip;
         index++;
+      }
+      if (index == 0)
+      {
+        Instantiate(NoItemPrefab, ItemsContainer);
       }
     }
     public void OnChosenSlot()

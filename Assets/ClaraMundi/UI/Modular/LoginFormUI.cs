@@ -16,7 +16,7 @@ namespace ClaraMundi
     public async override void Submit()
     {
       StatusMessage.text = "Logging in...";
-      Debug.Log(Email.inputField.text + " - " + Password.inputField.text);
+
       var response = await LobbyApi.Login(
           Email.inputField.text,
           Password.inputField.text
@@ -26,7 +26,6 @@ namespace ClaraMundi
       {
         SessionManager.Instance.PlayerAccount = response.account;
 
-        LobbyUI.Instance.CheckAccount();
         StatusMessage.text = "Login succeeded";
       }
       else

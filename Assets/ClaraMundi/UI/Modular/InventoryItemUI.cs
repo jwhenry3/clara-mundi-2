@@ -34,7 +34,9 @@ namespace ClaraMundi
         button = GetComponent<ButtonUI>();
       if (button != null)
       {
-        button.AutoFocus = true;
+        button.canvasGroupWatcher = button.canvasGroupWatcher ?? button.GetComponentInParent<CanvasGroupWatcher>(true);
+        if (button.canvasGroupWatcher.AutoFocusButton == null)
+          button.AutoFocus = true;
         button.HasIcon = true;
         button.HasText = true;
         button.UseNameAsText = false;

@@ -12,6 +12,7 @@ namespace ClaraMundi
   [ExecuteInEditMode]
   public class ButtonUI : MonoBehaviour, ISelectHandler
   {
+    [HideInInspector]
     public WindowUI window;
     public WindowUI targetWindow;
     public static List<ButtonUI> buttons = new();
@@ -22,7 +23,29 @@ namespace ClaraMundi
     public bool HasIcon = true;
     public float iconWidth = 24;
     public float iconHeight = 24;
-    public bool AutoFocus = false;
+    [HideInInspector]
+    public CanvasGroupWatcher canvasGroupWatcher;
+    public bool AutoFocus
+    {
+      set
+      {
+        canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>(true);
+        if (canvasGroupWatcher == null) return;
+        if (value == true)
+        {
+          canvasGroupWatcher.AutoFocusInput = null;
+          canvasGroupWatcher.AutoFocusButton = this;
+          canvasGroupWatcher.AutoFocusDropdown = null;
+          if (canvasGroupWatcher.IsInteractable())
+            Select();
+        }
+        else
+        {
+          if (canvasGroupWatcher.AutoFocusButton == this)
+            canvasGroupWatcher.AutoFocusButton = null;
+        }
+      }
+    }
 
 
     [Header("Text Options")]
@@ -35,14 +58,20 @@ namespace ClaraMundi
     public bool showIconOnSelect;
     private Vector4 BorderRadius = new Vector4(4, 4, 4, 4);
     public Sprite iconSprite;
-    [Header("Utilities")]
+    [HideInInspector]
     public Button button;
+    [HideInInspector]
     public CanvasGroup canvasGroup;
+    [HideInInspector]
     public TextMeshProUGUI text;
+    [HideInInspector]
     public LayoutElement textElement;
+    [HideInInspector]
     public ContentSizeFitter textFitter;
     public Image icon;
+    [HideInInspector]
     protected LayoutElement iconElement;
+    [HideInInspector]
     public Layout layout;
 
     public ProceduralImage proceduralImage;
@@ -57,14 +86,13 @@ namespace ClaraMundi
 
     void OnEnable()
     {
+      canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>();
       scroller = scroller ?? GetComponentInParent<ScrollRect>();
       if (Application.isPlaying)
         if (button != null && targetWindow != null)
         {
           button.onClick.AddListener(targetWindow.moveSibling.ToFront);
         }
-      if (window != null && window.CurrentButton == null && window.CurrentInput == null && AutoFocus)
-        window.CurrentButton = this;
     }
 
     public void SnapTo(RectTransform child)
@@ -110,9 +138,12 @@ namespace ClaraMundi
 
     void LateUpdate()
     {
-      if (lastSelected != gameObject && EventSystem.current.currentSelectedGameObject == gameObject)
-        SnapTo(transform as RectTransform);
-      lastSelected = EventSystem.current.currentSelectedGameObject;
+      if (Application.isPlaying && EventSystem.current != null)
+      {
+        if (lastSelected != gameObject && EventSystem.current.currentSelectedGameObject == gameObject)
+          SnapTo(transform as RectTransform);
+        lastSelected = EventSystem.current.currentSelectedGameObject;
+      }
     }
     void OnDestroy()
     {
@@ -122,8 +153,6 @@ namespace ClaraMundi
     {
       if (window == null)
         window = GetComponentInParent<WindowUI>();
-      if (window != null && window.CurrentButton == null && AutoFocus)
-        window.CurrentButton = this;
       if (!Application.isPlaying)
       {
         if (!buttons.Contains(this))
@@ -245,11 +274,17 @@ namespace ClaraMundi
 
     public void OnSelect(BaseEventData eventData)
     {
-      if (Application.isPlaying && window != null)
+      if (Application.isPlaying && canvasGroupWatcher != null)
       {
-        window.CurrentInput = null;
-        window.CurrentButton = this;
+        canvasGroupWatcher.CurrentInput = null;
+        canvasGroupWatcher.CurrentButton = this;
+        canvasGroupWatcher.CurrentDropdown = null;
       }
+    }
+
+    public void Select()
+    {
+      EventSystem.current?.SetSelectedGameObject(gameObject);
     }
   }
 }

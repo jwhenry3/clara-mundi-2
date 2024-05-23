@@ -16,9 +16,7 @@ namespace ClaraMundi
     public Transform DebugContainer;
 
     public GameObject Placeholder;
-
-    private float tick;
-    private float interval = 0.1f;
+    public CanvasGroup Backdrop;
 
     void Start()
     {
@@ -58,19 +56,22 @@ namespace ClaraMundi
       PlayerUI.gameObject.SetActive(true);
       NoPlayerUI.gameObject.SetActive(true);
     }
-    void Update()
-    {
-      MoveIndicator();
-    }
 
     void LateUpdate()
     {
+      MoveIndicator();
       if (InputManager.Instance != null)
       {
         if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+        {
           InputManager.Instance.World.Enable();
+          Backdrop.blocksRaycasts = false;
+        }
         else
+        {
           InputManager.Instance.World.Disable();
+          Backdrop.blocksRaycasts = true;
+        }
       }
     }
 
@@ -106,35 +107,40 @@ namespace ClaraMundi
           {
             if (!EventSystem.current.currentSelectedGameObject.activeInHierarchy)
             {
-              EventSystem.current.SetSelectedGameObject(null);
               FocusIndicator.gameObject.SetActive(false);
-              FocusIndicator.position = Vector3.one * -100000;
             }
             else
             {
+              var wasHidden = !FocusIndicator.gameObject.activeInHierarchy;
               var t = EventSystem.current.currentSelectedGameObject.transform as RectTransform;
               var corners = new Vector3[4];
               t.GetWorldCorners(corners);
 
               var height = Mathf.Abs(corners[2].y - corners[0].y);
-              FocusIndicator.position = Vector3.Slerp(FocusIndicator.position, new Vector3(
+              var destination = new Vector3(
                 corners[0].x,
                 corners[2].y - height / 2,
                 0
-              ), Time.deltaTime * 20);
+              );
+              if (wasHidden)
+              {
+                FocusIndicator.position = destination;
+              }
+              else
+              {
+                FocusIndicator.position = Vector3.Slerp(FocusIndicator.position, destination, Time.deltaTime * 20);
+              }
               FocusIndicator.gameObject.SetActive(true);
             }
           }
           else
           {
             FocusIndicator.gameObject.SetActive(false);
-            FocusIndicator.position = Vector3.one * -100000;
           }
         }
         else
         {
           FocusIndicator.gameObject.SetActive(false);
-          FocusIndicator.position = Vector3.one * -100000;
         }
       }
     }

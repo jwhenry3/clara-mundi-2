@@ -13,8 +13,6 @@ namespace ClaraMundi
 
     public ServerUI ServerPrefab;
 
-    public ServerEntry SelectedServer;
-
     private void OnEnable()
     {
       Instance = this;

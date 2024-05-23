@@ -15,12 +15,15 @@ namespace ClaraMundi
   public class InputUI : MonoBehaviour, ISelectHandler
   {
 
+    [HideInInspector]
     public FormUI formUI;
+    [HideInInspector]
     public WindowUI window;
+    [HideInInspector]
     public CanvasGroup canvasGroup;
+    [HideInInspector]
     public TMP_InputField inputField;
 
-    public bool AutoFocus;
     public bool ClearOnDisable;
 
     public FocusDirection Direction;
@@ -31,10 +34,33 @@ namespace ClaraMundi
     private float interval = 0.1f;
     private ScrollRect scroller;
     private GameObject lastSelected;
+    private CanvasGroupWatcher canvasGroupWatcher;
+    public bool AutoFocus
+    {
+      set
+      {
+        canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>(true);
+        if (value == true)
+        {
+          if (canvasGroupWatcher.AutoFocusInput != null) return;
+          canvasGroupWatcher.AutoFocusInput = this;
+          canvasGroupWatcher.AutoFocusButton = null;
+          canvasGroupWatcher.AutoFocusDropdown = null;
+          if (canvasGroupWatcher.IsInteractable())
+            Select();
+        }
+        else
+        {
+          if (canvasGroupWatcher.AutoFocusInput == this)
+            canvasGroupWatcher.AutoFocusInput = null;
+        }
+      }
+    }
 
 
     void Start()
     {
+      canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>();
       scroller = scroller ?? GetComponentInParent<ScrollRect>();
       formUI = formUI ?? GetComponentInParent<FormUI>();
       window = window ?? GetComponentInParent<WindowUI>();
@@ -51,9 +77,6 @@ namespace ClaraMundi
         InputManager.Instance.UI.FindAction("Submit").performed += OnSubmit;
         InputManager.Instance.UI.FindAction("PreviousElement").performed += OnPreviousElement;
       }
-
-      if (window != null && window.CurrentButton == null && window.CurrentInput == null && AutoFocus)
-        window.CurrentInput = this;
     }
 
     public void SnapTo(RectTransform child)
@@ -111,8 +134,12 @@ namespace ClaraMundi
 
     public void OnSelect(BaseEventData eventData)
     {
-      window.CurrentInput = this;
-      window.CurrentButton = null;
+      if (canvasGroupWatcher != null)
+      {
+        canvasGroupWatcher.CurrentInput = this;
+        canvasGroupWatcher.CurrentButton = null;
+        canvasGroupWatcher.CurrentDropdown = null;
+      }
     }
 
     void Update()
@@ -126,12 +153,16 @@ namespace ClaraMundi
         else if (prevPressed)
           Prev();
       }
+
     }
     void LateUpdate()
     {
-      if (lastSelected != gameObject && EventSystem.current.currentSelectedGameObject == gameObject)
-        SnapTo(transform as RectTransform);
-      lastSelected = EventSystem.current.currentSelectedGameObject;
+      if (Application.isPlaying && EventSystem.current != null)
+      {
+        if (lastSelected != gameObject && EventSystem.current.currentSelectedGameObject == gameObject)
+          SnapTo(transform as RectTransform);
+        lastSelected = EventSystem.current.currentSelectedGameObject;
+      }
     }
 
     void Next()
@@ -183,6 +214,11 @@ namespace ClaraMundi
         prevPressed = true;
         nextPressed = false;
       }
+    }
+    public void Select()
+    {
+      EventSystem.current?.SetSelectedGameObject(gameObject);
+      inputField.ActivateInputField();
     }
   }
 }
