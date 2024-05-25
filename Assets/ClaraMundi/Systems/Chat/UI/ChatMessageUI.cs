@@ -8,8 +8,7 @@ namespace ClaraMundi
   public class ChatMessageUI : MonoBehaviour, IPointerMoveHandler, IPointerDownHandler
   {
     public string NodeId = StringUtils.UniqueId();
-    TextMeshProUGUI Text;
-    public ItemTooltipUI ItemTooltip => ChatWindowUI.Instance.ItemTooltip;
+    public TextMeshProUGUI Text;
     public ChatMessage ChatMessage;
 
 
@@ -19,13 +18,13 @@ namespace ClaraMundi
 
     private void Awake()
     {
-      Text = GetComponent<TextMeshProUGUI>();
+      Text = Text ?? GetComponent<TextMeshProUGUI>();
     }
 
     private void OnDestroy()
     {
-      if (ItemTooltip.NodeId == NodeId)
-        ItemTooltip.gameObject.SetActive(false);
+      // if (ItemTooltip.NodeId == NodeId)
+      //   ItemTooltip.gameObject.SetActive(false);
     }
 
     public void SetChatMessage(ChatMessage message)
@@ -77,17 +76,17 @@ namespace ClaraMundi
 
     public void OnPointerMove(PointerEventData eventData)
     {
-      var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
-      if (selectedLink.Contains("item:"))
-      {
-        if (ItemTooltip.NodeId == NodeId) return;
-        ItemTooltip.NodeId = NodeId;
-        ShowTooltip(selectedLink["item:".Length..]);
-        return;
-      }
+      // var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
+      // if (selectedLink.Contains("item:"))
+      // {
+      //   if (ItemTooltip.NodeId == NodeId) return;
+      //   ItemTooltip.NodeId = NodeId;
+      //   ShowTooltip(selectedLink["item:".Length..]);
+      //   return;
+      // }
 
-      ItemTooltip.NodeId = null;
-      ItemTooltip.gameObject.SetActive(false);
+      // ItemTooltip.NodeId = null;
+      // ItemTooltip.gameObject.SetActive(false);
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -101,7 +100,7 @@ namespace ClaraMundi
 
     private void ShowTooltip(string itemOrInstanceId)
     {
-      ItemTooltipUtils.ShowTooltip(ItemTooltip, (RectTransform)transform, itemOrInstanceId);
+      // ItemTooltipUtils.ShowTooltip(ItemTooltip, (RectTransform)transform, itemOrInstanceId);
     }
   }
 }

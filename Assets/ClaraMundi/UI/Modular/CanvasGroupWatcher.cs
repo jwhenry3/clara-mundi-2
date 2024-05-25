@@ -22,17 +22,17 @@ namespace ClaraMundi
       if (BecameInteractable())
       {
         Debug.Log(gameObject.name + " Interactable!");
-        if (CurrentButton != null && CurrentButton.button.IsInteractable())
+        if (CurrentButton != null && CurrentButton.button != null && CurrentButton.button.IsInteractable())
           CurrentButton.Select();
-        else if (CurrentInput != null && CurrentInput.inputField.IsInteractable())
+        else if (CurrentInput != null && CurrentInput.inputField != null && CurrentInput.inputField.IsInteractable())
           CurrentInput.Select();
-        else if (CurrentDropdown != null && CurrentDropdown.dropdown.IsInteractable())
+        else if (CurrentDropdown != null && CurrentDropdown.dropdown != null && CurrentDropdown.dropdown.IsInteractable())
           CurrentDropdown.Select();
-        else if (AutoFocusButton != null && AutoFocusButton.button.IsInteractable())
+        else if (AutoFocusButton != null && AutoFocusButton.button != null && AutoFocusButton.button.IsInteractable())
           AutoFocusButton.Select();
-        else if (AutoFocusInput != null && AutoFocusInput.inputField.IsInteractable())
+        else if (AutoFocusInput != null && AutoFocusInput.inputField != null && AutoFocusInput.inputField.IsInteractable())
           AutoFocusInput.Select();
-        else if (AutoFocusDropdown != null && AutoFocusDropdown.dropdown.IsInteractable())
+        else if (AutoFocusDropdown != null && AutoFocusDropdown.dropdown != null && AutoFocusDropdown.dropdown.IsInteractable())
           AutoFocusDropdown.Select();
         else
         {

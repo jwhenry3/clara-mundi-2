@@ -12,9 +12,10 @@ namespace ClaraMundi
     Vertical,
     Horizontal,
   }
-  public class InputUI : MonoBehaviour, ISelectHandler
+  public class InputUI : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
-
+    public static bool IsFocused;
+    public static InputUI LastFocused;
     [HideInInspector]
     public FormUI formUI;
     [HideInInspector]
@@ -140,6 +141,12 @@ namespace ClaraMundi
         canvasGroupWatcher.CurrentButton = null;
         canvasGroupWatcher.CurrentDropdown = null;
       }
+      IsFocused = true;
+    }
+    public void OnDeselect(BaseEventData eventData)
+    {
+      if (EventSystem.current.currentSelectedGameObject?.GetComponent<InputUI>() == null)
+        IsFocused = false;
     }
 
     void Update()

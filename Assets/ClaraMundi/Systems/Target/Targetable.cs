@@ -9,6 +9,7 @@ namespace ClaraMundi
     public Entity Entity;
     public TargetController TargetController;
     public GameObject SubTargetIndicator;
+    public GameObject TargetIndicator;
     public bool DistanceFirst = true;
 
     public float DistanceFromCamera;
@@ -65,10 +66,12 @@ namespace ClaraMundi
       if (TargetController != null)
       {
         SubTargetIndicator?.SetActive(TargetController.SubTargetId == Entity.entityId.Value);
+        TargetIndicator?.SetActive(TargetController.TargetId.Value == Entity.entityId.Value);
       }
       else
       {
         SubTargetIndicator?.SetActive(false);
+        TargetIndicator?.SetActive(false);
       }
     }
   }

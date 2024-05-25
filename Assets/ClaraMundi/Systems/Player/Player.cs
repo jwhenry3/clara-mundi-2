@@ -24,6 +24,7 @@ namespace ClaraMundi
     public PartyController Party { get; protected set; }
     public QuestController Quests { get; protected set; }
     public ClickToMoveController Movement { get; protected set; }
+    public TargetController Targeting { get; protected set; }
 
 
     private NetworkManager networkManager;
@@ -48,6 +49,8 @@ namespace ClaraMundi
       Quests.player = this;
       Movement = GetComponentInChildren<ClickToMoveController>();
       Movement.player = this;
+      Targeting = GetComponentInChildren<TargetController>();
+      Targeting.player = this;
       Entity.OnStarted += OnNetStarted;
     }
 

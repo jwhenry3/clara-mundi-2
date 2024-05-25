@@ -8,6 +8,7 @@ namespace ClaraMundi
 {
   public class UIHandling : MonoBehaviour
   {
+    public static UIHandling Instance;
     public Transform FocusIndicator;
     public PlayerRequiredUI PlayerUI;
     public PlayerRequiredUI NoPlayerUI;
@@ -20,6 +21,7 @@ namespace ClaraMundi
 
     void Start()
     {
+      Instance = this;
       foreach (WindowUI window in PlayerUI.GetComponentsInChildren<WindowUI>(true))
       {
         window.SetUp();
@@ -35,6 +37,7 @@ namespace ClaraMundi
             {
               InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
               {
+                if (InputUI.IsFocused) return;
                 if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
                   window.moveSibling.ToFront();
               };
@@ -67,7 +70,7 @@ namespace ClaraMundi
       }
       if (InputManager.Instance != null)
       {
-        if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+        if (AllWindowsClosed())
         {
           InputManager.Instance.World.Enable();
           Backdrop.blocksRaycasts = false;
@@ -79,14 +82,19 @@ namespace ClaraMundi
         }
       }
     }
-
+    public bool AllWindowsClosed()
+    {
+      return Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1;
+    }
     void OnQuit(WindowUI window)
     {
       if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
       {
-        if (Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1)
+        if (AllWindowsClosed())
         {
-          window.moveSibling.ToFront();
+          var targeting = PlayerManager.Instance.LocalPlayer?.Targeting;
+          if (targeting == null || (targeting.TargetId.Value == null && targeting.SubTargetId == null))
+            window.moveSibling.ToFront();
         }
       }
     }

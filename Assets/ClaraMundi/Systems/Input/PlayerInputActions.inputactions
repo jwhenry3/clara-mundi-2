@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "6d90b1a6-5495-429f-ac11-d681216dce61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -185,7 +194,7 @@
                     "id": "94d45ccf-0785-47da-a8f9-ae3ffb2b3d68",
                     "path": "OneModifier",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2,ScaleVector2(x=3,y=3)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": true,
@@ -218,7 +227,7 @@
                     "id": "14cba91e-12d4-40e5-8b59-f7afa0668696",
                     "path": "2DVector",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "NormalizeVector2,ScaleVector2(x=1.5,y=1.5)",
                     "groups": "",
                     "action": "Look",
                     "isComposite": true,
@@ -386,6 +395,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad;Touch;Joystick;XR",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2802244-d238-42e8-9b10-a3f19141e802",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31831293-c7fe-4c0b-b08a-68260eecb048",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

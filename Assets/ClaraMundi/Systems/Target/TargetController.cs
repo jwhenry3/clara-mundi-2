@@ -7,7 +7,6 @@ namespace ClaraMundi
 {
   public class TargetController : PlayerController
   {
-    public InputActionAsset InputActionAsset;
     public TargetArea TargetArea;
     // target must be persisted to server to ensure those observing what the npc/player is targeting can see it
     // also we can use targetless RPCs against the selected target for some simplicity
@@ -42,9 +41,10 @@ namespace ClaraMundi
       if (PlayerManager.Instance?.LocalPlayer != player)
         return;
       listening = true;
-      InputActionAsset.FindAction("Player/Cancel").performed += OnCancelTarget;
-      InputActionAsset.FindAction("Player/TargetNext").performed += OnNextTarget;
-      InputActionAsset.FindAction("Player/TargetPrevious").performed += OnPreviousTarget;
+      InputManager.Instance.World.FindAction("Cancel").performed += OnCancelTarget;
+      InputManager.Instance.World.FindAction("Confirm").performed += OnConfirm;
+      InputManager.Instance.World.FindAction("TargetNext").performed += OnNextTarget;
+      InputManager.Instance.World.FindAction("TargetPrevious").performed += OnPreviousTarget;
     }
 
     void Update()
@@ -58,13 +58,13 @@ namespace ClaraMundi
           {
             SanitizeTargets();
             TargetArea.PossibleTargets.Sort();
-            SetSubTargetAt(GetNextIndex());
+            SetSubTargetAt(GetPreviousIndex());
           }
           else if (nextPressed)
           {
             SanitizeTargets();
             TargetArea.PossibleTargets.Sort();
-            SetSubTargetAt(GetPreviousIndex());
+            SetSubTargetAt(GetNextIndex());
           }
           prevPressed = false;
           nextPressed = false;
@@ -75,13 +75,27 @@ namespace ClaraMundi
     public void OnDestroy()
     {
       if (!listening) return;
-      InputActionAsset.FindAction("Player/Cancel").performed -= OnCancelTarget;
-      InputActionAsset.FindAction("Player/TargetNext").performed -= OnNextTarget;
-      InputActionAsset.FindAction("Player/TargetPrevious").performed -= OnPreviousTarget;
+      InputManager.Instance.World.FindAction("Cancel").performed -= OnCancelTarget;
+      InputManager.Instance.World.FindAction("Confirm").performed -= OnConfirm;
+      InputManager.Instance.World.FindAction("TargetNext").performed -= OnNextTarget;
+      InputManager.Instance.World.FindAction("TargetPrevious").performed -= OnPreviousTarget;
+    }
+    void OnConfirm(InputAction.CallbackContext context)
+    {
+      if (string.IsNullOrEmpty(TargetId.Value) && string.IsNullOrEmpty(SubTargetId))
+        OnNextTarget(context);
+      else if (!string.IsNullOrEmpty(SubTargetId))
+      {
+        SetTarget(SubTargetId);
+        SubTargetId = null;
+      }
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {
-      SubTargetId = null;
+      if (!string.IsNullOrEmpty(TargetId.Value))
+        TargetId.Value = null;
+      else
+        SubTargetId = null;
     }
 
     void OnNextTarget(InputAction.CallbackContext context)
@@ -132,7 +146,7 @@ namespace ClaraMundi
 
     void SetSubTargetAt(int index)
     {
-      if (index > 0 && TargetArea.PossibleTargets.Count > index)
+      if (index > -1 && TargetArea.PossibleTargets.Count > index)
       {
         TargetArea.PossibleTargets[index].TargetController = this;
         SubTargetId = TargetArea.PossibleTargets[index].Entity.entityId.Value;
@@ -140,6 +154,9 @@ namespace ClaraMundi
       else
         SubTargetId = null;
     }
+
+
+
 
   }
 }

@@ -27,11 +27,15 @@ namespace ClaraMundi
     [Header("Utilities")]
     public WindowUI parent;
     public MoveSibling moveSibling;
+    [HideInInspector]
     public Layout layout;
+    [HideInInspector]
     public ProceduralImage proceduralImage;
+    [HideInInspector]
     public FreeModifier freeModifier;
     public WindowUI CurrentWindow;
 
+    [HideInInspector]
     private UIGradient gradient;
 
     private float tick;

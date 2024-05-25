@@ -14,10 +14,16 @@ namespace ClaraMundi
   {
 
     public LayoutType LayoutType;
+    public int Padding = 8;
+    public int Spacing = 8;
 
+    [HideInInspector]
     public LayoutElement element;
+    [HideInInspector]
     public VerticalLayoutGroup verticalLayoutGroup;
+    [HideInInspector]
     public HorizontalLayoutGroup horizontalLayoutGroup;
+    [HideInInspector]
     public ContentSizeFitter contentSizeFitter;
     public bool stretchHorizontal;
     public bool stretchVertical;
@@ -58,11 +64,11 @@ namespace ClaraMundi
     }
     void PrepLayout(HorizontalOrVerticalLayoutGroup layout)
     {
-      layout.padding.left = 8;
-      layout.padding.right = 8;
-      layout.padding.top = 8;
-      layout.padding.bottom = 8;
-      layout.spacing = 8;
+      layout.padding.left = Padding;
+      layout.padding.right = Padding;
+      layout.padding.top = Padding;
+      layout.padding.bottom = Padding;
+      layout.spacing = Spacing;
       layout.childControlWidth = true;
       layout.childControlHeight = true;
       layout.childForceExpandWidth = stretchHorizontal;
