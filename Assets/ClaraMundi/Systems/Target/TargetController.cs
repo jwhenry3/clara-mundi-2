@@ -132,6 +132,10 @@ namespace ClaraMundi
         indicatorShape.radius = targetable.IndicatorRadius;
         TargetIndicator.position = targetable.TargetIndicatorPosition.position;
       }
+      if (Target == null)
+        cameraLockTarget = false;
+      if (SubTarget == null)
+        cameraLockSubTarget = false;
     }
 
     public void OnDestroy()
@@ -154,22 +158,15 @@ namespace ClaraMundi
         SetTarget(SubTargetId);
         if (cameraLockSubTarget)
           cameraLockTarget = true;
-        cameraLockSubTarget = false;
         SubTargetId = null;
       }
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {
       if (!string.IsNullOrEmpty(TargetId.Value))
-      {
         SetTarget(null);
-        cameraLockTarget = false;
-      }
       else
-      {
         SubTargetId = null;
-        cameraLockSubTarget = false;
-      }
     }
 
     void OnNextTarget(InputAction.CallbackContext context)
