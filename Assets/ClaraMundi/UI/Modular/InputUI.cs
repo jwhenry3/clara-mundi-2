@@ -15,7 +15,6 @@ namespace ClaraMundi
   public class InputUI : MonoBehaviour, ISelectHandler, IDeselectHandler
   {
     public static bool IsFocused;
-    public static InputUI LastFocused;
     [HideInInspector]
     public FormUI formUI;
     [HideInInspector]
@@ -105,6 +104,11 @@ namespace ClaraMundi
     }
     void OnDisable()
     {
+
+      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      {
+        IsFocused = false;
+      }
       if (ClearOnDisable)
         inputField.text = "";
       if (InputManager.Instance != null)

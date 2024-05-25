@@ -3,14 +3,18 @@ using FishNet;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.InputSystem;
+using static UnityEngine.ParticleSystem;
 namespace ClaraMundi
 {
   public class TargetController : PlayerController
   {
+    public Transform TargetIndicator;
+    private ParticleSystem indicatorParticles;
+    private ShapeModule indicatorShape;
     public TargetArea TargetArea;
     // target must be persisted to server to ensure those observing what the npc/player is targeting can see it
     // also we can use targetless RPCs against the selected target for some simplicity
-    public readonly SyncVar<string> TargetId = new();
+    public readonly SyncVar<string> TargetId = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
 
     // SubTarget is only needed for actions not performed on the target
     public string SubTargetId;
@@ -20,6 +24,10 @@ namespace ClaraMundi
     private bool nextPressed;
     private bool prevPressed;
     private float inputCooldown;
+
+    private Targetable targetable;
+
+    private Targetable target;
 
     public void ServerSetTarget(string targetId)
     {
@@ -31,6 +39,14 @@ namespace ClaraMundi
     public void SetTarget(string targetId)
     {
       TargetId.Value = targetId;
+    }
+
+    void OnEnable()
+    {
+      if (player != null)
+        targetable = targetable ?? player.GetComponent<Targetable>();
+      indicatorParticles = TargetIndicator.GetComponent<ParticleSystem>();
+      indicatorShape = indicatorParticles.shape;
     }
 
     public override void OnStartClient()
@@ -70,10 +86,37 @@ namespace ClaraMundi
           nextPressed = false;
         }
       }
+      if (!string.IsNullOrEmpty(TargetId.Value))
+      {
+        if (!EntityManager.Instance.Entities.ContainsKey(TargetId.Value))
+        {
+          SetTarget(null);
+          return;
+        }
+        target = EntityManager.Instance.Entities[TargetId.Value].GetComponent<Targetable>();
+      }
+      else
+        target = null;
+      if (TargetIndicator.parent != null)
+        TargetIndicator.SetParent(null);
+      if (target != null)
+      {
+        TargetIndicator.position = target.TargetIndicatorPosition.position;
+        indicatorShape.radius = target.IndicatorRadius;
+        TargetIndicator.gameObject.SetActive(true);
+      }
+      else
+      {
+        TargetIndicator.gameObject.SetActive(false);
+        indicatorShape.radius = targetable.IndicatorRadius;
+        TargetIndicator.position = targetable.TargetIndicatorPosition.position;
+      }
     }
 
     public void OnDestroy()
     {
+      if (TargetIndicator != null)
+        Destroy(TargetIndicator.gameObject);
       if (!listening) return;
       InputManager.Instance.World.FindAction("Cancel").performed -= OnCancelTarget;
       InputManager.Instance.World.FindAction("Confirm").performed -= OnConfirm;
@@ -93,7 +136,7 @@ namespace ClaraMundi
     void OnCancelTarget(InputAction.CallbackContext context)
     {
       if (!string.IsNullOrEmpty(TargetId.Value))
-        TargetId.Value = null;
+        SetTarget(null);
       else
         SubTargetId = null;
     }
