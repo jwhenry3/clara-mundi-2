@@ -34,8 +34,6 @@ namespace ClaraMundi
 
     private Targetable targetable;
 
-    private Targetable target;
-
     public void ServerSetTarget(string targetId)
     {
       if (IsServerInitialized)
@@ -107,23 +105,16 @@ namespace ClaraMundi
           nextPressed = false;
         }
       }
-      if (!string.IsNullOrEmpty(TargetId.Value))
-      {
-        if (!EntityManager.Instance.Entities.ContainsKey(TargetId.Value))
-        {
-          SetTarget(null);
-          return;
-        }
-        target = EntityManager.Instance.Entities[TargetId.Value].GetComponent<Targetable>();
-      }
-      else
-        target = null;
+      if (!string.IsNullOrEmpty(SubTargetId) && SubTarget == null)
+        SubTargetId = null;
+      if (!string.IsNullOrEmpty(TargetId.Value) && Target == null)
+        SetTarget(null);
       if (TargetIndicator.parent != null)
         TargetIndicator.SetParent(null);
-      if (target != null)
+      if (Target != null)
       {
-        TargetIndicator.position = target.TargetIndicatorPosition.position;
-        indicatorShape.radius = target.IndicatorRadius;
+        TargetIndicator.position = Target.TargetIndicatorPosition.position;
+        indicatorShape.radius = Target.IndicatorRadius;
         TargetIndicator.gameObject.SetActive(true);
       }
       else
