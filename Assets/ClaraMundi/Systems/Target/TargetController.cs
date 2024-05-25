@@ -19,6 +19,13 @@ namespace ClaraMundi
     // SubTarget is only needed for actions not performed on the target
     public string SubTargetId;
 
+    public Targetable SubTarget => !string.IsNullOrEmpty(SubTargetId) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(SubTargetId) ? EntityManager.Instance.Entities[SubTargetId].GetComponent<Targetable>() : null;
+
+    public Targetable Target => !string.IsNullOrEmpty(TargetId.Value) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(TargetId.Value) ? EntityManager.Instance.Entities[TargetId.Value].GetComponent<Targetable>() : null;
+
+    public bool cameraLockTarget;
+    public bool cameraLockSubTarget;
+
     private bool listening;
 
     private bool nextPressed;
@@ -59,8 +66,22 @@ namespace ClaraMundi
       listening = true;
       InputManager.Instance.World.FindAction("Cancel").performed += OnCancelTarget;
       InputManager.Instance.World.FindAction("Confirm").performed += OnConfirm;
+      InputManager.Instance.World.FindAction("TargetLock").performed += OnLockTarget;
       InputManager.Instance.World.FindAction("TargetNext").performed += OnNextTarget;
       InputManager.Instance.World.FindAction("TargetPrevious").performed += OnPreviousTarget;
+    }
+
+    void OnLockTarget(InputAction.CallbackContext context)
+    {
+      if (SubTarget != null)
+      {
+        cameraLockSubTarget = !cameraLockSubTarget;
+      }
+      else if (Target != null)
+      {
+        cameraLockTarget = !cameraLockTarget;
+      }
+
     }
 
     void Update()
@@ -120,6 +141,7 @@ namespace ClaraMundi
       if (!listening) return;
       InputManager.Instance.World.FindAction("Cancel").performed -= OnCancelTarget;
       InputManager.Instance.World.FindAction("Confirm").performed -= OnConfirm;
+      InputManager.Instance.World.FindAction("TargetLock").performed -= OnLockTarget;
       InputManager.Instance.World.FindAction("TargetNext").performed -= OnNextTarget;
       InputManager.Instance.World.FindAction("TargetPrevious").performed -= OnPreviousTarget;
     }
@@ -130,15 +152,24 @@ namespace ClaraMundi
       else if (!string.IsNullOrEmpty(SubTargetId))
       {
         SetTarget(SubTargetId);
+        if (cameraLockSubTarget)
+          cameraLockTarget = true;
+        cameraLockSubTarget = false;
         SubTargetId = null;
       }
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {
       if (!string.IsNullOrEmpty(TargetId.Value))
+      {
         SetTarget(null);
+        cameraLockTarget = false;
+      }
       else
+      {
         SubTargetId = null;
+        cameraLockSubTarget = false;
+      }
     }
 
     void OnNextTarget(InputAction.CallbackContext context)

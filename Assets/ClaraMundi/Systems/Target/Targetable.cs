@@ -1,4 +1,5 @@
 using System;
+using GameCreator.Runtime.Cameras;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ namespace ClaraMundi
     public TargetController TargetController;
     public GameObject SubTargetIndicator;
     public Transform TargetIndicatorPosition;
+
+    public ShotCamera TargetCamera;
+    public ShotTypeLockOn lockOnShotType;
     public float IndicatorRadius = 0.5f;
     public bool DistanceFirst = true;
 
@@ -33,6 +37,8 @@ namespace ClaraMundi
 
     public void Start()
     {
+      if (TargetCamera != null)
+        lockOnShotType = (ShotTypeLockOn)TargetCamera.ShotType;
       cam = Camera.main;
       cameraTransform = cam.transform;
     }
