@@ -4,11 +4,13 @@ using FishNet.Managing;
 using FishNet;
 using FishNet.Object;
 using GCharacter = GameCreator.Runtime.Characters.Character;
+using UnityEngine.AI;
 
 namespace ClaraMundi
 {
   public class Player : NetworkBehaviour
   {
+    public static PlayerSpawner spawner;
     public event Action NetStarted;
     public int ClientId;
     public Character Character => Entity.Character.Value;
@@ -25,6 +27,7 @@ namespace ClaraMundi
     public QuestController Quests { get; protected set; }
     public ClickToMoveController Movement { get; protected set; }
     public TargetController Targeting { get; protected set; }
+    public NavMeshAgent Agent { get; protected set; }
 
 
     private NetworkManager networkManager;
@@ -32,6 +35,7 @@ namespace ClaraMundi
     private void Awake()
     {
       networkManager = InstanceFinder.NetworkManager;
+      Agent = GetComponentInChildren<NavMeshAgent>();
       Body = GetComponentInChildren<GCharacter>();
       Entity = GetComponent<Entity>();
       Stats = GetComponentInChildren<StatsController>();
@@ -65,6 +69,18 @@ namespace ClaraMundi
       Body.IsPlayer = true;
       CameraManager.Instance.UsePlayerCamera(this);
       InputManager.Instance.World.Enable();
+    }
+    public override void OnStartServer()
+    {
+      base.OnStartServer();
+      if (spawner == null)
+        spawner = FindObjectOfType<PlayerSpawner>();
+      if (spawner != null)
+      {
+        Agent.enabled = false;
+        transform.SetPositionAndRotation(spawner.transform.position, spawner.transform.rotation);
+        Agent.enabled = true;
+      }
     }
 
     private void OnDestroy()

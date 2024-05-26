@@ -15,26 +15,23 @@ namespace ClaraMundi
     public InputActionMap UI;
     [HideInInspector]
     public InputActionMap World;
+    [HideInInspector]
+    public InputActionMap All;
 
     public void Init()
     {
       Instance = this;
       UI = Instance.InputActionAsset.FindActionMap("UI");
       World = Instance.InputActionAsset.FindActionMap("Player");
+      All = Instance.InputActionAsset.FindActionMap("All");
       UI.Enable();
+      All.Enable();
       World.Disable();
     }
     private void Awake()
     {
       if (Instance == null)
         Init();
-    }
-    public static bool IsFocusedOnInput()
-    {
-      var obj = EventSystem.current.currentSelectedGameObject;
-      if (obj == null) return false;
-      var input = obj.GetComponent<TMP_InputField>();
-      return input != null && input.isFocused;
     }
   }
 }

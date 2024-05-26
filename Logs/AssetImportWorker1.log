@@ -7891,3 +7891,1137 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  2.011 seconds
+Refreshing native plugins compatible for Editor in 19.66 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-My project
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002abd385705a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002abd385697b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002abd3855dfe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002abd3855a9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcb13ea03 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcb13984b (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcb12eafb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abd5ed0188 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002abd385705a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002abd385697b (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002abd3855dfe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002abd3855a9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcb13ea03 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcb13984b (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcb12eafb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abd5ed0188 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.992 seconds
+Domain Reload Profiling: 6003ms
+	BeginReloadAssembly (819ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (10ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (552ms)
+	RebuildCommonClasses (63ms)
+	RebuildNativeTypeToScriptingClass (24ms)
+	initialDomainReloadingComplete (102ms)
+	LoadAllAssembliesAndSetupDomain (1003ms)
+		LoadAssemblies (970ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (191ms)
+			TypeCache.Refresh (75ms)
+				TypeCache.ScanAssembly (20ms)
+			ScanForSourceGeneratedMonoScriptInfo (66ms)
+			ResolveRequiredComponents (43ms)
+	FinalizeReload (3993ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2516ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (12ms)
+			SetLoadedEditorAssemblies (11ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (361ms)
+			ProcessInitializeOnLoadAttributes (656ms)
+			ProcessInitializeOnLoadMethodAttributes (1468ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (1ms)
+		AwakeInstancesAfterBackupRestoration (104ms)
+Refreshing native plugins compatible for Editor in 14.81 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 9558 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 72 unused Assets / (123.7 KB). Loaded Objects now: 10924.
+Memory consumption went from 446.4 MB to 446.2 MB.
+Total: 33.095400 ms (FindLiveObjects: 1.141900 ms CreateObjectMapping: 1.384000 ms MarkObjects: 30.354100 ms  DeleteObjects: 0.214200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 12.07 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 31 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3 unused Assets / (94.6 KB). Loaded Objects now: 10952.
+Memory consumption went from 299.3 MB to 299.2 MB.
+Total: 69.998800 ms (FindLiveObjects: 2.027200 ms CreateObjectMapping: 1.071600 ms MarkObjects: 66.710100 ms  DeleteObjects: 0.188400 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityPreviewVolumeEditor.cs: f4f762acc772b35947e150f26acf5fbf -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRendererEditor.cs: 2644116704cd6b235feec0b3325ece6a -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAssetEditor.cs: de779bb26a8f734659f1eb67e6de8c62 -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAsset.cs: 59c8fd51bd65773164e972486f2ba615 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/SplineStampEditor.cs: dcc7b66a02b312804f1f165c3992164c -> 
+  custom:scripting/monoscript/fileName/AtlasPainter.cs: 05cd2f1b6722aedaf92ce1f197cf5784 -> 
+  custom:scripting/monoscript/fileName/AtlasMenuItems.cs: 3597d54c69bb4940f036be792e015ae3 -> 
+  custom:scripting/monoscript/fileName/SplineStamp.cs: 43803d5ef2ebc4635535971053317a37 -> 
+  custom:scripting/monoscript/fileName/StampAsset.cs: 2670ac9f4079786c955b132ba2a69013 -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAsset.cs: f615d0e76da9d1c9a5e3bda3607b2de1 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/AtlasGizmoInstaller.cs: b5994b20f970ce2b9e12eb7cf725d7d5 -> 
+  custom:scripting/monoscript/fileName/AtlasToolbar.cs: b2e0e774c8740bb8ba408a8d8f032cd8 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp-Editor: d375702fceac8faba66f35207351e73e -> 6ffda2dde3469a5c7216581447caa591
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 8ea346240e69864f48d948d5e2426081 -> 27a7d95b4001103ef1403d30fd1a7e90
+  custom:scripting/monoscript/fileName/FlattenStamp.cs: b1a49d698f7c77b6ddc3a8ea93f0966a -> 
+  custom:scripting/monoscript/fileName/ScatterPassEditor.cs: b97028614c6fe7f1c24025276d1985c1 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityPreviewVolume.cs: e29d68a779186e4c01d0576dd6af6692 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/AtlasPaintBrushPreview.cs: 2cd81aa5460958dc281fca3b76991513 -> 
+  custom:scripting/monoscript/fileName/StampEditor.cs: 95ca108a296e74e4ea465dd056929504 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAssetEditor.cs: 3da1359561925e95ec4f140224e6951b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:scripting/monoscript/fileName/StampBaseEditor.cs: b34bc75807bcb9106b6be794bbfcb4ce -> 
+  custom:scripting/monoscript/fileName/Stamp.cs: 22b09622fd6834835227aaa8f31cbd2e -> 
+  custom:scripting/monoscript/fileName/StampMapEditor.cs: a7adbc22f6b8985c1535aa455a99b072 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRenderer.cs: bc9d3560bf3ccb20e394ac2980b679f0 -> 
+  custom:scripting/monoscript/fileName/AtlasProjectSettings.cs: 3e3b1fa410d2bcbca9d5f013a794a2a9 -> 
+  custom:scripting/monoscript/fileName/DetailPassEditor.cs: ef76f01e692596d407968e53d76d9a91 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/StampBase.cs: e735e0082aafdb29ff9c0cc7bd764347 -> 
+  custom:scripting/monoscript/fileName/Atlas.cs: 93996522b5e5b32ec0bbaf2bfc250749 -> 
+  custom:scripting/monoscript/fileName/AtlasSceneProcessor.cs: 34c489dd77f18d178a59ed026b9057ea -> 
+  custom:scripting/monoscript/fileName/StampAssetEditor.cs: 7cf7b35c97f9bb67bec660fd8e1909ee -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  5.609 seconds
+Refreshing native plugins compatible for Editor in 12.77 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-My project
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x000002adf710527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x000002adf7104bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x000002adf71040fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x000002adf7103d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x000002abcc238943 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x000002abcc233edb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x000002abcc228bcb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x000002abc7306908 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 19.875 seconds
+Domain Reload Profiling: 25483ms
+	BeginReloadAssembly (772ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (405ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (95ms)
+	LoadAllAssembliesAndSetupDomain (4685ms)
+		LoadAssemblies (4787ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (134ms)
+			TypeCache.Refresh (41ms)
+				TypeCache.ScanAssembly (10ms)
+			ScanForSourceGeneratedMonoScriptInfo (52ms)
+			ResolveRequiredComponents (39ms)
+	FinalizeReload (19876ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1883ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (11ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (354ms)
+			ProcessInitializeOnLoadAttributes (539ms)
+			ProcessInitializeOnLoadMethodAttributes (966ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (100ms)
+Refreshing native plugins compatible for Editor in 9.27 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 9612 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 98 unused Assets / (0.8 MB). Loaded Objects now: 10956.
+Memory consumption went from 459.1 MB to 458.3 MB.
+Total: 21.154900 ms (FindLiveObjects: 1.058100 ms CreateObjectMapping: 0.955000 ms MarkObjects: 18.443400 ms  DeleteObjects: 0.697300 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 60566.838719 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_01.asset
+  artifactKey: Guid(e7be46e14113a7c4d8d1613d1a2198cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_01.asset using Guid(e7be46e14113a7c4d8d1613d1a2198cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dabf7e8224c9be9d9fc8f4f683875da6') in 1.312698 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_02.asset
+  artifactKey: Guid(c8a3e83afbe74c8499d4679f95c93746) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_02.asset using Guid(c8a3e83afbe74c8499d4679f95c93746) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15506bf740bd0ddb293b3d07ec1c9fb8') in 0.368541 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_03.asset
+  artifactKey: Guid(c92fcd91d4cf41945b53cbf5c984339b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_03.asset using Guid(c92fcd91d4cf41945b53cbf5c984339b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f77f377bedc3a895197ce103f9c2228f') in 0.938650 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_02.asset
+  artifactKey: Guid(7cff1cd596ec3bd46a94d0c9e7bdb94e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_02.asset using Guid(7cff1cd596ec3bd46a94d0c9e7bdb94e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9825837b4a00037f4f07e45ef2c32ae7') in 0.417430 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_03.asset
+  artifactKey: Guid(76319f74a4b77424390f572cc1393f5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_03.asset using Guid(76319f74a4b77424390f572cc1393f5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89d74962fdd0460266789e1472be682d') in 0.486586 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_02.asset
+  artifactKey: Guid(d14f078bb54db54479cec8299571d408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_02.asset using Guid(d14f078bb54db54479cec8299571d408) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '007a6fab9b734800c3958f51ab864145') in 0.424059 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_01.asset
+  artifactKey: Guid(d2f0fdf58d9b33b4498d09c0dc1ed8af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Dunes/b_dune_01.asset using Guid(d2f0fdf58d9b33b4498d09c0dc1ed8af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c95bf147e4df78e0901559c6bd99f48a') in 0.415705 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_03.asset
+  artifactKey: Guid(1edeab4e116503d409d8aaa170113415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_03.asset using Guid(1edeab4e116503d409d8aaa170113415) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d8878b1d9ca9ad87969dce184cf47b1') in 0.855956 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_flat_01.asset
+  artifactKey: Guid(1f4ca377c9f3cf548a53a7130914e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_flat_01.asset using Guid(1f4ca377c9f3cf548a53a7130914e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9a8081fddbea55b4d93e6f215fcc5dc') in 0.267681 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_01.asset
+  artifactKey: Guid(4dd0c199f1a708e4986df8d45b5603b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_01.asset using Guid(4dd0c199f1a708e4986df8d45b5603b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acf213cb279a72a9fe778dddbed40ad9') in 0.372455 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_05.asset
+  artifactKey: Guid(c1b01146ae5cf444986f36eef7410449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_05.asset using Guid(c1b01146ae5cf444986f36eef7410449) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1830b8fa0b0a384ba529b334e26acebb') in 0.902241 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_02.asset
+  artifactKey: Guid(c9cf401be60f3ae45be6140337a1a47b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_02.asset using Guid(c9cf401be60f3ae45be6140337a1a47b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac9553d1e83fff806ed3646066bc9052') in 0.901465 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_02.asset
+  artifactKey: Guid(1d88b061f0aac7a488d309408ff86f1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_02.asset using Guid(1d88b061f0aac7a488d309408ff86f1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88c1573eb25cb41c5182d241f6f92512') in 2.950932 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_01.asset
+  artifactKey: Guid(5213a2d34f3439146920971ea232c750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_01.asset using Guid(5213a2d34f3439146920971ea232c750) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a470a14cdae66eea12ca9ddb8f34c54') in 0.922707 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_05.asset
+  artifactKey: Guid(dbe93d03b34730a4b838dc2d554f420d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_05.asset using Guid(dbe93d03b34730a4b838dc2d554f420d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '704c01433b832d0611522cd47907ba39') in 3.505529 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_03.asset
+  artifactKey: Guid(3e054dcdb799e074c8622de38204589f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_03.asset using Guid(3e054dcdb799e074c8622de38204589f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6ca5722c0f9a803050e0f1a9a34c3a4') in 0.422420 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_02.asset
+  artifactKey: Guid(b37e87a7ca4ecb548956d9bea4935288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_02.asset using Guid(b37e87a7ca4ecb548956d9bea4935288) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4361c17ea589c77c9f78cda74e2cf48') in 2.969103 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_04.asset
+  artifactKey: Guid(ddc9be842bd5b744c8ce138b44a1cfd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_04.asset using Guid(ddc9be842bd5b744c8ce138b44a1cfd5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20220f6706f85916bae8c3b9b3a51b5e') in 2.897549 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_01.asset
+  artifactKey: Guid(15a97689d402f3f46a6a4924bde409a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_01.asset using Guid(15a97689d402f3f46a6a4924bde409a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90773ed8e7bf9feaa8947d909b2f547b') in 0.970871 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_03.asset
+  artifactKey: Guid(35af74082109a4146908fefb911916e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_03.asset using Guid(35af74082109a4146908fefb911916e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7101c600c09983ac0e954b5bc0b7b19') in 0.922973 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Rivers/b_river_01.asset
+  artifactKey: Guid(a99f5564636b072498f907a8015e2b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Rivers/b_river_01.asset using Guid(a99f5564636b072498f907a8015e2b69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f05c0c311ed0f4f1408cac9deb2c568') in 0.313800 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_01.asset
+  artifactKey: Guid(7f31375ebcdb69545a96ba8e56f85d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_01.asset using Guid(7f31375ebcdb69545a96ba8e56f85d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfacce24a6fb73b7ccd575ff692bfe42') in 0.985364 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_03.asset
+  artifactKey: Guid(76f16b52d3121c842b276939737abc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_03.asset using Guid(76f16b52d3121c842b276939737abc42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2fc28d02d8db6023b5e8e2edf6335edb') in 0.995189 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_04.asset
+  artifactKey: Guid(b5f801dc15b07c044af3da6017ec2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_04.asset using Guid(b5f801dc15b07c044af3da6017ec2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3822081c3a1f5f1e38c8281d385d46d9') in 1.078667 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 159.798299 seconds.
+  path: Assets/Atlas Terrain Editor/Runtime/Materials/AtlasUnityTerrainMaskPreview.mat
+  artifactKey: Guid(5141fb64ea23139479114ac566d24bf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/Runtime/Materials/AtlasUnityTerrainMaskPreview.mat using Guid(5141fb64ea23139479114ac566d24bf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4731bc7da2c0d642f919caaaab372a19') in 0.138550 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 72.879862 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02.terrainlayer
+  artifactKey: Guid(ee65d520f576106439581ec9a56a6ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02.terrainlayer using Guid(ee65d520f576106439581ec9a56a6ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3de9bd757fbc34d36a2ae5cbc979239') in 0.122857 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_3.asset
+  artifactKey: Guid(149ed929c704034418123c7c82c2bf43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_3.asset using Guid(149ed929c704034418123c7c82c2bf43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79c1dc6e530c17f4a68987c5ef7fac2f') in 0.175977 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_2.asset
+  artifactKey: Guid(97de64e4d88f9e746b607d474eeb6696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_2.asset using Guid(97de64e4d88f9e746b607d474eeb6696) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3331608944bf57b8f122492d0d6a2f0') in 0.141337 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_3.asset
+  artifactKey: Guid(82ce6f70f3cd4194b99853470d5b2bd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_3.asset using Guid(82ce6f70f3cd4194b99853470d5b2bd1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '586500580f8320e7c5b54643cc2d6d60') in 0.035224 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_1.asset
+  artifactKey: Guid(3e552eb4ac7166b47b1097007ee3cbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_1.asset using Guid(3e552eb4ac7166b47b1097007ee3cbe5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56553725f1150e98f18ae3b8232538dc') in 0.038359 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_2.asset
+  artifactKey: Guid(3da46d8ebbd8f60438f1f31ae7a533c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_2.asset using Guid(3da46d8ebbd8f60438f1f31ae7a533c3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc90cf6b0f1dc86e0729b80379bab3af') in 0.041986 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_3.asset
+  artifactKey: Guid(dcd802a3197fa6b40a000da8106e0384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_3.asset using Guid(dcd802a3197fa6b40a000da8106e0384) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f4c99b7951790b668a3e330a13e003e') in 0.042518 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_2.asset
+  artifactKey: Guid(5fa9e88650ce91845b7bf0d410dbf6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_2.asset using Guid(5fa9e88650ce91845b7bf0d410dbf6c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b257fa4dc5e7e1fce6cdd648c9cc5fd') in 0.042759 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_1.asset
+  artifactKey: Guid(b64652fd7ccf7e24c812fd1373f66b9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_1.asset using Guid(b64652fd7ccf7e24c812fd1373f66b9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46dc7a2df268d9479aec6f358334ae0a') in 0.046978 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_2.asset
+  artifactKey: Guid(f24ba2633a1670f4ab8e5c6efde4b0aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_2.asset using Guid(f24ba2633a1670f4ab8e5c6efde4b0aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f179cde8fb3763f530095e770bbbe97a') in 0.104407 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_2.asset
+  artifactKey: Guid(c51b39ca4220fe6459f6aed0daae1ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_2.asset using Guid(c51b39ca4220fe6459f6aed0daae1ef7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41e9b7590c6678a7b2621a6d6d37b615') in 0.047735 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_1.asset
+  artifactKey: Guid(c6df6320e1f0da844a19eafa6bcf2059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_1.asset using Guid(c6df6320e1f0da844a19eafa6bcf2059) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'caabefb6f723cc88e8e60540aa39db41') in 0.038834 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_0.asset
+  artifactKey: Guid(ce93b4ea80a7d364aac023c36a022dfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_0.asset using Guid(ce93b4ea80a7d364aac023c36a022dfe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a686434968c81e3fd5d11ef84b643bc0') in 0.039420 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_2.asset
+  artifactKey: Guid(9f92add326900174a882ad4ede7c89f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_2.asset using Guid(9f92add326900174a882ad4ede7c89f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bed3d4f25556d8dff63bfc7584d357d') in 0.045946 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_2.asset
+  artifactKey: Guid(17d35036d55ccf64aa35494e5fe2812d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_2.asset using Guid(17d35036d55ccf64aa35494e5fe2812d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c96c1001a07223b48e61dfab3f02f3b8') in 0.050915 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_1.asset
+  artifactKey: Guid(fb8c904915e9f8846b7a7d47c953f871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_1.asset using Guid(fb8c904915e9f8846b7a7d47c953f871) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9a0919b137ce046b4e1f45a4d832206') in 0.060826 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_2.asset
+  artifactKey: Guid(fc0eb0a9d7f3e814c8214b0f4839edbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_2.asset using Guid(fc0eb0a9d7f3e814c8214b0f4839edbf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81b1abdff0ee456a26962f826791bd0e') in 0.049105 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_3.asset
+  artifactKey: Guid(ae6fb3633bcd57540a0a578a94059ce1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_3.asset using Guid(ae6fb3633bcd57540a0a578a94059ce1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f0272ca00984446b5d88adf24b53c96f') in 0.047812 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_0.asset
+  artifactKey: Guid(aa39e141af3018343b7872c4969eed0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_0.asset using Guid(aa39e141af3018343b7872c4969eed0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5629728b2426f054b1cc6f85132f5c33') in 0.046902 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_1.asset
+  artifactKey: Guid(d642b6374060e1a48b522f3fcef3b85f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_1.asset using Guid(d642b6374060e1a48b522f3fcef3b85f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce74cfb36794aa4acb4373f433f7bc2b') in 0.053355 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_1.asset
+  artifactKey: Guid(85a1f30546be91f42a10d3c9c9178f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_1.asset using Guid(85a1f30546be91f42a10d3c9c9178f72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '480f887c0e293ab9a9faaaf98b7b455a') in 0.049444 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_3.asset
+  artifactKey: Guid(308c124fb99980e4eb2862435068eb4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_3.asset using Guid(308c124fb99980e4eb2862435068eb4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcd7dba10a74e68b2fb06e5e37bc14bc') in 0.049097 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_3.asset
+  artifactKey: Guid(0d9cff348af2e2d4d86f0cdba6dc79fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_3.asset using Guid(0d9cff348af2e2d4d86f0cdba6dc79fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aefd8fcad765388d57c3e88176ccab76') in 0.044866 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_2.asset
+  artifactKey: Guid(e3e0693633872ee488b523803923e690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_2.asset using Guid(e3e0693633872ee488b523803923e690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '481df6c284db9a65a4f67031e29a016a') in 0.052240 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_0.asset
+  artifactKey: Guid(0e01bbb23eab4f449a7f4aced3df21a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_0.asset using Guid(0e01bbb23eab4f449a7f4aced3df21a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dc1e800e38e4a4e51b19be84aab680c') in 0.059250 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_2.asset
+  artifactKey: Guid(d6736f330c398ed47b60cbaf27685a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_2.asset using Guid(d6736f330c398ed47b60cbaf27685a98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca3148c2a430c3fc6816849f4ea4a9b3') in 0.053535 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_3.asset
+  artifactKey: Guid(5076d079bdea661489a4ea986d61d5be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_3.asset using Guid(5076d079bdea661489a4ea986d61d5be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb87027459ebd7e2f4ed5e0b63fc29f1') in 0.051971 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_1.asset
+  artifactKey: Guid(a0da9ace1662c6c48912a6a2ec64e3bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_1.asset using Guid(a0da9ace1662c6c48912a6a2ec64e3bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b56711fe6d0cda01ade8f41fd71fc85') in 0.041762 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_1.asset
+  artifactKey: Guid(2e8c2b1429a9610428b95f3d889670d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_1.asset using Guid(2e8c2b1429a9610428b95f3d889670d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eafed7d4c45d9a1d83aa6c85f124438e') in 0.045952 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_3.asset
+  artifactKey: Guid(a251f23b96c6e714383f08a51b7efe39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_3.asset using Guid(a251f23b96c6e714383f08a51b7efe39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '489f8fbf066fb5b551ee1dd0c92f38a0') in 0.055609 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_0.asset
+  artifactKey: Guid(7f71105283cea734b81e21eadd523305) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_0.asset using Guid(7f71105283cea734b81e21eadd523305) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ffd00632fe3e491e817b1ecb323f7d5') in 0.052902 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_2.asset
+  artifactKey: Guid(173e028e77811a347a56d0686b5b7d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_2.asset using Guid(173e028e77811a347a56d0686b5b7d20) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45784b53f5bf8f132ac1244d725334b0') in 0.051524 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01.terrainlayer
+  artifactKey: Guid(ce822b0ea663fbb49abac8b843d4b3b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01.terrainlayer using Guid(ce822b0ea663fbb49abac8b843d4b3b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87aa4ed1f9b771039f92ed69417270c9') in 0.046691 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000157 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_2.asset
+  artifactKey: Guid(86ebba5028db9b045b652617e2430989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_2.asset using Guid(86ebba5028db9b045b652617e2430989) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd30d87c674ae14c977be1b95a23ba413') in 0.058346 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_2.asset
+  artifactKey: Guid(735e186e5bd901f4999114f9bfc61907) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_2.asset using Guid(735e186e5bd901f4999114f9bfc61907) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f70e5f4890d7cca90b006e51b60602f1') in 0.048464 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_3.asset
+  artifactKey: Guid(44eed65f8a482b94ebcfb1acbd049fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_3.asset using Guid(44eed65f8a482b94ebcfb1acbd049fce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db28a1672e0c75b878400ac00bd09322') in 0.041379 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_0.asset
+  artifactKey: Guid(eddf9d39b9f06854a93262ad1af01df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0010_0.asset using Guid(eddf9d39b9f06854a93262ad1af01df1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9a6b98dc194a563daf303c86fc83ce3a') in 0.063560 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_2.asset
+  artifactKey: Guid(58a87fadb069e18429b1c313a7602b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_2.asset using Guid(58a87fadb069e18429b1c313a7602b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3f87994ae96a198885f082b22316066') in 0.040339 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_02/A_rock_02.terrainlayer
+  artifactKey: Guid(097c4a1fcde05f242bc53e05a44dcda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_02/A_rock_02.terrainlayer using Guid(097c4a1fcde05f242bc53e05a44dcda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56ed4287797890b62fe5ed7d2759a27b') in 0.048850 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_1.asset
+  artifactKey: Guid(d8ed84ea1090ada4abeb4d670f9b25ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_1.asset using Guid(d8ed84ea1090ada4abeb4d670f9b25ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8ec367bbadc9d265adbb1f1dae4c46a9') in 0.045680 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_2.asset
+  artifactKey: Guid(d82b35ed996a3e441a6215216b19788f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_2.asset using Guid(d82b35ed996a3e441a6215216b19788f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c611d0edef978a56f263648a4bd1c4e9') in 0.044905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_0.asset
+  artifactKey: Guid(e65efbcfd88462943b8d39acb818e6c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_0.asset using Guid(e65efbcfd88462943b8d39acb818e6c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0d79b8a1121ac0341d9a9333516ebb1') in 0.039728 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_3.asset
+  artifactKey: Guid(8cac14a0f522c744f916c1450ca7a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_3.asset using Guid(8cac14a0f522c744f916c1450ca7a456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd28ce577d477186ba9966fec6565022c') in 0.041962 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_1.asset
+  artifactKey: Guid(6d384531469dc6641bd378b9fdef78b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_1.asset using Guid(6d384531469dc6641bd378b9fdef78b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '182cb1697b4f3efca7dc737f1d3a646a') in 0.039842 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

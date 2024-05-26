@@ -108,6 +108,7 @@ namespace ClaraMundi
       if (EventSystem.current.currentSelectedGameObject == gameObject)
       {
         IsFocused = false;
+        EventSystem.current.SetSelectedGameObject(null);
       }
       if (ClearOnDisable)
         inputField.text = "";

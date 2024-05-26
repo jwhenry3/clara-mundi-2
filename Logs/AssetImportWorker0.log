@@ -8236,3 +8236,895 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
   custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.983 seconds
+Refreshing native plugins compatible for Editor in 18.97 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-My project
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d67e29f4a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d67e298ab (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d67e28dce (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d67e28a6a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d601a4d33 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d6019dedb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d601936cb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d3317ea28 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d67e29f4a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d67e298ab (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d67e28dce (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d67e28a6a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d601a4d33 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d6019dedb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d601936cb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d3317ea28 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  4.020 seconds
+Domain Reload Profiling: 6002ms
+	BeginReloadAssembly (790ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (543ms)
+	RebuildCommonClasses (68ms)
+	RebuildNativeTypeToScriptingClass (25ms)
+	initialDomainReloadingComplete (105ms)
+	LoadAllAssembliesAndSetupDomain (993ms)
+		LoadAssemblies (915ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (237ms)
+			TypeCache.Refresh (80ms)
+				TypeCache.ScanAssembly (28ms)
+			ScanForSourceGeneratedMonoScriptInfo (99ms)
+			ResolveRequiredComponents (54ms)
+	FinalizeReload (4021ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2500ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (12ms)
+			SetLoadedEditorAssemblies (13ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (361ms)
+			ProcessInitializeOnLoadAttributes (654ms)
+			ProcessInitializeOnLoadMethodAttributes (1456ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (99ms)
+Refreshing native plugins compatible for Editor in 12.08 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 9558 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 72 unused Assets / (123.7 KB). Loaded Objects now: 10934.
+Memory consumption went from 448.7 MB to 448.6 MB.
+Total: 26.800300 ms (FindLiveObjects: 1.071700 ms CreateObjectMapping: 1.385900 ms MarkObjects: 24.053100 ms  DeleteObjects: 0.288200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 11834.195614 seconds.
+  path: Assets/ClaraMundi/World/Overworld.unity
+  artifactKey: Guid(ff23c5d4af1e82345a471d1644006b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ClaraMundi/World/Overworld.unity using Guid(ff23c5d4af1e82345a471d1644006b4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '612cf0db248d0554456d5840e08eb269') in 0.003612 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 12.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 3 unused Assets / (94.6 KB). Loaded Objects now: 10962.
+Memory consumption went from 300.5 MB to 300.4 MB.
+Total: 63.131400 ms (FindLiveObjects: 1.999100 ms CreateObjectMapping: 1.030100 ms MarkObjects: 59.990200 ms  DeleteObjects: 0.110500 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityPreviewVolumeEditor.cs: f4f762acc772b35947e150f26acf5fbf -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRendererEditor.cs: 2644116704cd6b235feec0b3325ece6a -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAssetEditor.cs: de779bb26a8f734659f1eb67e6de8c62 -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAsset.cs: 59c8fd51bd65773164e972486f2ba615 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:scripting/monoscript/fileName/SplineStampEditor.cs: dcc7b66a02b312804f1f165c3992164c -> 
+  custom:scripting/monoscript/fileName/AtlasPainter.cs: 05cd2f1b6722aedaf92ce1f197cf5784 -> 
+  custom:scripting/monoscript/fileName/AtlasMenuItems.cs: 3597d54c69bb4940f036be792e015ae3 -> 
+  custom:scripting/monoscript/fileName/SplineStamp.cs: 43803d5ef2ebc4635535971053317a37 -> 
+  custom:scripting/monoscript/fileName/StampAsset.cs: 2670ac9f4079786c955b132ba2a69013 -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAsset.cs: f615d0e76da9d1c9a5e3bda3607b2de1 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/AtlasGizmoInstaller.cs: b5994b20f970ce2b9e12eb7cf725d7d5 -> 
+  custom:scripting/monoscript/fileName/AtlasToolbar.cs: b2e0e774c8740bb8ba408a8d8f032cd8 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp-Editor: d375702fceac8faba66f35207351e73e -> 6ffda2dde3469a5c7216581447caa591
+  custom:scripting/precompiled-assembly-types:Assembly-CSharp: 8ea346240e69864f48d948d5e2426081 -> 27a7d95b4001103ef1403d30fd1a7e90
+  custom:scripting/monoscript/fileName/FlattenStamp.cs: b1a49d698f7c77b6ddc3a8ea93f0966a -> 
+  custom:scripting/monoscript/fileName/ScatterPassEditor.cs: b97028614c6fe7f1c24025276d1985c1 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityPreviewVolume.cs: e29d68a779186e4c01d0576dd6af6692 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:scripting/monoscript/fileName/AtlasPaintBrushPreview.cs: 2cd81aa5460958dc281fca3b76991513 -> 
+  custom:scripting/monoscript/fileName/StampEditor.cs: 95ca108a296e74e4ea465dd056929504 -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAssetEditor.cs: 3da1359561925e95ec4f140224e6951b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:scripting/monoscript/fileName/StampBaseEditor.cs: b34bc75807bcb9106b6be794bbfcb4ce -> 
+  custom:scripting/monoscript/fileName/Stamp.cs: 22b09622fd6834835227aaa8f31cbd2e -> 
+  custom:scripting/monoscript/fileName/StampMapEditor.cs: a7adbc22f6b8985c1535aa455a99b072 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRenderer.cs: bc9d3560bf3ccb20e394ac2980b679f0 -> 
+  custom:scripting/monoscript/fileName/AtlasProjectSettings.cs: 3e3b1fa410d2bcbca9d5f013a794a2a9 -> 
+  custom:scripting/monoscript/fileName/DetailPassEditor.cs: ef76f01e692596d407968e53d76d9a91 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/StampBase.cs: e735e0082aafdb29ff9c0cc7bd764347 -> 
+  custom:scripting/monoscript/fileName/Atlas.cs: 93996522b5e5b32ec0bbaf2bfc250749 -> 
+  custom:scripting/monoscript/fileName/AtlasSceneProcessor.cs: 34c489dd77f18d178a59ed026b9057ea -> 
+  custom:scripting/monoscript/fileName/StampAssetEditor.cs: 7cf7b35c97f9bb67bec660fd8e1909ee -> 
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  5.595 seconds
+Refreshing native plugins compatible for Editor in 13.66 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-My project
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path D:\clara-mundi-2\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <4b234520e36749be9cf6b053d911690f>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <4b234520e36749be9cf6b053d911690f>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <4b234520e36749be9cf6b053d911690f>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <24e1ed8728684ea3ae446f80787d18de>:0 
+0x00007ff6a3036bbd (Unity) StackWalker::GetCurrentCallstack
+0x00007ff6a303bc89 (Unity) StackWalker::ShowCallstack
+0x00007ff6a40170b1 (Unity) GetStacktrace
+0x00007ff6a46d011e (Unity) DebugStringToFile
+0x00007ff6a1feeec8 (Unity) DebugLogHandler_CUSTOM_Internal_Log
+0x0000022d66ad527a (Mono JIT Code) (wrapper managed-to-native) UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+0x0000022d66ad4bdb (Mono JIT Code) UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+0x0000022d66ad40fe (Mono JIT Code) UnityEngine.Logger:Log (UnityEngine.LogType,object)
+0x0000022d66ad3d9a (Mono JIT Code) UnityEngine.Debug:LogError (object)
+0x0000022d602d45f3 (Mono JIT Code) UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+0x0000022d602cfccb (Mono JIT Code) UnityEditor.Tools:set_lockedLayers (int)
+0x0000022d602c54bb (Mono JIT Code) UnityEditor.Tools:OnEnable ()
+0x0000022d32d6b3b8 (Mono JIT Code) (wrapper runtime-invoke) object:runtime_invoke_void__this__ (object,intptr,intptr,intptr)
+0x00007ffbdd184bfe (mono-2.0-bdwgc) mono_jit_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/mini/mini-runtime.c:3445)
+0x00007ffbdd0bd254 (mono-2.0-bdwgc) do_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3068)
+0x00007ffbdd0bd3cc (mono-2.0-bdwgc) mono_runtime_invoke (at C:/build/output/Unity-Technologies/mono/mono/metadata/object.c:3115)
+0x00007ff6a2f503a4 (Unity) scripting_method_invoke
+0x00007ff6a2f2e114 (Unity) ScriptingInvocation::Invoke
+0x00007ff6a2f2e1fe (Unity) ScriptingInvocation::InvokeChecked
+0x00007ff6a2fd0ab6 (Unity) SerializableManagedRef::CallMethod
+0x00007ff6a2f16eb3 (Unity) MonoBehaviour::DidReloadDomain
+0x00007ff6a2fd038a (Unity) SerializableManagedRefsUtilities::AwakeInstancesAfterBackupRestoration
+0x00007ff6a2f18c0f (Unity) MonoManager::FinalizeReload
+0x00007ff6a43103da (Unity) ScriptingInitializer::FinalizeReload
+0x00007ff6a3ebc83b (Unity) LoadUserAssemblies
+0x00007ff6a43bd675 (Unity) <lambda_b37b41f03089e3cb3f55061bbc93253d>::operator()
+0x00007ff6a43f7a02 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6a43e39ae (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6a43e5614 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6a43f5dac (Unity) IOService::Run
+0x00007ff6a43c990f (Unity) AssetImportWorkerClient::Run
+0x00007ff6a4394847 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6a43948cb (Unity) RunAssetImporterV2
+0x00007ff6a3b95581 (Unity) Application::InitializeProject
+0x00007ff6a4021895 (Unity) WinMain
+0x00007ff6a5402c1e (Unity) __scrt_common_main_seh
+0x00007ffcbb6a257d (KERNEL32) BaseThreadInitThunk
+0x00007ffcbd1eaa48 (ntdll) RtlUserThreadStart
+
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 19.880 seconds
+Domain Reload Profiling: 25473ms
+	BeginReloadAssembly (771ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (18ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (421ms)
+	RebuildCommonClasses (42ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (104ms)
+	LoadAllAssembliesAndSetupDomain (4658ms)
+		LoadAssemblies (4762ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (36ms)
+				TypeCache.ScanAssembly (10ms)
+			ScanForSourceGeneratedMonoScriptInfo (49ms)
+			ResolveRequiredComponents (35ms)
+	FinalizeReload (19881ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1882ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (9ms)
+			SetLoadedEditorAssemblies (13ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (379ms)
+			ProcessInitializeOnLoadAttributes (549ms)
+			ProcessInitializeOnLoadMethodAttributes (925ms)
+			AfterProcessingInitializeOnLoad (6ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (98ms)
+Refreshing native plugins compatible for Editor in 9.21 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 9612 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 98 unused Assets / (0.8 MB). Loaded Objects now: 10966.
+Memory consumption went from 461.2 MB to 460.5 MB.
+Total: 20.474900 ms (FindLiveObjects: 0.860200 ms CreateObjectMapping: 0.973000 ms MarkObjects: 18.008300 ms  DeleteObjects: 0.632200 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 1124.652992 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Beach/b_Beach.asset
+  artifactKey: Guid(6f0bc51a41c4ccd42a2f2ce4ce6600d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Beach/b_Beach.asset using Guid(6f0bc51a41c4ccd42a2f2ce4ce6600d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ab611df4c01e270b8f450c41b1d2f0f') in 1.036457 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 8
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_02.asset
+  artifactKey: Guid(46a718d7462e7734eb999218c255566c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Cliffs/b_cliff_02.asset using Guid(46a718d7462e7734eb999218c255566c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efcf7af6b6c173a3117c1b50fd536688') in 1.063489 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_03.asset
+  artifactKey: Guid(867c5eda0a71c5c40bec07aae21a82c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_03.asset using Guid(867c5eda0a71c5c40bec07aae21a82c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '811fb2c5314630cc561f16913adeb0f6') in 0.403116 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_01.asset
+  artifactKey: Guid(6ba6ba3c35af0c544bbfb717e27922b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Cracks/b_crack_01.asset using Guid(6ba6ba3c35af0c544bbfb717e27922b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '294b9b42db2e82de8c75600f89abd551') in 0.399957 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_03.asset
+  artifactKey: Guid(b67b3e33ec69f2541a66c2c8ac26ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_03.asset using Guid(b67b3e33ec69f2541a66c2c8ac26ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e57ec3d153d3cb327d4183c2b4157418') in 0.980145 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_03.asset
+  artifactKey: Guid(73bae579711bc304ca76c2808cc929a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Details/b_detail_03.asset using Guid(73bae579711bc304ca76c2808cc929a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1d8b332c5295dcefdaf11ae205900bc') in 0.446166 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_02.asset
+  artifactKey: Guid(652bd48c94879c74f8f6dbc4592b70cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_02.asset using Guid(652bd48c94879c74f8f6dbc4592b70cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63490626e5c819571950ed0412a58a1a') in 0.851923 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_04.asset
+  artifactKey: Guid(aaa375e357fff2f408c7f88a83513ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Hills/b_hill_04.asset using Guid(aaa375e357fff2f408c7f88a83513ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47d0e6356a398e9d666558b0f7b58f54') in 0.864100 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_01.asset
+  artifactKey: Guid(20ef2bf25d533254c9afa8df22da78e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Craters/b_crater_01.asset using Guid(20ef2bf25d533254c9afa8df22da78e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0cc7d3c7d82a15b0d6c0d932adfc27d') in 0.806041 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_01.asset
+  artifactKey: Guid(fef3ed1f24d5f35488be10f8e285b628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_01.asset using Guid(fef3ed1f24d5f35488be10f8e285b628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74628ffb8c25646af6ff40c4992a885f') in 2.866064 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_03.asset
+  artifactKey: Guid(6aa19603297e58149b31c28e854406b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_03.asset using Guid(6aa19603297e58149b31c28e854406b8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1ff5eb76d03aebff15529dcabe5b070') in 0.923045 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_04.asset
+  artifactKey: Guid(5dd396f93b2b1cd42bb6e45a9a9c914f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_04.asset using Guid(5dd396f93b2b1cd42bb6e45a9a9c914f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e8d6e3c2bad1d2ad5ba1d02ca68cbc4') in 3.129701 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_06.asset
+  artifactKey: Guid(8d8e0fa20f1727d499571e88553a31d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Islands/b_island_06.asset using Guid(8d8e0fa20f1727d499571e88553a31d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60358560060d1a084b767f27d188f85d') in 2.937908 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_02.asset
+  artifactKey: Guid(03ad91067fbb03e4593519c9fd9a676a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_02.asset using Guid(03ad91067fbb03e4593519c9fd9a676a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f002064ebe5ef419253864487a57bf86') in 0.419396 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_03.asset
+  artifactKey: Guid(aaa9460ef07a1594b8d0eef6e1c22163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_03.asset using Guid(aaa9460ef07a1594b8d0eef6e1c22163) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbd8ba53cdcd391c17776541d4d967c6') in 3.090967 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.762499 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_06.asset
+  artifactKey: Guid(ecdd74448b2c96f44984388dd17eb929) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_06.asset using Guid(ecdd74448b2c96f44984388dd17eb929) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77cb0db7274dc9b9450b69cc091f5d82') in 3.011004 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_sphere_01.asset
+  artifactKey: Guid(8bd820d9a982c4742ab5afe87cd091bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_sphere_01.asset using Guid(8bd820d9a982c4742ab5afe87cd091bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d4563a8cef719c950f444f2f10d184c') in 0.427712 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_pyramde_01.asset
+  artifactKey: Guid(082049223336d614492df8e21226f939) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Shapes/b_pyramde_01.asset using Guid(082049223336d614492df8e21226f939) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03f8bf7400010c8b281d0e74f0da0d04') in 0.367632 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_03.asset
+  artifactKey: Guid(afa66e7e99119df44a656546ab0dd9a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_03.asset using Guid(afa66e7e99119df44a656546ab0dd9a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f66109451419466943815e6429a7113b') in 0.941117 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_02.asset
+  artifactKey: Guid(9f4b1d5df4f057d42ab69f87128ea31c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_02.asset using Guid(9f4b1d5df4f057d42ab69f87128ea31c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6c759b2742be3538ed2471c182f5c14') in 1.064624 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

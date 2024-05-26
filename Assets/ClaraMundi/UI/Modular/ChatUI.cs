@@ -24,22 +24,6 @@ namespace ClaraMundi
 
     }
 
-    private void OnEnable()
-    {
-      InputManager.Instance.UI.FindAction("OpenChat").performed += OnChat;
-    }
-
-    private void OnDisable()
-    {
-      InputManager.Instance.UI.FindAction("OpenChat").performed -= OnChat;
-    }
-
-
-    void OnChat(InputAction.CallbackContext context)
-    {
-      window.moveSibling.ToFront();
-    }
-
     private void OnDestroy()
     {
       ChatManager.Messages -= OnMessage;

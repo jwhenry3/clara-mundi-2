@@ -39,7 +39,10 @@ namespace ClaraMundi
               {
                 if (InputUI.IsFocused) return;
                 if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
+                {
+                  Placeholder.transform.SetAsLastSibling();
                   window.moveSibling.ToFront();
+                }
               };
             }
             catch (NullReferenceException e)

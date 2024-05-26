@@ -1,4 +1,3 @@
-using Nova;
 using UnityEngine;
 using UnityEngine.UI;
 namespace ClaraMundi

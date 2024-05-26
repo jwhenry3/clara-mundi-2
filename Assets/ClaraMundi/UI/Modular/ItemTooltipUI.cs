@@ -24,6 +24,7 @@ namespace ClaraMundi
     public void SetItemInstance(ItemInstance itemInstance)
     {
       ItemInstance = itemInstance;
+      if (ItemInstance == null) return;
       Item = RepoManager.Instance.ItemRepo.GetItem(ItemInstance.ItemId);
       ItemName.text = Item.Name;
       ItemDescription.text = Item.Description;

@@ -24,8 +24,8 @@ namespace ClaraMundi
     {
       if (IsClientStarted && IsOwner)
       {
-        if (InputAction == null && InputManager.Instance != null && InputManager.Instance.World != null)
-          InputAction = InputManager.Instance.World.FindAction("Move");
+        if (InputAction == null && InputManager.Instance != null && InputManager.Instance.All != null)
+          InputAction = InputManager.Instance.All.FindAction("Move");
         if (InputAction != null)
           UpdateDirection(InputAction.ReadValue<Vector2>().normalized);
       }
@@ -61,6 +61,8 @@ namespace ClaraMundi
 
     public void UpdateDirection(Vector2 dir)
     {
+      if (InputUI.IsFocused)
+        dir = Vector2.zero;
       dir = dir.normalized;
       var forward = CameraManager.Instance.CameraTransform.forward;
       var right = CameraManager.Instance.CameraTransform.right;

@@ -1,0 +1,1279 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.21f1 (bf09ca542b87) revision 12519882'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Core' Language: 'en' Physical Memory: 32619 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+D:\Unity\2022.3.21f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+D:/clara-mundi-2
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+57797
+Successfully changed project path to: D:/clara-mundi-2
+D:/clara-mundi-2
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [79308] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 3484919287 [EditorId] 3484919287 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [79308] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 3484919287 [EditorId] 3484919287 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
+Refreshing native plugins compatible for Editor in 1026.44 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.21f1 (bf09ca542b87)
+[Subsystems] Discovering subsystems at path D:/Unity/2022.3.21f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/clara-mundi-2/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1650 (ID=0x1f91)
+    Vendor:   NVIDIA
+    VRAM:     3935 MB
+    Driver:   31.0.15.5123
+Initialize mono
+Mono path[0] = 'D:/Unity/2022.3.21f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2022.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'D:/Unity/2022.3.21f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56344
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: D:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.004473 seconds.
+- Loaded All Assemblies, in  1.192 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.357 seconds
+Domain Reload Profiling: 1550ms
+	BeginReloadAssembly (131ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (233ms)
+	RebuildNativeTypeToScriptingClass (16ms)
+	initialDomainReloadingComplete (71ms)
+	LoadAllAssembliesAndSetupDomain (741ms)
+		LoadAssemblies (130ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (739ms)
+			TypeCache.Refresh (737ms)
+				TypeCache.ScanAssembly (432ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (358ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (283ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (8ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (193ms)
+			ProcessInitializeOnLoadMethodAttributes (67ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  1.349 seconds
+Refreshing native plugins compatible for Editor in 8.53 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+[MODES] Loading mode Default (0) for mode-current-id-My project
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.554 seconds
+Domain Reload Profiling: 3903ms
+	BeginReloadAssembly (181ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (8ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (24ms)
+	RebuildCommonClasses (44ms)
+	RebuildNativeTypeToScriptingClass (17ms)
+	initialDomainReloadingComplete (82ms)
+	LoadAllAssembliesAndSetupDomain (1025ms)
+		LoadAssemblies (552ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (582ms)
+			TypeCache.Refresh (468ms)
+				TypeCache.ScanAssembly (441ms)
+			ScanForSourceGeneratedMonoScriptInfo (80ms)
+			ResolveRequiredComponents (32ms)
+	FinalizeReload (2555ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2248ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (8ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (258ms)
+			ProcessInitializeOnLoadAttributes (763ms)
+			ProcessInitializeOnLoadMethodAttributes (1206ms)
+			AfterProcessingInitializeOnLoad (3ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (9ms)
+Refreshing native plugins compatible for Editor in 9.84 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 9679 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 123 unused Assets / (125.4 KB). Loaded Objects now: 10188.
+Memory consumption went from 341.6 MB to 341.5 MB.
+Total: 39.073100 ms (FindLiveObjects: 0.841200 ms CreateObjectMapping: 0.896900 ms MarkObjects: 37.140600 ms  DeleteObjects: 0.193200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/LocalTrailRenderer.cs: 0b8da816aea1c4e707943b131c5b9bfe -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 830469.125188 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_01.asset
+  artifactKey: Guid(61372de0a77ba9240bad4c2000b6b6ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_01.asset using Guid(61372de0a77ba9240bad4c2000b6b6ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8118e114de431bae451d2e49c65bbd9a') in 0.533835 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_01.asset
+  artifactKey: Guid(e95521a373981194aa21f8b079510b1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_01.asset using Guid(e95521a373981194aa21f8b079510b1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9528f06ffd9e55bea7e7922c685b538c') in 3.481740 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_04.asset
+  artifactKey: Guid(c319dc3250f1c074591ad3f1c0a5c607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Lakes/b_lake_04.asset using Guid(c319dc3250f1c074591ad3f1c0a5c607) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1b5ea9043c6252912960ab01492f62c') in 0.363508 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.439700 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_05.asset
+  artifactKey: Guid(d39635f52cb856c4aa94c24ee8416985) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Landscapes/b_landscape_05.asset using Guid(d39635f52cb856c4aa94c24ee8416985) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf28589038b6ba74dd2402a5f67d669f') in 3.081962 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_02.asset
+  artifactKey: Guid(8083eee48b379d848a503dd6a2ea9a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_02.asset using Guid(8083eee48b379d848a503dd6a2ea9a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '642433d806c662c448fb5030c9adf113') in 0.972214 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Roads/b_road_01.asset
+  artifactKey: Guid(4c51d7aaafd629b40b28f9b2ead896b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Roads/b_road_01.asset using Guid(4c51d7aaafd629b40b28f9b2ead896b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91e045515decae3ea433eea8ebb31396') in 0.315224 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_04.asset
+  artifactKey: Guid(59405843ac4e3ac4ebe56b2fe5807b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Mountains/b_mountain_04.asset using Guid(59405843ac4e3ac4ebe56b2fe5807b25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '117247bac68875ee364f66193d7a3f23') in 1.016563 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Roads/b_road_02.asset
+  artifactKey: Guid(1fd447d60a851f14f8eae9ced88b57f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Roads/b_road_02.asset using Guid(1fd447d60a851f14f8eae9ced88b57f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4356b4da557405c22363d134ada5c23') in 0.314394 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_02.asset
+  artifactKey: Guid(55502a258dd5f464b9e03e16b4a12a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/BS_Ridges/b_ridge_02.asset using Guid(55502a258dd5f464b9e03e16b4a12a76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79900fc4dd14da6d5c6a849fda48bf11') in 1.062658 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_01.asset
+  artifactKey: Guid(77e0f4691de777c4aae2594c50107117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/StampAssets/Basic Stamps/B_Volcanos/b_volcano_01.asset using Guid(77e0f4691de777c4aae2594c50107117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee79b44a4d07916b46e0801542fe8c07') in 0.978325 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 140.180899 seconds.
+  path: Assets/New Terrain.asset
+  artifactKey: Guid(bc67c9be97856b0448bcc950da64286c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/New Terrain.asset using Guid(bc67c9be97856b0448bcc950da64286c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f1c34961a2abb3b42e1d0eab62d2195') in 0.019093 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 11.808363 seconds.
+  path: Assets/TextMesh Pro
+  artifactKey: Guid(20b79896db4fc214cb7790bbe749bf91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro using Guid(20b79896db4fc214cb7790bbe749bf91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'db88522a5017b17c5d5369a11838269a') in 0.000740 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 7.328291 seconds.
+  path: Assets/Atlas Terrain Editor/Runtime/Materials/AtlasScaleReferenceMaterial.mat
+  artifactKey: Guid(441d0063f3ccf3643a1a46bae6d276a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/Runtime/Materials/AtlasScaleReferenceMaterial.mat using Guid(441d0063f3ccf3643a1a46bae6d276a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c74bc5b4880d31bc0c0be8660bc0626') in 0.126040 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 17.730363 seconds.
+  path: Assets/Wizards Code
+  artifactKey: Guid(3987e361b54452645a930bd4cf673447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code using Guid(3987e361b54452645a930bd4cf673447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8849ca9cd1536e6913bb7f3ae33d9ded') in 0.000575 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 55.158272 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_grass_01/A_grass_01.terrainlayer
+  artifactKey: Guid(7bf746407499c3d4791e6a816ae89c04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_grass_01/A_grass_01.terrainlayer using Guid(7bf746407499c3d4791e6a816ae89c04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25cce259ab6407e75ec4408c2a0c2a22') in 0.111901 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_rock_01.terrainlayer
+  artifactKey: Guid(b011b51461e4653428b1aa29eaaef5e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_rock_01.terrainlayer using Guid(b011b51461e4653428b1aa29eaaef5e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c630c912936eeed23338c5c2f490f0a5') in 0.087905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_1.asset
+  artifactKey: Guid(a09df7d29be08af4abdd289fb68fb97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_1.asset using Guid(a09df7d29be08af4abdd289fb68fb97a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ace09028b3014f34ce3ce56e094deef6') in 0.128996 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_3.asset
+  artifactKey: Guid(36c63c080c2cd474bb743b1d7d695b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_3.asset using Guid(36c63c080c2cd474bb743b1d7d695b98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c943f1d4b53a955d99fdefa0849084a3') in 0.047248 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_0.asset
+  artifactKey: Guid(dca997e2ae37f80469d1f4efebeb96b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_0.asset using Guid(dca997e2ae37f80469d1f4efebeb96b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f733c2f6fe08f73ae85c070f101e6f05') in 0.121983 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_0.asset
+  artifactKey: Guid(6e18824ae670f2a4ca68177b8428050e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_0.asset using Guid(6e18824ae670f2a4ca68177b8428050e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7926fa7c327cede5830b7cc20428dad7') in 0.044947 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_2.asset
+  artifactKey: Guid(3ee618e591b26f84ca1eb20e3eb936b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_2.asset using Guid(3ee618e591b26f84ca1eb20e3eb936b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a01f9ddaa0b2921f4f43574a45e0cbf8') in 0.043104 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_3.asset
+  artifactKey: Guid(b1a61ff05fc84da4380da6019c038a1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0007_3.asset using Guid(b1a61ff05fc84da4380da6019c038a1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa8be47c01ff163ae2a529308aeea813') in 0.043797 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_2.asset
+  artifactKey: Guid(6fff3dafbba24f44ea3b967964af928d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_2.asset using Guid(6fff3dafbba24f44ea3b967964af928d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9a5854b41a9ed390d6757e3fe84bf62') in 0.045953 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_3.asset
+  artifactKey: Guid(d6c640cebc746ae44ab58d6271192b03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_3.asset using Guid(d6c640cebc746ae44ab58d6271192b03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88049a745a2ba916206301f4ae8b1c76') in 0.111255 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_0.asset
+  artifactKey: Guid(46f3c8f68fe3d854287832ad856d3bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_0.asset using Guid(46f3c8f68fe3d854287832ad856d3bea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93ce918598cdc253db87029830befb91') in 0.040201 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_0.asset
+  artifactKey: Guid(3638f0e047edae24f9bb4124b9594889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_0.asset using Guid(3638f0e047edae24f9bb4124b9594889) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14325fa8fcbf1ab736c7f8b750f2f626') in 0.040581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_0.asset
+  artifactKey: Guid(1f9662da143d1cc47a704ba2b601139b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_0.asset using Guid(1f9662da143d1cc47a704ba2b601139b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a88b0d7cf8948ff8220eb3ad245ee3e3') in 0.045001 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_3.asset
+  artifactKey: Guid(364d58368d518b446841b34160eaf1f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0017_3.asset using Guid(364d58368d518b446841b34160eaf1f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1faac83e2644e89aa6ccf758f44acb9') in 0.050798 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_3.asset
+  artifactKey: Guid(8022896b374f81141bebe6fe906c71a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_3.asset using Guid(8022896b374f81141bebe6fe906c71a1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08d479551a1767b2c472d51dc0c59c02') in 0.054609 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_0.asset
+  artifactKey: Guid(62d22c0f7614ca44aaae7b2db3e103be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_0.asset using Guid(62d22c0f7614ca44aaae7b2db3e103be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7f7087e42dc19be1181af77d881b290') in 0.067802 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_soil_02/A_soil_02.terrainlayer
+  artifactKey: Guid(ddf27294bf9ccf44cb186f9c51e637fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_soil_02/A_soil_02.terrainlayer using Guid(ddf27294bf9ccf44cb186f9c51e637fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b06a69022ee2c8245aa1c8cbcc2a38d8') in 0.052817 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_3.asset
+  artifactKey: Guid(7ed2a66e43b739142aabff25d489ac1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_3.asset using Guid(7ed2a66e43b739142aabff25d489ac1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c9d157188b53158eccf9a5d0d31c3f8') in 0.044482 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_1.asset
+  artifactKey: Guid(d0a46479f1f258a48b805c6f6326503c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0001_1.asset using Guid(d0a46479f1f258a48b805c6f6326503c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6da7af8190f90a7d1ee17a42605c3964') in 0.045926 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_3.asset
+  artifactKey: Guid(09b8879df7f9cbc4f8ba188b0f69c241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_3.asset using Guid(09b8879df7f9cbc4f8ba188b0f69c241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '184edc5d03e13ca0aa06e94543399fb0') in 0.052454 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_2.asset
+  artifactKey: Guid(1faeeac2dc5db93479098a8817d91c64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_2.asset using Guid(1faeeac2dc5db93479098a8817d91c64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15a301f3f6e4f211863c78af7353bd30') in 0.055018 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01.terrainlayer
+  artifactKey: Guid(85ca399a13c5acc4f851717567f2ef76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01.terrainlayer using Guid(85ca399a13c5acc4f851717567f2ef76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a40a80489e5d1e452743128c8c852fc') in 0.047545 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_1.asset
+  artifactKey: Guid(25c526af6fa4a3e469e2e1abebf81d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0004_1.asset using Guid(25c526af6fa4a3e469e2e1abebf81d5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c5ed541c6d76f67f4967c00ae778b03') in 0.056909 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_1.asset
+  artifactKey: Guid(1dc12be5f04c623419df39d7e3809282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0014_1.asset using Guid(1dc12be5f04c623419df39d7e3809282) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33169a30628950cdc68c2907172d7277') in 0.051974 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_0.asset
+  artifactKey: Guid(557ba2df997490440b51290b5bf2e01c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0012_0.asset using Guid(557ba2df997490440b51290b5bf2e01c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77339ecc90aa37e4cfa69aeed7a43b6d') in 0.052908 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_0.asset
+  artifactKey: Guid(11823319c9e1750449d8c96e8a34c8b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0011_0.asset using Guid(11823319c9e1750449d8c96e8a34c8b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a0f166509dddee18d72ee77de98baa6') in 0.047118 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_1.asset
+  artifactKey: Guid(c48b3c9dfec28d748b6ad61f4521b44f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_1.asset using Guid(c48b3c9dfec28d748b6ad61f4521b44f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0e36e0747297b82ded5062258b5e922') in 0.048891 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_0.asset
+  artifactKey: Guid(d95678e0d9004694ea34ee2bf7d64bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0015_0.asset using Guid(d95678e0d9004694ea34ee2bf7d64bfc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eda57536b55dd50d5f24901898a02b2f') in 0.047993 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_1.asset
+  artifactKey: Guid(96230331c5f956242baed37e65751fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0019_1.asset using Guid(96230331c5f956242baed37e65751fb3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36ae3285a4aaebc094646d29a33ec164') in 0.054145 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000071 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_0.asset
+  artifactKey: Guid(4d81d5f845304d04bb38965f6527ef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_0.asset using Guid(4d81d5f845304d04bb38965f6527ef53) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bd9ce0de78934618464157b227f70b6') in 0.058477 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_3.asset
+  artifactKey: Guid(c2a029bfa620a4343a383eac1f6d90cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_3.asset using Guid(c2a029bfa620a4343a383eac1f6d90cb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22a1fa94fec9e12b9ef8f11dd2130de2') in 0.052685 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_3.asset
+  artifactKey: Guid(400417e1e9ab0e1419a8f0faf9a5004c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_3.asset using Guid(400417e1e9ab0e1419a8f0faf9a5004c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5726a56794e6ee673b2751b42641a615') in 0.039470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_0.asset
+  artifactKey: Guid(142ac3992ef1fff49a9feac3cf8ee103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_0.asset using Guid(142ac3992ef1fff49a9feac3cf8ee103) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14621303e1987759f5ab4e7bbd818ad4') in 0.046126 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000073 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_1.asset
+  artifactKey: Guid(d065038c3595dd54aa089ba62132c63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0009_1.asset using Guid(d065038c3595dd54aa089ba62132c63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9ff6d38cb9d8907f3d0840fe3f8d6cb') in 0.068774 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01.terrainlayer
+  artifactKey: Guid(9f1f2694a2778ee43b54ad573f82e616) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01.terrainlayer using Guid(9f1f2694a2778ee43b54ad573f82e616) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d37d673e37466c6a9b72070be0f0c0d') in 0.044126 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 5
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_1.asset
+  artifactKey: Guid(55845541ff005b143b766113bc204405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0006_1.asset using Guid(55845541ff005b143b766113bc204405) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3c8f5028ff0228d13f6d8b95bc76a03') in 0.051012 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_1.asset
+  artifactKey: Guid(cedca5335e5eb754e9f43f470fba4c45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0008_1.asset using Guid(cedca5335e5eb754e9f43f470fba4c45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '631478ec575760eacbb8f94ad40f2173') in 0.052909 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_0.asset
+  artifactKey: Guid(38990c6d4d25bbd4a98de6f91a38cbdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0016_0.asset using Guid(38990c6d4d25bbd4a98de6f91a38cbdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c966b01006e0793fc880e8d6f4db3f4') in 0.038932 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_0.asset
+  artifactKey: Guid(30b6dc3b222e5d14da325ed7315cbd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0013_0.asset using Guid(30b6dc3b222e5d14da325ed7315cbd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10da635cf1772fe5c752da9167320066') in 0.038294 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_3.asset
+  artifactKey: Guid(f780ade606064b44d9348deb59d2ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0020_3.asset using Guid(f780ade606064b44d9348deb59d2ddce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ebdaa21cadaba19818618cbb7224688') in 0.048208 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_2.asset
+  artifactKey: Guid(ce125dfd467332c4498c4fd3830fca0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0005_2.asset using Guid(ce125dfd467332c4498c4fd3830fca0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be0210a02e7be91fa05eb0f71454d268') in 0.042581 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_2.asset
+  artifactKey: Guid(8bb6455e77b16f143931f13c3bc2fede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0018_2.asset using Guid(8bb6455e77b16f143931f13c3bc2fede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c44871d310323af850939973d18344ce') in 0.046627 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000054 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_0.asset
+  artifactKey: Guid(947ad8adc6a472143bc78d3237b5dcc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0002_0.asset using Guid(947ad8adc6a472143bc78d3237b5dcc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3864b920462c91f25200cb975da4edc') in 0.044159 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_1.asset
+  artifactKey: Guid(0a68e596bca33ff4aa18caa8ce85a814) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/TerrainData/Layer_Hills,  Mountains and Lakes_4096x4096_textured_0003_1.asset using Guid(0a68e596bca33ff4aa18caa8ce85a814) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd416185f34a2fcd41bb3af188224f809') in 0.034802 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 4
+========================================================================
+Received Import Request.
+  Time since last request: 21.184833 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Rock045_4K_Color.png
+  artifactKey: Guid(080c866c5e9255841b570910feb9d86f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Rock045_4K_Color.png using Guid(080c866c5e9255841b570910feb9d86f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16f7665e506fc1b58d9ac99246362e0b') in 0.030204 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 8.709368 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Grass003_4K_Color.png
+  artifactKey: Guid(b15a5327a0db8f74fb99181270190be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Grass003_4K_Color.png using Guid(b15a5327a0db8f74fb99181270190be6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1ccebe96baad231f4b0c25cae4c9021') in 0.030711 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 5.741731 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Sand001_4K_Color.png
+  artifactKey: Guid(b8e6d5c86333d8d40b0ed0804fba9b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Sand001_4K_Color.png using Guid(b8e6d5c86333d8d40b0ed0804fba9b6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c28b62af774c3fd57efdc5ecad130b35') in 0.024510 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.049025 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Grass003_4K_NormalDX.png
+  artifactKey: Guid(bba49f79b29824941992c95a365f5e18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Grass003_4K_NormalDX.png using Guid(bba49f79b29824941992c95a365f5e18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afd6d61142e418182925d11bd680703f') in 0.044723 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 3.833714 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Rock045_4K_NormalDX.png
+  artifactKey: Guid(05757629e52f90341b1a1e0ea59637ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Textures/Rock045_4K_NormalDX.png using Guid(05757629e52f90341b1a1e0ea59637ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b70d6b97699926c08d3d2558fd797cfe') in 0.031113 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 64.327908 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0014_0.brush
+  artifactKey: Guid(63672e54d9c1bba48a75a630e38984c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0014_0.brush using Guid(63672e54d9c1bba48a75a630e38984c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53048568a6f95501c388cf4131e836f4') in 0.152070 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.664257 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0012_0.brush
+  artifactKey: Guid(f6593c54664ede04aae8b98f190b2b22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0012_0.brush using Guid(f6593c54664ede04aae8b98f190b2b22) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fdbd889bba3edf6e761f2ec78ff0241') in 0.141176 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.812690 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0013_0.brush
+  artifactKey: Guid(b25dd69d697187b4f87fade12883fd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0013_0.brush using Guid(b25dd69d697187b4f87fade12883fd96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03d98c87cdda6621d7f4faf5055ff86d') in 0.142179 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 28.321967 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0020_0.brush
+  artifactKey: Guid(65a1780703e801640ac5adb9de56357f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0020_0.brush using Guid(65a1780703e801640ac5adb9de56357f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61098e8f55a876a85cf7306234cfb896') in 0.148853 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.482584 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0019_0.brush
+  artifactKey: Guid(8493cbc08542d8b4fab362aa23df5275) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0019_0.brush using Guid(8493cbc08542d8b4fab362aa23df5275) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82078572393471517ad1fd8a1a317168') in 0.146883 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.932280 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0016_0.brush
+  artifactKey: Guid(203c6ed1fb2403e48a141216dc370a5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0016_0.brush using Guid(203c6ed1fb2403e48a141216dc370a5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2adefbca07c8f43b5c14d5eee6e35547') in 0.177608 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.734490 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0007_0.brush
+  artifactKey: Guid(f6ff5b0a04536e94f8aabfbb5005ef81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0007_0.brush using Guid(f6ff5b0a04536e94f8aabfbb5005ef81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d17f4887d6ffbe5bd7fb19a59d3b5e') in 0.160884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 3.182456 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0008_0.brush
+  artifactKey: Guid(f1180ac908e6f1c46bc5a214b7c828d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0008_0.brush using Guid(f1180ac908e6f1c46bc5a214b7c828d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0af2a751a3604ce2842e944782d4369d') in 0.145891 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 11.855785 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0004_0.brush
+  artifactKey: Guid(eb9b73b5226e7f34097f7313e8455677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0004_0.brush using Guid(eb9b73b5226e7f34097f7313e8455677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7d8ac06a90262d829e427e08e173b12') in 0.144833 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.067854 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0002_0.brush
+  artifactKey: Guid(9aa03667a292b22449a30a25850d0dc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0002_0.brush using Guid(9aa03667a292b22449a30a25850d0dc7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '777ed76aaaea74d8cbc985f12429bbd3') in 0.144367 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 1.918573 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0001_0.brush
+  artifactKey: Guid(66b018b9067846f499c0c7c3dfe5f50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0001_0.brush using Guid(66b018b9067846f499c0c7c3dfe5f50f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdb5554342e4b61e05572870367bd310') in 0.146020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.763201 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0010_0.brush
+  artifactKey: Guid(2892e5f8fd54ca74e86b323c14b2580c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0010_0.brush using Guid(2892e5f8fd54ca74e86b323c14b2580c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1744835d5a470dcd4c7a051e8dc02bf5') in 0.145155 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 2.435370 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0009_0.brush
+  artifactKey: Guid(821e4f7bbe725884cb162d4d61045d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Brushes/Hills,  Mountains and Lakes_4096x4096_0009_0.brush using Guid(821e4f7bbe725884cb162d4d61045d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '976fca813a45f23ae8775a342eaee3fd') in 0.153036 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 27.757406 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/001initializeatlas.gif
+  artifactKey: Guid(268e0917a87668e44ba6e5efed3cdf7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/001initializeatlas.gif using Guid(268e0917a87668e44ba6e5efed3cdf7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbb998ac159fc3d5c9ee8271b439744c') in 0.028923 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.009845 seconds.
+  path: Assets/Nova/Icons/3DToggle_DarkIcon.png
+  artifactKey: Guid(5c4cdb4affe6c43e0b64ab66684acb2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/3DToggle_DarkIcon.png using Guid(5c4cdb4affe6c43e0b64ab66684acb2b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23f83664dde47865c0e4308ea9ce04c0') in 0.019696 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000109 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/04-23_Sun_A.hdr
+  artifactKey: Guid(10dd0410a37550f4eb5c424507a8f978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/04-23_Sun_A.hdr using Guid(10dd0410a37550f4eb5c424507a8f978) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3748a42e57eaaa5f3e5fbbd53b92c6f') in 0.049537 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01_M.tif
+  artifactKey: Guid(23ead81b6e1ec294cb2551089c1056e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01_M.tif using Guid(23ead81b6e1ec294cb2551089c1056e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5916e495eefc3bbd82213bda84265c9b') in 0.022528 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02_D.tif
+  artifactKey: Guid(71e20e923f794424b93e7f863047068e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02_D.tif using Guid(71e20e923f794424b93e7f863047068e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3bc43084f2aa3516a4116dcec2e6ee0') in 0.017483 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/004applyingatlastoterrain.gif
+  artifactKey: Guid(53d31734005632c43896e948362730e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/004applyingatlastoterrain.gif using Guid(53d31734005632c43896e948362730e8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '196210fd0dc3a43dc6c2f926b93b40d7') in 0.019445 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/010detailspline.gif
+  artifactKey: Guid(6da7bd489532f134abc1f6def172a20b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/010detailspline.gif using Guid(6da7bd489532f134abc1f6def172a20b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3719f8e16ae0a43e2924b8ed2b4cae7b') in 0.016634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/013createscatterrule.gif
+  artifactKey: Guid(526f45dae5173214aa97c68720077bb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/013createscatterrule.gif using Guid(526f45dae5173214aa97c68720077bb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2acdb226fca949353f0f966b47fc05ac') in 0.020122 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01_M.tif
+  artifactKey: Guid(9bc7ca09926cc8844bd63a8fe83c0738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01_M.tif using Guid(9bc7ca09926cc8844bd63a8fe83c0738) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a66beb3b7c5f621e8c09edca2bb38608') in 0.019968 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/008undomask.gif
+  artifactKey: Guid(98b2b47634344ae4a8b627c1ca2e115f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/008undomask.gif using Guid(98b2b47634344ae4a8b627c1ca2e115f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9eef6bcb6c4179b4de8d9f34d0a1def7') in 0.019249 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_soil_02/A_soil_02_M.tif
+  artifactKey: Guid(7254744a83a269a4a9348703d4bce563) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_soil_02/A_soil_02_M.tif using Guid(7254744a83a269a4a9348703d4bce563) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af9ec06778f95f2fd407f0cbe8d35dea') in 0.019505 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01_N.tif
+  artifactKey: Guid(72fe7e764bddaf548b8b08a2d45ce46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_soil_01/A_soil_01_N.tif using Guid(72fe7e764bddaf548b8b08a2d45ce46e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bf474fd4bbc24da759cdc871d4bb9c3') in 0.018574 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_soil_02_N.tif
+  artifactKey: Guid(d5e629b8433ec984f96f0d90c3d15a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_soil_02_N.tif using Guid(d5e629b8433ec984f96f0d90c3d15a8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed0e1a439486efe45f1a6828ca0bc3ee') in 0.023903 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_soil_02_M.tif
+  artifactKey: Guid(4710dbe92661ce749a979395f982b859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_soil_02_M.tif using Guid(4710dbe92661ce749a979395f982b859) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c26e653f5c0c4ed6d5d9e0237ffe4228') in 0.022239 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02_N.tif
+  artifactKey: Guid(6c8d45193231d324e809aac84aaad334) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_grass_02/A_grass_02_N.tif using Guid(6c8d45193231d324e809aac84aaad334) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '99b16302dccf4dee8282e9a5913595ac') in 0.017391 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Atlas Terrain Editor/AtlasDocumentation/Images/003stampprefab.gif
+  artifactKey: Guid(5ab3147c36a6abe42b433e2b98418cf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/AtlasDocumentation/Images/003stampprefab.gif using Guid(5ab3147c36a6abe42b433e2b98418cf2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b77841ddbe69eeaf661d4b0c7b234146') in 0.020185 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/06-07_Day_E.hdr
+  artifactKey: Guid(93e76ab820b451547b0637a6df7b1fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/06-07_Day_E.hdr using Guid(93e76ab820b451547b0637a6df7b1fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '376f11b51931aade3701d5c77b8dd737') in 0.019689 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/04-23_Day_A.hdr
+  artifactKey: Guid(251ddc633ea20db46a3628b2b36a9d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/04-23_Day_A.hdr using Guid(251ddc633ea20db46a3628b2b36a9d8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31b8cbf5742d1233771a35afd0631bbd') in 0.021793 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Nova/Icons/3DToggle_LightIcon.png
+  artifactKey: Guid(dcadf8f655a9641a09f9fcdeae709deb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/3DToggle_LightIcon.png using Guid(dcadf8f655a9641a09f9fcdeae709deb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e184c911a7bc9682e2d1501e8f4fab3d') in 0.014320 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_grass_01/A_grass_01_N.tif
+  artifactKey: Guid(eb508f7e52289af4ba9edda27ef34bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_grass_01/A_grass_01_N.tif using Guid(eb508f7e52289af4ba9edda27ef34bec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '012e2122374639dfa45a191db7288eb5') in 0.017639 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_02/A_rock_02_M.tif
+  artifactKey: Guid(6516541dcea469a438473d0846847502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_02/A_rock_02_M.tif using Guid(6516541dcea469a438473d0846847502) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7824f51d0950afb34ae25999ccf42025') in 0.019238 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_D.tif
+  artifactKey: Guid(f61a7fdf750086c4380c3e2ce6c51d6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_D.tif using Guid(f61a7fdf750086c4380c3e2ce6c51d6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7f4e4e4f52aa5ba4943f0c3c949d352') in 0.020981 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01_D.tif
+  artifactKey: Guid(bb9b6a0d441952b42b1fd35f26996137) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_sand_01/A_sand_01_D.tif using Guid(bb9b6a0d441952b42b1fd35f26996137) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15da70dfb893207678dd14728a69e6c4') in 0.020417 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_rock_01_D.tif
+  artifactKey: Guid(bd2f52d93a6fd464ba3027cc771a2135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_rock_01/A_rock_01_D.tif using Guid(bd2f52d93a6fd464ba3027cc771a2135) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fc16dd980dc003e907af4b3c69fde89') in 0.017665 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/08-08_Sunset_C.hdr
+  artifactKey: Guid(740caf694c995c442a325d68cb54313e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Skyboxes/NoEmotion/08-08_Sunset_C.hdr using Guid(740caf694c995c442a325d68cb54313e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dce39dcf366b492be0aa87d5b00f3f9e') in 0.021776 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_N.tif
+  artifactKey: Guid(e7961d767993afd4e93a8354f90b3f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_N.tif using Guid(e7961d767993afd4e93a8354f90b3f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01df29f95de1e5312b3897908b4e634d') in 0.018462 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_M.tif
+  artifactKey: Guid(dfe6086c85d3e314fb9d51185dc90fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/TerrainLayers/A_snow_01/A_snow_01_M.tif using Guid(dfe6086c85d3e314fb9d51185dc90fcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21d8dc3e8a25074a88a695d3ed625d1a') in 0.018133 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 1.432195 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Aligator_Eye_Albedo_Adjust.png
+  artifactKey: Guid(7f44023a3b32c334aaa4ad226e0a2627) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Aligator_Eye_Albedo_Adjust.png using Guid(7f44023a3b32c334aaa4ad226e0a2627) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15d91a0728cf757e5fd62ab971a4bbfd') in 0.020552 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Nova/Icons/AlignBack_LightIcon.png
+  artifactKey: Guid(9af5c6f80b0244874b5281b8a189c9a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignBack_LightIcon.png using Guid(9af5c6f80b0244874b5281b8a189c9a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d11d04f9110029a085f23a7dd381383') in 0.016861 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Nova/Icons/AlignCenterX_DarkIcon.png
+  artifactKey: Guid(4d227ad82e75a40d1875c7c5f9b8ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignCenterX_DarkIcon.png using Guid(4d227ad82e75a40d1875c7c5f9b8ce89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '734b9cb5a710097a30409d78f7c69fea') in 0.013300 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Nova/Icons/AlignBottom_DarkIcon.png
+  artifactKey: Guid(35bf6e4d7f2ab48b180dcfe758400d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignBottom_DarkIcon.png using Guid(35bf6e4d7f2ab48b180dcfe758400d96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40fc891acc9d9d724ba9bef6100c182a') in 0.012991 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Nova/Icons/AlignCenterZ_LightIcon.png
+  artifactKey: Guid(db0a4496df61d4c33bc7ca5dedbf615a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignCenterZ_LightIcon.png using Guid(db0a4496df61d4c33bc7ca5dedbf615a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '749a599c171c34dd04b88d5cfd258b6d') in 0.015102 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Nova/Icons/AlignFront_LightIcon.png
+  artifactKey: Guid(cfa5ffc413a4b4305bb3a6a0aac42455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignFront_LightIcon.png using Guid(cfa5ffc413a4b4305bb3a6a0aac42455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca188315dfa0f547609fc1a80c303c0d') in 0.017702 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Nova/Icons/AlignLeft_LightIcon.png
+  artifactKey: Guid(6b21e26327f3f4baeb62a5160375aa4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignLeft_LightIcon.png using Guid(6b21e26327f3f4baeb62a5160375aa4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd72ac31714016e453d746f8f4fcd45cd') in 0.016123 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Nova/Icons/AlignRight_DarkIcon.png
+  artifactKey: Guid(7c1cf6aacab2e4eee8af388afc8bf99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignRight_DarkIcon.png using Guid(7c1cf6aacab2e4eee8af388afc8bf99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4ad56a3cb4f4e0cdbbf96bfd29182990') in 0.019288 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Nova/Icons/AlignCenterY_DarkIcon.png
+  artifactKey: Guid(c649ff24064d943e2be6e4deeeb3efc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignCenterY_DarkIcon.png using Guid(c649ff24064d943e2be6e4deeeb3efc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb02aee0146b691d27f000adbe76c987') in 0.014256 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.005307 seconds.
+  path: Assets/Nova/Icons/AlignRight_LightIcon.png
+  artifactKey: Guid(6d1b2500e94c842a2a3a86439da4517e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignRight_LightIcon.png using Guid(6d1b2500e94c842a2a3a86439da4517e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '803772503b87cc102825e986342a4226') in 0.014842 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Nova/Icons/AlignTop_LightIcon.png
+  artifactKey: Guid(2dadd659fe90c4f848efcc0c5abd2f7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/AlignTop_LightIcon.png using Guid(2dadd659fe90c4f848efcc0c5abd2f7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b7e0812bdae5dc6a5539067aed0e8b2') in 0.018240 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000581 seconds.
+  path: Assets/UMA/Content/Example/HumanMale/Textures/Clothing/Hood/Altar_hood_A.png
+  artifactKey: Guid(336187aa7b3190f488804be99f650b87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Example/HumanMale/Textures/Clothing/Hood/Altar_hood_A.png using Guid(336187aa7b3190f488804be99f650b87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f403b0e9a1037be7726ddbf89e69838f') in 0.017914 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/UMA/Content/Example/HumanMale/Textures/Clothing/Hood/Altar_hood_M.png
+  artifactKey: Guid(14a815c7716781843bb171b88a227cf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Example/HumanMale/Textures/Clothing/Hood/Altar_hood_M.png using Guid(14a815c7716781843bb171b88a227cf4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f92368bf164eebec6039b061f2275705') in 0.016306 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.099319 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Hair/Aniso [Specular] [Smoothness].psd
+  artifactKey: Guid(ee65380e19fdd504a9289b08a200da55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Hair/Aniso [Specular] [Smoothness].psd using Guid(ee65380e19fdd504a9289b08a200da55) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75d4d53178256f1438d5d6935de7816f') in 0.014479 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 4.558074 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Cat_Eye_Albedo_Adjust.png
+  artifactKey: Guid(66d6b2f3a4f1dab4981dee867adc657f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Cat_Eye_Albedo_Adjust.png using Guid(66d6b2f3a4f1dab4981dee867adc657f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf8cbab097641f8061676dfc8b1488d6') in 0.016893 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.010531 seconds.
+  path: Assets/Flexalon/Documentation/images/ChatCanvasStyles.png
+  artifactKey: Guid(c0f4356420109ec4795d2755cedb1b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Flexalon/Documentation/images/ChatCanvasStyles.png using Guid(c0f4356420109ec4795d2755cedb1b17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a081aa1233dc87e33cdd938805ac784f') in 0.013415 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.123186 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Default Eye Adjust_diffuse.png
+  artifactKey: Guid(c0e5deae8a268a8468ef816cb746d8ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Default Eye Adjust_diffuse.png using Guid(c0e5deae8a268a8468ef816cb746d8ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ed1832a6d6934ae4ddd472e1af4e8b5') in 0.015394 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007975 seconds.
+  path: Assets/Flexalon/Documentation/images/doc-interactable-state-machine.png
+  artifactKey: Guid(47b3afe8bb8a1544b84379d424cbce2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Flexalon/Documentation/images/doc-interactable-state-machine.png using Guid(47b3afe8bb8a1544b84379d424cbce2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afb79c022cf3a231422b7ca827945450') in 0.018676 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.023727 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Albedo_Adjust.png
+  artifactKey: Guid(39d12a19876b9c04abd2cd624b34d920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Albedo_Adjust.png using Guid(39d12a19876b9c04abd2cd624b34d920) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae360b159fd5a62e13c92c5b2cb7dc36') in 0.014722 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Large_Normal_Adjust.png
+  artifactKey: Guid(190e223f5879e4b4380c617607ce9d3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Large_Normal_Adjust.png using Guid(190e223f5879e4b4380c617607ce9d3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f603acfa32bec558a15dbef1a521809') in 0.015218 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Roughness_Adjust.psd
+  artifactKey: Guid(787a82edd719cfd4ebccca55cc7e20b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Face/Eye/EyeAdjust/Eye_Roughness_Adjust.psd using Guid(787a82edd719cfd4ebccca55cc7e20b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37ff7d7c4be3929820bec1ae1bfc278e') in 0.013617 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.113527 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoGlobalListVariables.png
+  artifactKey: Guid(532303ec14f0b4cd68495d712dd72b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoGlobalListVariables.png using Guid(532303ec14f0b4cd68495d712dd72b94) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fb5afb27361b44725f6026c5984c5cb') in 0.013127 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoLocalListVariables.png
+  artifactKey: Guid(450d06d174377463ca91db776bfec7d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoLocalListVariables.png using Guid(450d06d174377463ca91db776bfec7d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f1ef6940b0dd6bf111ff1ccf080d5ad') in 0.017711 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoStateLocomotion.png
+  artifactKey: Guid(7dd00535f04e6428fa29a3c144a8a48b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoStateLocomotion.png using Guid(7dd00535f04e6428fa29a3c144a8a48b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78283f8ea7d6cda661e60cbe0e74a3d9') in 0.018052 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 4.132168 seconds.
+  path: Assets/Atlas Terrain Editor/Runtime/Icons/Atlas_smooth_latheral_icon.tiff
+  artifactKey: Guid(91f87dd3d5609f242ae505fc4b721759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Atlas Terrain Editor/Runtime/Icons/Atlas_smooth_latheral_icon.tiff using Guid(91f87dd3d5609f242ae505fc4b721759) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e92276c5fa69877d98fd4a6f23743966') in 0.014950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000060 seconds.
+  path: Assets/Nova/Icons/BackToFront_LightIcon.png
+  artifactKey: Guid(615cf149083a34565bb798f27f59e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Nova/Icons/BackToFront_LightIcon.png using Guid(615cf149083a34565bb798f27f59e8a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd63a96fcdf43aada8960f36d3b76a0af') in 0.015772 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.052089 seconds.
+  path: Assets/UMA/Content/Contrib/Textures/bb_female_hair_UMA Normal.psd
+  artifactKey: Guid(c59b45917b12a5548bd5f02fa00d8cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Contrib/Textures/bb_female_hair_UMA Normal.psd using Guid(c59b45917b12a5548bd5f02fa00d8cdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37bfa85c84dccf63902d88dfa35ad16c') in 0.015504 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.424117 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0002_0.exr
+  artifactKey: Guid(88ba5867b094ee14096539eb3957a79f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0002_0.exr using Guid(88ba5867b094ee14096539eb3957a79f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30c8a6865342890d52b85efab4175b88') in 0.081256 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0007_0.exr
+  artifactKey: Guid(60b6d09560a2aef428ebcd39b59761ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0007_0.exr using Guid(60b6d09560a2aef428ebcd39b59761ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f58bc43fc8e8dfc081f90f9c4dfa1c96') in 0.091957 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0008_0.exr
+  artifactKey: Guid(44229df813dae50419764f451f5280c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0008_0.exr using Guid(44229df813dae50419764f451f5280c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a28cb4926fd64a2dcf0cc4d9bfb2431') in 0.056642 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0017_0.exr
+  artifactKey: Guid(c5e0c784ba1894546803c9e91501cc56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0017_0.exr using Guid(c5e0c784ba1894546803c9e91501cc56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fd8fea8fc006ae4f4b88edf2956ca62') in 0.257626 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0006_0.exr
+  artifactKey: Guid(f5fc9f11138e6a5419dba99ca4a9a8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0006_0.exr using Guid(f5fc9f11138e6a5419dba99ca4a9a8a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bc1a365e0a17f6c4faeb320d51c5f33') in 0.160703 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000059 seconds.
+  path: Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0015_0.exr
+  artifactKey: Guid(e190aeee10ff11d4fbce03672d04c2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Wizards Code/Terrains/Hills, Mountains and Lakes/Heightmaps/Hills,  Mountains and Lakes_4096x4096_0015_0.exr using Guid(e190aeee10ff11d4fbce03672d04c2db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '90349528f9d17e013b119f43d3a27487') in 0.167129 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

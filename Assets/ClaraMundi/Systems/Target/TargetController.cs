@@ -84,6 +84,7 @@ namespace ClaraMundi
 
     void Update()
     {
+      if (!IsClientStarted) return;
       if (inputCooldown > 0)
       {
         inputCooldown -= Time.deltaTime;
