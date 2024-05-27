@@ -59,10 +59,9 @@ namespace ClaraMundi
     {
       _clientState = obj.ConnectionState;
       // joinLabel.text = GetNextStateText(_clientState);
-      if (obj.ConnectionState == LocalConnectionState.Stopped)
-        ChatWindowUI.Instance.ClearMessages();
+      // if (obj.ConnectionState == LocalConnectionState.Stopped)
+      //   ChatWindowUI.Instance.ClearMessages();
     }
-
 
     private void OnDestroy()
     {

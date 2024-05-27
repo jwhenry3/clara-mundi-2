@@ -21,7 +21,7 @@ namespace ClaraMundi
     {
       if (BecameInteractable())
       {
-        Debug.Log(gameObject.name + " Interactable!");
+        // Debug.Log(gameObject.name + " Interactable!");
         if (!FocusButton(CurrentButton) && !FocusInput(CurrentInput) && !FocusDropdown(CurrentDropdown))
           if (!FocusButton(AutoFocusButton) && !FocusInput(AutoFocusInput) && !FocusDropdown(AutoFocusDropdown))
           {
@@ -31,7 +31,7 @@ namespace ClaraMundi
       }
       else if (lastInteractable && !IsInteractable())
       {
-        Debug.Log(gameObject.name + " Not Interactable!");
+        // Debug.Log(gameObject.name + " Not Interactable!");
       }
       lastInteractable = IsInteractable();
     }

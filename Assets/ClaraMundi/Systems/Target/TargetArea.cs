@@ -10,16 +10,13 @@ namespace ClaraMundi
     public List<Targetable> InArea = new();
     public List<Targetable> PossibleTargets = new();
 
-    public float updateInterval = 0.5f;
-    private float currentTick = 0;
-
-
     private void OnTriggerEnter(Collider other)
     {
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && !InArea.Contains(targetable))
         InArea.Add(targetable);
     }
+
     private void OnTriggerStay(Collider other)
     {
       var targetable = other.GetComponent<Targetable>();
@@ -33,6 +30,7 @@ namespace ClaraMundi
           PossibleTargets.Remove(targetable);
       }
     }
+
     private void OnTriggerExit(Collider other)
     {
       var targetable = other.GetComponent<Targetable>();

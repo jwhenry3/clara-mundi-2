@@ -15,7 +15,7 @@ D:/clara-mundi-2
 -logFile
 Logs/AssetImportWorker5.log
 -srvPort
-55941
+57797
 Successfully changed project path to: D:/clara-mundi-2
 D:/clara-mundi-2
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -49,12 +49,12 @@ D:/clara-mundi-2
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [50636] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 2705973320 [EditorId] 2705973320 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [47532] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 1640242904 [EditorId] 1640242904 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [50636] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 2705973320 [EditorId] 2705973320 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [47532] Host "[IP] 192.168.1.172 [Port] 0 [Flags] 2 [Guid] 1640242904 [EditorId] 1640242904 [Version] 1048832 [Id] WindowsEditor(7,Justin-HomePC) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 11 workers.
-Refreshing native plugins compatible for Editor in 1845.30 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 895.76 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.21f1 (bf09ca542b87)
 [Subsystems] Discovering subsystems at path D:/Unity/2022.3.21f1/Editor/Data/Resources/UnitySubsystems
@@ -70,46 +70,46 @@ Initialize mono
 Mono path[0] = 'D:/Unity/2022.3.21f1/Editor/Data/Managed'
 Mono path[1] = 'D:/Unity/2022.3.21f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'D:/Unity/2022.3.21f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56512
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56968
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: D:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: D:/Unity/2022.3.21f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.009970 seconds.
-- Loaded All Assemblies, in  1.031 seconds
+Registered in 0.004395 seconds.
+- Loaded All Assemblies, in  0.956 seconds
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.737 seconds
-Domain Reload Profiling: 1767ms
-	BeginReloadAssembly (323ms)
+- Finished resetting the current domain, in  0.314 seconds
+Domain Reload Profiling: 1270ms
+	BeginReloadAssembly (114ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (2ms)
-	RebuildCommonClasses (109ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (127ms)
-	LoadAllAssembliesAndSetupDomain (445ms)
-		LoadAssemblies (323ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (177ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (51ms)
+	LoadAllAssembliesAndSetupDomain (601ms)
+		LoadAssemblies (114ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (439ms)
-			TypeCache.Refresh (437ms)
-				TypeCache.ScanAssembly (395ms)
-			ScanForSourceGeneratedMonoScriptInfo (1ms)
+		AnalyzeDomain (599ms)
+			TypeCache.Refresh (597ms)
+				TypeCache.ScanAssembly (335ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (738ms)
+	FinalizeReload (315ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (590ms)
+		SetupLoadedEditorAssemblies (242ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (25ms)
-			SetLoadedEditorAssemblies (16ms)
+			InitializePlatformSupportModulesInManaged (10ms)
+			SetLoadedEditorAssemblies (7ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (8ms)
-			ProcessInitializeOnLoadAttributes (408ms)
-			ProcessInitializeOnLoadMethodAttributes (132ms)
+			BeforeProcessingInitializeOnLoad (3ms)
+			ProcessInitializeOnLoadAttributes (165ms)
+			ProcessInitializeOnLoadMethodAttributes (58ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -118,157 +118,1042 @@ Domain Reload Profiling: 1767ms
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  2.823 seconds
-Refreshing native plugins compatible for Editor in 20.47 ms, found 3 plugins.
+- Loaded All Assemblies, in  0.999 seconds
+Refreshing native plugins compatible for Editor in 8.88 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Native extension for WebGL target not found
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-My project
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.14 seconds
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.118 seconds
-Domain Reload Profiling: 6941ms
-	BeginReloadAssembly (367ms)
+- Finished resetting the current domain, in  1.557 seconds
+Domain Reload Profiling: 2555ms
+	BeginReloadAssembly (156ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (14ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (53ms)
-	RebuildCommonClasses (104ms)
-	RebuildNativeTypeToScriptingClass (40ms)
-	initialDomainReloadingComplete (202ms)
-	LoadAllAssembliesAndSetupDomain (2109ms)
-		LoadAssemblies (1291ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1015ms)
-			TypeCache.Refresh (852ms)
-				TypeCache.ScanAssembly (795ms)
-			ScanForSourceGeneratedMonoScriptInfo (122ms)
-			ResolveRequiredComponents (36ms)
-	FinalizeReload (4119ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3617ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (11ms)
-			SetLoadedEditorAssemblies (14ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (432ms)
-			ProcessInitializeOnLoadAttributes (1061ms)
-			ProcessInitializeOnLoadMethodAttributes (2095ms)
-			AfterProcessingInitializeOnLoad (4ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 16.62 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 9625 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 124 unused Assets / (154.5 KB). Loaded Objects now: 10127.
-Memory consumption went from 323.3 MB to 323.2 MB.
-Total: 39.070900 ms (FindLiveObjects: 1.204500 ms CreateObjectMapping: 1.616700 ms MarkObjects: 35.879500 ms  DeleteObjects: 0.368700 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:scripting/monoscript/fileName/QuestInfoUI.cs: 3189d76442c73405b4c4416c7ef14158 -> a90e2bc8ecdfe8fb06a91afebae8efc3
-  custom:scripting/monoscript/fileName/ItemTooltipUI.cs: bdc8319c1a02d1a83dec0bda80a5d0b5 -> 3ba5501cfad5540d3c92bac8b3dff91d
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:scripting/monoscript/fileName/NameTag.cs: e42dd97396128104c73a3401155929d6 -> 436c0a7c2cf5370f450ee2a815a20cbd
-  custom:scripting/monoscript/fileName/QuestListItemUI.cs: 7ba382cc389cfd7710d7aaf73918c66b -> a61547088657921bfd9ab3a1e392a473
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:scripting/monoscript/fileName/QuestRewardUI.cs: 69e721fc3675bd3f303dd46475c9f1ec -> 0dc2cd6cfeb8794f088c49d5dac24c40
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:scripting/monoscript/fileName/TrailRenderer.cs: 17eb6c57e807ae2a3ec76a9c225e5205 -> 
-  custom:scripting/monoscript/fileName/PlayerUI.cs: 15d912f594554fbdc3299deb4ff823f3 -> bea2ebc4112a9ee311c7e570ad2b604c
-  custom:scripting/monoscript/fileName/QuestTrackerUI.cs: 8aef11b3327850725afa331fffe11b25 -> ca2198e4fcb5a274c9f226bb37c8740e
-  custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
-  custom:scripting/monoscript/fileName/QuestTaskUI.cs: deda02c1099491116e148764905a43bc -> 9578d6f090fca6a6389ce8bf73683c1a
-  custom:scripting/monoscript/fileName/QuestJournalUI.cs: b82d758f3c7d48b8f21418ba1a42dbbf -> edfa1288e2c50dd0be8fec4c4cca3fb1
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  1.215 seconds
-Refreshing native plugins compatible for Editor in 14.11 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Native extension for WebGL target not found
-[MODES] ModeService[none].Initialize
-[MODES] ModeService[none].LoadModes
-[MODES] Loading mode Default (0) for mode-current-id-My project
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.151 seconds
-Domain Reload Profiling: 5365ms
-	BeginReloadAssembly (449ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
+		DisableScriptedObjects (6ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (238ms)
-	RebuildCommonClasses (58ms)
-	RebuildNativeTypeToScriptingClass (20ms)
-	initialDomainReloadingComplete (97ms)
-	LoadAllAssembliesAndSetupDomain (588ms)
-		LoadAssemblies (686ms)
+		CreateAndSetChildDomain (23ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (11ms)
+	initialDomainReloadingComplete (71ms)
+	LoadAllAssembliesAndSetupDomain (725ms)
+		LoadAssemblies (443ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (49ms)
-			TypeCache.Refresh (14ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (33ms)
-	FinalizeReload (4152ms)
+		AnalyzeDomain (371ms)
+			TypeCache.Refresh (301ms)
+				TypeCache.ScanAssembly (278ms)
+			ScanForSourceGeneratedMonoScriptInfo (51ms)
+			ResolveRequiredComponents (16ms)
+	FinalizeReload (1557ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2747ms)
+		SetupLoadedEditorAssemblies (1310ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (12ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (11ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (336ms)
-			ProcessInitializeOnLoadAttributes (663ms)
-			ProcessInitializeOnLoadMethodAttributes (1719ms)
-			AfterProcessingInitializeOnLoad (7ms)
-			EditorAssembliesLoaded (1ms)
+			BeforeProcessingInitializeOnLoad (208ms)
+			ProcessInitializeOnLoadAttributes (549ms)
+			ProcessInitializeOnLoadMethodAttributes (532ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (17ms)
-Refreshing native plugins compatible for Editor in 13.67 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (5ms)
+Refreshing native plugins compatible for Editor in 14.13 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 9568 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 72 unused Assets / (124.9 KB). Loaded Objects now: 10635.
-Memory consumption went from 311.7 MB to 311.6 MB.
-Total: 53.397100 ms (FindLiveObjects: 2.176100 ms CreateObjectMapping: 1.368000 ms MarkObjects: 49.629000 ms  DeleteObjects: 0.222800 ms)
+Unloading 9146 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 116 unused Assets / (3.2 MB). Loaded Objects now: 9658.
+Memory consumption went from 306.7 MB to 303.5 MB.
+Total: 20.613300 ms (FindLiveObjects: 0.791200 ms CreateObjectMapping: 0.753900 ms MarkObjects: 18.515200 ms  DeleteObjects: 0.552100 ms)
 
-Prepare: number of updated asset objects reloaded= 0
 AssetImportParameters requested are different than current active one (requested -> active):
+  custom:scripting/monoscript/fileName/TextBlockDataStore.cs: ab947f4cfc80b66f89f9709c781d9e7a -> 
+  custom:scripting/monoscript/fileName/LayoutsBuildLeafUp.cs: 92e715c47f04d8c9391de4d5c527d785 -> 
+  custom:scripting/monoscript/fileName/IndexIDMapper.cs: 2f2863b3d76a533fd0107234bb5ad1fa -> 
+  custom:scripting/monoscript/fileName/VisualStates.cs: 25feb6bf5b0c239aeae64fc3c1ae34b3 -> 
+  custom:scripting/monoscript/fileName/BaseRenderInfo.Internal.cs: 64839073ccd9fe8ac37e095c46c62a13 -> 
+  custom:scripting/monoscript/fileName/BurstUtils.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/VirtualUIBlock3D.cs: b98c94d43df25038864cb9870a428d53 -> 
+  custom:scripting/monoscript/fileName/Dropdown.cs: 19950d5434cc7294b24cbd12827459bd -> e2499375dbab18b142e2db07a091d792
+  custom:scripting/monoscript/fileName/FlexalonResultEditor.cs: fa457e3b1111d80bee2ed2af0f4a31b2 -> 
+  custom:scripting/monoscript/fileName/TextMeshProTextBlock.cs: ac7cc623d5e79bc8374fe288a81f2982 -> 
+  custom:scripting/monoscript/fileName/HandleCompat.cs: f85fa4251d5f652440368b2fa2299eee -> 
+  custom:scripting/monoscript/fileName/FlexalonCircleLayout.cs: 7b8daba31caf68ccfa6a42d95e99b124 -> 
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:scripting/monoscript/fileName/ClipMaskInfo.Internal.cs: 352151b51211c2f6b4237ef8fc69bd4d -> 
+  custom:scripting/monoscript/fileName/ImageData.cs: 797c84c5fe416b3dac197b1d9772b6de -> 
+  custom:scripting/monoscript/fileName/UIBlockExtensions.cs: 75ee264582bdabe8dc96532ff2188dfc -> 
+  custom:scripting/monoscript/fileName/IRenderingSubStore.cs: 59b1a0d6122b7061dc096fdc4cb0d716 -> 
+  custom:scripting/monoscript/fileName/TextBlock.cs: 4d951fa2980fa62ece18821f872834c7 -> 
+  custom:scripting/monoscript/fileName/ItemView.cs: f27d49a730f6c3c37e368d6cd5daaf32 -> 
+  custom:scripting/monoscript/fileName/BitField8.cs: 6f2eb8d96ed8166c99d0c113ba72495e -> 
+  custom:scripting/monoscript/fileName/FlexalonRigidBodyAnimator.cs: 560a7d899a56ae33f119209316656ef1 -> 
+  custom:scripting/monoscript/fileName/ListifyJobs.cs: 4f47a191c6cbd066c96259fce9c3af51 -> 
+  custom:scripting/monoscript/fileName/FlexalonAdapter.cs: dfda053c8c5bb0438ec1c05e73cffd14 -> 
+  custom:scripting/monoscript/fileName/ListViewEditor.cs: 68118bcf612af6d7fe28053ffd4baf64 -> 
+  custom:scripting/monoscript/fileName/NovaAllocator.cs: 3a13e6a739f48a1f82b196684ff6506d -> 
+  custom:scripting/monoscript/fileName/FlexalonDragTarget.cs: 6af6dd1980b6124ad939fc2ca793df2b -> 
+  custom:scripting/monoscript/fileName/TMPUtils.cs: af902f54a76a87af9d81427b9462f471 -> 
+  custom:scripting/monoscript/fileName/SurfaceDrawer.cs: af90f0cd3801192357fc526db1ea190f -> 
+  custom:scripting/monoscript/fileName/HitTest.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/DataStoreSystem.cs: 1d7e3e91d0a857ec5a79b5fc1ac0ac09 -> 
+  custom:scripting/monoscript/fileName/UIBlock2DEditor.cs: 9bcac7aab4be8337e514891db4b60b58 -> 
+  custom:scripting/monoscript/fileName/FlexalonLayoutBase.cs: 17e6d1e2705765847ad23a5586706707 -> 
+  custom:scripting/monoscript/fileName/FlexalonComponent.cs: 95aa0aa90fd6f448a9b8f3532733e7f1 -> 
+  custom:scripting/monoscript/fileName/Layout.Internal.cs: 9cdb54dce53d3af4b4e14ca6819d57ec -> 
+  custom:scripting/monoscript/fileName/AtlasUnityPreviewVolumeEditor.cs: f4f762acc772b35947e150f26acf5fbf -> 
+  custom:scripting/monoscript/fileName/ScrollBehavior.cs: 76eb737327113459a72cc7c57be26e5b -> 
+  custom:scripting/monoscript/fileName/BlockTool.cs: eee42026423ddad36c4dc959a9580e34 -> 
+  custom:scripting/monoscript/fileName/ImageDataProviders.cs: 36169a3b32c6891edf19432c94415370 -> 
+  custom:scripting/monoscript/fileName/SystemSettings.cs: 6d2d57cf7d912ebec9efc9179bcfb2c9 -> 
+  custom:scripting/monoscript/fileName/FlexalonSampleCamera.cs: ca6e7067f8759dfa1b0874711faf6d2d -> 
+  custom:scripting/monoscript/fileName/LengthBounds.cs: aa027366e64d639b3552adf881cb5c7a -> 
+  custom:scripting/monoscript/fileName/FlexalonResult.cs: c07fc63c78e6a02060463fd9e7f5fcb6 -> 
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:scripting/monoscript/fileName/QuestInfoUI.cs: 3189d76442c73405b4c4416c7ef14158 -> a90e2bc8ecdfe8fb06a91afebae8efc3
-  custom:scripting/monoscript/fileName/ItemTooltipUI.cs: bdc8319c1a02d1a83dec0bda80a5d0b5 -> 3ba5501cfad5540d3c92bac8b3dff91d
+  custom:scripting/monoscript/fileName/NovaPropertyDrawer.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/Hierarchy.cs: c61ddb0db223ffea98a1a3de5425250c -> 
+  custom:scripting/monoscript/fileName/FlexalonConstraint.cs: 889343d48b51138ce0e58d0de2a2c138 -> 
+  custom:scripting/monoscript/fileName/RenderSetFilterJob.cs: b610fbf109e7b1856310ef9d0456b3bb -> 
+  custom:scripting/monoscript/fileName/Interactable.cs: 3fc856320b832def04c3d8843c8f3232 -> 
+  custom:scripting/monoscript/fileName/ImageButtonVisuals.cs: e35d67c553f67e377e118105b28ec964 -> 
+  custom:scripting/monoscript/fileName/ConditionalConstants.cs: 62046814d064ccb26c8e18ce30100a90 -> 
+  custom:scripting/monoscript/fileName/ImageAdjustment.cs: ec85384a340477d77a6fddba7d445f98 -> 
+  custom:scripting/monoscript/fileName/ScrollerEditor.cs: 18f4a69c1f909ebd0918fb4fde16e374 -> 
+  custom:scripting/monoscript/fileName/FlexalonMath.cs: 5b0413abaafc1aa32fb9a094897a2654 -> 
+  custom:scripting/monoscript/fileName/ScreenSpace.cs: fd3fa433e63b7661dd4d0a388cf21e64 -> 
+  custom:scripting/monoscript/fileName/SerializedPropertyWrapper.cs: 5337362d953b06fce2186adbde649b12 -> 
+  custom:scripting/monoscript/fileName/MinMaxRect.cs: 211df469ab99ab23ee2a2c9b983a00fd -> 
+  custom:scripting/monoscript/fileName/ArrayBuffer.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/MinMax3.cs: 1960919ba7fbca766e6923da495aef03 -> 
+  custom:scripting/monoscript/fileName/UIBlock2DData.Internal.cs: f1d077d763f94c8cfcc6a98238e1f102 -> 
+  custom:scripting/monoscript/fileName/Scrollbar.cs: bb532ee4c65b8179e4c9de6f778ac0f6 -> 042fdb4d377c0d68cf1021e2ead3c650
+  custom:scripting/monoscript/fileName/FlexalonEditor.cs: da3cb476e04ff2974c40b910fce01e52 -> 
+  custom:scripting/monoscript/fileName/OverlapJob.cs: 55fe4ebc131ceb470b4ba2d4ccd081ed -> 
+  custom:scripting/monoscript/fileName/Shadow.Internal.cs: a0ac8c3605bc326998ec7d3ce9f48064 -> 
+  custom:scripting/monoscript/fileName/ShaderPropertyIDs.cs: ae96f099ba82c7ac5cbfb4af7fe727b3 -> 
+  custom:scripting/monoscript/fileName/WindowResizeRegion.cs: 06d256948cb77e9f023fe2b213b01211 -> 
+  custom:scripting/monoscript/fileName/RenderRootDataStore.cs: 5ed70698dcd69e5f32bef6023b9bd7d4 -> 
+  custom:scripting/monoscript/fileName/Toggle.cs: 7d3b22029e169154d89908fba9a1760d -> fc59b554e8aca13c5f78dc9bb5f2dcbb
+  custom:scripting/monoscript/fileName/CalculatedLayout.cs: c3b8a5589e01f52d17e3d92842a07f66 -> 
+  custom:scripting/monoscript/fileName/InputModule.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/RotationSpaceBounds.cs: 335c25825c36bcb91ccc911623635418 -> 
+  custom:scripting/monoscript/fileName/AlignmentDrawer.cs: a2eeef826adcc10aa8fd5c58d42f75c8 -> 
+  custom:scripting/monoscript/fileName/NavigateToBounds.cs: 0861f32fcfd4a0048e6329c6eef48443 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRendererEditor.cs: 2644116704cd6b235feec0b3325ece6a -> 
+  custom:scripting/monoscript/fileName/FlexalonGridCellEditor.cs: 478bad8f9dac645a1538ae69f07134f4 -> 
+  custom:scripting/monoscript/fileName/BouncingScrollEffect.cs: cfb0c251d332e02888889bae7fa985ad -> 
+  custom:scripting/monoscript/fileName/Length.cs: 50fd94af7c0ab88aa0a32f51100f0390 -> 
+  custom:scripting/monoscript/fileName/RenderOrderDependencies.cs: 87c96273a503e9e53c97d7c113611a58 -> 
+  custom:scripting/monoscript/fileName/ProgressBar.cs: 30510f3b2c6ef2fd1e4e68957e599cb4 -> 03e8e1c12f2f51e4947bdf231c1dbd96
+  custom:scripting/monoscript/fileName/InputManager.cs: 97e18d39e2e8261df5b6cba4beb652ca -> abe8c0c446be714cb6babee9f792c601
+  custom:scripting/monoscript/fileName/NavLink.cs: f77706d68899e8ad2fc1ed16abd475f5 -> 
+  custom:scripting/monoscript/fileName/SerializeReferenceUtil.cs: 5ccd95a7f8fe40c3140e0e739177aeeb -> 
+  custom:scripting/monoscript/fileName/BaseRenderInfo.cs: 685c5309c626089ace9ef9ffba21f7b1 -> 
+  custom:scripting/monoscript/fileName/DropdownVisuals.cs: b35effe9d1439abfde62abb5aa04df0b -> 
+  custom:scripting/monoscript/fileName/SpringDescription.cs: c3aedac426fe606ad900d2a6fa361e5a -> 
+  custom:scripting/monoscript/fileName/DropdownData.cs: 2a4d2746bdf9923b60d426f21904c4bb -> 
+  custom:scripting/monoscript/fileName/TextFieldKeyboardInput.cs: b4981372db840daec175e8a33ffe788b -> 
+  custom:scripting/monoscript/fileName/InputFieldDataSource.cs: 210a0c655067722031ae8b467a1f0444 -> 
+  custom:scripting/monoscript/fileName/NovaEditorEventManager.cs: cb0dcefac3d512853b25982d0efa13fd -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAssetEditor.cs: de779bb26a8f734659f1eb67e6de8c62 -> 
+  custom:scripting/monoscript/fileName/Length3Drawer.cs: 11d64d78bb965290e3d9ea0a987de709 -> 
+  custom:scripting/monoscript/fileName/ShaderBuffer.cs: 9cd622a7a958252425dfb994685182b0 -> 
+  custom:scripting/monoscript/fileName/Flex.cs: 4de4eef71708c0d242067fdece7dbd17 -> 
+  custom:scripting/monoscript/fileName/FlexalonCircleLayoutEditor.cs: e47d188e904f23adecf764139bc6e4be -> 
+  custom:scripting/monoscript/fileName/FlexalonDynamicMaterial.cs: 36560dc01961fba3784ff6a7c7993a53 -> 
+  custom:scripting/monoscript/fileName/NativeHashMapExtensions.cs: d9ce313ab62548042d49df7bd24ed1dc -> 
+  custom:scripting/monoscript/fileName/BoundsAnim.cs: 5450aa22350337345d4d0c4a8d33f308 -> 
+  custom:scripting/monoscript/fileName/Tooltip.cs: 2587ccdf5452b6ce10cd56f9e2555613 -> efbd10c978725fde614599dc839eb715
+  custom:scripting/monoscript/fileName/AnimationEngine.cs: 239f33df84d50da25fd205a38de24ae4 -> 
+  custom:scripting/monoscript/fileName/NovaHashMap.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/RenderingBlockDataExtensions.cs: 52a3be348d5df092b86e12e7d0ab7adb -> 
+  custom:scripting/monoscript/fileName/FlexalonRandomLayout.cs: f434c85bc755f2c1869e16521e047bd8 -> 
+  custom:scripting/monoscript/fileName/GridSlice.cs: f1d71a9059b405d8ff3b106957689961 -> 
+  custom:scripting/monoscript/fileName/AccessWrapper.cs: d8707a548589dae02008a1e04b322097 -> 
+  custom:scripting/monoscript/fileName/NavigationStack.cs: 0cdf409b5aa8d4c25876d72b5c6a3b60 -> 
+  custom:scripting/monoscript/fileName/FormatUtils.cs: 9e3a0bae155e6567051bf9ef995c8f4e -> 
+  custom:scripting/monoscript/fileName/RenderOrderCalculator.cs: 1ac5c0421f57fff3ee8f9278eb2d64c0 -> 
+  custom:scripting/monoscript/fileName/FlexalonRaycaster.cs: 563e33a10d530a9b4d504eb341be7734 -> 
+  custom:scripting/monoscript/fileName/AssignBatchRoots.cs: bfa4c271ad3449b86031523b6dd98cc7 -> 
+  custom:scripting/monoscript/fileName/TwoDExtensions.cs: 807376f6c7074cb57828acc68b40e9a0 -> 
+  custom:scripting/monoscript/fileName/MemberInfoExtensions.cs: 514a43dce09d482744c10cbef316a6d5 -> 
+  custom:scripting/monoscript/fileName/TypeMenuNameAttribute.cs: 538cab0521e981ddf95958109bf26f79 -> 
+  custom:scripting/monoscript/fileName/FlexalonConstraintEditor.cs: 0dee44d982e19349fe26e377bee987b4 -> 
+  custom:scripting/monoscript/fileName/HashList.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/Border.cs: ba9b23f750f228563aa2186d8badd829 -> 
+  custom:scripting/monoscript/fileName/FlexalonGridLayout.cs: 1ed2524172fd91c84a8eb7874f035a7d -> 
+  custom:scripting/monoscript/fileName/TextDataBinding.cs: 7c316845cf51ee0821f17085f27f63e6 -> 
+  custom:scripting/monoscript/fileName/TransformsWrite.cs: 16a2c16f07d2be6380cc85c8f3106cdd -> 
+  custom:scripting/monoscript/fileName/AnimationHandleExtensions.cs: e11c303ce6eae25585e6f9873a2127cb -> 
+  custom:scripting/monoscript/fileName/Foldout.cs: 331d90598455cdbddbea2c7cd86266db -> 
+  custom:scripting/monoscript/fileName/UnityToAtlasConverterAsset.cs: 59c8fd51bd65773164e972486f2ba615 -> 
+  custom:scripting/monoscript/fileName/IGestureRecognizer.cs: cef90e711403b690a6baed92cfa53df2 -> 
+  custom:scripting/monoscript/fileName/ButtonVisuals.cs: 2c7a7859773794a958439ef376c0199e -> 
+  custom:scripting/monoscript/fileName/HierarchyDependency.cs: d93beb0bf4e320b1498fac3eb4f325f0 -> 
+  custom:scripting/monoscript/fileName/BatchGroupRenderer.cs: dd4e6368a093f82a10a2775a52db48ad -> 
+  custom:scripting/monoscript/fileName/CustomLayoutEditor.cs: be423198dbf1380b606336113466bd31 -> 
+  custom:scripting/monoscript/fileName/UIBlock.cs: c098545ce78ce4f0c0bf4180be3bdf49 -> 
+  custom:scripting/monoscript/fileName/SettingsConfig.cs: 6ea0e6f36a39e58384fbf968d274fd45 -> 
+  custom:scripting/monoscript/fileName/AnimationHandle.cs: be66716a7ffec61d43d2e200247a9eb8 -> 
+  custom:scripting/monoscript/fileName/NovaSettingsProvider.cs: ec4d22276cecf7616ebc3de94130950c -> 
+  custom:scripting/monoscript/fileName/ObjectComparer.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/ICoreBlock.cs: cbafec7b63bfa6d0bfc186829490c476 -> 
+  custom:scripting/monoscript/fileName/MinMax2.cs: ebc598bb79799f61c82b6ff29151a89a -> 
+  custom:scripting/monoscript/fileName/PrefabStageUtilsImpl.cs: 1a9a900115a9e40a53bd1888c4494472 -> 
+  custom:scripting/monoscript/fileName/RubberBandSimulation.cs: d6851b89bed6ca95d921f194b5fbcd83 -> 
+  custom:scripting/monoscript/fileName/UIBlock3DEditor.cs: a6f3ab727e1cee144acb85c834f92df4 -> 
   custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:scripting/monoscript/fileName/ShaderColor.cs: 1b0812f807b3bed6d86995da4c58d812 -> 
+  custom:scripting/monoscript/fileName/AnimationEngineProxy.cs: 2053ce6ade6b844e3216ee874279f242 -> 
+  custom:scripting/monoscript/fileName/NovaHelpWindow.cs: e1f2426d8af1e6ddb188f51d2c24b858 -> 
+  custom:scripting/monoscript/fileName/Button.cs: 3a0e32a060087482fbb870ceb78cb1f9 -> 18874d3cd8f6e3668320e6beabdb6cbc
+  custom:scripting/monoscript/fileName/FlexalonShapeLayout.cs: c874c08f95a61793389951514ade2200 -> 
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:scripting/monoscript/fileName/FlexalonRandomModifierEditor.cs: 26a0531e80d48079715f7d7e9f6c6fd3 -> 
+  custom:scripting/monoscript/fileName/InputRouter.cs: 45a323f53126eb1fec1e3a72dbfeaa0c -> 
+  custom:scripting/monoscript/fileName/MaterialCache.cs: ad3c30e70c0db58b6465dd63a94fca3a -> 
+  custom:scripting/monoscript/fileName/TextMargin.cs: 994d4f0f7300e6eab35ab4b62eca9484 -> 
+  custom:scripting/monoscript/fileName/IEventTarget.cs: 8f137a07c241fd92e7b87cd19b890b16 -> 
+  custom:scripting/monoscript/fileName/Window.cs: a2cae4eeed2c0ad92e7efbc17d2be9e6 -> 
   custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:scripting/monoscript/fileName/UIBlock2DData.cs: 4a85fbc7bcef96f2d83bb9aa36f281af -> 
+  custom:scripting/monoscript/fileName/RayToBounds.cs: 3f35b4bd6bb4fe988d79e9155e54e851 -> 
+  custom:scripting/monoscript/fileName/NovaSettingsEditor.cs: e81b9bc154031e5e7363959ec648b7a4 -> 
+  custom:scripting/monoscript/fileName/NovaList.cs: 4755f43aab53cca5e17391d1eacdedee -> 
+  custom:scripting/monoscript/fileName/EngineBase.cs: f9f026d7f238e04d47a1864f320a5429 -> 
+  custom:scripting/monoscript/fileName/ThreeDExtensions.cs: c7c8d84bff5ae917467f0f84003b73c5 -> 
   custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
-  custom:scripting/monoscript/fileName/NameTag.cs: e42dd97396128104c73a3401155929d6 -> 436c0a7c2cf5370f450ee2a815a20cbd
-  custom:scripting/monoscript/fileName/QuestListItemUI.cs: 7ba382cc389cfd7710d7aaf73918c66b -> a61547088657921bfd9ab3a1e392a473
+  custom:scripting/monoscript/fileName/Shapes.cs: 4b6a1fc3e64a2ea3220139dab29b2d4e -> 
+  custom:scripting/monoscript/fileName/Labels.cs: 39c5f11c9a64e6c10360ea2e89e5d4c4 -> 
+  custom:scripting/monoscript/fileName/VisualElementCountJob.cs: 658113cc57e915795f20651c3d2d04af -> 
+  custom:scripting/monoscript/fileName/ToolbarMenu.cs: b4688f686036d001634c4896a4390b40 -> 
+  custom:scripting/monoscript/fileName/LayoutDataStoreEditorAssist.cs: 686947604cb56d416e70012bd19d53b4 -> 
+  custom:scripting/monoscript/fileName/UIBlockEditor.cs: b82ecc19a429cfcfcdd2ddc280330901 -> 
+  custom:scripting/monoscript/fileName/RenderJobTypes.cs: f8a046ffda86dd576dbb29fd70b088e2 -> 
+  custom:scripting/monoscript/fileName/INovaJobExtensions.cs: 46697c13b297d3834fe0638c15637291 -> 
+  custom:scripting/monoscript/fileName/IUIBlock2D.cs: 817ce3f8e135dae1d48849e4a3381a60 -> 
+  custom:scripting/monoscript/fileName/ClipMaskInfo.cs: b532e63f0e8ef43561af344e6d7b30ac -> 
+  custom:scripting/monoscript/fileName/SplineStampEditor.cs: dcc7b66a02b312804f1f165c3992164c -> 
+  custom:scripting/monoscript/fileName/EventModule.cs: ca2984f70cc160ddd70e486a5b167594 -> 
+  custom:scripting/monoscript/fileName/WorldSpaceBoundsJob.cs: cc9f08c49ef925f92b91de85f6f4e314 -> 
+  custom:scripting/monoscript/fileName/FlexalonFlexibleLayoutEditor.cs: 38964b94f8336d8bb9c6433f0cdbc2e5 -> 
+  custom:scripting/monoscript/fileName/FlexalonCurveAnimator.cs: 107e15d7fb3de5073a108385ae1f859c -> 
+  custom:scripting/monoscript/fileName/FlexalonGridLayoutEditor.cs: 5e31d9de57f7e4bad8e13cb4af481a1f -> 
+  custom:scripting/monoscript/fileName/SortGroupEditor.cs: 737f2aa67fc986619094cb898db7fd1b -> 
+  custom:scripting/monoscript/fileName/VirtualBlockModule.cs: 901db068f7e2823c54bf44efd3a1e616 -> 
+  custom:scripting/monoscript/fileName/NativeListExtensions.cs: 2ff88ca7ccb59f2229500b6f0c190e72 -> 
+  custom:scripting/monoscript/fileName/AutoLayout.Internal.cs: 05c3c2cc730c61e4e78b202445872c4d -> 
+  custom:scripting/monoscript/fileName/AtlasPainter.cs: 05cd2f1b6722aedaf92ce1f197cf5784 -> 
+  custom:scripting/monoscript/fileName/TransformDataStore.cs: 4b12d741fe1ef93a4dca7049e962ca20 -> 
+  custom:scripting/monoscript/fileName/DrawInstancedData.cs: ae89da4a253c6368fc3a7ae90156bf39 -> 
+  custom:scripting/monoscript/fileName/HierarchyEngine.cs: 9e5a26166e32e9e32929e3178b2e1b66 -> 
+  custom:scripting/monoscript/fileName/NovaComputeBuffer.cs: 849ed7f5b11c9db237ef61b01c5a5104 -> 
+  custom:scripting/monoscript/fileName/SpringModels.cs: c45e10e81afdaeace5c7d866a7184df6 -> 
+  custom:scripting/monoscript/fileName/PrefabStageUtils.cs: 06346ee66fa2feeba2b4fd0d516db850 -> 
+  custom:scripting/monoscript/fileName/TexturePostProcessor.cs: 237dc683465e328d35e9c5e53e5db21c -> 
+  custom:scripting/monoscript/fileName/ListView.cs: baac7b231474955c917c522b480066e2 -> 
+  custom:scripting/monoscript/fileName/AtlasMenuItems.cs: 3597d54c69bb4940f036be792e015ae3 -> 
+  custom:scripting/monoscript/fileName/WindowUtil.cs: 9cfedb3319d39fc2687ec7befc964d6f -> 
+  custom:scripting/monoscript/fileName/SplineStamp.cs: 43803d5ef2ebc4635535971053317a37 -> 
+  custom:scripting/monoscript/fileName/NovaSettingsSystem.cs: f2104553cc4163ca0dc26f051770288e -> 
+  custom:scripting/monoscript/fileName/SortGroupInfo.cs: e806418d093734f9b260e60b1dd89618 -> 
+  custom:scripting/monoscript/fileName/NovaLayoutEditors.cs: 2e0b1d7cf2d77d1b2494b9c747a815ef -> 
+  custom:scripting/monoscript/fileName/HandleUtils.cs: 236f520bcea4c2544e2eb53241ff130e -> 
+  custom:scripting/monoscript/fileName/SceneViewInput.cs: 01261d10d86ba4ad0aeb55961460739e -> 
+  custom:scripting/monoscript/fileName/ShowIfAttribute.cs: 40964e2a8fa0a7d128662a4cc102d719 -> 25a1694e37da03f7aab789952da92eec
+  custom:scripting/monoscript/fileName/FlexalonDict.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/VisualModifierTracker.cs: 8689baac2ae5e0b4924b60f6f7a5fe41 -> 
+  custom:scripting/monoscript/fileName/RenderingDirtyState.cs: 0d5d090604d33c2d9bda843094c142b3 -> 
+  custom:scripting/monoscript/fileName/Navigation.cs: 59ed3de7248218684fe96794c1e9db6d -> e35012b3e8f0b9a62e22595c530c4b09
+  custom:scripting/monoscript/fileName/Scroller.cs: 815dc1f767bf26c867e4c5abfd9f38ff -> 
+  custom:scripting/monoscript/fileName/NovaSettings.cs: d368f5821e8634e51bd10e864af14d00 -> 
+  custom:scripting/monoscript/fileName/DataStore.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/StampAsset.cs: 2670ac9f4079786c955b132ba2a69013 -> 
+  custom:scripting/monoscript/fileName/FlexalonColorGradient.cs: 388bfd3abb91957444cf6ec0afed126d -> 
+  custom:scripting/monoscript/fileName/FlexalonCloner.cs: 37a260628130acf1bc1e6183628ec12a -> 
+  custom:scripting/monoscript/fileName/LayoutAccess.cs: 0302c882af8d1603ac9d3d39ee24bb20 -> 
+  custom:scripting/monoscript/fileName/BatchGroupDataStore.cs: ef5d5692c4d23cb700bd63d60b1c38a4 -> 
+  custom:scripting/monoscript/fileName/TextFieldInputProvider.cs: e48646c6c3cb91590afa16e625535359 -> 
+  custom:scripting/monoscript/fileName/Sphere.cs: 97535f0c1ca250bbc6e9a1b608d801da -> 
+  custom:scripting/monoscript/fileName/LayoutsCalculateBounds.cs: a4ab0e2401c68f52fe03dc9633f59b4c -> 
+  custom:scripting/monoscript/fileName/ShaderDataJob.cs: 81f90e62147007c6346f1ec61b019001 -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAsset.cs: f615d0e76da9d1c9a5e3bda3607b2de1 -> 
+  custom:scripting/monoscript/fileName/FlexalonSurvey.cs: b5d0742f451dd203e42a7f98169dbe65 -> 
+  custom:scripting/monoscript/fileName/VirtualizedView.cs: 64eb8d3c9e28bf878904a099ee74f8d9 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:scripting/monoscript/fileName/SampleLightConfig.cs: 1204a8a07966edcf42aff04c68f7f0d5 -> 
+  custom:scripting/monoscript/fileName/RadialGradient.Internal.cs: f4ae337bb1e20953832414c9fc8a7f86 -> 
+  custom:scripting/monoscript/fileName/ImageTrackingRunner.cs: 7e46e6f45dac37806809150971b6bcf0 -> 
+  custom:scripting/monoscript/fileName/IScreenSpace.cs: 5491a1514a476131056409bedd817dc4 -> 
+  custom:scripting/monoscript/fileName/TexturePackData.cs: 77aba540fc208d79ee430ef1041b485f -> 
+  custom:scripting/monoscript/fileName/UIBlockActivatorEditor.cs: 9abe13ff574b5e9104f389eabffc21b7 -> 
+  custom:scripting/monoscript/fileName/ImageAdapter.cs: 5fe94ede10ed72f0becbaf0d26f2b5ea -> 
+  custom:scripting/monoscript/fileName/CoreBlock.cs: d4b3fcbfe11031e7738e2480d3e67790 -> 
+  custom:scripting/monoscript/fileName/UIBlockActivator.cs: 249ded91e9fea7a8d3dc3c1afa78c342 -> 
+  custom:scripting/monoscript/fileName/DrawCallArbitrationJob.cs: ca259c0b24642c2af227722ede54ddcb -> 
+  custom:scripting/monoscript/fileName/VisualElementIndexHelper.cs: 898f859653216c2665f761ae4b4d3fab -> 
+  custom:scripting/monoscript/fileName/RenderJobStructCache.cs: 28521624c97b9b04caf610cf2e77a364 -> 
+  custom:scripting/monoscript/fileName/RenderEngineJobsInit.cs: 28521624c97b9b04caf610cf2e77a364 -> 
+  custom:scripting/monoscript/fileName/AtlasGizmoInstaller.cs: b5994b20f970ce2b9e12eb7cf725d7d5 -> 
+  custom:scripting/monoscript/fileName/ColorExtensions.cs: 5c266deee9489c6065d8c5bfd2a7ce17 -> 
+  custom:scripting/monoscript/fileName/CameraConfig.cs: 53c8cf9c732129f1e852138acc96a1d3 -> 
+  custom:scripting/monoscript/fileName/UnityVersionUtilsImpl.cs: e8e02b1ed48ebb35ebc6ed171e57dba0 -> 
+  custom:scripting/monoscript/fileName/IUIBlock.cs: 91d1134c2cb3f043033ac34b99cd5d80 -> 
+  custom:scripting/monoscript/fileName/SpringSimulation.cs: 14368fdca64349362832e0aa95e6c8c4 -> 
+  custom:scripting/monoscript/fileName/CoplanarSet.cs: 43af7c9d5dd7d0eeeb143fa001eb35ca -> 
+  custom:scripting/monoscript/fileName/FlexalonObject.cs: 79140dc62964597d700f501d06249e47 -> 
+  custom:scripting/monoscript/fileName/NavGraphDebugView.cs: e7452de8dd2127f8d11e9928b9b9eea4 -> 
+  custom:scripting/monoscript/fileName/Length.Internal.cs: c1a7148746c74421d4f01007af3e98a1 -> 
+  custom:scripting/monoscript/fileName/BlurEffect.cs: 7fec5c56116bacaba5efe0202be34203 -> 
+  custom:scripting/monoscript/fileName/ItemViewEditor.cs: bb314d4a37fb50be7628cfbe50957494 -> 
+  custom:scripting/monoscript/fileName/IUIBlock3D.cs: 82c391f03f7578627303c8fbde5a87d8 -> 
+  custom:scripting/monoscript/fileName/IGameObjectActiveReceiver.cs: 0cad06d82468f16addefe132fbd34e5c -> 
+  custom:scripting/monoscript/fileName/TransformsRead.cs: 1ecef071aab5e98d7bebe1933a492e54 -> 
+  custom:scripting/monoscript/fileName/SceneViewUtils.cs: 7da87b515236458d6d957fd901366491 -> 
+  custom:scripting/monoscript/fileName/FlexalonTypes.cs: 41c537d280d936894a10a82a271035c9 -> 
+  custom:scripting/monoscript/fileName/ICoreBlockExtensions.cs: bed8236b47843e87017c8dc29c18640f -> 
+  custom:scripting/monoscript/fileName/LayoutsBuildRootDown.cs: 92e715c47f04d8c9391de4d5c527d785 -> 
+  custom:scripting/monoscript/fileName/FlexalonDataSource.cs: 1f7b95eb78f2190588fd27b14e614f25 -> 
+  custom:scripting/monoscript/fileName/System.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/AtlasToolbar.cs: b2e0e774c8740bb8ba408a8d8f032cd8 -> 
+  custom:scripting/monoscript/fileName/FlexalonTransformUpdater.cs: 2562ad2e0efabce357bfe2b8466b8dba -> 
+  custom:scripting/monoscript/fileName/EventDispatcher.cs: 640ab1ae93574ab88bfb11e983f648bd -> 
+  custom:scripting/monoscript/fileName/ITextBlock.cs: 27794b7f22c2ec8dbc55056aec8dfdfd -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:scripting/monoscript/fileName/QuestRewardUI.cs: 69e721fc3675bd3f303dd46475c9f1ec -> 0dc2cd6cfeb8794f088c49d5dac24c40
+  custom:scripting/monoscript/fileName/Constants.cs: e2f305b2c2e244a6d6e8c156327938fd -> fa52d9e2c41d32959d67d28a3906ed61
+  custom:scripting/monoscript/fileName/ReadOnlyList.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/RemoteTextureDataBinding.cs: 9f7d4b649a77716d66fac818a6cc58ed -> 
+  custom:scripting/monoscript/fileName/RenderEngineRunner.cs: 62461103aae6e05a027197dc01e682bf -> 
+  custom:scripting/monoscript/fileName/FlexalonInteractable.cs: c0a616655cb9a4372801a1756d67f5ef -> 
+  custom:scripting/monoscript/fileName/RenderingJobsDataStore.cs: 376b4382d06c192ec565819a0263e746 -> 
+  custom:scripting/monoscript/fileName/SubQuadBoundsConverter.cs: 13f2a253f808e7616b27c6ed80f6382a -> 
+  custom:scripting/monoscript/fileName/SortGroupInfo.Internal.cs: 82a2e58b1b38dd460320691a691ba475 -> 
+  custom:scripting/monoscript/fileName/CameraSortRunner.cs: 649c87f73da33fc05e9eb52e3dae07f3 -> 
+  custom:scripting/monoscript/fileName/ImageData.Internal.cs: 2d31bf134c6d4c356020a20728038d9f -> 
+  custom:scripting/monoscript/fileName/ToleranceConfig.cs: d8b87145dad0deda1728f4b46e1dc408 -> 
+  custom:scripting/monoscript/fileName/LayoutsProcessHierarchy.cs: a4ab0e2401c68f52fe03dc9633f59b4c -> 
+  custom:scripting/monoscript/fileName/ImageTracker.cs: 203c6c870b72c458c12f4e9fd8de4c14 -> 
+  custom:scripting/monoscript/fileName/RenderIndexTypes.cs: f7143a9be5098fb0ff8ecd8126733213 -> 
+  custom:scripting/monoscript/fileName/BlockEditor.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/ListExtensions.cs: 1204d505d4fcbfeb268a0f83fb74e3d7 -> 0f96dfdcfd19dc46bb3b974629f04481
+  custom:scripting/monoscript/fileName/ILayoutBlock.cs: 10f729aa71aeb1c28a6c8fd08a32295e -> 
+  custom:scripting/monoscript/fileName/PropertyDrawerUtils.cs: 6eb6f5fbaf598a935d63ff4eb9800207 -> 
+  custom:scripting/monoscript/fileName/FlattenStamp.cs: b1a49d698f7c77b6ddc3a8ea93f0966a -> 
+  custom:scripting/monoscript/fileName/LayoutDataStore.cs: 76d2dfb0d7ca089c8ef0f7e18fce6512 -> 
+  custom:scripting/monoscript/fileName/AutoLayout.cs: 6be434211f83974d6ab4df2d1782aac1 -> 
+  custom:scripting/monoscript/fileName/Gesture.cs: 7bad7bdfca356eff162435d00fa88a20 -> 
+  custom:scripting/monoscript/fileName/SubQuadVertCopyJob.cs: c39bfa7bd7d242d4ae541150ac00117d -> 
+  custom:scripting/monoscript/fileName/VirtualUIBlock.cs: 1e1ff37e843f080bf28044447594016c -> 
+  custom:scripting/monoscript/fileName/AutoLayoutDrawer.cs: 5aa91d149c8ad0aec08f45a6fdbe6791 -> 
+  custom:scripting/monoscript/fileName/IAnimation.cs: 81fe71036e857ef1fa7188649f7d3c37 -> 
+  custom:scripting/monoscript/fileName/SimpleMovingAverage.cs: 27481aa5a4f944d6ba31433948da1d5e -> 
+  custom:scripting/monoscript/fileName/FlexalonRandomModifier.cs: ff7560ddea44d286cb04d6c24802c14c -> 
+  custom:scripting/monoscript/fileName/UnsafeListExtensions.cs: 1711c5f49765130afcbe37773c728859 -> 
+  custom:scripting/monoscript/fileName/ValuePair.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/QualitySettingsUtilsImpl.cs: 63824925b968ace337f023921be84f1c -> 
+  custom:scripting/monoscript/fileName/FlexalonAlignLayoutEditor.cs: 1095fc4b7ab7a9cad70072bd88d0dcdf -> 
+  custom:scripting/monoscript/fileName/FlexalonRandomLayoutEditor.cs: c4ea62f2da2acfbadb630831651f6c09 -> 
+  custom:scripting/monoscript/fileName/ShaderIndex.cs: d62ead02068b83e68b5084de992e7627 -> 
+  custom:scripting/monoscript/fileName/CameraSortingTypes.cs: 829d5c2575e322c5628036ad3c1e49a6 -> 
+  custom:scripting/monoscript/fileName/MinMax.cs: 7d2322cbeff8eea015cb1fe0df58d1ea -> 
+  custom:scripting/monoscript/fileName/FlexalonLog.cs: 3cab564b6a59ce1c407884c0a00aeec6 -> 
+  custom:scripting/monoscript/fileName/DataBinder.cs: 99ee4c402e1b77b4c309e178885a5057 -> 
+  custom:scripting/monoscript/fileName/ItemViewPostProcessor.cs: b869dfcbed9390513b4765c768f3fe09 -> 
+  custom:scripting/monoscript/fileName/TextBlockEditor.cs: ffa7e08ccb7cf5f019e6c1017453afc8 -> 
+  custom:scripting/monoscript/fileName/Surface.cs: 90b1c71764bbae6eba741b2600621383 -> 
+  custom:scripting/monoscript/fileName/ScrollBounds.cs: 8ca3e839519a736002326494d92aec56 -> 
+  custom:scripting/monoscript/fileName/Length2.cs: eb3ada5158196b92433e6d4fe0c421f2 -> 
+  custom:scripting/monoscript/fileName/VirtualBlockSerializer.cs: 12f563161cfb7b13aac377d0b9ec0d8b -> 
+  custom:scripting/monoscript/fileName/Vector3Extensions.cs: ba423509b9975441c1b7ff770e8bf758 -> 
+  custom:scripting/monoscript/fileName/LocalTrailRenderer.cs: 0b8da816aea1c4e707943b131c5b9bfe -> 
+  custom:scripting/monoscript/fileName/ScatterPassEditor.cs: b97028614c6fe7f1c24025276d1985c1 -> 
+  custom:scripting/monoscript/fileName/QualitySettingsUtils.cs: e6414a42f5a152b49d7db7e236a9f6e8 -> 
   custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:scripting/monoscript/fileName/RawPtrArrayWrapper.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/Math.cs: 231fbec5cc68bbff5a633156eec42c57 -> 
+  custom:scripting/monoscript/fileName/LengthDrawer.cs: 88bf256c5c852f5c9bdf37f7571f6630 -> 
+  custom:scripting/monoscript/fileName/VisibilityManager.cs: b4ffa5017cb4f87dc3c35239c98b096b -> 
+  custom:scripting/monoscript/fileName/FlexalonDataBinding.cs: 8d3f172e32cd73e1b70108969a9673dc -> 
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:scripting/monoscript/fileName/TrailRenderer.cs: 17eb6c57e807ae2a3ec76a9c225e5205 -> 
-  custom:scripting/monoscript/fileName/PlayerUI.cs: 15d912f594554fbdc3299deb4ff823f3 -> bea2ebc4112a9ee311c7e570ad2b604c
-  custom:scripting/monoscript/fileName/QuestTrackerUI.cs: 8aef11b3327850725afa331fffe11b25 -> ca2198e4fcb5a274c9f226bb37c8740e
+  custom:scripting/monoscript/fileName/NovaShaderPreprocessor.cs: 816a7695c55ce49685ab15c617389a86 -> 
+  custom:scripting/monoscript/fileName/INavigationNode.cs: 6544edb9bc2271bda625b17f19bad9cc -> 
+  custom:scripting/monoscript/fileName/Shadow.cs: 98e1e41f4b8cf31d900b859328909e35 -> 7884315ffc3a3b9bc418d86e8992798d
+  custom:scripting/monoscript/fileName/DictionaryExtensions.cs: 3c3f6badb9f1e4558c4093f9fed2a159 -> a2a6f66e7e41effff792a84cdf000a6a
+  custom:scripting/monoscript/fileName/UIBlockExtensionsInternal.cs: f3db8c5bc5d28affb1d02cacef3ef09f -> 
+  custom:scripting/monoscript/fileName/EditModeUtils.cs: 877aa456e03daee7ca35acded22bd5b7 -> e59f3c025b2fc7b5a910456e5307f1c1
+  custom:scripting/monoscript/fileName/CommonData.cs: dead0ec6cfa65f0123817fccbc64dce8 -> 
+  custom:scripting/monoscript/fileName/IndexVerifier.cs: fbd5fb025c905e85e5edd854ee37a183 -> 
+  custom:scripting/monoscript/fileName/LayoutEngine.cs: ea9c832b8c0bcf7d520ce1c0a4f88d8a -> 
+  custom:scripting/monoscript/fileName/TextBlockExtensions.cs: 571ea4437199530810801e56ab3b1b84 -> 
+  custom:scripting/monoscript/fileName/NovaSettingsEditors.cs: 87909c8ce05a036fc6175f450134e0eb -> 
+  custom:scripting/monoscript/fileName/SliderVisuals.cs: a28aa5ff88dc137d4afd461bf38369b4 -> 
+  custom:scripting/monoscript/fileName/VisualElement.cs: 75bdca65a29b80d41d9bd9a90aff28ab -> 
+  custom:scripting/monoscript/fileName/FlexalonFlexibleLayout.cs: 815a3587e6b2dfd4790434a78a0b6df2 -> 
+  custom:scripting/monoscript/fileName/UIBlock3D.cs: 642be787118bd6c762ec03735749f4e6 -> 
+  custom:scripting/monoscript/fileName/PlayModeCleanup.cs: a180009d5e27ee8b7ea7ed9bba94724a -> 
+  custom:scripting/monoscript/fileName/ToggleVisuals.cs: 78dedc76bc432225a2f8cbd42ea22ae7 -> 
+  custom:scripting/monoscript/fileName/DestroyUtils.cs: 971e7768cf23bd49aafb34edd71e845e -> 
+  custom:scripting/monoscript/fileName/IDTypes.cs: 0e6a1e8c6a2342592364ae01fdb60090 -> 
+  custom:scripting/monoscript/fileName/QuadProcessJob.cs: cbcc25f6f5fc09933d08bd302ae67ee0 -> 
+  custom:scripting/monoscript/fileName/RadialFill.cs: 5406204c0ab8e4fa11dd3ad8b5341e3c -> 
+  custom:scripting/monoscript/fileName/RenderOrderJob.cs: 19ce508647cec257053f6a5b9c02bc1b -> 
+  custom:scripting/monoscript/fileName/FlexalonInputProvider.cs: ac94622c9e43f447f4b27748cceca801 -> 
+  custom:scripting/monoscript/fileName/TypeSelectionDropdown.cs: d47a08a686780029883a7d693781d37f -> 
+  custom:scripting/monoscript/fileName/GetAllDirtyBatchRootsJob.cs: 7584f83c4ff6c08290bb61b6302b262f -> 
+  custom:scripting/monoscript/fileName/Navigator.cs: 4223472c776a039e9f9ae4ed1db24835 -> 
+  custom:scripting/monoscript/fileName/UIEdgeSnapTool.cs: 0165dde4311472467fff77b0deec0fd8 -> 
+  custom:scripting/monoscript/fileName/FlexalonAlignLayout.cs: 564c76c5ebf5af5ac7ed88cc42c6d212 -> 
+  custom:scripting/monoscript/fileName/AddObjectMenus.cs: d6498bf066fa804be02d84e3eeb54f06 -> 
+  custom:scripting/monoscript/fileName/TexturePack.cs: de7254b78a547e7041be6289fac0d308 -> 
+  custom:scripting/monoscript/fileName/FrictionSimulation.cs: 6cd59bcfe109dd9855d56cf71c4d28a1 -> 
+  custom:scripting/monoscript/fileName/AABB.cs: 090c48eaa153784d7ee98f4996ce9c70 -> 
+  custom:scripting/monoscript/fileName/FlexalonModifier.cs: b51631861ebcf112e9191869b7249100 -> 
+  custom:scripting/monoscript/fileName/UIBlock2DDataStore.cs: 8a711b34199523a962dae242bd1e7c45 -> 
+  custom:scripting/monoscript/fileName/AtlasPaintBrushPreview.cs: 2cd81aa5460958dc281fca3b76991513 -> 
+  custom:scripting/monoscript/fileName/RootFromBlockMatrixJob.cs: 29a0c6136777848b5f50390fd4733f1f -> 
+  custom:scripting/monoscript/fileName/ITexturePackSubscriber.cs: 0947d093f96046d07120d9e0d15a295c -> 
+  custom:scripting/monoscript/fileName/PhysicsModel.cs: a21a22861af09ddeaa2f37df8d674a4b -> 
+  custom:scripting/monoscript/fileName/ScreenSpaceEditor.cs: f4937d2d32c4d0ff9c587a20f8a8f27a -> 
+  custom:scripting/monoscript/fileName/CoplanarSpaceBoundsJob.cs: 6f0baa569d240782d60a874a5293639c -> 
+  custom:scripting/monoscript/fileName/StampEditor.cs: 95ca108a296e74e4ea465dd056929504 -> 
+  custom:scripting/monoscript/fileName/Alignment.cs: d93913e1d20a162f0d0484a56bbd4b3a -> 
+  custom:scripting/monoscript/fileName/StructStorage.cs: 5e2ab9cfe81e04de31d18dbafae66b8c -> 
+  custom:scripting/monoscript/fileName/ImageDescriptorTypes.cs: c780ee1cb7b172a7e8f5e86150b87e37 -> 
+  custom:scripting/monoscript/fileName/UIControlVisualsPropertyDrawer.cs: cb16e7b8867a0816d7208a5edcc01a2f -> 
+  custom:scripting/monoscript/fileName/Length2Drawer.cs: fd1f5475a0a1c05de83e36756097903f -> 
   custom:CustomObjectIndexerAttribute: 9a22284fe3817be447336de3de66b15e -> 
+  custom:scripting/monoscript/fileName/ZLayerCounts.cs: 14fc097b196f55551d23865c6b51760e -> 
+  custom:scripting/monoscript/fileName/UnityVersionUtils.cs: 5376bc163553c415b7d7bcd1fd3e14a1 -> 
+  custom:scripting/monoscript/fileName/ArrayExtensions.cs: 0977ac4992b56e064d1f8c9a45f27d9f -> 
+  custom:scripting/monoscript/fileName/LayoutEngineCache.cs: 64f05f4638cd6777363c53b6e0f5e3f9 -> 
+  custom:scripting/monoscript/fileName/NovaEngine.cs: 641171490088f6e0a3a641df6080d9be -> 
+  custom:scripting/monoscript/fileName/ScatterRuleAssetEditor.cs: 3da1359561925e95ec4f140224e6951b -> 
+  custom:scripting/monoscript/fileName/RenderingFinalizeJob.cs: 62fa2ee34e159129a05d6fb0fa031d02 -> 
   custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:scripting/monoscript/fileName/ClipMaskEditor.cs: 4950ef05c6ce3395b773ad710aeb3358 -> 
+  custom:scripting/monoscript/fileName/SampleMaterialPicker.cs: e81bf37de1046df7b6b9461c9105689f -> 
   custom:scripting/precompiled-assembly-types:Unity.Cecil: 934eb9cb90b2d4122cdab328a8f31a56 -> a7f6985e8396a120b39fef08582fc409
-  custom:scripting/monoscript/fileName/QuestTaskUI.cs: deda02c1099491116e148764905a43bc -> 9578d6f090fca6a6389ce8bf73683c1a
-  custom:scripting/monoscript/fileName/QuestJournalUI.cs: b82d758f3c7d48b8f21418ba1a42dbbf -> edfa1288e2c50dd0be8fec4c4cca3fb1
+  custom:scripting/monoscript/fileName/UIBlock3DMeshJob.cs: 630a49a93c8c2c49d1fbbee18720a665 -> 
+  custom:scripting/monoscript/fileName/GridList.cs: c52e4cb43123313ac793d93f88e3889e -> 
+  custom:scripting/monoscript/fileName/GoogleImageDataSource.cs: ae04b808c5487d5b52704b8ba92f6567 -> 
+  custom:scripting/monoscript/fileName/BackgroundBlurGroup.cs: 8185daf1df56d867ba4a5f06f5377ed3 -> 
+  custom:scripting/monoscript/fileName/StampBaseEditor.cs: b34bc75807bcb9106b6be794bbfcb4ce -> 
+  custom:scripting/monoscript/fileName/FlexalonShapeLayoutEditor.cs: 48bc4b237e342d85f06977a68f31f00e -> 
+  custom:scripting/monoscript/fileName/TextPosition.cs: 02144b16fa355018d674d3c076a78329 -> 
+  custom:scripting/monoscript/fileName/NovaApplication.cs: fe45a0be79773e013bf7df3c3784bbef -> 
+  custom:scripting/monoscript/fileName/SubQuadShaderDataJob.cs: 2d1cf9379e7a7d6f4b35d3dff8e2ebfa -> 
+  custom:scripting/monoscript/fileName/DrawCallSummary.cs: 54e38ca7f4e491276b60d0b63a883e4c -> 
+  custom:scripting/monoscript/fileName/CornerRadiusHandle.cs: 7fcf4cd52f3b46179ea9c4b6714d755f -> 
+  custom:scripting/monoscript/fileName/LengthExtensions.cs: 0d324a98b363767d1769251684e2ba83 -> 
+  custom:scripting/monoscript/fileName/SerializedNames.g.cs: 2d14e325219964714510ecbff48c708f -> 
+  custom:scripting/monoscript/fileName/UIBlockGizmos.cs: dc41221e0262919bbd6f979e8f9defce -> 
+  custom:scripting/monoscript/fileName/IUIBlockBase.cs: 16744d917e31122f3246adc4e4cd6978 -> 
+  custom:scripting/monoscript/fileName/HierarchyDataStore.cs: c9d561508a0f632eed1e2fc80248c6a7 -> 
+  custom:scripting/monoscript/fileName/DataStoreInterfaces.cs: 9e180ebb013ace313cf0ce49717ec7f5 -> 
+  custom:scripting/monoscript/fileName/UITool.cs: e82a0cf377ad99cbf157d1742d22b9af -> 
+  custom:scripting/monoscript/fileName/IEnumerableExtensions.cs: 39ee0d45225f6f2ca01d281bed571127 -> 
+  custom:scripting/monoscript/fileName/ClipMask.cs: 2b7e9212fa9b71b4cbc4353283fb72a1 -> 
+  custom:scripting/monoscript/fileName/NativeDedupedList.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/TextField.cs: f20046c8be8e8771e55a99e51f92939d -> 
+  custom:scripting/monoscript/fileName/FlexalonCurveLayoutEditor.cs: 601e5cb918c8aff627743fe24817336d -> 
+  custom:scripting/monoscript/fileName/TypeMenuPathAttribute.cs: 1591c14f87736390a2e2817f102faf73 -> 
+  custom:scripting/monoscript/fileName/Interaction.cs: 8884d4d70cf5e91c4475d604a63839a7 -> b957a8dc5d18d22cabf3cbc4b4466996
+  custom:scripting/monoscript/fileName/NativeHierarchy.cs: 7e786ae975eb206dbcf2ca33eef544df -> 
+  custom:scripting/monoscript/fileName/LayoutUtils.cs: ee928cd35ac76b95b164aff47fc8dfa1 -> 
+  custom:scripting/monoscript/fileName/RayToEdge.cs: 94e9f490daa5179444b639da0282f25e -> 
+  custom:scripting/monoscript/fileName/TextBlockData.cs: 54f4b2cd7b6bdb2b8d719fb83388bb97 -> 
+  custom:scripting/monoscript/fileName/UIBlockUtils.cs: d9bba162afc6e8e415d72d46bdb9987d -> 
+  custom:scripting/monoscript/fileName/ThreeD.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/FlexalonCurveLayout.cs: 4bfef3e3bae4fb7fac4330d73fdc8f0d -> 
+  custom:scripting/monoscript/fileName/CustomLayout.cs: 7430c99acc3c0543c4f20ac4b13c4ffa -> 
+  custom:scripting/monoscript/fileName/Stamp.cs: 22b09622fd6834835227aaa8f31cbd2e -> 
+  custom:scripting/monoscript/fileName/ImageDataStore.cs: 7bcb264686432e9508557f261336dbdc -> 
+  custom:scripting/monoscript/fileName/InputEngine.cs: bae202a4e02efe35d0f5d6d4f7b50bca -> 
+  custom:scripting/monoscript/fileName/SetupHierarchy.cs: bfa4c271ad3449b86031523b6dd98cc7 -> 
+  custom:scripting/monoscript/fileName/Layout.cs: 3007f55983aa9e146f2456ce983368a4 -> 43393a6f4cfc3aae1169dd269c3c4e41
+  custom:scripting/monoscript/fileName/StampMapEditor.cs: a7adbc22f6b8985c1535aa455a99b072 -> 
+  custom:scripting/monoscript/fileName/LayoutsBuild.cs: 92e715c47f04d8c9391de4d5c527d785 -> 
+  custom:scripting/monoscript/fileName/VirtualUIBlock2D.cs: 3903a8eec2e6fbaab87481b606912f15 -> 
+  custom:scripting/monoscript/fileName/NavQueries.cs: 777323b32a304c07dcd70e926b579cf3 -> 
+  custom:scripting/monoscript/fileName/QuadBoundsDescriptor.cs: a48ef771f7ea83ffa36393574a60572f -> 
+  custom:scripting/monoscript/fileName/RenderElement.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/MemoryUtils.cs: ba48f2436fde2f9c1dcfdb5039f09100 -> 
+  custom:scripting/monoscript/fileName/UIControl.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/IRenderBlock.cs: f2152dc1c4d8150d22b581b3c2355152 -> 
+  custom:scripting/monoscript/fileName/GradientTool.cs: a2da068037ade8aa303e317e66face24 -> 
+  custom:scripting/monoscript/fileName/LayoutsSpatialPartition.cs: 6f9df6f4742d0c14714da16867f8c666 -> 
+  custom:scripting/monoscript/fileName/AtlasUnityTerrainRenderer.cs: bc9d3560bf3ccb20e394ac2980b679f0 -> 
+  custom:scripting/monoscript/fileName/NovaEditorPrefs.cs: cce4b77ed21e5f313727abdc9e31acc5 -> 
+  custom:scripting/monoscript/fileName/ImageAdjustment.Internal.cs: ba66774d118226980de6842e464dda72 -> 
+  custom:scripting/monoscript/fileName/FlexalonClonerEditor.cs: 148542cfb35c5792980cb5ee8d9c7079 -> 
+  custom:scripting/monoscript/fileName/MeshProvider.cs: 5ce131c55d4843e64ee1c6c0a65ee678 -> 
+  custom:scripting/monoscript/fileName/FlexalonNode.cs: 264225790af010841a012b09eab2d4b8 -> 
+  custom:scripting/monoscript/fileName/ICollectionWrapper.cs: 1eddd7a071e59e8534796e4887649a88 -> 
+  custom:scripting/monoscript/fileName/IHierarchyActivatable.cs: f828533dc3daa0b461f4766a39426eec -> 
+  custom:scripting/monoscript/fileName/NovaSettingsInternal.cs: 41c9e4cdb6170b71c3dd63c39c6e46f5 -> 
+  custom:scripting/monoscript/fileName/VirtualBlock.cs: e30d7f1445048a5b0b69c34154bc9041 -> 
+  custom:scripting/monoscript/fileName/FlexalonMenu.cs: 4484961e956653a4402290b0e3be2983 -> 
+  custom:scripting/monoscript/fileName/FlexalonObjectEditor.cs: 7cd01476ac4e409c080102e00cf05fac -> 
+  custom:scripting/monoscript/fileName/IInitializable.cs: 2b76d854cfb0ebe2763b9cd44eb57e96 -> 8305710742b8c8c310f839d3d246f0b6
+  custom:scripting/monoscript/fileName/IInputTarget.cs: d34f04d8ba69deed3fc39af1addefea1 -> 
+  custom:scripting/monoscript/fileName/LayoutDataStoreJobs.cs: be712b5dbe7b6366d676a033098679e7 -> 
+  custom:scripting/monoscript/fileName/MaterialCacheTypes.cs: d0958a5f34eb07010d1bc0cd9d5bbf2d -> 
+  custom:scripting/monoscript/fileName/ObjectArrayExtensions.cs: 3ed0bca3a520ca0658623ce7b2d1f68d -> 
+  custom:scripting/monoscript/fileName/CheckInViewJob.cs: f5a06b02e2d8409426e21ec42a43f6ad -> 
+  custom:scripting/monoscript/fileName/RawInput.cs: b8ab6d2eaea3ccbde8992bdac479eaf0 -> 
+  custom:scripting/monoscript/fileName/UIBlock2D.cs: 72352fbbd8eea5bdca4a14ca8399c059 -> 
+  custom:scripting/monoscript/fileName/Slider.cs: 204d292dc873e83c847448cdff51630e -> fa9653030ac65718025b6955291e99ef
+  custom:scripting/monoscript/fileName/RenderingDataStore.cs: 376b4382d06c192ec565819a0263e746 -> 
+  custom:scripting/monoscript/fileName/HierarchyJobs.cs: d09e87ef4a367b5efcb892b3b436af91 -> 
+  custom:scripting/monoscript/fileName/AnimationID.cs: 1a310903f0ac2e8107805503690e804e -> 
+  custom:scripting/monoscript/fileName/AtlasProjectSettings.cs: 3e3b1fa410d2bcbca9d5f013a794a2a9 -> 
+  custom:scripting/monoscript/fileName/ICollisionTest.cs: fe87b5cca1038f01f327e648eea14500 -> 
+  custom:scripting/monoscript/fileName/HierarchyElement.cs: b162d99f90f4fa97546fd4117fed591f -> 
+  custom:scripting/monoscript/fileName/TextBlockSizeChangeDetectionJob.cs: b39edf73408a865116f15edf8189a60a -> 
+  custom:scripting/monoscript/fileName/TextureBlur.cs: 4d14c16c362ab0a67052362b7f8d4888 -> 
+  custom:scripting/monoscript/fileName/IndexSafeLists.cs: 424e2c52e0c0576a75ff5f8d80d4ae07 -> 
+  custom:scripting/monoscript/fileName/NotKeyableAttribute.cs: e73139a92523b3d93b45730929d15746 -> 
+  custom:scripting/monoscript/fileName/DetailPassEditor.cs: ef76f01e692596d407968e53d76d9a91 -> 
+  custom:scripting/monoscript/fileName/SortGroup.cs: 19b3bc81824f5604e550f844dee8f216 -> 
+  custom:scripting/monoscript/fileName/SettingsConfigInternal.cs: bed25db7da4f27b8d765d168f245a24d -> 
+  custom:scripting/monoscript/fileName/ShaderUtils.cs: 83ea2690b4823e34d64b4227678095c0 -> 
+  custom:scripting/monoscript/fileName/FlexalonDragTargetEditor.cs: 258e1b52618f1062c3be754920750a63 -> 
+  custom:scripting/monoscript/fileName/RadialFill.Internal.cs: 8bb515771e8264a2f6bcdcc0add711d3 -> 
+  custom:scripting/monoscript/fileName/RenderEngine.cs: fdbae71174619539c5a6b8819440d857 -> 
+  custom:scripting/monoscript/fileName/GridView.cs: 7903dcea054ac40c343ea995763905c1 -> 
+  custom:scripting/monoscript/fileName/FlexalonLayout.cs: bfde21a1708b80d0e44656ec4d6c7738 -> 
+  custom:scripting/monoscript/fileName/IAnimationExtensions.cs: 56b689cfdaf733a4f0d9530c1a0e1109 -> 
+  custom:scripting/monoscript/fileName/DummyCubeAnimator.cs: 2b3e6f3c819e0f10e760cd8e495b01f3 -> 
+  custom:scripting/monoscript/fileName/Length3.cs: 8d0ad2c45464f9ac883688fdbf2a7445 -> 
+  custom:scripting/monoscript/fileName/TextFieldMobileInput.cs: 382e34058b6777d6d9ab3b7eccfafe4e -> 
+  custom:scripting/monoscript/fileName/TwoD.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/ItemVisualsPropertyDrawer.cs: b3d662c73add75d1652730a86fa8c098 -> 
+  custom:scripting/monoscript/fileName/MixedValueScope.cs: cdef02e2f60243fd4dd7f7f54338bf81 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:scripting/monoscript/fileName/GestureRecognizerEditor.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/MinMaxDrawer.cs: 18b812542194d792d8ea9066578d5436 -> 
+  custom:scripting/monoscript/fileName/CollectionPool.cs: 0ecf0b5b4a9207402e80b603ad9a119c -> 
+  custom:scripting/monoscript/fileName/NovaGUI.cs: 14437b7fc650250a23b88388ba15928b -> 
+  custom:scripting/monoscript/fileName/UIBlock3DData.Internal.cs: fd414e0aa21680584a9a676c3296f511 -> 
+  custom:scripting/monoscript/fileName/StampBase.cs: e735e0082aafdb29ff9c0cc7bd764347 -> 
+  custom:scripting/monoscript/fileName/Atlas.cs: 93996522b5e5b32ec0bbaf2bfc250749 -> 
+  custom:scripting/monoscript/fileName/CrossLayoutDrawer.cs: f189ec69854405505e3164bfbe6e3748 -> 
+  custom:scripting/monoscript/fileName/SphereToBounds.cs: 53c70b8c30a65888b6c1772eaf28272c -> 
+  custom:scripting/monoscript/fileName/NavNode.cs: e31768e4ba1e5ace3e23fcebd1c4b0cc -> 
+  custom:scripting/monoscript/fileName/QuadGenerationJob.cs: 2616d2cc43d2b7b272898353092ca538 -> 
+  custom:scripting/monoscript/fileName/FlexalonComponentEditor.cs: f119177a47527462382c856d4e0762e4 -> 
+  custom:scripting/monoscript/fileName/NavLinkDrawer.cs: 09e87b204701fc43f1e9fd43a9415734 -> 
+  custom:scripting/monoscript/fileName/FlexalonMouseInputProvider.cs: 575c3a283ad5395bb22346e77a3ba963 -> 
+  custom:scripting/monoscript/fileName/BlockDataUnion.cs: ea870043ddf1b39580b51f792273e42b -> 
+  custom:scripting/monoscript/fileName/Flexalon.cs: f888c04b5af29ab5ad3d744302f74641 -> 
+  custom:scripting/monoscript/fileName/NativeBitList.cs: ffe0e9e4b44ce375f90cc51f63532d73 -> 
+  custom:scripting/monoscript/fileName/ShaderDataTypes.cs: 8923748a9c540b4a4a167c1b1069bc18 -> 
+  custom:scripting/monoscript/fileName/LayoutTransformRecorder.cs: ce234d4e8d06e3747398f1465243e249 -> 
+  custom:scripting/monoscript/fileName/RadialGradient.cs: ea7e8a88a62eb8ee9b4b8bda82d616b4 -> 217571a7648563ddec5703ea5af694db
+  custom:scripting/monoscript/fileName/CharExtensions.cs: d31d14b9bb0c8915d1a53a4379473cdd -> 
+  custom:scripting/monoscript/fileName/UIControlVisuals.cs: cdeb29a2e6371d246511979ae97374a7 -> 
+  custom:scripting/monoscript/fileName/AtlasSceneProcessor.cs: 34c489dd77f18d178a59ed026b9057ea -> 
+  custom:scripting/monoscript/fileName/UIBlock3DDataStore.cs: 3c059fee234b0a026da24ca9a8a00e4a -> 
+  custom:scripting/monoscript/fileName/NativeCollectionExtensions.cs: 2459ce036075c4bd9cf8990d778571f2 -> 
+  custom:scripting/monoscript/fileName/UIBlockTool.cs: 5707e084656e3b6a5962b1e82892abd8 -> 
+  custom:scripting/monoscript/fileName/NativeReferenceExtensions.cs: 05a073d2650b259ec78d73353cc673c0 -> 
+  custom:scripting/monoscript/fileName/MinMaxBounds.cs: 1689f42657e645f17918d2f8e2e2d3c9 -> 
+  custom:scripting/monoscript/fileName/EngineManager.cs: b35902dff589e6290e6f3d2c81cc657a -> 
+  custom:scripting/monoscript/fileName/FlexalonLerpAnimator.cs: bc55ffcf1aea9f02c400ec1d71f9281b -> 
+  custom:scripting/monoscript/fileName/FloatExtensions.cs: 900898405e509772e1fe2ec90cd24912 -> 
+  custom:scripting/monoscript/fileName/ImageAdjustmentDrawer.cs: 610d7ea40484fd8d97da632251515ccb -> 
+  custom:scripting/monoscript/fileName/UIBlock3DData.cs: 8448eb0f6e31aca4711b012784ea21b0 -> 
+  custom:scripting/monoscript/fileName/LengthRect.cs: d84c5e806a64932981451d90d4e563c2 -> 
+  custom:scripting/monoscript/fileName/BatchGroupTracker.cs: 98ae443ad1a6d85d4ef386d0a7d028b8 -> 
+  custom:scripting/monoscript/fileName/LayoutsConvertToTransforms.cs: 92e715c47f04d8c9391de4d5c527d785 -> 
+  custom:scripting/monoscript/fileName/WindowBar.cs: 3b57e5685d4dfaf357b120f285400ab7 -> 
+  custom:scripting/monoscript/fileName/Initialization.cs: 851ede233a7c69c3a067cf34f6e97276 -> 
+  custom:scripting/monoscript/fileName/TransformDataStoreEditorAssist.cs: 97b8b3a2d72c6da3e4a1b670dfd3a5de -> 
+  custom:scripting/monoscript/fileName/NovaRenderingEditors.cs: 23248f55b7d846b9b42785a9d7f2f978 -> 
+  custom:scripting/monoscript/fileName/SpacingTool.cs: ffce953000dd756ef2c9be6935b2f68b -> 
+  custom:scripting/monoscript/fileName/FlexalonInteractableEditor.cs: 385f44a38032d92747da5fb03443e232 -> 
+  custom:scripting/monoscript/fileName/PrefabPool.cs: 90647cc400823b41df847a6cbfc29026 -> 
+  custom:scripting/monoscript/fileName/Border.Internal.cs: 21e750675ee914d19c201ea0b21dbf5f -> 
+  custom:scripting/monoscript/fileName/BlockDataValidation.cs: b65b196b19524806dd7b5c942d1822e9 -> 
+  custom:scripting/monoscript/fileName/BatchZLayers.cs: 0991527f1a752cf0cb7802f384b605d3 -> 
+  custom:scripting/monoscript/fileName/GridViewEditor.cs: 088b39041b763cf35119edc91e7c9381 -> 
+  custom:scripting/monoscript/fileName/SurfaceDataStore.cs: aecf1e2ca6b93c3ca5f4aa963b9b7b36 -> 
+  custom:scripting/monoscript/fileName/NavNodeDrawer.cs: d87c7f837ddbe7a064e891294ce690ad -> 
+  custom:scripting/monoscript/fileName/LayoutEdgeSnapHandle.cs: ceb1b3d99634e1554510a916ae4cfa4c -> 
+  custom:scripting/monoscript/fileName/StampAssetEditor.cs: 7cf7b35c97f9bb67bec660fd8e1909ee -> 
+  custom:scripting/monoscript/fileName/FlexalonGridCell.cs: a15cab2113404532786cb03a428df074 -> 
+  custom:scripting/monoscript/fileName/IResizable.cs: 14189cb939e61b5c684d236d1fa015dd -> 
+  custom:scripting/monoscript/fileName/LayoutsAutoLayout.cs: 31c91afc4581b64b2caffe8f0530e119 -> 
+  custom:scripting/monoscript/fileName/DrawCallDescriptor.cs: 263e9bc41229df8954dc4da4b5409257 -> 
+  custom:scripting/monoscript/fileName/EditorInitialization.cs: c2c3251eb04314f1dda5336c89b22044 -> 
+  custom:scripting/monoscript/fileName/RotationSet.cs: 0fd447524def6bb1a2e1db007ed5e4fb -> 
+  custom:scripting/monoscript/fileName/ShowIfPropertyDrawer.cs: 3016d37f4dafd6a0e7446edb14fbbb3f -> 
+  custom:scripting/monoscript/fileName/ActiveEditorUtils.cs: 88fdc6bb838860de76308676b31fd7db -> 
+  custom:scripting/monoscript/fileName/Surface.Internal.cs: fdfcba0e0fa6e13d6af55545619fca09 -> 
+  custom:scripting/monoscript/fileName/TextFieldSelector.cs: 04fc847005f981790421b2531fd405d0 -> 
+  custom:scripting/monoscript/fileName/InteractableEditor.cs: 94a59599a2eb407b427addfd45c11615 -> 
+  custom:scripting/monoscript/fileName/DataStoreRunner.cs: d4a75cd352c1106d5880a0fe45d67e87 -> 
+  custom:scripting/monoscript/fileName/IFrameDirtyable.cs: df1e13d91db586b56008e454f45b0223 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 912248.373890 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Textures/Gradient Horizontal (Color).jpg
+  artifactKey: Guid(6eb184de103d4b3f812b38561065192f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Textures/Gradient Horizontal (Color).jpg using Guid(6eb184de103d4b3f812b38561065192f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b4c8eead80b132ef7daa845ec97792e') in 0.080773 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000055 seconds.
+  path: Assets/TextMesh Pro/Examples & Extras/Textures/Gradient Vertical (Color).jpg
+  artifactKey: Guid(03d0538de6e24c0f819bfc9ce084dfa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TextMesh Pro/Examples & Extras/Textures/Gradient Vertical (Color).jpg using Guid(03d0538de6e24c0f819bfc9ce084dfa9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '273fb50f4e2ea9e8a45f2041bc90e47d') in 0.021434 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.007651 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Ground.PSD
+  artifactKey: Guid(4d7839237acc7414db9230d1fa13c402) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Ground.PSD using Guid(4d7839237acc7414db9230d1fa13c402) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2d2a5654e2dfb6383aee4c40d0a3c56') in 0.022647 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_disp.jpg
+  artifactKey: Guid(3777a23ebe5c4b54d8a96b338979af7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_disp.jpg using Guid(3777a23ebe5c4b54d8a96b338979af7d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ac0b4f5a78d713ed9fd50579171e2b5') in 0.025433 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000037 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_rgh.jpg
+  artifactKey: Guid(8a2a5ed197310d04999796d1e9eca2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/Road/Ground37_rgh.jpg using Guid(8a2a5ed197310d04999796d1e9eca2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fea1f96b9fee676c17417328551c850e') in 0.025991 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/Groundht.psd
+  artifactKey: Guid(490e507047f183d49bc13ac97169fb4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/Groundht.psd using Guid(490e507047f183d49bc13ac97169fb4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38cbead04a3e4735b9f65d490f30a177') in 0.012429 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/UMA/Examples/Legacy Examples/Assets/Textures/GroundNrm.PSD
+  artifactKey: Guid(868ca0c733371034b9c530648a20a8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/Legacy Examples/Assets/Textures/GroundNrm.PSD using Guid(868ca0c733371034b9c530648a20a8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38740d51f4f0be38223ec27a07317094') in 0.052304 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DynamicDNA/Resources/Textures/guideMesh_normal.png
+  artifactKey: Guid(87159d60593530742850bb892db2c4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DynamicDNA/Resources/Textures/guideMesh_normal.png using Guid(87159d60593530742850bb892db2c4d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c59dae374f8d5cb682f954b5013ccb8') in 0.015167 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Hair/HAIR_Dupgrade.tga
+  artifactKey: Guid(92914de304309e747853a495770218e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Hair/HAIR_Dupgrade.tga using Guid(92914de304309e747853a495770218e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd3775c4e3a8a629bcde1a8965657353') in 0.031388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe1/Textures/Hair/Hair_Long_Braided_1_diffuse.png
+  artifactKey: Guid(3a863fa5bebd59041a3f8696d3768d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe1/Textures/Hair/Hair_Long_Braided_1_diffuse.png using Guid(3a863fa5bebd59041a3f8696d3768d31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4d76ac0678508db119417971770f18a') in 0.020735 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe1/Textures/Hair/Hair_Long_Braided_1_normal.png
+  artifactKey: Guid(da079680760bd614d9904591f776b5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe1/Textures/Hair/Hair_Long_Braided_1_normal.png using Guid(da079680760bd614d9904591f776b5d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '24c807f0470454b84d60da7471db11d9') in 0.017351 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/UMA/Content/Core/HumanShared/Textures/Hair/HairMetallic.png
+  artifactKey: Guid(d56f6e68b57a14f20b5a7fbe0dda16a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Core/HumanShared/Textures/Hair/HairMetallic.png using Guid(d56f6e68b57a14f20b5a7fbe0dda16a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31051a65b7a8a5587c22b6107635df4b') in 0.021815 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/UMA/Content/Contrib/MaleHairSlick01/Textures/HairCards01DeSat.png
+  artifactKey: Guid(d6d3ad9ff24a3154ca46eae0f69fdeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Content/Contrib/MaleHairSlick01/Textures/HairCards01DeSat.png using Guid(d6d3ad9ff24a3154ca46eae0f69fdeb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '701c07054f3b14201b3aecedc887f762') in 0.020147 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_normal.png
+  artifactKey: Guid(6260dbbbf7d5f0d428c91e7d592438a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_normal.png using Guid(6260dbbbf7d5f0d428c91e7d592438a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c42e22201e9f44aa33e871ea482a975a') in 0.016858 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_diffuse.png
+  artifactKey: Guid(fc359ce7d2a20044bac14b99072f0e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_diffuse.png using Guid(fc359ce7d2a20044bac14b99072f0e01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55eb337ef6ce34fa635f20495833d42e') in 0.015068 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_detail_diffuse.png
+  artifactKey: Guid(d126afbadfdb59f4e9ba1cfb02993951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonFemale/Wardrobe2/Textures/Clothes/Halter_Neck_1_detail_diffuse.png using Guid(d126afbadfdb59f4e9ba1cfb02993951) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '069d5fe4fdffc239e2ed9014f33c8941') in 0.015132 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 13.878745 seconds.
+  path: Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Emissive.png
+  artifactKey: Guid(5f891bae67f7d304d9a61acaa881a263) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Emissive.png using Guid(5f891bae67f7d304d9a61acaa881a263) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37372974f495e61319a8be5524e761cd') in 0.017889 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Normal.png
+  artifactKey: Guid(c4e78757e32cc8d4480c0e97328f3740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Normal.png using Guid(c4e78757e32cc8d4480c0e97328f3740) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cac52e3396a745fd0fc221c4a2ab2bc') in 0.026179 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/FishNet/Demos/SceneManager/SceneManager Event Diagram.png
+  artifactKey: Guid(f2231de60d345664cb1831a2e2ebe776) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/FishNet/Demos/SceneManager/SceneManager Event Diagram.png using Guid(f2231de60d345664cb1831a2e2ebe776) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08c235534c0248f8fd8c0f6d2c60ebb8') in 0.021004 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/UIGradient/Editor/uigradient_inspector_icon.png
+  artifactKey: Guid(8ee3c2bc119f3b9488972e189bdcd023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UIGradient/Editor/uigradient_inspector_icon.png using Guid(8ee3c2bc119f3b9488972e189bdcd023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b331c4a4a97fc5838b722b318e618930') in 0.020896 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Roughness.png
+  artifactKey: Guid(f386abe775e9a57459e8aeba11ad0fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Textures/StylizedLavaTextures/Rock_Ground_Cliff_1/Rock_Ground_Cliff_1_Roughness.png using Guid(f386abe775e9a57459e8aeba11ad0fe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37e2f820c5494b54cf0d5d6cc1fe9931') in 0.023347 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 23.439691 seconds.
+  path: Assets/Blink/Art/Textures/StylizedIceTextures/Ice_3/Ice_3_Height.png
+  artifactKey: Guid(ac5b8b32168a0ca41be6e018b31d6330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Blink/Art/Textures/StylizedIceTextures/Ice_3/Ice_3_Height.png using Guid(ac5b8b32168a0ca41be6e018b31d6330) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70967c57f81cb66d361191c34bfd636f') in 0.034872 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 3.603802 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoConditions.png
+  artifactKey: Guid(a499d027514974736bd63a9001ffc1bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoConditions.png using Guid(a499d027514974736bd63a9001ffc1bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0aff05ad46fb813fe53bb0717f7490a') in 0.020152 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000061 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoHandle.png
+  artifactKey: Guid(106e62b0e099f425983eb156b485b210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoHandle.png using Guid(106e62b0e099f425983eb156b485b210) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47ea97cc23cdf14f331a22f8bf8151ff') in 0.014112 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoMainCamera.png
+  artifactKey: Guid(1d20169b9ffc84c0996372d53c439035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoMainCamera.png using Guid(1d20169b9ffc84c0996372d53c439035) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '222de3497c00cab0c8be0824ddf0d7b3') in 0.020383 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoShot.png
+  artifactKey: Guid(2aafa2f0bc8c744a5abf92ee6356f89d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoShot.png using Guid(2aafa2f0bc8c744a5abf92ee6356f89d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe7286bed9e5e821a1ead0034ebfa6e5') in 0.022726 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUIText.png
+  artifactKey: Guid(147d6f1487a4840d9934e4375a335a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUIText.png using Guid(147d6f1487a4840d9934e4375a335a10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2059ce56dabaa6f3e022c22bc7b3c029') in 0.021630 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUISlider.png
+  artifactKey: Guid(808ccb247367c4c21ae628e7cdcba62b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUISlider.png using Guid(808ccb247367c4c21ae628e7cdcba62b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc73933f9b84ffa6f310eb534f8195e0') in 0.022036 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUIDropdown.png
+  artifactKey: Guid(074d6084022c2498fb5a5630cb224db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Plugins/GameCreator/Packages/Core/Editor/Gizmos/GizmoUIDropdown.png using Guid(074d6084022c2498fb5a5630cb224db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c56dffb391f08ee61e4208cb62c36cf9') in 0.023694 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 1.822572 seconds.
+  path: Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonShared/Wardrobe1/Textures/blank_normal.png
+  artifactKey: Guid(c2dcffc5c4825944f9984661cb51d0c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UMA/Examples/DynamicCharacterSystem Examples/Assets/DemoAssetBundles/ToonShared/Wardrobe1/Textures/blank_normal.png using Guid(c2dcffc5c4825944f9984661cb51d0c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3201ad60f2e71c555cc31acdbeda235e') in 0.014195 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 22.416702 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_1_Diffuse3.mat
+  artifactKey: Guid(8318902aa4672ee4f9ed7147dbc63e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_1_Diffuse3.mat using Guid(8318902aa4672ee4f9ed7147dbc63e98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f72e26ecec833cccd1c7c4becbc0304') in 0.143628 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_6_Diffuse.mat
+  artifactKey: Guid(de84bd5ff6010b3449adf2fe0be3198c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_6_Diffuse.mat using Guid(de84bd5ff6010b3449adf2fe0be3198c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a36f5d749d08816555f1e5ec376777af') in 0.030257 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_8_Diffuse.mat
+  artifactKey: Guid(e6e3d820c977e254298d67850d210df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_8_Diffuse.mat using Guid(e6e3d820c977e254298d67850d210df0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ece25db959a71a7bc6cad1068150afb') in 0.027413 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_13_Diffuse2.mat
+  artifactKey: Guid(c6e94df7bb432d243866168219013fdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_13_Diffuse2.mat using Guid(c6e94df7bb432d243866168219013fdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5edc1b2d84823e28acf60518e49c27df') in 0.027876 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_3_Diffuse3.mat
+  artifactKey: Guid(ec4cc78bb10988c4a936e1ab7c494927) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_3_Diffuse3.mat using Guid(ec4cc78bb10988c4a936e1ab7c494927) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb99baac6376922b20a39544931124b2') in 0.024592 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000087 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_15_Diffuse.mat
+  artifactKey: Guid(917b9a155b5245c4abef1b75818fa7f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_15_Diffuse.mat using Guid(917b9a155b5245c4abef1b75818fa7f8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '060400d86ae5c3fb82e95e94fb2118c1') in 0.024269 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_15_Diffuse2.mat
+  artifactKey: Guid(e97dcf9d46ee43749a84d3d830ed0ccf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_15_Diffuse2.mat using Guid(e97dcf9d46ee43749a84d3d830ed0ccf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c45be999e5518d1e74ef89f5a3095bc6') in 0.028078 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_14_Diffuse.mat
+  artifactKey: Guid(f099d678f11244a4da794d174deefbc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_14_Diffuse.mat using Guid(f099d678f11244a4da794d174deefbc1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54aadb1dc2c80a8b4102a202275f42a3') in 0.023263 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_2_Diffuse3.mat
+  artifactKey: Guid(f1e11078f6e8dce4889429585424765b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_2_Diffuse3.mat using Guid(f1e11078f6e8dce4889429585424765b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca2b88db65bb90844a1171856bb53448') in 0.024494 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_10_Diffuse3.mat
+  artifactKey: Guid(34ae4aa336734564e8f1810dc6d63366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Materials/Texture_10_Diffuse3.mat using Guid(34ae4aa336734564e8f1810dc6d63366) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ca77a4b72ce05d4ccee447ae4e16ca7') in 0.025052 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 35.768134 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_1_Diffuse.png
+  artifactKey: Guid(5917067bbc97e6f48a8d61992e76b800) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_1_Diffuse.png using Guid(5917067bbc97e6f48a8d61992e76b800) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2996282d732e92d59c1133e447c26402') in 0.022545 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_7_Diffuse2.png
+  artifactKey: Guid(6006b7323bd204842a403e46790f2aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_7_Diffuse2.png using Guid(6006b7323bd204842a403e46790f2aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '135e1f2d6c666d50cd502b5d31038ebc') in 0.021079 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_1_Normal.png
+  artifactKey: Guid(828ab2769da263e49b49984a62e9a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_1_Normal.png using Guid(828ab2769da263e49b49984a62e9a836) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62fdc6ae824c5353782eff119a804522') in 0.027152 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_15_Normal.png
+  artifactKey: Guid(ec1b57d11eed10645b6589d022fff38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_15_Normal.png using Guid(ec1b57d11eed10645b6589d022fff38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13105b22df076ca40b2ee56fba61d096') in 0.026219 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_11_Normal.png
+  artifactKey: Guid(3349b197a1422a6428992e51663fc427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_11_Normal.png using Guid(3349b197a1422a6428992e51663fc427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc66677f0790f8c7d046201a6e3bbc3b') in 0.023884 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_2_Diffuse.png
+  artifactKey: Guid(68d11a855d017ab4a8c9babf9b26a677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_2_Diffuse.png using Guid(68d11a855d017ab4a8c9babf9b26a677) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dd9bf9b12e0c5ea2431ca1b34e5f7e1') in 0.021362 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_3_Diffuse2.png
+  artifactKey: Guid(8ce24c04b29621d4984d6a48493f12fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_3_Diffuse2.png using Guid(8ce24c04b29621d4984d6a48493f12fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5a7310249011efc30be0b06f5ba4140') in 0.020709 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_6_1_Normal.png
+  artifactKey: Guid(923dc8fa4fbcbd346a446fb8afe0b709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_6_1_Normal.png using Guid(923dc8fa4fbcbd346a446fb8afe0b709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc779e2a9f2ab09340058909487f6554') in 0.022642 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_10_1_Diffuse.png
+  artifactKey: Guid(f5b08884e8079c542b618a4659935aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_10_1_Diffuse.png using Guid(f5b08884e8079c542b618a4659935aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96b1db484816453793f0956c79471392') in 0.020836 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_13_Diffuse.png
+  artifactKey: Guid(ce538e869129a6642879293183e4717d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_13_Diffuse.png using Guid(ce538e869129a6642879293183e4717d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '286467d4b93efb028fd53f6a25e30211') in 0.018378 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_1_Diffuse2.png
+  artifactKey: Guid(4b41423c437533647900652d9e0ce7a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_1_Diffuse2.png using Guid(4b41423c437533647900652d9e0ce7a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e6e6c9234f2a6aea30798a958ab16ba') in 0.020926 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_15_Diffuse.png
+  artifactKey: Guid(d379c9e185ffab4419bd2d736d133242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_15_Diffuse.png using Guid(d379c9e185ffab4419bd2d736d133242) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce575acffeadf10f5815faef3c0fefde') in 0.021001 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_3_Normal.png
+  artifactKey: Guid(33d75accc1a06be429c9f0be65be8caa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_3_Normal.png using Guid(33d75accc1a06be429c9f0be65be8caa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2a0819a6667fba5dc3177fa4fa2aa0f') in 0.020666 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_3_Diffuse3.png
+  artifactKey: Guid(9287ca778582ede4892b9d209abb46f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_3_Diffuse3.png using Guid(9287ca778582ede4892b9d209abb46f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1117d9b0246a36fea1dc4eff9ac978dc') in 0.015116 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_15_Diffuse2.png
+  artifactKey: Guid(9b40ad5e68ad380409966cc334cc6566) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_15_Diffuse2.png using Guid(9b40ad5e68ad380409966cc334cc6566) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3732124d33969ed5f4c482fbb46f97c') in 0.019166 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_9_Normal.png
+  artifactKey: Guid(a2f204800f36f224b883f5d17e57389c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_9_Normal.png using Guid(a2f204800f36f224b883f5d17e57389c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e73cccc9080dc4beda5bd5c94236b3c3') in 0.018275 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Yoge/Textures/Stylized - Nature/Texture_8_Normal.png
+  artifactKey: Guid(af5fe32bc0b00f444998e49713d005ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Yoge/Textures/Stylized - Nature/Texture_8_Normal.png using Guid(af5fe32bc0b00f444998e49713d005ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60fb79f3cf47c178e0144e429d9af420') in 0.018596 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: The I/O operation has been aborted because of either a thread exit or an application request.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0

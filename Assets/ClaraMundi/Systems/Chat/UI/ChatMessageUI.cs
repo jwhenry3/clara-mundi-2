@@ -94,8 +94,8 @@ namespace ClaraMundi
       var selectedLink = TextUtils.GetLinkUnder(Text, eventData);
       if (selectedLink == "") return;
       if (!selectedLink.Contains("player:")) return;
-      if (eventData.button == PointerEventData.InputButton.Right)
-        ChatWindowUI.Instance.OpenPlayerContextMenu(eventData, selectedLink["player:".Length..]);
+      // if (eventData.button == PointerEventData.InputButton.Right)
+      // ChatWindowUI.Instance.OpenPlayerContextMenu(eventData, selectedLink["player:".Length..]);
     }
 
     private void ShowTooltip(string itemOrInstanceId)

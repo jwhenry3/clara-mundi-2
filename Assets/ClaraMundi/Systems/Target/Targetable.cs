@@ -31,10 +31,6 @@ namespace ClaraMundi
     private Camera cam;
     private Transform cameraTransform;
 
-
-    private float updateInterval = 0.5f;
-    private float currentTick = 0;
-
     public void Start()
     {
       if (TargetCamera != null)

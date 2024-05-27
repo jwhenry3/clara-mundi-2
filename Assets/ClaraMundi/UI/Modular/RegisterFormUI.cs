@@ -34,7 +34,6 @@ namespace ClaraMundi
         case "":
           StatusMessage.text = "Registration succeeded";
           SessionManager.Instance.PlayerAccount = response.account;
-          LobbyUI.Instance.CheckAccount();
           break;
 
         case "conflict":

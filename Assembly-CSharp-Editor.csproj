@@ -67,10 +67,8 @@
   <ItemGroup>
     <Compile Include="Assets\ProceduralUIImage\Editor\FreeModifierEditor.cs" />
     <Compile Include="Assets\ProceduralUIImage\Editor\ModifierUtility.cs" />
-    <Compile Include="Assets\ClaraMundi\Editor\InputFieldWithHybridNavEditor.cs" />
     <Compile Include="Assets\ProceduralUIImage\Editor\ProceduralImageEditorUtility.cs" />
     <Compile Include="Assets\ProceduralUIImage\Editor\ProceduralImageEditor.cs" />
-    <Compile Include="Assets\ClaraMundi\Editor\ButtonWithHybridNavEditor.cs" />
     <Compile Include="Assets\UIGradient\Editor\UIGradientEditor.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1007,7 +1005,6 @@
     <ProjectReference Include="Assembly-CSharp.csproj" />
     <ProjectReference Include="UnityEditor.TestRunner.csproj" />
     <ProjectReference Include="UnityEngine.TestRunner.csproj" />
-    <ProjectReference Include="JBooth.MicroSplat.Core.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Tools.MetricEvents.csproj" />
     <ProjectReference Include="GameKit.Dependencies.csproj" />
     <ProjectReference Include="Unity.AI.Navigation.csproj" />
@@ -1036,27 +1033,27 @@
     <ProjectReference Include="GameCreator.Runtime.Core.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Tools.NetworkProfiler.Editor.csproj" />
     <ProjectReference Include="jsb.editor.unity.csproj" />
+    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
     <ProjectReference Include="ReactUnity.Editor.csproj" />
     <ProjectReference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Tools.Editor.csproj" />
     <ProjectReference Include="Addressable_Editor.csproj" />
-    <ProjectReference Include="Unity.Multiplayer.Tools.Common.csproj" />
     <ProjectReference Include="Unity.Profiling.Core.csproj" />
-    <ProjectReference Include="FishNet.Demos.csproj" />
+    <ProjectReference Include="Unity.Multiplayer.Tools.Common.csproj" />
+    <ProjectReference Include="JBooth.MicroSplat.Core.Editor.csproj" />
     <ProjectReference Include="UMA_Core.csproj" />
     <ProjectReference Include="Unity.MemoryProfiler.csproj" />
+    <ProjectReference Include="FishNet.Demos.csproj" />
     <ProjectReference Include="Unity.Sysroot.Linux_x86_64.csproj" />
-    <ProjectReference Include="Unity.VSCode.Editor.csproj" />
     <ProjectReference Include="Unity.EditorCoroutines.Editor.csproj" />
-    <ProjectReference Include="JBooth.MicroSplat.Core.Editor.csproj" />
     <ProjectReference Include="Unity.MemoryProfiler.Editor.MemoryProfilerModule.csproj" />
-    <ProjectReference Include="Unity.Animation.Rigging.csproj" />
+    <ProjectReference Include="Unity.VSCode.Editor.csproj" />
     <ProjectReference Include="Unity.Burst.csproj" />
     <ProjectReference Include="ReactUnity.csproj" />
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj" />
     <ProjectReference Include="Unity.Timeline.Editor.csproj" />
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj" />
+    <ProjectReference Include="Unity.Animation.Rigging.csproj" />
     <ProjectReference Include="jsb.editor.binding.csproj" />
     <ProjectReference Include="FishNet.Runtime.csproj" />
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
@@ -1092,6 +1089,7 @@
     <ProjectReference Include="Unity.Multiplayer.Tools.NetStatsReporting.csproj" />
     <ProjectReference Include="ReactUnity.UGUI.csproj" />
     <ProjectReference Include="Edgegap.csproj" />
+    <ProjectReference Include="JBooth.MicroSplat.Core.csproj" />
     <ProjectReference Include="jsb.shared.csproj" />
     <ProjectReference Include="Unity.Multiplayer.Tools.NetStatsMonitor.Component.csproj" />
     <ProjectReference Include="UMA_Examples_Editor.csproj" />

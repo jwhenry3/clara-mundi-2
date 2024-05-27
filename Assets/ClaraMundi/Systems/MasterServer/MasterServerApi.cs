@@ -30,7 +30,7 @@ namespace ClaraMundi
         var list = await HttpRequest.Get<List<ServerEntry>>(BaseUrl, "/master-server/servers");
         ReceivedServerList(list);
       }
-      catch (Exception e)
+      catch (Exception)
       {
         Debug.LogWarning("Could not update server list");
       }

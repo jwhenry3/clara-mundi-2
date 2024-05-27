@@ -32,9 +32,9 @@ namespace ClaraMundi
     /// <summary>
     /// True to add player to the active scene when no global scenes are specified through the SceneManager.
     /// </summary>
-    [Tooltip("True to add player to the active scene when no global scenes are specified through the SceneManager.")]
-    [SerializeField]
-    private bool _addToDefaultScene = true;
+    // [Tooltip("True to add player to the active scene when no global scenes are specified through the SceneManager.")]
+    // [SerializeField]
+    // private bool _addToDefaultScene = true;
     /// <summary>
     /// Areas in which players may spawn.
     /// </summary>
