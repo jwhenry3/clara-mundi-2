@@ -29,7 +29,7 @@ namespace ClaraMundi
       {
         Debug.Log(window.TriggerAction);
         window.SetUp();
-        if (string.IsNullOrEmpty(window.TriggerAction)) return;
+        if (string.IsNullOrEmpty(window.TriggerAction)) continue;
         if (window.TriggerAction == "Quit")
           InputManager.Instance.UI.FindAction("Cancel").performed += (context) => OnQuit(window);
         else

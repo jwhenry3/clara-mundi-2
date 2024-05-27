@@ -13718,6 +13718,12 @@ MonoBehaviour:
   ChatMessagePrefab: {fileID: 6140229908953630198, guid: 1e475760dd4897541aae2b2b10f2e2c9, type: 3}
   ChatMessageContainer: {fileID: 748016009}
   defaultChannel: Say
+  channelCommands:
+  - Tell
+  - Say
+  - Shout
+  - Yell
+  - Party
 --- !u!1 &577857934
 GameObject:
   m_ObjectHideFlags: 0
@@ -24022,7 +24028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideWhenNotInFront: 1
-  TriggerAction: Quit
+  TriggerAction: 
   background: {r: 0, g: 0, b: 0, a: 1}
   lastBackground: {r: 0, g: 0, b: 0, a: 1}
   parent: {fileID: 1013501080}
@@ -46177,7 +46183,6 @@ MonoBehaviour:
   - {fileID: 563523117}
   - {fileID: 909495589}
   - {fileID: 1013501080}
-  - {fileID: 883405807}
   - {fileID: 1923591895}
   - {fileID: 315185226}
   - {fileID: 1381461678}
