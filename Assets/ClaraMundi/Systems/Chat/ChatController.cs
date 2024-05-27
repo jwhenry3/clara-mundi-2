@@ -40,6 +40,7 @@ namespace ClaraMundi
     private void SendMessageFromClient(string channel, ChatMessage message)
     {
       if (!IsServerStarted) return;
+      // Debug.Log("Send Message From Client");
       message.SenderCharacterName = player.Character.name;
       message.SenderPosition = player.transform.position;
       ServerSendMessage(channel, message);
@@ -49,6 +50,7 @@ namespace ClaraMundi
     {
       if (!IsServerStarted) return;
       if (player == null) return;
+      // Debug.Log("Send Message From Server");
       if (channel != "Say" && channel != "Shout")
       {
         if (channel == "Whisper")
@@ -69,6 +71,7 @@ namespace ClaraMundi
         if (obj.scene.handle != player.gameObject.scene.handle || obj.scene.name != player.gameObject.scene.name) continue;
         // Debug.Log("Found sceneChat object");
         var sceneChatChannel = obj.GetComponent<ChatChannel>();
+        // Debug.Log("Scene Chat Channel " + sceneChatChannel.ToString());
         if (sceneChatChannel == null) continue;
         sceneChatChannel.ServerSendMessage(message);
       }

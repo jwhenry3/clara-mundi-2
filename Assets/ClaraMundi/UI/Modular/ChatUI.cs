@@ -1,9 +1,17 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace ClaraMundi
 {
+  public struct ParsedMessage
+  {
+    public string command;
+    public string recipient;
+    public List<string> arguments;
+    public string messageText;
+  }
   public class ChatUI : FormUI
   {
     public ChatUI Instance;
@@ -14,6 +22,18 @@ namespace ClaraMundi
     public Transform ChatMessageContainer;
 
     public string defaultChannel = "Say";
+
+    public Dictionary<string, string[]> commandMap = new()
+    {
+      {"Tell", new[] {"/t", "/tell"}},
+      {"Say", new[] {"/s", "/say"}},
+      {"Shout", new[] {"/sh", "/shout"}},
+      {"Yell", new[] {"/y", "/yell"}},
+      {"Party", new[] {"/p", "/party"}}
+    };
+    public List<string> channelCommands = new() {
+      "Tell", "Say", "Shout", "Yell", "Party"
+    };
 
     private void Start()
     {
@@ -28,81 +48,86 @@ namespace ClaraMundi
     {
       ChatManager.Messages -= OnMessage;
     }
+    string ParseCommand(string command)
+    {
+      foreach (var kvp in commandMap)
+      {
+        if (kvp.Value.Contains(command))
+          return kvp.Key;
+      }
+      return "Unknown";
+    }
+    ParsedMessage ParseMessage(string message)
+    {
+      ParsedMessage parsed = new();
+      List<string> words = message.Split(" ").ToList();
+      parsed.recipient = null;
+      Debug.Log(message);
+      Debug.Log(words[0]);
+      if (words[0].IndexOf("/") == 0)
+      {
+        parsed.command = ParseCommand(words[0]);
+        Debug.Log(parsed.command);
+        words.RemoveAt(0);
+        if (parsed.command == "Tell")
+        {
+          if (words.Count > 1)
+          {
+            parsed.recipient = words[0];
+            words.RemoveAt(0);
+          }
+        }
+      }
+      parsed.arguments = words;
+      parsed.messageText = string.Join(" ", words);
+      return parsed;
+    }
     public override void Submit()
     {
       if (inputField.inputField.text.Length == 0) return;
-      string message = inputField.inputField.text;
+      string message = inputField.inputField.text.Trim();
+      int indexOfSlash = message.IndexOf("/");
+
       inputField.inputField.text = "";
       inputField.Select();
-      if (message.IndexOf("/t ") == 0 || message.IndexOf("/tell ") == 0)
+
+      if (indexOfSlash == 0)
       {
-        message = message.Substring("/t ".Length, message.Length - "/t ".Length);
-        int indexOfSpace = message.IndexOf(" ");
-        if (indexOfSpace > -1)
+        var parsed = ParseMessage(message);
+        if (parsed.command == "Tell")
         {
-          string recipient = message.Substring(0, indexOfSpace);
-          message = message.Substring(indexOfSpace + 1, message.Length - indexOfSpace - 1);
+          if (string.IsNullOrEmpty(parsed.recipient)) return;
           ChatManager.SendChatMessage("Whisper", new ChatMessage
           {
             Type = ChatMessageType.Chat,
             Channel = "Whisper",
-            Message = message,
-            ToCharacterName = recipient
+            Message = parsed.messageText,
+            ToCharacterName = parsed.recipient
           });
+          return;
         }
-        return;
-      }
-      if (message.IndexOf("/s ") == 0 || message.IndexOf("/say ") == 0)
-      {
-        int indexOfSpace = message.IndexOf(" ");
-        defaultChannel = "Say";
-        message = message.Substring(indexOfSpace + 1, message.Length - indexOfSpace - 1);
-        ChatManager.SendChatMessage(defaultChannel, new ChatMessage
+        if (channelCommands.Contains(parsed.command))
         {
-          Type = ChatMessageType.Chat,
-          Channel = "Say",
-          Message = message,
-        });
-        return;
-      }
-      if (message.IndexOf("/sh ") == 0 || message.IndexOf("/shout ") == 0)
-      {
-        int indexOfSpace = message.IndexOf(" ");
-        defaultChannel = "Shout";
-        message = message.Substring(indexOfSpace + 1, message.Length - indexOfSpace - 1);
-        ChatManager.SendChatMessage(defaultChannel, new ChatMessage
+          defaultChannel = parsed.command;
+          ChatManager.SendChatMessage(defaultChannel, new ChatMessage
+          {
+            Type = ChatMessageType.Chat,
+            Channel = defaultChannel,
+            Message = parsed.messageText,
+          });
+          return;
+        }
+        else
         {
-          Type = ChatMessageType.Chat,
-          Channel = "Shout",
-          Message = message,
-        });
-        return;
-      }
-      if (message.IndexOf("/y ") == 0 || message.IndexOf("/yell ") == 0)
-      {
-        int indexOfSpace = message.IndexOf(" ");
-        defaultChannel = "Yell";
-        message = message.Substring(indexOfSpace + 1, message.Length - indexOfSpace - 1);
-        ChatManager.SendChatMessage(defaultChannel, new ChatMessage
-        {
-          Type = ChatMessageType.Chat,
-          Channel = "Yell",
-          Message = message,
-        });
-        return;
-      }
-      if (message.IndexOf("/p ") == 0 || message.IndexOf("/party ") == 0)
-      {
-        int indexOfSpace = message.IndexOf(" ");
-        defaultChannel = "Party";
-        message = message.Substring(indexOfSpace + 1, message.Length - indexOfSpace - 1);
-        ChatManager.SendChatMessage(defaultChannel, new ChatMessage
-        {
-          Type = ChatMessageType.Chat,
-          Channel = "Party",
-          Message = message,
-        });
-        return;
+          // run a command parser
+          ChatManager.ReceivedMessage(new()
+          {
+            Type = ChatMessageType.System,
+            Channel = "System",
+            Message = "Invalid command"
+          });
+          return;
+        }
       }
       ChatManager.SendChatMessage(defaultChannel, new ChatMessage
       {
@@ -110,6 +135,7 @@ namespace ClaraMundi
         Channel = defaultChannel,
         Message = message,
       });
+      // Debug.Log("Message Sent!");
     }
 
     public void ClearMessages()
@@ -124,6 +150,7 @@ namespace ClaraMundi
       if (ChatMessageContainer == null) return;
       ClearOutOfBounds();
 
+      Debug.Log("Message Received");
       var instance = Instantiate(ChatMessagePrefab);
       instance.SetChatMessage(message);
       instance.transform.SetParent(ChatMessageContainer);

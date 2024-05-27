@@ -63,7 +63,7 @@ namespace ClaraMundi
     private void OnAttributeChange(SyncDictionaryOperation op, AttributeType key, float value, bool asServer)
     {
       OnChange?.Invoke();
-      Debug.Log("Attributes Change");
+      // Debug.Log("Attributes Change");
     }
 
     private void LevelChange(int previous, int next, bool asServer)

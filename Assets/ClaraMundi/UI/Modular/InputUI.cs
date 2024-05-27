@@ -105,7 +105,7 @@ namespace ClaraMundi
     void OnDisable()
     {
 
-      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == gameObject)
       {
         IsFocused = false;
         EventSystem.current.SetSelectedGameObject(null);

@@ -22,7 +22,7 @@ namespace ClaraMundi.Testing
     {
       t = transform;
       c = GetComponent<Camera>();
-      moveAction = InputActionAsset.FindAction("Player/Move");
+      moveAction = InputActionAsset.FindAction("All/Move");
     }
 
     private void Update()

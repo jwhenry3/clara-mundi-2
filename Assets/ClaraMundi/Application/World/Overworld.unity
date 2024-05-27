@@ -542,6 +542,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4236431867955227383, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
+      propertyPath: _isSpawnable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236431867955227383, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
+      propertyPath: _scenePathHash
+      value: 971029819
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236431867955227383, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
+      propertyPath: <SceneId>k__BackingField
+      value: 4170541319367001888
+      objectReference: {fileID: 0}
     - target: {fileID: 5733909637171512410, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
       propertyPath: m_Name
       value: ChatChannel
@@ -553,7 +565,7 @@ PrefabInstance:
     - target: {fileID: 5936527436402146423, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
       propertyPath: _networkObjectCache
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 209267477}
     - target: {fileID: 5936527436402146423, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
       propertyPath: supportedChannels.Array.size
       value: 2
@@ -571,7 +583,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5733909637171512410, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 209267476}
   m_SourcePrefab: {fileID: 100100000, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
 --- !u!114 &209267474 stripped
@@ -606,6 +618,17 @@ MonoBehaviour:
   _updateHostVisibility: 1
   _observerConditions:
   - {fileID: 11400000, guid: 2033f54fd2794464bae08fa5a55c8996, type: 2}
+--- !u!114 &209267477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4236431867955227383, guid: 378380e3ccb9e9e4f9a5bb1fc396436d, type: 3}
+  m_PrefabInstance: {fileID: 209267473}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209267475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b716c41e9b56b4baafaf13a523ba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &241329790
 GameObject:
   m_ObjectHideFlags: 0

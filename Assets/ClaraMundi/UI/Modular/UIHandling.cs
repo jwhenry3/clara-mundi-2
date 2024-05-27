@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using GameKit.Dependencies.Utilities;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,11 +20,14 @@ namespace ClaraMundi
     public GameObject Placeholder;
     public CanvasGroup Backdrop;
 
+    public List<WindowUI> windows;
+
     void Start()
     {
       Instance = this;
-      foreach (WindowUI window in PlayerUI.GetComponentsInChildren<WindowUI>(true))
+      foreach (WindowUI window in windows)
       {
+        Debug.Log(window.TriggerAction);
         window.SetUp();
         if (string.IsNullOrEmpty(window.TriggerAction)) return;
         if (window.TriggerAction == "Quit")
@@ -39,6 +43,7 @@ namespace ClaraMundi
       {
         InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
         {
+          Debug.Log(InputUI.IsFocused);
           if (InputUI.IsFocused) return;
           if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
           {
