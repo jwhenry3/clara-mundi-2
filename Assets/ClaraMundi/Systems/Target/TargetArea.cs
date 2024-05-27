@@ -12,6 +12,7 @@ namespace ClaraMundi
 
     private void OnTriggerEnter(Collider other)
     {
+      if (PlayerManager.Instance.LocalPlayer != Player) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && !InArea.Contains(targetable))
         InArea.Add(targetable);
@@ -19,6 +20,7 @@ namespace ClaraMundi
 
     private void OnTriggerStay(Collider other)
     {
+      if (PlayerManager.Instance.LocalPlayer != Player) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
       {
@@ -33,13 +35,14 @@ namespace ClaraMundi
 
     private void OnTriggerExit(Collider other)
     {
+      if (PlayerManager.Instance.LocalPlayer != Player) return;
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && InArea.Contains(targetable))
       {
         InArea.Remove(targetable);
         targetable.UpdateDetails();
-        if (targetable.TargetController != null && targetable.TargetController.SubTargetId == targetable.Entity.entityId.Value)
-          targetable.TargetController.SubTargetId = null;
+        if (targetable.TargetController != null && targetable.TargetController.SubTargetId.Value == targetable.Entity.entityId.Value)
+          targetable.TargetController.SetSubTarget(null);
       }
     }
   }

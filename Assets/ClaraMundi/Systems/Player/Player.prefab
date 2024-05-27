@@ -680,7 +680,8 @@ MonoBehaviour:
     rid: 2220649812141015102
   m_InverseKinematics:
     m_RigLayers:
-      m_Rigs: []
+      m_Rigs:
+      - rid: 9122246167588504508
   m_Footsteps:
     m_Feet: []
     m_FootstepSounds:
@@ -704,7 +705,7 @@ MonoBehaviour:
         m_Driver:
           rid: 2220649812141015232
         m_Facing:
-          rid: 2220649812141015109
+          rid: 9122246181706531292
         m_Animim:
           rid: 2220649812141015110
     - rid: 2220649812141015105
@@ -748,13 +749,6 @@ MonoBehaviour:
           m_InSuccession: 0
           m_DashInAir: 0
           m_Cooldown: 1
-    - rid: 2220649812141015109
-      type: {class: UnitFacingPivot, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data:
-        m_DirectionFrom: 0
-        m_Axonometry:
-          m_Axonometry:
-            rid: 2220649812141015114
     - rid: 2220649812141015110
       type: {class: UnitAnimimKinematic, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
       data:
@@ -773,9 +767,6 @@ MonoBehaviour:
       type: {class: InteractionModeNearCharacter, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
       data:
         m_Offset: {x: 0, y: 0, z: 1}
-    - rid: 2220649812141015114
-      type: {class: AxonometryNone, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
     - rid: 2220649812141015232
       type: {class: UnitDriverNavmesh, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
       data:
@@ -784,6 +775,34 @@ MonoBehaviour:
         m_AutoMeshLink: 1
         m_AgentType:
           m_AgentTypeIndex: 0
+    - rid: 9122246167588504508
+      type: {class: RigLookTo, ns: GameCreator.Runtime.Characters.IK, asm: GameCreator.Runtime.Core}
+      data:
+        m_Breakpoint: 0
+        m_IsEnabled: 1
+        m_TrackSpeed: 270
+        m_MaxAngle: 120
+        m_Sections:
+        - m_Bone: 8
+          m_Euler: {x: 0, y: 0, z: 0}
+          m_Weight: 1
+        - m_Bone: 9
+          m_Euler: {x: 0, y: 0, z: 0}
+          m_Weight: 3
+        - m_Bone: 10
+          m_Euler: {x: 0, y: 0, z: 0}
+          m_Weight: 3
+    - rid: 9122246181706531292
+      type: {class: FacingToggle, ns: ClaraMundi, asm: Assembly-CSharp}
+      data:
+        Target: {fileID: 0}
+        m_DirectionFrom: 0
+        m_Axonometry:
+          m_Axonometry:
+            rid: 9122246181706531293
+    - rid: 9122246181706531293
+      type: {class: AxonometryNone, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      data: 
 --- !u!114 &2827553535106259288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1147,7 +1166,6 @@ MonoBehaviour:
   Player: {fileID: 378666723463143088}
   InArea: []
   PossibleTargets: []
-  updateInterval: 0.5
 --- !u!1 &993122008762871369
 GameObject:
   m_ObjectHideFlags: 0

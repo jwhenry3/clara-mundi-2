@@ -90,7 +90,7 @@ namespace ClaraMundi
         if (!Backdrop.blocksRaycasts)
         {
           var targeting = PlayerManager.Instance.LocalPlayer?.Targeting;
-          if (targeting == null || (targeting.TargetId.Value == null && targeting.SubTargetId == null))
+          if (targeting == null || (targeting.TargetId.Value == null && targeting.SubTargetId.Value == null))
             window.moveSibling.ToFront();
         }
       }

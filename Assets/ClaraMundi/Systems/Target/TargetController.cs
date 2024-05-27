@@ -4,6 +4,7 @@ using FishNet.Object;
 using FishNet.Object.Synchronizing;
 using UnityEngine.InputSystem;
 using static UnityEngine.ParticleSystem;
+using GameCreator.Runtime.Characters.IK;
 namespace ClaraMundi
 {
   public class TargetController : PlayerController
@@ -15,16 +16,14 @@ namespace ClaraMundi
     // target must be persisted to server to ensure those observing what the npc/player is targeting can see it
     // also we can use targetless RPCs against the selected target for some simplicity
     public readonly SyncVar<string> TargetId = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
+    public readonly SyncVar<string> SubTargetId = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
+    public readonly SyncVar<bool> CameraLockTarget = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
+    public readonly SyncVar<bool> CameraLockSubTarget = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
 
-    // SubTarget is only needed for actions not performed on the target
-    public string SubTargetId;
-
-    public Targetable SubTarget => !string.IsNullOrEmpty(SubTargetId) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(SubTargetId) ? EntityManager.Instance.Entities[SubTargetId].GetComponent<Targetable>() : null;
+    public Targetable SubTarget => !string.IsNullOrEmpty(SubTargetId.Value) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(SubTargetId.Value) ? EntityManager.Instance.Entities[SubTargetId.Value].GetComponent<Targetable>() : null;
 
     public Targetable Target => !string.IsNullOrEmpty(TargetId.Value) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(TargetId.Value) ? EntityManager.Instance.Entities[TargetId.Value].GetComponent<Targetable>() : null;
 
-    public bool cameraLockTarget;
-    public bool cameraLockSubTarget;
 
     private bool listening;
 
@@ -33,6 +32,10 @@ namespace ClaraMundi
     private float inputCooldown;
 
     private Targetable targetable;
+
+    private RigLookTo lookRig;
+    private LookToTransform lookTo;
+    private FacingToggle facingToggle;
 
     public void ServerSetTarget(string targetId)
     {
@@ -44,6 +47,37 @@ namespace ClaraMundi
     public void SetTarget(string targetId)
     {
       TargetId.Value = targetId;
+      if (string.IsNullOrEmpty(targetId))
+        CameraLockTarget.Value = false;
+      else
+      {
+        CameraLockTarget.Value = CameraLockSubTarget.Value;
+        if (SubTargetId.Value == targetId)
+          SubTargetId.Value = null;
+        CameraLockSubTarget.Value = false;
+      }
+    }
+    [ServerRpc(RunLocally = true)]
+    public void SetSubTarget(string targetId)
+    {
+      SubTargetId.Value = targetId;
+      if (string.IsNullOrEmpty(targetId))
+        CameraLockSubTarget.Value = false;
+    }
+
+    [ServerRpc(RunLocally = true)]
+    public void SetLockTarget(bool value)
+    {
+      if (string.IsNullOrEmpty(TargetId.Value))
+        value = false;
+      CameraLockTarget.Value = value;
+    }
+    [ServerRpc(RunLocally = true)]
+    public void SetLockSubTarget(bool value)
+    {
+      if (string.IsNullOrEmpty(SubTargetId.Value))
+        value = false;
+      CameraLockSubTarget.Value = value;
     }
 
     void OnEnable()
@@ -72,14 +106,9 @@ namespace ClaraMundi
     void OnLockTarget(InputAction.CallbackContext context)
     {
       if (SubTarget != null)
-      {
-        cameraLockSubTarget = !cameraLockSubTarget;
-      }
+        SetLockSubTarget(!CameraLockSubTarget.Value);
       else if (Target != null)
-      {
-        cameraLockTarget = !cameraLockTarget;
-      }
-
+        SetLockTarget(!CameraLockTarget.Value);
     }
 
     void Update()
@@ -106,8 +135,8 @@ namespace ClaraMundi
           nextPressed = false;
         }
       }
-      if (!string.IsNullOrEmpty(SubTargetId) && SubTarget == null)
-        SubTargetId = null;
+      if (!string.IsNullOrEmpty(SubTargetId.Value) && SubTarget == null)
+        SetSubTarget(null);
       if (!string.IsNullOrEmpty(TargetId.Value) && Target == null)
         SetTarget(null);
       if (TargetIndicator.parent != null)
@@ -124,10 +153,42 @@ namespace ClaraMundi
         indicatorShape.radius = targetable.IndicatorRadius;
         TargetIndicator.position = targetable.TargetIndicatorPosition.position;
       }
-      if (Target == null)
-        cameraLockTarget = false;
-      if (SubTarget == null)
-        cameraLockSubTarget = false;
+      if (Target == null && CameraLockTarget.Value)
+        SetLockTarget(false);
+      if (SubTarget == null && CameraLockSubTarget.Value)
+        SetLockSubTarget(false);
+
+      if (lookRig == null)
+        lookRig = player.Body.IK.GetRig<RigLookTo>();
+      if (facingToggle == null)
+        facingToggle = player.Body.Facing as FacingToggle;
+      if (lookRig != null)
+      {
+        if (SubTarget != null)
+        {
+          if (lookTo.Target?.transform != SubTarget.transform)
+            lookRig.SetTarget(new LookToTransform(1, SubTarget.transform, Vector3.zero));
+          if (CameraLockSubTarget.Value)
+            facingToggle.Target = SubTarget.gameObject;
+          else
+            facingToggle.Target = null;
+        }
+        else if (Target != null)
+        {
+          if (lookTo.Target?.transform != Target.transform)
+            lookRig.SetTarget(new LookToTransform(1, Target.transform, Vector3.zero));
+          if (CameraLockTarget.Value)
+            facingToggle.Target = Target.gameObject;
+          else
+            facingToggle.Target = null;
+        }
+        else
+        {
+          lookTo = default;
+          lookRig.ClearTargets();
+          facingToggle.Target = null;
+        }
+      }
     }
 
     public void OnDestroy()
@@ -143,22 +204,17 @@ namespace ClaraMundi
     }
     void OnConfirm(InputAction.CallbackContext context)
     {
-      if (string.IsNullOrEmpty(TargetId.Value) && string.IsNullOrEmpty(SubTargetId))
+      if (string.IsNullOrEmpty(TargetId.Value) && string.IsNullOrEmpty(SubTargetId.Value))
         OnNextTarget(context);
-      else if (!string.IsNullOrEmpty(SubTargetId))
-      {
-        SetTarget(SubTargetId);
-        if (cameraLockSubTarget)
-          cameraLockTarget = true;
-        SubTargetId = null;
-      }
+      else if (!string.IsNullOrEmpty(SubTargetId.Value))
+        SetTarget(SubTargetId.Value);
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {
       if (!string.IsNullOrEmpty(TargetId.Value))
         SetTarget(null);
       else
-        SubTargetId = null;
+        SetSubTarget(null);
     }
 
     void OnNextTarget(InputAction.CallbackContext context)
@@ -192,17 +248,17 @@ namespace ClaraMundi
         if (!EntityManager.Instance.Entities.ContainsKey(TargetId.Value))
           SetTarget(null);
       }
-      if (SubTargetId != null)
+      if (SubTargetId.Value != null)
       {
-        if (!EntityManager.Instance.Entities.ContainsKey(SubTargetId))
-          SubTargetId = null;
+        if (!EntityManager.Instance.Entities.ContainsKey(SubTargetId.Value))
+          SetSubTarget(null);
       }
     }
     int GetIndexOfCurrentTarget()
     {
-      if (SubTargetId == null && TargetId.Value == null)
+      if (SubTargetId.Value == null && TargetId.Value == null)
         return -1;
-      Entity targetEntity = EntityManager.Instance.Entities[SubTargetId ?? TargetId.Value];
+      Entity targetEntity = EntityManager.Instance.Entities[SubTargetId.Value ?? TargetId.Value];
       Targetable targetable = targetEntity.GetComponent<Targetable>();
       return TargetArea.PossibleTargets.IndexOf(targetable);
     }
@@ -212,10 +268,10 @@ namespace ClaraMundi
       if (index > -1 && TargetArea.PossibleTargets.Count > index)
       {
         TargetArea.PossibleTargets[index].TargetController = this;
-        SubTargetId = TargetArea.PossibleTargets[index].Entity.entityId.Value;
+        SetSubTarget(TargetArea.PossibleTargets[index].Entity.entityId.Value);
       }
       else
-        SubTargetId = null;
+        SetSubTarget(null);
     }
 
 

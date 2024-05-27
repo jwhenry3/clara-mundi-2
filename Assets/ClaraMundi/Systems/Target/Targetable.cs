@@ -68,7 +68,7 @@ namespace ClaraMundi
       OnScreen = HorizontalPosition > 0 && HorizontalPosition < Screen.width && VerticalPosition > 0 && VerticalPosition < Screen.height;
       if (TargetController != null)
       {
-        SubTargetIndicator?.SetActive(TargetController.SubTargetId == Entity.entityId.Value);
+        SubTargetIndicator?.SetActive(TargetController.SubTargetId.Value == Entity.entityId.Value);
       }
       else
       {

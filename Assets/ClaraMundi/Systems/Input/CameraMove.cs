@@ -39,7 +39,7 @@ namespace ClaraMundi
       }
       if (player != null)
       {
-        if (player.Targeting.cameraLockSubTarget && !string.IsNullOrEmpty(player.Targeting.SubTargetId))
+        if (player.Targeting.CameraLockSubTarget.Value && !string.IsNullOrEmpty(player.Targeting.SubTargetId.Value))
         {
           lockOnShotType = player.Targeting.SubTarget.lockOnShotType;
           if (lockOnShotType != null && MainCamera.Transition.CurrentShotCamera == PlayerCamera)
@@ -56,7 +56,7 @@ namespace ClaraMundi
             CameraManager.Instance.UseCamera(player.Targeting.SubTarget.TargetCamera);
           }
         }
-        else if (player.Targeting.cameraLockTarget && !string.IsNullOrEmpty(player.Targeting.TargetId.Value))
+        else if (player.Targeting.CameraLockTarget.Value && !string.IsNullOrEmpty(player.Targeting.TargetId.Value))
         {
           lockOnShotType = player.Targeting.Target.lockOnShotType;
           if (lockOnShotType != null && MainCamera.Transition.CurrentShotCamera == PlayerCamera)
