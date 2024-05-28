@@ -16,7 +16,6 @@ namespace ClaraMundi
     private InputAction ZoomAction;
     private ShotTypeThirdPerson shotType;
     private ShotTypeLockOn lockOnShotType;
-    private ShotSystemThirdPerson system;
 
     private Vector3 lockOnLimit = new Vector3(3, 3, 3);
     private Vector3 offset = new Vector3(0, 1, 0);
@@ -24,10 +23,12 @@ namespace ClaraMundi
     public Player player => PlayerManager.Instance != null ? PlayerManager.Instance.LocalPlayer : null;
 
 
+    public Transform LockOnTransform;
     void OnEnable()
     {
+
+      lockOnShotType = (ShotTypeLockOn)PlayerTargetCamera.ShotType;
       shotType = (ShotTypeThirdPerson)PlayerCamera.ShotType;
-      system = (ShotSystemThirdPerson)shotType.GetSystem(ShotSystemThirdPerson.ID);
     }
 
     void Update()
@@ -39,38 +40,22 @@ namespace ClaraMundi
       }
       if (player != null)
       {
-        if (player.Targeting.CameraLockSubTarget.Value && !string.IsNullOrEmpty(player.Targeting.SubTargetId.Value))
+        var targetToLockOn = player.Targeting.SubTarget ?? player.Targeting.Target;
+        if (targetToLockOn != null)
+          LockOnTransform.position = targetToLockOn.transform.position;
+        bool targetLock = string.IsNullOrEmpty(player.Targeting.SubTargetId.Value) && player.Targeting.CameraLockTarget.Value;
+        bool subTargetLock = !string.IsNullOrEmpty(player.Targeting.SubTargetId.Value) && player.Targeting.CameraLockSubTarget.Value;
+        if (targetLock || subTargetLock)
         {
-          lockOnShotType = player.Targeting.SubTarget.lockOnShotType;
-          if (lockOnShotType != null && MainCamera.Transition.CurrentShotCamera == PlayerCamera)
+          if (CameraManager.Instance.MainCamera.Transition.CurrentShotCamera != PlayerTargetCamera)
           {
             if (shotType.IsActive)
               shotType.OnDisable(MainCamera);
             if (!lockOnShotType.IsActive)
               lockOnShotType.OnEnable(MainCamera);
-          }
-          if (CameraManager.Instance.MainCamera.Transition.CurrentShotCamera != player.Targeting.SubTarget.TargetCamera)
-          {
             offset = new Vector3(0, 1, 1.5f);
             lockOnShotType.LockOn.Offset = offset;
-            CameraManager.Instance.UseCamera(player.Targeting.SubTarget.TargetCamera);
-          }
-        }
-        else if (player.Targeting.CameraLockTarget.Value && !string.IsNullOrEmpty(player.Targeting.TargetId.Value))
-        {
-          lockOnShotType = player.Targeting.Target.lockOnShotType;
-          if (lockOnShotType != null && MainCamera.Transition.CurrentShotCamera == PlayerCamera)
-          {
-            if (shotType.IsActive)
-              shotType.OnDisable(MainCamera);
-            if (!lockOnShotType.IsActive)
-              lockOnShotType.OnEnable(MainCamera);
-          }
-          if (CameraManager.Instance.MainCamera.Transition.CurrentShotCamera != player.Targeting.Target.TargetCamera)
-          {
-            offset = new Vector3(0, 1, 1.5f);
-            lockOnShotType.LockOn.Offset = offset;
-            CameraManager.Instance.UseCamera(player.Targeting.Target.TargetCamera);
+            CameraManager.Instance.UseCamera(PlayerTargetCamera);
           }
         }
         else if (shotType != null)
@@ -81,7 +66,6 @@ namespace ClaraMundi
             shotType.OnEnable(MainCamera);
           if (CameraManager.Instance.MainCamera.Transition.CurrentShotCamera != CameraManager.Instance.PlayerCamera)
           {
-            lockOnShotType = null;
             CameraManager.Instance.UseCamera(CameraManager.Instance.PlayerCamera);
           }
         }

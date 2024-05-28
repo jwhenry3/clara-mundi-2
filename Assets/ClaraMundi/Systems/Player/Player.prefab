@@ -819,102 +819,17 @@ MonoBehaviour:
   TargetController: {fileID: 1606533882590530053}
   SubTargetIndicator: {fileID: 4994580654911399907}
   TargetIndicatorPosition: {fileID: 7718886397765483580}
-  TargetCamera: {fileID: 0}
-  lockOnShotType:
-    m_ShotSystemViewport:
-      m_Projection:
-        m_IsEnabled: 0
-        m_Value: 0
-      m_FieldOfView:
-        m_IsEnabled: 0
-        m_Value: 60
-      m_OrthographicSize:
-        m_IsEnabled: 0
-        m_Value: 5
-      m_ClipPlaneNear:
-        m_IsEnabled: 0
-        m_Value: 0.3
-      m_ClipPlaneFar:
-        m_IsEnabled: 0
-        m_Value: 1000
-    m_ShotSystemLook:
-      m_IsActive: 1
-      m_LookTarget:
-        m_Property:
-          rid: 9122246137373524649
-      m_LookOffset:
-        m_Property:
-          rid: 9122246137373524650
-    m_ShotSystemZoom:
-      m_TargetZoom: 1
-      m_MinDistance: 0.5
-      m_SmoothTime: 0.1
-      m_InputZoom:
-        m_Input:
-          rid: 9122246137373524651
-      m_Sensitivity:
-        m_Property:
-          rid: 9122246137373524652
-    m_ShotSystemLockOn:
-      m_Anchor:
-        m_Property:
-          rid: 9122246137373524653
-      m_AnchorOffset:
-        m_Property:
-          rid: 9122246137373524654
-      m_Distance:
-        m_Property:
-          rid: 9122246137373524655
   IndicatorRadius: 0.5
   DistanceFirst: 1
+  NameTag: {fileID: 0}
   DistanceFromCamera: 0
   HorizontalPosition: 0
   VerticalPosition: 0
   HorizontalPercent: 0
   VerticalPercent: 0
+  CenterScore: 0
   Score: 0
   OnScreen: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 9122246137373524649
-      type: {class: GetGameObjectInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_GameObject: {fileID: 0}
-    - rid: 9122246137373524650
-      type: {class: GetDirectionVector3Zero, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
-    - rid: 9122246137373524651
-      type: {class: InputValueVector2Scroll, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Direction: 0
-    - rid: 9122246137373524652
-      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Value: 0.009999999776482582
-    - rid: 9122246137373524653
-      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
-      data: 
-    - rid: 9122246137373524654
-      type: {class: GetDirectionLocalValue, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Transform:
-          m_Property:
-            rid: 9122246137373524656
-        m_Direction:
-          m_Property:
-            rid: 9122246137373524657
-    - rid: 9122246137373524655
-      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Value: 5
-    - rid: 9122246137373524656
-      type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data: 
-    - rid: 9122246137373524657
-      type: {class: GetDirectionVector, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
-      data:
-        m_Direction: {x: 0, y: 0.25, z: -1}
 --- !u!1 &491781748615686708
 GameObject:
   m_ObjectHideFlags: 0
@@ -1127,9 +1042,93 @@ MonoBehaviour:
   player: {fileID: 0}
   TargetIndicator: {fileID: 8112764531286800617}
   TargetArea: {fileID: 6605341051667310254}
-  SubTargetId: 
-  cameraLockTarget: 0
-  cameraLockSubTarget: 0
+  TargetCamera: {fileID: 0}
+  lockOnShotType:
+    m_ShotSystemViewport:
+      m_Projection:
+        m_IsEnabled: 0
+        m_Value: 0
+      m_FieldOfView:
+        m_IsEnabled: 0
+        m_Value: 60
+      m_OrthographicSize:
+        m_IsEnabled: 0
+        m_Value: 5
+      m_ClipPlaneNear:
+        m_IsEnabled: 0
+        m_Value: 0.3
+      m_ClipPlaneFar:
+        m_IsEnabled: 0
+        m_Value: 1000
+    m_ShotSystemLook:
+      m_IsActive: 1
+      m_LookTarget:
+        m_Property:
+          rid: 9122246190910669390
+      m_LookOffset:
+        m_Property:
+          rid: 9122246190910669391
+    m_ShotSystemZoom:
+      m_TargetZoom: 1
+      m_MinDistance: 0.5
+      m_SmoothTime: 0.1
+      m_InputZoom:
+        m_Input:
+          rid: 9122246190910669392
+      m_Sensitivity:
+        m_Property:
+          rid: 9122246190910669393
+    m_ShotSystemLockOn:
+      m_Anchor:
+        m_Property:
+          rid: 9122246190910669394
+      m_AnchorOffset:
+        m_Property:
+          rid: 9122246190910669395
+      m_Distance:
+        m_Property:
+          rid: 9122246190910669396
+  references:
+    version: 2
+    RefIds:
+    - rid: 9122246190910669390
+      type: {class: GetGameObjectInstance, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_GameObject: {fileID: 0}
+    - rid: 9122246190910669391
+      type: {class: GetDirectionVector3Zero, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 9122246190910669392
+      type: {class: InputValueVector2Scroll, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Direction: 0
+    - rid: 9122246190910669393
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 0.009999999776482582
+    - rid: 9122246190910669394
+      type: {class: GetGameObjectPlayer, ns: GameCreator.Runtime.Characters, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 9122246190910669395
+      type: {class: GetDirectionLocalValue, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Transform:
+          m_Property:
+            rid: 9122246190910669397
+        m_Direction:
+          m_Property:
+            rid: 9122246190910669398
+    - rid: 9122246190910669396
+      type: {class: GetDecimalDecimal, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Value: 5
+    - rid: 9122246190910669397
+      type: {class: GetGameObjectSelf, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data: 
+    - rid: 9122246190910669398
+      type: {class: GetDirectionVector, ns: GameCreator.Runtime.Common, asm: GameCreator.Runtime.Core}
+      data:
+        m_Direction: {x: 0, y: 0.25, z: -1}
 --- !u!135 &1570205295859318095
 SphereCollider:
   m_ObjectHideFlags: 0

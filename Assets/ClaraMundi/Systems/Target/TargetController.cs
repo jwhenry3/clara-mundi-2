@@ -5,6 +5,7 @@ using FishNet.Object.Synchronizing;
 using UnityEngine.InputSystem;
 using static UnityEngine.ParticleSystem;
 using GameCreator.Runtime.Characters.IK;
+using GameCreator.Runtime.Cameras;
 namespace ClaraMundi
 {
   public class TargetController : PlayerController
@@ -13,6 +14,8 @@ namespace ClaraMundi
     private ParticleSystem indicatorParticles;
     private ShapeModule indicatorShape;
     public TargetArea TargetArea;
+    public ShotCamera TargetCamera;
+    public ShotTypeLockOn lockOnShotType;
     // target must be persisted to server to ensure those observing what the npc/player is targeting can see it
     // also we can use targetless RPCs against the selected target for some simplicity
     public readonly SyncVar<string> TargetId = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
@@ -26,6 +29,7 @@ namespace ClaraMundi
 
 
     private bool listening;
+
 
     private bool nextPressed;
     private bool prevPressed;
@@ -51,9 +55,9 @@ namespace ClaraMundi
         CameraLockTarget.Value = false;
       else
       {
-        CameraLockTarget.Value = CameraLockSubTarget.Value;
-        if (SubTargetId.Value == targetId)
-          SubTargetId.Value = null;
+        if (!CameraLockTarget.Value)
+          CameraLockTarget.Value = CameraLockSubTarget.Value;
+        SubTargetId.Value = null;
         CameraLockSubTarget.Value = false;
       }
     }
@@ -122,13 +126,19 @@ namespace ClaraMundi
           if (prevPressed)
           {
             SanitizeTargets();
-            TargetArea.PossibleTargets.Sort();
+            if (string.IsNullOrEmpty(SubTargetId.Value) && string.IsNullOrEmpty(TargetId.Value))
+              TargetArea.PossibleTargets.Sort((a, b) => (int)(a.CenterScore.CompareTo(b.CenterScore) * 100));
+            else
+              TargetArea.PossibleTargets.Sort((a, b) => (int)(a.Score.CompareTo(b.Score) * 100));
             SetSubTargetAt(GetPreviousIndex());
           }
           else if (nextPressed)
           {
             SanitizeTargets();
-            TargetArea.PossibleTargets.Sort();
+            if (string.IsNullOrEmpty(SubTargetId.Value) && string.IsNullOrEmpty(TargetId.Value))
+              TargetArea.PossibleTargets.Sort((a, b) => (int)(b.CenterScore.CompareTo(a.CenterScore) * 100));
+            else
+              TargetArea.PossibleTargets.Sort((a, b) => (int)(a.Score.CompareTo(b.Score) * 100));
             SetSubTargetAt(GetNextIndex());
           }
           prevPressed = false;
@@ -153,10 +163,6 @@ namespace ClaraMundi
         indicatorShape.radius = targetable.IndicatorRadius;
         TargetIndicator.position = targetable.TargetIndicatorPosition.position;
       }
-      if (Target == null && CameraLockTarget.Value)
-        SetLockTarget(false);
-      if (SubTarget == null && CameraLockSubTarget.Value)
-        SetLockSubTarget(false);
 
       if (lookRig == null)
         lookRig = player.Body.IK.GetRig<RigLookTo>();
@@ -167,7 +173,10 @@ namespace ClaraMundi
         if (SubTarget != null)
         {
           if (lookTo.Target?.transform != SubTarget.transform)
+          {
+            lookRig.ClearTargets();
             lookRig.SetTarget(new LookToTransform(1, SubTarget.transform, Vector3.zero));
+          }
           if (CameraLockSubTarget.Value)
             facingToggle.Target = SubTarget.gameObject;
           else
@@ -176,7 +185,10 @@ namespace ClaraMundi
         else if (Target != null)
         {
           if (lookTo.Target?.transform != Target.transform)
+          {
+            lookRig.ClearTargets();
             lookRig.SetTarget(new LookToTransform(1, Target.transform, Vector3.zero));
+          }
           if (CameraLockTarget.Value)
             facingToggle.Target = Target.gameObject;
           else
@@ -211,20 +223,20 @@ namespace ClaraMundi
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {
-      if (!string.IsNullOrEmpty(TargetId.Value))
-        SetTarget(null);
-      else
+      if (!string.IsNullOrEmpty(SubTargetId.Value))
         SetSubTarget(null);
+      else if (!string.IsNullOrEmpty(TargetId.Value))
+        SetTarget(null);
     }
 
     void OnNextTarget(InputAction.CallbackContext context)
     {
-      inputCooldown = 0.3f;
+      inputCooldown = 0.1f;
       nextPressed = true;
     }
     void OnPreviousTarget(InputAction.CallbackContext context)
     {
-      inputCooldown = 0.3f;
+      inputCooldown = 0.1f;
       prevPressed = true;
     }
     int GetPreviousIndex()

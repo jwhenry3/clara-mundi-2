@@ -1,5 +1,6 @@
 using System;
 using GameCreator.Runtime.Cameras;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,10 +13,10 @@ namespace ClaraMundi
     public GameObject SubTargetIndicator;
     public Transform TargetIndicatorPosition;
 
-    public ShotCamera TargetCamera;
-    public ShotTypeLockOn lockOnShotType;
     public float IndicatorRadius = 0.5f;
-    public bool DistanceFirst = true;
+    public bool DistanceFirst = false;
+
+    public TextMeshProUGUI NameTag;
 
     public float DistanceFromCamera;
     public float HorizontalPosition;
@@ -23,6 +24,7 @@ namespace ClaraMundi
 
     public float HorizontalPercent;
     public float VerticalPercent;
+    public float CenterScore;
 
     public float Score;
 
@@ -33,8 +35,6 @@ namespace ClaraMundi
 
     public void Start()
     {
-      if (TargetCamera != null)
-        lockOnShotType = (ShotTypeLockOn)TargetCamera.ShotType;
       cam = Camera.main;
       cameraTransform = cam.transform;
     }
@@ -53,6 +53,22 @@ namespace ClaraMundi
       return 0;
     }
 
+    void Update()
+    {
+      if (TargetController != null)
+      {
+        SubTargetIndicator?.SetActive(TargetController.SubTarget == this);
+        if (NameTag != null)
+          NameTag.gameObject.SetActive(TargetController.SubTarget == this || TargetController.Target == this);
+      }
+      else
+      {
+        SubTargetIndicator?.SetActive(false);
+        if (NameTag != null)
+          NameTag.gameObject.SetActive(false);
+      }
+    }
+
 
     public void UpdateDetails()
     {
@@ -61,19 +77,12 @@ namespace ClaraMundi
       HorizontalPosition = screenPoint.x;
       VerticalPosition = screenPoint.y;
       HorizontalPercent = screenPoint.x / Screen.width;
+      CenterScore = 0.50f - Mathf.Abs(HorizontalPercent - .50f);
       if (DistanceFirst)
         Score = DistanceFromCamera * 100_000 + (HorizontalPercent * 100);
       else
         Score = HorizontalPercent * 100_000 + DistanceFromCamera;
       OnScreen = HorizontalPosition > 0 && HorizontalPosition < Screen.width && VerticalPosition > 0 && VerticalPosition < Screen.height;
-      if (TargetController != null)
-      {
-        SubTargetIndicator?.SetActive(TargetController.SubTargetId.Value == Entity.entityId.Value);
-      }
-      else
-      {
-        SubTargetIndicator?.SetActive(false);
-      }
     }
   }
 }

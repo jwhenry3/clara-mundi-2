@@ -13,6 +13,7 @@ namespace ClaraMundi
     private void OnTriggerEnter(Collider other)
     {
       if (PlayerManager.Instance.LocalPlayer != Player) return;
+      Debug.Log("Triggered " + other.gameObject.name);
       var targetable = other.GetComponent<Targetable>();
       if (targetable != null && !InArea.Contains(targetable))
         InArea.Add(targetable);
@@ -22,15 +23,15 @@ namespace ClaraMundi
     {
       if (PlayerManager.Instance.LocalPlayer != Player) return;
       var targetable = other.GetComponent<Targetable>();
-      if (targetable != null && InArea.Contains(targetable))
-      {
-        targetable.UpdateDetails();
-        bool inList = PossibleTargets.Contains(targetable);
-        if (!inList && targetable.OnScreen)
-          PossibleTargets.Add(targetable);
-        else if (inList && !targetable.OnScreen)
-          PossibleTargets.Remove(targetable);
-      }
+      if (targetable == null) return;
+      if (!InArea.Contains(targetable))
+        InArea.Add(targetable);
+      targetable.UpdateDetails();
+      bool inList = PossibleTargets.Contains(targetable);
+      if (!inList && targetable.OnScreen)
+        PossibleTargets.Add(targetable);
+      else if (inList && !targetable.OnScreen)
+        PossibleTargets.Remove(targetable);
     }
 
     private void OnTriggerExit(Collider other)
