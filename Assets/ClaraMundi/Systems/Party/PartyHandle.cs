@@ -2,14 +2,14 @@
 
 namespace ClaraMundi
 {
-    public class PartyHandle
-    {
-        public Party Party;
-        public event Action OnChange;
+  public class PartyHandle
+  {
+    public Party Party;
+    public event Action OnChange;
 
-        public void Trigger()
-        {
-            OnChange?.Invoke();
-        }
+    public void Trigger()
+    {
+      OnChange?.Invoke();
     }
+  }
 }

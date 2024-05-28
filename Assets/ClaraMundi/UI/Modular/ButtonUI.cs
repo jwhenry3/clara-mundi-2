@@ -49,6 +49,7 @@ namespace ClaraMundi
 
 
     [Header("Text Options")]
+    public int FontSize = 16;
     public bool StretchText = true;
     public bool StretchTextHorizontal = false;
     public TextAlignmentOptions TextAlignment = TextAlignmentOptions.Center;
@@ -222,7 +223,7 @@ namespace ClaraMundi
       if (text != null)
       {
         text.transform.localScale = Vector3.one;
-        text.fontSize = 16;
+        text.fontSize = FontSize;
         text.alignment = TextAlignment;
         if (UseNameAsText)
           text.text = gameObject.name;

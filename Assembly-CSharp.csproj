@@ -59,7 +59,7 @@
     <UnityVersion>2022.3.21f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\jwhen\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\jwhen\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="D:\Unity\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="D:\Unity\2022.3.21f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
     <Analyzer Include="D:\clara-mundi-2\Assets\FishNet\Runtime\Plugins\CodeAnalysis\FishNet.CodeAnalysis.Analyzers.dll" />
@@ -73,6 +73,7 @@
     <Compile Include="Assets\ClaraMundi\UI\Modular\QuestListItemUI.cs" />
     <Compile Include="Assets\ClaraMundi\Utils\GameObjectUtils.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestRecurrence.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\ActionBarActionUI.cs" />
     <Compile Include="Assets\YAFUI\Demo\Scripts\DestroyAfter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Input\InputManager.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets\ProceduralUIImage\Scripts\Modifiers\FreeModifier.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Crafting\CraftManager.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Input\TriggerByAction.cs" />
+    <Compile Include="Assets\ClaraMundi\Systems\Action\ActionController.cs" />
     <Compile Include="Assets\ProceduralUIImage\Scripts\EmptySprite.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\FormUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Input\ManualMoveController.cs" />
@@ -187,11 +189,13 @@
     <Compile Include="Assets\ClaraMundi\Systems\Entity\EntityType.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\UI\ChatMessageUI.cs" />
     <Compile Include="Assets\YAFUI\Scripts\ToggleAnim.cs" />
+    <Compile Include="Assets\ClaraMundi\Systems\Action\EntityAction.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\UI\StatsUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Quest\QuestController.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\UIHandling.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\Stats.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\MasterServer\MasterServerApi.cs" />
+    <Compile Include="Assets\ClaraMundi\UI\Modular\ActionMenuUI.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Attributes\CharacterClassType.cs" />
     <Compile Include="Assets\ClaraMundi\Systems\Chat\ChatManager.cs" />
     <Compile Include="Assets\ClaraMundi\UI\Modular\ChatUI.cs" />

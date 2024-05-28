@@ -16,6 +16,8 @@ namespace ClaraMundi
     [HideInInspector]
     public InputActionMap World;
     [HideInInspector]
+    public InputActionMap Actions;
+    [HideInInspector]
     public InputActionMap All;
 
     public void Init()
@@ -23,9 +25,11 @@ namespace ClaraMundi
       Instance = this;
       UI = Instance.InputActionAsset.FindActionMap("UI");
       World = Instance.InputActionAsset.FindActionMap("Player");
+      Actions = Instance.InputActionAsset.FindActionMap("Actions");
       All = Instance.InputActionAsset.FindActionMap("All");
       UI.Enable();
       All.Enable();
+      Actions.Disable();
       World.Disable();
     }
     private void Awake()

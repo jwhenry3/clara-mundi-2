@@ -27,6 +27,7 @@ namespace ClaraMundi
     public QuestController Quests { get; protected set; }
     public ClickToMoveController Movement { get; protected set; }
     public TargetController Targeting { get; protected set; }
+    public ActionController Actions { get; protected set; }
     public NavMeshAgent Agent { get; protected set; }
 
 
@@ -55,6 +56,8 @@ namespace ClaraMundi
       Movement.player = this;
       Targeting = GetComponentInChildren<TargetController>();
       Targeting.player = this;
+      Actions = GetComponentInChildren<ActionController>();
+      Actions.player = this;
       Entity.OnStarted += OnNetStarted;
     }
 

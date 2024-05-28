@@ -220,6 +220,14 @@ namespace ClaraMundi
         OnNextTarget(context);
       else if (!string.IsNullOrEmpty(SubTargetId.Value))
         SetTarget(SubTargetId.Value);
+      else
+        OpenActionMenu();
+    }
+
+    void OpenActionMenu()
+    {
+      ActionMenuUI.Instance.targetEntity = Target.Entity;
+      ActionMenuUI.Instance.window.moveSibling.ToFront();
     }
     void OnCancelTarget(InputAction.CallbackContext context)
     {

@@ -7,6 +7,7 @@ namespace ClaraMundi
 {
   public struct ParsedMessage
   {
+    public string slashCommand;
     public string command;
     public string recipient;
     public List<string> arguments;
@@ -62,12 +63,10 @@ namespace ClaraMundi
       ParsedMessage parsed = new();
       List<string> words = message.Split(" ").ToList();
       parsed.recipient = null;
-      Debug.Log(message);
-      Debug.Log(words[0]);
       if (words[0].IndexOf("/") == 0)
       {
+        parsed.slashCommand = words[0];
         parsed.command = ParseCommand(words[0]);
-        Debug.Log(parsed.command);
         words.RemoveAt(0);
         if (parsed.command == "Tell")
         {
@@ -120,12 +119,11 @@ namespace ClaraMundi
         else
         {
           // run a command parser
-          ChatManager.ReceivedMessage(new()
-          {
-            Type = ChatMessageType.System,
-            Channel = "System",
-            Message = "Invalid command"
-          });
+          ActionController.Instance.TriggerCommand(
+            parsed.slashCommand,
+            parsed.arguments.Count > 0 ? parsed.arguments[0] : "",
+            parsed.arguments.Count > 1 ? parsed.arguments[1] : ""
+          );
           return;
         }
       }

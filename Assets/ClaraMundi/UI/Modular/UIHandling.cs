@@ -25,9 +25,9 @@ namespace ClaraMundi
     void Start()
     {
       Instance = this;
+      ActionMenuUI.Instance = PeersContainer.GetComponentInChildren<ActionMenuUI>(true);
       foreach (WindowUI window in windows)
       {
-        Debug.Log(window.TriggerAction);
         window.SetUp();
         if (string.IsNullOrEmpty(window.TriggerAction)) continue;
         if (window.TriggerAction == "Quit")
@@ -43,7 +43,6 @@ namespace ClaraMundi
       {
         InputManager.Instance.UI.FindAction(window.TriggerAction).performed += (context) =>
         {
-          Debug.Log(InputUI.IsFocused);
           if (InputUI.IsFocused) return;
           if (PlayerUI.IsDebug || (PlayerManager.Instance != null && PlayerManager.Instance.LocalPlayer != null))
           {
@@ -75,9 +74,15 @@ namespace ClaraMundi
       Backdrop.blocksRaycasts = !AllWindowsClosed();
       if (InputManager.Instance == null) return;
       if (!Backdrop.blocksRaycasts)
+      {
         InputManager.Instance.World.Enable();
+        InputManager.Instance.Actions.Enable();
+      }
       else
+      {
         InputManager.Instance.World.Disable();
+        InputManager.Instance.Actions.Disable();
+      }
     }
     public bool AllWindowsClosed()
     {
