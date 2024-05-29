@@ -26,6 +26,7 @@ namespace ClaraMundi
     {
       Instance = this;
       ActionMenuUI.Instance = PeersContainer.GetComponentInChildren<ActionMenuUI>(true);
+      PeersContainer.GetComponentInChildren<ChatUI>()?.Init();
       foreach (WindowUI window in windows)
       {
         window.SetUp();

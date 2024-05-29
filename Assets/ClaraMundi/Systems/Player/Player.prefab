@@ -3641,13 +3641,21 @@ MonoBehaviour:
   _addedNetworkObject: {fileID: 378666723463143089}
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
-  ActionBars:
-  - ActionsList:
-    - Key: Action1
-      Value:
-        action: {fileID: 11400000, guid: 136aa925e4809bf45a85cb3d208aec46, type: 2}
-        Macro: 
-  - ActionsList: []
+  ActionBarCollection:
+    Collection:
+    - classId: adventurer
+      ActionBars:
+      - ActionsList:
+        - Key: Action2
+          Value:
+            action: {fileID: 11400000, guid: 136aa925e4809bf45a85cb3d208aec46, type: 2}
+            MacroName: 
+            Macro: 
+        - Key: Action1
+          Value:
+            action: {fileID: 0}
+            MacroName: Alert
+            Macro: /s I am a player!
   ActionBar1Index: 0
   ActionBar2Index: 1
   Actions:
@@ -3656,6 +3664,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1f98fb6998238504593adce337dd0f36, type: 2}
   - {fileID: 11400000, guid: 3c6ca5d8d1a96384fabd807f1a55a94c, type: 2}
   - {fileID: 11400000, guid: 7c1f26608c8448246bd902f5d7162dcc, type: 2}
+  - {fileID: 11400000, guid: 1155f8a3f1134184d9c75180626c9eff, type: 2}
+  - {fileID: 11400000, guid: 8a85081dcc0daed4982c7951193f0944, type: 2}
+  - {fileID: 11400000, guid: 8ae7cab4f6979994184aa05759261e47, type: 2}
+  - {fileID: 11400000, guid: 9fcb428329cf9654d9ab21afab0271d4, type: 2}
+  - {fileID: 11400000, guid: d4209d718110b16439b4a781f04cb4ed, type: 2}
 --- !u!1 &6758796563666524540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4349,11 +4362,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1513305839096911231, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1513305839096911231, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1513305839096911231, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4389,11 +4402,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750033824268041024, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3750033824268041024, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3750033824268041024, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4409,7 +4422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3750033824268041024, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3981546781785746754, guid: 545daf45a782ded41b3fcb322611d4ea, type: 3}
       propertyPath: m_AnchorMax.y

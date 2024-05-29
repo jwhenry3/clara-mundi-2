@@ -10,15 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fe5fb75d0d2d864e891c4b60e261cb5, type: 3}
-  m_Name: Magic
+  m_Name: Combat_Attack
   m_EditorClassIdentifier: 
-  Id: magic
-  Name: Magic
-  Command: /magic
-  CommandShort: /ma
+  Id: attack
+  Name: Attack
+  Sprite: {fileID: 21300000, guid: eb2b94f2118dc864880232b075c72e82, type: 3}
+  Command: /attack
+  CommandShort: /att
   CommandArg1: target
   CommandArg2: 
   MustHaveTarget: 1
+  TargetMustBePlayer: 0
+  TargetMustBeNPC: 0
   CanBeUsedOnEnemy: 1
-  CanBeUsedOnAlly: 1
-  CanBeUsedOnSelf: 1
+  CanBeUsedOnAlly: 0
+  CanBeUsedOnSelf: 0

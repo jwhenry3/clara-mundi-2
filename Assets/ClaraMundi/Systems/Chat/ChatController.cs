@@ -22,39 +22,33 @@ namespace ClaraMundi
         // display it client-side only
         ChatManager.ReceivedMessage(message);
       }
-
-      message.SenderCharacterName = player.Character.name;
-      message.SenderPosition = player.transform.position;
-      switch (channel)
-      {
-        case "Party":
-          player.Party.SendChatMessage(message);
-          break;
-        default:
-          SendMessageFromClient(channel, message);
-          break;
-      }
+      SendMessageFromClient(channel, message);
     }
 
     [ServerRpc]
     private void SendMessageFromClient(string channel, ChatMessage message)
     {
-      if (!IsServerStarted) return;
-      // Debug.Log("Send Message From Client");
       message.SenderCharacterName = player.Character.name;
       message.SenderPosition = player.transform.position;
       ServerSendMessage(channel, message);
     }
 
-    private void ServerSendMessage(string channel, ChatMessage message)
+    public void ServerSendMessage(string channel, ChatMessage message)
     {
       if (!IsServerStarted) return;
       if (player == null) return;
-      // Debug.Log("Send Message From Server");
+
+      if (channel == "Party")
+      {
+        PartyManager.Instance.SendChatMessage(message);
+        return;
+      }
+
       if (channel != "Say" && channel != "Shout")
       {
         if (channel == "Whisper")
         {
+          Channel.ServerSendMessage(message);
           if (!ChatManager.Instance.Channels.ContainsKey(message.ToCharacterName)) return;
           ChatManager.Instance.Channels[message.ToCharacterName].ServerSendMessage(message);
           return;

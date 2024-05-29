@@ -7,6 +7,7 @@ namespace ClaraMundi
     public WindowUI Login;
     public WindowUI Register;
     public WindowUI Characters;
+    public WindowUI NewCharacter;
 
     void OnEnable()
     {
@@ -17,15 +18,17 @@ namespace ClaraMundi
     {
       if (SessionManager.Instance.PlayerAccount == null)
       {
-        if (!Login.moveSibling.IsInFront() && !Register.moveSibling.IsInFront())
+        if (!Login.gameObject.activeInHierarchy && !Register.gameObject.activeInHierarchy)
         {
           Login.moveSibling.ToFront();
         }
       }
       else
       {
-        if (!Characters.moveSibling.IsInFront())
+        if (!Characters.gameObject.activeInHierarchy && !NewCharacter.gameObject.activeInHierarchy)
+        {
           Characters.moveSibling.ToFront();
+        }
       }
     }
   }

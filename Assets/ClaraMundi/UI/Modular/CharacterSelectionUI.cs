@@ -72,7 +72,19 @@ namespace ClaraMundi
       }
       return Servers.Count;
     }
-
+    private Character FromData(CharacterData data)
+    {
+      return new()
+      {
+        name = data.name,
+        gender = data.gender,
+        race = data.race,
+        area = data.area,
+        level = data.level ?? 1,
+        exp = data.exp ?? 0,
+        classId = data.classid ?? ""
+      };
+    }
     private async Task<int> LoadCharacters()
     {
       CharacterDropdown.options = new();
@@ -81,7 +93,7 @@ namespace ClaraMundi
       var response = await LobbyApi.GetCharacters();
       if (response.characters != null)
       {
-        Characters = response.characters.Select(c => Character.FromData(c)).ToList();
+        Characters = response.characters.Select(c => FromData(c)).ToList();
         foreach (Character character in Characters)
         {
           CharacterDropdown.options.Add(new()

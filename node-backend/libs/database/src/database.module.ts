@@ -19,7 +19,7 @@ export class DatabaseModule {
       module: DatabaseModule,
       imports: [
         TypeOrmModule.forRoot({
-          type: 'postgres',
+          type: 'mysql',
           host: env.TYPEORM_HOST,
           port: parseInt(env.TYPEORM_PORT || ''),
           username: env.TYPEORM_USERNAME,

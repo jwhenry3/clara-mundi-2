@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fe5fb75d0d2d864e891c4b60e261cb5, type: 3}
-  m_Name: Invite
+  m_Name: Chat_Party
   m_EditorClassIdentifier: 
-  Id: invite
-  Name: Invite
-  Command: /invite
-  CommandShort: /inv
-  CommandArg1: target
+  Id: party
+  Name: Party Channel
+  Sprite: {fileID: 0}
+  Command: /party
+  CommandShort: /p
+  CommandArg1: 
   CommandArg2: 
-  MustHaveTarget: 1
-  TargetMustBePlayer: 1
+  MustHaveTarget: 0
+  TargetMustBePlayer: 0
   TargetMustBeNPC: 0
   CanBeUsedOnEnemy: 0
-  CanBeUsedOnAlly: 1
-  CanBeUsedOnSelf: 0
+  CanBeUsedOnAlly: 0
+  CanBeUsedOnSelf: 1

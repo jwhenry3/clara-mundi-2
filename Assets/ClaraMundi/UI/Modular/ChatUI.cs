@@ -36,7 +36,7 @@ namespace ClaraMundi
       "Tell", "Say", "Shout", "Yell", "Party"
     };
 
-    private void Start()
+    public void Init()
     {
       Instance = this;
       ChatManager.Messages += OnMessage;
@@ -49,38 +49,6 @@ namespace ClaraMundi
     {
       ChatManager.Messages -= OnMessage;
     }
-    string ParseCommand(string command)
-    {
-      foreach (var kvp in commandMap)
-      {
-        if (kvp.Value.Contains(command))
-          return kvp.Key;
-      }
-      return "Unknown";
-    }
-    ParsedMessage ParseMessage(string message)
-    {
-      ParsedMessage parsed = new();
-      List<string> words = message.Split(" ").ToList();
-      parsed.recipient = null;
-      if (words[0].IndexOf("/") == 0)
-      {
-        parsed.slashCommand = words[0];
-        parsed.command = ParseCommand(words[0]);
-        words.RemoveAt(0);
-        if (parsed.command == "Tell")
-        {
-          if (words.Count > 1)
-          {
-            parsed.recipient = words[0];
-            words.RemoveAt(0);
-          }
-        }
-      }
-      parsed.arguments = words;
-      parsed.messageText = string.Join(" ", words);
-      return parsed;
-    }
     public override void Submit()
     {
       if (inputField.inputField.text.Length == 0) return;
@@ -92,40 +60,17 @@ namespace ClaraMundi
 
       if (indexOfSlash == 0)
       {
-        var parsed = ParseMessage(message);
-        if (parsed.command == "Tell")
-        {
-          if (string.IsNullOrEmpty(parsed.recipient)) return;
-          ChatManager.SendChatMessage("Whisper", new ChatMessage
-          {
-            Type = ChatMessageType.Chat,
-            Channel = "Whisper",
-            Message = parsed.messageText,
-            ToCharacterName = parsed.recipient
-          });
-          return;
-        }
-        if (channelCommands.Contains(parsed.command))
-        {
-          defaultChannel = parsed.command;
-          ChatManager.SendChatMessage(defaultChannel, new ChatMessage
-          {
-            Type = ChatMessageType.Chat,
-            Channel = defaultChannel,
-            Message = parsed.messageText,
-          });
-          return;
-        }
-        else
-        {
-          // run a command parser
-          ActionController.Instance.TriggerCommand(
-            parsed.slashCommand,
-            parsed.arguments.Count > 0 ? parsed.arguments[0] : "",
-            parsed.arguments.Count > 1 ? parsed.arguments[1] : ""
-          );
-          return;
-        }
+        var words = message.Split(" ").ToList();
+        var command = words[0];
+        words.RemoveAt(0);
+        var text = string.Join(" ", words);
+
+        // run a command parser
+        ActionController.Instance.TriggerCommand(
+          command,
+          text
+        );
+        return;
       }
       ChatManager.SendChatMessage(defaultChannel, new ChatMessage
       {
@@ -148,7 +93,8 @@ namespace ClaraMundi
       if (ChatMessageContainer == null) return;
       ClearOutOfBounds();
 
-      Debug.Log("Message Received");
+      // Debug.Log("Message Received");
+      // Debug.Log(message);
       var instance = Instantiate(ChatMessagePrefab);
       instance.SetChatMessage(message);
       instance.transform.SetParent(ChatMessageContainer);

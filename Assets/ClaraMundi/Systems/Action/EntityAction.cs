@@ -13,8 +13,7 @@ namespace ClaraMundi
     public string Command = "/action";
     public string CommandShort = "/ac";
 
-    public string CommandArg1 = "";
-    public string CommandArg2 = "";
+    public string[] ArgNames;
 
     public bool MustHaveTarget;
     public bool TargetMustBePlayer;

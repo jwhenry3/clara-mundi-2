@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5fe5fb75d0d2d864e891c4b60e261cb5, type: 3}
-  m_Name: Join
+  m_Name: Party_Invite
   m_EditorClassIdentifier: 
-  Id: join
-  Name: Join Party
-  Command: /join
-  CommandShort: /join
+  Id: invite
+  Name: Invite
+  Sprite: {fileID: 0}
+  Command: /invite
+  CommandShort: /inv
   CommandArg1: target
   CommandArg2: 
   MustHaveTarget: 0
@@ -23,4 +24,4 @@ MonoBehaviour:
   TargetMustBeNPC: 0
   CanBeUsedOnEnemy: 0
   CanBeUsedOnAlly: 1
-  CanBeUsedOnSelf: 1
+  CanBeUsedOnSelf: 0

@@ -25,19 +25,5 @@ namespace ClaraMundi
     public bool hasConnectedBefore;
 
     public List<CharacterClass> characterClasses;
-
-    public static Character FromData(CharacterData data)
-    {
-      return new()
-      {
-        name = data.name,
-        gender = data.gender,
-        race = data.race,
-        area = data.area,
-        level = data.level ?? 1,
-        exp = data.exp ?? 0,
-        classId = data.classid ?? ""
-      };
-    }
   }
 }
