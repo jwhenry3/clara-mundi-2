@@ -2,22 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FishNet.Object;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace ClaraMundi
 {
-  [Serializable]
-  public class ActionBarActions : Dictionary<string, ActionBarAction>
-  {
-  }
-
-  [Serializable]
-  public struct ActionBarAction
-  {
-    public EntityAction action;
-    public string MacroName;
-    public string Macro;
-  }
   public struct ActionInvocation
   {
     public Player player;
@@ -25,80 +14,80 @@ namespace ClaraMundi
     public Dictionary<string, string> Args;
     public string Text;
   }
+
   [Serializable]
-  public class ActionBarSlot
+  public class ActionBarAction
   {
-    public string Key;
-    public ActionBarAction Value;
+    public string SlotName;
+    public EntityAction action;
+    public string MacroName;
+    public string Macro;
   }
+
   [Serializable]
-  public class ActionBar
+  public class ActionBar : IndexedList<string, ActionBarAction>
   {
-    public List<ActionBarSlot> ActionsList;
-    public Dictionary<string, ActionBarSlot> ActionsDict;
-
-    public ActionBarSlot Get(string name)
+    public int Index = 0;
+    [SerializeField]
+    public List<ActionBarAction> Actions => Items;
+    public ActionBar() : base("SlotName")
     {
-      ActionsList = ActionsList ?? new();
-      ActionsDict = ActionsDict ?? new();
-      if (string.IsNullOrEmpty(name)) return new();
-      ActionBarSlot existing = ActionsDict.ContainsKey(name) ? ActionsDict[name] : null;
-      if (existing == null)
-      {
-        existing = ActionsList.Find((a) => a.Key == name);
+    }
 
-        if (existing == null)
-        {
-          existing = new() { Key = name, Value = new() };
-          ActionsList.Add(existing);
-        }
-        ActionsDict[name] = existing;
-      }
-      return ActionsDict[name];
+    public override bool FindPredicate(ActionBarAction item, string by)
+    {
+      return item.SlotName == by;
+    }
+
+    public override ActionBarAction Create(string by)
+    {
+      var instance = base.Create(by);
+      instance.SlotName = by;
+      return instance;
     }
   }
   [Serializable]
-  public class CharacterClassActionBars
+  public class CharacterClassActions : IndexedList<int, ActionBar>
   {
-    public string classId;
-    public List<ActionBar> ActionBars;
+    public string ClassId;
 
-    public ActionBar Get(int index)
+    [SerializeField]
+    public List<ActionBar> ActionBars => Items;
+
+    public CharacterClassActions() : base("Index")
     {
-      ActionBars = ActionBars ?? new();
-      if (ActionBars.Count < index + 1)
-      {
-        for (int i = ActionBars.Count - 1; i < index + 1; i++)
-          ActionBars.Add(new());
-      }
-      return ActionBars[index];
+    }
+
+    public override bool FindPredicate(ActionBar item, int by)
+    {
+      return item.Index == by;
+    }
+    public override ActionBar Create(int by)
+    {
+      var instance = base.Create(by);
+      instance.Index = by;
+      return instance;
     }
   }
 
   [Serializable]
-  public class ActionBarCollection
+  public class ActionBarCollection : IndexedList<string, CharacterClassActions>
   {
-
-    public List<CharacterClassActionBars> Collection;
-
-    public Dictionary<string, CharacterClassActionBars> Dictionary = new();
-
-
-    public CharacterClassActionBars Get(string classId)
+    [SerializeField]
+    public List<CharacterClassActions> ClassActionBars => Items;
+    public ActionBarCollection() : base("ClassId")
     {
-      if (string.IsNullOrEmpty(classId)) return new();
-      var existing = Dictionary.ContainsKey(classId) ? Dictionary[classId] : null;
-      if (existing == null)
-      {
-        existing = Collection.Find((a) => a.classId == classId);
-        if (existing == null)
-        {
-          existing = new() { classId = classId, ActionBars = new() };
-          Collection.Add(existing);
-        }
-        Dictionary[classId] = existing;
-      }
-      return existing;
+
+    }
+    public override bool FindPredicate(CharacterClassActions item, string by)
+    {
+      return item.ClassId == by;
+    }
+    public override CharacterClassActions Create(string by)
+    {
+      var instance = base.Create(by);
+      instance.ClassId = by;
+      return instance;
     }
   }
   public class ActionController : PlayerController
@@ -110,8 +99,8 @@ namespace ClaraMundi
     public int ActionBar1Index = 0;
     public int ActionBar2Index = 1;
 
-    public ActionBar ActionBar1 => ActionBarCollection.Get(player.Character.classId).Get(ActionBar1Index);
-    public ActionBar ActionBar2 => ActionBarCollection.Get(player.Character.classId).Get(ActionBar2Index);
+    public ActionBar ActionBar1 => ActionBarCollection.Get(player.Character.classId ?? "").Get(ActionBar1Index);
+    public ActionBar ActionBar2 => ActionBarCollection.Get(player.Character.classId ?? "").Get(ActionBar2Index);
 
     public List<EntityAction> Actions;
     public Dictionary<string, EntityAction> ActionsByCommand;

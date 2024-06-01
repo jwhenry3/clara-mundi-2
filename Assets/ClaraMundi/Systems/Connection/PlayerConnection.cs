@@ -109,7 +109,10 @@ namespace ClaraMundi
       {
         player.Entity.Classes.Add(characterClass.classId, characterClass);
         if (characterClass.isCurrent)
+        {
           player.ServerChangeClass(characterClass.classId);
+          character.classId = characterClass.classId;
+        }
       }
       // reset list so it does not get synced to all clients
       player.Entity.Character.Value = character;

@@ -3642,20 +3642,19 @@ MonoBehaviour:
   _networkObjectCache: {fileID: 378666723463143089}
   player: {fileID: 0}
   ActionBarCollection:
-    Collection:
-    - classId: adventurer
-      ActionBars:
-      - ActionsList:
-        - Key: Action2
-          Value:
-            action: {fileID: 11400000, guid: 136aa925e4809bf45a85cb3d208aec46, type: 2}
-            MacroName: 
-            Macro: 
-        - Key: Action1
-          Value:
-            action: {fileID: 0}
-            MacroName: Alert
-            Macro: /s I am a player!
+    Items:
+    - Items:
+      - Items:
+        - SlotName: Action1
+          action: {fileID: 11400000, guid: 136aa925e4809bf45a85cb3d208aec46, type: 2}
+          MacroName: 
+          Macro: 
+        - SlotName: Action2
+          action: {fileID: 0}
+          MacroName: Alert
+          Macro: /p Alert!
+        Index: 0
+      ClassId: adventurer
   ActionBar1Index: 0
   ActionBar2Index: 1
   Actions:

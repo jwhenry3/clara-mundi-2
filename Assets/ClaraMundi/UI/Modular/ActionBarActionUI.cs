@@ -44,18 +44,17 @@ namespace ClaraMundi
           InputText.text = actionBarText + " " + action.GetBindingDisplayString();
         }
         button.UseNameAsText = false;
-        var slot = player.Actions.ActionBar1.Get(gameObject.name);
+        ActionBarAction actionBarAction = player.Actions.ActionBar1.Get(gameObject.name);
         if (IsActionBar2)
-          slot = player.Actions.ActionBar2.Get(gameObject.name);
-        if (slot != null)
+          actionBarAction = player.Actions.ActionBar2.Get(gameObject.name);
+        if (actionBarAction != null)
         {
-          var action = slot.Value;
-          if (action.action != null)
+          if (actionBarAction.action != null)
           {
-            button.iconSprite = slot.Value.action.Sprite;
+            button.iconSprite = actionBarAction.action.Sprite;
             if (button.iconSprite == null)
             {
-              button.text.text = slot.Value.action.Name;
+              button.text.text = actionBarAction.action.Name;
               button.HasIcon = false;
               button.HasText = true;
             }
@@ -70,7 +69,7 @@ namespace ClaraMundi
           {
             button.HasIcon = false;
             button.HasText = true;
-            button.text.text = !string.IsNullOrEmpty(action.MacroName) ? action.MacroName : "Macro";
+            button.text.text = !string.IsNullOrEmpty(actionBarAction.MacroName) ? actionBarAction.MacroName : "Macro";
             // create a name for the macro and display it
           }
         }
