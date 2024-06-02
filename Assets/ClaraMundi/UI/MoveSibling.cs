@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ClaraMundi
 {
@@ -19,71 +22,79 @@ namespace ClaraMundi
     public bool MoveObjectToBackOnClick;
     public virtual void OnPointerDown(PointerEventData eventData)
     {
+      if (!enabled) return;
       if (MoveObjectToBackOnClick)
         ToBack();
       else
+      {
         ToFront();
+        StartCoroutine(SelectObjectAtCursorPosition(eventData));
+      }
     }
 
+    IEnumerator SelectObjectAtCursorPosition(PointerEventData eventData)
+    {
+      yield return new WaitForSeconds(0.1f);
+      List<RaycastResult> results = new List<RaycastResult>();
+      EventSystem.current.RaycastAll(eventData, results);
 
+      foreach (var result in results)
+      {
+        var button = result.gameObject.GetComponent<ButtonUI>();
+        var input = result.gameObject.GetComponent<InputUI>();
+        if (button != null)
+          button.Select();
+        if (input != null)
+          input.Select();
+      }
+    }
 
     public void ToFront()
     {
+      if (!enabled) return;
       if (!IsInFront())
         MovingObject.SetAsLastSibling();
-      if (!gameObject.activeInHierarchy)
-        gameObject.SetActive(true);
+      if (!MovingObject.gameObject.activeInHierarchy)
+        MovingObject.gameObject.SetActive(true);
+      ToggleGroups(true);
+      SentToFront?.Invoke();
+    }
+
+    void ToggleGroups(bool value)
+    {
       if (CanvasGroupToToggle != null)
       {
-        CanvasGroupToToggle.interactable = true;
-        CanvasGroupToToggle.blocksRaycasts = true;
+        CanvasGroupToToggle.interactable = value;
+        CanvasGroupToToggle.blocksRaycasts = value;
       }
-      SentToFront?.Invoke();
+      foreach (var group in CanvasGroupsToToggle)
+      {
+        group.interactable = value;
+        group.blocksRaycasts = value;
+      }
+      foreach (var obj in GameObjectsToToggle)
+        obj.SetActive(value);
     }
 
     public void ToBack()
     {
+      if (!enabled) return;
       if (!IsInBack())
         MovingObject.SetAsFirstSibling();
-      if (CanvasGroupToToggle != null)
-      {
-        CanvasGroupToToggle.interactable = false;
-        CanvasGroupToToggle.blocksRaycasts = false;
-      }
+      ToggleGroups(false);
       SentToBack?.Invoke();
     }
     bool lastInFront;
     protected virtual void Update()
     {
+      if (!enabled) return;
       bool inFront = IsInFront();
-      if (CanvasGroupToToggle != null)
-      {
-        bool sentToFront = false;
-        bool sentToBack = false;
-        if (inFront && !lastInFront)
-        {
-          sentToFront = true;
-        }
-        if (!inFront && lastInFront)
-        {
-          sentToBack = true;
-        }
-        CanvasGroupToToggle.interactable = inFront;
-        CanvasGroupToToggle.blocksRaycasts = inFront;
-        if (sentToFront)
-          SentToFront?.Invoke();
-        if (sentToBack)
-          SentToBack?.Invoke();
-      }
-      foreach (var group in CanvasGroupsToToggle)
-      {
-        group.interactable = inFront;
-        group.blocksRaycasts = inFront;
-      }
-      foreach (var obj in GameObjectsToToggle)
-        obj.SetActive(inFront);
+      ToggleGroups(inFront);
+      if (inFront && !lastInFront)
+        SentToFront?.Invoke();
+      if (!inFront && lastInFront)
+        SentToBack?.Invoke();
       lastInFront = inFront;
-
     }
 
     public bool IsInBack() => MovingObject.GetSiblingIndex() == 0;

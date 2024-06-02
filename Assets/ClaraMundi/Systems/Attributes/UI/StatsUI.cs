@@ -9,6 +9,7 @@ namespace ClaraMundi
   public class StatsUI : PlayerUI
   {
     public TextMeshProUGUI Name;
+    public TextMeshProUGUI ClassName;
     public TextMeshProUGUI Level;
     public TextMeshProUGUI Experience;
     public TextMeshProUGUI Health;
@@ -71,6 +72,8 @@ namespace ClaraMundi
     {
       if (player == null) return;
       var stats = player.Stats.ComputedStats.Value;
+      if (ClassName != null)
+        ClassName.text = player.Stats.ClassType.ClassName + "";
       if (Level != null)
         Level.text = player.Stats.Level.Value + "";
       if (Experience != null)

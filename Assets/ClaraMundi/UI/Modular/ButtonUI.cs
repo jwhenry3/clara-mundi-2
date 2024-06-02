@@ -275,7 +275,7 @@ namespace ClaraMundi
 
     public void OnSelect(BaseEventData eventData)
     {
-      if (Application.isPlaying && canvasGroupWatcher != null)
+      if (Application.isPlaying && canvasGroupWatcher != null && canvasGroupWatcher.RecordPressed)
       {
         canvasGroupWatcher.CurrentInput = null;
         canvasGroupWatcher.CurrentButton = this;

@@ -7,6 +7,7 @@ namespace ClaraMundi
   {
     public CanvasGroup group;
     public WindowUI window;
+    public bool RecordPressed = true;
 
     public ButtonUI CurrentButton;
     public InputUI CurrentInput;

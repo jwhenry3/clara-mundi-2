@@ -9,6 +9,8 @@ namespace ClaraMundi
   public class StatsController : PlayerController
   {
     public event Action OnChange;
+
+    public CharacterClassType ClassType => RepoManager.Instance.CharacterClassRepo.GetClass(player.Entity.CurrentClass.classId);
     public readonly SyncVar<ComputedStats> ComputedStats = new(new ComputedStats());
     public readonly SyncVar<int> Level = new(1);
     public readonly SyncVar<long> Experience = new(0);
@@ -198,7 +200,7 @@ namespace ClaraMundi
     public void ComputeStats()
     {
       if (!IsServerStarted) return;
-      var classType = RepoManager.Instance.CharacterClassRepo.GetClass(player.Entity.CurrentClass.classId);
+      var classType = ClassType;
       if (classType == null)
       {
         Debug.LogWarning("Cannot compute class stats for " + player.Entity.CurrentClass.classId);

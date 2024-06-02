@@ -19,9 +19,15 @@ namespace ClaraMundi
   public class ActionBarAction
   {
     public string SlotName;
-    public EntityAction action;
-    public string MacroName;
-    public string Macro;
+    public EntityAction Action;
+    public MacroAction Macro;
+  }
+  [Serializable]
+  public class MacroAction
+  {
+    public Sprite Icon;
+    public string Name;
+    public string Instructions;
   }
 
   [Serializable]

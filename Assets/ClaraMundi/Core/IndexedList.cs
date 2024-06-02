@@ -32,6 +32,7 @@ namespace ClaraMundi
 
     public V Get(K by)
     {
+      if (by == null) return default;
       if (!IndexBy.ContainsKey(by))
       {
         Items = Items ?? new();
@@ -42,6 +43,18 @@ namespace ClaraMundi
           return Create(by);
       }
       return IndexBy[by];
+    }
+
+    public void Set(K by, V value)
+    {
+      var previous = Get(by);
+      if (previous != null)
+      {
+        Items.Remove(previous);
+      }
+      if (!Items.Contains(value))
+        Items.Add(value);
+      IndexBy[by] = value;
     }
 
     public virtual V Create(K by)
