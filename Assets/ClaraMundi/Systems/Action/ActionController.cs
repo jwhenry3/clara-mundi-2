@@ -21,6 +21,8 @@ namespace ClaraMundi
     public string SlotName;
     public EntityAction Action;
     public MacroAction Macro;
+
+    public List<string> ActionArgs;
   }
   [Serializable]
   public class MacroAction

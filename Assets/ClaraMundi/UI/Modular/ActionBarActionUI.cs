@@ -34,7 +34,6 @@ namespace ClaraMundi
     {
       if (ActionUI != this)
       {
-        Debug.Log("Set Action!");
         var macro = ActionUI.Macro;
         var action = ActionUI.Action;
         // change the player's action to this slot
