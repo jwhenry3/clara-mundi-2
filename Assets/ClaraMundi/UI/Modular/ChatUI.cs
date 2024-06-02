@@ -24,18 +24,6 @@ namespace ClaraMundi
 
     public string defaultChannel = "Say";
 
-    public Dictionary<string, string[]> commandMap = new()
-    {
-      {"Tell", new[] {"/t", "/tell"}},
-      {"Say", new[] {"/s", "/say"}},
-      {"Shout", new[] {"/sh", "/shout"}},
-      {"Yell", new[] {"/y", "/yell"}},
-      {"Party", new[] {"/p", "/party"}}
-    };
-    public List<string> channelCommands = new() {
-      "Tell", "Say", "Shout", "Yell", "Party"
-    };
-
     public void Init()
     {
       Instance = this;
@@ -64,7 +52,12 @@ namespace ClaraMundi
         var command = words[0];
         words.RemoveAt(0);
         var text = string.Join(" ", words);
-
+        if (command == "/channel" || command == "/chan" || command == "/cmd")
+        {
+          if (words.Count > 0)
+            defaultChannel = words[0];
+          return;
+        }
         // run a command parser
         ActionController.Instance.TriggerCommand(
           command,
@@ -110,6 +103,17 @@ namespace ClaraMundi
       Destroy(ChatMessageContainer.GetChild(0).gameObject);
       // recurse until no longer out of bounds
       ClearOutOfBounds();
+    }
+
+    void Update()
+    {
+      if (!inputField.gameObject.activeInHierarchy && Input.GetKey("/"))
+      {
+        inputField.Init();
+        window.moveSibling.ToFront();
+        inputField.inputField.text = "/";
+        inputField.inputField.caretPosition = 1;
+      }
     }
   }
 }

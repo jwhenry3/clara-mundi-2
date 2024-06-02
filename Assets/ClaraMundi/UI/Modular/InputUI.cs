@@ -57,15 +57,18 @@ namespace ClaraMundi
       }
     }
 
-
+    public void Init()
+    {
+      canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>(true);
+      scroller = scroller ?? GetComponentInParent<ScrollRect>(true);
+      formUI = formUI ?? GetComponentInParent<FormUI>(true);
+      window = window ?? GetComponentInParent<WindowUI>(true);
+      canvasGroup = canvasGroup ?? GetComponentInParent<CanvasGroup>(true);
+      inputField = inputField ?? GetComponent<TMP_InputField>();
+    }
     void Start()
     {
-      canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>();
-      scroller = scroller ?? GetComponentInParent<ScrollRect>();
-      formUI = formUI ?? GetComponentInParent<FormUI>();
-      window = window ?? GetComponentInParent<WindowUI>();
-      canvasGroup = canvasGroup ?? GetComponentInParent<CanvasGroup>();
-      inputField = inputField ?? GetComponent<TMP_InputField>();
+      Init();
       inputField.onValidateInput += delegate (string input, int charIndex, char addedChar) { return DisableTabValidate(addedChar); };
     }
     void OnEnable()

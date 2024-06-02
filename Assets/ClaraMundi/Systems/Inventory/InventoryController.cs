@@ -27,7 +27,9 @@ namespace ClaraMundi
 
     void OnAction(ActionInvocation action)
     {
-      if (action.Action.Command == "/item")
+      var isUse = action.Action.Command == "/item";
+      var isEquip = action.Action.Command == "/equip";
+      if (isUse || isEquip)
       {
         if (!action.Args.ContainsKey("item"))
         {
@@ -51,7 +53,7 @@ namespace ClaraMundi
           });
           return;
         }
-        var instance = ItemStorage.GetInstanceByItemId(item.ItemId, true);
+        var instance = ItemStorage.GetInstanceByItemId(item.ItemId, isUse);
         if (instance == null)
         {
           player.Chat.Channel.ServerSendMessage(new()
@@ -62,7 +64,24 @@ namespace ClaraMundi
           });
           return;
         }
-        ServerUseItem(instance.ItemInstanceId, 1);
+        if (action.Action.Command == "/item")
+          ServerUseItem(instance.ItemInstanceId, 1);
+        if (action.Action.Command == "/equip")
+        {
+          if (!item.Equippable)
+          {
+            player.Chat.Channel.ServerSendMessage(new()
+            {
+              Channel = "System",
+              Type = ChatMessageType.Error,
+              Message = item.Name + " is not equippable."
+            });
+            return;
+          }
+          if (!Equipment.ServerEquip(instance.ItemInstanceId))
+            Equipment.ServerUnequip(instance.ItemInstanceId);
+        }
+
       }
     }
 
@@ -70,9 +89,10 @@ namespace ClaraMundi
     public void EquipItem(int itemInstanceId, bool tryUnequip = false)
     {
       if (!Equipment) return;
-      if (!Equipment.ServerEquip(itemInstanceId, true) && tryUnequip)
+      if (!Equipment.ServerEquip(itemInstanceId) && tryUnequip)
         Equipment.ServerUnequip(itemInstanceId);
     }
+
 
     [ServerRpc]
     public void UnequipItem(int itemInstanceId)

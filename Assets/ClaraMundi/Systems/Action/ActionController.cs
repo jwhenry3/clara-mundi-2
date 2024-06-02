@@ -110,10 +110,7 @@ namespace ClaraMundi
     public ActionBar ActionBar1 => ActionBarCollection.Get(player.Character.classId ?? "").Get(ActionBar1Index);
     public ActionBar ActionBar2 => ActionBarCollection.Get(player.Character.classId ?? "").Get(ActionBar2Index);
 
-    public List<EntityAction> Actions;
-    public Dictionary<string, EntityAction> ActionsByCommand;
-    public Dictionary<string, EntityAction> ActionsByShortCommand;
-    public Dictionary<string, EntityAction> ActionsById;
+    public ActionRepo ActionRepo => RepoManager.Instance.ActionRepo;
 
     public event Action<ActionInvocation> OnAction;
 
@@ -123,28 +120,12 @@ namespace ClaraMundi
       if (PlayerManager.Instance.LocalPlayer == player)
         Instance = this;
     }
-    void OnEnable()
-    {
-      Actions = Actions ?? new();
-      ActionsById = new();
-      ActionsByCommand = new();
-      ActionsByShortCommand = new();
-      foreach (var action in Actions)
-      {
-        ActionsByCommand[action.Command] = action;
-        ActionsByShortCommand[action.CommandShort] = action;
-        ActionsById[action.Id] = action;
-      }
-    }
 
-    [ServerRpc()]
-    public void TriggerCommand(string command, string text)
+    public bool InvokeAction(string command, string text)
     {
-      EntityAction action = null;
-      if (ActionsByCommand.ContainsKey(command))
-        action = ActionsByCommand[command];
-      if (ActionsByShortCommand.ContainsKey(command))
-        action = ActionsByShortCommand[command];
+      if (!IsServerStarted) return false;
+      EntityAction action = ActionRepo.Get(command);
+
       if (action != null)
       {
         Dictionary<string, string> args = new();
@@ -170,14 +151,21 @@ namespace ClaraMundi
         };
         OnAction?.Invoke(invocation);
         ChatManager.Instance?.OnAction(invocation);
+        return true;
       }
-      else
+      return false;
+    }
+
+    [ServerRpc()]
+    public void TriggerCommand(string command, string text)
+    {
+      if (!InvokeAction(command, text))
       {
         player.Chat.Channel.ServerSendMessage(new()
         {
-          Type = ChatMessageType.System,
+          Type = ChatMessageType.Error,
           Channel = "System",
-          Message = "Invalid command"
+          Message = "Invalid command."
         });
       }
     }
