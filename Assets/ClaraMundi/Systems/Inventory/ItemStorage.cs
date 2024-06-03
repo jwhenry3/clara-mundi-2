@@ -110,6 +110,12 @@ namespace ClaraMundi
       return Items.Count < Capacity;
     }
 
+    public ItemInstance GetInstanceByItem(Item item, bool mustNotBeEquipped = false)
+    {
+      return (from kvp in GetVisibleItems()
+              where kvp.Value.ItemId == item.ItemId && (!mustNotBeEquipped || !kvp.Value.IsEquipped)
+              select kvp.Value).FirstOrDefault();
+    }
     public ItemInstance GetInstanceByItemId(string itemId, bool mustNotBeEquipped = false)
     {
       return (from kvp in GetVisibleItems()

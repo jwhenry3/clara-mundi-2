@@ -41,8 +41,7 @@ namespace ClaraMundi
           });
           return;
         }
-        var itemIdOrName = action.Args["item"];
-        var item = ItemStorage.ItemRepo.GetItem(itemIdOrName);
+        var item = action.Args["item"].Item;
         if (item == null)
         {
           player.Chat.Channel.ServerSendMessage(new()
@@ -53,7 +52,7 @@ namespace ClaraMundi
           });
           return;
         }
-        var instance = ItemStorage.GetInstanceByItemId(item.ItemId, isUse);
+        var instance = ItemStorage.GetInstanceByItem(item, isUse);
         if (instance == null)
         {
           player.Chat.Channel.ServerSendMessage(new()

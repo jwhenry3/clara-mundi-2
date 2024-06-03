@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FishNet.Object;
 using FishNet.Object.Synchronizing;
+using UnityEngine;
 
 namespace ClaraMundi
 {
@@ -100,16 +101,19 @@ namespace ClaraMundi
 
     private void OnMessage(ChatMessage lastMessage, ChatMessage nextMessage, bool asServer)
     {
+      // Debug.Log("On Message");
       if (asServer) return;
-      if (lastMessage != null && (lastMessage.MessageId == nextMessage.MessageId ||
-          nextMessage.MessageId == initialMessage?.MessageId)) return;
-
+      // Debug.Log("On Message: " + nextMessage.Message);
+      if (initialMessage != null && initialMessage.MessageId == nextMessage.MessageId) return;
+      if (lastMessage != null && lastMessage.MessageId == nextMessage.MessageId) return;
       ChatManager.ReceivedMessage(nextMessage);
     }
 
     public void ServerSendMessage(ChatMessage message)
     {
       if (!IsServerStarted) return;
+      // Debug.Log("Server Send Message");
+      // Debug.Log(message.Channel + " - " + message.Message + " - " + (player != null ? "player" : "no player") + " - " + message.SenderCharacterName);
       switch (message.Channel)
       {
         case "Say" when player == null:
@@ -117,9 +121,9 @@ namespace ClaraMundi
             if (string.IsNullOrEmpty(message.SenderCharacterName)) return;
             // execute on the sender player's channel so we can use the observer
             // so visible players can receive the message
-            if (PlayerManager.Instance.PlayersByName.ContainsKey(message.SenderCharacterName))
-              PlayerManager.Instance.PlayersByName[message.SenderCharacterName].Chat.Channel
-                  .ServerSendMessage(message);
+            var player = PlayerManager.Instance.GetPlayer(message.SenderCharacterName);
+            if (player != null)
+              player.Chat.Channel.ServerSendMessage(message);
             return;
           }
         case "Whisper":
@@ -127,6 +131,7 @@ namespace ClaraMundi
             LastPrivateMessage.Value = message;
           break;
         default:
+          // Debug.Log("Set Last Message");
           LastMessage.Value = message;
           break;
       }

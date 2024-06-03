@@ -22,7 +22,7 @@ namespace ClaraMundi
     public ChatMessageUI ChatMessagePrefab;
     public Transform ChatMessageContainer;
 
-    public string defaultChannel = "Say";
+    public string defaultChannel = "/say";
 
     public void Init()
     {
@@ -45,33 +45,36 @@ namespace ClaraMundi
 
       inputField.inputField.text = "";
       inputField.Select();
+      var command = defaultChannel;
 
       if (indexOfSlash == 0)
       {
         var words = message.Split(" ").ToList();
-        var command = words[0];
+        command = words[0];
         words.RemoveAt(0);
-        var text = string.Join(" ", words);
+        message = string.Join(" ", words);
         if (command == "/channel" || command == "/chan" || command == "/cmd")
         {
           if (words.Count > 0)
-            defaultChannel = words[0];
+          {
+            var action = RepoManager.Instance.ActionRepo.Get("/" + words[0]);
+            if (action.Name.Contains("Channel"))
+            {
+              defaultChannel = action.Command;
+              ChatManager.ReceivedMessage(new()
+              {
+                Type = ChatMessageType.System,
+                Message = "Changed Channel to " + action.Name.Split(" ")[0]
+              });
+            }
+          }
           return;
         }
-        // run a command parser
-        ActionController.Instance.TriggerCommand(
-          command,
-          text
-        );
-        return;
       }
-      ChatManager.SendChatMessage(defaultChannel, new ChatMessage
-      {
-        Type = ChatMessageType.Chat,
-        Channel = defaultChannel,
-        Message = message,
-      });
-      // Debug.Log("Message Sent!");
+      ActionController.Instance.TriggerCommand(
+        command,
+        message
+      );
     }
 
     public void ClearMessages()

@@ -23,9 +23,9 @@ namespace ClaraMundi
     public readonly SyncVar<bool> CameraLockTarget = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
     public readonly SyncVar<bool> CameraLockSubTarget = new(new SyncTypeSettings(WritePermission.ClientUnsynchronized));
 
-    public Targetable SubTarget => !string.IsNullOrEmpty(SubTargetId.Value) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(SubTargetId.Value) ? EntityManager.Instance.Entities[SubTargetId.Value].GetComponent<Targetable>() : null;
+    public Targetable SubTarget => EntityManager.Instance.GetEntityComponent<Targetable>(SubTargetId.Value);
 
-    public Targetable Target => !string.IsNullOrEmpty(TargetId.Value) && EntityManager.Instance != null && EntityManager.Instance.Entities.ContainsKey(TargetId.Value) ? EntityManager.Instance.Entities[TargetId.Value].GetComponent<Targetable>() : null;
+    public Targetable Target => EntityManager.Instance.GetEntityComponent<Targetable>(TargetId.Value);
 
 
     private bool listening;
@@ -263,23 +263,22 @@ namespace ClaraMundi
     }
     void SanitizeTargets()
     {
-      if (TargetId.Value != null)
-      {
-        if (!EntityManager.Instance.Entities.ContainsKey(TargetId.Value))
-          SetTarget(null);
-      }
-      if (SubTargetId.Value != null)
-      {
-        if (!EntityManager.Instance.Entities.ContainsKey(SubTargetId.Value))
-          SetSubTarget(null);
-      }
+      if (!string.IsNullOrEmpty(TargetId.Value) && !EntityManager.Instance.GetEntity(TargetId.Value))
+        SetTarget(null);
+      if (!string.IsNullOrEmpty(SubTargetId.Value) && !EntityManager.Instance.GetEntity(SubTargetId.Value))
+        SetSubTarget(null);
     }
     int GetIndexOfCurrentTarget()
     {
       if (SubTargetId.Value == null && TargetId.Value == null)
         return -1;
-      Entity targetEntity = EntityManager.Instance.Entities[SubTargetId.Value ?? TargetId.Value];
-      Targetable targetable = targetEntity.GetComponent<Targetable>();
+      var target = Target;
+      var subTarget = SubTarget;
+      Targetable targetable = null;
+
+      if (target != null) targetable = target;
+      if (subTarget != null) targetable = subTarget;
+
       return TargetArea.PossibleTargets.IndexOf(targetable);
     }
 

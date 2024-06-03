@@ -21,36 +21,36 @@ namespace ClaraMundi
     public EntityType EntityType;
     public readonly SyncVar<string> entityId = new();
 
-    public override void OnStartClient()
+
+    public override void OnStartNetwork()
     {
-      base.OnStartClient();
-      OnStarted?.Invoke();
+      base.OnStartNetwork();
+      if (IsServerStarted)
+      {
+        if (string.IsNullOrEmpty(entityId.Value))
+          entityId.Value = ServerEntityId;
+        if (string.IsNullOrEmpty(entityName.Value))
+          entityName.Value = ServerEntityName;
+      }
       OnEntityId(entityId.Value, entityId.Value, false);
       entityId.OnChange += OnEntityId;
+      entityName.OnChange += OnEntityName;
+      OnStarted?.Invoke();
     }
-
-    public override void OnStopClient()
+    public override void OnStopNetwork()
     {
-      base.OnStopClient();
+      base.OnStopNetwork();
       entityId.OnChange -= OnEntityId;
+      entityName.OnChange -= OnEntityName;
     }
 
     void OnEntityId(string prev, string next, bool asServer)
     {
-      if (prev != null && EntityManager.Instance.Entities.ContainsKey(prev))
-        EntityManager.Instance.Entities.Remove(prev);
-      if (next != null)
-        EntityManager.Instance.Entities[next] = this;
+      EntityManager.Instance.ChangeId(prev, next, this);
     }
-
-    public override void OnStartServer()
+    void OnEntityName(string prev, string next, bool asServer)
     {
-      base.OnStartServer();
-      if (string.IsNullOrEmpty(entityId.Value))
-        entityId.Value = ServerEntityId;
-      if (string.IsNullOrEmpty(entityName.Value))
-        entityName.Value = ServerEntityName;
-      OnStarted?.Invoke();
+      EntityManager.Instance.ChangeName(prev, next, this);
     }
 
   }

@@ -5,6 +5,7 @@ using System;
 using FishNet;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Unity.VisualScripting;
 
 namespace ClaraMundi
 {
@@ -118,7 +119,7 @@ namespace ClaraMundi
       player.Entity.Character.Value = character;
       player.Stats.player = player;
 
-      player.Entity.entityName.Value = character.name.ToLower();
+      player.Entity.entityName.Value = character.name.ToLower().FirstCharacterToUpper();
       player.Entity.entityId.Value = character.accountId;
       player.Stats.ComputeStats();
 

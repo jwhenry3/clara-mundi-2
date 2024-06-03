@@ -21,6 +21,7 @@ namespace ClaraMundi
 
     public static void SendChatMessage(string channel, ChatMessage message)
     {
+      Debug.Log(PlayerManager.Instance.LocalPlayer);
       if (PlayerManager.Instance.LocalPlayer)
         PlayerManager.Instance.LocalPlayer.Chat.SendMessage(channel, message);
     }
@@ -37,6 +38,7 @@ namespace ClaraMundi
 
     public void OnAction(ActionInvocation action)
     {
+      // Debug.Log("Action!");
       if (action.Action.Name == "Tell Channel")
         action.player.Chat.ServerSendMessage("Whisper", new ChatMessage
         {
@@ -45,7 +47,7 @@ namespace ClaraMundi
           Type = ChatMessageType.Chat,
           Channel = "Whisper",
           Message = action.Text,
-          ToCharacterName = action.Args["recipient"]
+          ToCharacterName = action.Args["recipient"].Value
         });
 
       if (action.Action.Name == "Yell Channel")
@@ -67,6 +69,7 @@ namespace ClaraMundi
           Message = action.Text,
         });
       if (action.Action.Name == "Say Channel")
+      {
         action.player.Chat.ServerSendMessage("Say", new ChatMessage
         {
           SenderCharacterName = action.player.Character.name,
@@ -75,6 +78,7 @@ namespace ClaraMundi
           Channel = "Say",
           Message = action.Text,
         });
+      }
       if (action.Action.Name == "Party Channel")
         action.player.Chat.ServerSendMessage("Party", new ChatMessage
         {

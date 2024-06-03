@@ -64,8 +64,7 @@ namespace ClaraMundi
     private void OnNetStarted()
     {
       ClientId = Entity.Owner.ClientId;
-      PlayerManager.Instance.Players[Entity.entityId.Value] = this;
-      PlayerManager.Instance.PlayersByName[Character.name.ToLower()] = this;
+      PlayerManager.Instance.SetPlayer(this);
       if (!Entity.IsOwner) return;
       PlayerManager.Instance.ChangeLocalPlayer(this);
       NetStarted?.Invoke();

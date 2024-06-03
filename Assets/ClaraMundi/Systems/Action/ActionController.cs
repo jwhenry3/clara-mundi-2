@@ -11,7 +11,7 @@ namespace ClaraMundi
   {
     public Player player;
     public EntityAction Action;
-    public Dictionary<string, string> Args;
+    public Dictionary<string, ActionArg> Args;
     public string Text;
   }
 
@@ -128,15 +128,20 @@ namespace ClaraMundi
 
       if (action != null)
       {
-        Dictionary<string, string> args = new();
-        if (action.ArgNames.Length > 0)
+        Dictionary<string, ActionArg> args = new();
+        if (action.Args.Count > 0)
         {
           var words = text.Split(" ").ToList();
-          foreach (var arg in action.ArgNames)
+          foreach (var arg in action.Args)
           {
             if (words.Count > 0)
             {
-              args[arg] = words[0];
+              args[arg.Name] = new()
+              {
+                Name = arg.Name,
+                Type = arg.Type,
+                Value = words[0]
+              };
               words.RemoveAt(0);
             }
           }
