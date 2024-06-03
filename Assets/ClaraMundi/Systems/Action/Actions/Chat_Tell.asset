@@ -17,11 +17,7 @@ MonoBehaviour:
   Sprite: {fileID: 0}
   Command: /tell
   CommandShort: /t
-  CommandArg1: recipient
-  CommandArg2: 
-  MustHaveTarget: 0
-  TargetMustBePlayer: 1
-  TargetMustBeNPC: 0
-  CanBeUsedOnEnemy: 0
-  CanBeUsedOnAlly: 1
-  CanBeUsedOnSelf: 1
+  Args:
+  - Name: recipient
+    Type: 1
+    Value: 
