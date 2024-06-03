@@ -15,6 +15,18 @@ namespace ClaraMundi
     private InputAction action;
 
 
+    void OnEnable()
+    {
+      button = button ?? GetComponent<ButtonUI>();
+      if (PlayerManager.Instance == null) return;
+      player = PlayerManager.Instance.LocalPlayer;
+      InputManager.Instance.UI.FindAction("Submit").performed += OnClick;
+    }
+
+    void OnDisable()
+    {
+      InputManager.Instance.UI.FindAction("Submit").performed -= OnClick;
+    }
     protected override void LateUpdate()
     {
       CanSpawnDraggable = true;
@@ -30,6 +42,25 @@ namespace ClaraMundi
       base.LateUpdate();
     }
 
+    protected override void OnClick(InputAction.CallbackContext context)
+    {
+      if (EventSystem.current.currentSelectedGameObject != gameObject) return;
+      if (!isDraggable)
+      {
+        if (ActionBarUI.Instance.ActionBarActionMenu != null)
+        {
+          if (ActionBarUI.Instance.CurrentAction != null)
+          {
+            OnSet(ActionBarUI.Instance.CurrentAction);
+            ActionBarUI.Instance.ActionBarsSibling.ToBack();
+            return;
+          }
+          ActionBarUI.Instance.ActionBarsSibling.ToBack();
+          ActionBarUI.Instance.ActionBarActionMenu.moveSibling.ToFront();
+          ActionBarUI.Instance.CurrentAction = this;
+        }
+      }
+    }
     public void OnSet(ActionUI ActionUI)
     {
       if (ActionUI != this)

@@ -20,6 +20,8 @@ namespace ClaraMundi
     public GameObject Placeholder;
     public CanvasGroup Backdrop;
 
+    public MoveSibling ActionBars;
+
     public List<WindowUI> windows;
 
     void Start()
@@ -77,16 +79,15 @@ namespace ClaraMundi
       if (!Backdrop.blocksRaycasts)
       {
         InputManager.Instance.World.Enable();
-        InputManager.Instance.Actions.Enable();
       }
       else
       {
         InputManager.Instance.World.Disable();
-        InputManager.Instance.Actions.Disable();
       }
     }
     public bool AllWindowsClosed()
     {
+      if (ActionBars.IsInFront()) return false;
       return Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1;
     }
     void OnQuit(WindowUI window)

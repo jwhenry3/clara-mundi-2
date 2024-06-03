@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 namespace ClaraMundi
 {
   public class ActionUI : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler
@@ -11,7 +12,9 @@ namespace ClaraMundi
     public ActionUI DraggingAction;
     public bool isDraggable;
     public bool CanSpawnDraggable;
+    public WindowUI ActionMenu;
 
+    public GameObject Highlight;
     public ActionBarAction ActionBarAction;
     public EntityAction Action;
     public MacroAction Macro;
@@ -30,11 +33,32 @@ namespace ClaraMundi
 
     public ActionUI Origin;
 
+    public float pointerTime;
+
     void OnEnable()
     {
       button = button ?? GetComponent<ButtonUI>();
       if (PlayerManager.Instance == null) return;
       player = PlayerManager.Instance.LocalPlayer;
+      InputManager.Instance.UI.FindAction("Submit").performed += OnClick;
+    }
+
+    void OnDisable()
+    {
+      InputManager.Instance.UI.FindAction("Submit").performed -= OnClick;
+    }
+    protected virtual void OnClick(InputAction.CallbackContext context)
+    {
+      if (EventSystem.current.currentSelectedGameObject != gameObject) return;
+      if (!isDraggable)
+      {
+        if (ActionMenu != null)
+        {
+          ActionMenu.moveSibling.ToFront();
+          ActionBarUI.Instance.ActionBarsSibling.ToBack();
+          ActionBarUI.Instance.CurrentAction = this;
+        }
+      }
     }
     void SetActionBarAction()
     {
@@ -62,6 +86,8 @@ namespace ClaraMundi
     protected virtual void LateUpdate()
     {
       button.UseNameAsText = false;
+      if (Highlight != null)
+        Highlight.SetActive(ActionBarUI.Instance.CurrentAction == this);
       if (IsActionBar1)
       {
         ActionBarAction = player.Actions.ActionBar1.Get(gameObject.name);
@@ -76,6 +102,7 @@ namespace ClaraMundi
       }
       if (isDraggable && !Input.GetMouseButton(0))
       {
+        pointerTime = 0;
         SetActionBarAction();
         ActionBarAction = null;
         Action = null;
@@ -139,6 +166,11 @@ namespace ClaraMundi
         {
           if (Input.GetMouseButton(0))
           {
+            if (pointerTime < 0.3f)
+            {
+              pointerTime += Time.deltaTime;
+              return;
+            }
             OnDrag(eventData);
           }
         }
@@ -167,6 +199,7 @@ namespace ClaraMundi
           DraggingAction.gameObject.SetActive(true);
           DraggingAction.transform.position = transform.position;
           ActionBarMoveSibling?.ToFront();
+          ActionBarUI.Instance.CurrentAction = this;
         }
       }
     }

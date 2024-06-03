@@ -154,8 +154,10 @@ namespace ClaraMundi
         if (layout == null)
           layout = GetComponent<Layout>() ?? gameObject.AddComponent<Layout>();
         if (moveSibling == null)
+        {
           moveSibling = GetComponent<MoveSibling>() ?? gameObject.AddComponent<MoveSibling>();
-        moveSibling.MovingObject = transform;
+          moveSibling.MovingObject = transform;
+        }
         if (freeModifier != null)
           freeModifier.Radius = BorderRadius;
       }

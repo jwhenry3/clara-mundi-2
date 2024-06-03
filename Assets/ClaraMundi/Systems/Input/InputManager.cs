@@ -29,7 +29,7 @@ namespace ClaraMundi
       All = Instance.InputActionAsset.FindActionMap("All");
       UI.Enable();
       All.Enable();
-      Actions.Disable();
+      Actions.Enable();
       World.Disable();
     }
     private void Awake()
