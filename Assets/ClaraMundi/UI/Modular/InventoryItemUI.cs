@@ -28,8 +28,14 @@ namespace ClaraMundi
     private float tick;
     private float interval = 0.2f;
 
+    public ActionBarAction action = new();
+
     void OnEnable()
     {
+      action = new();
+      action.Action = RepoManager.Instance.ActionRepo.Get("/item");
+      action.ActionArgs = new();
+      action.ActionArgs["item"] = "";
       if (button == null)
         button = GetComponent<ButtonUI>();
       if (button != null)
@@ -98,6 +104,8 @@ namespace ClaraMundi
           button.layout.LayoutType = LayoutType.Horizontal;
         if (item != null)
         {
+          action.ItemId = item.ItemId;
+          action.ActionArgs["item"] = item.ItemId;
           if (button.iconSprite != item.Icon)
             button.iconSprite = item.Icon;
           if (Application.isPlaying)

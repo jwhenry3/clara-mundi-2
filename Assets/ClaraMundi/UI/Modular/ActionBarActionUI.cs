@@ -64,6 +64,14 @@ namespace ClaraMundi
               ActionBarUI.Instance.ActionBarsSibling.ToBack();
             return;
           }
+          if (ActionBarUI.Instance.CurrentActionBarAction != null)
+          {
+            OnSet(ActionBarUI.Instance.CurrentActionBarAction);
+            ActionBarUI.Instance.CurrentActionBarAction = null;
+            if (!UIHandling.Instance.IsPlaceholderLastSibling())
+              ActionBarUI.Instance.ActionBarsSibling.ToBack();
+            return;
+          }
           ActionBarUI.Instance.ActionBarsSibling.ToBack();
           ActionBarUI.Instance.ActionBarActionMenu.transform.position = transform.position;
           ActionBarUI.Instance.ActionBarActionMenu.moveSibling.ToFront();
@@ -71,12 +79,34 @@ namespace ClaraMundi
         }
       }
     }
+    public void OnSet(ActionBarAction actionBarAction)
+    {
+      if (actionBarAction != this.ActionBarAction)
+      {
+        var macro = actionBarAction.Macro;
+        var action = actionBarAction.Action;
+        var item = RepoManager.Instance.ItemRepo.GetItem(actionBarAction.ItemId);
+
+        ActionBar nextActionBar = GetActionBar();
+        nextActionBar.Set(ActionBarAction.SlotName, new()
+        {
+          SlotName = ActionBarAction.SlotName,
+          Action = action,
+          Macro = macro,
+          ItemId = item != null ? item.ItemId : null,
+          ActionArgs = actionBarAction.ActionArgs,
+        });
+      }
+      button.Select();
+    }
     public void OnSet(ActionUI ActionUI)
     {
       if (ActionUI != this)
       {
         var macro = ActionUI.Macro;
         var action = ActionUI.Action;
+        var item = ActionUI.Item;
+        var args = ActionUI.ActionBarAction != null ? ActionUI.ActionBarAction.ActionArgs : new();
         // change the player's action to this slot
         ActionBar previousActionBar = ActionUI.GetActionBar();
         ActionBar nextActionBar = GetActionBar();
@@ -90,7 +120,9 @@ namespace ClaraMundi
             {
               SlotName = previousSlotName,
               Action = Action,
-              Macro = Macro
+              Macro = Macro,
+              ItemId = Item != null ? Item.ItemId : null,
+              ActionArgs = ActionBarAction.ActionArgs,
             });
 
             previousSlot.SlotName = ActionBarAction.SlotName;
@@ -100,7 +132,9 @@ namespace ClaraMundi
         {
           SlotName = ActionBarAction.SlotName,
           Action = action,
-          Macro = macro
+          Macro = macro,
+          ItemId = item != null ? item.ItemId : null,
+          ActionArgs = args
         });
       }
       button.Select();

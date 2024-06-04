@@ -18,6 +18,7 @@ namespace ClaraMundi
     public WindowUI ActionBarActionMenu;
     public WindowUI ActionMenu;
     public ActionUI CurrentAction;
+    public ActionBarAction CurrentActionBarAction;
 
     public Transform Placeholder;
 
@@ -77,6 +78,12 @@ namespace ClaraMundi
     public void Use()
     {
       if (CurrentAction == null) return;
+      if (CurrentAction.Action != null && CurrentAction.ActionBarAction != null)
+        ActionController.Instance.TriggerCommand(CurrentAction.Action.Command, CurrentAction.ActionBarAction.ActionArgs);
+      else if (CurrentAction.Macro != null && CurrentAction.ActionBarAction != null)
+      {
+        // split macro by newline and execute each line in a particular order with a slight delay
+      }
       CurrentAction = null;
       EventSystem.current.SetSelectedGameObject(null);
       ActionMenu.moveSibling.ToBack();

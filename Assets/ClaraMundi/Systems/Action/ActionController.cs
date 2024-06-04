@@ -21,8 +21,9 @@ namespace ClaraMundi
     public string SlotName;
     public EntityAction Action;
     public MacroAction Macro;
+    public string ItemId;
 
-    public List<string> ActionArgs;
+    public Dictionary<string, string> ActionArgs;
   }
   [Serializable]
   public class MacroAction
@@ -173,6 +174,48 @@ namespace ClaraMundi
           Message = "Invalid command."
         });
       }
+    }
+    [ServerRpc()]
+    public void TriggerCommand(string command, Dictionary<string, string> actionArgs)
+    {
+
+      EntityAction action = ActionRepo.Get(command);
+      if (action == null)
+      {
+        player.Chat.Channel.ServerSendMessage(new()
+        {
+          Type = ChatMessageType.Error,
+          Channel = "System",
+          Message = "Invalid command."
+        });
+        return;
+      }
+
+      Dictionary<string, ActionArg> args = new();
+      if (action.Args.Count > 0)
+      {
+        foreach (var arg in action.Args)
+        {
+          if (actionArgs.ContainsKey(arg.Name))
+          {
+            args.Add(arg.Name, new()
+            {
+              Name = arg.Name,
+              Type = arg.Type,
+              Value = actionArgs[arg.Name]
+            });
+          }
+        }
+      }
+      ActionInvocation invocation = new()
+      {
+        player = player,
+        Action = action,
+        Args = args,
+        Text = "",
+      };
+      OnAction?.Invoke(invocation);
+      ChatManager.Instance?.OnAction(invocation);
     }
   }
 }

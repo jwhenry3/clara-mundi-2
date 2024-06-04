@@ -18,6 +18,7 @@ namespace ClaraMundi
     public ActionBarAction ActionBarAction;
     public EntityAction Action;
     public MacroAction Macro;
+    public Item Item;
 
     public ButtonUI button;
 
@@ -93,12 +94,16 @@ namespace ClaraMundi
         ActionBarAction = player.Actions.ActionBar1.Get(gameObject.name);
         Action = ActionBarAction.Action;
         Macro = ActionBarAction.Macro;
+        if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
+          Item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
       }
       if (IsActionBar2)
       {
         ActionBarAction = player.Actions.ActionBar2.Get(gameObject.name);
         Action = ActionBarAction.Action;
         Macro = ActionBarAction.Macro;
+        if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
+          Item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
       }
       if (isDraggable && !Input.GetMouseButton(0))
       {
@@ -114,7 +119,13 @@ namespace ClaraMundi
       if (Action != null)
       {
         button.iconSprite = Action.Sprite;
-        if (button.iconSprite == null)
+        if (Item != null)
+        {
+          button.HasIcon = true;
+          button.iconSprite = Item.Icon;
+          button.HasText = false;
+        }
+        else if (button.iconSprite == null)
         {
           button.text.text = Action.Name;
           button.HasIcon = false;

@@ -200,6 +200,12 @@ namespace ClaraMundi
       }
 
     }
+    public void Assign()
+    {
+      ActionBarUI.Instance.CurrentActionBarAction = chosenItem.action;
+      ActionBarUI.Instance.ActionBarsSibling.ToFront();
+      ActionBarUI.Instance.FirstAction1.Select();
+    }
 
     public void Drop()
     {
