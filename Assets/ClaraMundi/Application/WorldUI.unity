@@ -8413,6 +8413,9 @@ MonoBehaviour:
   freeModifier: {fileID: 263634625}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &263634625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8849,10 +8852,10 @@ RectTransform:
   - {fileID: 1218285917}
   m_Father: {fileID: 1795018201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1221, y: -933}
-  m_SizeDelta: {x: 71.07, y: 91.759995}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -600, y: 200}
+  m_SizeDelta: {x: 71.07, y: 91.76001}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &267971169
 MonoBehaviour:
@@ -8898,6 +8901,21 @@ MonoBehaviour:
   freeModifier: {fileID: 267971171}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1475874076}
+        m_TargetAssemblyTypeName: ClaraMundi.ActionBarUI, Assembly-CSharp
+        m_MethodName: OnActionMenuCancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &267971171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10627,6 +10645,9 @@ MonoBehaviour:
   freeModifier: {fileID: 315185229}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &315185227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13479,6 +13500,9 @@ MonoBehaviour:
   freeModifier: {fileID: 381145546}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &381145550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19600,6 +19624,9 @@ MonoBehaviour:
   freeModifier: {fileID: 563523113}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &563523118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21506,6 +21533,21 @@ MonoBehaviour:
   freeModifier: {fileID: 618479546}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1475874076}
+        m_TargetAssemblyTypeName: ClaraMundi.ActionBarUI, Assembly-CSharp
+        m_MethodName: OnActionMenuCancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!225 &618479551
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -24189,6 +24231,9 @@ MonoBehaviour:
   freeModifier: {fileID: 669602685}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &669602689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26240,6 +26285,9 @@ MonoBehaviour:
   freeModifier: {fileID: 687728829}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &687728833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34221,6 +34269,9 @@ MonoBehaviour:
   freeModifier: {fileID: 883405808}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &883405808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35094,6 +35145,9 @@ MonoBehaviour:
   freeModifier: {fileID: 895642010}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!225 &895642014
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -36530,6 +36584,9 @@ MonoBehaviour:
   freeModifier: {fileID: 909495586}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &909495590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38455,6 +38512,9 @@ MonoBehaviour:
   freeModifier: {fileID: 973884682}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!224 &973884686
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40022,6 +40082,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1013501077}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1013501081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47945,6 +48008,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1207283685}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1207283685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48806,6 +48872,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1233972578}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1233972578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54877,6 +54946,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1381461675}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1381461679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58475,6 +58547,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1465519710}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1465519715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59217,6 +59292,7 @@ MonoBehaviour:
   ActionBarActionMenu: {fileID: 267971170}
   ActionMenu: {fileID: 1718795732}
   CurrentAction: {fileID: 0}
+  Placeholder: {fileID: 2088290183}
 --- !u!1 &1477444057
 GameObject:
   m_ObjectHideFlags: 0
@@ -67250,6 +67326,21 @@ MonoBehaviour:
   freeModifier: {fileID: 1638127099}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1475874076}
+        m_TargetAssemblyTypeName: ClaraMundi.ActionBarUI, Assembly-CSharp
+        m_MethodName: OnActionMenuCancel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!225 &1638127104
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -70183,6 +70274,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1705821264}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1705821264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71084,6 +71178,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1718795733}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1718795733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79052,6 +79149,9 @@ MonoBehaviour:
   freeModifier: {fileID: 1923591892}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1923591896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83630,6 +83730,9 @@ MonoBehaviour:
   freeModifier: {fileID: 2010660661}
   CurrentWindow: {fileID: 0}
   blockCancel: 0
+  OnCancelled:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2010660665
 MonoBehaviour:
   m_ObjectHideFlags: 0

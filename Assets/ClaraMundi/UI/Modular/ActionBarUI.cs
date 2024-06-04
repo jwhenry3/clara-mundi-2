@@ -19,6 +19,8 @@ namespace ClaraMundi
     public WindowUI ActionMenu;
     public ActionUI CurrentAction;
 
+    public Transform Placeholder;
+
     void OnEnable()
     {
       Instance = this;
@@ -27,14 +29,21 @@ namespace ClaraMundi
       InputManager.Instance.Actions.FindAction("ActionBar2").performed += OnActionBar2;
     }
 
+    public void OnActionMenuCancel()
+    {
+      CurrentAction = null;
+    }
+
     private void OnActionBar2(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+      Placeholder.SetAsLastSibling();
       ActionBarsSibling.ToFront();
       StartCoroutine(SelectDelayed(FirstAction2));
     }
 
     private void OnActionBar1(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+      Placeholder.SetAsLastSibling();
       ActionBarsSibling.ToFront();
       StartCoroutine(SelectDelayed(FirstAction1));
     }
@@ -59,7 +68,10 @@ namespace ClaraMundi
       ActionMenu.moveSibling.ToBack();
       ActionBarActionMenu.moveSibling.ToBack();
       ActionBarsSibling.ToFront();
-      FirstAction1.Select();
+      if (CurrentAction is ActionBarActionUI)
+        CurrentAction.button.Select();
+      else
+        FirstAction1.Select();
     }
 
     public void Use()

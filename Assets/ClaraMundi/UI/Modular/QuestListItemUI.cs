@@ -63,7 +63,7 @@ namespace ClaraMundi.Quests
       player.Quests.TrackedQuests.OnChange += OnTrackedChange;
       if (_quest == null) return;
       bool tracked = player.Quests.TrackedQuests.Contains(_quest.QuestId);
-      if (TrackedStatusToggle.isOn != tracked)
+      if (TrackedStatusToggle != null && TrackedStatusToggle.isOn != tracked)
         TrackedStatusToggle.isOn = player.Quests.TrackedQuests.Contains(_quest.QuestId);
     }
 

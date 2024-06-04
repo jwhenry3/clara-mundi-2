@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using JoshH.UI;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -44,6 +45,7 @@ namespace ClaraMundi
 
     public bool blockCancel;
     public event Action CancelPressed;
+    public UnityEvent OnCancelled = new();
 
     public void OnEnable()
     {
@@ -67,6 +69,7 @@ namespace ClaraMundi
       if (moveSibling.IsInFront())
       {
         CancelPressed?.Invoke();
+        OnCancelled?.Invoke();
         if (blockCancel) return;
         if (parent != null && parent.CurrentWindow == this)
         {

@@ -85,10 +85,14 @@ namespace ClaraMundi
         InputManager.Instance.World.Disable();
       }
     }
+    public bool IsPlaceholderLastSibling()
+    {
+      return Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1;
+    }
     public bool AllWindowsClosed()
     {
       if (ActionBars.IsInFront()) return false;
-      return Placeholder.transform.GetSiblingIndex() == Placeholder.transform.parent.childCount - 1;
+      return IsPlaceholderLastSibling();
     }
     void OnQuit(WindowUI window)
     {
@@ -145,7 +149,11 @@ namespace ClaraMundi
     public void MoveLastSiblingBack()
     {
       if (PeersContainer != null)
+      {
+        // do not move placeholder back
+        if (IsPlaceholderLastSibling()) return;
         PeersContainer.transform.GetChild(PeersContainer.transform.childCount - 1).SetAsFirstSibling();
+      }
     }
   }
 

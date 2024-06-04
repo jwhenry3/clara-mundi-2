@@ -29,6 +29,13 @@ namespace ClaraMundi
     }
     protected override void LateUpdate()
     {
+      if (ActionBarUI.Instance.ActionBarsSibling.IsInBack())
+      {
+        if (EventSystem.current.currentSelectedGameObject == gameObject)
+          EventSystem.current.SetSelectedGameObject(null);
+        if (ActionMenu != null && !ActionMenu.gameObject.activeInHierarchy && ActionBarUI.Instance.CurrentAction == this)
+          ActionBarUI.Instance.CurrentAction = null;
+      }
       CanSpawnDraggable = true;
       if (InputManager.Instance != null)
       {
@@ -52,10 +59,13 @@ namespace ClaraMundi
           if (ActionBarUI.Instance.CurrentAction != null)
           {
             OnSet(ActionBarUI.Instance.CurrentAction);
-            ActionBarUI.Instance.ActionBarsSibling.ToBack();
+            ActionBarUI.Instance.CurrentAction = null;
+            if (!UIHandling.Instance.IsPlaceholderLastSibling())
+              ActionBarUI.Instance.ActionBarsSibling.ToBack();
             return;
           }
           ActionBarUI.Instance.ActionBarsSibling.ToBack();
+          ActionBarUI.Instance.ActionBarActionMenu.transform.position = transform.position;
           ActionBarUI.Instance.ActionBarActionMenu.moveSibling.ToFront();
           ActionBarUI.Instance.CurrentAction = this;
         }
