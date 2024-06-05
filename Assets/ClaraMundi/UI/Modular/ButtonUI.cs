@@ -10,7 +10,7 @@ using UnityEngine.UI.ProceduralImage;
 namespace ClaraMundi
 {
   [ExecuteInEditMode]
-  public class ButtonUI : MonoBehaviour, ISelectHandler
+  public class ButtonUI : MonoBehaviour, ISelectHandler, IDragHandler
   {
     [HideInInspector]
     public WindowUI window;
@@ -286,6 +286,11 @@ namespace ClaraMundi
     public void Select()
     {
       EventSystem.current?.SetSelectedGameObject(gameObject);
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+      // Do whatever drag-handling you need to do, then:
+      eventData.Use();
     }
   }
 }

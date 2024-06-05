@@ -33,6 +33,7 @@ namespace ClaraMundi
     public string Id = "action";
     public string Name = "Action";
     public Sprite Sprite;
+    public string Description = "";
 
     public string Command = "/action";
     public string CommandShort = "/ac";

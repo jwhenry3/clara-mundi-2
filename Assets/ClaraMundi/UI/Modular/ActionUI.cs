@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -20,7 +21,10 @@ namespace ClaraMundi
     public MacroAction Macro => ActionBarAction?.Macro ?? null;
     public string ItemId => ActionBarAction?.ItemId ?? null;
 
+    public bool IsListItem;
+
     public ButtonUI button;
+    public TextMeshProUGUI DescriptionText;
 
     protected PointerEventData pointerEventData;
 
@@ -121,7 +125,10 @@ namespace ClaraMundi
         button.iconSprite = Action.Sprite;
         button.icon.sprite = Action.Sprite;
         button.HasIcon = true;
-        button.HasText = false;
+        button.HasText = IsListItem;
+        button.text.text = Action.Name;
+        if (DescriptionText != null)
+          DescriptionText.text = Action.Description;
       }
       else if (Action != null && button.iconSprite == null)
       {

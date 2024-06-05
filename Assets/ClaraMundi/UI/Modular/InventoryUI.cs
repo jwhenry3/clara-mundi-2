@@ -202,6 +202,8 @@ namespace ClaraMundi
     }
     public void Assign()
     {
+      ItemMenu.moveSibling.ToBack();
+      if (chosenItem == null) return;
       ActionBarUI.Instance.CurrentActionBarAction = chosenItem.action;
       ActionBarUI.Instance.ActionBarsSibling.ToFront();
       ActionBarUI.Instance.FirstAction1.Select();
