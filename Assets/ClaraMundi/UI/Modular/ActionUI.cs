@@ -9,7 +9,7 @@ namespace ClaraMundi
 {
   public class ActionUI : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler
   {
-    public ActionUI DraggingAction;
+    public ActionUI DraggingAction => ActionBarUI.Instance.DraggingAction;
     public bool isDraggable;
     public bool CanSpawnDraggable;
     public WindowUI ActionMenu;
@@ -24,8 +24,6 @@ namespace ClaraMundi
 
     protected PointerEventData pointerEventData;
 
-    public MoveSibling ActionBarMoveSibling;
-
 
     public bool IsActionBar1;
     public bool IsActionBar2;
@@ -36,8 +34,12 @@ namespace ClaraMundi
 
     public float pointerTime;
 
+    public InventoryItemUI InventoryItemUI;
+
     void OnEnable()
     {
+      ActionBarAction ??= new();
+      InventoryItemUI = InventoryItemUI ?? GetComponent<InventoryItemUI>();
       button = button ?? GetComponent<ButtonUI>();
       if (PlayerManager.Instance == null) return;
       player = PlayerManager.Instance.LocalPlayer;
@@ -56,6 +58,7 @@ namespace ClaraMundi
         if (ActionMenu != null)
         {
           ActionMenu.moveSibling.ToFront();
+          ActionMenu.parent = GetComponentInParent<WindowUI>();
           ActionBarUI.Instance.ActionBarsSibling.ToBack();
           ActionBarUI.Instance.CurrentAction = this;
         }
@@ -99,26 +102,28 @@ namespace ClaraMundi
       pointerTime = 0;
       SetActionBarAction();
       ActionBarAction = null;
+      ActionBarUI.Instance.CurrentAction = null;
       gameObject.SetActive(false);
-      if (ActionBarMoveSibling != null)
-        ActionBarMoveSibling.ToBack();
+      ActionBarUI.Instance.ActionBarsSibling.ToBack();
     }
     void PrepareAction()
     {
       if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
       {
         var item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
-        button.HasIcon = true;
         button.iconSprite = item.Icon;
+        button.icon.sprite = item.Icon;
+        button.HasIcon = true;
         button.HasText = false;
       }
       else if (Action.Sprite != null)
       {
         button.iconSprite = Action.Sprite;
+        button.icon.sprite = Action.Sprite;
         button.HasIcon = true;
         button.HasText = false;
       }
-      else if (button.iconSprite == null)
+      else if (Action != null && button.iconSprite == null)
       {
         button.text.text = Action.Name;
         button.HasIcon = false;
@@ -163,7 +168,8 @@ namespace ClaraMundi
         OnDrop();
 
       PrepareActionBarAction();
-      PrepareButton();
+      if (InventoryItemUI == null && button != null)
+        PrepareButton();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -205,11 +211,10 @@ namespace ClaraMundi
         if (!DraggingAction.gameObject.activeInHierarchy)
         {
           DraggingAction.Origin = this;
-          DraggingAction.ActionBarMoveSibling = ActionBarMoveSibling;
-          DraggingAction.ActionBarAction = ActionBarAction;
+          DraggingAction.ActionBarAction = ActionBarAction.Clone(ActionBarAction.SlotName);
           DraggingAction.gameObject.SetActive(true);
           DraggingAction.transform.position = transform.position;
-          ActionBarMoveSibling?.ToFront();
+          ActionBarUI.Instance.ActionBarsSibling.ToFront();
           ActionBarUI.Instance.CurrentAction = this;
         }
       }

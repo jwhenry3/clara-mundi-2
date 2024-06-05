@@ -19824,7 +19824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60372298187c5a448b10ae743a1f28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggingAction: {fileID: 0}
   isDraggable: 1
   CanSpawnDraggable: 0
   ActionMenu: {fileID: 0}
@@ -19837,13 +19836,12 @@ MonoBehaviour:
       Name: 
       Instructions: 
     ItemId: 
-  Item: {fileID: 0}
   button: {fileID: 131919438506149894}
-  ActionBarMoveSibling: {fileID: 0}
   IsActionBar1: 0
   IsActionBar2: 0
   Origin: {fileID: 0}
   pointerTime: 0
+  InventoryItemUI: {fileID: 0}
 --- !u!1 &656935508
 GameObject:
   m_ObjectHideFlags: 0
@@ -43183,9 +43181,9 @@ RectTransform:
   - {fileID: 1327344269}
   m_Father: {fileID: 263634623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 148.935, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 148.935, y: -132.22}
   m_SizeDelta: {x: 281.87, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1236910916
@@ -51709,11 +51707,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0244315e8ac2af0478bfb26e02bbbd98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DraggingAction: {fileID: 639811817}
   ActionBarsSibling: {fileID: 1638127097}
   ActionBar1: {fileID: 1753818290}
   ActionBar2: {fileID: 851402996}
   FirstAction1: {fileID: 330617368}
-  FirstAction2: {fileID: 0}
+  FirstAction2: {fileID: 1588180243}
   ActionBarActionMenu: {fileID: 267971170}
   ActionMenu: {fileID: 1718795732}
   CurrentAction: {fileID: 0}
@@ -54487,6 +54486,7 @@ MonoBehaviour:
   quantity: {fileID: 679913756}
   quantityElement: {fileID: 679913758}
   quantityFitter: {fileID: 679913755}
+  ActionUI: {fileID: 0}
   action:
     SlotName: 
     Action: {fileID: 0}
@@ -57377,6 +57377,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3556693953361327498, guid: 21c17e45f3c7328439f2fff3e03f72a1, type: 3}
   m_PrefabInstance: {fileID: 1588180241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1588180243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7314788809757296728, guid: 21c17e45f3c7328439f2fff3e03f72a1, type: 3}
+  m_PrefabInstance: {fileID: 1588180241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd0bed25165f6044a70b1c585d07a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588486249
 GameObject:
   m_ObjectHideFlags: 0
@@ -58530,11 +58541,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2340cfab9dfdc54e948d52d04f4e85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggingAction: {fileID: 639811817}
   ActionsContainer: {fileID: 689893994}
   ActionPrefab: {fileID: 1576415792160115767, guid: 9ab77723664c2104faff1669712b618b, type: 3}
   ActionMenu: {fileID: 1718795732}
-  ActionBarMoveSibling: {fileID: 1638127097}
 --- !u!1 &1630783899
 GameObject:
   m_ObjectHideFlags: 0
@@ -65373,6 +65382,7 @@ MonoBehaviour:
   quantity: {fileID: 1213097233}
   quantityElement: {fileID: 1213097235}
   quantityFitter: {fileID: 1213097232}
+  ActionUI: {fileID: 0}
   action:
     SlotName: 
     Action: {fileID: 0}

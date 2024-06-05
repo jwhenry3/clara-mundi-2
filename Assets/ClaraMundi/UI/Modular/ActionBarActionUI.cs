@@ -74,10 +74,9 @@ namespace ClaraMundi
       if (EventSystem.current.currentSelectedGameObject != gameObject) return;
       if (isDraggable) return;
       if (ActionBarUI.Instance.ActionBarActionMenu == null) return;
-
-      if (ActionBarUI.Instance.CurrentAction != null)
+      if (ActionBarUI.Instance.CurrentAction != null && ActionBarUI.Instance.CurrentAction != this)
         OnSet(ActionBarUI.Instance.CurrentAction);
-      else if (ActionBarUI.Instance.CurrentActionBarAction != null)
+      else if (ActionBarUI.Instance.CurrentActionBarAction != null && ActionBarUI.Instance.CurrentActionBarAction != this.ActionBarAction)
         OnSet(ActionBarUI.Instance.CurrentActionBarAction);
       else
         PrepareMove();
@@ -94,6 +93,7 @@ namespace ClaraMundi
     public void OnSet(ActionBarAction actionBarAction)
     {
       ActionBarUI.Instance.CurrentActionBarAction = null;
+      ActionBarUI.Instance.CurrentAction = null;
       if (!UIHandling.Instance.IsPlaceholderLastSibling())
         ActionBarUI.Instance.ActionBarsSibling.ToBack();
       if (actionBarAction != this.ActionBarAction)
@@ -102,6 +102,7 @@ namespace ClaraMundi
     }
     public void OnSet(ActionUI ActionUI)
     {
+      ActionBarUI.Instance.CurrentActionBarAction = null;
       ActionBarUI.Instance.CurrentAction = null;
       if (!UIHandling.Instance.IsPlaceholderLastSibling())
         ActionBarUI.Instance.ActionBarsSibling.ToBack();

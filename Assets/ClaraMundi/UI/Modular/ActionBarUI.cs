@@ -7,6 +7,7 @@ namespace ClaraMundi
 {
   public class ActionBarUI : MonoBehaviour
   {
+    public ActionUI DraggingAction;
     public static ActionBarUI Instance;
     public MoveSibling ActionBarsSibling;
     public CanvasGroupWatcher ActionBar1;

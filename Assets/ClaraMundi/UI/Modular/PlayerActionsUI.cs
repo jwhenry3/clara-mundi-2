@@ -5,14 +5,11 @@ namespace ClaraMundi
   public class PlayerActionsUI : MonoBehaviour
   {
     public static PlayerActionsUI Instance;
-    public ActionUI DraggingAction;
     private Player player;
 
     public Transform ActionsContainer;
     public ActionUI ActionPrefab;
     public WindowUI ActionMenu;
-
-    public MoveSibling ActionBarMoveSibling;
 
 
     void Start()
@@ -37,8 +34,6 @@ namespace ClaraMundi
           Action = action.Action,
         };
         instance.ActionMenu = ActionMenu;
-        instance.ActionBarMoveSibling = ActionBarMoveSibling;
-        instance.DraggingAction = DraggingAction;
         if (actions.IndexOf(action) == 0)
           instance.button.Select();
       }

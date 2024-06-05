@@ -28,6 +28,8 @@ namespace ClaraMundi
     private float tick;
     private float interval = 0.2f;
 
+    public ActionUI ActionUI;
+
     public ActionBarAction action = new();
 
     void OnEnable()
@@ -86,6 +88,8 @@ namespace ClaraMundi
 
     public virtual void SetUp()
     {
+      if (ActionUI == null)
+        ActionUI = GetComponent<ActionUI>();
       if (button == null)
         button = GetComponent<ButtonUI>();
       if (button != null)
@@ -97,6 +101,12 @@ namespace ClaraMundi
           button.layout.fitVertical = false;
         }
       }
+      if (ActionUI != null)
+      {
+        ActionUI.ActionBarAction = action;
+        action.ItemId = item != null ? item.ItemId : null;
+      }
+
       StartCoroutine(PrepareText());
       if (button != null)
       {
