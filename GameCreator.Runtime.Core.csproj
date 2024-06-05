@@ -120,8 +120,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\UI\InstructionUIChangeTextSize.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Lifecycle\EventOnFixedUpdate.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Handles\ScriptableObjects\Handle.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Changers\ChangeDecimal.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Characters\Busy\ConditionCharacterIsAvailable.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\Changers\ChangeDecimal.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Spots\Collection\SpotSound.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Animation\InstructionCharacterGesture.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Number\SetNumberLightRange.cs" />
@@ -993,8 +993,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Save\Classes\Scenes.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\ListPick\Get\GetPickRandom.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Systems\Units\Facing\TUnitFacing.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Sprite\GetSpriteLocalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Structures\TreeView\TreeNode.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Get\Sprite\GetSpriteLocalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Variables\InstructionVariablesLoop.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Combat\Reactions\Enums\ReactionRotation.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Characters\Properties\InstructionCharacterRevive.cs" />
@@ -2082,12 +2082,12 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\Bool\SetBoolGlobalName.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Fields\Get\PropertyGetScale.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Number\SetNumberAudioMixer.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Properties\Get\Types\GameObject\GetGameObjectShotMain.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Collection\Physics\TEventPhysics.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Save\Memories\Types\Transform\TokenPosition.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Animim\Assets\Classes\LocomotionSingle.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconZoomMinus.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Conditions\Collection\Characters\Properties\ConditionCharacterCompareGravity.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Cameras\Properties\Get\Types\GameObject\GetGameObjectShotMain.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Get\Color\GetColorReflectionFieldColor.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Characters\Features\Skeleton\Utils\SkeletonBuilderLowerLimbs.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Vector3\SetVector3ReflectionFieldVector2.cs" />
@@ -2123,8 +2123,8 @@
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Events\Helpers\CommandArgs.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Input\InputSystem\Gamepad\InputValueButtonGamepadPress.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Polymorphism\Properties\Types\Set\Base\PropertyTypeSetBool.cs" />
-    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Storage\InstructionCommonSaveGame.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Variables\Polymorphism\Properties\Set\Vector3\SetVector3LocalList.cs" />
+    <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\VisualScripting\Instructions\Collection\Common\Storage\InstructionCommonSaveGame.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Common\IconCharacterState.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Documentation\Icons\Overlays\OverlayHourglass.cs" />
     <Compile Include="Assets\Plugins\GameCreator\Packages\Core\Runtime\Common\Utilities\Helpers\TextArea\BaseTextArea.cs" />
@@ -2602,6 +2602,10 @@
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Rewired_Editor">
+      <HintPath>Assets\Rewired\Internal\Libraries\Editor\Rewired_Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sirenix.Serialization.Config">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Serialization.Config.dll</HintPath>
       <Private>False</Private>
@@ -2620,6 +2624,14 @@
     </Reference>
     <Reference Include="Sirenix.Utilities">
       <HintPath>Assets\Plugins\Sirenix\Assemblies\Sirenix.Utilities.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rewired_Windows">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Windows.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Rewired_Core">
+      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
@@ -2648,18 +2660,6 @@
     </Reference>
     <Reference Include="Unity.Cecil">
       <HintPath>Library\PackageCache\com.reactunity.quickjs@0.17.1\Runtime\Source\Unity\Hotfix\Editor\Plugins\Unity.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Editor">
-      <HintPath>Assets\Rewired\Internal\Libraries\Editor\Rewired_Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Windows">
-      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Windows.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Rewired_Core">
-      <HintPath>Assets\Rewired\Internal\Libraries\Runtime\Rewired_Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="netstandard">

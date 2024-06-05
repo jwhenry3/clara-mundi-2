@@ -127,6 +127,21 @@ namespace ClaraMundi
       if (instance == null) return false;
       var item = ItemRepo.GetItem(instance.ItemId);
       if (item == null) return false;
+      if (item.Equippable)
+      {
+        if (!Equipment.ServerEquip(instance.ItemInstanceId))
+          Equipment.ServerUnequip(instance.ItemInstanceId);
+        return true;
+      }
+      if (!item.Usable)
+      {
+        player.Chat.Channel.ServerSendMessage(new()
+        {
+          Channel = "System",
+          Message = item.Name + " is not usable"
+        });
+        return false;
+      }
       player.Chat.Channel.ServerSendMessage(new()
       {
         Channel = "System",

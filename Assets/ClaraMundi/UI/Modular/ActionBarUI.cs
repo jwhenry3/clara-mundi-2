@@ -74,6 +74,23 @@ namespace ClaraMundi
       else
         FirstAction1.Select();
     }
+    public void Remove()
+    {
+      if (CurrentAction == null) return;
+      CurrentAction.ChangeActionBarAction(new()
+      {
+        SlotName = CurrentAction.ActionBarAction.SlotName
+      });
+
+      EventSystem.current.SetSelectedGameObject(null);
+      ActionMenu.moveSibling.ToBack();
+      ActionBarActionMenu.moveSibling.ToBack();
+      ActionBarsSibling.ToFront();
+
+      CurrentAction.button.Select();
+
+      CurrentAction = null;
+    }
 
     public void Use()
     {

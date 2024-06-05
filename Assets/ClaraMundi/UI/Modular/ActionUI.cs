@@ -16,9 +16,9 @@ namespace ClaraMundi
 
     public GameObject Highlight;
     public ActionBarAction ActionBarAction;
-    public EntityAction Action;
-    public MacroAction Macro;
-    public Item Item;
+    public EntityAction Action => ActionBarAction?.Action ?? null;
+    public MacroAction Macro => ActionBarAction?.Macro ?? null;
+    public string ItemId => ActionBarAction?.ItemId ?? null;
 
     public ButtonUI button;
 
@@ -78,73 +78,51 @@ namespace ClaraMundi
     public ActionBar GetActionBar()
     {
       if (IsActionBar2)
-      {
         return player.Actions.ActionBar2;
-      }
-      return player.Actions.ActionBar1;
+      if (IsActionBar1)
+        return player.Actions.ActionBar1;
+      return null;
     }
 
-    protected virtual void LateUpdate()
+    void PrepareActionBarAction()
     {
-      button.UseNameAsText = false;
-      if (Highlight != null)
-        Highlight.SetActive(ActionBarUI.Instance.CurrentAction == this);
-      if (IsActionBar1)
+      var actionBar = GetActionBar();
+      if (actionBar == null) return;
+      ActionBarAction = GetActionBar().Get(gameObject.name);
+    }
+    public void ChangeActionBarAction(ActionBarAction action)
+    {
+      GetActionBar()?.Set(gameObject.name, action);
+    }
+    void OnDrop()
+    {
+      pointerTime = 0;
+      SetActionBarAction();
+      ActionBarAction = null;
+      gameObject.SetActive(false);
+      if (ActionBarMoveSibling != null)
+        ActionBarMoveSibling.ToBack();
+    }
+    void PrepareAction()
+    {
+      if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
       {
-        ActionBarAction = player.Actions.ActionBar1.Get(gameObject.name);
-        Action = ActionBarAction.Action;
-        Macro = ActionBarAction.Macro;
-        if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
-          Item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
+        var item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
+        button.HasIcon = true;
+        button.iconSprite = item.Icon;
+        button.HasText = false;
       }
-      if (IsActionBar2)
-      {
-        ActionBarAction = player.Actions.ActionBar2.Get(gameObject.name);
-        Action = ActionBarAction.Action;
-        Macro = ActionBarAction.Macro;
-        if (!string.IsNullOrEmpty(ActionBarAction.ItemId))
-          Item = RepoManager.Instance.ItemRepo.GetItem(ActionBarAction.ItemId);
-      }
-      if (isDraggable && !Input.GetMouseButton(0))
-      {
-        pointerTime = 0;
-        SetActionBarAction();
-        ActionBarAction = null;
-        Action = null;
-        Macro = null;
-        gameObject.SetActive(false);
-        if (ActionBarMoveSibling != null)
-          ActionBarMoveSibling.ToBack();
-      }
-      if (Action != null)
+      else if (Action.Sprite != null)
       {
         button.iconSprite = Action.Sprite;
-        if (Item != null)
-        {
-          button.HasIcon = true;
-          button.iconSprite = Item.Icon;
-          button.HasText = false;
-        }
-        else if (button.iconSprite == null)
-        {
-          button.text.text = Action.Name;
-          button.HasIcon = false;
-          button.HasText = true;
-        }
-        else
-        {
-          button.HasIcon = true;
-          button.HasText = false;
-          button.text.text = "";
-        }
-        return;
+        button.HasIcon = true;
+        button.HasText = false;
       }
-      else if (Macro != null && (!string.IsNullOrEmpty(Macro.Name) || !string.IsNullOrEmpty(Macro.Instructions)))
+      else if (button.iconSprite == null)
       {
+        button.text.text = Action.Name;
         button.HasIcon = false;
-        button.text.text = !string.IsNullOrEmpty(Macro.Name) ? Macro.Name : "Macro";
         button.HasText = true;
-        // create a name for the macro and display it
       }
       else
       {
@@ -153,14 +131,46 @@ namespace ClaraMundi
         button.text.text = "";
       }
     }
+    void PrepareMacro()
+    {
+      button.HasIcon = false;
+      button.text.text = !string.IsNullOrEmpty(Macro.Name) ? Macro.Name : "Macro";
+      button.HasText = true;
+    }
+    void PrepareUndefined()
+    {
+      button.HasIcon = false;
+      button.HasText = false;
+      button.text.text = "";
+    }
+    void PrepareButton()
+    {
+      button.UseNameAsText = false;
+      if (Action != null)
+        PrepareAction();
+      else if (Macro != null && (!string.IsNullOrEmpty(Macro.Name) || !string.IsNullOrEmpty(Macro.Instructions)))
+        PrepareMacro();
+      else
+        PrepareUndefined();
+    }
+
+    protected virtual void LateUpdate()
+    {
+      if (Highlight != null)
+        Highlight.SetActive(ActionBarUI.Instance.CurrentAction == this);
+
+      if (isDraggable && !Input.GetMouseButton(0))
+        OnDrop();
+
+      PrepareActionBarAction();
+      PrepareButton();
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-      if (isDraggable)
-      {
-        transform.position = eventData.position;
-        pointerEventData = eventData;
-      }
+      if (!isDraggable) return;
+      transform.position = eventData.position;
+      pointerEventData = eventData;
     }
 
 
@@ -196,17 +206,7 @@ namespace ClaraMundi
         {
           DraggingAction.Origin = this;
           DraggingAction.ActionBarMoveSibling = ActionBarMoveSibling;
-          if (ActionBarAction != null)
-          {
-            DraggingAction.ActionBarAction = ActionBarAction;
-            DraggingAction.Action = ActionBarAction.Action;
-            DraggingAction.Macro = ActionBarAction.Macro;
-          }
-          else
-          {
-            DraggingAction.Action = Action;
-            DraggingAction.Macro = Macro;
-          }
+          DraggingAction.ActionBarAction = ActionBarAction;
           DraggingAction.gameObject.SetActive(true);
           DraggingAction.transform.position = transform.position;
           ActionBarMoveSibling?.ToFront();

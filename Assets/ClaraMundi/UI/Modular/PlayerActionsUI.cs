@@ -32,13 +32,12 @@ namespace ClaraMundi
       foreach (var action in actions)
       {
         var instance = Instantiate(ActionPrefab, ActionsContainer);
-        instance.Action = action.Action;
-        instance.ActionMenu = ActionMenu;
-        instance.ActionBarMoveSibling = ActionBarMoveSibling;
         instance.ActionBarAction = new()
         {
           Action = action.Action,
         };
+        instance.ActionMenu = ActionMenu;
+        instance.ActionBarMoveSibling = ActionBarMoveSibling;
         instance.DraggingAction = DraggingAction;
         if (actions.IndexOf(action) == 0)
           instance.button.Select();

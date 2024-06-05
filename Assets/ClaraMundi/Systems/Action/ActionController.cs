@@ -24,6 +24,18 @@ namespace ClaraMundi
     public string ItemId;
 
     public Dictionary<string, string> ActionArgs;
+
+    public ActionBarAction Clone(string slotName)
+    {
+      return new()
+      {
+        SlotName = slotName,
+        Action = Action,
+        Macro = Macro,
+        ItemId = ItemId,
+        ActionArgs = new(ActionArgs ?? new())
+      };
+    }
   }
   [Serializable]
   public class MacroAction

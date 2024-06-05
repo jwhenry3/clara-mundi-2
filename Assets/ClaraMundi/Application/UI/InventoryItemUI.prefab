@@ -511,6 +511,14 @@ MonoBehaviour:
   quantity: {fileID: 7579440305269708938}
   quantityElement: {fileID: 2511511199567358234}
   quantityFitter: {fileID: 5873447566282531574}
+  action:
+    SlotName: 
+    Action: {fileID: 0}
+    Macro:
+      Icon: {fileID: 0}
+      Name: 
+      Instructions: 
+    ItemId: 
 --- !u!114 &981614188219111034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,14 +538,13 @@ MonoBehaviour:
   HasIcon: 1
   iconWidth: 24
   iconHeight: 24
-  HasInitialFocus: 1
+  canvasGroupWatcher: {fileID: 0}
+  FontSize: 16
   StretchText: 1
   StretchTextHorizontal: 0
   TextAlignment: 513
   background: {r: 0.08235294, g: 0.20784314, b: 0.30980393, a: 1}
   showIconOnSelect: 0
-  lastBackground: {r: 0.08235294, g: 0.20784314, b: 0.30980393, a: 1}
-  BorderRadius: {x: 8, y: 8, z: 8, w: 8}
   iconSprite: {fileID: 0}
   button: {fileID: 7048545028044722138}
   canvasGroup: {fileID: 0}
@@ -614,6 +621,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayoutType: 1
+  Padding: 8
+  Spacing: 8
   element: {fileID: 7776640123402534845}
   verticalLayoutGroup: {fileID: 0}
   horizontalLayoutGroup: {fileID: 3089300768631237791}
