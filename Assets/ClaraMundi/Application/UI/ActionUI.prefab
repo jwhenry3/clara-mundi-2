@@ -48,7 +48,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 120, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &49647535257383876
 MonoBehaviour:
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
+  m_HorizontalFit: 2
   m_VerticalFit: 2
 --- !u!222 &7116534914724620546
 CanvasRenderer:
@@ -268,6 +268,7 @@ MonoBehaviour:
   isDraggable: 0
   CanSpawnDraggable: 1
   ActionMenu: {fileID: 0}
+  Tooltip: {fileID: 0}
   Highlight: {fileID: 4071773419950889608}
   ActionBarAction:
     SlotName: 
@@ -358,10 +359,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1963019906864085387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 0}
-  m_SizeDelta: {x: 60, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -8.94}
+  m_SizeDelta: {x: 60, y: 17.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7613156982717993792
 MonoBehaviour:
@@ -733,7 +734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1963019906864085387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -750,10 +751,10 @@ RectTransform:
   - {fileID: 9150369369122097160}
   m_Father: {fileID: 4863031803847595438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 86, y: -28}
+  m_SizeDelta: {x: 60, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6267355423283977217
 MonoBehaviour:
@@ -815,10 +816,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1963019906864085387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 0}
-  m_SizeDelta: {x: 60, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30, y: -32.94}
+  m_SizeDelta: {x: 60, y: 30.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &208775374258091528
 MonoBehaviour:

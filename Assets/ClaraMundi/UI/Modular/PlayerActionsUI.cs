@@ -8,7 +8,7 @@ namespace ClaraMundi
     public static PlayerActionsUI Instance;
     private Player player;
 
-    private WindowUI window;
+    public ActionTooltipUI Tooltip;
 
     public Transform ActionsContainer;
     public ActionUI ActionPrefab;
@@ -21,6 +21,7 @@ namespace ClaraMundi
     public List<EntityAction> GeneralActions;
     public List<EntityAction> SocialActions;
     public List<ClassAction> ClassActions => player.Stats.ClassType.Actions;
+    [HideInInspector]
     public string ActionType = "Class";
 
     public CanvasGroup CategoryCanvasGroup;
@@ -36,7 +37,6 @@ namespace ClaraMundi
     }
     void Start()
     {
-      window = GetComponentInParent<WindowUI>();
       Instance = this;
       if (PlayerManager.Instance == null) return;
       player = PlayerManager.Instance.LocalPlayer;
@@ -44,8 +44,6 @@ namespace ClaraMundi
 
     void OnEnable()
     {
-      // ListCanvasGroup.interactable = false;
-      // CategoryCanvasGroup.interactable = true;
       LoadActions();
     }
 
@@ -54,12 +52,12 @@ namespace ClaraMundi
       foreach (Transform child in ActionsContainer)
         Destroy(child.gameObject);
 
-      if (ActionType == "Class")
-        LoadClassActions(selectFirst);
-      else if (ActionType == "General")
+      if (ActionType == "General")
         LoadEntityActions(GeneralActions, selectFirst);
       else if (ActionType == "Social")
         LoadEntityActions(SocialActions, selectFirst);
+      else
+        LoadClassActions(selectFirst);
     }
 
     void LateUpdate()
@@ -78,6 +76,7 @@ namespace ClaraMundi
           Action = action,
         };
         instance.ActionMenu = ActionMenu;
+        instance.Tooltip = Tooltip;
         if (actions.IndexOf(action) == 0 && selectFirst)
           instance.button.Select();
       }
@@ -94,6 +93,7 @@ namespace ClaraMundi
           Action = action.Action,
         };
         instance.ActionMenu = ActionMenu;
+        instance.Tooltip = Tooltip;
         if (actions.IndexOf(action) == 0 && selectFirst)
           instance.button.Select();
       }

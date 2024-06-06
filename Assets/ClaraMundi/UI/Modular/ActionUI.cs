@@ -15,6 +15,8 @@ namespace ClaraMundi
     public bool CanSpawnDraggable;
     public WindowUI ActionMenu;
 
+    public ActionTooltipUI Tooltip;
+
     public GameObject Highlight;
     public ActionBarAction ActionBarAction;
     public EntityAction Action => ActionBarAction?.Action ?? null;
@@ -168,6 +170,23 @@ namespace ClaraMundi
 
     protected virtual void LateUpdate()
     {
+      if (EventSystem.current.currentSelectedGameObject == gameObject)
+      {
+        if (Tooltip != null)
+        {
+          Tooltip.action = Action;
+          Tooltip.Update();
+          Tooltip.gameObject.SetActive(true);
+        }
+      }
+      else
+      {
+        if (Tooltip != null && Tooltip.action == Action)
+        {
+          Tooltip.action = null;
+          Tooltip.gameObject.SetActive(false);
+        }
+      }
       if (Highlight != null)
         Highlight.SetActive(ActionBarUI.Instance.CurrentAction == this);
 
