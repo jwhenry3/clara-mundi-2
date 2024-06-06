@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 259, y: 0}
+  m_AnchoredPosition: {x: 263, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2511511199567358234
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 16, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8717375291023771165
@@ -394,13 +394,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -512,7 +512,7 @@ MonoBehaviour:
   quantity: {fileID: 7579440305269708938}
   quantityElement: {fileID: 2511511199567358234}
   quantityFitter: {fileID: 5873447566282531574}
-  ActionUI: {fileID: 0}
+  ActionUI: {fileID: 5804847797703968591}
   action:
     SlotName: 
     Action: {fileID: 0}
@@ -541,7 +541,7 @@ MonoBehaviour:
   iconWidth: 24
   iconHeight: 24
   canvasGroupWatcher: {fileID: 0}
-  FontSize: 16
+  FontSize: 14
   StretchText: 1
   StretchTextHorizontal: 0
   TextAlignment: 513
@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayoutType: 1
-  Padding: 8
+  Padding: 4
   Spacing: 8
   element: {fileID: 7776640123402534845}
   verticalLayoutGroup: {fileID: 0}
@@ -725,10 +725,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 8
-    m_Right: 8
-    m_Top: 8
-    m_Bottom: 8
+    m_Left: 4
+    m_Right: 4
+    m_Top: 4
+    m_Bottom: 4
   m_ChildAlignment: 3
   m_Spacing: 8
   m_ChildForceExpandWidth: 0
@@ -750,7 +750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60372298187c5a448b10ae743a1f28e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggingAction: {fileID: 0}
   isDraggable: 0
   CanSpawnDraggable: 1
   ActionMenu: {fileID: 0}
@@ -763,9 +762,11 @@ MonoBehaviour:
       Name: 
       Instructions: 
     ItemId: 
+  IsListItem: 0
   button: {fileID: 0}
-  ActionBarMoveSibling: {fileID: 0}
+  DescriptionText: {fileID: 0}
   IsActionBar1: 0
   IsActionBar2: 0
   Origin: {fileID: 0}
   pointerTime: 0
+  InventoryItemUI: {fileID: 0}

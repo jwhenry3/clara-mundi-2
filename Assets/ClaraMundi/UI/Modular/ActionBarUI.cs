@@ -22,6 +22,7 @@ namespace ClaraMundi
     public ActionBarAction CurrentActionBarAction;
 
     public Transform Placeholder;
+    public CanvasGroup PeersCanvasGroup;
 
     void OnEnable()
     {
@@ -39,6 +40,16 @@ namespace ClaraMundi
     private void OnActionBar2(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
       Placeholder.SetAsLastSibling();
+      SelectFirstAction2();
+    }
+
+    public void SelectFirstAction1()
+    {
+      ActionBarsSibling.ToFront();
+      StartCoroutine(SelectDelayed(FirstAction1));
+    }
+    public void SelectFirstAction2()
+    {
       ActionBarsSibling.ToFront();
       StartCoroutine(SelectDelayed(FirstAction2));
     }
@@ -46,8 +57,7 @@ namespace ClaraMundi
     private void OnActionBar1(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
       Placeholder.SetAsLastSibling();
-      ActionBarsSibling.ToFront();
-      StartCoroutine(SelectDelayed(FirstAction1));
+      SelectFirstAction1();
     }
 
     IEnumerator SelectDelayed(ButtonUI button)
@@ -115,6 +125,7 @@ namespace ClaraMundi
       {
         CurrentAction = null;
       }
+      PeersCanvasGroup.interactable = ActionBarsSibling.IsInBack();
     }
   }
 }

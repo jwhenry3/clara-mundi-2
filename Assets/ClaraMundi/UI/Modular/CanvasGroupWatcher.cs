@@ -1,12 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace ClaraMundi
 {
-  public class CanvasGroupWatcher : MonoBehaviour, IPointerDownHandler
+  public class CanvasGroupWatcher : UIBehaviour, IPointerDownHandler
   {
     public CanvasGroup group;
-    public WindowUI window;
     public bool RecordPressed = true;
 
     public ButtonUI CurrentButton;
@@ -17,12 +19,53 @@ namespace ClaraMundi
     public DropdownUI AutoFocusDropdown;
 
     private bool lastInteractable = false;
-
-    void Update()
+    public void SetCurrentButton(ButtonUI button)
     {
-      if (BecameInteractable())
+      CurrentButton = button;
+    }
+
+    private float interval = 0.2f;
+    private float tick = 0;
+    private readonly List<CanvasGroup> m_CanvasGroupCache = new List<CanvasGroup>();
+    private bool m_GroupsAllowInteraction = false;
+    protected override void OnCanvasGroupChanged()
+    {
+      var parentGroupAllowsInteraction = ParentGroupAllowsInteraction();
+
+      if (parentGroupAllowsInteraction != m_GroupsAllowInteraction)
       {
-        // Debug.Log(gameObject.name + " Interactable!");
+        m_GroupsAllowInteraction = parentGroupAllowsInteraction;
+      }
+    }
+    protected override void OnEnable()
+    {
+      m_GroupsAllowInteraction = ParentGroupAllowsInteraction();
+    }
+
+    bool ParentGroupAllowsInteraction()
+    {
+      Transform t = transform;
+      while (t != null)
+      {
+        t.GetComponents(m_CanvasGroupCache);
+        for (var i = 0; i < m_CanvasGroupCache.Count; i++)
+        {
+          if (m_CanvasGroupCache[i].enabled && !m_CanvasGroupCache[i].interactable)
+            return false;
+
+          if (m_CanvasGroupCache[i].ignoreParentGroups)
+            return true;
+        }
+
+        t = t.parent;
+      }
+
+      return true;
+    }
+    void LateUpdate()
+    {
+      if (!lastInteractable && group.interactable && m_GroupsAllowInteraction)
+      {
         if (!FocusButton(CurrentButton) && !FocusInput(CurrentInput) && !FocusDropdown(CurrentDropdown))
           if (!FocusButton(AutoFocusButton) && !FocusInput(AutoFocusInput) && !FocusDropdown(AutoFocusDropdown))
           {
@@ -30,11 +73,7 @@ namespace ClaraMundi
             return;
           }
       }
-      else if (lastInteractable && !IsInteractable())
-      {
-        // Debug.Log(gameObject.name + " Not Interactable!");
-      }
-      lastInteractable = IsInteractable();
+      lastInteractable = group.interactable && m_GroupsAllowInteraction;
     }
 
     bool FocusButton(ButtonUI button)
@@ -74,7 +113,7 @@ namespace ClaraMundi
       return false;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
       lastInteractable = false;
     }
@@ -82,14 +121,6 @@ namespace ClaraMundi
     public bool IsInteractable()
     {
       return group.isActiveAndEnabled && group.interactable;
-    }
-
-    bool BecameInteractable()
-    {
-      var result = IsInteractable() != lastInteractable;
-      if (result)
-        return IsInteractable();
-      return false;
     }
 
     public void OnPointerDown(PointerEventData eventData)

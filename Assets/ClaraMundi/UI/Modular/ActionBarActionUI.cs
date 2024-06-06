@@ -94,24 +94,26 @@ namespace ClaraMundi
     {
       ActionBarUI.Instance.CurrentActionBarAction = null;
       ActionBarUI.Instance.CurrentAction = null;
-      if (!UIHandling.Instance.IsPlaceholderLastSibling())
-        ActionBarUI.Instance.ActionBarsSibling.ToBack();
       if (actionBarAction != this.ActionBarAction)
         GetActionBar()?.Set(ActionBarAction.SlotName, actionBarAction.Clone(ActionBarAction.SlotName));
-      button.Select();
+      if (!UIHandling.Instance.IsPlaceholderLastSibling())
+        ActionBarUI.Instance.ActionBarsSibling.ToBack();
+      else
+        button.Select();
     }
     public void OnSet(ActionUI ActionUI)
     {
       ActionBarUI.Instance.CurrentActionBarAction = null;
       ActionBarUI.Instance.CurrentAction = null;
-      if (!UIHandling.Instance.IsPlaceholderLastSibling())
-        ActionBarUI.Instance.ActionBarsSibling.ToBack();
       if (ActionUI != this)
       {
         ActionUI.GetActionBar()?.Set(ActionUI.ActionBarAction.SlotName, ActionBarAction.Clone(ActionUI.ActionBarAction.SlotName));
         GetActionBar()?.Set(ActionBarAction.SlotName, ActionUI.ActionBarAction.Clone(ActionBarAction.SlotName));
       }
-      button.Select();
+      if (!UIHandling.Instance.IsPlaceholderLastSibling())
+        ActionBarUI.Instance.ActionBarsSibling.ToBack();
+      else
+        button.Select();
     }
   }
 }

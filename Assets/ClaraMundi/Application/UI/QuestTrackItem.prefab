@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 105.009995, y: 0}
+  m_AnchoredPosition: {x: 106.16985, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1576438779023487968
@@ -94,8 +94,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -263,8 +263,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -360,8 +360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 65.56, y: 0}
-  m_SizeDelta: {x: 115.12, y: 0}
+  m_AnchoredPosition: {x: 75.155, y: 0}
+  m_SizeDelta: {x: 134.31, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1576438779646078585
 CanvasRenderer:
@@ -418,13 +418,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -656,6 +656,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2ab432a3644f2582be92f2139665f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  journal: {fileID: 0}
   button: {fileID: 923377237676810042}
   QuestTitle: {fileID: 1576438779023487971}
   QuestLevel: {fileID: 1576438779415347185}
@@ -684,6 +685,7 @@ MonoBehaviour:
   iconWidth: 24
   iconHeight: 24
   canvasGroupWatcher: {fileID: 0}
+  FontSize: 14
   StretchText: 0
   StretchTextHorizontal: 0
   TextAlignment: 513
@@ -712,6 +714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LayoutType: 0
+  Padding: 8
+  Spacing: 8
   element: {fileID: 7426726564985297119}
   verticalLayoutGroup: {fileID: 4638437517447696523}
   horizontalLayoutGroup: {fileID: 0}

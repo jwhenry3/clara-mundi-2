@@ -163,7 +163,7 @@ namespace ClaraMundi
       {
         quantity.transform.localScale = Vector3.one;
       }
-      quantity.fontSize = 16;
+      quantity.fontSize = 14;
       if (quantity != null && quantityElement == null)
         quantityElement = quantity.GetComponent<LayoutElement>() ?? quantity.gameObject.AddComponent<LayoutElement>();
       if (quantity != null && quantityFitter == null)

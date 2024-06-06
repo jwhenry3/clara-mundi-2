@@ -204,10 +204,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3556693953361327498}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 24, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 24, y: -24}
+  m_SizeDelta: {x: 0, y: 13.41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &14677449384913241
 MonoBehaviour:
@@ -843,7 +843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a12ce6b48e908479e1d50508a1149a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DraggingAction: {fileID: 0}
   isDraggable: 0
   CanSpawnDraggable: 1
   ActionMenu: {fileID: 0}
@@ -856,13 +855,14 @@ MonoBehaviour:
       Name: 
       Instructions: 
     ItemId: 
-  Item: {fileID: 0}
+  IsListItem: 0
   button: {fileID: 7314788809757296728}
-  ActionBarMoveSibling: {fileID: 0}
+  DescriptionText: {fileID: 0}
   IsActionBar1: 1
   IsActionBar2: 0
   Origin: {fileID: 0}
   pointerTime: 0
+  InventoryItemUI: {fileID: 0}
   InputText: {fileID: 1105981982104852959}
   QuantityText: {fileID: 5339796046445503821}
 --- !u!114 &5591873769279057685
