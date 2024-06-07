@@ -10,12 +10,14 @@ namespace ClaraMundi
 {
   public class ActionUI : MonoBehaviour, IPointerDownHandler, IPointerMoveHandler
   {
+
     public ActionUI DraggingAction => ActionBarUI.Instance.DraggingAction;
     public bool isDraggable;
     public bool CanSpawnDraggable;
     public WindowUI ActionMenu;
 
-    public ActionTooltipUI Tooltip;
+    public ActionTooltipUI ActionTooltip;
+    public ItemTooltipUI ItemTooltip;
 
     public GameObject Highlight;
     public ActionBarAction ActionBarAction;
@@ -168,25 +170,40 @@ namespace ClaraMundi
         PrepareUndefined();
     }
 
-    protected virtual void LateUpdate()
+    void UpdateTooltips()
     {
       if (EventSystem.current.currentSelectedGameObject == gameObject)
       {
-        if (Tooltip != null)
+        if (ItemTooltip != null && !string.IsNullOrEmpty(ItemId))
         {
-          Tooltip.action = Action;
-          Tooltip.Update();
-          Tooltip.gameObject.SetActive(true);
+          ItemTooltip.SetItem(RepoManager.Instance.ItemRepo.GetItem(ItemId));
+          ItemTooltip.gameObject.SetActive(true);
+        }
+        else if (ActionTooltip != null && Action != null)
+        {
+          ActionTooltip.action = Action;
+          ActionTooltip.Update();
+          ActionTooltip.gameObject.SetActive(true);
         }
       }
       else
       {
-        if (Tooltip != null && Tooltip.action == Action)
+        if (ItemTooltip != null && !string.IsNullOrEmpty(ItemId) && ItemTooltip.Item?.ItemId == ItemId)
         {
-          Tooltip.action = null;
-          Tooltip.gameObject.SetActive(false);
+          ItemTooltip.SetItem(null);
+          ItemTooltip.gameObject.SetActive(false);
+        }
+        else if (ActionTooltip != null && ActionTooltip.action == Action)
+        {
+          ActionTooltip.action = null;
+          ActionTooltip.gameObject.SetActive(false);
         }
       }
+    }
+
+    protected virtual void LateUpdate()
+    {
+
       if (Highlight != null)
         Highlight.SetActive(ActionBarUI.Instance.CurrentAction == this);
 
@@ -196,6 +213,8 @@ namespace ClaraMundi
       PrepareActionBarAction();
       if (InventoryItemUI == null && button != null)
         PrepareButton();
+
+      UpdateTooltips();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -215,9 +234,9 @@ namespace ClaraMundi
       }
       else
       {
-        if (CanSpawnDraggable && DraggingAction != null)
+        if (Input.GetMouseButton(0))
         {
-          if (Input.GetMouseButton(0))
+          if (CanSpawnDraggable && DraggingAction != null)
           {
             if (pointerTime < 0.3f)
             {

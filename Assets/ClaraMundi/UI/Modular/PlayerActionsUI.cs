@@ -8,7 +8,8 @@ namespace ClaraMundi
     public static PlayerActionsUI Instance;
     private Player player;
 
-    public ActionTooltipUI Tooltip;
+    public ActionTooltipUI ActionTooltip;
+    public ItemTooltipUI ItemTooltip;
 
     public Transform ActionsContainer;
     public ActionUI ActionPrefab;
@@ -76,7 +77,8 @@ namespace ClaraMundi
           Action = action,
         };
         instance.ActionMenu = ActionMenu;
-        instance.Tooltip = Tooltip;
+        instance.ActionTooltip = ActionTooltip;
+        instance.ItemTooltip = ItemTooltip;
         if (actions.IndexOf(action) == 0 && selectFirst)
           instance.button.Select();
       }
@@ -93,7 +95,8 @@ namespace ClaraMundi
           Action = action.Action,
         };
         instance.ActionMenu = ActionMenu;
-        instance.Tooltip = Tooltip;
+        instance.ActionTooltip = ActionTooltip;
+        instance.ItemTooltip = ItemTooltip;
         if (actions.IndexOf(action) == 0 && selectFirst)
           instance.button.Select();
       }
