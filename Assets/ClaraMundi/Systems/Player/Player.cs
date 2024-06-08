@@ -145,7 +145,7 @@ namespace ClaraMundi
         classId = classId,
         level = previous.level,
         exp = previous.exp,
-        isCurrent = false,
+        isCurrent = previous.isCurrent,
         equipment = previous.equipment
       };
     }

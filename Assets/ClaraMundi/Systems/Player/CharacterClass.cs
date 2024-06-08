@@ -11,6 +11,6 @@ namespace ClaraMundi
     public long exp = 0;
     public bool isCurrent = true;
 
-    public List<CharacterEquipment> equipment = new();
+    public EquipmentSet equipment = new();
   }
 }

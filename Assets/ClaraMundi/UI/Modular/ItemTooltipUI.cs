@@ -20,12 +20,32 @@ namespace ClaraMundi
     public ModificationUI ModificationUIPrefab;
     public ItemTooltipUI EquippedTooltip;
 
+    private bool wasItemInstanceSet;
+    private bool wasItemSet;
+
 
     public void SetItemInstance(ItemInstance itemInstance)
     {
       ItemInstance = itemInstance;
+      UpdateFromInstance();
+    }
+
+    public void SetItem(Item item)
+    {
+      ItemInstance = null;
+      if (item == null) return;
+      Item = item;
+      UpdateFromItem();
+    }
+
+    void UpdateFromInstance()
+    {
+      wasItemInstanceSet = true;
       if (ItemInstance == null) return;
+      if (RepoManager.Instance == null) return;
       Item = RepoManager.Instance.ItemRepo.GetItem(ItemInstance.ItemId);
+      if (Item == null) return;
+      wasItemInstanceSet = false;
       ItemName.text = Item.Name;
       ItemDescription.text = Item.Description;
       ItemImage.sprite = Item.Icon;
@@ -34,12 +54,11 @@ namespace ClaraMundi
       UpdateModifications();
       UpdateEquipped();
     }
-
-    public void SetItem(Item item)
+    void UpdateFromItem()
     {
-      ItemInstance = null;
-      if (item == null) return;
-      Item = item;
+      wasItemSet = true;
+      if (Item == null) return;
+      wasItemSet = false;
       ItemName.text = Item.Name;
       ItemDescription.text = Item.Description;
       ItemImage.sprite = Item.Icon;
@@ -48,19 +67,25 @@ namespace ClaraMundi
       UpdateModifications();
       UpdateEquipped();
     }
+    void LateUpdate()
+    {
+      if (wasItemSet)
+        UpdateFromItem();
+      if (wasItemInstanceSet)
+        UpdateFromInstance();
+    }
 
     public void UpdateEquipped()
     {
       if (EquippedTooltip == null) return;
       EquippedTooltip.gameObject.SetActive(false);
       if (!Item.Equippable) return;
-      var equippedSlots = PlayerManager.Instance.LocalPlayer.Equipment.EquippedItems;
-      int equipped = equippedSlots.ContainsKey(Item.EquipmentSlot)
-          ? equippedSlots[Item.EquipmentSlot]
-          : 0;
-      if (ItemInstance != null && equipped == ItemInstance.ItemInstanceId) return;
-      if (equipped > 0)
-        ShowEquippedTooltip((int)equipped);
+      var equipped = PlayerManager.Instance.LocalPlayer.Equipment.GetEquippedItemInstance(Item.EquipmentSlot);
+      if (equipped != null)
+      {
+        EquippedTooltip.SetItemInstance(equipped);
+        EquippedTooltip.gameObject.SetActive(true);
+      }
     }
 
     void ShowEquippedTooltip(int itemInstanceId)

@@ -28,14 +28,10 @@ export function toCharacterClassModel(
   }
 }
 
-export function toEquipmentModel(
-  equipment: CharacterEquipmentEntity[],
-): EquipmentModel {
-  return equipment.reduce(
-    (acc: EquipmentModel, e: CharacterEquipmentEntity) => ({
-      ...acc,
-      [e.slot]: e.itemId,
-    }),
-    {} as EquipmentModel,
-  )
+export function toEquipmentModel({
+  entityId,
+  characterClass,
+  ...equipment
+}: CharacterEquipmentEntity): EquipmentModel {
+  return equipment
 }

@@ -145,7 +145,7 @@ namespace ClaraMundi
       {
         var item = inventory.ItemRepo.GetItem(kvp.Value.ItemId);
         if (!item.Equippable) continue;
-        if (!string.IsNullOrEmpty(slotFilter) && item.EquipmentSlot != slotFilter) continue;
+        if (!string.IsNullOrEmpty(slotFilter) && item.EquipmentSlot.ToLower() != slotFilter.ToLower()) continue;
 
         var itemUI = Instantiate(ItemPrefab, ItemsContainer);
         itemUI.instance = kvp.Value;

@@ -46,12 +46,10 @@ namespace ClaraMundi
       {
         var player = PlayerManager.Instance.LocalPlayer;
         if (player == null) return;
-        var equipment = player.Equipment.EquippedItemIds;
-        var items = player.Equipment.EquippedItems;
-        equipmentSlot = gameObject.name.ToLower();
-        var instanceId = items.ContainsKey(equipmentSlot) ? items[equipmentSlot] : -1;
-        var itemId = equipment.ContainsKey(equipmentSlot) ? equipment[equipmentSlot] : null;
-        if (string.IsNullOrEmpty(itemId))
+        equipmentSlot = gameObject.name;
+        instance = player.Equipment.GetEquippedItemInstance(equipmentSlot);
+        item = instance != null ? player.Inventory.ItemRepo.GetItem(instance.ItemId) : null;
+        if (item == null)
         {
           button.HasIcon = false;
           button.HasText = true;
@@ -60,11 +58,6 @@ namespace ClaraMundi
         }
         else
         {
-          item = player.Inventory.ItemRepo.GetItem(itemId);
-          if (instanceId > -1)
-          {
-            instance = ItemManager.Instance.ItemsByInstanceId[instanceId];
-          }
           if (item == null)
           {
             button.HasIcon = false;
@@ -80,8 +73,8 @@ namespace ClaraMundi
 
     public void OnSelect(BaseEventData eventData)
     {
-      Debug.Log("Selected! " + gameObject.name);
-      equipmentSlot = gameObject.name.ToLower();
+      // Debug.Log("Selected! " + gameObject.name);
+      equipmentSlot = gameObject.name;
       equipmentUI.CurrentSlot = this;
       equipmentUI.slotFilter = equipmentSlot;
       equipmentUI.LoadItems();

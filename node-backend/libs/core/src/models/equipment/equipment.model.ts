@@ -1,3 +1,3 @@
 export type EquipmentModel = {
-  [key: string]: string
+  [key: string]: number
 }

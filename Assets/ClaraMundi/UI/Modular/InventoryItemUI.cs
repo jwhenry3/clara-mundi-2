@@ -35,7 +35,8 @@ namespace ClaraMundi
     void OnEnable()
     {
       action = new();
-      action.Action = RepoManager.Instance.ActionRepo.Get("/item");
+      if (RepoManager.Instance != null)
+        action.Action = RepoManager.Instance.ActionRepo.Get("/item");
       action.ActionArgs = new();
       action.ActionArgs["item"] = "";
       if (button == null)
@@ -114,8 +115,11 @@ namespace ClaraMundi
           button.layout.LayoutType = LayoutType.Horizontal;
         if (item != null)
         {
-          action.ItemId = item.ItemId;
-          action.ActionArgs["item"] = item.ItemId;
+          if (action != null && action.ActionArgs != null)
+          {
+            action.ItemId = item.ItemId;
+            action.ActionArgs["item"] = item.ItemId;
+          }
           if (button.iconSprite != item.Icon)
             button.iconSprite = item.Icon;
           if (Application.isPlaying)

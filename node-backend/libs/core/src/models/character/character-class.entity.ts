@@ -32,9 +32,9 @@ export class CharacterClassEntity {
   @Column('int', { default: 0 })
   isCurrent: number = 0
 
-  @OneToMany(() => CharacterEquipmentEntity, (e) => e.characterClass, {
+  @OneToOne(() => CharacterEquipmentEntity, (e) => e.characterClass, {
     cascade: true,
     eager: true,
   })
-  equipment: Relation<CharacterEquipmentEntity>[]
+  equipment: Relation<CharacterEquipmentEntity>
 }

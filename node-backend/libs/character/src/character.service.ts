@@ -1,4 +1,8 @@
-import { CharacterClassEntity, CharacterEntity } from '@app/core'
+import {
+  CharacterClassEntity,
+  CharacterEntity,
+  CharacterEquipmentEntity,
+} from '@app/core'
 import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Raw, Repository } from 'typeorm'
@@ -16,6 +20,8 @@ export class CharacterService {
     private repo: Repository<CharacterEntity>,
     @InjectRepository(CharacterClassEntity)
     private classRepo: Repository<CharacterClassEntity>,
+    @InjectRepository(CharacterEquipmentEntity)
+    private equipmentRepo: Repository<CharacterEquipmentEntity>,
   ) {}
 
   async saveCharacter(
@@ -27,7 +33,7 @@ export class CharacterService {
   }
   async createCharacter(accountId: string, options: CreateCharacterOptions) {
     try {
-      console.log(options)
+      // console.log(options)
       if (!accountId) {
         return {
           status: false,
@@ -78,6 +84,12 @@ export class CharacterService {
         isCurrent: 1,
       })
       await this.classRepo.save(characterClass, {})
+      let equipment = this.equipmentRepo.create({
+        characterClass,
+      })
+      await this.equipmentRepo.save(equipment, {})
+      characterClass.equipment = equipment
+      equipment.characterClass = undefined
 
       character.characterClasses.push(characterClass)
       characterClass.character = undefined
