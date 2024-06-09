@@ -29,9 +29,10 @@ namespace ClaraMundi
         player.Stats.OnChange -= OnChange;
       }
       player = null;
-      if (!string.IsNullOrEmpty(playerName) && PlayerManager.Instance.PlayersByName.ContainsKey(playerName))
+      if (!string.IsNullOrEmpty(playerName))
       {
-        player = PlayerManager.Instance.PlayersByName[playerName];
+
+        player = PlayerManager.Instance.LocalPlayer ?? PlayerManager.Instance.PlayersByName[playerName];
         player.Stats.OnChange += OnChange;
         if (player.Entity.entityName.Value == PlayerManager.Instance.LocalPlayer.Character.name)
           transform.SetAsFirstSibling();
@@ -59,27 +60,29 @@ namespace ClaraMundi
     {
       if (player == null)
       {
-        PlayerLevel.text = "";
+        if (PlayerLevel != null)
+          PlayerLevel.text = "";
         if (HealthBar != null)
           HealthBar.fillAmount = 0;
         if (ManaBar != null)
           ManaBar.fillAmount = 0;
         if (HealthText != null)
-          HealthText.text = "??";
+          HealthText.text = "?? / ??";
         if (ManaText != null)
-          ManaText.text = "??";
+          ManaText.text = "?? / ??";
         return;
       }
-      PlayerLevel.text = "LV " + player.Stats.Level.Value + " " + player.Stats.ClassType.ClassName;
+      if (PlayerLevel != null)
+        PlayerLevel.text = "LV " + player.Stats.Level.Value + " " + player.Stats.ClassType.ClassName;
       // convert a value to a float to retain the decimal value
       if (HealthBar != null)
         HealthBar.fillAmount = player.Stats.Energies.Value.Health / (player.Stats.Energies.Value.MaxHealth * 1f);
       if (ManaBar != null)
         ManaBar.fillAmount = player.Stats.Energies.Value.Mana / (player.Stats.Energies.Value.MaxMana * 1f);
       if (HealthText != null)
-        HealthText.text = player.Stats.Energies.Value.Health + "";
+        HealthText.text = player.Stats.Energies.Value.Health + " / " + player.Stats.Energies.Value.MaxHealth;
       if (ManaText != null)
-        ManaText.text = player.Stats.Energies.Value.Mana + "";
+        ManaText.text = player.Stats.Energies.Value.Mana + " / " + player.Stats.Energies.Value.MaxMana;
     }
 
     // public void OpenContextMenu()

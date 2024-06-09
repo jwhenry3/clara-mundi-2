@@ -15,7 +15,7 @@ namespace ClaraMundi
     private Player player;
 
     public WindowUI InviteWindow;
-    public TextMeshProUGUI InviteField;
+    public TMP_InputField InviteField;
     public WindowUI MemberActionMenu;
 
     public ButtonUI ActionCreate;
@@ -32,17 +32,35 @@ namespace ClaraMundi
     public GameObject PartyMembersInHud;
 
     public PartyMemberUI PartyMemberMenuItemPrefab;
-    public PartyMemberUI PartyMemberPrefab;
+    public PartyMemberUI PartyMemberHudPrefab;
 
     public PartyMemberUI CurrentMember;
 
     public Party CurrentParty;
 
+    private bool listening;
+
+    void Start()
+    {
+
+    }
     void OnEnable()
     {
-      if (PlayerManager.Instance == null) return;
-      player = PlayerManager.Instance.LocalPlayer;
-      player.Party.PartyChanges += OnPartyChanges;
+      if (!listening)
+      {
+        listening = true;
+        player = PlayerManager.Instance.LocalPlayer;
+        player.Party.PartyChanges += OnPartyChanges;
+        OnPartyChanges(player.Party.Party.Value);
+      }
+    }
+    void OnDisable()
+    {
+      if (listening)
+      {
+        listening = false;
+        player.Party.PartyChanges -= OnPartyChanges;
+      }
     }
 
     private void OnPartyChanges(Party party)
@@ -62,9 +80,9 @@ namespace ClaraMundi
         PartyMemberActions.SetActive(party.leader != player.entityId);
         LeaderActions.SetActive(party.leader == player.entityId);
         PartyMembersInMenu.SetActive(true);
-        UpdatePartyList(party);
       }
       CurrentParty = party;
+      UpdatePartyList(party);
     }
 
     private void UpdatePartyList(Party party)
@@ -74,7 +92,7 @@ namespace ClaraMundi
 
       foreach (PartyMemberUI member in PartyMembersInHud.transform.GetComponentsInChildren<PartyMemberUI>())
       {
-        if (party == null || !party.members.Contains(member.playerName))
+        if (party == null || string.IsNullOrEmpty(member.playerName) || !party.members.Contains(member.playerName))
         {
           Destroy(member.gameObject);
           continue;
@@ -83,7 +101,7 @@ namespace ClaraMundi
       }
       foreach (PartyMemberUI member in PartyMembersInMenu.transform.GetComponentsInChildren<PartyMemberUI>())
       {
-        if (party == null || !party.members.Contains(member.playerName))
+        if (party == null || string.IsNullOrEmpty(member.playerName) || !party.members.Contains(member.playerName))
         {
           Destroy(member.gameObject);
           continue;
@@ -93,16 +111,16 @@ namespace ClaraMundi
 
       if (party == null)
       {
-        string name = PlayerManager.Instance.LocalPlayer.Entity.entityName.Value;
-        Instantiate(PartyMemberPrefab, PartyMembersInHud.transform, false).SetPartyMember(name);
-        Instantiate(PartyMemberMenuItemPrefab, PartyMembersInMenu.transform, false).SetPartyMember(name);
+        string name = player.Entity.entityName.Value;
+        Instantiate(PartyMemberHudPrefab, PartyMembersInHud.transform, false).SetPartyMember(name);
+        // Instantiate(PartyMemberMenuItemPrefab, PartyMembersInMenu.transform, false).SetPartyMember(name);
         return;
       }
 
       foreach (string member in party.members)
       {
         if (!foundInHud.Contains(member))
-          Instantiate(PartyMemberPrefab, PartyMembersInHud.transform, false).SetPartyMember(member);
+          Instantiate(PartyMemberHudPrefab, PartyMembersInHud.transform, false).SetPartyMember(member);
         if (!foundInMenu.Contains(member))
           Instantiate(PartyMemberMenuItemPrefab, PartyMembersInMenu.transform, false).SetPartyMember(member);
       }
@@ -110,19 +128,23 @@ namespace ClaraMundi
 
     public void CreateParty()
     {
-      PlayerManager.Instance.LocalPlayer.Party.CreateParty();
+      player.Party.CreateParty();
     }
 
     public void InviteToParty()
     {
-      PlayerManager.Instance.LocalPlayer.Party.InviteToParty(InviteField.text.ToLower());
+      player.Party.InviteToParty(InviteField.text.ToLower());
       CloseInvite();
     }
 
 
     public void LeaveParty()
     {
-      PlayerManager.Instance.LocalPlayer.Party.LeaveParty();
+      player.Party.LeaveParty();
+    }
+    public void DisbandParty()
+    {
+      player.Party.DisbandParty();
     }
 
     public void CloseInvite()
@@ -151,12 +173,12 @@ namespace ClaraMundi
 
     public void PromoteLeader()
     {
-      PlayerManager.Instance.LocalPlayer.Party.Promote(CurrentMember.playerName);
+      player.Party.Promote(CurrentMember.playerName);
     }
 
     public void Kick()
     {
-      PlayerManager.Instance.LocalPlayer.Party.Kick(CurrentMember.playerName);
+      player.Party.Kick(CurrentMember.playerName);
     }
 
     public void Whisper()
