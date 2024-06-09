@@ -48,9 +48,7 @@ namespace ClaraMundi
       if (!forLocalPlayer)
       {
         if (!PlayerManager.Instance.PlayersByName.ContainsKey(playerName))
-        {
           return;
-        }
         player = PlayerManager.Instance.PlayersByName[playerName];
       }
       if (player == null) return;
@@ -156,9 +154,7 @@ namespace ClaraMundi
         index++;
       }
       if (index == 0)
-      {
         Instantiate(NoItemPrefab, ItemsContainer);
-      }
     }
     public void OnChosenSlot()
     {
@@ -194,13 +190,15 @@ namespace ClaraMundi
       bool displayTooltip = false;
       if (selectedItem != null)
       {
-        tooltip.SetItemInstance(selectedItem.instance);
         displayTooltip = true;
+        if (tooltip.ItemInstance != selectedItem.instance)
+          tooltip.SetItemInstance(selectedItem.instance);
       }
       if (selectedEquipment != null)
       {
-        tooltip.SetItemInstance(selectedEquipment.instance);
         displayTooltip = selectedEquipment.instance != null;
+        if (tooltip.ItemInstance != selectedEquipment.instance)
+          tooltip.SetItemInstance(selectedEquipment.instance);
       }
       if (tooltip.gameObject.activeInHierarchy != displayTooltip)
         tooltip.gameObject.SetActive(displayTooltip);

@@ -24,8 +24,6 @@ namespace ClaraMundi
       CurrentButton = button;
     }
 
-    private float interval = 0.2f;
-    private float tick = 0;
     private readonly List<CanvasGroup> m_CanvasGroupCache = new List<CanvasGroup>();
     private bool m_GroupsAllowInteraction = false;
     protected override void OnCanvasGroupChanged()

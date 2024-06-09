@@ -15,7 +15,7 @@ namespace ClaraMundi
   }
   public class ChatUI : FormUI
   {
-    public ChatUI Instance;
+    public static ChatUI Instance;
     public WindowUI window;
     public InputUI inputField;
 
@@ -117,6 +117,13 @@ namespace ClaraMundi
         inputField.inputField.text = "/";
         inputField.inputField.caretPosition = 1;
       }
+    }
+    public void Focus(string text = "")
+    {
+      inputField.Init();
+      window.moveSibling.ToFront();
+      inputField.inputField.text = text;
+      inputField.inputField.caretPosition = text.Length;
     }
   }
 }
