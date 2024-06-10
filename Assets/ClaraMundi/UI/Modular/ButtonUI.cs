@@ -25,6 +25,8 @@ namespace ClaraMundi
     public float iconHeight = 24;
     [HideInInspector]
     public CanvasGroupWatcher canvasGroupWatcher;
+
+    public bool SetAutoFocusOnEnable;
     public bool AutoFocus
     {
       set
@@ -90,11 +92,19 @@ namespace ClaraMundi
       canvasGroupWatcher = canvasGroupWatcher ?? GetComponentInParent<CanvasGroupWatcher>();
       scroller = scroller ?? GetComponentInParent<ScrollRect>();
       if (Application.isPlaying)
+      {
         if (button != null && targetWindow != null)
         {
           button.onClick.AddListener(targetWindow.moveSibling.ToFront);
         }
+        if (SetAutoFocusOnEnable)
+        {
+          AutoFocus = true;
+        }
+      }
     }
+
+
 
     public void SnapTo(RectTransform child)
     {

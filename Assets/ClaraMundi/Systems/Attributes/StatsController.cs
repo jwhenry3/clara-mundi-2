@@ -237,12 +237,11 @@ namespace ClaraMundi
         DefaultMana = Energies.Value.DefaultMana,
         DefaultStamina = Energies.Value.DefaultStamina,
         MaxHealth = Math.Min(99999, Energies.Value.DefaultHealth + (int)(2 * stats.Vitality)),
-        Health = Math.Min(99999, Energies.Value.DefaultMana + (int)(stats.Intelligence + stats.Mind)),
-        MaxMana = Math.Min(99999,
+        MaxMana = Math.Min(99999, Energies.Value.DefaultMana + (int)(stats.Intelligence + stats.Mind)),
+        MaxStamina = Math.Min(99999,
               Energies.Value.DefaultStamina + (int)(stats.Vitality + stats.Dexterity +
                                               stats.Agility + stats.Strength)),
-        Mana = Mathf.Min(Energies.Value.Health, Energies.Value.MaxHealth),
-        MaxStamina = Mathf.Min(Energies.Value.Mana, Energies.Value.MaxMana),
+        Mana = Mathf.Min(Energies.Value.Mana, Energies.Value.MaxMana),
         Stamina = Mathf.Min(Energies.Value.Stamina, Energies.Value.MaxStamina)
       };
       if (!hasLoadedStats)

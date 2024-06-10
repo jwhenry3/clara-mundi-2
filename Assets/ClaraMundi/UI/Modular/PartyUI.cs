@@ -12,7 +12,11 @@ namespace ClaraMundi
   public class PartyUI : MonoBehaviour
   {
 
+    public static PartyUI Instance;
+
     private Player player;
+
+    public WindowUI PartyWindow;
 
     public WindowUI InviteWindow;
     public TMP_InputField InviteField;
@@ -40,12 +44,9 @@ namespace ClaraMundi
 
     private bool listening;
 
-    void Start()
-    {
-
-    }
     void OnEnable()
     {
+      Instance = this;
       if (!listening)
       {
         listening = true;
@@ -77,8 +78,10 @@ namespace ClaraMundi
       {
         NoPartyActions.SetActive(false);
         NoPartyMembers.SetActive(false);
-        PartyMemberActions.SetActive(party.leader != player.entityId);
-        LeaderActions.SetActive(party.leader == player.entityId);
+
+        string playerName = player.Entity.entityName.Value;
+        PartyMemberActions.SetActive(party.leader.ToLower() != playerName.ToLower());
+        LeaderActions.SetActive(party.leader.ToLower() == playerName.ToLower());
         PartyMembersInMenu.SetActive(true);
       }
       CurrentParty = party;
@@ -129,22 +132,27 @@ namespace ClaraMundi
     public void CreateParty()
     {
       player.Party.CreateParty();
+      MemberActionMenu.moveSibling.ToBack();
+      PartyWindow.moveSibling.ToFront();
     }
 
     public void InviteToParty()
     {
       player.Party.InviteToParty(InviteField.text.ToLower());
       CloseInvite();
+      PartyWindow.moveSibling.ToFront();
     }
 
 
     public void LeaveParty()
     {
       player.Party.LeaveParty();
+      PartyWindow.moveSibling.ToFront();
     }
     public void DisbandParty()
     {
       player.Party.DisbandParty();
+      PartyWindow.moveSibling.ToFront();
     }
 
     public void CloseInvite()
@@ -156,10 +164,10 @@ namespace ClaraMundi
     {
       var playerName = player.Entity.entityName.Value;
       CurrentMember = memberUI;
-      ActionCreate.gameObject.SetActive(memberUI.playerName == playerName && CurrentParty == null);
-      ActionPromote.gameObject.SetActive(memberUI.playerName != playerName && CurrentParty != null && CurrentParty.leader == playerName);
-      ActionLeave.gameObject.SetActive(memberUI.playerName == playerName && CurrentParty != null);
-      ActionKick.gameObject.SetActive(memberUI.playerName != playerName && CurrentParty.leader == playerName);
+      ActionCreate.gameObject.SetActive(memberUI.playerName.ToLower() == playerName.ToLower() && CurrentParty == null);
+      ActionPromote.gameObject.SetActive(memberUI.playerName.ToLower() != playerName.ToLower() && CurrentParty != null && CurrentParty.leader.ToLower() == playerName.ToLower());
+      ActionLeave.gameObject.SetActive(memberUI.playerName.ToLower() == playerName.ToLower() && CurrentParty != null);
+      ActionKick.gameObject.SetActive(memberUI.playerName.ToLower() != playerName.ToLower() && CurrentParty.leader.ToLower() == playerName.ToLower());
       if (ActionCreate.gameObject.activeSelf)
         ActionCreate.AutoFocus = true;
       else if (ActionPromote.gameObject.activeSelf)
@@ -174,16 +182,29 @@ namespace ClaraMundi
     public void PromoteLeader()
     {
       player.Party.Promote(CurrentMember.playerName);
+      PartyWindow.moveSibling.ToFront();
     }
 
     public void Kick()
     {
       player.Party.Kick(CurrentMember.playerName);
+      PartyWindow.moveSibling.ToFront();
     }
 
     public void Whisper()
     {
+      MemberActionMenu.moveSibling.ToBack();
+      PartyWindow.moveSibling.ToBack();
       ChatUI.Instance.Focus("/tell " + CurrentMember.playerName + " ");
+    }
+
+    public void MenuClosed()
+    {
+      PartyWindow.moveSibling.ToFront();
+      if (CurrentMember != null)
+      {
+        CurrentMember.button.Select();
+      }
     }
   }
 }

@@ -65,11 +65,16 @@ namespace ClaraMundi
       if (!lastInteractable && group.interactable && m_GroupsAllowInteraction)
       {
         if (!FocusButton(CurrentButton) && !FocusInput(CurrentInput) && !FocusDropdown(CurrentDropdown))
+        {
+          CurrentButton = null;
+          CurrentInput = null;
+          CurrentDropdown = null;
           if (!FocusButton(AutoFocusButton) && !FocusInput(AutoFocusInput) && !FocusDropdown(AutoFocusDropdown))
           {
             lastInteractable = false;
             return;
           }
+        }
       }
       lastInteractable = group.interactable && m_GroupsAllowInteraction;
     }

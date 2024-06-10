@@ -1,5 +1,6 @@
 ﻿using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI.ProceduralImage;
 
@@ -17,13 +18,40 @@ namespace ClaraMundi
     public TextMeshProUGUI ManaText;
 
     public ButtonUI button;
+
+    public bool CanOpenMenu;
+    public bool TargetOnClick;
+
     void OnEnable()
     {
       button = button ?? GetComponent<ButtonUI>();
+      if (button != null)
+      {
+        button.button.onClick.AddListener(OnClick);
+      }
+    }
+    void OnDisable()
+    {
+      if (button != null)
+      {
+        button.button.onClick.RemoveListener(OnClick);
+      }
+    }
+    void OnClick()
+    {
+      if (CanOpenMenu)
+      {
+        PartyUI.Instance.CurrentMember = this;
+        PartyUI.Instance.OpenMemberMenu(this);
+      }
+      else if (TargetOnClick && PlayerManager.Instance.PlayersByName.ContainsKey(playerName))
+      {
+        player.Targeting.SetTarget(PlayerManager.Instance.PlayersByName[playerName].entityId);
+      }
     }
     public void SetPartyMember(string characterName)
     {
-      playerName = characterName;
+      playerName = characterName.ToLower().FirstCharacterToUpper();
       if (player != null)
       {
         player.Stats.OnChange -= OnChange;
